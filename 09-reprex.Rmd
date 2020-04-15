@@ -1,0 +1,134 @@
+---
+title: "Seeking Help from Others with reprex"
+teaching: 15
+exercises: 0
+questions:
+- "How can I get help with R from the R community?"
+- "How can I get help with R from the bcgov R community?"
+objectives:
+- "Describe best practices for getting help from the R community."
+keypoints:
+- "To be able to seek help from your peers."
+
+source: Rmd
+---
+
+# Seeking Help from Others with reprex
+
+If you're having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line:
+
+- [RStudio Community](https://community.rstudio.com/)
+- [Stack Overflow](http://stackoverflow.com/). You can search using
+the `[r]` tag.
+- [Google](https://www.google.ca/)
+
+If you can't find the answer on-line, there are some on-line forums to seek help from the bcgov R community:
+
+- [bcgov Yammer channels (e.g. R, Data Science CoP)](https://www.yammer.com/gov.bc.ca)
+- [bcgov RocketChat #rstats channel](https://developer.gov.bc.ca/Community-and-Events/Steps-to-join-Pathfinder-Rocket.Chat#1-how-to-register-for-rocketchat)
+
+
+## Help People Help You - reprex
+
+When starting a conversation about code, there are a few things that when included make that conversation more efficient and pleasant for everyone:
+
+- some sample data (preferably provided _in_ the code)
+- some code (with comments, white-space, indents `==` make it easy to read)
+- information about your computing environment, like your operating system, version of R, the packages you have loaded
+
+
+[`reprex`](https://reprex.tidyverse.org/index.html): An R package to help prepare a reproducible example --- or reprex --- for posting to GitHub issues, StackOverflow, RocketChat snippets, or email and so on.
+
+
+```{r reprex-demo1, error=TRUE, message=FALSE}
+# install.packages("reprex")
+
+# load libraries we need
+library(reprex)
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+# read in data
+cats <- read_csv(file = "data/feline-data.csv")
+
+# munge data and make bar plot
+cats %>% 
+  select(coat, weight) %>% 
+  ggplot(aes(x = coat, y = weight)) +  
+  geom_col()
+
+# error in syntax - this does not work
+cats %>% 
+  select(coat, weight) %>% 
+  ggplot(aes(x = coat, y = weight)) %>%   
+  geom_col()
+```
+
+You have read the error message but it was not helpful, you used `?ggplot2`, and looked on-line and still cannot find an answer. Maybe someone in the bcgovR community knows? 
+
+We need to invest a bit of time making the buggy code shareable -- the easier it is for someone to run the code, the easier -- and likely faster -- someone might be able to provide some help. 
+
+![](fig/help-me-help-you.png)
+
+
+If the data is shareable (e.g. available in the B.C. Data Catalogue with appropriate licence, publicly available) then we can use `dput()`:
+
+```{r reprex-demo2, error=TRUE, message=FALSE}
+# use dput to make data set with code
+dput(cats)
+
+cats <- structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1, 
+5, 3.2), likes_string = c(1, 0, 1)), class = c("spec_tbl_df", 
+"tbl_df", "tbl", "data.frame"), row.names = c(NA, -3L), spec = structure(list(
+    cols = list(coat = structure(list(), class = c("collector_character", 
+    "collector")), weight = structure(list(), class = c("collector_double", 
+    "collector")), likes_string = structure(list(), class = c("collector_double", 
+    "collector"))), default = structure(list(), class = c("collector_guess", 
+    "collector")), skip = 1), class = "col_spec"))
+
+# error in syntax - this does not work
+cats %>% 
+  select(coat, weight) %>% 
+  ggplot(aes(x = coat, y = weight)) %>%  
+  geom_col()
+```
+
+`dput()` will dump the data you're working with into a format so that it can
+be copy and pasted by anyone else into their R session.
+
+If the data is _*not*_ shareable, you can use some built in data and re-create the issue:
+
+```{r reprex-demo, error=TRUE, message=FALSE}
+# ?datasets # built in datasets
+# ?starwars # ships with dplyr
+
+# View(starwars)
+
+# error in syntax - this does not work
+starwars %>% 
+  select(name, height) %>% 
+  ggplot(aes(x = name, y = height)) %>%  
+  geom_col()
+```
+
+Once the code is ready for sharing, select the code and use `reprex_selection()` or the clickable RStudio `Addin` Reprex selection button to copy the formatted code to the clipboard for sharing on-line (_demonstrated_).
+
+
+Sometimes it is useful to share information about your computing environment as well:
+
+```{r}
+sessionInfo()
+```
+
+`sessionInfo()` will print out your current version of R, as well as any packages you
+have loaded. This can be useful to help reproduce and debug
+your issue.
+
+
+## Other Helpful Resources
+
+* [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
+* [Quick R](http://www.statmethods.net/)
+* [Cookbook for R](http://www.cookbook-r.com/)
+
