@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop</title>
+  <meta name="description" content="This book contains materials for a 1 day Introduction to R workshop" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains materials for a 1 day Introduction to R workshop" />
+  <meta name="github-repo" content="bcgov/ds-cop-intro-to-r" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop" />
+  
+  <meta name="twitter:description" content="This book contains materials for a 1 day Introduction to R workshop" />
+  
+
+<meta name="author" content="Sam Albers, Stephanie Hazlitt &amp; Andy Teucher" />
+
+
+<meta name="date" content="2020-04-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dataframe-manipulation-with-tidyr.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to Data Science using R Workshop</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#motivation"><i class="fa fa-check"></i><b>2.1</b> Motivation</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#before-starting-the-workshop"><i class="fa fa-check"></i><b>2.2</b> Before Starting The Workshop</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>2.3</b> Introduction to RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#work-flow-within-rstudio"><i class="fa fa-check"></i><b>2.4</b> Work flow within RStudio</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>2.5</b> Introduction to R</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-as-a-calculator"><i class="fa fa-check"></i><b>2.6</b> Using R as a calculator</a></li>
+<li class="chapter" data-level="2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mathematical-functions"><i class="fa fa-check"></i><b>2.7</b> Mathematical functions</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comparing-things"><i class="fa fa-check"></i><b>2.8</b> Comparing things</a></li>
+<li class="chapter" data-level="2.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#variables-and-assignment"><i class="fa fa-check"></i><b>2.9</b> Variables and assignment</a></li>
+<li class="chapter" data-level="2.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectorization"><i class="fa fa-check"></i><b>2.10</b> Vectorization</a></li>
+<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#managing-your-environment"><i class="fa fa-check"></i><b>2.11</b> Managing your environment</a></li>
+<li class="chapter" data-level="2.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-packages"><i class="fa fa-check"></i><b>2.12</b> R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html"><i class="fa fa-check"></i><b>3</b> Seeking Help in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#reading-help-files"><i class="fa fa-check"></i><b>3.1</b> Reading Help files</a></li>
+<li class="chapter" data-level="3.2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#special-operators"><i class="fa fa-check"></i><b>3.2</b> Special Operators</a></li>
+<li class="chapter" data-level="3.3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#getting-help-on-packages"><i class="fa fa-check"></i><b>3.3</b> Getting help on packages</a></li>
+<li class="chapter" data-level="3.4" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-kind-of-remember-the-function"><i class="fa fa-check"></i><b>3.4</b> When you kind of remember the function</a></li>
+<li class="chapter" data-level="3.5" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-have-no-idea-where-to-begin"><i class="fa fa-check"></i><b>3.5</b> When you have no idea where to begin</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html"><i class="fa fa-check"></i><b>4</b> Project Management With RStudio</a><ul>
+<li class="chapter" data-level="4.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#a-possible-solution"><i class="fa fa-check"></i><b>4.2</b> A possible solution</a></li>
+<li class="chapter" data-level="4.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#best-practices-for-project-organization"><i class="fa fa-check"></i><b>4.3</b> Best practices for project organization</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>4.3.1</b> Treat data as read only</a></li>
+<li class="chapter" data-level="4.3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#data-cleaning"><i class="fa fa-check"></i><b>4.3.2</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>4.3.3</b> Treat generated output as disposable</a></li>
+<li class="chapter" data-level="4.3.4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>4.3.4</b> Separate function definition and application</a></li>
+<li class="chapter" data-level="4.3.5" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#version-control"><i class="fa fa-check"></i><b>4.3.5</b> Version Control</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>5</b> Data Structures</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures.html"><a href="data-structures.html#the-readr-package"><i class="fa fa-check"></i><b>5.1</b> The <em>readr</em> package</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures.html"><a href="data-structures.html#data-types"><i class="fa fa-check"></i><b>5.2</b> Data Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures.html"><a href="data-structures.html#vectors-and-type-coercion"><i class="fa fa-check"></i><b>5.3</b> Vectors and Type Coercion</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>5.4</b> Data Frames</a></li>
+<li class="chapter" data-level="5.5" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>5.5</b> Factors</a></li>
+<li class="chapter" data-level="5.6" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>5.6</b> Lists</a></li>
+<li class="chapter" data-level="5.7" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>5.7</b> Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html"><i class="fa fa-check"></i><b>6</b> Exploring Data Frames</a><ul>
+<li class="chapter" data-level="6.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#realistic-example"><i class="fa fa-check"></i><b>6.1</b> Realistic example</a></li>
+<li class="chapter" data-level="6.2" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#basic-subsetting"><i class="fa fa-check"></i><b>6.2</b> Basic subsetting</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#selecting-rows"><i class="fa fa-check"></i><b>6.2.1</b> Selecting rows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html"><i class="fa fa-check"></i><b>7</b> Creating Publication-Quality Graphics with ggplot2</a><ul>
+<li class="chapter" data-level="7.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>7.1</b> Layers</a></li>
+<li class="chapter" data-level="7.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>7.2</b> Transformations and statistics</a></li>
+<li class="chapter" data-level="7.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>7.3</b> Multi-panel figures</a></li>
+<li class="chapter" data-level="7.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>7.4</b> Modifying text</a></li>
+<li class="chapter" data-level="7.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>7.5</b> Exporting the plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>8</b> Dataframe Manipulation with dplyr</a><ul>
+<li class="chapter" data-level="8.1" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#the-dplyr-package"><i class="fa fa-check"></i><b>8.1</b> The <code>dplyr</code> package</a></li>
+<li class="chapter" data-level="8.2" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-select"><i class="fa fa-check"></i><b>8.2</b> Using select()</a></li>
+<li class="chapter" data-level="8.3" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter"><i class="fa fa-check"></i><b>8.3</b> Using filter()</a></li>
+<li class="chapter" data-level="8.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>8.4</b> Using filter() with pipes</a></li>
+<li class="chapter" data-level="8.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>8.5</b> Using group_by() and summarize()</a></li>
+<li class="chapter" data-level="8.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>8.6</b> Using summarize()</a></li>
+<li class="chapter" data-level="8.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#count-and-n"><i class="fa fa-check"></i><b>8.7</b> count() and n()</a></li>
+<li class="chapter" data-level="8.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>8.8</b> Using mutate()</a></li>
+<li class="chapter" data-level="8.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-filtering-ifelse"><i class="fa fa-check"></i><b>8.9</b> Connect mutate with logical filtering: ifelse</a></li>
+<li class="chapter" data-level="8.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>8.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
+<li class="chapter" data-level="8.11" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#other-great-resources"><i class="fa fa-check"></i><b>8.11</b> Other great resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html"><i class="fa fa-check"></i><b>9</b> Dataframe Manipulation with tidyr</a><ul>
+<li class="chapter" data-level="9.1" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html#getting-started"><i class="fa fa-check"></i><b>9.1</b> Getting started</a></li>
+<li class="chapter" data-level="9.2" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html#convert-long-format-with-gather"><i class="fa fa-check"></i><b>9.2</b> Convert long format with gather()</a></li>
+<li class="chapter" data-level="9.3" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html#advantage-to-plotting-and-tables"><i class="fa fa-check"></i><b>9.3</b> Advantage to plotting and tables</a></li>
+<li class="chapter" data-level="9.4" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html#other-great-resources-1"><i class="fa fa-check"></i><b>9.4</b> Other great resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>10</b> Seeking Help from Others with reprex</a><ul>
+<li class="chapter" data-level="10.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>10.1</b> Help People Help You - reprex</a></li>
+<li class="chapter" data-level="10.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>10.2</b> Other Helpful Resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science using R Workshop</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="seeking-help-from-others-with-reprex" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Seeking Help from Others with reprex</h1>
+<p>If you’re having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line:</p>
+<ul>
+<li><a href="https://community.rstudio.com/">RStudio Community</a></li>
+<li><a href="http://stackoverflow.com/">Stack Overflow</a>. You can search using
+the <code>[r]</code> tag.</li>
+<li><a href="https://www.google.ca/">Google</a></li>
+</ul>
+<p>If you can’t find the answer on-line, there are some on-line forums to seek help from the bcgov R community:</p>
+<ul>
+<li><a href="https://www.yammer.com/gov.bc.ca">bcgov Yammer channels (e.g. R, Data Science CoP)</a></li>
+<li><a href="https://developer.gov.bc.ca/Community-and-Events/Steps-to-join-Pathfinder-Rocket.Chat#1-how-to-register-for-rocketchat">bcgov RocketChat #rstats channel</a></li>
+</ul>
+<div id="help-people-help-you---reprex" class="section level2">
+<h2><span class="header-section-number">10.1</span> Help People Help You - reprex</h2>
+<p>When starting a conversation about code, there are a few things that when included make that conversation more efficient and pleasant for everyone:</p>
+<ul>
+<li>some sample data (preferably provided <em>in</em> the code)</li>
+<li>some code (with comments, white-space, indents <code>==</code> make it easy to read)</li>
+<li>information about your computing environment, like your operating system, version of R, the packages you have loaded</li>
+</ul>
+<p><a href="https://reprex.tidyverse.org/index.html"><code>reprex</code></a>: An R package to help prepare a reproducible example — or reprex — for posting to GitHub issues, StackOverflow, RocketChat snippets, or email and so on.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" title="1"><span class="co"># install.packages(&quot;reprex&quot;)</span></a>
+<a class="sourceLine" id="cb367-2" title="2"></a>
+<a class="sourceLine" id="cb367-3" title="3"><span class="co"># load libraries we need</span></a>
+<a class="sourceLine" id="cb367-4" title="4"><span class="kw">library</span>(reprex)</a>
+<a class="sourceLine" id="cb367-5" title="5"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb367-6" title="6"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb367-7" title="7"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb367-8" title="8"></a>
+<a class="sourceLine" id="cb367-9" title="9"><span class="co"># read in data</span></a>
+<a class="sourceLine" id="cb367-10" title="10">cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/feline-data.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb367-11" title="11"></a>
+<a class="sourceLine" id="cb367-12" title="12"><span class="co"># munge data and make bar plot</span></a>
+<a class="sourceLine" id="cb367-13" title="13">cats <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb367-14" title="14"><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb367-15" title="15"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb367-16" title="16"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
+<p><img src="fig/rmd-7-reprex-demo1-1.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1"><span class="co"># error in syntax - this does not work</span></a>
+<a class="sourceLine" id="cb368-2" title="2">cats <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb368-3" title="3"><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb368-4" title="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">%&gt;%</span><span class="st">   </span></a>
+<a class="sourceLine" id="cb368-5" title="5"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
+<pre><code>Error: `mapping` must be created by `aes()`
+Did you use %&gt;% instead of +?</code></pre>
+<p>You have read the error message but it was not helpful, you used <code>?ggplot2</code>, and looked on-line and still cannot find an answer. Maybe someone in the bcgovR community knows?</p>
+<p>We need to invest a bit of time making the buggy code shareable – the easier it is for someone to run the code, the easier – and likely faster – someone might be able to provide some help.</p>
+<p><img src="fig/help-me-help-you.png" /></p>
+<p>If the data is shareable (e.g. available in the B.C. Data Catalogue with appropriate licence, publicly available) then we can use <code>dput()</code>:</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1"><span class="co"># use dput to make data set with code</span></a>
+<a class="sourceLine" id="cb370-2" title="2"><span class="kw">dput</span>(cats)</a></code></pre></div>
+<pre><code>structure(list(coat = c(&quot;calico&quot;, &quot;black&quot;, &quot;tabby&quot;), weight = c(2.1, 
+5, 3.2), likes_string = c(1, 0, 1)), class = c(&quot;spec_tbl_df&quot;, 
+&quot;tbl_df&quot;, &quot;tbl&quot;, &quot;data.frame&quot;), row.names = c(NA, -3L), spec = structure(list(
+    cols = list(coat = structure(list(), class = c(&quot;collector_character&quot;, 
+    &quot;collector&quot;)), weight = structure(list(), class = c(&quot;collector_double&quot;, 
+    &quot;collector&quot;)), likes_string = structure(list(), class = c(&quot;collector_double&quot;, 
+    &quot;collector&quot;))), default = structure(list(), class = c(&quot;collector_guess&quot;, 
+    &quot;collector&quot;)), skip = 1), class = &quot;col_spec&quot;))</code></pre>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1">cats &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(<span class="dt">coat =</span> <span class="kw">c</span>(<span class="st">&quot;calico&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;tabby&quot;</span>), <span class="dt">weight =</span> <span class="kw">c</span>(<span class="fl">2.1</span>, </a>
+<a class="sourceLine" id="cb372-2" title="2"><span class="dv">5</span>, <span class="fl">3.2</span>), <span class="dt">likes_string =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;spec_tbl_df&quot;</span>, </a>
+<a class="sourceLine" id="cb372-3" title="3"><span class="st">&quot;tbl_df&quot;</span>, <span class="st">&quot;tbl&quot;</span>, <span class="st">&quot;data.frame&quot;</span>), <span class="dt">row.names =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="op">-</span>3L), <span class="dt">spec =</span> <span class="kw">structure</span>(<span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb372-4" title="4">    <span class="dt">cols =</span> <span class="kw">list</span>(<span class="dt">coat =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_character&quot;</span>, </a>
+<a class="sourceLine" id="cb372-5" title="5">    <span class="st">&quot;collector&quot;</span>)), <span class="dt">weight =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_double&quot;</span>, </a>
+<a class="sourceLine" id="cb372-6" title="6">    <span class="st">&quot;collector&quot;</span>)), <span class="dt">likes_string =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_double&quot;</span>, </a>
+<a class="sourceLine" id="cb372-7" title="7">    <span class="st">&quot;collector&quot;</span>))), <span class="dt">default =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_guess&quot;</span>, </a>
+<a class="sourceLine" id="cb372-8" title="8">    <span class="st">&quot;collector&quot;</span>)), <span class="dt">skip =</span> <span class="dv">1</span>), <span class="dt">class =</span> <span class="st">&quot;col_spec&quot;</span>))</a>
+<a class="sourceLine" id="cb372-9" title="9"></a>
+<a class="sourceLine" id="cb372-10" title="10"><span class="co"># error in syntax - this does not work</span></a>
+<a class="sourceLine" id="cb372-11" title="11">cats <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb372-12" title="12"><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb372-13" title="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb372-14" title="14"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
+<pre><code>Error: `mapping` must be created by `aes()`
+Did you use %&gt;% instead of +?</code></pre>
+<p><code>dput()</code> will dump the data you’re working with into a format so that it can
+be copy and pasted by anyone else into their R session.</p>
+<p>If the data is <em><em>not</em></em> shareable, you can use some built in data and re-create the issue:</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1"><span class="co"># ?datasets # built in datasets</span></a>
+<a class="sourceLine" id="cb374-2" title="2"><span class="co"># ?starwars # ships with dplyr</span></a>
+<a class="sourceLine" id="cb374-3" title="3"></a>
+<a class="sourceLine" id="cb374-4" title="4"><span class="co"># View(starwars)</span></a>
+<a class="sourceLine" id="cb374-5" title="5"></a>
+<a class="sourceLine" id="cb374-6" title="6"><span class="co"># error in syntax - this does not work</span></a>
+<a class="sourceLine" id="cb374-7" title="7">starwars <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb374-8" title="8"><span class="st">  </span><span class="kw">select</span>(name, height) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb374-9" title="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> name, <span class="dt">y =</span> height)) <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb374-10" title="10"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
+<pre><code>Error: `mapping` must be created by `aes()`
+Did you use %&gt;% instead of +?</code></pre>
+<p>Once the code is ready for sharing, select the code and use <code>reprex_selection()</code> or the clickable RStudio <code>Addin</code> Reprex selection button to copy the formatted code to the clipboard for sharing on-line (<em>demonstrated</em>).</p>
+<p>Sometimes it is useful to share information about your computing environment as well:</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
+<pre><code>R version 3.6.3 (2020-02-29)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 18362)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_Canada.1252  LC_CTYPE=English_Canada.1252    LC_MONETARY=English_Canada.1252 LC_NUMERIC=C                    LC_TIME=English_Canada.1252    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] reprex_0.3.0       tidyr_1.0.2        dplyr_0.8.99.9002  ggplot2_3.3.0.9000 readr_1.3.1        knitr_1.28        
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.4        compiler_3.6.3    pillar_1.4.3      tools_3.6.3       digest_0.6.25     packrat_0.5.0     lattice_0.20-41   nlme_3.1-145      evaluate_0.14     lifecycle_0.2.0   tibble_3.0.0     
+[12] gtable_0.3.0      mgcv_1.8-31       pkgconfig_2.0.3   rlang_0.4.5.9000  Matrix_1.2-18     cli_2.0.2         rstudioapi_0.11   yaml_2.2.1        xfun_0.12         withr_2.1.2       stringr_1.4.0    
+[23] fs_1.4.0          generics_0.0.2    vctrs_0.2.99.9011 hms_0.5.3         grid_3.6.3        tidyselect_1.0.0  glue_1.3.2        R6_2.4.1          fansi_0.4.1       rmarkdown_2.1     bookdown_0.18    
+[34] farver_2.0.3      purrr_0.3.3       magrittr_1.5      splines_3.6.3     scales_1.1.0      ellipsis_0.3.0    htmltools_0.4.0   assertthat_0.2.1  colorspace_1.4-1  labeling_0.3      utf8_1.1.4       
+[45] stringi_1.4.6     munsell_0.5.0     crayon_1.3.4     </code></pre>
+<p><code>sessionInfo()</code> will print out your current version of R, as well as any packages you
+have loaded. This can be useful to help reproduce and debug
+your issue.</p>
+</div>
+<div id="other-helpful-resources" class="section level2">
+<h2><span class="header-section-number">10.2</span> Other Helpful Resources</h2>
+<ul>
+<li><a href="http://www.rstudio.com/resources/cheatsheets/">RStudio cheat sheets</a></li>
+<li><a href="http://www.statmethods.net/">Quick R</a></li>
+<li><a href="http://www.cookbook-r.com/">Cookbook for R</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dataframe-manipulation-with-tidyr.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

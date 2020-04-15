@@ -28,16 +28,18 @@ The goal of this 2-day workshop is to teach _new-to-programming_ data profession
 
 ## Workshop Schedule
 
-Please see: https://bcgov.github.io/ds-cop-intro-to-r/
+Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 
 ### Day 1
 
 #### AM
+
 -() Getting setup with R & RStudio (120 minutes)
 -() Introduction to R & RStudio (55 minutes)
 -() Seeking Help in R (20 minutes)  
 -
 #### PM
+
 -() Project Management with RStudio (30 minutes)  
 -() Data Structures (40 minutes)  
 -() Exploring Data Frames (20 minutes)  
@@ -46,11 +48,13 @@ Please see: https://bcgov.github.io/ds-cop-intro-to-r/
 #### Day 2
 
 ## AM
+
 -() ggplot2 review (20 minutes)
 -() Data Manipulation with `dplyr` (55 minutes)  
 -() Data Manipulation with `tidyr` (40 minutes)  
 
 ## PM
+
 -() Basic of rmarkdown (30 minutes)
 -() Introduce `bcdata`
 -() Introduce `lm()` (30 minutes)

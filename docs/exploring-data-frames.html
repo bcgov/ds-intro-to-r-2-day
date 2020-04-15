@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Exploring Data Frames | Introduction to Data Science using R Workshop</title>
+  <meta name="description" content="This book contains materials for a 1 day Introduction to R workshop" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Exploring Data Frames | Introduction to Data Science using R Workshop" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains materials for a 1 day Introduction to R workshop" />
+  <meta name="github-repo" content="bcgov/ds-cop-intro-to-r" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Exploring Data Frames | Introduction to Data Science using R Workshop" />
+  
+  <meta name="twitter:description" content="This book contains materials for a 1 day Introduction to R workshop" />
+  
+
+<meta name="author" content="Sam Albers, Stephanie Hazlitt &amp; Andy Teucher" />
+
+
+<meta name="date" content="2020-04-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-structures.html"/>
+<link rel="next" href="creating-publication-quality-graphics-with-ggplot2.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to Data Science using R Workshop</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#motivation"><i class="fa fa-check"></i><b>2.1</b> Motivation</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#before-starting-the-workshop"><i class="fa fa-check"></i><b>2.2</b> Before Starting The Workshop</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>2.3</b> Introduction to RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#work-flow-within-rstudio"><i class="fa fa-check"></i><b>2.4</b> Work flow within RStudio</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>2.5</b> Introduction to R</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-as-a-calculator"><i class="fa fa-check"></i><b>2.6</b> Using R as a calculator</a></li>
+<li class="chapter" data-level="2.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mathematical-functions"><i class="fa fa-check"></i><b>2.7</b> Mathematical functions</a></li>
+<li class="chapter" data-level="2.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comparing-things"><i class="fa fa-check"></i><b>2.8</b> Comparing things</a></li>
+<li class="chapter" data-level="2.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#variables-and-assignment"><i class="fa fa-check"></i><b>2.9</b> Variables and assignment</a></li>
+<li class="chapter" data-level="2.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectorization"><i class="fa fa-check"></i><b>2.10</b> Vectorization</a></li>
+<li class="chapter" data-level="2.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#managing-your-environment"><i class="fa fa-check"></i><b>2.11</b> Managing your environment</a></li>
+<li class="chapter" data-level="2.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-packages"><i class="fa fa-check"></i><b>2.12</b> R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html"><i class="fa fa-check"></i><b>3</b> Seeking Help in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#reading-help-files"><i class="fa fa-check"></i><b>3.1</b> Reading Help files</a></li>
+<li class="chapter" data-level="3.2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#special-operators"><i class="fa fa-check"></i><b>3.2</b> Special Operators</a></li>
+<li class="chapter" data-level="3.3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#getting-help-on-packages"><i class="fa fa-check"></i><b>3.3</b> Getting help on packages</a></li>
+<li class="chapter" data-level="3.4" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-kind-of-remember-the-function"><i class="fa fa-check"></i><b>3.4</b> When you kind of remember the function</a></li>
+<li class="chapter" data-level="3.5" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-have-no-idea-where-to-begin"><i class="fa fa-check"></i><b>3.5</b> When you have no idea where to begin</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html"><i class="fa fa-check"></i><b>4</b> Project Management With RStudio</a><ul>
+<li class="chapter" data-level="4.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#a-possible-solution"><i class="fa fa-check"></i><b>4.2</b> A possible solution</a></li>
+<li class="chapter" data-level="4.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#best-practices-for-project-organization"><i class="fa fa-check"></i><b>4.3</b> Best practices for project organization</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>4.3.1</b> Treat data as read only</a></li>
+<li class="chapter" data-level="4.3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#data-cleaning"><i class="fa fa-check"></i><b>4.3.2</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>4.3.3</b> Treat generated output as disposable</a></li>
+<li class="chapter" data-level="4.3.4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>4.3.4</b> Separate function definition and application</a></li>
+<li class="chapter" data-level="4.3.5" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#version-control"><i class="fa fa-check"></i><b>4.3.5</b> Version Control</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>5</b> Data Structures</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures.html"><a href="data-structures.html#the-readr-package"><i class="fa fa-check"></i><b>5.1</b> The <em>readr</em> package</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures.html"><a href="data-structures.html#data-types"><i class="fa fa-check"></i><b>5.2</b> Data Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures.html"><a href="data-structures.html#vectors-and-type-coercion"><i class="fa fa-check"></i><b>5.3</b> Vectors and Type Coercion</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>5.4</b> Data Frames</a></li>
+<li class="chapter" data-level="5.5" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>5.5</b> Factors</a></li>
+<li class="chapter" data-level="5.6" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>5.6</b> Lists</a></li>
+<li class="chapter" data-level="5.7" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>5.7</b> Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html"><i class="fa fa-check"></i><b>6</b> Exploring Data Frames</a><ul>
+<li class="chapter" data-level="6.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#realistic-example"><i class="fa fa-check"></i><b>6.1</b> Realistic example</a></li>
+<li class="chapter" data-level="6.2" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#basic-subsetting"><i class="fa fa-check"></i><b>6.2</b> Basic subsetting</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#selecting-rows"><i class="fa fa-check"></i><b>6.2.1</b> Selecting rows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html"><i class="fa fa-check"></i><b>7</b> Creating Publication-Quality Graphics with ggplot2</a><ul>
+<li class="chapter" data-level="7.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>7.1</b> Layers</a></li>
+<li class="chapter" data-level="7.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>7.2</b> Transformations and statistics</a></li>
+<li class="chapter" data-level="7.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>7.3</b> Multi-panel figures</a></li>
+<li class="chapter" data-level="7.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>7.4</b> Modifying text</a></li>
+<li class="chapter" data-level="7.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>7.5</b> Exporting the plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>8</b> Dataframe Manipulation with dplyr</a><ul>
+<li class="chapter" data-level="8.1" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#the-dplyr-package"><i class="fa fa-check"></i><b>8.1</b> The <code>dplyr</code> package</a></li>
+<li class="chapter" data-level="8.2" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-select"><i class="fa fa-check"></i><b>8.2</b> Using select()</a></li>
+<li class="chapter" data-level="8.3" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter"><i class="fa fa-check"></i><b>8.3</b> Using filter()</a></li>
+<li class="chapter" data-level="8.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>8.4</b> Using filter() with pipes</a></li>
+<li class="chapter" data-level="8.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>8.5</b> Using group_by() and summarize()</a></li>
+<li class="chapter" data-level="8.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>8.6</b> Using summarize()</a></li>
+<li class="chapter" data-level="8.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#count-and-n"><i class="fa fa-check"></i><b>8.7</b> count() and n()</a></li>
+<li class="chapter" data-level="8.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>8.8</b> Using mutate()</a></li>
+<li class="chapter" data-level="8.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-filtering-ifelse"><i class="fa fa-check"></i><b>8.9</b> Connect mutate with logical filtering: ifelse</a></li>
+<li class="chapter" data-level="8.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>8.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
+<li class="chapter" data-level="8.11" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#other-great-resources"><i class="fa fa-check"></i><b>8.11</b> Other great resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html"><i class="fa fa-check"></i><b>9</b> Dataframe Manipulation with tidyr</a><ul>
+<li class="chapter" data-level="9.1" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html#getting-started"><i class="fa fa-check"></i><b>9.1</b> Getting started</a></li>
+<li class="chapter" data-level="9.2" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html#convert-long-format-with-gather"><i class="fa fa-check"></i><b>9.2</b> Convert long format with gather()</a></li>
+<li class="chapter" data-level="9.3" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html#advantage-to-plotting-and-tables"><i class="fa fa-check"></i><b>9.3</b> Advantage to plotting and tables</a></li>
+<li class="chapter" data-level="9.4" data-path="dataframe-manipulation-with-tidyr.html"><a href="dataframe-manipulation-with-tidyr.html#other-great-resources-1"><i class="fa fa-check"></i><b>9.4</b> Other great resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>10</b> Seeking Help from Others with reprex</a><ul>
+<li class="chapter" data-level="10.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>10.1</b> Help People Help You - reprex</a></li>
+<li class="chapter" data-level="10.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>10.2</b> Other Helpful Resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science using R Workshop</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploring-data-frames" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Exploring Data Frames</h1>
+<p>At this point, you’ve seen it all: in the last lesson, we toured all the basic
+data types and data structures in R. Everything you do will be a manipulation of
+those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we’ll learn a few more things
+about working with data frames.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb220-2" title="2">cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/feline-data.csv&quot;</span>)</a></code></pre></div>
+<pre><code>Parsed with column specification:
+cols(
+  coat = col_character(),
+  weight = col_double(),
+  likes_string = col_double()
+)</code></pre>
+<p>We can find the size and various other attributes of our data with a few handy functions:</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1"><span class="kw">nrow</span>(cats)</a></code></pre></div>
+<pre><code>[1] 3</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">ncol</span>(cats)</a></code></pre></div>
+<pre><code>[1] 3</code></pre>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1"><span class="kw">dim</span>(cats)</a></code></pre></div>
+<pre><code>[1] 3 3</code></pre>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1"><span class="kw">names</span>(cats)</a></code></pre></div>
+<pre><code>[1] &quot;coat&quot;         &quot;weight&quot;       &quot;likes_string&quot;</code></pre>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1"><span class="kw">str</span>(cats)</a></code></pre></div>
+<pre><code>tibble [3 x 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ coat        : chr [1:3] &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;
+ $ weight      : num [1:3] 2.1 5 3.2
+ $ likes_string: num [1:3] 1 0 1
+ - attr(*, &quot;spec&quot;)=
+  .. cols(
+  ..   coat = col_character(),
+  ..   weight = col_double(),
+  ..   likes_string = col_double()
+  .. )</code></pre>
+<p>A way to get a nice overall view of a data frame is to use the <code>summary</code> function. This function can be used on various objects in R. For data frames, <code>summary</code> yields a numeric, tabular, or descriptive summary of each column. Factor columns are summarized by the number of items in each level, numeric or integer columns by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1"><span class="kw">summary</span>(cats)</a></code></pre></div>
+<pre><code>     coat               weight       likes_string   
+ Length:3           Min.   :2.100   Min.   :0.0000  
+ Class :character   1st Qu.:2.650   1st Qu.:0.5000  
+ Mode  :character   Median :3.200   Median :1.0000  
+                    Mean   :3.433   Mean   :0.6667  
+                    3rd Qu.:4.100   3rd Qu.:1.0000  
+                    Max.   :5.000   Max.   :1.0000  </code></pre>
+<p>A really nice feature of RStudio is that it allows us to view our data in a
+very readable and familiar way. Go ahead and click on the name of the <code>cats</code>
+data frame in the environment pane.</p>
+<p>Note that this is a read-only view, it’s not editable (which is a good thing!)</p>
+<p>For an object containing the data type <code>factor</code>, each different value represents what is called a <code>level</code>. In our case, the <code>factor</code> “coat” has 3 levels: “black”, “calico”, and “tabby”.</p>
+<div id="realistic-example" class="section level2">
+<h2><span class="header-section-number">6.1</span> Realistic example</h2>
+<p>So far, you have seen the basics of manipulating data frames with our cat data;
+now let’s use those skills to digest a more realistic dataset. Let’s read in the
+<code>gapminder</code> dataset that we downloaded previously:</p>
+<blockquote>
+<h2 id="challenge-1-3"><span class="header-section-number">6.1</span> Challenge 1</h2>
+<p>Read in the gapminder dataset using read_csv and assign it to a data frame
+called <code>gapminder</code>:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1">gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</a></code></pre></div>
+<pre><code>Parsed with column specification:
+cols(
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)</code></pre>
+<p>Then tell me how many rows and columns <code>gapminder</code> has:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="kw">dim</span>(gapminder)</a></code></pre></div>
+<pre><code>[1] 1704    6</code></pre>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" title="1"><span class="kw">nrow</span>(gapminder)</a></code></pre></div>
+<pre><code>[1] 1704</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1"><span class="kw">ncol</span>(gapminder)</a></code></pre></div>
+<pre><code>[1] 6</code></pre>
+<p>And tell me what kind of data is in the <code>pop</code> and <code>continent</code> columns</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" title="1"><span class="kw">str</span>(gapminder)</a></code></pre></div>
+<pre><code>tibble [1,704 x 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ country  : chr [1:1704] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
+ $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
+ $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: chr [1:1704] &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; ...
+ $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+ - attr(*, &quot;spec&quot;)=
+  .. cols(
+  ..   country = col_character(),
+  ..   year = col_double(),
+  ..   pop = col_double(),
+  ..   continent = col_character(),
+  ..   lifeExp = col_double(),
+  ..   gdpPercap = col_double()
+  .. )</code></pre>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" title="1"><span class="kw">summary</span>(gapminder)</a></code></pre></div>
+<pre><code>   country               year           pop             continent            lifeExp        gdpPercap       
+ Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704        Min.   :23.60   Min.   :   241.2  
+ Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character   1st Qu.:48.20   1st Qu.:  1202.1  
+ Mode  :character   Median :1980   Median :7.024e+06   Mode  :character   Median :60.71   Median :  3531.8  
+                    Mean   :1980   Mean   :2.960e+07                      Mean   :59.47   Mean   :  7215.3  
+                    3rd Qu.:1993   3rd Qu.:1.959e+07                      3rd Qu.:70.85   3rd Qu.:  9325.5  
+                    Max.   :2007   Max.   :1.319e+09                      Max.   :82.60   Max.   :113523.1  </code></pre>
+</blockquote>
+<p>The first thing we should always do is check out what the data looks like with
+<code>str</code> or <code>summary</code>:</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1"><span class="kw">str</span>(gapminder)</a></code></pre></div>
+<pre><code>tibble [1,704 x 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ country  : chr [1:1704] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
+ $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
+ $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: chr [1:1704] &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; ...
+ $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+ - attr(*, &quot;spec&quot;)=
+  .. cols(
+  ..   country = col_character(),
+  ..   year = col_double(),
+  ..   pop = col_double(),
+  ..   continent = col_character(),
+  ..   lifeExp = col_double(),
+  ..   gdpPercap = col_double()
+  .. )</code></pre>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" title="1"><span class="kw">summary</span>(gapminder<span class="op">$</span>country)</a></code></pre></div>
+<pre><code>   Length     Class      Mode 
+     1704 character character </code></pre>
+<blockquote>
+<h2 id="miscellaneous-tips"><span class="header-section-number">6.1</span> Miscellaneous Tips</h2>
+<ul>
+<li>Files can also be downloaded directly from the Internet into a local
+folder of your choice onto your computer using the <code>download.file</code> function.
+The <code>read.csv</code> function can then be executed to read the downloaded file from the download location, for example,</li>
+</ul>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1"><span class="kw">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb250-2" title="2">gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</a></code></pre></div>
+<ul>
+<li>Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in <code>read.csv</code>. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,</li>
+</ul>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1">gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>)</a></code></pre></div>
+<ul>
+<li>You can read directly from excel spreadsheets without
+converting them to plain text first by using the <a href="https://cran.r-project.org/package=readxl">readxl</a> package.</li>
+</ul>
+</blockquote>
+<p>We’ll also likely want to know what the titles of all the columns are, so we can
+ask for them:</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1"><span class="kw">names</span>(gapminder)</a></code></pre></div>
+<pre><code>[1] &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;continent&quot; &quot;lifeExp&quot;   &quot;gdpPercap&quot;</code></pre>
+<p>At this stage, it’s important to ask ourselves if the structure R is reporting
+matches our intuition or expectations; do the basic data types reported for each
+column make sense? If not, we need to sort any problems out now before they turn
+into bad surprises down the road, using what we’ve learned about how R
+interprets data, and the importance of <em>strict consistency</em> in how we record our
+data.</p>
+<p>Once we’re happy that the data types and structures seem reasonable, it’s time
+to start digging into our data proper. Check out the first few lines:</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1"><span class="kw">head</span>(gapminder)</a></code></pre></div>
+<pre><code># A tibble: 6 x 6
+  country      year      pop continent lifeExp gdpPercap
+  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan  1952  8425333 Asia         28.8      779.
+2 Afghanistan  1957  9240934 Asia         30.3      821.
+3 Afghanistan  1962 10267083 Asia         32.0      853.
+4 Afghanistan  1967 11537966 Asia         34.0      836.
+5 Afghanistan  1972 13079460 Asia         36.1      740.
+6 Afghanistan  1977 14880372 Asia         38.4      786.</code></pre>
+<blockquote>
+<h2 id="challenge-2-2"><span class="header-section-number">6.1</span> Challenge 2</h2>
+<p>It’s good practice to also check the last few lines of your data and some in the middle. How would you do this?</p>
+<p>Searching for ones specifically in the middle isn’t too hard but we could simply ask for a few lines at random. How would you code this?</p>
+<blockquote>
+<h2 id="solution-to-challenge-2-2"><span class="header-section-number">6.1</span> Solution to Challenge 2</h2>
+<p>To check the last few lines it’s relatively simple as R already has a function for this:</p>
+<pre><code>tail(gapminder)
+tail(gapminder, n = 15)</code></pre>
+<p>What about a few arbitrary rows just for sanity (or insanity depending on your view)?
+## Tip: There are several ways to achieve this.
+The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new concept, but you are already using it!
+Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don’t know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
+~~<sub>
+gapminder[sample(nrow(gapminder), 5), ]
+</sub>~~</p>
+</blockquote>
+</blockquote>
+<p>Another very helpful function for looking at your data is the <code>unique</code>
+function, to see the unique values in a particular column:</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1"><span class="kw">unique</span>(gapminder<span class="op">$</span>continent)</a></code></pre></div>
+<pre><code>[1] &quot;Asia&quot;     &quot;Europe&quot;   &quot;Africa&quot;   &quot;Americas&quot; &quot;Oceania&quot; </code></pre>
+<p>To make sure our analysis is reproducible, we should put the code
+into a script file so we can come back to it later.</p>
+<blockquote>
+<h2 id="challenge-3-3"><span class="header-section-number">6.1</span> Challenge 3</h2>
+<p>Go to file -&gt; new file -&gt; R script, and write an R script
+to load in the gapminder dataset. Put it in the <code>scripts/</code>
+directory.</p>
+<p>Run the script using the <code>source</code> function, using the file path
+as its argument (or by pressing the “source” button in RStudio).</p>
+<blockquote>
+<h2 id="solution-to-challenge-3-3"><span class="header-section-number">6.1</span> Solution to Challenge 3</h2>
+<p>The <code>source</code> function can be used to use a script within a script.
+Assume you would like to load the same type of file over and over
+again and therefore you need to specify the arguments to fit the
+needs of your file. Instead of writing the necessary argument again
+and again you could just write it once and save it as a script. Then,
+you can use <code>source("Your_Script_containing_the_load_function")</code> in a new
+script to use the function of that script without writing everything again.
+Check out <code>?source</code> to find out more.</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1"><span class="kw">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb259-2" title="2">gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>)</a></code></pre></div>
+<p>To run the script and load the data into the <code>gapminder</code> variable:</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1"><span class="kw">source</span>(<span class="dt">file =</span> <span class="st">&quot;scripts/load-gapminder.R&quot;</span>)</a></code></pre></div>
+</blockquote>
+</blockquote>
+</div>
+<div id="basic-subsetting" class="section level2">
+<h2><span class="header-section-number">6.2</span> Basic subsetting</h2>
+<p>Data frames are two dimensions - rows and columns. We can access these using a
+specific notation with square brackets.</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1">my_data_frame[rows, columns]</a></code></pre></div>
+<div id="selecting-rows" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Selecting rows</h3>
+<p>We can select rows using the square brackets like so:</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1">gapminder[<span class="dv">1</span>, ]</a></code></pre></div>
+<pre><code># A tibble: 1 x 6
+  country      year     pop continent lifeExp gdpPercap
+  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan  1952 8425333 Asia         28.8      779.</code></pre>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1">gapminder[<span class="dv">100</span><span class="op">:</span><span class="dv">110</span>, ]</a></code></pre></div>
+<pre><code># A tibble: 11 x 6
+   country     year       pop continent lifeExp gdpPercap
+   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Bangladesh  1967  62821884 Asia         43.5      721.
+ 2 Bangladesh  1972  70759295 Asia         45.3      630.
+ 3 Bangladesh  1977  80428306 Asia         46.9      660.
+ 4 Bangladesh  1982  93074406 Asia         50.0      677.
+ 5 Bangladesh  1987 103764241 Asia         52.8      752.
+ 6 Bangladesh  1992 113704579 Asia         56.0      838.
+ 7 Bangladesh  1997 123315288 Asia         59.4      973.
+ 8 Bangladesh  2002 135656790 Asia         62.0     1136.
+ 9 Bangladesh  2007 150448339 Asia         64.1     1391.
+10 Belgium     1952   8730405 Europe       68       8343.
+11 Belgium     1957   8989111 Europe       69.2     9715.</code></pre>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" title="1">gapminder[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>), ]</a></code></pre></div>
+<pre><code># A tibble: 5 x 6
+  country      year      pop continent lifeExp gdpPercap
+  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan  1952  8425333 Asia         28.8      779.
+2 Afghanistan  1962 10267083 Asia         32.0      853.
+3 Afghanistan  1972 13079460 Asia         36.1      740.
+4 Afghanistan  1982 12881816 Asia         39.9      978.
+5 Afghanistan  1992 16317921 Asia         41.7      649.</code></pre>
+<p>It’s unlikely that you’ll often do this directly though, you’ll usually want
+to use some criteria. Say we just wanted the rows from Asia:</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" title="1">romania &lt;-<span class="st"> </span>gapminder[gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>, ]</a>
+<a class="sourceLine" id="cb268-2" title="2">romania</a></code></pre></div>
+<pre><code># A tibble: 396 x 6
+   country      year      pop continent lifeExp gdpPercap
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Afghanistan  1977 14880372 Asia         38.4      786.
+ 7 Afghanistan  1982 12881816 Asia         39.9      978.
+ 8 Afghanistan  1987 13867957 Asia         40.8      852.
+ 9 Afghanistan  1992 16317921 Asia         41.7      649.
+10 Afghanistan  1997 22227415 Asia         41.8      635.
+# ... with 386 more rows</code></pre>
+<p>This works because subsetting can take either numerical positions like we showed
+above, OR a vector of <code>TRUE</code> and <code>FALSE</code>, returning the rows that are <code>TRUE</code>.
+<code>gapminder$contintent == "Asia"</code> generates a vector of <code>TRUE</code> and <code>FALSE</code>
+values:</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" title="1">gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Asia&quot;</span></a></code></pre></div>
+<pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[100]  TRUE
+ [ reached getOption(&quot;max.print&quot;) -- omitted 1604 entries ]</code></pre>
+<p>and inserting that vector into the first position of the square brackets
+gives us just the rows where the <code>contintent</code> column is <code>"Asia"</code>.</p>
+<p>Another very useful operator in this context is the <code>%in%</code> operator - it can
+tell you if a value is <em>one of</em> a set of values:</p>
+<p>Say we wanted to select just Canada and Mexico:</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" title="1">gapminder<span class="op">$</span>country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Canada&quot;</span>, <span class="st">&quot;Mexico&quot;</span>)</a></code></pre></div>
+<pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[100] FALSE
+ [ reached getOption(&quot;max.print&quot;) -- omitted 1604 entries ]</code></pre>
+<p>Now we can insert this into the first position of the square brackets:</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" title="1">can_mex &lt;-<span class="st"> </span>gapminder<span class="op">$</span>country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Canada&quot;</span>, <span class="st">&quot;Mexico&quot;</span>)</a>
+<a class="sourceLine" id="cb274-2" title="2">gapminder[can_mex, ]</a></code></pre></div>
+<pre><code># A tibble: 24 x 6
+   country  year      pop continent lifeExp gdpPercap
+   &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Canada   1952 14785584 Americas     68.8    11367.
+ 2 Canada   1957 17010154 Americas     70.0    12490.
+ 3 Canada   1962 18985849 Americas     71.3    13462.
+ 4 Canada   1967 20819767 Americas     72.1    16077.
+ 5 Canada   1972 22284500 Americas     72.9    18971.
+ 6 Canada   1977 23796400 Americas     74.2    22091.
+ 7 Canada   1982 25201900 Americas     75.8    22899.
+ 8 Canada   1987 26549700 Americas     76.9    26627.
+ 9 Canada   1992 28523502 Americas     78.0    26343.
+10 Canada   1997 30305843 Americas     78.6    28955.
+# ... with 14 more rows</code></pre>
+<blockquote>
+<h2 id="challenge-4-2"><span class="header-section-number">6.2.1</span> Challenge 4</h2>
+<p>Select all the rows in <code>gapminder</code> with data from 1975 and earlier</p>
+<blockquote>
+<p>Solution to Challenge 4</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" title="1">gapminder[gapminder<span class="op">$</span>year <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1975</span>, ]</a></code></pre></div>
+<pre><code># A tibble: 710 x 6
+   country      year      pop continent lifeExp gdpPercap
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Albania      1952  1282697 Europe       55.2     1601.
+ 7 Albania      1957  1476505 Europe       59.3     1942.
+ 8 Albania      1962  1728137 Europe       64.8     2313.
+ 9 Albania      1967  1984060 Europe       66.2     2760.
+10 Albania      1972  2263554 Europe       67.7     3313.
+# ... with 700 more rows</code></pre>
+</blockquote>
+</blockquote>
+<p>We saw previously how we can select a single column using the dollar sign <code>$</code>:</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" title="1">gapminder<span class="op">$</span>country</a></code></pre></div>
+<pre><code>  [1] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Albania&quot;     &quot;Albania&quot;    
+ [15] &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;    
+ [29] &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Algeria&quot;     &quot;Angola&quot;      &quot;Angola&quot;      &quot;Angola&quot;      &quot;Angola&quot;      &quot;Angola&quot;      &quot;Angola&quot;     
+ [43] &quot;Angola&quot;      &quot;Angola&quot;      &quot;Angola&quot;      &quot;Angola&quot;      &quot;Angola&quot;      &quot;Angola&quot;      &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Argentina&quot;  
+ [57] &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Argentina&quot;   &quot;Australia&quot;   &quot;Australia&quot;   &quot;Australia&quot;   &quot;Australia&quot;   &quot;Australia&quot;   &quot;Australia&quot;   &quot;Australia&quot;   &quot;Australia&quot;   &quot;Australia&quot;   &quot;Australia&quot;  
+ [71] &quot;Australia&quot;   &quot;Australia&quot;   &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;     &quot;Austria&quot;    
+ [85] &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bahrain&quot;     &quot;Bangladesh&quot;  &quot;Bangladesh&quot; 
+ [99] &quot;Bangladesh&quot;  &quot;Bangladesh&quot; 
+ [ reached getOption(&quot;max.print&quot;) -- omitted 1604 entries ]</code></pre>
+<p>If we wanted to select a subset of columns, we can specify that in the second
+position using a character vector of column names:</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" title="1">gapminder[ , <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;lifeExp&quot;</span>)]</a></code></pre></div>
+<pre><code># A tibble: 1,704 x 3
+   country      year lifeExp
+   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Afghanistan  1952    28.8
+ 2 Afghanistan  1957    30.3
+ 3 Afghanistan  1962    32.0
+ 4 Afghanistan  1967    34.0
+ 5 Afghanistan  1972    36.1
+ 6 Afghanistan  1977    38.4
+ 7 Afghanistan  1982    39.9
+ 8 Afghanistan  1987    40.8
+ 9 Afghanistan  1992    41.7
+10 Afghanistan  1997    41.8
+# ... with 1,694 more rows</code></pre>
+<blockquote>
+<h2 id="challenge-5-2"><span class="header-section-number">6.2.1</span> Challenge 5</h2>
+<p>Select all the rows in <code>gapminder</code> with data from Canada, and just the columns
+year, pop, and gdpPercap</p>
+<blockquote>
+<p>Solution to Challenge 5</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" title="1">gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Canada&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>)]</a></code></pre></div>
+<pre><code># A tibble: 12 x 3
+    year      pop gdpPercap
+   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+ 1  1952 14785584    11367.
+ 2  1957 17010154    12490.
+ 3  1962 18985849    13462.
+ 4  1967 20819767    16077.
+ 5  1972 22284500    18971.
+ 6  1977 23796400    22091.
+ 7  1982 25201900    22899.
+ 8  1987 26549700    26627.
+ 9  1992 28523502    26343.
+10  1997 30305843    28955.
+11  2002 31902268    33329.
+12  2007 33390141    36319.</code></pre>
+</blockquote>
+</blockquote>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-structures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creating-publication-quality-graphics-with-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
