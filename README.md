@@ -34,33 +34,33 @@ Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 
 #### AM
 
--() Getting setup with R & RStudio (120 minutes)
--() Introduction to R & RStudio (55 minutes)
--() Seeking Help in R (20 minutes)  
--
+- Getting setup with R & RStudio (120 minutes)
+- Introduction to R & RStudio (55 minutes)
+- Seeking Help in R (20 minutes)  
+
 #### PM
 
--() Project Management with RStudio (30 minutes)  
--() Data Structures (40 minutes)  
--() Exploring Data Frames (20 minutes)  
--() Making Publication Quality Plots with `ggplot2` (80 minutes)  
+- Project Management with RStudio (30 minutes)  
+- Data Structures (40 minutes)  
+- Exploring Data Frames (20 minutes)  
+- Making Publication Quality Plots with `ggplot2` (80 minutes)  
 
 #### Day 2
 
 ## AM
 
--() ggplot2 review (20 minutes)
--() Data Manipulation with `dplyr` (55 minutes)  
--() Data Manipulation with `tidyr` (40 minutes)  
+- ggplot2 review (20 minutes)
+- Data Manipulation with `dplyr` (55 minutes)  
+- Data Manipulation with `tidyr` (40 minutes)  
 
 ## PM
 
--() Basic of rmarkdown (30 minutes)
--() Introduce `bcdata`
--() Introduce `lm()` (30 minutes)
--() Adding plots to rmarkdown (30 minutes)
--() markdown syntax (30 minutes)
--() Seeking Help from Others with `reprex` (15 minutes)  
+- Basic of rmarkdown (30 minutes)
+- Introduce `bcdata`
+- Introduce `lm` (30 minutes)
+- Adding plots to rmarkdown (30 minutes)
+- markdown syntax (30 minutes)
+- Seeking Help from Others with `reprex` (15 minutes)  
 
 
 Most of the above lesson material is sourced or an adaptation of the [Software Carpentry Foundation](http://software-carpentry.org/) (now The Carpenties) [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/) lesson material: Thomas Wright and Naupaka Zimmerman (eds): _Software Carpentry: R for
