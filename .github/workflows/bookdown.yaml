@@ -21,7 +21,7 @@ jobs:
 
       - name: Install packages
         run: |
-          R -e 'install.packages(c("tidyverse", "reprex"))'
+          R -e 'install.packages(c("tidyverse", "reprex", "bookdown"))'
 
       - name: Build site
         run: Rscript 'make_episodes.R'
