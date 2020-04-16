@@ -29,9 +29,7 @@ Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 #### AM
 
 - [Optional] Virtual Help Desk: Getting setup with R & RStudio (60 minutes) <!-- All -->
-- Introduction to Virtual Meeting Tool (30 minutes) <!-- Dominique 
- - Learning the tool and do some sort of ice-breaker
- - Pair people off. Go to breakout room and write something about partner in etherpad -->
+- Introduction to Virtual Meeting Tool (30 minutes) <!-- Dominique -->
 - BREAK ☕
 - Introduction to R & RStudio (50 minutes) <!-- Gen -->
 - Seeking Help in R (20 minutes) <!-- Gen -->
