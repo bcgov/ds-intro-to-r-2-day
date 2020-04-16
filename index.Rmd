@@ -12,10 +12,10 @@ description: "This book contains materials for a 1 day Introduction to R worksho
 # Preface
 
 
-A repository to house materials for a 1-day course introducing participants to data science using [R](https://www.r-project.org/).
+A repository to house materials for a 2-day course introducing participants to data science using [R](https://www.r-project.org/).
 
 
-The goal of this 1-day workshop is to teach new-to-programming data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
+The goal of this 2-day workshop is to teach new-to-programming data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
 
 
 Most of the above lesson material is sourced from the Software Carpentry Foundation (now The Carpenties) [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/) lesson material: Thomas Wright and Naupaka Zimmerman (eds): _Software Carpentry: R for
