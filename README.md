@@ -1,4 +1,4 @@
-<a id="devex-badge" rel="Exploration" href="https://github.com/BCDevExchange/assets/blob/master/README.md"><img alt="Being designed and built, but in the lab. May change, disappear, or be buggy." style="border-width:0" src="https://assets.bcdevexchange.org/images/badges/exploration.svg" title="Being designed and built, but in the lab. May change, disappear, or be buggy." /></a>
+<a id="devex-badge" rel="Exploration" href="https://github.com/BCDevExchange/assets/blob/master/README.md"><img alt="Being designed and built, but in the lab. May change, disappear, or be buggy." style="border-width:0" src="https://assets.bcdevexchange.org/images/badges/exploration.svg" title="Being designed and built, but in the lab. May change, disappear, or be buggy."/></a>
 
 
 # Introduction to Data Science Using R
@@ -28,15 +28,15 @@ Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 - Exploring Data Frames (20 minutes)  
 - Making Publication Quality Plots with `ggplot2` (80 minutes)  
 
-#### Day 2
+### Day 2
 
-## AM
+#### AM
 
 - ggplot2 review (20 minutes)
 - Data Manipulation with `dplyr` (55 minutes)  
 - Data Manipulation with `tidyr` (40 minutes)  
 
-## PM
+#### PM
 
 - Basic of rmarkdown (30 minutes)
 - Introduce `bcdata`
