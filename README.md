@@ -11,39 +11,54 @@ The goal of this 2-day workshop is to teach _new-to-programming_ data profession
 
 ## Workshop Schedule
 
+### Daily schedule
+| Activity   | Start Time | End time |
+|------------|------------|----------|
+| Session #1 | 9:00       | 10:30    |
+| Break      | 10:30      | 10:50    |
+| Session #2 | 10:50      | 12:00    |
+| Lunch      | 12:00      | 13:00    |
+| Session #3 | 13:00      | 14:30    |
+| Break      | 14:30      | 14:50    |
+| Session #4 | 14:50      | 16:30    |
+
 Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 
 ### Day 1
 
 #### AM
 
-- Getting setup with R & RStudio (120 minutes)
-- Introduction to R & RStudio (55 minutes)
-- Seeking Help in R (20 minutes)  
+- [Optional] Virtual Help Desk: Getting setup with R & RStudio (60 minutes) <!-- All -->
+- Introduction to Virtual Meeting Tool (30 minutes) <!-- Dominique -->
+- BREAK ☕
+- Introduction to R & RStudio (50 minutes) <!-- Gen -->
+- Seeking Help in R (20 minutes) <!-- Gen -->
 
 #### PM
 
-- Project Management with RStudio (30 minutes)  
-- Data Structures (40 minutes)  
-- Exploring Data Frames (20 minutes)  
-- Making Publication Quality Plots with `ggplot2` (80 minutes)  
+- Project Management with RStudio (30 minutes)  <!-- Andy -->
+- Data Structures (40 minutes)  <!-- Andy -->
+- Exploring Data Frames (20 minutes) <!-- Andy -->
+- BREAK ☕
+- Making Publication Quality Plots with `ggplot2` (100 minutes)  <!-- Steph -->
 
 ### Day 2
 
 #### AM
 
-- ggplot2 review (20 minutes)
-- Data Manipulation with `dplyr` (55 minutes)  
-- Data Manipulation with `tidyr` (40 minutes)  
+- Data Manipulation with `dplyr` (60 minutes)  <!-- Sam -->
+- Data Manipulation with `tidyr` (30 minutes)  <!-- Sam -->
+- BREAK ☕
+- ggplot2 review (20 minutes)  <!-- Steph -->
+- Introduce `bcdata` and practice `ggplot2` and `dplyr` (40 minutes) <!-- Steph -->
 
 #### PM
 
-- Basic of rmarkdown (30 minutes)
-- Introduce `bcdata`
-- Introduce `lm` (30 minutes)
-- Adding plots to rmarkdown (30 minutes)
-- markdown syntax (30 minutes)
-- Seeking Help from Others with `reprex` (15 minutes)  
+- Basic of rmarkdown Part 1 (55 minutes) <!-- Sam -->
+- Basic of rmarkdown Part 1 (35 minutes) <!-- Gen -->
+- BREAK ☕
+- Application of rmarkdown: introducing `broom` & `lm()` (60 minutes)  <!-- Andy -->
+- Seeking Help from Others with `reprex` (15 minutes) <!-- ? -->
 
 
 Most of the above lesson material is sourced or an adaptation of the [Software Carpentry Foundation](http://software-carpentry.org/) (now The Carpenties) [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/) lesson material: Thomas Wright and Naupaka Zimmerman (eds): _Software Carpentry: R for

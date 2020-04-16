@@ -2,6 +2,6 @@ book_filename: "ds-cop-intro-to-r-2-day"
 chapter_name: "Chapter "
 repo: https://github.com/bcgov/ds-intro-to-r-2-day
 output_dir: docs
-rmd_files: ["index.Rmd","01-rstudio-intro.Rmd", "02-seeking-help.Rmd", "03-project-intro.Rmd", "04-data-structures-part1.Rmd", "05-data-structures-part2.Rmd", "06-plot-ggplot2.Rmd", "07-dplyr.Rmd", "08-tidyr.Rmd", "09-reprex.Rmd"]
+rmd_files: ["index.Rmd","01-rstudio-intro.Rmd", "02-seeking-help.Rmd", "03-project-intro.Rmd", "04-data-structures-part1.Rmd", "05-data-structures-part2.Rmd", "06-plot-ggplot2.Rmd", "07-dplyr.Rmd", "08-tidyr.Rmd", "09-intro-to-rmarkdown.Rmd" "11-reprex.Rmd"]
 clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true
