@@ -1,29 +1,12 @@
-<a id="devex-badge" rel="Delivery" href="https://github.com/BCDevExchange/assets/blob/master/README.md"><img alt="In production, but maybe in Alpha or Beta. Intended to persist and be supported." style="border-width:0" src="https://assets.bcdevexchange.org/images/badges/delivery.svg" title="In production, but maybe in Alpha or Beta. Intended to persist and be supported." /></a>
+<a id="devex-badge" rel="Exploration" href="https://github.com/BCDevExchange/assets/blob/master/README.md"><img alt="Being designed and built, but in the lab. May change, disappear, or be buggy." style="border-width:0" src="https://assets.bcdevexchange.org/images/badges/exploration.svg" title="Being designed and built, but in the lab. May change, disappear, or be buggy."/></a>
 
 
 # Introduction to Data Science Using R
-
 
 A repository to house materials for a 2-day course introducing participants to data science using [R](https://www.r-project.org/).
 
 
 The goal of this 2-day workshop is to teach _new-to-programming_ data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
-
-
-<!--
-### Learning Objectives
-
-- An introduction to R & RStudio  
-- How to set up a project using RStudio  
-- An introduction to basic R syntax and the tidyverse  
-- How to get help in R  
-- How to import and export tabular data in common formats  
-- How to look at data in R & RStudio  
-- How to manipulate a data frame  
-- How to make and save plots  
-- How to make a rmarkdown report
-- How to get help using reproducible example
--->
 
 
 ## Workshop Schedule
@@ -45,15 +28,15 @@ Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 - Exploring Data Frames (20 minutes)  
 - Making Publication Quality Plots with `ggplot2` (80 minutes)  
 
-#### Day 2
+### Day 2
 
-## AM
+#### AM
 
 - ggplot2 review (20 minutes)
 - Data Manipulation with `dplyr` (55 minutes)  
 - Data Manipulation with `tidyr` (40 minutes)  
 
-## PM
+#### PM
 
 - Basic of rmarkdown (30 minutes)
 - Introduce `bcdata`
@@ -73,14 +56,10 @@ https://github.com/swcarpentry/r-novice-gapminder,
 
 #### Introduction to Data Science in R, May 6-7, 2020 
 - _Instructors_: [Sam Albers](https://github.com/boshek), [Stephanie Hazlitt](https://github.com/stephhazlitt), [Genevieve Perkins](https://github.com/gcperk) & [Andy Teucher](https://github.com/ateucher)
-
-#### @Connect 2019 Data Science Training Event, Wednesday October 2nd
-
-- _Instructors_: [Sam Albers](https://github.com/boshek), [Stephanie Hazlitt](https://github.com/stephhazlitt) & [Andy Teucher](https://github.com/ateucher)
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
-- _Course material_: https://bcgov.github.io/ds-cop-intro-to-r/
+- _Course material_: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 - _Etherpad_: <https://pad.carpentries.org/ds-cop-intro-to-r>
-- _What we actually did on the day_: https://github.com/bcgov/ds-cop-intro-to-r/tree/master/what_we_actually_did/victoria_2019-10-02
+- _What we actually did on the day_: 
 
 
 
