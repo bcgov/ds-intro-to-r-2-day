@@ -12,13 +12,15 @@ The goal of this 2-day workshop is to teach _new-to-programming_ data profession
 ## Workshop Schedule
 
 ### Daily schedule
- 9:00 to 10:30 
-10:30 to 10:50 coffee
-10:50 to 12:00
-12:00 to 13:00
-13:00 to 14:30
-14:30 to 14:50 coffee
-14:50 to 16:30
+| Activity   | Start Time | End time |
+|------------|------------|----------|
+| Session #1 | 9:00       | 10:30    |
+| Break      | 10:30      | 10:50    |
+| Session #2 | 10:50      | 12:00    |
+| Lunch      | 12:00      | 13:00    |
+| Session #3 | 13:00      | 14:30    |
+| Break      | 14:30      | 14:50    |
+| Session #4 | 14:50      | 16:30    |
 
 Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 
