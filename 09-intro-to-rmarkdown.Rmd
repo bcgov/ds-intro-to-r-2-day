@@ -18,7 +18,7 @@ source: Rmd
 ---
 
 ```{r chunk_options, include=FALSE}
-source("../bin/chunk-options.R")
+source("bin/chunk-options.R")
 knitr_fig_path("15-")
 ```
 
