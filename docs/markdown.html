@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Project Management With RStudio | Seeking Help from Others with reprex</title>
+  <title>Chapter 14 Markdown | Seeking Help from Others with reprex</title>
   <meta name="description" content="This book contains materials for a 1 day Introduction to R workshop" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Project Management With RStudio | Seeking Help from Others with reprex" />
+  <meta property="og:title" content="Chapter 14 Markdown | Seeking Help from Others with reprex" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="bcgov/ds-cop-intro-to-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Project Management With RStudio | Seeking Help from Others with reprex" />
+  <meta name="twitter:title" content="Chapter 14 Markdown | Seeking Help from Others with reprex" />
   
   <meta name="twitter:description" content="This book contains materials for a 1 day Introduction to R workshop" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="seeking-help-in-r.html"/>
-<link rel="next" href="data-structures.html"/>
+<link rel="prev" href="basic-components-of-r-markdown.html"/>
+<link rel="next" href="seeking-help-from-others-with-reprex.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -247,128 +247,251 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-management-with-rstudio" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Project Management With RStudio</h1>
-<div id="introduction" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Introduction</h2>
-<p>The scientific process is naturally incremental, and many projects
-start life as random notes, some code, then a manuscript, and
-eventually everything is a bit mixed together.</p>
-<blockquote class="twitter-tweet">
-<p>
-Managing your projects in a reproducible fashion doesn’t just make your science reproducible, it makes your life easier.
-</p>
-— Vince Buffalo (<span class="citation">@vsbuffalo</span>) <a href="https://twitter.com/vsbuffalo/status/323638476153167872">April 15, 2013</a>
-</blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Most people tend to organize their projects like this:</p>
-<p><img src="fig/bad_layout.png" /></p>
-<p>There are many reasons why we should <em>ALWAYS</em> avoid this:</p>
-<ol style="list-style-type: decimal">
-<li>It is really hard to tell which version of your data is
-the original and which is the modified;</li>
-<li>It gets really messy because it mixes files with various
-extensions together;</li>
-<li>It probably takes you a lot of time to actually find
-things, and relate the correct figures to the exact code
-that has been used to generate it;</li>
-</ol>
-<p>A good project layout will ultimately make your life easier:</p>
+<div id="markdown" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Markdown</h1>
+<p>Markdown is a system for writing web pages by marking up the text much
+as you would in an email rather than writing html code. The marked-up
+text gets <em>converted</em> to html, replacing the marks with the proper
+html code.</p>
+<p>For now, let’s delete all of the stuff that’s there and write a bit of
+markdown.</p>
+<p>You make things <strong>bold</strong> using two asterisks, like this: <code>**bold**</code>,
+and you make things <em>italics</em> by using underscores, like this:
+<code>_italics_</code>.</p>
+<p>You can make a bulleted list by writing a list with hyphens or
+asterisks, like this:</p>
+<pre><code>* bold with double-asterisks
+* italics with underscores
+* code-type font with backticks</code></pre>
+<p>or like this:</p>
+<pre><code>- bold with double-asterisks
+- italics with underscores
+- code-type font with backticks</code></pre>
+<p>Each will appear as:</p>
 <ul>
-<li>It will help ensure the integrity of your data;</li>
-<li>It makes it simpler to share your code with someone else
-(a lab-mate, collaborator, or supervisor);</li>
-<li>It allows you to easily upload your code with your manuscript submission;</li>
-<li>It makes it easier to pick the project back up after a break.</li>
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
 </ul>
-</div>
-<div id="a-possible-solution" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> A possible solution</h2>
-<p>Fortunately, there are tools and packages which can help you manage your work effectively.</p>
-<p>One of the most powerful and useful aspects of RStudio is its project management
-functionality. We’ll be using this today to create a self-contained, reproducible
-project.</p>
-<blockquote>
-<h2 id="challenge-creating-a-self-contained-project">Challenge: Creating a self-contained project</h2>
-<p>We’re going to create a new project in RStudio:</p>
-<p>First, we are going to download the course content. Download the zipfile from:
-<a href="https://bit.ly/2oJNI50" class="uri">https://bit.ly/2oJNI50</a> and save it somewhere where you can find it
-(e.g., your desktop), then unzip it.
-You should have a folder called <code>ds-cop-intro-to-r</code> with a <code>README.md</code> file
-and a <code>data</code> folder.</p>
+<p>You can use whatever method you prefer, but <em>be consistent</em>. This maintains the
+readability of your code.</p>
+<p>You can make a numbered list by just using numbers. You can even use the
+same number over and over if you want:</p>
+<pre><code>1. bold with double-asterisks
+1. italics with underscores
+1. code-type font with backticks</code></pre>
+<p>This will appear as:</p>
 <ol style="list-style-type: decimal">
-<li>Click the “File” menu button, then “New Project”.</li>
-<li>Click “Existing Directory”.</li>
-<li>Browse to the folder we just extracted.</li>
-<li>Click the “Create Project” button.</li>
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
 </ol>
-</blockquote>
-<p>Now when we open this project with RStudio, all of our work on this project will
-be entirely self-contained in this directory.</p>
-</div>
-<div id="best-practices-for-project-organization" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Best practices for project organization</h2>
-<p>Although there is no “best” way to lay out a project, there are some general
-principles to adhere to that will make project management easier:</p>
-<div id="treat-data-as-read-only" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Treat data as read only</h3>
-<p>This is probably the most important goal of setting up a project. Data is
-typically time consuming and/or expensive to collect. Working with them
-interactively (e.g., in Excel) where they can be modified means you are never
-sure of where the data came from, or how it has been modified since collection.
-It is therefore a good idea to treat your data as “read-only”.</p>
-</div>
-<div id="data-cleaning" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Data Cleaning</h3>
-<p>In many cases your data will be “dirty”: it will need significant pre-processing
-to get into a format R (or any other programming language) will find useful.
-This task is sometimes called “data munging”. Storing these scripts in a
-separate folder, and creating a second “read-only” data folder to hold the
-“cleaned” data sets can prevent confusion between the two sets.</p>
-</div>
-<div id="treat-generated-output-as-disposable" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Treat generated output as disposable</h3>
-<p>Anything generated by your scripts should be treated as disposable: it should
-all be able to be regenerated from your scripts.</p>
-<p>There are lots of different ways to manage this output. Having an output folder
-with different sub-directories for each separate analysis makes it easier later.
-Since many analyses are exploratory and don’t end up being used in the final
-project, and some of the analyses get shared between projects.</p>
+<p>You can make section headers of different sizes by initiating a line
+with some number of <code>#</code> symbols:</p>
+<pre><code># Title
+## Main section
+### Sub-section
+#### Sub-sub section</code></pre>
+<p>You <em>compile</em> the R Markdown document to an html webpage by clicking
+the “Knit” button in the upper-left.</p>
 <blockquote>
-<h2 id="tip-good-enough-practices-for-scientific-computing">Tip: Good Enough Practices for Scientific Computing</h2>
-<p><a href="https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf">Good Enough Practices for Scientific Computing</a> gives the following recommendations for project organization:</p>
-<ol style="list-style-type: decimal">
-<li>Put each project in its own directory, which is named after the project.</li>
-<li>Put text documents associated with the project in the <code>doc</code> directory.</li>
-<li>Put raw data and metadata in the <code>data</code> directory, and files generated during cleanup and analysis in a <code>results</code> directory.</li>
-<li>Put source for the project’s scripts and programs in the <code>src</code> directory, and programs brought in from elsewhere or compiled locally in the <code>bin</code> directory.</li>
-<li>Name all files to reflect their content or function.</li>
-</ol>
+<h2 id="challenge-1-7">Challenge 1</h2>
+<p>Create a new R Markdown document. Delete all of the R code chunks
+and write a bit of Markdown (some sections, some italicized
+text, and an itemized list).</p>
+<p>Convert the document to a webpage.
+&gt; ## Solution to Challenge 1
+&gt;
+&gt; In RStudio, select File &gt; New file &gt; R Markdown…
+&gt;
+&gt; Delete the placeholder text and add the following:
+&gt;
+&gt; <code>&gt; # Introduction &gt;  &gt; ## Background on Data &gt;  &gt; This report uses the *gapminder* dataset, which has columns that include: &gt;  &gt; * country &gt; * continent &gt; * year &gt; * lifeExp &gt; * pop &gt; * gdpPercap &gt;  &gt; ## Background on Methods &gt;  &gt;</code>
+&gt;
+&gt; Then click the ‘Knit’ button on the toolbar to generate an html document (webpage).
+{: .solution}
+{: .challenge}</p>
 </blockquote>
-</div>
-<div id="separate-function-definition-and-application" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Separate function definition and application</h3>
-<p>One of the more effective ways to work with R is to start by writing the code you want to run directly in an .R script, and then running the selected lines (either using the keyboard shortcuts in RStudio or clicking the “Run” button) in the interactive R console.</p>
-<p>When your project is in its early stages, the initial .R script file usually contains many lines
-of directly executed code. As it matures, reusable chunks get pulled into their
-own functions. It’s a good idea to separate these functions into two separate folders; one
-to store useful functions that you’ll reuse across analyses and projects, and
-one to store the analysis scripts.</p>
-</div>
-<div id="version-control" class="section level3" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> Version Control</h3>
-<p>It is important to use version control with projects. Go <a href="https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/">here for a good lesson which describes using Git with RStudio</a>.</p>
+<p>A bit more Markdown</p>
+<p>You can make a hyperlink like this:
+<code>[text to show](http://the-web-page.com)</code>.</p>
+<p>You can include an image file like this: <code>![caption](http://url/for/file)</code></p>
+<p>You can do subscripts (e.g., F<sub>2</sub>) with <code>F~2~</code> and superscripts (e.g.,
+F<sup>2</sup>) with <code>F^2^</code>.</p>
+<p>If you know how to write equations in
+<a href="http://www.latex-project.org/">LaTeX</a>, you can use <code>$ $</code> and <code>$$ $$</code> to insert math equations, like
+<code>$E = mc^2$</code> and</p>
+<pre><code>$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$</code></pre>
+<p>You can review Markdown syntax by navigating to the
+“Markdown Quick Reference” under the “Help” field in the
+toolbar at the top of RStudio.</p>
+<p>R code chunks</p>
+<p>The real power of Markdown comes from
+mixing markdown with chunks of code. This is R Markdown. When
+processed, the R code will be executed; if they produce figures, the
+figures will be inserted in the final document.</p>
+<p>The main code chunks look like this:</p>
+<pre>
+&#96;&#96;&#96;{r load_data}
+gapminder <- read.csv("gapminder.csv")
+&#96;&#96;&#96;
+</pre>
+<p>That is, you place a chunk of R code between <code>```{r chunk_name}</code>
+and <code>```</code>. You should give each chunk
+a unique name, as they will help you to fix errors and, if any graphs are
+produced, the file names are based on the name of the code chunk that
+produced them.</p>
+<blockquote>
+<h2 id="challenge-2-5">Challenge 2</h2>
+<p>Add code chunks to:</p>
+<ul>
+<li>Load the ggplot2 package</li>
+<li>Read the gapminder data</li>
+<li>Create a plot</li>
+</ul>
+<blockquote>
+<h2 id="solution-to-challenge-2-5">Solution to Challenge 2</h2>
+<pre>
+&#96;&#96;&#96;{r load-ggplot2}
+library("ggplot2")
+&#96;&#96;&#96;
+</pre>
+<pre>
+&#96;&#96;&#96;{r read-gapminder-data}
+gapminder <- read.csv("gapminder.csv")
+&#96;&#96;&#96;
+</pre>
+<pre>
+&#96;&#96;&#96;{r make-plot}
+plot(lifeExp ~ year, data = gapminder)
+&#96;&#96;&#96;
+</pre>
+<p>{: .solution}
+{: .challenge}</p>
+</blockquote>
+</blockquote>
+<p>How things get compiled</p>
+<p>When you press the “Knit” button, the R Markdown document is
+processed by <a href="http://yihui.name/knitr"><code>knitr</code></a> and a plain Markdown
+document is produced (as well as, potentially, a set of figure files): the R code is executed
+and replaced by both the input and the output; if figures are
+produced, links to those figures are included.</p>
+<p>The Markdown and figure documents are then processed by the tool
+<a href="http://pandoc.org/"><code>pandoc</code></a>, which converts the Markdown file into an
+html file, with the figures embedded.</p>
+<p><img src="fig/rmd-15-rmd_to_html_fig-1.png" width="768" style="display: block; margin: auto auto auto 0;" /></p>
+<p>Chunk options</p>
+<p>There are a variety of options to affect how the code chunks are
+treated. Here are some examples:</p>
+<ul>
+<li>Use <code>echo=FALSE</code> to avoid having the code itself shown.</li>
+<li>Use <code>results="hide"</code> to avoid having any results printed.</li>
+<li>Use <code>eval=FALSE</code> to have the code shown but not evaluated.</li>
+<li>Use <code>warning=FALSE</code> and <code>message=FALSE</code> to hide any warnings or
+messages produced.</li>
+<li>Use <code>fig.height</code> and <code>fig.width</code> to control the size of the figures
+produced (in inches).</li>
+</ul>
+<p>So you might write:</p>
+<pre>
+&#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
+library("dplyr")
+library("ggplot2")
+&#96;&#96;&#96;
+</pre>
+<p>Often there will be particular options that you’ll want to use
+repeatedly; for this, you can set <em>global</em> chunk options, like so:</p>
+<pre>
+&#96;&#96;&#96;{r global_options, echo=FALSE}
+knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
+                      echo=FALSE, results="hide", fig.width=11)
+&#96;&#96;&#96;
+</pre>
+<p>The <code>fig.path</code> option defines where the figures will be saved. The <code>/</code>
+here is really important; without it, the figures would be saved in
+the standard place but just with names that begin with <code>Figs</code>.</p>
+<p>If you have multiple R Markdown files in a common directory, you might
+want to use <code>fig.path</code> to define separate prefixes for the figure file
+names, like <code>fig.path="Figs/cleaning-"</code> and <code>fig.path="Figs/analysis-"</code>.</p>
+<blockquote>
+<h2 id="challenge-3-5">Challenge 3</h2>
+<p>Use chunk options to control the size of a figure and to hide the
+code.</p>
+<blockquote>
+<h2 id="solution-to-challenge-3-5">Solution to Challenge 3</h2>
+<pre>
+&#96;&#96;&#96;{r echo = FALSE, fig.width = 3}
+plot(faithful)
+&#96;&#96;&#96;
+</pre>
+<p>{: .solution}
+{: .challenge}</p>
+</blockquote>
+</blockquote>
+<p>You can review all of the <code>R</code> chunk options by navigating to
+the “R Markdown Cheat Sheet” under the “Cheatsheets” section
+of the “Help” field in the toolbar at the top of RStudio.</p>
+<p>Inline R code</p>
+<p>You can make <em>every</em> number in your report reproducible. Use
+<code>`r</code> and <code>`</code> for an in-line code chunk,
+like so: <code>`r round(some_value, 2)`</code>. The code will be
+executed and replaced with the <em>value</em> of the result.</p>
+<p>Don’t let these in-line chunks get split across lines.</p>
+<p>Perhaps precede the paragraph with a larger code chunk that does
+calculations and defines variables, with <code>include=FALSE</code> for that larger
+chunk (which is the same as <code>echo=FALSE</code> and <code>results="hide"</code>).</p>
+<p>Rounding can produce differences in output in such situations. You may want
+<code>2.0</code>, but <code>round(2.03, 1)</code> will give just <code>2</code>.</p>
+<p>The
+<a href="https://github.com/kbroman/broman/blob/master/R/myround.R"><code>myround</code></a>
+function in the <a href="https://github.com/kbroman/broman">R/broman</a> package handles
+this.</p>
+<blockquote>
+<h2 id="challenge-4-3">Challenge 4</h2>
+<p>Try out a bit of in-line R code.</p>
+<blockquote>
+<h2 id="solution-to-challenge-4-2">Solution to Challenge 4</h2>
+<p>Here’s some inline code to determine that 2 + 2 = <code>`r 2+2`</code>.</p>
+<p>{: .solution}
+{: .challenge}</p>
+</blockquote>
+</blockquote>
+<p>Other output options</p>
+<p>You can also convert R Markdown to a PDF or a Word document. Click the
+little triangle next to the “Knit” button to get a drop-down
+menu. Or you could put <code>pdf_document</code> or <code>word_document</code> in the initial header
+of the file.</p>
+<blockquote>
+<h2 id="tip-creating-pdf-documents">Tip: Creating PDF documents</h2>
+<p>Creating .pdf documents may require installation of some extra software. If
+required this is detailed in an error message.</p>
+<ul>
+<li><a href="https://miktex.org/2.9/setup">TeX installers for Windows</a>.</li>
+<li><a href="https://tug.org/mactex">TeX installers for macOS</a>.
+{: .callout}</li>
+</ul>
+</blockquote>
+<p>Resources</p>
+<ul>
+<li><a href="http://kbroman.org/knitr_knutshell">Knitr in a knutshell tutorial</a></li>
+<li><a href="http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20">Dynamic Documents with R and knitr</a> (book)</li>
+<li><a href="http://rmarkdown.rstudio.com">R Markdown documentation</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">R Markdown cheat sheet</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/">Getting started with R Markdown</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a> (book by Rstudio team)</li>
+<li><a href="https://www.rstudio.com/resources/webinars/reproducible-reporting/">Reproducible Reporting</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/">The Ecosystem of R Markdown</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/introducing-bookdown/">Introducing Bookdown</a></li>
+</ul>
 
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="seeking-help-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="basic-components-of-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="seeking-help-from-others-with-reprex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

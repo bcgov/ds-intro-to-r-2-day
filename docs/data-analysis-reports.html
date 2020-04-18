@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Project Management With RStudio | Seeking Help from Others with reprex</title>
+  <title>Chapter 10 Data analysis reports | Seeking Help from Others with reprex</title>
   <meta name="description" content="This book contains materials for a 1 day Introduction to R workshop" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Project Management With RStudio | Seeking Help from Others with reprex" />
+  <meta property="og:title" content="Chapter 10 Data analysis reports | Seeking Help from Others with reprex" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="bcgov/ds-cop-intro-to-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Project Management With RStudio | Seeking Help from Others with reprex" />
+  <meta name="twitter:title" content="Chapter 10 Data analysis reports | Seeking Help from Others with reprex" />
   
   <meta name="twitter:description" content="This book contains materials for a 1 day Introduction to R workshop" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="seeking-help-in-r.html"/>
-<link rel="next" href="data-structures.html"/>
+<link rel="prev" href="dataframe-manipulation-with-tidyr.html"/>
+<link rel="next" href="literate-programming.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -247,128 +247,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-management-with-rstudio" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Project Management With RStudio</h1>
-<div id="introduction" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Introduction</h2>
-<p>The scientific process is naturally incremental, and many projects
-start life as random notes, some code, then a manuscript, and
-eventually everything is a bit mixed together.</p>
-<blockquote class="twitter-tweet">
-<p>
-Managing your projects in a reproducible fashion doesn’t just make your science reproducible, it makes your life easier.
-</p>
-— Vince Buffalo (<span class="citation">@vsbuffalo</span>) <a href="https://twitter.com/vsbuffalo/status/323638476153167872">April 15, 2013</a>
-</blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Most people tend to organize their projects like this:</p>
-<p><img src="fig/bad_layout.png" /></p>
-<p>There are many reasons why we should <em>ALWAYS</em> avoid this:</p>
-<ol style="list-style-type: decimal">
-<li>It is really hard to tell which version of your data is
-the original and which is the modified;</li>
-<li>It gets really messy because it mixes files with various
-extensions together;</li>
-<li>It probably takes you a lot of time to actually find
-things, and relate the correct figures to the exact code
-that has been used to generate it;</li>
-</ol>
-<p>A good project layout will ultimately make your life easier:</p>
-<ul>
-<li>It will help ensure the integrity of your data;</li>
-<li>It makes it simpler to share your code with someone else
-(a lab-mate, collaborator, or supervisor);</li>
-<li>It allows you to easily upload your code with your manuscript submission;</li>
-<li>It makes it easier to pick the project back up after a break.</li>
-</ul>
-</div>
-<div id="a-possible-solution" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> A possible solution</h2>
-<p>Fortunately, there are tools and packages which can help you manage your work effectively.</p>
-<p>One of the most powerful and useful aspects of RStudio is its project management
-functionality. We’ll be using this today to create a self-contained, reproducible
-project.</p>
-<blockquote>
-<h2 id="challenge-creating-a-self-contained-project">Challenge: Creating a self-contained project</h2>
-<p>We’re going to create a new project in RStudio:</p>
-<p>First, we are going to download the course content. Download the zipfile from:
-<a href="https://bit.ly/2oJNI50" class="uri">https://bit.ly/2oJNI50</a> and save it somewhere where you can find it
-(e.g., your desktop), then unzip it.
-You should have a folder called <code>ds-cop-intro-to-r</code> with a <code>README.md</code> file
-and a <code>data</code> folder.</p>
-<ol style="list-style-type: decimal">
-<li>Click the “File” menu button, then “New Project”.</li>
-<li>Click “Existing Directory”.</li>
-<li>Browse to the folder we just extracted.</li>
-<li>Click the “Create Project” button.</li>
-</ol>
-</blockquote>
-<p>Now when we open this project with RStudio, all of our work on this project will
-be entirely self-contained in this directory.</p>
-</div>
-<div id="best-practices-for-project-organization" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Best practices for project organization</h2>
-<p>Although there is no “best” way to lay out a project, there are some general
-principles to adhere to that will make project management easier:</p>
-<div id="treat-data-as-read-only" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Treat data as read only</h3>
-<p>This is probably the most important goal of setting up a project. Data is
-typically time consuming and/or expensive to collect. Working with them
-interactively (e.g., in Excel) where they can be modified means you are never
-sure of where the data came from, or how it has been modified since collection.
-It is therefore a good idea to treat your data as “read-only”.</p>
-</div>
-<div id="data-cleaning" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Data Cleaning</h3>
-<p>In many cases your data will be “dirty”: it will need significant pre-processing
-to get into a format R (or any other programming language) will find useful.
-This task is sometimes called “data munging”. Storing these scripts in a
-separate folder, and creating a second “read-only” data folder to hold the
-“cleaned” data sets can prevent confusion between the two sets.</p>
-</div>
-<div id="treat-generated-output-as-disposable" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Treat generated output as disposable</h3>
-<p>Anything generated by your scripts should be treated as disposable: it should
-all be able to be regenerated from your scripts.</p>
-<p>There are lots of different ways to manage this output. Having an output folder
-with different sub-directories for each separate analysis makes it easier later.
-Since many analyses are exploratory and don’t end up being used in the final
-project, and some of the analyses get shared between projects.</p>
-<blockquote>
-<h2 id="tip-good-enough-practices-for-scientific-computing">Tip: Good Enough Practices for Scientific Computing</h2>
-<p><a href="https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf">Good Enough Practices for Scientific Computing</a> gives the following recommendations for project organization:</p>
-<ol style="list-style-type: decimal">
-<li>Put each project in its own directory, which is named after the project.</li>
-<li>Put text documents associated with the project in the <code>doc</code> directory.</li>
-<li>Put raw data and metadata in the <code>data</code> directory, and files generated during cleanup and analysis in a <code>results</code> directory.</li>
-<li>Put source for the project’s scripts and programs in the <code>src</code> directory, and programs brought in from elsewhere or compiled locally in the <code>bin</code> directory.</li>
-<li>Name all files to reflect their content or function.</li>
-</ol>
-</blockquote>
-</div>
-<div id="separate-function-definition-and-application" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Separate function definition and application</h3>
-<p>One of the more effective ways to work with R is to start by writing the code you want to run directly in an .R script, and then running the selected lines (either using the keyboard shortcuts in RStudio or clicking the “Run” button) in the interactive R console.</p>
-<p>When your project is in its early stages, the initial .R script file usually contains many lines
-of directly executed code. As it matures, reusable chunks get pulled into their
-own functions. It’s a good idea to separate these functions into two separate folders; one
-to store useful functions that you’ll reuse across analyses and projects, and
-one to store the analysis scripts.</p>
-</div>
-<div id="version-control" class="section level3" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> Version Control</h3>
-<p>It is important to use version control with projects. Go <a href="https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/">here for a good lesson which describes using Git with RStudio</a>.</p>
-
-</div>
-</div>
+<div id="data-analysis-reports" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Data analysis reports</h1>
+<p>Data analysts tend to write a lot of reports, describing their
+analyses and results, for their collaborators or to document their
+work for future reference.</p>
+<p>Many new users begin by first writing a single R script containing all of the
+work. Then simply share the analysis by emailing the script and various graphs
+as attachments. But this can be cumbersome, requiring a lengthy discussion to
+explain which attachment was which result.</p>
+<p>Writing formal reports with Word or <a href="http://www.latex-project.org/">LaTeX</a>
+can simplify this by incorporating both the analysis report and output graphs
+into a single document. But tweaking formatting to make figures look correct
+and fix obnoxious page breaks can be tedious and lead to a lengthly “whack
+a mole” game of fixing new mistakes resulting from a single formatting change.</p>
+<p>Creating a web page (as an html file) by using R Markdown makes things easier.
+The report can be one long stream, so tall figures that wouldn’t ordinary fit on
+one page can be kept full size and easier to read, since the reader can simply
+keep scrolling. Formatting is simple and easy to modify, allowing you to spend
+more time on your analyses instead of writing reports.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="seeking-help-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dataframe-manipulation-with-tidyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literate-programming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
