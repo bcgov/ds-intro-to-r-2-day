@@ -18,12 +18,12 @@ source: Rmd
 ---
 
 ```{r chunk_options, include=FALSE}
-source("../bin/chunk-options.R")
+source("bin/chunk-options.R")
 knitr_fig_path("15-")
 ```
 
 
-## Data analysis reports
+# Data analysis reports
 
 Data analysts tend to write a lot of reports, describing their
 analyses and results, for their collaborators or to document their
@@ -47,7 +47,7 @@ keep scrolling. Formatting is simple and easy to modify, allowing you to spend
 more time on your analyses instead of writing reports.
 
 
-## Literate programming
+# Literate programming
 
 Ideally, such analysis reports are _reproducible_ documents: If an
 error is discovered, or if some additional subjects are added to the
@@ -67,17 +67,17 @@ with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up lan
 pages.
 
 
-## Creating an R Markdown file
+# Creating an R Markdown file
 
 Within RStudio, click File &rarr; New File &rarr; R Markdown and
 you'll get a dialog box like this:
 
-![](../fig/New_R_Markdown.png)
+![](fig/New_R_Markdown.png)
 
 You can stick with the default (HTML output), but give it a title.
 
 
-## Basic components of R Markdown
+# Basic components of R Markdown
 
 The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it that you're going to want
 to produce html output (in other words, a web page).
@@ -111,7 +111,7 @@ Also note the web address that's put between angle brackets (`< >`) as
 well as the double-asterisks in `**Knit**`. This is
 [Markdown](http://daringfireball.net/projects/markdown/syntax).
 
-## Markdown
+# Markdown
 
 Markdown is a system for writing web pages by marking up the text much
 as you would in an email rather than writing html code. The marked-up
@@ -215,7 +215,7 @@ the "Knit" button in the upper-left.
 {: .challenge}
 
 
-## A bit more Markdown
+ A bit more Markdown
 
 You can make a hyperlink like this:
 `[text to show](http://the-web-page.com)`.
@@ -237,7 +237,7 @@ You can review Markdown syntax by navigating to the
 "Markdown Quick Reference" under the "Help" field in the 
 toolbar at the top of RStudio.
 
-## R code chunks
+ R code chunks
 
 The real power of Markdown comes from
 mixing markdown with chunks of code. This is R Markdown. When
@@ -289,7 +289,7 @@ produced them.
 > {: .solution}
 {: .challenge}
 
-## How things get compiled
+ How things get compiled
 
 When you press the "Knit" button, the R Markdown document is
 processed by [`knitr`](http://yihui.name/knitr) and a plain Markdown
@@ -337,7 +337,7 @@ text((62+78)/2, 60, "pandoc", col="darkslateblue", cex=1.3)
 
 
 
-## Chunk options
+ Chunk options
 
 There are a variety of options to affect how the code chunks are
 treated. Here are some examples:
@@ -399,7 +399,7 @@ the "R Markdown Cheat Sheet" under the "Cheatsheets" section
 of the "Help" field in the toolbar at the top of RStudio.
 
 
-## Inline R code
+ Inline R code
 
 You can make _every_ number in your report reproducible. Use
 <code>&#96;r</code> and <code>&#96;</code> for an in-line code chunk,
@@ -433,7 +433,7 @@ this.
 {: .challenge}
 
 
-## Other output options
+ Other output options
 
 You can also convert R Markdown to a PDF or a Word document. Click the
 little triangle next to the "Knit" button to get a drop-down
@@ -451,7 +451,7 @@ of the file.
 
 
 
-## Resources
+ Resources
 
 * [Knitr in a knutshell tutorial](http://kbroman.org/knitr_knutshell)
 * [Dynamic Documents with R and knitr](http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20) (book)

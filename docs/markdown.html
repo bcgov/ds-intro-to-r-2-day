@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Dataframe Manipulation with tidyr | Seeking Help from Others with reprex</title>
+  <title>Chapter 14 Markdown | Seeking Help from Others with reprex</title>
   <meta name="description" content="This book contains materials for a 1 day Introduction to R workshop" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Dataframe Manipulation with tidyr | Seeking Help from Others with reprex" />
+  <meta property="og:title" content="Chapter 14 Markdown | Seeking Help from Others with reprex" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="bcgov/ds-cop-intro-to-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Dataframe Manipulation with tidyr | Seeking Help from Others with reprex" />
+  <meta name="twitter:title" content="Chapter 14 Markdown | Seeking Help from Others with reprex" />
   
   <meta name="twitter:description" content="This book contains materials for a 1 day Introduction to R workshop" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dataframe-manipulation-with-dplyr.html"/>
-<link rel="next" href="data-analysis-reports.html"/>
+<link rel="prev" href="basic-components-of-r-markdown.html"/>
+<link rel="next" href="seeking-help-from-others-with-reprex.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -247,152 +247,251 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dataframe-manipulation-with-tidyr" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Dataframe Manipulation with tidyr</h1>
-<p>Researchers often want to manipulate their data from the ‘wide’ to the ‘long’
-format, or vice-versa. The ‘long’ format is where:</p>
+<div id="markdown" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Markdown</h1>
+<p>Markdown is a system for writing web pages by marking up the text much
+as you would in an email rather than writing html code. The marked-up
+text gets <em>converted</em> to html, replacing the marks with the proper
+html code.</p>
+<p>For now, let’s delete all of the stuff that’s there and write a bit of
+markdown.</p>
+<p>You make things <strong>bold</strong> using two asterisks, like this: <code>**bold**</code>,
+and you make things <em>italics</em> by using underscores, like this:
+<code>_italics_</code>.</p>
+<p>You can make a bulleted list by writing a list with hyphens or
+asterisks, like this:</p>
+<pre><code>* bold with double-asterisks
+* italics with underscores
+* code-type font with backticks</code></pre>
+<p>or like this:</p>
+<pre><code>- bold with double-asterisks
+- italics with underscores
+- code-type font with backticks</code></pre>
+<p>Each will appear as:</p>
 <ul>
-<li>each column is a variable</li>
-<li>each row is an observation</li>
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
 </ul>
-<p>In the ‘long’ format, you usually have 1 column for the observed variable and
-the other columns are ID variables.</p>
-<p>For the ‘wide’ format each row is often a site/subject/patient and you have
-multiple observation variables containing the same type of data. These can be
-either repeated observations over time, or observation of multiple variables (or
-a mix of both). You may find data input may be simpler or some other
-applications may prefer the ‘wide’ format. However, many of <code>R</code>‘s functions have
-been designed assuming you have ’long’ format data. This tutorial will help you
-efficiently transform your data regardless of original format.</p>
-<p><img src="fig/14-tidyr-fig1.png" /></p>
-<p>These data formats mainly affect readability. For humans, the wide format is
-often more intuitive since we can often see more of the data on the screen due
-to its shape. However, the long format is more machine readable and is closer
-to the formatting of databases. The ID variables in our dataframes are similar to
-the fields in a database and observed variables are like the database values.</p>
-<div id="getting-started" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Getting started</h2>
-<p>First install the packages if you haven’t already done so (you probably
-installed dplyr in the previous lesson):</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="dataframe-manipulation-with-tidyr.html#cb356-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
-<span id="cb356-2"><a href="dataframe-manipulation-with-tidyr.html#cb356-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb356-3"><a href="dataframe-manipulation-with-tidyr.html#cb356-3"></a><span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<p>Load the packages</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="dataframe-manipulation-with-tidyr.html#cb357-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
-<span id="cb357-2"><a href="dataframe-manipulation-with-tidyr.html#cb357-2"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb357-3"><a href="dataframe-manipulation-with-tidyr.html#cb357-3"></a><span class="kw">library</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<p>First, lets look at the structure of our original gapminder dataframe:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dataframe-manipulation-with-tidyr.html#cb358-1"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
-<pre><code>Parsed with column specification:
-cols(
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
-)</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="dataframe-manipulation-with-tidyr.html#cb360-1"></a>gapminder</span></code></pre></div>
-<pre><code>[90m# A tibble: 1,704 x 6[39m
-   country      year      pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786.
-[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978.
-[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852.
-[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649.
-[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
-[90m# … with 1,694 more rows[39m</code></pre>
+<p>You can use whatever method you prefer, but <em>be consistent</em>. This maintains the
+readability of your code.</p>
+<p>You can make a numbered list by just using numbers. You can even use the
+same number over and over if you want:</p>
+<pre><code>1. bold with double-asterisks
+1. italics with underscores
+1. code-type font with backticks</code></pre>
+<p>This will appear as:</p>
+<ol style="list-style-type: decimal">
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
+</ol>
+<p>You can make section headers of different sizes by initiating a line
+with some number of <code>#</code> symbols:</p>
+<pre><code># Title
+## Main section
+### Sub-section
+#### Sub-sub section</code></pre>
+<p>You <em>compile</em> the R Markdown document to an html webpage by clicking
+the “Knit” button in the upper-left.</p>
 <blockquote>
-<h2 id="challenge-1-6">Challenge 1</h2>
-<p>Is gapminder a purely long, purely wide, or some intermediate format?</p>
+<h2 id="challenge-1-7">Challenge 1</h2>
+<p>Create a new R Markdown document. Delete all of the R code chunks
+and write a bit of Markdown (some sections, some italicized
+text, and an itemized list).</p>
+<p>Convert the document to a webpage.
+&gt; ## Solution to Challenge 1
+&gt;
+&gt; In RStudio, select File &gt; New file &gt; R Markdown…
+&gt;
+&gt; Delete the placeholder text and add the following:
+&gt;
+&gt; <code>&gt; # Introduction &gt;  &gt; ## Background on Data &gt;  &gt; This report uses the *gapminder* dataset, which has columns that include: &gt;  &gt; * country &gt; * continent &gt; * year &gt; * lifeExp &gt; * pop &gt; * gdpPercap &gt;  &gt; ## Background on Methods &gt;  &gt;</code>
+&gt;
+&gt; Then click the ‘Knit’ button on the toolbar to generate an html document (webpage).
+{: .solution}
+{: .challenge}</p>
+</blockquote>
+<p>A bit more Markdown</p>
+<p>You can make a hyperlink like this:
+<code>[text to show](http://the-web-page.com)</code>.</p>
+<p>You can include an image file like this: <code>![caption](http://url/for/file)</code></p>
+<p>You can do subscripts (e.g., F<sub>2</sub>) with <code>F~2~</code> and superscripts (e.g.,
+F<sup>2</sup>) with <code>F^2^</code>.</p>
+<p>If you know how to write equations in
+<a href="http://www.latex-project.org/">LaTeX</a>, you can use <code>$ $</code> and <code>$$ $$</code> to insert math equations, like
+<code>$E = mc^2$</code> and</p>
+<pre><code>$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$</code></pre>
+<p>You can review Markdown syntax by navigating to the
+“Markdown Quick Reference” under the “Help” field in the
+toolbar at the top of RStudio.</p>
+<p>R code chunks</p>
+<p>The real power of Markdown comes from
+mixing markdown with chunks of code. This is R Markdown. When
+processed, the R code will be executed; if they produce figures, the
+figures will be inserted in the final document.</p>
+<p>The main code chunks look like this:</p>
+<pre>
+&#96;&#96;&#96;{r load_data}
+gapminder <- read.csv("gapminder.csv")
+&#96;&#96;&#96;
+</pre>
+<p>That is, you place a chunk of R code between <code>```{r chunk_name}</code>
+and <code>```</code>. You should give each chunk
+a unique name, as they will help you to fix errors and, if any graphs are
+produced, the file names are based on the name of the code chunk that
+produced them.</p>
 <blockquote>
-<h2 id="solution-to-challenge-1-4">Solution to Challenge 1</h2>
-<p>The original gapminder data.frame is in an intermediate format. It is not
-purely long since it had multiple observation variables
-(<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</code>).</p>
-</blockquote>
-</blockquote>
-<p>Sometimes, as with the gapminder dataset, we have multiple types of observed
-data. It is somewhere in between the purely ‘long’ and ‘wide’ data formats. We
-have 3 “ID variables” (<code>continent</code>, <code>country</code>, <code>year</code>) and 3 “Observation
-variables” (<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</code>). This intermediate format can be
-preferred despite not having ALL observations in 1 column given that all 3
-observation variables have different units. There are few operations that would
-need us to stretch out this dataframe any longer (i.e. 4 ID variables and 1
-Observation variable).</p>
-<p>While using many of the functions in R, which are often vector based, you
-usually do not want to do mathematical operations on values with different
-units. For example, using the purely long format, a single mean for all of the
-values of population, life expectancy, and GDP would not be meaningful since it
-would return the mean of values with 3 incompatible units. The solution is that
-we first manipulate the data either by grouping (see the lesson on <code>dplyr</code>), or
-we change the structure of the dataframe. <strong>Note:</strong> Some plotting functions in
-R actually work better in the wide format data.</p>
-</div>
-<div id="convert-long-format-with-gather" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Convert long format with gather()</h2>
-<p>Here we have used piping syntax which is similar to what we were doing in the
-previous lesson with dplyr. In fact, these are compatible and you can use a mix
-of tidyr and dplyr functions by piping them together</p>
-<p>Inside <code>gather()</code> we first name the new column for the new ID variable and then
-the value column taking the <code>country</code>, <code>year</code> and <code>continent</code> variables out
-of the gathering process:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="dataframe-manipulation-with-tidyr.html#cb362-1"></a>gapminder_long &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb362-2"><a href="dataframe-manipulation-with-tidyr.html#cb362-2"></a><span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value, <span class="op">-</span>country, <span class="op">-</span>year, <span class="op">-</span>continent)</span></code></pre></div>
-<p>Inside <code>spread()</code> we have the opposite situation where we take the <code>vars</code> column and spread
-it over to separate columns with <code>value</code> filling those cells:</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="dataframe-manipulation-with-tidyr.html#cb363-1"></a>gapminder_wide &lt;-<span class="st"> </span>gapminder_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spread</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value)</span></code></pre></div>
-</div>
-<div id="advantage-to-plotting-and-tables" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Advantage to plotting and tables</h2>
-<p>Reshaping your data from wide to long provides considerable flexibility for
-presenting your results. Combining some <code>dplyr</code> grouping code with tidyr
-we can produce a nice table:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="dataframe-manipulation-with-tidyr.html#cb364-1"></a>gapminder <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb364-2"><a href="dataframe-manipulation-with-tidyr.html#cb364-2"></a><span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value, <span class="op">-</span>country, <span class="op">-</span>year, <span class="op">-</span>continent) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb364-3"><a href="dataframe-manipulation-with-tidyr.html#cb364-3"></a><span class="st">    </span><span class="kw">group_by</span>(continent, vars) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb364-4"><a href="dataframe-manipulation-with-tidyr.html#cb364-4"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">total_pop =</span> <span class="kw">sum</span>(value)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb364-5"><a href="dataframe-manipulation-with-tidyr.html#cb364-5"></a><span class="st">    </span><span class="kw">spread</span>(<span class="dt">key =</span> continent, <span class="dt">value =</span> total_pop)</span></code></pre></div>
-<pre><code>[90m# A tibble: 3 x 6[39m
-  vars           Africa    Americas         Asia      Europe    Oceania
-  [3m[90m&lt;chr&gt;[39m[23m           [3m[90m&lt;dbl&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m        [3m[90m&lt;dbl&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m      [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m gdpPercap    1[4m3[24m[4m6[24m[4m8[24m903.    2[4m1[24m[4m4[24m[4m0[24m833.     3[4m1[24m[4m2[24m[4m9[24m252.    5[4m2[24m[4m0[24m[4m9[24m011.    [4m4[24m[4m4[24m[4m6[24m919.
-[90m2[39m lifeExp        [4m3[24m[4m0[24m492.      [4m1[24m[4m9[24m398.       [4m2[24m[4m3[24m786.      [4m2[24m[4m5[24m885.      [4m1[24m784.
-[90m3[39m pop       [4m6[24m187[4m5[24m[4m8[24m[4m5[24m961  [4m7[24m351[4m4[24m[4m3[24m[4m8[24m499  [4m3[24m[4m0[24m507[4m3[24m[4m3[24m[4m3[24m902. [4m6[24m181[4m1[24m[4m1[24m[4m5[24m304  212[4m9[24m[4m9[24m[4m2[24m136 </code></pre>
-<p>Similarly, gathering can provide considerable more flexibility when plotting by grouping
-variables we might want to facet as well as using some additional dplyr content:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="dataframe-manipulation-with-tidyr.html#cb366-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb366-2"><a href="dataframe-manipulation-with-tidyr.html#cb366-2"></a></span>
-<span id="cb366-3"><a href="dataframe-manipulation-with-tidyr.html#cb366-3"></a>gapminder_long <span class="op">%&gt;%</span></span>
-<span id="cb366-4"><a href="dataframe-manipulation-with-tidyr.html#cb366-4"></a><span class="st">    </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Oceania&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb366-5"><a href="dataframe-manipulation-with-tidyr.html#cb366-5"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">colour =</span> country)) <span class="op">+</span></span>
-<span id="cb366-6"><a href="dataframe-manipulation-with-tidyr.html#cb366-6"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb366-7"><a href="dataframe-manipulation-with-tidyr.html#cb366-7"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>vars, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="dt">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="fig/rmd-7-unnamed-chunk-154-1.png" width="816" style="display: block; margin: auto;" /></p>
-</div>
-<div id="other-great-resources-1" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Other great resources</h2>
+<h2 id="challenge-2-5">Challenge 2</h2>
+<p>Add code chunks to:</p>
 <ul>
-<li><a href="http://r4ds.had.co.nz/index.html">R for Data Science</a></li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Data Wrangling Cheat sheet</a></li>
-<li><a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">Introduction to tidyr</a></li>
-<li><a href="https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/">Data wrangling with R and RStudio</a></li>
+<li>Load the ggplot2 package</li>
+<li>Read the gapminder data</li>
+<li>Create a plot</li>
+</ul>
+<blockquote>
+<h2 id="solution-to-challenge-2-5">Solution to Challenge 2</h2>
+<pre>
+&#96;&#96;&#96;{r load-ggplot2}
+library("ggplot2")
+&#96;&#96;&#96;
+</pre>
+<pre>
+&#96;&#96;&#96;{r read-gapminder-data}
+gapminder <- read.csv("gapminder.csv")
+&#96;&#96;&#96;
+</pre>
+<pre>
+&#96;&#96;&#96;{r make-plot}
+plot(lifeExp ~ year, data = gapminder)
+&#96;&#96;&#96;
+</pre>
+<p>{: .solution}
+{: .challenge}</p>
+</blockquote>
+</blockquote>
+<p>How things get compiled</p>
+<p>When you press the “Knit” button, the R Markdown document is
+processed by <a href="http://yihui.name/knitr"><code>knitr</code></a> and a plain Markdown
+document is produced (as well as, potentially, a set of figure files): the R code is executed
+and replaced by both the input and the output; if figures are
+produced, links to those figures are included.</p>
+<p>The Markdown and figure documents are then processed by the tool
+<a href="http://pandoc.org/"><code>pandoc</code></a>, which converts the Markdown file into an
+html file, with the figures embedded.</p>
+<p><img src="fig/rmd-15-rmd_to_html_fig-1.png" width="768" style="display: block; margin: auto auto auto 0;" /></p>
+<p>Chunk options</p>
+<p>There are a variety of options to affect how the code chunks are
+treated. Here are some examples:</p>
+<ul>
+<li>Use <code>echo=FALSE</code> to avoid having the code itself shown.</li>
+<li>Use <code>results="hide"</code> to avoid having any results printed.</li>
+<li>Use <code>eval=FALSE</code> to have the code shown but not evaluated.</li>
+<li>Use <code>warning=FALSE</code> and <code>message=FALSE</code> to hide any warnings or
+messages produced.</li>
+<li>Use <code>fig.height</code> and <code>fig.width</code> to control the size of the figures
+produced (in inches).</li>
+</ul>
+<p>So you might write:</p>
+<pre>
+&#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
+library("dplyr")
+library("ggplot2")
+&#96;&#96;&#96;
+</pre>
+<p>Often there will be particular options that you’ll want to use
+repeatedly; for this, you can set <em>global</em> chunk options, like so:</p>
+<pre>
+&#96;&#96;&#96;{r global_options, echo=FALSE}
+knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
+                      echo=FALSE, results="hide", fig.width=11)
+&#96;&#96;&#96;
+</pre>
+<p>The <code>fig.path</code> option defines where the figures will be saved. The <code>/</code>
+here is really important; without it, the figures would be saved in
+the standard place but just with names that begin with <code>Figs</code>.</p>
+<p>If you have multiple R Markdown files in a common directory, you might
+want to use <code>fig.path</code> to define separate prefixes for the figure file
+names, like <code>fig.path="Figs/cleaning-"</code> and <code>fig.path="Figs/analysis-"</code>.</p>
+<blockquote>
+<h2 id="challenge-3-5">Challenge 3</h2>
+<p>Use chunk options to control the size of a figure and to hide the
+code.</p>
+<blockquote>
+<h2 id="solution-to-challenge-3-5">Solution to Challenge 3</h2>
+<pre>
+&#96;&#96;&#96;{r echo = FALSE, fig.width = 3}
+plot(faithful)
+&#96;&#96;&#96;
+</pre>
+<p>{: .solution}
+{: .challenge}</p>
+</blockquote>
+</blockquote>
+<p>You can review all of the <code>R</code> chunk options by navigating to
+the “R Markdown Cheat Sheet” under the “Cheatsheets” section
+of the “Help” field in the toolbar at the top of RStudio.</p>
+<p>Inline R code</p>
+<p>You can make <em>every</em> number in your report reproducible. Use
+<code>`r</code> and <code>`</code> for an in-line code chunk,
+like so: <code>`r round(some_value, 2)`</code>. The code will be
+executed and replaced with the <em>value</em> of the result.</p>
+<p>Don’t let these in-line chunks get split across lines.</p>
+<p>Perhaps precede the paragraph with a larger code chunk that does
+calculations and defines variables, with <code>include=FALSE</code> for that larger
+chunk (which is the same as <code>echo=FALSE</code> and <code>results="hide"</code>).</p>
+<p>Rounding can produce differences in output in such situations. You may want
+<code>2.0</code>, but <code>round(2.03, 1)</code> will give just <code>2</code>.</p>
+<p>The
+<a href="https://github.com/kbroman/broman/blob/master/R/myround.R"><code>myround</code></a>
+function in the <a href="https://github.com/kbroman/broman">R/broman</a> package handles
+this.</p>
+<blockquote>
+<h2 id="challenge-4-3">Challenge 4</h2>
+<p>Try out a bit of in-line R code.</p>
+<blockquote>
+<h2 id="solution-to-challenge-4-2">Solution to Challenge 4</h2>
+<p>Here’s some inline code to determine that 2 + 2 = <code>`r 2+2`</code>.</p>
+<p>{: .solution}
+{: .challenge}</p>
+</blockquote>
+</blockquote>
+<p>Other output options</p>
+<p>You can also convert R Markdown to a PDF or a Word document. Click the
+little triangle next to the “Knit” button to get a drop-down
+menu. Or you could put <code>pdf_document</code> or <code>word_document</code> in the initial header
+of the file.</p>
+<blockquote>
+<h2 id="tip-creating-pdf-documents">Tip: Creating PDF documents</h2>
+<p>Creating .pdf documents may require installation of some extra software. If
+required this is detailed in an error message.</p>
+<ul>
+<li><a href="https://miktex.org/2.9/setup">TeX installers for Windows</a>.</li>
+<li><a href="https://tug.org/mactex">TeX installers for macOS</a>.
+{: .callout}</li>
+</ul>
+</blockquote>
+<p>Resources</p>
+<ul>
+<li><a href="http://kbroman.org/knitr_knutshell">Knitr in a knutshell tutorial</a></li>
+<li><a href="http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20">Dynamic Documents with R and knitr</a> (book)</li>
+<li><a href="http://rmarkdown.rstudio.com">R Markdown documentation</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">R Markdown cheat sheet</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/">Getting started with R Markdown</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a> (book by Rstudio team)</li>
+<li><a href="https://www.rstudio.com/resources/webinars/reproducible-reporting/">Reproducible Reporting</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/">The Ecosystem of R Markdown</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/introducing-bookdown/">Introducing Bookdown</a></li>
 </ul>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="dataframe-manipulation-with-dplyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-analysis-reports.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="basic-components-of-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="seeking-help-from-others-with-reprex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

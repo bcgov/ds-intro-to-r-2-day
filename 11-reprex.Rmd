@@ -18,8 +18,7 @@ source: Rmd
 If you're having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line:
 
 - [RStudio Community](https://community.rstudio.com/)
-- [Stack Overflow](http://stackoverflow.com/). You can search using
-the `[r]` tag.
+- [Stack Overflow](http://stackoverflow.com/). You can search using the [r] tag.
 - [Google](https://www.google.ca/)
 
 If you can't find the answer on-line, there are some on-line forums to seek help from the bcgov R community:
