@@ -54,11 +54,11 @@ Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
 
 #### PM
 
-- Basic of rmarkdown Part 1 (55 minutes) <!-- Sam -->
-- Basic of rmarkdown Part 1 (35 minutes) <!-- Gen -->
+- Basic of rmarkdown Part 1 (45 minutes) <!-- Sam -->
+- Basic of rmarkdown Part 2 (45 minutes) <!-- Gen -->
 - BREAK ☕
 - Application of rmarkdown: introducing `broom` & `lm()` (60 minutes)  <!-- Andy -->
-- Seeking Help from Others with `reprex` (15 minutes) <!-- ? -->
+- Seeking Help from Others with `reprex` (15 minutes) <!-- Andy -->
 
 
 Most of the above lesson material is sourced or an adaptation of the [Software Carpentry Foundation](http://software-carpentry.org/) (now The Carpenties) [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/) lesson material: Thomas Wright and Naupaka Zimmerman (eds): _Software Carpentry: R for
