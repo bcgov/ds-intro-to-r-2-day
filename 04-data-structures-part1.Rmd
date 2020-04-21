@@ -129,6 +129,7 @@ typeof(3.14)
 typeof(1L) # The L suffix forces the number to be an integer, since by default R uses double (decimal) numbers
 typeof(TRUE)
 typeof('banana')
+typeof(1 + 1i)
 ```
 
 No matter how
@@ -161,6 +162,8 @@ my_vector
 
 A vector in R is essentially an ordered list of things, with the special
 condition that *everything in the vector must be the same basic data type*.
+Note that this is different to most spreadsheet programs where you can store 
+different data types in a table column.
 
 ```{r}
 class(my_vector)
