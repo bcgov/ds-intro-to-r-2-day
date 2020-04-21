@@ -60,9 +60,6 @@ data frame in the environment pane.
 
 Note that this is a read-only view, it's not editable (which is a good thing!)
 
-
-For an object containing the data type `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". 
-
 ## Realistic example
 
 So far, you have seen the basics of manipulating data frames with our cat data;
