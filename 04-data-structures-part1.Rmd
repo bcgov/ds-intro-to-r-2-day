@@ -257,8 +257,8 @@ your columns of data.frames, or you will get nasty surprises!
 
 But coercion can also be very useful! For example, in our `cats` data
 `likes_string` is numeric, but we know that the 1s and 0s actually represent
-`TRUE` and `FALSE` (a common way of representing them). We should use the
-`logical` datatype here, which has two states: `TRUE` or `FALSE`, which is
+`TRUE` and `FALSE` (a common way of representing them). We should really use the
+`logical` data type here, which has two states: `TRUE` or `FALSE`, which is
 exactly what our data represents. We can 'coerce' this column to be `logical` by
 using the `as.logical` function:
 
@@ -308,7 +308,7 @@ Now R has noticed that there are three possible categories in our data - but it
 also did something surprising; instead of printing out the strings we gave it,
 we got a bunch of numbers instead. R has replaced our human-readable categories
 with numbered indices under the hood, this is necessary as many statistical
-calculations utilise such numerical representations for categorical data:
+calculations use such numerical representations for categorical data:
 
 ```{r}
 typeof(coats)
@@ -348,8 +348,8 @@ typeof(CATegories)
 
 
 
-In modelling functions, it's important to know what the baseline levels are. This
-is assumed to be the first factor, but by default factors are labelled in
+In modeling functions, it's important to know what the baseline levels are. This
+is assumed to be the first factor, but by default factors are labeled in
 alphabetical order. You can change this by specifying the levels:
 
 ```{r}
@@ -382,8 +382,8 @@ typeof(cats)
 ```
 
 We see that data.frames look like lists 'under the hood' - this is because a
-data.frame is really a list of vectors and factors, as they have to be - in
-order to hold those columns that are a mix of vectors and factors, the
+data.frame is really a list of vectors, as they have to be - in
+order to hold those columns that are a mix of vectors, the
 data.frame needs something a bit more flexible than a vector to put all the
 columns together into a familiar table.  In other words, a `data.frame` is a
 special list in which all the vectors must have the same length.
