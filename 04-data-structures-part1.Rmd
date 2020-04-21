@@ -181,16 +181,16 @@ Vectors can be any data type that we've already learned about. Let's make a
 character vector:
 
 ```{r}
-my_other_vector <- c("Harry", "Ron", "Hermione", "Ginny")
-my_other_vector
+hogwarts_students <- c("Harry", "Ron", "Hermione", "Ginny")
+hogwarts_students
 ```
 
 ```{r}
-class(my_other_vector)
+class(hogwarts_students)
 ```
 
 ```{r}
-my_other_vector == "Harry"
+hogwarts_students == "Harry"
 ```
 
 If we similarly do
