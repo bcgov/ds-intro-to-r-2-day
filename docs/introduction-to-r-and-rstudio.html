@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -268,15 +268,14 @@ for all of these countries in under a minute!</p>
 <a href="https://www.rstudio.com/">Download and install RStudio here</a></p>
 <p>There is one bit of customization we need to do to make R play nicely on
 a bcgov computer:</p>
-<p>Open command prompt (Open Start Menu then type <code>cmd</code> and press [Enter]).
-Type the following line into the command prompt window exactly as shown:</p>
+<p>Open command prompt (Open Start Menu then type <code>cmd</code> and press [Enter]). Make sure your command prompt opens at the C directory e.g. <code>C:|&gt;</code>. If it opens in another directory you can change this by typing <code>C:</code>.</p>
+<p>Type the following line into the command prompt window exactly as shown:</p>
 <pre><code>setx HOME &quot;%USERPROFILE%&quot;</code></pre>
 <p>Press [Enter], you should see <strong>SUCCESS: Specified value was saved</strong>.
 Quit command prompt by typing <code>exit</code> then pressing [Enter]</p>
 </div>
 <div id="introduction-to-rstudio" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Introduction to RStudio</h2>
-<p>Welcome to the R portion of the Software Carpentry workshop.</p>
 <p>Throughout this lesson, we’re going to teach you some of the fundamentals of
 the R language as well as some best practices for organizing code for
 scientific projects that will make your life easier.</p>
@@ -598,7 +597,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7fcf0e33a920&gt;
+&lt;bytecode: 0x7ff6831e5120&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introduction-to-r-and-rstudio.html#cb61-1"></a><span class="kw">rm</span>(x)</span></code></pre></div>
