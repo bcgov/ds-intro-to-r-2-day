@@ -55,7 +55,8 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
 
-Open command prompt (Open Start Menu then type `cmd` and press [Enter]).
+Open command prompt (Open Start Menu then type `cmd` and press [Enter]). Make sure your command prompt opens at the C directory e.g. ```C:|>```. If it opens in another directory you can change this by typing ```C:```.  
+
 Type the following line into the command prompt window exactly as shown:
 
 ```
@@ -67,7 +68,6 @@ Quit command prompt by typing `exit` then pressing [Enter]
 
 ## Introduction to RStudio
 
-Welcome to the R portion of the Software Carpentry workshop.
 
 Throughout this lesson, we're going to teach you some of the fundamentals of
 the R language as well as some best practices for organizing code for
