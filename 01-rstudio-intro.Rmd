@@ -587,15 +587,13 @@ R and RStudio have functionality for managing packages:
 
 > ## Challenge 5
 >
-> Install the following packages: `ggplot2`, `plyr`, `gapminder`
+> Install the following packages: `ggplot2`, `dplyr`
 >
 > > ## Solution to challenge 5
 > >
 > > We can use the `install.packages()` command to install the required packages.
 > > ```{r ch5-sol, eval=FALSE}
 > > install.packages("ggplot2")
-> > install.packages("plyr")
-> > install.packages("gapminder")
+> > install.packages("dplyr")
 > >```
-
 
