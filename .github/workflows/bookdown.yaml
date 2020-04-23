@@ -24,7 +24,7 @@ jobs:
           R -e 'install.packages(c("tidyverse", "reprex", "bookdown"))'
 
       - name: Build site
-        run: Rscript 'make_episodes.R'
+        run: R -e 'bookdown::render_book("index.Rmd")'
 
       - name: commit
         run: |
