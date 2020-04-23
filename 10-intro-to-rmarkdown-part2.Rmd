@@ -1,5 +1,5 @@
 ---
-title: Producing Reports With knitr
+title: Producing Reports With knitr Part 2
 teaching: 30
 exercises: 15
 questions:
@@ -245,4 +245,3 @@ of the file.
 * [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
 * [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 * [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
-
