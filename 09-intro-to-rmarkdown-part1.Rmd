@@ -47,7 +47,7 @@ keep scrolling. Formatting is simple and easy to modify, allowing you to spend
 more time on your analyses instead of writing reports.
 
 
-# Literate programming
+## Literate programming
 
 Ideally, such analysis reports are _reproducible_ documents: If an
 error is discovered, or if some additional subjects are added to the
@@ -67,7 +67,7 @@ with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up lan
 pages.
 
 
-# Creating an R Markdown file
+## Creating an R Markdown file
 
 Within RStudio, click File &rarr; New File &rarr; R Markdown and
 you'll get a dialog box like this:
@@ -77,7 +77,7 @@ you'll get a dialog box like this:
 You can stick with the default (HTML output), but give it a title.
 
 
-# Basic components of R Markdown
+## Basic components of R Markdown
 
 The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it that you're going to want
 to produce html output (in other words, a web page).
@@ -111,7 +111,7 @@ Also note the web address that's put between angle brackets (`< >`) as
 well as the double-asterisks in `**Knit**`. This is
 [Markdown](http://daringfireball.net/projects/markdown/syntax).
 
-# Markdown
+## Markdown
 
 Markdown is a system for writing web pages by marking up the text much
 as you would in an email rather than writing html code. The marked-up
