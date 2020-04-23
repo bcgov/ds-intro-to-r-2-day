@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-04-22" />
+<meta name="date" content="2020-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -268,7 +268,7 @@ for all of these countries in under a minute!</p>
 <a href="https://www.rstudio.com/">Download and install RStudio here</a></p>
 <p>There is one bit of customization we need to do to make R play nicely on
 a bcgov computer:</p>
-<p>Open command prompt (Open Start Menu then type <code>cmd</code> and press [Enter]). Make sure your command prompt opens at the C directory e.g. <code>C:|&gt;</code>. If it opens in another directory you can change this by typing <code>C:</code>.</p>
+<p>Open command prompt (Open Start Menu then type <code>cmd</code> and press [Enter]). Make sure your command prompt opens at the C directory e.g. <code>C:\&gt;</code>. If it opens in another directory you can change this by typing <code>C:</code>.</p>
 <p>Type the following line into the command prompt window exactly as shown:</p>
 <pre><code>setx HOME &quot;%USERPROFILE%&quot;</code></pre>
 <p>Press [Enter], you should see <strong>SUCCESS: Specified value was saved</strong>.
@@ -597,7 +597,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7ff6831e5120&gt;
+&lt;bytecode: 0x7fd7d0c85720&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introduction-to-r-and-rstudio.html#cb61-1"></a><span class="kw">rm</span>(x)</span></code></pre></div>
@@ -680,13 +680,12 @@ variables.</p>
 </blockquote>
 <blockquote>
 <h2 id="challenge-5">Challenge 5</h2>
-<p>Install the following packages: <code>ggplot2</code>, <code>plyr</code>, <code>gapminder</code></p>
+<p>Install the following packages: <code>ggplot2</code>, <code>dplyr</code></p>
 <blockquote>
 <h2 id="solution-to-challenge-5">Solution to challenge 5</h2>
 <p>We can use the <code>install.packages()</code> command to install the required packages.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="introduction-to-r-and-rstudio.html#cb71-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb71-2"><a href="introduction-to-r-and-rstudio.html#cb71-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;plyr&quot;</span>)</span>
-<span id="cb71-3"><a href="introduction-to-r-and-rstudio.html#cb71-3"></a><span class="kw">install.packages</span>(<span class="st">&quot;gapminder&quot;</span>)</span></code></pre></div>
+<span id="cb71-2"><a href="introduction-to-r-and-rstudio.html#cb71-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
 </blockquote>
 </blockquote>
 

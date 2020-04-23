@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-04-22" />
+<meta name="date" content="2020-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -274,15 +274,15 @@ the fields in a database and observed variables are like the database values.</p
 <h2><span class="header-section-number">9.1</span> Getting started</h2>
 <p>First install the packages if you haven’t already done so (you probably
 installed dplyr in the previous lesson):</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="dataframe-manipulation-with-tidyr.html#cb356-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
-<span id="cb356-2"><a href="dataframe-manipulation-with-tidyr.html#cb356-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb356-3"><a href="dataframe-manipulation-with-tidyr.html#cb356-3"></a><span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dataframe-manipulation-with-tidyr.html#cb358-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
+<span id="cb358-2"><a href="dataframe-manipulation-with-tidyr.html#cb358-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb358-3"><a href="dataframe-manipulation-with-tidyr.html#cb358-3"></a><span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
 <p>Load the packages</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="dataframe-manipulation-with-tidyr.html#cb357-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
-<span id="cb357-2"><a href="dataframe-manipulation-with-tidyr.html#cb357-2"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb357-3"><a href="dataframe-manipulation-with-tidyr.html#cb357-3"></a><span class="kw">library</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="dataframe-manipulation-with-tidyr.html#cb359-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
+<span id="cb359-2"><a href="dataframe-manipulation-with-tidyr.html#cb359-2"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb359-3"><a href="dataframe-manipulation-with-tidyr.html#cb359-3"></a><span class="kw">library</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
 <p>First, lets look at the structure of our original gapminder dataframe:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dataframe-manipulation-with-tidyr.html#cb358-1"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="dataframe-manipulation-with-tidyr.html#cb360-1"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
   country = [31mcol_character()[39m,
@@ -292,7 +292,7 @@ cols(
   lifeExp = [32mcol_double()[39m,
   gdpPercap = [32mcol_double()[39m
 )</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="dataframe-manipulation-with-tidyr.html#cb360-1"></a>gapminder</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="dataframe-manipulation-with-tidyr.html#cb362-1"></a>gapminder</span></code></pre></div>
 <pre><code>[90m# A tibble: 1,704 x 6[39m
    country      year      pop continent lifeExp gdpPercap
    [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
@@ -342,22 +342,22 @@ of tidyr and dplyr functions by piping them together</p>
 <p>Inside <code>gather()</code> we first name the new column for the new ID variable and then
 the value column taking the <code>country</code>, <code>year</code> and <code>continent</code> variables out
 of the gathering process:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="dataframe-manipulation-with-tidyr.html#cb362-1"></a>gapminder_long &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb362-2"><a href="dataframe-manipulation-with-tidyr.html#cb362-2"></a><span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value, <span class="op">-</span>country, <span class="op">-</span>year, <span class="op">-</span>continent)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="dataframe-manipulation-with-tidyr.html#cb364-1"></a>gapminder_long &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb364-2"><a href="dataframe-manipulation-with-tidyr.html#cb364-2"></a><span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value, <span class="op">-</span>country, <span class="op">-</span>year, <span class="op">-</span>continent)</span></code></pre></div>
 <p>Inside <code>spread()</code> we have the opposite situation where we take the <code>vars</code> column and spread
 it over to separate columns with <code>value</code> filling those cells:</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="dataframe-manipulation-with-tidyr.html#cb363-1"></a>gapminder_wide &lt;-<span class="st"> </span>gapminder_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spread</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value)</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="dataframe-manipulation-with-tidyr.html#cb365-1"></a>gapminder_wide &lt;-<span class="st"> </span>gapminder_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spread</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value)</span></code></pre></div>
 </div>
 <div id="advantage-to-plotting-and-tables" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Advantage to plotting and tables</h2>
 <p>Reshaping your data from wide to long provides considerable flexibility for
 presenting your results. Combining some <code>dplyr</code> grouping code with tidyr
 we can produce a nice table:</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="dataframe-manipulation-with-tidyr.html#cb364-1"></a>gapminder <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb364-2"><a href="dataframe-manipulation-with-tidyr.html#cb364-2"></a><span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value, <span class="op">-</span>country, <span class="op">-</span>year, <span class="op">-</span>continent) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb364-3"><a href="dataframe-manipulation-with-tidyr.html#cb364-3"></a><span class="st">    </span><span class="kw">group_by</span>(continent, vars) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb364-4"><a href="dataframe-manipulation-with-tidyr.html#cb364-4"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">total_pop =</span> <span class="kw">sum</span>(value)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb364-5"><a href="dataframe-manipulation-with-tidyr.html#cb364-5"></a><span class="st">    </span><span class="kw">spread</span>(<span class="dt">key =</span> continent, <span class="dt">value =</span> total_pop)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="dataframe-manipulation-with-tidyr.html#cb366-1"></a>gapminder <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb366-2"><a href="dataframe-manipulation-with-tidyr.html#cb366-2"></a><span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> vars, <span class="dt">value =</span> value, <span class="op">-</span>country, <span class="op">-</span>year, <span class="op">-</span>continent) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb366-3"><a href="dataframe-manipulation-with-tidyr.html#cb366-3"></a><span class="st">    </span><span class="kw">group_by</span>(continent, vars) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb366-4"><a href="dataframe-manipulation-with-tidyr.html#cb366-4"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">total_pop =</span> <span class="kw">sum</span>(value)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb366-5"><a href="dataframe-manipulation-with-tidyr.html#cb366-5"></a><span class="st">    </span><span class="kw">spread</span>(<span class="dt">key =</span> continent, <span class="dt">value =</span> total_pop)</span></code></pre></div>
 <pre><code>[90m# A tibble: 3 x 6[39m
   vars           Africa    Americas         Asia      Europe    Oceania
   [3m[90m&lt;chr&gt;[39m[23m           [3m[90m&lt;dbl&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m        [3m[90m&lt;dbl&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m      [3m[90m&lt;dbl&gt;[39m[23m
@@ -366,13 +366,13 @@ we can produce a nice table:</p>
 [90m3[39m pop       [4m6[24m187[4m5[24m[4m8[24m[4m5[24m961  [4m7[24m351[4m4[24m[4m3[24m[4m8[24m499  [4m3[24m[4m0[24m507[4m3[24m[4m3[24m[4m3[24m902. [4m6[24m181[4m1[24m[4m1[24m[4m5[24m304  212[4m9[24m[4m9[24m[4m2[24m136 </code></pre>
 <p>Similarly, gathering can provide considerable more flexibility when plotting by grouping
 variables we might want to facet as well as using some additional dplyr content:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="dataframe-manipulation-with-tidyr.html#cb366-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb366-2"><a href="dataframe-manipulation-with-tidyr.html#cb366-2"></a></span>
-<span id="cb366-3"><a href="dataframe-manipulation-with-tidyr.html#cb366-3"></a>gapminder_long <span class="op">%&gt;%</span></span>
-<span id="cb366-4"><a href="dataframe-manipulation-with-tidyr.html#cb366-4"></a><span class="st">    </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Oceania&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb366-5"><a href="dataframe-manipulation-with-tidyr.html#cb366-5"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">colour =</span> country)) <span class="op">+</span></span>
-<span id="cb366-6"><a href="dataframe-manipulation-with-tidyr.html#cb366-6"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb366-7"><a href="dataframe-manipulation-with-tidyr.html#cb366-7"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>vars, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="dt">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="dataframe-manipulation-with-tidyr.html#cb368-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb368-2"><a href="dataframe-manipulation-with-tidyr.html#cb368-2"></a></span>
+<span id="cb368-3"><a href="dataframe-manipulation-with-tidyr.html#cb368-3"></a>gapminder_long <span class="op">%&gt;%</span></span>
+<span id="cb368-4"><a href="dataframe-manipulation-with-tidyr.html#cb368-4"></a><span class="st">    </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Oceania&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb368-5"><a href="dataframe-manipulation-with-tidyr.html#cb368-5"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> value, <span class="dt">colour =</span> country)) <span class="op">+</span></span>
+<span id="cb368-6"><a href="dataframe-manipulation-with-tidyr.html#cb368-6"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb368-7"><a href="dataframe-manipulation-with-tidyr.html#cb368-7"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>vars, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="dt">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="fig/rmd-7-unnamed-chunk-154-1.png" width="816" style="display: block; margin: auto;" /></p>
 </div>
 <div id="other-great-resources-1" class="section level2" number="9.4">

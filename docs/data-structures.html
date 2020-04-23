@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-04-22" />
+<meta name="date" content="2020-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -341,6 +341,8 @@ data something is:</p>
 <pre><code>[1] &quot;logical&quot;</code></pre>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="data-structures.html#cb112-1"></a><span class="kw">typeof</span>(<span class="st">&#39;banana&#39;</span>)</span></code></pre></div>
 <pre><code>[1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="data-structures.html#cb114-1"></a><span class="kw">typeof</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>1i)</span></code></pre></div>
+<pre><code>[1] &quot;complex&quot;</code></pre>
 <p>No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.</p>
@@ -349,7 +351,7 @@ basic data types. This strictness has some really important consequences.</p>
 structure</em> - that is, a structure which R knows how to build out of the basic
 data types.</p>
 <p>We can see that it is a <em>data.frame</em> by calling the <code>class</code> function on it:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="data-structures.html#cb114-1"></a><span class="kw">class</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="data-structures.html#cb116-1"></a><span class="kw">class</span>(cats)</span></code></pre></div>
 <pre><code>[1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot; </code></pre>
 </div>
 <div id="vectors-and-type-coercion" class="section level2" number="5.3">
@@ -358,28 +360,30 @@ data types.</p>
 the <em>vector</em>.</p>
 <p>If we are creating vectors on our own, we will normally use the <code>c</code> (combine)
 function:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="data-structures.html#cb116-1"></a>my_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span> ,<span class="dv">7</span> ,<span class="dv">9</span>)</span>
-<span id="cb116-2"><a href="data-structures.html#cb116-2"></a>my_vector</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="data-structures.html#cb118-1"></a>my_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span> ,<span class="dv">7</span> ,<span class="dv">9</span>)</span>
+<span id="cb118-2"><a href="data-structures.html#cb118-2"></a>my_vector</span></code></pre></div>
 <pre><code>[1] 1 3 5 7 9</code></pre>
 <p>A vector in R is essentially an ordered list of things, with the special
-condition that <em>everything in the vector must be the same basic data type</em>.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="data-structures.html#cb118-1"></a><span class="kw">class</span>(my_vector)</span></code></pre></div>
+condition that <em>everything in the vector must be the same basic data type</em>.
+Note that this is different to most spreadsheet programs where you can store
+different data types in a table column.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-structures.html#cb120-1"></a><span class="kw">class</span>(my_vector)</span></code></pre></div>
 <pre><code>[1] &quot;numeric&quot;</code></pre>
 <p>This command indicates the basic data type found in this vector - in this case <code>numeric</code>.</p>
 <p>We can use the logical operators that we learned earlier with vectors:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-structures.html#cb120-1"></a>my_vector <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="data-structures.html#cb122-1"></a>my_vector <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
 <pre><code>[1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
 <p>Vectors can be any data type that we’ve already learned about. Let’s make a
 character vector:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="data-structures.html#cb122-1"></a>my_other_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>, <span class="st">&quot;Ginny&quot;</span>)</span>
-<span id="cb122-2"><a href="data-structures.html#cb122-2"></a>my_other_vector</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-structures.html#cb124-1"></a>hogwarts_students &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>, <span class="st">&quot;Ginny&quot;</span>)</span>
+<span id="cb124-2"><a href="data-structures.html#cb124-2"></a>hogwarts_students</span></code></pre></div>
 <pre><code>[1] &quot;Harry&quot;    &quot;Ron&quot;      &quot;Hermione&quot; &quot;Ginny&quot;   </code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-structures.html#cb124-1"></a><span class="kw">class</span>(my_other_vector)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="data-structures.html#cb126-1"></a><span class="kw">class</span>(hogwarts_students)</span></code></pre></div>
 <pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="data-structures.html#cb126-1"></a>my_other_vector <span class="op">==</span><span class="st"> &quot;Harry&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-structures.html#cb128-1"></a>hogwarts_students <span class="op">==</span><span class="st"> &quot;Harry&quot;</span></span></code></pre></div>
 <pre><code>[1]  TRUE FALSE FALSE FALSE</code></pre>
 <p>If we similarly do</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-structures.html#cb128-1"></a><span class="kw">class</span>(cats<span class="op">$</span>weight)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-structures.html#cb130-1"></a><span class="kw">class</span>(cats<span class="op">$</span>weight)</span></code></pre></div>
 <pre><code>[1] &quot;numeric&quot;</code></pre>
 <p>we see that <code>cats$weight</code> is a vector, too - <em>the columns of data we load into R
 data.frames are all vectors</em>, and that’s the root of why R forces everything in
@@ -399,29 +403,29 @@ our lives easier in R.</p>
 </blockquote>
 </blockquote>
 <p>Given what we’ve learned so far, what do you think the following will produce?</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-structures.html#cb130-1"></a>quiz_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="st">&#39;3&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-structures.html#cb132-1"></a>quiz_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="st">&#39;3&#39;</span>)</span></code></pre></div>
 <p>This is something called <em>type coercion</em>, and it is the source of many surprises
 and the reason why we need to be aware of the basic data types and how R will
 interpret them. When R encounters a mix of types (here numeric and character) to
 be combined into a single vector, it will force them all to be the same
 type. Consider:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="data-structures.html#cb131-1"></a>coercion_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="ot">TRUE</span>)</span>
-<span id="cb131-2"><a href="data-structures.html#cb131-2"></a>coercion_vector</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="data-structures.html#cb133-1"></a>coercion_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb133-2"><a href="data-structures.html#cb133-2"></a>coercion_vector</span></code></pre></div>
 <pre><code>[1] &quot;a&quot;    &quot;TRUE&quot;</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="data-structures.html#cb133-1"></a>another_coercion_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">TRUE</span>)</span>
-<span id="cb133-2"><a href="data-structures.html#cb133-2"></a>another_coercion_vector</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="data-structures.html#cb135-1"></a>another_coercion_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb135-2"><a href="data-structures.html#cb135-2"></a>another_coercion_vector</span></code></pre></div>
 <pre><code>[1] 0 1</code></pre>
 <p>The coercion rules go: <code>logical</code> -&gt; <code>integer</code> -&gt; <code>double</code>/<code>numeric</code> -&gt; <code>complex</code> -&gt;
 <code>character</code>, where -&gt; can be read as <em>are transformed into</em>. You can try to
 force coercion against this flow using the <code>as.</code> functions:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="data-structures.html#cb135-1"></a>character_vector_example &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>)</span>
-<span id="cb135-2"><a href="data-structures.html#cb135-2"></a>character_vector_example</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="data-structures.html#cb137-1"></a>character_vector_example &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>)</span>
+<span id="cb137-2"><a href="data-structures.html#cb137-2"></a>character_vector_example</span></code></pre></div>
 <pre><code>[1] &quot;0&quot; &quot;2&quot; &quot;4&quot;</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="data-structures.html#cb137-1"></a>character_coerced_to_numeric &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(character_vector_example)</span>
-<span id="cb137-2"><a href="data-structures.html#cb137-2"></a>character_coerced_to_numeric</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="data-structures.html#cb139-1"></a>character_coerced_to_numeric &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(character_vector_example)</span>
+<span id="cb139-2"><a href="data-structures.html#cb139-2"></a>character_coerced_to_numeric</span></code></pre></div>
 <pre><code>[1] 0 2 4</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="data-structures.html#cb139-1"></a>numeric_coerced_to_logical &lt;-<span class="st"> </span><span class="kw">as.logical</span>(character_coerced_to_numeric)</span>
-<span id="cb139-2"><a href="data-structures.html#cb139-2"></a>numeric_coerced_to_logical</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="data-structures.html#cb141-1"></a>numeric_coerced_to_logical &lt;-<span class="st"> </span><span class="kw">as.logical</span>(character_coerced_to_numeric)</span>
+<span id="cb141-2"><a href="data-structures.html#cb141-2"></a>numeric_coerced_to_logical</span></code></pre></div>
 <pre><code>[1] FALSE  TRUE  TRUE</code></pre>
 <p>As you can see, some surprising things can happen when R forces one basic data
 type into another! Nitty-gritty of type coercion aside, the point is: if your
@@ -430,25 +434,25 @@ may well be to blame; make sure everything is the same type in your vectors and
 your columns of data.frames, or you will get nasty surprises!</p>
 <p>But coercion can also be very useful! For example, in our <code>cats</code> data
 <code>likes_string</code> is numeric, but we know that the 1s and 0s actually represent
-<code>TRUE</code> and <code>FALSE</code> (a common way of representing them). We should use the
-<code>logical</code> datatype here, which has two states: <code>TRUE</code> or <code>FALSE</code>, which is
+<code>TRUE</code> and <code>FALSE</code> (a common way of representing them). We should really use the
+<code>logical</code> data type here, which has two states: <code>TRUE</code> or <code>FALSE</code>, which is
 exactly what our data represents. We can ‘coerce’ this column to be <code>logical</code> by
 using the <code>as.logical</code> function:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="data-structures.html#cb141-1"></a>cats<span class="op">$</span>likes_string</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="data-structures.html#cb143-1"></a>cats<span class="op">$</span>likes_string</span></code></pre></div>
 <pre><code>[1] 1 0 1</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="data-structures.html#cb143-1"></a>cats<span class="op">$</span>likes_string &lt;-<span class="st"> </span><span class="kw">as.logical</span>(cats<span class="op">$</span>likes_string)</span>
-<span id="cb143-2"><a href="data-structures.html#cb143-2"></a>cats<span class="op">$</span>likes_string</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="data-structures.html#cb145-1"></a>cats<span class="op">$</span>likes_string &lt;-<span class="st"> </span><span class="kw">as.logical</span>(cats<span class="op">$</span>likes_string)</span>
+<span id="cb145-2"><a href="data-structures.html#cb145-2"></a>cats<span class="op">$</span>likes_string</span></code></pre></div>
 <pre><code>[1]  TRUE FALSE  TRUE</code></pre>
 </div>
 <div id="data-frames" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Data Frames</h2>
 <p>We said that columns in data.frames were vectors:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="data-structures.html#cb145-1"></a><span class="kw">str</span>(cats<span class="op">$</span>weight)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="data-structures.html#cb147-1"></a><span class="kw">str</span>(cats<span class="op">$</span>weight)</span></code></pre></div>
 <pre><code> num [1:3] 2.1 5 3.2</code></pre>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="data-structures.html#cb147-1"></a><span class="kw">str</span>(cats<span class="op">$</span>likes_string)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="data-structures.html#cb149-1"></a><span class="kw">str</span>(cats<span class="op">$</span>likes_string)</span></code></pre></div>
 <pre><code> logi [1:3] TRUE FALSE TRUE</code></pre>
 <p>These make sense. But what about</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="data-structures.html#cb149-1"></a><span class="kw">str</span>(cats<span class="op">$</span>coat)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="data-structures.html#cb151-1"></a><span class="kw">str</span>(cats<span class="op">$</span>coat)</span></code></pre></div>
 <pre><code> chr [1:3] &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;</code></pre>
 </div>
 <div id="factors" class="section level2" number="5.5">
@@ -458,25 +462,25 @@ character data, but are typically used to represent categorical information that
 have a defined set of values. For
 example, let’s make a vector of strings labelling cat colorations for all the
 cats in our study:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="data-structures.html#cb151-1"></a>coats &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;tabby&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;tabby&#39;</span>)</span>
-<span id="cb151-2"><a href="data-structures.html#cb151-2"></a>coats</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="data-structures.html#cb153-1"></a>coats &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;tabby&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;tabby&#39;</span>)</span>
+<span id="cb153-2"><a href="data-structures.html#cb153-2"></a>coats</span></code></pre></div>
 <pre><code>[1] &quot;tabby&quot;         &quot;tortoiseshell&quot; &quot;tortoiseshell&quot; &quot;black&quot;        
 [5] &quot;tabby&quot;        </code></pre>
 <p>We can turn a vector into a factor like so:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="data-structures.html#cb153-1"></a>CATegories &lt;-<span class="st"> </span><span class="kw">factor</span>(coats)</span>
-<span id="cb153-2"><a href="data-structures.html#cb153-2"></a><span class="kw">class</span>(CATegories)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="data-structures.html#cb155-1"></a>CATegories &lt;-<span class="st"> </span><span class="kw">factor</span>(coats)</span>
+<span id="cb155-2"><a href="data-structures.html#cb155-2"></a><span class="kw">class</span>(CATegories)</span></code></pre></div>
 <pre><code>[1] &quot;factor&quot;</code></pre>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="data-structures.html#cb155-1"></a>CATegories</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="data-structures.html#cb157-1"></a>CATegories</span></code></pre></div>
 <pre><code>[1] tabby         tortoiseshell tortoiseshell black         tabby        
 Levels: black tabby tortoiseshell</code></pre>
 <p>Now R has noticed that there are three possible categories in our data - but it
 also did something surprising; instead of printing out the strings we gave it,
 we got a bunch of numbers instead. R has replaced our human-readable categories
 with numbered indices under the hood, this is necessary as many statistical
-calculations utilise such numerical representations for categorical data:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="data-structures.html#cb157-1"></a><span class="kw">typeof</span>(coats)</span></code></pre></div>
+calculations use such numerical representations for categorical data:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="data-structures.html#cb159-1"></a><span class="kw">typeof</span>(coats)</span></code></pre></div>
 <pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="data-structures.html#cb159-1"></a><span class="kw">typeof</span>(CATegories)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="data-structures.html#cb161-1"></a><span class="kw">typeof</span>(CATegories)</span></code></pre></div>
 <pre><code>[1] &quot;integer&quot;</code></pre>
 <blockquote>
 <h2 id="challenge-1-2">Challenge 1</h2>
@@ -489,24 +493,24 @@ in <code>cats</code> is actually a character vector when loaded in this way.</p>
 <blockquote>
 <h2 id="solution-to-challenge-1-1">Solution to Challenge 1</h2>
 <p>One solution is use the argument <code>stringAsFactors</code>:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="data-structures.html#cb161-1"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>)</span>
-<span id="cb161-2"><a href="data-structures.html#cb161-2"></a><span class="kw">str</span>(cats<span class="op">$</span>coat)</span>
-<span id="cb161-3"><a href="data-structures.html#cb161-3"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="data-structures.html#cb163-1"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>)</span>
+<span id="cb163-2"><a href="data-structures.html#cb163-2"></a><span class="kw">str</span>(cats<span class="op">$</span>coat)</span>
+<span id="cb163-3"><a href="data-structures.html#cb163-3"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span></code></pre></div>
 <p>Another solution is use the argument <code>colClasses</code>
 that allow finer control.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="data-structures.html#cb162-1"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">colClasses=</span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&quot;character&quot;</span>))</span>
-<span id="cb162-2"><a href="data-structures.html#cb162-2"></a><span class="kw">str</span>(cats<span class="op">$</span>coat)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="data-structures.html#cb164-1"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">colClasses=</span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&quot;character&quot;</span>))</span>
+<span id="cb164-2"><a href="data-structures.html#cb164-2"></a><span class="kw">str</span>(cats<span class="op">$</span>coat)</span></code></pre></div>
 <p>Note: new students find the help files difficult to understand; make sure to let them know
 that this is typical, and encourage them to take their best guess based on semantic meaning,
 even if they aren’t sure.</p>
 </blockquote>
 </blockquote>
-<p>In modelling functions, it’s important to know what the baseline levels are. This
-is assumed to be the first factor, but by default factors are labelled in
+<p>In modeling functions, it’s important to know what the baseline levels are. This
+is assumed to be the first factor, but by default factors are labeled in
 alphabetical order. You can change this by specifying the levels:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="data-structures.html#cb163-1"></a>mydata &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>)</span>
-<span id="cb163-2"><a href="data-structures.html#cb163-2"></a>factor_ordering_example &lt;-<span class="st"> </span><span class="kw">factor</span>(mydata, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>))</span>
-<span id="cb163-3"><a href="data-structures.html#cb163-3"></a><span class="kw">str</span>(factor_ordering_example)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="data-structures.html#cb165-1"></a>mydata &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>)</span>
+<span id="cb165-2"><a href="data-structures.html#cb165-2"></a>factor_ordering_example &lt;-<span class="st"> </span><span class="kw">factor</span>(mydata, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>))</span>
+<span id="cb165-3"><a href="data-structures.html#cb165-3"></a><span class="kw">str</span>(factor_ordering_example)</span></code></pre></div>
 <pre><code> Factor w/ 2 levels &quot;control&quot;,&quot;case&quot;: 2 1 1 2</code></pre>
 <p>In this case, we’ve explicitly told R that “control” should be represented by 1, and
 “case” by 2. This designation can be very important for interpreting the
@@ -517,8 +521,8 @@ results of statistical models!</p>
 <p>Another data structure you’ll want in your bag of tricks is the <code>list</code>. A list
 is simpler in some ways than the other types, because you can put anything you
 want in it:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="data-structures.html#cb165-1"></a>list_example &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>, <span class="dv">1</span><span class="op">+</span>4i)</span>
-<span id="cb165-2"><a href="data-structures.html#cb165-2"></a>list_example</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="data-structures.html#cb167-1"></a>list_example &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>, <span class="dv">1</span><span class="op">+</span>4i)</span>
+<span id="cb167-2"><a href="data-structures.html#cb167-2"></a>list_example</span></code></pre></div>
 <pre><code>[[1]]
 [1] 1
 
@@ -530,8 +534,8 @@ want in it:</p>
 
 [[4]]
 [1] 1+4i</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="data-structures.html#cb167-1"></a>another_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Numbers&quot;</span>, <span class="dt">numbers =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">data =</span> <span class="ot">TRUE</span> )</span>
-<span id="cb167-2"><a href="data-structures.html#cb167-2"></a>another_list</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="data-structures.html#cb169-1"></a>another_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Numbers&quot;</span>, <span class="dt">numbers =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">data =</span> <span class="ot">TRUE</span> )</span>
+<span id="cb169-2"><a href="data-structures.html#cb169-2"></a>another_list</span></code></pre></div>
 <pre><code>$title
 [1] &quot;Numbers&quot;
 
@@ -541,40 +545,40 @@ $numbers
 $data
 [1] TRUE</code></pre>
 <p>We can now understand something a bit surprising in our data.frame; what happens if we run:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="data-structures.html#cb169-1"></a><span class="kw">typeof</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="data-structures.html#cb171-1"></a><span class="kw">typeof</span>(cats)</span></code></pre></div>
 <pre><code>[1] &quot;list&quot;</code></pre>
 <p>We see that data.frames look like lists ‘under the hood’ - this is because a
-data.frame is really a list of vectors and factors, as they have to be - in
-order to hold those columns that are a mix of vectors and factors, the
+data.frame is really a list of vectors, as they have to be - in
+order to hold those columns that are a mix of vectors, the
 data.frame needs something a bit more flexible than a vector to put all the
 columns together into a familiar table. In other words, a <code>data.frame</code> is a
 special list in which all the vectors must have the same length.</p>
 <p>In our <code>cats</code> example, we have a character, a double and a logical variable. As
 we have seen already, each column of data.frame is a vector.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="data-structures.html#cb171-1"></a>cats<span class="op">$</span>coat</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="data-structures.html#cb173-1"></a>cats<span class="op">$</span>coat</span></code></pre></div>
 <pre><code>[1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot; </code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="data-structures.html#cb173-1"></a>cats[,<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="data-structures.html#cb175-1"></a>cats[,<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>[90m# A tibble: 3 x 1[39m
   coat  
   [3m[90m&lt;chr&gt;[39m[23m 
 [90m1[39m calico
 [90m2[39m black 
 [90m3[39m tabby </code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="data-structures.html#cb175-1"></a><span class="kw">typeof</span>(cats[,<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="data-structures.html#cb177-1"></a><span class="kw">typeof</span>(cats[,<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>[1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="data-structures.html#cb177-1"></a><span class="kw">str</span>(cats[,<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="data-structures.html#cb179-1"></a><span class="kw">str</span>(cats[,<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>tibble [3 × 1] (S3: tbl_df/tbl/data.frame)
  $ coat: chr [1:3] &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;</code></pre>
 <p>Each row is an <em>observation</em> of different variables, itself a data.frame, and
 thus can be composed of elements of different types.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="data-structures.html#cb179-1"></a>cats[<span class="dv">1</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="data-structures.html#cb181-1"></a>cats[<span class="dv">1</span>,]</span></code></pre></div>
 <pre><code>[90m# A tibble: 1 x 3[39m
   coat   weight likes_string
   [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;lgl&gt;[39m[23m       
 [90m1[39m calico    2.1 TRUE        </code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="data-structures.html#cb181-1"></a><span class="kw">typeof</span>(cats[<span class="dv">1</span>,])</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="data-structures.html#cb183-1"></a><span class="kw">typeof</span>(cats[<span class="dv">1</span>,])</span></code></pre></div>
 <pre><code>[1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="data-structures.html#cb183-1"></a><span class="kw">str</span>(cats[<span class="dv">1</span>,])</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="data-structures.html#cb185-1"></a><span class="kw">str</span>(cats[<span class="dv">1</span>,])</span></code></pre></div>
 <pre><code>tibble [1 × 3] (S3: tbl_df/tbl/data.frame)
  $ coat        : chr &quot;calico&quot;
  $ weight      : num 2.1
@@ -596,7 +600,7 @@ elements from data.frames:</p>
 <p><em>Hint:</em> Use the function <code>typeof()</code> to examine what is returned in each case.</p>
 <blockquote>
 <h2 id="solution-to-challenge-3-2">Solution to Challenge 3</h2>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="data-structures.html#cb185-1"></a>cats[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="data-structures.html#cb187-1"></a>cats[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>[90m# A tibble: 3 x 1[39m
   coat  
   [3m[90m&lt;chr&gt;[39m[23m 
@@ -606,15 +610,15 @@ elements from data.frames:</p>
 <p>We can think of a data frame as a list of vectors. The single brace <code>[1]</code>
 returns the first slice of the list, as another list. In this case it is the
 first column of the data frame.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="data-structures.html#cb187-1"></a>cats[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="data-structures.html#cb189-1"></a>cats[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>[1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot; </code></pre>
 <p>The double brace <code>[[1]]</code> returns the contents of the list item. In this case
 it is the contents of the first column, a <em>vector</em> of type <em>factor</em>.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="data-structures.html#cb189-1"></a>cats<span class="op">$</span>coat</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="data-structures.html#cb191-1"></a>cats<span class="op">$</span>coat</span></code></pre></div>
 <pre><code>[1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot; </code></pre>
 <p>This example uses the <code>$</code> character to address items by name. <em>coat</em> is the
 first column of the data frame, again a <em>vector</em> of type <em>factor</em>.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="data-structures.html#cb191-1"></a>cats[<span class="st">&quot;coat&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="data-structures.html#cb193-1"></a>cats[<span class="st">&quot;coat&quot;</span>]</span></code></pre></div>
 <pre><code>[90m# A tibble: 3 x 1[39m
   coat  
   [3m[90m&lt;chr&gt;[39m[23m 
@@ -623,7 +627,7 @@ first column of the data frame, again a <em>vector</em> of type <em>factor</em>.
 [90m3[39m tabby </code></pre>
 <p>Here we are using a single brace <code>["coat"]</code> replacing the index number with
 the column name. Like example 1, the returned object is a <em>list</em>.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="data-structures.html#cb193-1"></a>cats[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="data-structures.html#cb195-1"></a>cats[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>[90m# A tibble: 1 x 1[39m
   coat  
   [3m[90m&lt;chr&gt;[39m[23m 
@@ -632,7 +636,7 @@ the column name. Like example 1, the returned object is a <em>list</em>.</p>
 coordinates. The returned object is the value in row 1, column 1. The object
 is an <em>integer</em> but because it is part of a <em>vector</em> of type <em>factor</em>, R
 displays the label “calico” associated with the integer value.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="data-structures.html#cb195-1"></a>cats[, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="data-structures.html#cb197-1"></a>cats[, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>[90m# A tibble: 3 x 1[39m
   coat  
   [3m[90m&lt;chr&gt;[39m[23m 
@@ -642,7 +646,7 @@ displays the label “calico” associated with the integer value.</p>
 <p>Like the previous example we use single braces and provide row and column
 coordinates. The row coordinate is not specified, R interprets this missing
 value as all the elements in this <em>column</em> <em>vector</em>.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="data-structures.html#cb197-1"></a>cats[<span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="data-structures.html#cb199-1"></a>cats[<span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code>[90m# A tibble: 1 x 3[39m
   coat   weight likes_string
   [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;lgl&gt;[39m[23m       
@@ -656,24 +660,24 @@ values in the first row.</p>
 <div id="matrices" class="section level2" number="5.7">
 <h2><span class="header-section-number">5.7</span> Matrices</h2>
 <p>Last but not least is the matrix. We can declare a matrix full of zeros:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="data-structures.html#cb199-1"></a>matrix_example &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">ncol=</span><span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</span>
-<span id="cb199-2"><a href="data-structures.html#cb199-2"></a>matrix_example</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="data-structures.html#cb201-1"></a>matrix_example &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">ncol=</span><span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</span>
+<span id="cb201-2"><a href="data-structures.html#cb201-2"></a>matrix_example</span></code></pre></div>
 <pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]    0    0    0    0    0    0
 [2,]    0    0    0    0    0    0
 [3,]    0    0    0    0    0    0</code></pre>
 <p>And similar to other data structures, we can ask things about our matrix:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="data-structures.html#cb201-1"></a><span class="kw">class</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="data-structures.html#cb203-1"></a><span class="kw">class</span>(matrix_example)</span></code></pre></div>
 <pre><code>[1] &quot;matrix&quot;</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="data-structures.html#cb203-1"></a><span class="kw">typeof</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="data-structures.html#cb205-1"></a><span class="kw">typeof</span>(matrix_example)</span></code></pre></div>
 <pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="data-structures.html#cb205-1"></a><span class="kw">str</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="data-structures.html#cb207-1"></a><span class="kw">str</span>(matrix_example)</span></code></pre></div>
 <pre><code> num [1:3, 1:6] 0 0 0 0 0 0 0 0 0 0 ...</code></pre>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="data-structures.html#cb207-1"></a><span class="kw">dim</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="data-structures.html#cb209-1"></a><span class="kw">dim</span>(matrix_example)</span></code></pre></div>
 <pre><code>[1] 3 6</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="data-structures.html#cb209-1"></a><span class="kw">nrow</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="data-structures.html#cb211-1"></a><span class="kw">nrow</span>(matrix_example)</span></code></pre></div>
 <pre><code>[1] 3</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="data-structures.html#cb211-1"></a><span class="kw">ncol</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="data-structures.html#cb213-1"></a><span class="kw">ncol</span>(matrix_example)</span></code></pre></div>
 <pre><code>[1] 6</code></pre>
 <blockquote>
 <h2 id="challenge-4-1">Challenge 4</h2>
@@ -685,8 +689,8 @@ Were you right? Why / why not?</p>
 <h2 id="solution-to-challenge-4-1">Solution to Challenge 4</h2>
 <p>What do you think will be the result of
 <code>length(matrix_example)</code>?</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="data-structures.html#cb213-1"></a>matrix_example &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">ncol=</span><span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</span>
-<span id="cb213-2"><a href="data-structures.html#cb213-2"></a><span class="kw">length</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="data-structures.html#cb215-1"></a>matrix_example &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">ncol=</span><span class="dv">6</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</span>
+<span id="cb215-2"><a href="data-structures.html#cb215-2"></a><span class="kw">length</span>(matrix_example)</span></code></pre></div>
 <pre><code>[1] 18</code></pre>
 <p>Because a matrix is a vector with added dimension attributes, <code>length</code>
 gives you the total number of elements in the matrix.</p>
@@ -708,8 +712,8 @@ Did the <code>matrix</code> function fill your matrix by column, or by
 row, as its default behaviour?
 See if you can figure out how to change this.
 (hint: read the documentation for <code>matrix</code>!)</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="data-structures.html#cb215-1"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">10</span>)</span>
-<span id="cb215-2"><a href="data-structures.html#cb215-2"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">10</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>) <span class="co"># to fill by row</span></span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="data-structures.html#cb217-1"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">10</span>)</span>
+<span id="cb217-2"><a href="data-structures.html#cb217-2"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">10</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>) <span class="co"># to fill by row</span></span></code></pre></div>
 </blockquote>
 </blockquote>
 <blockquote>
@@ -723,9 +727,9 @@ See if you can figure out how to change this.
 structures we’ve seen so far.</p>
 <blockquote>
 <h2 id="solution-to-challenge-6">Solution to Challenge 6</h2>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="data-structures.html#cb216-1"></a>dataTypes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;double&#39;</span>, <span class="st">&#39;complex&#39;</span>, <span class="st">&#39;integer&#39;</span>, <span class="st">&#39;character&#39;</span>, <span class="st">&#39;logical&#39;</span>)</span>
-<span id="cb216-2"><a href="data-structures.html#cb216-2"></a>dataStructures &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;data.frame&#39;</span>, <span class="st">&#39;vector&#39;</span>, <span class="st">&#39;factor&#39;</span>, <span class="st">&#39;list&#39;</span>, <span class="st">&#39;matrix&#39;</span>)</span>
-<span id="cb216-3"><a href="data-structures.html#cb216-3"></a>answer &lt;-<span class="st"> </span><span class="kw">list</span>(dataTypes, dataStructures)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="data-structures.html#cb218-1"></a>dataTypes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;double&#39;</span>, <span class="st">&#39;complex&#39;</span>, <span class="st">&#39;integer&#39;</span>, <span class="st">&#39;character&#39;</span>, <span class="st">&#39;logical&#39;</span>)</span>
+<span id="cb218-2"><a href="data-structures.html#cb218-2"></a>dataStructures &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;data.frame&#39;</span>, <span class="st">&#39;vector&#39;</span>, <span class="st">&#39;factor&#39;</span>, <span class="st">&#39;list&#39;</span>, <span class="st">&#39;matrix&#39;</span>)</span>
+<span id="cb218-3"><a href="data-structures.html#cb218-3"></a>answer &lt;-<span class="st"> </span><span class="kw">list</span>(dataTypes, dataStructures)</span></code></pre></div>
 <p>Note: it’s nice to make a list in big writing on the board or taped to the wall
 listing all of these types and structures - leave it up for the rest of the workshop
 to remind people of the importance of these basics.</p>
@@ -757,7 +761,7 @@ Think about what matrices the other commands will produce.</p>
 <p>What was the correct command used to write this matrix? Examine
 each command and try to figure out the correct one before typing them.
 Think about what matrices the other commands will produce.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="data-structures.html#cb219-1"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">7</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="data-structures.html#cb221-1"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">7</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 </blockquote>
 </blockquote>
 

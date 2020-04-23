@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-04-22" />
+<meta name="date" content="2020-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,8 +265,8 @@ expressed from the same set of components: a <strong>data</strong> set, a
 This idea may be familiar to you if you have used image editing programs like Photoshop, Illustrator, or
 Inkscape.</p>
 <p>Let’s start off by loading our gapminder data:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb284-1"></a><span class="kw">library</span>(readr)</span>
-<span id="cb284-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb284-2"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb286-1"></a><span class="kw">library</span>(readr)</span>
+<span id="cb286-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb286-2"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
   country = [31mcol_character()[39m,
@@ -276,7 +276,7 @@ cols(
   lifeExp = [32mcol_double()[39m,
   gdpPercap = [32mcol_double()[39m
 )</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb286-1"></a>gapminder</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb288-1"></a>gapminder</span></code></pre></div>
 <pre><code>[90m# A tibble: 1,704 x 6[39m
    country      year      pop continent lifeExp gdpPercap
    [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
@@ -292,10 +292,10 @@ cols(
 [90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
 [90m# … with 1,694 more rows[39m</code></pre>
 <p>And jump right into in me making an example ggplot2 plot:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb288-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
-<span id="cb288-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb288-2"></a><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb288-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb288-3"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb288-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb288-4"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb290-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
+<span id="cb290-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb290-2"></a><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb290-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb290-3"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb290-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb290-4"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>So the first thing we do is call the <code>ggplot</code> function. This function lets R
 know that we’re creating a new plot, and any of the arguments we give the
@@ -311,27 +311,27 @@ the “lifeExp” column on the y-axis. Notice that we didn’t need to explicit
 pass <code>aes</code> these columns (e.g. <code>x = gapminder[, "gdpPercap"]</code>), this is because
 <code>ggplot</code> is smart enough to know to look in the <strong>data</strong> for that column!</p>
 <p>By itself, the call to <code>ggplot</code> isn’t enough to draw a figure:</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb289-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp))</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb291-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp))</span></code></pre></div>
 <p><img src="fig/rmd-08-no-geom-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>We need to tell <code>ggplot</code> how we want to visually represent the data, which we
 do by adding a new <strong>geom</strong> layer. In our example, we used <code>geom_point</code>, which
 tells <code>ggplot</code> we want to visually represent the relationship between <strong>x</strong> and
 <strong>y</strong> as a scatterplot of points:</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb290-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb290-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb290-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb292-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb292-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb292-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p><em>Recap</em>: Every ggplot2 plot has three key components: (1) data, (2) set of aesthetic mappings between variables in the data and visual properties on the plot, and (3) at least one layer, created with a geom function.</p>
 <blockquote>
 <h2 id="challenge-1-4">Challenge 1</h2>
 <p>Modify the example so that the figure shows how life expectancy has
 changed over time:</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb291-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb293-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p>Hint: the gapminder dataset has a column called “year”, which should appear
 on the x-axis.</p>
 <blockquote>
 <h2 id="solution-to-challenge-1-2">Solution to challenge 1</h2>
 <p>Here is one possible solution:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb292-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb294-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-ch1-sol-1.png" width="816" style="display: block; margin: auto;" /></p>
 </blockquote>
 </blockquote>
@@ -349,8 +349,8 @@ the scatterplot <strong>geom</strong> about the <strong>x</strong> and <strong>y
 Another <em>aesthetic</em> property we can modify is the point <em>colour</em>. Modify the
 code from the previous challenge to <strong>colour</strong> the points by the “continent”
 column. What trends do you see in the data? Are they what you expected?</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb293-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
-<span id="cb293-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb293-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb295-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
+<span id="cb295-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb295-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-ch2-sol-1.png" width="816" style="display: block; margin: auto;" /></p>
 </blockquote>
 </blockquote>
@@ -358,22 +358,22 @@ column. What trends do you see in the data? Are they what you expected?</p>
 <h2><span class="header-section-number">7.1</span> Layers</h2>
 <p>Using a scatterplot probably isn’t the best for visualizing change over time.
 Instead, let’s tell <code>ggplot</code> to visualize the data as a line plot:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb294-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
-<span id="cb294-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb294-2"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb296-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
+<span id="cb296-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb296-2"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-lifeExp-line-no-group-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>Instead of adding a <code>geom_point</code> layer, we’ve added a <code>geom_line</code> layer, however it looks like the lines are connecting the wrong points? We need to add the <strong>group</strong> <em>aesthetic</em>, which tells <code>ggplot</code> to draw a line for each country.</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb295-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent, <span class="dt">group =</span> country)) <span class="op">+</span></span>
-<span id="cb295-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb295-2"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb297-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent, <span class="dt">group =</span> country)) <span class="op">+</span></span>
+<span id="cb297-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb297-2"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-lifeExp-line-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>What if we want to visualize both lines and points on the plot? We can simply add another layer to the plot:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb296-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent, <span class="dt">group =</span> country)) <span class="op">+</span></span>
-<span id="cb296-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb296-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb298-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent, <span class="dt">group =</span> country)) <span class="op">+</span></span>
+<span id="cb298-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb298-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-lifeExp-line-point-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>It’s important to note that each layer is drawn on top of the previous layer. In
 this example, the points have been drawn <em>on top of</em> the lines. Here’s a
 demonstration:</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb297-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">group =</span> country)) <span class="op">+</span></span>
-<span id="cb297-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb297-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">colour =</span> continent)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb299-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">group =</span> country)) <span class="op">+</span></span>
+<span id="cb299-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb299-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">colour =</span> continent)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-lifeExp-layer-example-1-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>In this example, the <em>aesthetic</em> mapping of <strong>colour</strong> has been moved from the
 global plot options in <code>ggplot</code> to the <code>geom_line</code> layer so it no longer applies
@@ -383,8 +383,8 @@ lines.</p>
 <h2 id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip: Setting an aesthetic to a value instead of a mapping</h2>
 <p>So far, we’ve seen how to use an aesthetic (such as <strong>colour</strong>) as a <em>mapping</em> to a variable in the data. For example, when we use <code>geom_line(mapping = aes(colour = continent))</code>, ggplot will give a different colour to each continent. But what if we want to change the colour of all lines to blue? You may think that <code>geom_line(mapping = aes(colour = "blue"))</code> should work, but it doesn’t. Since we don’t want to create a mapping to a specific variable, we simply move the colour specification outside of the <code>aes()</code> function, like this: <code>geom_line(colour = "blue")</code>.</p>
 </blockquote>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb298-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">group =</span> country)) <span class="op">+</span></span>
-<span id="cb298-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb298-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb300-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">group =</span> country)) <span class="op">+</span></span>
+<span id="cb300-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb300-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-example-colour-all-1.png" width="816" style="display: block; margin: auto;" /></p>
 <blockquote>
 <h2 id="challenge-3-4">Challenge 3</h2>
@@ -394,8 +394,8 @@ happened?</p>
 <h2 id="solution-to-challenge-3-4">Solution to challenge 3</h2>
 <p>Switch the order of the point and line layers from the previous example. What
 happened?</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb299-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">group =</span> country)) <span class="op">+</span></span>
-<span id="cb299-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb299-2"></a><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">colour =</span> continent))</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb301-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">group =</span> country)) <span class="op">+</span></span>
+<span id="cb301-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb301-2"></a><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">colour =</span> continent))</span></code></pre></div>
 <p><img src="fig/rmd-08-ch3-sol-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>The lines now get drawn over the points!</p>
 </blockquote>
@@ -405,8 +405,8 @@ happened?</p>
 <h2><span class="header-section-number">7.2</span> Transformations and statistics</h2>
 <p>ggplot2 also makes it easy to overlay statistical models over the data. To
 demonstrate we’ll go back to our first example:</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb300-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb300-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb300-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb302-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb302-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb302-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-lifeExp-vs-gdpPercap-scatter3-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>Currently it’s hard to see the relationship between the points due to some strong
 outliers in GDP per capita. We can change the scale of units on the x axis using
@@ -414,8 +414,8 @@ the <em>scale</em> functions. These control the mapping between the data values 
 visual values of an aesthetic. We can also modify the transparency of the
 points, using the <em>alpha</em> function, which is especially helpful when you have
 a large amount of data which is very clustered.</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb301-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb301-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb301-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb303-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb303-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb303-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>()</span></code></pre></div>
 <p><img src="fig/rmd-08-axis-scale-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>The <code>log10</code> function applied a transformation to the values of the gdpPercap
 column before rendering them on the plot, so that each multiple of 10 now only
@@ -428,14 +428,14 @@ x-axis.</p>
 <p>Notice that we used <code>geom_point(alpha = 0.5)</code>. As the previous tip mentioned, using a setting outside of the <code>aes()</code> function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, <em>alpha</em> can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with <code>geom_point(mapping = aes(alpha = continent))</code>.</p>
 </blockquote>
 <p>We can fit a simple relationship to the data by adding another layer, <code>geom_smooth</code>:</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb302-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb302-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb302-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb304-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb304-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb304-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="fig/rmd-08-lm-fit-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>We can make the line thicker by <em>setting</em> the <strong>size</strong> aesthetic in the
 <code>geom_smooth</code> layer:</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb304-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb304-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb304-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb306-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb306-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb306-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
 <pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="fig/rmd-08-lm-fit2-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>There are two ways an <em>aesthetic</em> can be specified. Here we <em>set</em> the <strong>size</strong>
@@ -452,9 +452,9 @@ example.</p>
 <p>Modify the colour and size of the points on the point layer in the previous
 example.</p>
 <p>Hint: do not use the <code>aes</code> function.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb306-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb306-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb306-2"></a><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">colour =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></span>
-<span id="cb306-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb306-3"></a><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb308-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb308-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb308-2"></a><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">colour =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></span>
+<span id="cb308-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb308-3"></a><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
 <pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="fig/rmd-08-ch4a-sol-1.png" width="816" style="display: block; margin: auto;" /></p>
 </blockquote>
@@ -469,9 +469,9 @@ trendlines. Hint: The colour argument can be used inside the aesthetic.</p>
 <p>Modify Challenge 4 so that the points are now a different shape and are
 coloured by continent with new trendlines.</p>
 <p>Hint: The colour argument can be used inside the aesthetic.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb308-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
-<span id="cb308-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb308-2"></a><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">shape =</span> <span class="dv">17</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></span>
-<span id="cb308-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb308-3"></a><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
+<span id="cb310-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-2"></a><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">shape =</span> <span class="dv">17</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></span>
+<span id="cb310-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-3"></a><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
 <pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="fig/rmd-08-ch4b-sol-1.png" width="816" style="display: block; margin: auto;" /></p>
 </blockquote>
@@ -487,14 +487,14 @@ by adding a layer of <strong>facet</strong> panels.</p>
 <p>We start by making a subset of data including only countries located
 in the Americas.</p>
 </blockquote>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-1"></a>asia_oceania &lt;-<span class="st"> </span>gapminder[gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Asia&quot;</span>, <span class="st">&quot;Oceania&quot;</span>),]</span>
-<span id="cb310-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-2"></a></span>
-<span id="cb310-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-3"></a><span class="co"># library(dplyr)</span></span>
-<span id="cb310-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-4"></a><span class="co"># asia_oceania &lt;- filter(gapminder, continent %in% c(&quot;Asia&quot;, &quot;Oceania&quot;))</span></span>
-<span id="cb310-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-5"></a></span>
-<span id="cb310-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-6"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb310-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-7"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb310-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-8"></a><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-1"></a>asia_oceania &lt;-<span class="st"> </span>gapminder[gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Asia&quot;</span>, <span class="st">&quot;Oceania&quot;</span>),]</span>
+<span id="cb312-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-2"></a></span>
+<span id="cb312-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-3"></a><span class="co"># library(dplyr)</span></span>
+<span id="cb312-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-4"></a><span class="co"># asia_oceania &lt;- filter(gapminder, continent %in% c(&quot;Asia&quot;, &quot;Oceania&quot;))</span></span>
+<span id="cb312-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-5"></a></span>
+<span id="cb312-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-6"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb312-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-7"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb312-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-8"></a><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country)</span></code></pre></div>
 <p><img src="fig/rmd-08-facet-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>The <code>facet_wrap</code> layer took a “formula” as its argument, denoted by the tilde
 (~). This tells R to draw a panel for each unique value in the country column
@@ -511,16 +511,16 @@ title and any legend can be set using the <code>labs</code> function. Legend tit
 are set using the same names we used in the <code>aes</code> specification. Thus below
 the colour legend title is set using <code>colour = "Continent"</code>, while the title
 of a fill legend would be set using <code>fill = "MyTitle"</code>.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
-<span id="cb311-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country) <span class="op">+</span></span>
-<span id="cb311-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-3"></a><span class="st">  </span><span class="kw">labs</span>(</span>
-<span id="cb311-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-4"></a>    <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,              <span class="co"># x axis title</span></span>
-<span id="cb311-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-5"></a>    <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>,   <span class="co"># y axis title</span></span>
-<span id="cb311-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-6"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
-<span id="cb311-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-7"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
-<span id="cb311-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-8"></a>  ) <span class="op">+</span></span>
-<span id="cb311-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),</span>
-<span id="cb311-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-10"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
+<span id="cb313-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country) <span class="op">+</span></span>
+<span id="cb313-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-3"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb313-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-4"></a>    <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,              <span class="co"># x axis title</span></span>
+<span id="cb313-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-5"></a>    <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>,   <span class="co"># y axis title</span></span>
+<span id="cb313-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-6"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
+<span id="cb313-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-7"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
+<span id="cb313-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-8"></a>  ) <span class="op">+</span></span>
+<span id="cb313-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb313-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-10"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
 <p><img src="fig/rmd-08-theme-1.png" width="816" style="display: block; margin: auto;" /></p>
 <blockquote>
 <h2 id="tip-1">Tip</h2>
@@ -532,20 +532,20 @@ ggplot2 is customizable.</p>
 <div id="exporting-the-plot" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> Exporting the plot</h2>
 <p>The <code>ggsave()</code> function allows you to export a plot created with ggplot. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (<code>width</code>, <code>height</code> and <code>dpi</code>) to create high quality graphics for publication. In order to save the plot from above, we first assign it to a variable <code>lifeExp_plot</code>, then tell <code>ggsave</code> to save that plot in <code>png</code> format to a directory called <code>results</code>. (Make sure you have a <code>results/</code> folder in your working directory.)</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-1"></a>lifeExp_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
-<span id="cb312-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country) <span class="op">+</span></span>
-<span id="cb312-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-3"></a><span class="st">  </span><span class="kw">labs</span>(</span>
-<span id="cb312-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-4"></a>    <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,              <span class="co"># x axis title</span></span>
-<span id="cb312-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-5"></a>    <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>,   <span class="co"># y axis title</span></span>
-<span id="cb312-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-6"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
-<span id="cb312-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-7"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
-<span id="cb312-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-8"></a>  ) <span class="op">+</span></span>
-<span id="cb312-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),</span>
-<span id="cb312-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-10"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
-<span id="cb312-11"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-11"></a></span>
-<span id="cb312-12"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-12"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;results/lifeExp.png&quot;</span>, <span class="dt">plot =</span> lifeExp_plot, <span class="dt">width =</span> <span class="dv">18</span>, <span class="dt">height =</span> <span class="dv">16</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)</span>
-<span id="cb312-13"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-13"></a></span>
-<span id="cb312-14"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-14"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;results/lifeExp_widetv.png&quot;</span>, <span class="dt">plot =</span> lifeExp_plot, <span class="dt">width =</span> <span class="fl">13.33</span>, <span class="dt">height =</span>  <span class="fl">7.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-1"></a>lifeExp_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
+<span id="cb314-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country) <span class="op">+</span></span>
+<span id="cb314-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-3"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb314-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-4"></a>    <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,              <span class="co"># x axis title</span></span>
+<span id="cb314-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-5"></a>    <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>,   <span class="co"># y axis title</span></span>
+<span id="cb314-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-6"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
+<span id="cb314-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-7"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
+<span id="cb314-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-8"></a>  ) <span class="op">+</span></span>
+<span id="cb314-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-9"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb314-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-10"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb314-11"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-11"></a></span>
+<span id="cb314-12"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-12"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;results/lifeExp.png&quot;</span>, <span class="dt">plot =</span> lifeExp_plot, <span class="dt">width =</span> <span class="dv">18</span>, <span class="dt">height =</span> <span class="dv">16</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)</span>
+<span id="cb314-13"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-13"></a></span>
+<span id="cb314-14"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-14"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;results/lifeExp_widetv.png&quot;</span>, <span class="dt">plot =</span> lifeExp_plot, <span class="dt">width =</span> <span class="fl">13.33</span>, <span class="dt">height =</span>  <span class="fl">7.5</span>)</span></code></pre></div>
 <p>There are two nice things about <code>ggsave</code>. First, it defaults to the last plot, so if you omit the <code>plot</code> argument it will automatically save the last plot you created with <code>ggplot</code>. Secondly, it tries to determine the format you want to save your plot in from the file extension you provide for the filename (for example <code>.png</code> or <code>.pdf</code>). If you need to, you can specify the format explicitly in the <code>device</code> argument.</p>
 <p>This is a taste of what you can do with ggplot2. RStudio provides a
 really useful <a href="http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">cheat sheet</a> of the different layers available, and more
