@@ -55,7 +55,7 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
 
-Open command prompt (Open Start Menu then type `cmd` and press [Enter]). Make sure your command prompt opens at the C directory e.g. ```C:|>```. If it opens in another directory you can change this by typing ```C:```.  
+Open command prompt (Open Start Menu then type `cmd` and press [Enter]). Make sure your command prompt opens at the C directory e.g. ```C:\>```. If it opens in another directory you can change this by typing ```C:```.  
 
 Type the following line into the command prompt window exactly as shown:
 
@@ -587,15 +587,13 @@ R and RStudio have functionality for managing packages:
 
 > ## Challenge 5
 >
-> Install the following packages: `ggplot2`, `plyr`, `gapminder`
+> Install the following packages: `ggplot2`, `dplyr`
 >
 > > ## Solution to challenge 5
 > >
 > > We can use the `install.packages()` command to install the required packages.
 > > ```{r ch5-sol, eval=FALSE}
 > > install.packages("ggplot2")
-> > install.packages("plyr")
-> > install.packages("gapminder")
+> > install.packages("dplyr")
 > >```
-
 
