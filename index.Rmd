@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Data Science using R Workshop"
-author: "Sam Albers, Stephanie Hazlitt & Andy Teucher"
+author: "Sam Albers, Stephanie Hazlitt, Genevieve Perkins & Andy Teucher"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
