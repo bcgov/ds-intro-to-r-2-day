@@ -23,5 +23,6 @@ R scripts:
 
 Rmarkdown documents:
 
+-   `10_rmarkdown_intro_pt2.Rmd`
 -   `11_rmarkdown_pt1.Rmd`
 -   `12_rmarkdown_pt2.Rmd`
