@@ -26,10 +26,21 @@ jobs:
       - name: Build site
         run: R -e 'bookdown::render_book("index.Rmd")'
 
-      - name: commit
+      - name: commit bookdown
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git add docs
             git commit -m 'build gitbook'
+            git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
+          fi
+
+      - name: Make course zip
+        run: Rscript make_course_zip.R
+
+      - name: commit course zip
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add intro-r-May2020/README.md intro-r-May2020.zip
+            git commit -m 'make course zipfile'
             git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
           fi
