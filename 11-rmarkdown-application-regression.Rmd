@@ -1,0 +1,18 @@
+---
+title: "Further Application of Rmarkdown"
+teaching: 30
+exercises: 15
+questions:
+- "How can I use Rmarkdown to integrate analysis results in my report?"
+objectives:
+- "Introduction to regression with lm()"
+- "Demonstrate how to add a regression line and statistics to a ggplot"
+- "Introduction to the `broom` package for 'tidying' statistical results"
+- "Demonstrate how to include statistcal results to a reproducible document"
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("bin/chunk-options.R")
+knitr_fig_path("10-")
+```
