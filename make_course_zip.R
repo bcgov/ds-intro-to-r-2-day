@@ -1,12 +1,13 @@
-course <- "intro-r-May2020"
+local({
+  course <- "intro-r-May2020"
+  orig_wd <- setwd(course)
+  on.exit(setwd(orig_wd))
 
-rmarkdown::render(file.path(course, "README.Rmd"))
+  rmarkdown::render("README.Rmd")
 
-files <- file.path(
-  course, setdiff(list.files(course, recursive = TRUE,
-                             include.dirs = TRUE), "README.Rmd")
-)
+  files <- setdiff(list.files(recursive = TRUE, include.dirs = TRUE), "README.Rmd")
 
-zipfile <- paste0(course, ".zip")
-if (file.exists(zipfile)) unlink(zipfile)
-zip(zipfile, files)
+  zipfile <- file.path(orig_wd, paste0(course, ".zip"))
+  if (file.exists(zipfile)) unlink(zipfile)
+  zip(zipfile, files)
+})
