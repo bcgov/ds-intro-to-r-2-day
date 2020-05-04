@@ -307,7 +307,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_gdp_billion = sd(gdp_billion))
 ```
 
-## Connect mutate with logical filtering: ifelse
+## Connect mutate with logical groupings: ifelse
 
 When creating new variables, we can hook this with a logical condition. A simple combination of
 `mutate()` and `ifelse()` facilitates filtering right where it is needed: in the moment of creating something new.

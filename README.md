@@ -22,7 +22,7 @@ The goal of this 2-day workshop is to teach _new-to-programming_ data profession
 | Break      | 14:30      | 14:50    |
 | Session #4 | 14:50      | 16:30    |
 
-Please see: https://bcgov.github.io/ds-cop-intro-to-r-2-day/
+Please see: https://bcgov.github.io/ds-intro-to-r-2-day/
 
 ### Day 1
 
