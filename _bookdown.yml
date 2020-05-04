@@ -12,8 +12,8 @@ rmd_files:
     - "06-plot-ggplot2.Rmd"
     - "07-dplyr.Rmd"
     - "08-tidyr.Rmd"
-    - "09-intro-to-rmarkdown-part1.Rmd"
-    - "10-intro-to-rmarkdown-part2.Rmd"
+    - "09-intro-to-bcdata"
+    - "10-intro-to-rmarkdown"
     - "11-reprex.Rmd"
 clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true

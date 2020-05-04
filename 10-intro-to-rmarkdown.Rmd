@@ -1,7 +1,7 @@
 ---
-title: Producing Reports With knitr Part 1
-teaching: 30
-exercises: 15
+title: Producing Reports With knitr
+teaching: 60
+exercises: 30
 questions:
 - "How can I integrate software and reports?"
 objectives:
@@ -16,7 +16,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
-knitr_fig_path("09-")
+knitr_fig_path("10-")
 ```
 
 
@@ -267,7 +267,7 @@ The main code chunks look like this:
 
 <pre>
 &#96;&#96;&#96;{r load_data}
-gapminder <- read.csv("gapminder.csv")
+gapminder <- read_csv("data/gapminder_data.csv")
 &#96;&#96;&#96;
 </pre>
 
@@ -277,7 +277,7 @@ a unique name, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
 produced them.
 
-> ## Challenge 2
+> ## Challenge 3
 >
 > Add code chunks to:
 >
@@ -285,30 +285,327 @@ produced them.
 > * Read the gapminder data
 > * Create a plot
 > 
-> > ## Solution to Challenge 2
+> > ## Solution to Challenge 3
 > > 
 > > <pre>
 > > &#96;&#96;&#96;{r load-ggplot2}
+> > library("readr")
 > > library("ggplot2")
 > > &#96;&#96;&#96;
 > > </pre>
 > > 
 > > <pre>
 > > &#96;&#96;&#96;{r read-gapminder-data}
-> > gapminder <- read.csv("gapminder.csv")
+> > gapminder <- read_csv("data/gapminder_data.csv")
 > > &#96;&#96;&#96;
 > > </pre>
 > > 
 > > <pre>
 > > &#96;&#96;&#96;{r make-plot}
-> > plot(lifeExp ~ year, data = gapminder)
+> > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
 > > &#96;&#96;&#96;
 > > </pre>
 > > 
 
 
 
- Resources
+## How Rmarkdown gets compiled
+
+
+When you press the "Knit" button [`knitr`](http://yihui.name/knitr) will process your R Markdown file to create a plain Markdown document (along with a set of figure files if needed).
+
+
+If we specified our output to be a html file, the Markdown file (and figure documents) is then converted to a html file using a tool called [`pandoc`](http://pandoc.org/). Different output file types require different tool for conversion. This will be dicussed below. 
+
+
+```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE}
+par(mar=rep(0, 4), bty="n", cex=1.5)
+plot(0, 0, type="n", xlab="", ylab="", xaxt="n", yaxt="n",
+     xlim=c(0, 100), ylim=c(0, 100))
+xw <- 10
+yh <- 35
+xm <- 12
+ym <- 50
+rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+text(xm, ym, ".Rmd")
+
+xm <- 50
+ym <- 80
+rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+text(xm, ym, ".md")
+xm <- 50; ym <- 25
+for(i in c(2, 0, -2))
+    rect(xm-xw/2+i, ym-yh/2+i, xm+xw/2+i, ym+yh/2+i, lwd=2,
+         border="black", col="white")
+text(xm-2, ym-2, "figs/")
+
+xm <- 100-12
+ym <- 50
+rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
+text(xm, ym, ".html")
+
+arrows(22, 50, 38, 50, lwd=2, col="slateblue", len=0.1)
+text((22+38)/2, 60, "knitr", col="darkslateblue", cex=1.3)
+
+arrows(62, 50, 78, 50, lwd=2, col="slateblue", len=0.1)
+text((62+78)/2, 60, "pandoc", col="darkslateblue", cex=1.3)
+```
+
+Different output file types require different tool for conversion. This will be dicussed below. 
+
+## Chunk options
+ 
+As we saw above, code chunks are a very important part of using Rmarkdown. We will now explore some of the options for controlling how these will show up in our document. 
+
+Firstly we need name our code chunk name. By default all code chunks are blank. ie: 
+
+<pre>
+&#96;&#96;&#96;{r}
+&#96;&#96;&#96;
+</pre>
+
+
+It is recomended to use a descriptive name such as'load_data' or 'read_libraries'. This will help you break up your code chunks and ensure each chunk has a unique name.  
+
+<pre>
+&#96;&#96;&#96;{r load_libraries}
+library("dplyr")
+library("ggplot2")
+&#96;&#96;&#96;
+</pre>
+
+
+We can control how the code and the resulting outputs are shown in the final output by changing the code chunk options which follow the title. For example: 
+
+<pre>
+&#96;&#96;&#96;{r load_libraries, eval = FALSE, echo = TRUE}
+library("dplyr")
+library("ggplot2")
+&#96;&#96;&#96;
+</pre>
+
+
+There are many different options you can adjust. More details can be found on the Rmarkdown cheatsheet or [here](https://yihui.org/knitr/options/#code-evaluation). 
+ 
+The ones you need to know first are: 
+
+- `cache`: TRUE/FALSE. Do you want the output of the chunk saved so you dont have to run it next time?
+- `eval`: Do you want to code to be evaluated?
+- `echo`: Do you want to print the code? 
+- `include`: Do you want to include the code in the output document? 
+- `warning=FALSE` and `message=FALSE` : Do you want to hide any warnings or messages? 
+- `fig.height` and `fig.width` : Do you want to set figures sizes (inches)?
+
+
+> Tips: Finding help with chunk options
+> You can review all of the `R` chunk options by navigating to
+> the "R Markdown Cheat Sheet" under the "Cheatsheets" section 
+> of the "Help" field in the toolbar at the top of RStudio.
+>
+
+
+
+Lets create a code chunk. Firstly add a name `addup` and set the `eval` parameter to `TRUE`. 
+
+<pre>
+&#96;&#96;&#96;{r addup, eval = TRUE}
+1 + 1
+&#96;&#96;&#96;
+</pre>
+
+When we knit the document we can see both the code and the result: 
+
+```{r adds, eval = TRUE}
+
+1 + 1 
+
+```
+
+
+If we dont want the code to appear in the output we can use the  `echo` parameters.
+
+<pre>
+&#96;&#96;&#96;{r addup, eval = TRUE, echo = FALSE}
+1 + 1
+&#96;&#96;&#96;
+</pre>
+
+When knit the document will now only show the result and will hide the code.
+
+```{r addup, eval = TRUE, echo = FALSE}
+1 + 1 
+```
+
+### Global options
+
+Often there will be particular options that you'll want to use
+repeatedly; for this, you can set _global_ chunk options, like so:
+
+<pre>
+&#96;&#96;&#96;{r global_options, echo=FALSE}
+knitr::opts_chunk$set(fig.path="Figs/", 
+                      message=FALSE, 
+                      warning=FALSE,
+                      echo=FALSE, 
+                      results="hide", 
+                      fig.width=11)
+&#96;&#96;&#96;
+</pre>
+
+
+### Formatting figures 
+
+We can use paramaters to control the location and size of plots using `fig.height`,`fig.width`
+and `fig.align`. We can also use `fig.cap` to add a title. 
+
+
+We can use the **gapminder** dataset and `ggplot2`package to create and format a plot within RMarkdown. 
+
+<pre>
+&#96;&#96;&#96;{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap = "A nice descriptive title"}
+
+library(readr)
+library(ggplot2)
+
+gapminder <- read_csv("data/gapminder_data.csv")
+
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+  
+&#96;&#96;&#96;
+</pre>
+
+
+```{r plot1, eval = TRUE, echo = FALSE , message=FALSE, fig.cap = "A nice descriptive title", fig.width =5, fig.height = 5}
+library(readr)
+library(ggplot2)
+gapminder <- read_csv("data/gapminder_data.csv")
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+```
+
+
+
+> ## Challenge 4
+>
+> Generate a plot using the **gapminder** dataset and `ggplot2` package. Use the chunk options to control the size and alignment of the figure.
+> 
+> > ## Solution to Challenge 4
+> > 
+> > <pre>
+> > &#96;&#96;&#96;{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap= "Pretty Plot", fig.width = 5, fig.height = 5, fig.align = 'centre'}
+> > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+> > &#96;&#96;&#96;
+> > </pre>
+> > 
+> > ```{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap= "Pretty Plot", fig.width = 5,fig.height = 5, fig.align = 'centre'}
+> > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+> > ```
+> > 
+> 
+
+## Inline R code
+
+To make your document reproducible, you can also use r to populate values within a sentence. This will ensure values are automatically updated. We can use <code>&#96;r</code> and <code>&#96;</code> to designate in-line code. 
+For example: <code>&#96;r round( value, 2)&#96;</code>. The code will be
+executed and replaced with the evaluated _value_ as the result.
+
+
+For example: 
+ <code>&#96;r round(3.141593, 2)&#96;</code> will show as 
+ ``` `r round(3.141593, 2)` ```
+ 
+This is useful when incorporating data or calculations directly into a sentence: 
+ 
+<code> The ratio of a circle's circumference to its diameter is &#96;r round(3.141593, 2) &#96;</code>.
+
+This will appear as: 
+  
+``` The ratio of a circle'scircumference to its diameter is `r round(3.141593, 2)` ```
+ 
+ 
+We can also do calculations on the fly within our inline code. For example we can calculate the number of instructors and populate a sentence. Firstly lets use `length()` to determine the number of instructors: 
+
+<code>&#96; r length(c("Andy", "Gen", "Sam", "Steph"))&#96; </code>
+
+when we run this in the R console we should get `4`.
+
+
+Now we can add this as in-line code by using <code>&#96;r</code> and <code>&#96;</code> : 
+
+<code> this course has &#96; r length(c("Andy", "Gen", "Sam", "Steph"))&#96; instructors </code>
+
+The rendered fomat will look like 
+
+``` this course has `r length(c("Sam", "Steph", "Andy", "Gen"))` instructors ```
+
+
+> ## Challenge 4
+>
+> Try out a bit of in-line R code using a simple addition eg: 2+2. 
+> 
+> > ## Solution to Challenge 4
+> > 
+> > Here's some inline code to determine that 2 + 2 = `` `r 2+2` ``.
+> > 
+> 
+
+
+
+## Other outputs: Word, PDF and more...
+
+We can convert R Markdown to a PDF or a Word document. Click the
+little triangle next to the "Knit" button to get a drop-down
+menu.
+
+Alternatively ee can change the YAML: 
+
+```{r, eval = FALSE}
+---
+title: "Exploring RMarkdown"
+output: html_document
+---
+```
+
+```{r, eval = FALSE}
+---
+title: "Exploring RMarkdown"
+output: word_document
+---
+```
+
+```{r, eval = FALSE}
+---
+title: "Exploring RMarkdown"
+output: pdf_document
+---
+```
+
+
+### A note about Rmd outputs
+
+It can be easy to get caught up with how your document looks. It is highly recommended to render as html file and avoiding compiling to PDF or word until you really need to. This is also recommended by the author of rmarkdown and knitr, [Yihui Xie](https://yihui.org/en/2018/07/in-html-i-trust/). This means that you can spend time working on generating content, and not trying to get figures to line up correctly and wrestling with LaTex libraries. 
+
+
+
+> ## Tips: Creating PDF documents
+>
+> Markdown documents can be compiled to PDF, however it will likely you will require additional 
+> software called LaTex. This software can be tricky to install and it is reccommended to use  
+> [tinytex](https://yihui.org/tinytex/) as an alternative. This R package is a lightweight 
+> version of LaTex is designed for r users. You can install using the following commands: 
+>
+>```{r install tinytex, eval = FALSE}
+> tinytex::install_tinytex()
+>```
+> There is lots of information and help available - see [tinytex FQA page](https://yihui.org/tinytex/faq/)
+>
+
+
+## Resources
 
 * [Knitr in a knutshell tutorial](http://kbroman.org/knitr_knutshell)
 * [Dynamic Documents with R and knitr](http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20) (book)
@@ -319,3 +616,5 @@ produced them.
 * [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
 * [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 * [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
+
+
