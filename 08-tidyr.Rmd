@@ -38,7 +38,7 @@ applications may prefer the 'wide' format. However, many of `R`'s functions have
 been designed assuming you have 'long' format data. This tutorial will help you
 efficiently transform your data regardless of original format.
 
-![](fig/14-tidyr-fig1.png)
+![](fig/09-tidyr-fig1.png)
 
 These data formats mainly affect readability. For humans, the wide format is
 often more intuitive since we can often see more of the data on the screen due
