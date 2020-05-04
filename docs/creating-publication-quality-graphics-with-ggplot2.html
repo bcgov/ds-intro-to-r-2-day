@@ -281,28 +281,28 @@ Inkscape.</p>
 <span id="cb286-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb286-2"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )</code></pre>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb288-1"></a>gapminder</span></code></pre></div>
-<pre><code>[90m# A tibble: 1,704 x 6[39m
+<pre><code># A tibble: 1,704 x 6
    country      year      pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786.
-[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978.
-[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852.
-[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649.
-[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
-[90m# … with 1,694 more rows[39m</code></pre>
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Afghanistan  1977 14880372 Asia         38.4      786.
+ 7 Afghanistan  1982 12881816 Asia         39.9      978.
+ 8 Afghanistan  1987 13867957 Asia         40.8      852.
+ 9 Afghanistan  1992 16317921 Asia         41.7      649.
+10 Afghanistan  1997 22227415 Asia         41.8      635.
+# … with 1,694 more rows</code></pre>
 <p>And jump right into in me making an example ggplot2 plot:</p>
 <div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb290-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span>
 <span id="cb290-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb290-2"></a><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
