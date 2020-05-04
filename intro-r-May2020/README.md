@@ -4,11 +4,11 @@ workshop:
 
 Data:
 
--   `feline-data_v2.csv`
 -   `feline-data.csv`
+-   `feline-data_v2.csv`
+-   `gapminder-FiveYearData.csv`
 -   `gapminder_data.csv`
 -   `gapminder_wide.csv`
--   `gapminder-FiveYearData.csv`
 -   `inflammation.csv`
 -   `Owls.txt`
 
@@ -19,10 +19,8 @@ R scripts:
 -   `07_ggplot2.R`
 -   `08_dplyr.R`
 -   `09_tidyr.R`
--   `10_ggplot2_part2.R`
+-   `10_intro-to-bcdata.R`
 
 Rmarkdown documents:
 
--   `10_rmarkdown_intro_pt2.Rmd`
--   `11_rmarkdown_pt1.Rmd`
--   `12_rmarkdown_pt2.Rmd`
+-   `11_rmarkdown.Rmd`
