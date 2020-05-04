@@ -19,6 +19,8 @@ source("bin/chunk-options.R")
 knitr_fig_path("10-")
 ```
 
+# Data Analysis Reports Part 2
+
  How things get compiled
 
 When you press the "Knit" button [`knitr`](http://yihui.name/knitr) processes your R Markdown file to create a plain Markdown document (along with a set of figure files if needed).
