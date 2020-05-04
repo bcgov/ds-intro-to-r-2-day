@@ -9,7 +9,7 @@ github-repo: bcgov/ds-intro-to-r-2-day
 description: "This book contains materials for a 2 day Introduction to R workshop"
 ---
 
-# Preface
+# Preface {-}
 
 
 A repository to house materials for a 2-day course introducing participants to data science using [R](https://www.r-project.org/).
