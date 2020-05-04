@@ -13,6 +13,11 @@ keypoints:
 source: Rmd
 ---
 
+```{r, include=FALSE}
+source("bin/chunk-options.R")
+knitr_fig_path("11-")
+```
+
 # Seeking Help from Others with reprex
 
 If you're having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line:
