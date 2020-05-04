@@ -13,6 +13,13 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
-knitr_fig_path("8-")
+knitr_fig_path("09-")
+```
+
+
+# Introduction to bcdata package
+
+```{r}
+library(bcdata)
 ```
 

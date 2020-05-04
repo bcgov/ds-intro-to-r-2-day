@@ -13,6 +13,11 @@ keypoints:
 source: Rmd
 ---
 
+```{r, include=FALSE}
+source("bin/chunk-options.R")
+knitr_fig_path("11-")
+```
+
 # Seeking Help from Others with reprex
 
 If you're having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line:
@@ -24,7 +29,7 @@ If you're having trouble using a function or package, or getting the syntax corr
 If you can't find the answer on-line, there are some on-line forums to seek help from the bcgov R community:
 
 - [bcgov Yammer channels (e.g. R, Data Science CoP)](https://www.yammer.com/gov.bc.ca)
-- [bcgov RocketChat #rstats channel](https://developer.gov.bc.ca/Community-and-Events/Steps-to-join-Pathfinder-Rocket.Chat#1-how-to-register-for-rocketchat)
+
 
 
 ## Help People Help You - reprex

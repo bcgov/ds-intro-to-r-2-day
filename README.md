@@ -49,8 +49,7 @@ Please see: https://bcgov.github.io/ds-intro-to-r-2-day/
 - Data Manipulation with `dplyr` (60 minutes)  <!-- Sam -->
 - Data Manipulation with `tidyr` (30 minutes)  <!-- Sam -->
 - BREAK ☕
-- ggplot2 review (20 minutes)  <!-- Steph -->
-- Introduce `bcdata` and practice `ggplot2` and `dplyr` (40 minutes) <!-- Steph -->
+- Introduce `bcdata` and practice `ggplot2` and `dplyr` (60 minutes) <!-- Steph -->
 
 #### PM
 
@@ -73,7 +72,7 @@ https://github.com/swcarpentry/r-novice-gapminder,
 - _Instructors_: [Sam Albers](https://github.com/boshek), [Stephanie Hazlitt](https://github.com/stephhazlitt), [Genevieve Perkins](https://github.com/gcperk) & [Andy Teucher](https://github.com/ateucher)
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
 - _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
-- _Etherpad_: <https://pad.carpentries.org/ds-cop-intro-to-r>
+- _Etherpad_: <https://pad.carpentries.org/ds-intro-r-may2020>
 - _What we actually did on the day_: 
 
 

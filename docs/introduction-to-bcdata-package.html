@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Seeking Help in R | Seeking Help from Others with reprex</title>
+  <title>Chapter 9 Introduction to bcdata package | Seeking Help from Others with reprex</title>
   <meta name="description" content="This book contains materials for a 2 day Introduction to R workshop" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Seeking Help in R | Seeking Help from Others with reprex" />
+  <meta property="og:title" content="Chapter 9 Introduction to bcdata package | Seeking Help from Others with reprex" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="bcgov/ds-intro-to-r-2-day" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Seeking Help in R | Seeking Help from Others with reprex" />
+  <meta name="twitter:title" content="Chapter 9 Introduction to bcdata package | Seeking Help from Others with reprex" />
   
   <meta name="twitter:description" content="This book contains materials for a 2 day Introduction to R workshop" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction-to-r-and-rstudio.html"/>
-<link rel="next" href="project-management-with-rstudio.html"/>
+<link rel="prev" href="dataframe-manipulation-with-tidyr.html"/>
+<link rel="next" href="data-analysis-reports.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -272,135 +272,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="seeking-help-in-r" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Seeking Help in R</h1>
-<div id="reading-help-files" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Reading Help files</h2>
-<p>R, and every package, provide help files for functions. The general syntax to search for help on any
-function, “function_name”, from a specific function that is in a package loaded into your
-namespace (your interactive R session):</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="seeking-help-in-r.html#cb72-1"></a>?function_name</span>
-<span id="cb72-2"><a href="seeking-help-in-r.html#cb72-2"></a><span class="kw">help</span>(function_name)</span></code></pre></div>
-<p>This will load up a help page in RStudio (or as plain text in R by itself).</p>
-<p>Each help page is broken down into sections:</p>
-<ul>
-<li>Description: An extended description of what the function does.</li>
-<li>Usage: The arguments of the function and their default values.</li>
-<li>Arguments: An explanation of the data each argument is expecting.</li>
-<li>Details: Any important details to be aware of.</li>
-<li>Value: The data the function returns.</li>
-<li>See Also: Any related functions you might find useful.</li>
-<li>Examples: Some examples for how to use the function.</li>
-</ul>
-<p>Different functions might have different sections, but these are the main ones you should be aware of.</p>
-<blockquote>
-<h2 id="tip-running-examples">Tip: Running Examples</h2>
-<p>From within the function help page, you can highlight code in the
-Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in
-RStudio console. This is gives you a quick way to get a feel for
-how a function works.</p>
-</blockquote>
-<blockquote>
-<h2 id="tip-reading-help-files">Tip: Reading help files</h2>
-<p>One of the most daunting aspects of R is the large number of functions
-available. It would be prohibitive, if not impossible to remember the
-correct usage for every function you use. Luckily, the help files
-mean you don’t have to!</p>
-</blockquote>
-</div>
-<div id="special-operators" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Special Operators</h2>
-<p>To seek help on special operators, use quotes:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="seeking-help-in-r.html#cb73-1"></a>?<span class="st">&quot;&lt;-&quot;</span></span></code></pre></div>
-</div>
-<div id="getting-help-on-packages" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Getting help on packages</h2>
-<p>Many packages come with “vignettes”: tutorials and extended example documentation.
-Without any arguments, <code>vignette()</code> will list all vignettes for all installed packages;
-<code>vignette(package="package-name")</code> will list all available vignettes for
-<code>package-name</code>, and <code>vignette("vignette-name")</code> will open the specified vignette.</p>
-<p>If a package doesn’t have any vignettes, you can usually find help by typing
-<code>help("package-name")</code>.</p>
-</div>
-<div id="when-you-kind-of-remember-the-function" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> When you kind of remember the function</h2>
-<p>If you’re not sure what package a function is in, or how it’s specifically spelled you can do a fuzzy search:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="seeking-help-in-r.html#cb74-1"></a>??function_name</span></code></pre></div>
-</div>
-<div id="when-you-have-no-idea-where-to-begin" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> When you have no idea where to begin</h2>
-<p>If you don’t know what function or package you need to use
-<a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a>
-is a specially maintained list of packages grouped into
-fields. This can be a good starting point.</p>
-<blockquote>
-<h2 id="challenge-1-1">Challenge 1</h2>
-<p>Look at the help for the <code>sum</code> function. What are two ways you can pass numbers
-into the function so the are added together:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="seeking-help-in-r.html#cb75-1"></a>?sum</span>
-<span id="cb75-2"><a href="seeking-help-in-r.html#cb75-2"></a><span class="kw">sum</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb75-3"><a href="seeking-help-in-r.html#cb75-3"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb75-4"><a href="seeking-help-in-r.html#cb75-4"></a><span class="kw">sum</span>(x)</span></code></pre></div>
-</blockquote>
-<blockquote>
-<h2 id="challenge-2-1">Challenge 2</h2>
-<p>Look at the help for the <code>paste</code> function. You’ll need to use this later.
-What is the difference between the <code>sep</code> and <code>collapse</code> arguments?</p>
-<blockquote>
-<h2 id="solution-to-challenge-2-1">Solution to Challenge 2</h2>
-<p>To look at the help for the <code>paste()</code> function, use:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="seeking-help-in-r.html#cb76-1"></a><span class="kw">help</span>(<span class="st">&quot;paste&quot;</span>)</span>
-<span id="cb76-2"><a href="seeking-help-in-r.html#cb76-2"></a>?paste</span></code></pre></div>
-<p>The difference between <code>sep</code> and <code>collapse</code> is a little
-tricky. The <code>paste</code> function accepts any number of arguments, each of which
-can be a vector of any length. The <code>sep</code> argument specifies the string
-used between concatenated terms — by default, a space. The result is a
-vector as long as the longest argument supplied to <code>paste</code>. In contrast,
-<code>collapse</code> specifies that after concatenation the elements are <em>collapsed</em>
-together using the given separator, the result being a single string.
-e.g. </p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="seeking-help-in-r.html#cb77-1"></a><span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>), <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
-<pre><code>[1] &quot;a c&quot; &quot;b c&quot;</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="seeking-help-in-r.html#cb79-1"></a><span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>), <span class="st">&quot;c&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
-<pre><code>[1] &quot;a,c&quot; &quot;b,c&quot;</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="seeking-help-in-r.html#cb81-1"></a><span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>), <span class="st">&quot;c&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;|&quot;</span>)</span></code></pre></div>
-<pre><code>[1] &quot;a c|b c&quot;</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="seeking-help-in-r.html#cb83-1"></a><span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>), <span class="st">&quot;c&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;|&quot;</span>)</span></code></pre></div>
-<pre><code>[1] &quot;a,c|b,c&quot;</code></pre>
-<p>(For more information,
-scroll to the bottom of the <code>?paste</code> help page and look at the
-examples, or try <code>example('paste')</code>.)</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<h2 id="challenge-3-1">Challenge 3</h2>
-<p>Use help to find a function (and its associated parameters) that you could
-use to load data from a csv file in which columns are delimited with “
-(tab) and the decimal point is a”." (period). This check for decimal
-separator is important, especially if you are working with international
-colleagues, because different countries have different conventions for the
-decimal point (i.e. comma vs period).
-hint: use <code>??csv</code> to lookup csv related functions.</p>
-<blockquote>
-<h2 id="solution-to-challenge-3-1">Solution to Challenge 3</h2>
-<p>The standard R function for reading tab-delimited files with a period
-decimal separator is read.delim(). You can also do this with
-<code>read.table(file, sep="\t")</code> (the period is the <em>default</em> decimal
-separator for <code>read.table()</code>, although you may have to change
-the <code>comment.char</code> argument as well if your data file contains
-hash (#) characters</p>
-</blockquote>
-</blockquote>
+<div id="introduction-to-bcdata-package" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Introduction to bcdata package</h1>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="introduction-to-bcdata-package.html#cb370-1"></a><span class="kw">library</span>(bcdata)</span></code></pre></div>
+<pre><code>
+Attaching package: &#39;bcdata&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:stats&#39;:
 
-</div>
+    filter</code></pre>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction-to-r-and-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="project-management-with-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dataframe-manipulation-with-tidyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-analysis-reports.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
