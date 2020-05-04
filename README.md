@@ -49,8 +49,7 @@ Please see: https://bcgov.github.io/ds-intro-to-r-2-day/
 - Data Manipulation with `dplyr` (60 minutes)  <!-- Sam -->
 - Data Manipulation with `tidyr` (30 minutes)  <!-- Sam -->
 - BREAK ☕
-- ggplot2 review (20 minutes)  <!-- Steph -->
-- Introduce `bcdata` and practice `ggplot2` and `dplyr` (40 minutes) <!-- Steph -->
+- Introduce `bcdata` and practice `ggplot2` and `dplyr` (60 minutes) <!-- Steph -->
 
 #### PM
 

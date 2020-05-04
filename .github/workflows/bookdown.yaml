@@ -22,6 +22,7 @@ jobs:
       - name: Install packages
         run: |
           R -e 'install.packages(c("tidyverse", "reprex", "bookdown", "bcdata"))'
+          R -e 'install.packages("sf", type = "binary")'
 
       - name: Build site
         run: R -e 'bookdown::render_book("index.Rmd")'
