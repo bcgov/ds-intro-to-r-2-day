@@ -346,10 +346,10 @@ asia_oceania <- gapminder[gapminder$continent == c("Asia", "Oceania"),]
 
 ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp)) +
   geom_line() + 
-  facet_wrap(vars(country))
+  facet_wrap(facets = vars(country))
 ```
 
-The `facet_wrap` layer took the function `vars()` as its argument. This tells R to draw a panel for each unique value in the variable country of the gapminder dataset.
+The `facet_wrap` layer took the function `vars()` as its `facet` argument. This tells R to draw a panel for each unique value in the variable country of the gapminder dataset.
 
 
 ## Modifying text
@@ -368,7 +368,7 @@ of a fill legend would be set using `fill = "MyTitle"`.
 ```{r theme}
 ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp, colour = continent)) +
   geom_line() +
-  facet_wrap(vars(country)) +
+  facet_wrap(facets = vars(country)) +
   labs(
     x = "Year",              # x axis title
     y = "Life expectancy",   # y axis title
@@ -389,7 +389,7 @@ We can also use one of the many built in [themes][ggplot2-themes] in `ggplot2`. 
 ```{r more-theme}
 ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp, colour = continent)) +
   geom_line() +
-  facet_wrap(vars(country)) +
+  facet_wrap(facets = vars(country)) +
   labs(
     x = "Year",              # x axis title
     y = "Life expectancy",   # y axis title
@@ -412,7 +412,7 @@ dir.create("results", showWarnings = FALSE)
 ```{r save}
 lifeExp_plot <- ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp, colour = continent)) +
   geom_line() +
-  facet_wrap( ~ country) +
+  facet_wrap(facets = vars(country)) +
   labs(
     x = "Year",              # x axis title
     y = "Life expectancy",   # y axis title
@@ -440,4 +440,4 @@ code to modify.
 [cheat]: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 [ggplot-doc]: https://ggplot2.tidyverse.org/reference/index.html
 [rstudio-community]: https://community.rstudio.com/
-[ggplot2-themes] :https://ggplot2.tidyverse.org/reference/ggtheme.html
+[ggplot2-themes]: https://ggplot2.tidyverse.org/reference/ggtheme.html
