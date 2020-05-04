@@ -266,28 +266,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb316-2"><a href="dataframe-manipulation-with-dplyr.html#cb316-2"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )</code></pre>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="dataframe-manipulation-with-dplyr.html#cb318-1"></a>gapminder</span></code></pre></div>
-<pre><code>[90m# A tibble: 1,704 x 6[39m
+<pre><code># A tibble: 1,704 x 6
    country      year      pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786.
-[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978.
-[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852.
-[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649.
-[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
-[90m# … with 1,694 more rows[39m</code></pre>
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Afghanistan  1977 14880372 Asia         38.4      786.
+ 7 Afghanistan  1982 12881816 Asia         39.9      978.
+ 8 Afghanistan  1987 13867957 Asia         40.8      852.
+ 9 Afghanistan  1992 16317921 Asia         41.7      649.
+10 Afghanistan  1997 22227415 Asia         41.8      635.
+# … with 1,694 more rows</code></pre>
 <p>Manipulation of dataframes means many things to many researchers, we often
 select certain observations (rows) or variables (columns), we often group the
 data by a certain variable(s), or we even calculate summary statistics. We can
@@ -329,20 +329,20 @@ variables you select.</p>
 <h2><span class="header-section-number">8.3</span> Using filter()</h2>
 <p>To select on some subset of rows:</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="dataframe-manipulation-with-dplyr.html#cb325-1"></a><span class="kw">filter</span>(gapminder, continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>)</span></code></pre></div>
-<pre><code>[90m# A tibble: 360 x 6[39m
+<pre><code># A tibble: 360 x 6
    country  year     pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Albania  [4m1[24m952 1[4m2[24m[4m8[24m[4m2[24m697 Europe       55.2     [4m1[24m601.
-[90m 2[39m Albania  [4m1[24m957 1[4m4[24m[4m7[24m[4m6[24m505 Europe       59.3     [4m1[24m942.
-[90m 3[39m Albania  [4m1[24m962 1[4m7[24m[4m2[24m[4m8[24m137 Europe       64.8     [4m2[24m313.
-[90m 4[39m Albania  [4m1[24m967 1[4m9[24m[4m8[24m[4m4[24m060 Europe       66.2     [4m2[24m760.
-[90m 5[39m Albania  [4m1[24m972 2[4m2[24m[4m6[24m[4m3[24m554 Europe       67.7     [4m3[24m313.
-[90m 6[39m Albania  [4m1[24m977 2[4m5[24m[4m0[24m[4m9[24m048 Europe       68.9     [4m3[24m533.
-[90m 7[39m Albania  [4m1[24m982 2[4m7[24m[4m8[24m[4m0[24m097 Europe       70.4     [4m3[24m631.
-[90m 8[39m Albania  [4m1[24m987 3[4m0[24m[4m7[24m[4m5[24m321 Europe       72       [4m3[24m739.
-[90m 9[39m Albania  [4m1[24m992 3[4m3[24m[4m2[24m[4m6[24m498 Europe       71.6     [4m2[24m497.
-[90m10[39m Albania  [4m1[24m997 3[4m4[24m[4m2[24m[4m8[24m038 Europe       73.0     [4m3[24m193.
-[90m# … with 350 more rows[39m</code></pre>
+   &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Albania  1952 1282697 Europe       55.2     1601.
+ 2 Albania  1957 1476505 Europe       59.3     1942.
+ 3 Albania  1962 1728137 Europe       64.8     2313.
+ 4 Albania  1967 1984060 Europe       66.2     2760.
+ 5 Albania  1972 2263554 Europe       67.7     3313.
+ 6 Albania  1977 2509048 Europe       68.9     3533.
+ 7 Albania  1982 2780097 Europe       70.4     3631.
+ 8 Albania  1987 3075321 Europe       72       3739.
+ 9 Albania  1992 3326498 Europe       71.6     2497.
+10 Albania  1997 3428038 Europe       73.0     3193.
+# … with 350 more rows</code></pre>
 <p>Above we used ‘normal’ grammar, but the strengths of <code>dplyr</code> lie in combining
 several functions using pipes. This
 <a href="https://twitter.com/WeAreRLadies/status/1172576445794803713">description</a> is very useful:</p>
@@ -397,36 +397,36 @@ observations that meet your criteria (in the above: <code>continent=="Europe"</c
 can use <code>group_by()</code>, which will essentially use every unique criteria that you
 could have used in filter.</p>
 <div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="dataframe-manipulation-with-dplyr.html#cb331-1"></a>gapminder</span></code></pre></div>
-<pre><code>[90m# A tibble: 1,704 x 6[39m
+<pre><code># A tibble: 1,704 x 6
    country      year      pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786.
-[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978.
-[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852.
-[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649.
-[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
-[90m# … with 1,694 more rows[39m</code></pre>
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Afghanistan  1977 14880372 Asia         38.4      786.
+ 7 Afghanistan  1982 12881816 Asia         39.9      978.
+ 8 Afghanistan  1987 13867957 Asia         40.8      852.
+ 9 Afghanistan  1992 16317921 Asia         41.7      649.
+10 Afghanistan  1997 22227415 Asia         41.8      635.
+# … with 1,694 more rows</code></pre>
 <div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="dataframe-manipulation-with-dplyr.html#cb333-1"></a>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(continent)</span></code></pre></div>
-<pre><code>[90m# A tibble: 1,704 x 6[39m
-[90m# Groups:   continent [5][39m
+<pre><code># A tibble: 1,704 x 6
+# Groups:   continent [5]
    country      year      pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786.
-[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978.
-[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852.
-[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649.
-[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
-[90m# … with 1,694 more rows[39m</code></pre>
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Afghanistan  1977 14880372 Asia         38.4      786.
+ 7 Afghanistan  1982 12881816 Asia         39.9      978.
+ 8 Afghanistan  1987 13867957 Asia         40.8      852.
+ 9 Afghanistan  1992 16317921 Asia         41.7      649.
+10 Afghanistan  1997 22227415 Asia         41.8      635.
+# … with 1,694 more rows</code></pre>
 <p>You will notice that the structure of the dataframe where we used <code>group_by()</code>
 (<code>grouped_df</code>) is not the same as the original <code>gapminder</code> (<code>data.frame</code>). A
 <code>grouped_df</code> can be thought of as a <code>list</code> where each item in the <code>list</code> is a
@@ -466,11 +466,11 @@ expectancy and which has the shortest average life expectancy?</p>
 <span id="cb337-3"><a href="dataframe-manipulation-with-dplyr.html#cb337-3"></a><span class="st">   </span><span class="kw">summarize</span>(<span class="dt">mean_lifeExp =</span> <span class="kw">mean</span>(lifeExp))</span>
 <span id="cb337-4"><a href="dataframe-manipulation-with-dplyr.html#cb337-4"></a>lifeExp_bycountry <span class="op">%&gt;%</span></span>
 <span id="cb337-5"><a href="dataframe-manipulation-with-dplyr.html#cb337-5"></a><span class="st">   </span><span class="kw">filter</span>(mean_lifeExp <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(mean_lifeExp) <span class="op">|</span><span class="st"> </span>mean_lifeExp <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(mean_lifeExp))</span></code></pre></div>
-<pre><code>[90m# A tibble: 2 x 2[39m
+<pre><code># A tibble: 2 x 2
  country      mean_lifeExp
- [3m[90m&lt;chr&gt;[39m[23m               [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m Iceland              76.5
-[90m2[39m Sierra Leone         36.8</code></pre>
+ &lt;chr&gt;               &lt;dbl&gt;
+1 Iceland              76.5
+2 Sierra Leone         36.8</code></pre>
 <p>Another way to do this is to use the <code>dplyr</code> function <code>arrange()</code>, which
 arranges the rows in a data frame according to the order of one or more
 variables from the data frame. It has similar syntax to other functions from
@@ -479,17 +479,17 @@ descending order.</p>
 <div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="dataframe-manipulation-with-dplyr.html#cb339-1"></a>lifeExp_bycountry <span class="op">%&gt;%</span></span>
 <span id="cb339-2"><a href="dataframe-manipulation-with-dplyr.html#cb339-2"></a><span class="st">   </span><span class="kw">arrange</span>(mean_lifeExp) <span class="op">%&gt;%</span></span>
 <span id="cb339-3"><a href="dataframe-manipulation-with-dplyr.html#cb339-3"></a><span class="st">   </span><span class="kw">head</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>[90m# A tibble: 1 x 2[39m
+<pre><code># A tibble: 1 x 2
  country      mean_lifeExp
- [3m[90m&lt;chr&gt;[39m[23m               [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m Sierra Leone         36.8</code></pre>
+ &lt;chr&gt;               &lt;dbl&gt;
+1 Sierra Leone         36.8</code></pre>
 <div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="dataframe-manipulation-with-dplyr.html#cb341-1"></a>lifeExp_bycountry <span class="op">%&gt;%</span></span>
 <span id="cb341-2"><a href="dataframe-manipulation-with-dplyr.html#cb341-2"></a><span class="st">   </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean_lifeExp)) <span class="op">%&gt;%</span></span>
 <span id="cb341-3"><a href="dataframe-manipulation-with-dplyr.html#cb341-3"></a><span class="st">   </span><span class="kw">head</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>[90m# A tibble: 1 x 2[39m
+<pre><code># A tibble: 1 x 2
  country mean_lifeExp
- [3m[90m&lt;chr&gt;[39m[23m          [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m Iceland         76.5</code></pre>
+ &lt;chr&gt;          &lt;dbl&gt;
+1 Iceland         76.5</code></pre>
 </blockquote>
 </blockquote>
 <p>The function <code>group_by()</code> allows us to group by multiple variables. Let’s group by <code>year</code> and <code>continent</code>.</p>
@@ -515,27 +515,27 @@ optionally sort the results in descending order by adding <code>sort=TRUE</code>
 <div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="dataframe-manipulation-with-dplyr.html#cb345-1"></a>gapminder <span class="op">%&gt;%</span></span>
 <span id="cb345-2"><a href="dataframe-manipulation-with-dplyr.html#cb345-2"></a><span class="st">    </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2002</span>) <span class="op">%&gt;%</span></span>
 <span id="cb345-3"><a href="dataframe-manipulation-with-dplyr.html#cb345-3"></a><span class="st">    </span><span class="kw">count</span>(continent, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>[90m# A tibble: 5 x 2[39m
+<pre><code># A tibble: 5 x 2
   continent     n
-  [3m[90m&lt;chr&gt;[39m[23m     [3m[90m&lt;int&gt;[39m[23m
-[90m1[39m Africa       52
-[90m2[39m Asia         33
-[90m3[39m Europe       30
-[90m4[39m Americas     25
-[90m5[39m Oceania       2</code></pre>
+  &lt;chr&gt;     &lt;int&gt;
+1 Africa       52
+2 Asia         33
+3 Europe       30
+4 Americas     25
+5 Oceania       2</code></pre>
 <p>If we need to use the number of observations in calculations, the <code>n()</code> function
 is useful. It will return the total number of observations in the current group rather than counting the number of observations in each group within a specific column. For instance, if we wanted to get the standard error of the life expectency per continent:</p>
 <div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="dataframe-manipulation-with-dplyr.html#cb347-1"></a>gapminder <span class="op">%&gt;%</span></span>
 <span id="cb347-2"><a href="dataframe-manipulation-with-dplyr.html#cb347-2"></a><span class="st">    </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></span>
 <span id="cb347-3"><a href="dataframe-manipulation-with-dplyr.html#cb347-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">se_le =</span> <span class="kw">sd</span>(lifeExp)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()))</span></code></pre></div>
-<pre><code>[90m# A tibble: 5 x 2[39m
+<pre><code># A tibble: 5 x 2
   continent se_le
-  [3m[90m&lt;chr&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m Africa    0.366
-[90m2[39m Americas  0.540
-[90m3[39m Asia      0.596
-[90m4[39m Europe    0.286
-[90m5[39m Oceania   0.775</code></pre>
+  &lt;chr&gt;     &lt;dbl&gt;
+1 Africa    0.366
+2 Americas  0.540
+3 Asia      0.596
+4 Europe    0.286
+5 Oceania   0.775</code></pre>
 <p>You can also chain together several summary operations; in this case calculating the <code>minimum</code>, <code>maximum</code>, <code>mean</code> and <code>se</code> of each continent’s per-country life-expectancy:</p>
 <div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="dataframe-manipulation-with-dplyr.html#cb349-1"></a>gapminder <span class="op">%&gt;%</span></span>
 <span id="cb349-2"><a href="dataframe-manipulation-with-dplyr.html#cb349-2"></a><span class="st">    </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></span>
@@ -544,14 +544,14 @@ is useful. It will return the total number of observations in the current group 
 <span id="cb349-5"><a href="dataframe-manipulation-with-dplyr.html#cb349-5"></a>      <span class="dt">min_le =</span> <span class="kw">min</span>(lifeExp),</span>
 <span id="cb349-6"><a href="dataframe-manipulation-with-dplyr.html#cb349-6"></a>      <span class="dt">max_le =</span> <span class="kw">max</span>(lifeExp),</span>
 <span id="cb349-7"><a href="dataframe-manipulation-with-dplyr.html#cb349-7"></a>      <span class="dt">se_le =</span> <span class="kw">sd</span>(lifeExp)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()))</span></code></pre></div>
-<pre><code>[90m# A tibble: 5 x 5[39m
+<pre><code># A tibble: 5 x 5
   continent mean_le min_le max_le se_le
-  [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m Africa       48.9   23.6   76.4 0.366
-[90m2[39m Americas     64.7   37.6   80.7 0.540
-[90m3[39m Asia         60.1   28.8   82.6 0.596
-[90m4[39m Europe       71.9   43.6   81.8 0.286
-[90m5[39m Oceania      74.3   69.1   81.2 0.775</code></pre>
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 Africa       48.9   23.6   76.4 0.366
+2 Americas     64.7   37.6   80.7 0.540
+3 Asia         60.1   28.8   82.6 0.596
+4 Europe       71.9   43.6   81.8 0.286
+5 Oceania      74.3   69.1   81.2 0.775</code></pre>
 </div>
 <div id="using-mutate" class="section level2" number="8.8">
 <h2><span class="header-section-number">8.8</span> Using mutate()</h2>

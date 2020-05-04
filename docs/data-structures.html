@@ -286,17 +286,17 @@ and assign it to an object called <code>cats</code>:</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-structures.html#cb88-1"></a>cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/feline-data.csv&quot;</span>)</span></code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
-  coat = [31mcol_character()[39m,
-  weight = [32mcol_double()[39m,
-  likes_string = [32mcol_double()[39m
+  coat = col_character(),
+  weight = col_double(),
+  likes_string = col_double()
 )</code></pre>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-structures.html#cb90-1"></a>cats</span></code></pre></div>
-<pre><code>[90m# A tibble: 3 x 3[39m
+<pre><code># A tibble: 3 x 3
   coat   weight likes_string
-  [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m        [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m calico    2.1            1
-[90m2[39m black     5              0
-[90m3[39m tabby     3.2            1</code></pre>
+  &lt;chr&gt;   &lt;dbl&gt;        &lt;dbl&gt;
+1 calico    2.1            1
+2 black     5              0
+3 tabby     3.2            1</code></pre>
 <p>The <code>read_csv</code> function is used for reading in tabular data stored in a text
 file where the columns of data are separated by punctuation characters such as
 CSV files (csv = comma-separated values). There is a base version of this called
@@ -307,12 +307,12 @@ punctuation characters used to separate or delimit data points in text files.</p
 table-like object with rows and columns.</p>
 <p>We can begin exploring our dataset right away, first by looking at the whole thing:</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-structures.html#cb92-1"></a>cats</span></code></pre></div>
-<pre><code>[90m# A tibble: 3 x 3[39m
+<pre><code># A tibble: 3 x 3
   coat   weight likes_string
-  [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m        [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m calico    2.1            1
-[90m2[39m black     5              0
-[90m3[39m tabby     3.2            1</code></pre>
+  &lt;chr&gt;   &lt;dbl&gt;        &lt;dbl&gt;
+1 calico    2.1            1
+2 black     5              0
+3 tabby     3.2            1</code></pre>
 <p>And pulling out individual columns by specifying them using the <code>$</code> operator:</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-structures.html#cb94-1"></a>cats<span class="op">$</span>weight</span></code></pre></div>
 <pre><code>[1] 2.1 5.0 3.2</code></pre>
@@ -570,12 +570,12 @@ we have seen already, each column of data.frame is a vector.</p>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="data-structures.html#cb173-1"></a>cats<span class="op">$</span>coat</span></code></pre></div>
 <pre><code>[1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot; </code></pre>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="data-structures.html#cb175-1"></a>cats[,<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>[90m# A tibble: 3 x 1[39m
+<pre><code># A tibble: 3 x 1
   coat  
-  [3m[90m&lt;chr&gt;[39m[23m 
-[90m1[39m calico
-[90m2[39m black 
-[90m3[39m tabby </code></pre>
+  &lt;chr&gt; 
+1 calico
+2 black 
+3 tabby </code></pre>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="data-structures.html#cb177-1"></a><span class="kw">typeof</span>(cats[,<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>[1] &quot;list&quot;</code></pre>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="data-structures.html#cb179-1"></a><span class="kw">str</span>(cats[,<span class="dv">1</span>])</span></code></pre></div>
@@ -584,10 +584,10 @@ we have seen already, each column of data.frame is a vector.</p>
 <p>Each row is an <em>observation</em> of different variables, itself a data.frame, and
 thus can be composed of elements of different types.</p>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="data-structures.html#cb181-1"></a>cats[<span class="dv">1</span>,]</span></code></pre></div>
-<pre><code>[90m# A tibble: 1 x 3[39m
+<pre><code># A tibble: 1 x 3
   coat   weight likes_string
-  [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;lgl&gt;[39m[23m       
-[90m1[39m calico    2.1 TRUE        </code></pre>
+  &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;       
+1 calico    2.1 TRUE        </code></pre>
 <div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="data-structures.html#cb183-1"></a><span class="kw">typeof</span>(cats[<span class="dv">1</span>,])</span></code></pre></div>
 <pre><code>[1] &quot;list&quot;</code></pre>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="data-structures.html#cb185-1"></a><span class="kw">str</span>(cats[<span class="dv">1</span>,])</span></code></pre></div>
@@ -613,12 +613,12 @@ elements from data.frames:</p>
 <blockquote>
 <h2 id="solution-to-challenge-3-2">Solution to Challenge 3</h2>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="data-structures.html#cb187-1"></a>cats[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>[90m# A tibble: 3 x 1[39m
+<pre><code># A tibble: 3 x 1
   coat  
-  [3m[90m&lt;chr&gt;[39m[23m 
-[90m1[39m calico
-[90m2[39m black 
-[90m3[39m tabby </code></pre>
+  &lt;chr&gt; 
+1 calico
+2 black 
+3 tabby </code></pre>
 <p>We can think of a data frame as a list of vectors. The single brace <code>[1]</code>
 returns the first slice of the list, as another list. In this case it is the
 first column of the data frame.</p>
@@ -631,38 +631,38 @@ it is the contents of the first column, a <em>vector</em> of type <em>factor</em
 <p>This example uses the <code>$</code> character to address items by name. <em>coat</em> is the
 first column of the data frame, again a <em>vector</em> of type <em>factor</em>.</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="data-structures.html#cb193-1"></a>cats[<span class="st">&quot;coat&quot;</span>]</span></code></pre></div>
-<pre><code>[90m# A tibble: 3 x 1[39m
+<pre><code># A tibble: 3 x 1
   coat  
-  [3m[90m&lt;chr&gt;[39m[23m 
-[90m1[39m calico
-[90m2[39m black 
-[90m3[39m tabby </code></pre>
+  &lt;chr&gt; 
+1 calico
+2 black 
+3 tabby </code></pre>
 <p>Here we are using a single brace <code>["coat"]</code> replacing the index number with
 the column name. Like example 1, the returned object is a <em>list</em>.</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="data-structures.html#cb195-1"></a>cats[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>[90m# A tibble: 1 x 1[39m
+<pre><code># A tibble: 1 x 1
   coat  
-  [3m[90m&lt;chr&gt;[39m[23m 
-[90m1[39m calico</code></pre>
+  &lt;chr&gt; 
+1 calico</code></pre>
 <p>This example uses a single brace, but this time we provide row and column
 coordinates. The returned object is the value in row 1, column 1. The object
 is an <em>integer</em> but because it is part of a <em>vector</em> of type <em>factor</em>, R
 displays the label “calico” associated with the integer value.</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="data-structures.html#cb197-1"></a>cats[, <span class="dv">1</span>]</span></code></pre></div>
-<pre><code>[90m# A tibble: 3 x 1[39m
+<pre><code># A tibble: 3 x 1
   coat  
-  [3m[90m&lt;chr&gt;[39m[23m 
-[90m1[39m calico
-[90m2[39m black 
-[90m3[39m tabby </code></pre>
+  &lt;chr&gt; 
+1 calico
+2 black 
+3 tabby </code></pre>
 <p>Like the previous example we use single braces and provide row and column
 coordinates. The row coordinate is not specified, R interprets this missing
 value as all the elements in this <em>column</em> <em>vector</em>.</p>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="data-structures.html#cb199-1"></a>cats[<span class="dv">1</span>, ]</span></code></pre></div>
-<pre><code>[90m# A tibble: 1 x 3[39m
+<pre><code># A tibble: 1 x 3
   coat   weight likes_string
-  [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;lgl&gt;[39m[23m       
-[90m1[39m calico    2.1 TRUE        </code></pre>
+  &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;       
+1 calico    2.1 TRUE        </code></pre>
 <p>Again we use the single brace with row and column coordinates. The column
 coordinate is not specified. The return value is a <em>list</em> containing all the
 values in the first row.</p>

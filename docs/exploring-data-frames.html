@@ -269,9 +269,9 @@ about working with data frames.</p>
 <span id="cb222-2"><a href="exploring-data-frames.html#cb222-2"></a>cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/feline-data.csv&quot;</span>)</span></code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
-  coat = [31mcol_character()[39m,
-  weight = [32mcol_double()[39m,
-  likes_string = [32mcol_double()[39m
+  coat = col_character(),
+  weight = col_double(),
+  likes_string = col_double()
 )</code></pre>
 <p>We can find the size and various other attributes of our data with a few handy functions:</p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="exploring-data-frames.html#cb224-1"></a><span class="kw">nrow</span>(cats)</span></code></pre></div>
@@ -289,9 +289,9 @@ cols(
  $ likes_string: num [1:3] 1 0 1
  - attr(*, &quot;spec&quot;)=
   .. cols(
-  ..   coat = [31mcol_character()[39m,
-  ..   weight = [32mcol_double()[39m,
-  ..   likes_string = [32mcol_double()[39m
+  ..   coat = col_character(),
+  ..   weight = col_double(),
+  ..   likes_string = col_double()
   .. )</code></pre>
 <p>A way to get a nice overall view of a data frame is to use the <code>summary</code> function. This function can be used on various objects in R. For data frames, <code>summary</code> yields a numeric, tabular, or descriptive summary of each column. Factor columns are summarized by the number of items in each level, numeric or integer columns by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.</p>
 <div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="exploring-data-frames.html#cb234-1"></a><span class="kw">summary</span>(cats)</span></code></pre></div>
@@ -318,12 +318,12 @@ called <code>gapminder</code>:</p>
 <div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="exploring-data-frames.html#cb236-1"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
-  country = [31mcol_character()[39m,
-  year = [32mcol_double()[39m,
-  pop = [32mcol_double()[39m,
-  continent = [31mcol_character()[39m,
-  lifeExp = [32mcol_double()[39m,
-  gdpPercap = [32mcol_double()[39m
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
 )</code></pre>
 <p>Then tell me how many rows and columns <code>gapminder</code> has:</p>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="exploring-data-frames.html#cb238-1"></a><span class="kw">dim</span>(gapminder)</span></code></pre></div>
@@ -343,12 +343,12 @@ cols(
  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
  - attr(*, &quot;spec&quot;)=
   .. cols(
-  ..   country = [31mcol_character()[39m,
-  ..   year = [32mcol_double()[39m,
-  ..   pop = [32mcol_double()[39m,
-  ..   continent = [31mcol_character()[39m,
-  ..   lifeExp = [32mcol_double()[39m,
-  ..   gdpPercap = [32mcol_double()[39m
+  ..   country = col_character(),
+  ..   year = col_double(),
+  ..   pop = col_double(),
+  ..   continent = col_character(),
+  ..   lifeExp = col_double(),
+  ..   gdpPercap = col_double()
   .. )</code></pre>
 <div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="exploring-data-frames.html#cb246-1"></a><span class="kw">summary</span>(gapminder)</span></code></pre></div>
 <pre><code>   country               year           pop             continent        
@@ -378,12 +378,12 @@ cols(
  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
  - attr(*, &quot;spec&quot;)=
   .. cols(
-  ..   country = [31mcol_character()[39m,
-  ..   year = [32mcol_double()[39m,
-  ..   pop = [32mcol_double()[39m,
-  ..   continent = [31mcol_character()[39m,
-  ..   lifeExp = [32mcol_double()[39m,
-  ..   gdpPercap = [32mcol_double()[39m
+  ..   country = col_character(),
+  ..   year = col_double(),
+  ..   pop = col_double(),
+  ..   continent = col_character(),
+  ..   lifeExp = col_double(),
+  ..   gdpPercap = col_double()
   .. )</code></pre>
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="exploring-data-frames.html#cb250-1"></a><span class="kw">summary</span>(gapminder<span class="op">$</span>country)</span></code></pre></div>
 <pre><code>   Length     Class      Mode 
@@ -419,15 +419,15 @@ data.</p>
 <p>Once we’re happy that the data types and structures seem reasonable, it’s time
 to start digging into our data proper. Check out the first few lines:</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="exploring-data-frames.html#cb256-1"></a><span class="kw">head</span>(gapminder)</span></code></pre></div>
-<pre><code>[90m# A tibble: 6 x 6[39m
+<pre><code># A tibble: 6 x 6
   country      year      pop continent lifeExp gdpPercap
-  [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
-[90m3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
-[90m5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786.</code></pre>
+  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan  1952  8425333 Asia         28.8      779.
+2 Afghanistan  1957  9240934 Asia         30.3      821.
+3 Afghanistan  1962 10267083 Asia         32.0      853.
+4 Afghanistan  1967 11537966 Asia         34.0      836.
+5 Afghanistan  1972 13079460 Asia         36.1      740.
+6 Afghanistan  1977 14880372 Asia         38.4      786.</code></pre>
 <blockquote>
 <h2 id="challenge-2-2">Challenge 2</h2>
 <p>It’s good practice to also check the last few lines of your data and some in the middle. How would you do this?</p>
@@ -485,52 +485,52 @@ specific notation with square brackets.</p>
 <h3><span class="header-section-number">6.2.1</span> Selecting rows</h3>
 <p>We can select rows using the square brackets like so:</p>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="exploring-data-frames.html#cb264-1"></a>gapminder[<span class="dv">1</span>, ]</span></code></pre></div>
-<pre><code>[90m# A tibble: 1 x 6[39m
+<pre><code># A tibble: 1 x 6
   country      year     pop continent lifeExp gdpPercap
-  [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m Afghanistan  [4m1[24m952 8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.</code></pre>
+  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan  1952 8425333 Asia         28.8      779.</code></pre>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="exploring-data-frames.html#cb266-1"></a>gapminder[<span class="dv">100</span><span class="op">:</span><span class="dv">110</span>, ]</span></code></pre></div>
-<pre><code>[90m# A tibble: 11 x 6[39m
+<pre><code># A tibble: 11 x 6
    country     year       pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m      [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Bangladesh  [4m1[24m967  62[4m8[24m[4m2[24m[4m1[24m884 Asia         43.5      721.
-[90m 2[39m Bangladesh  [4m1[24m972  70[4m7[24m[4m5[24m[4m9[24m295 Asia         45.3      630.
-[90m 3[39m Bangladesh  [4m1[24m977  80[4m4[24m[4m2[24m[4m8[24m306 Asia         46.9      660.
-[90m 4[39m Bangladesh  [4m1[24m982  93[4m0[24m[4m7[24m[4m4[24m406 Asia         50.0      677.
-[90m 5[39m Bangladesh  [4m1[24m987 103[4m7[24m[4m6[24m[4m4[24m241 Asia         52.8      752.
-[90m 6[39m Bangladesh  [4m1[24m992 113[4m7[24m[4m0[24m[4m4[24m579 Asia         56.0      838.
-[90m 7[39m Bangladesh  [4m1[24m997 123[4m3[24m[4m1[24m[4m5[24m288 Asia         59.4      973.
-[90m 8[39m Bangladesh  [4m2[24m002 135[4m6[24m[4m5[24m[4m6[24m790 Asia         62.0     [4m1[24m136.
-[90m 9[39m Bangladesh  [4m2[24m007 150[4m4[24m[4m4[24m[4m8[24m339 Asia         64.1     [4m1[24m391.
-[90m10[39m Belgium     [4m1[24m952   8[4m7[24m[4m3[24m[4m0[24m405 Europe       68       [4m8[24m343.
-[90m11[39m Belgium     [4m1[24m957   8[4m9[24m[4m8[24m[4m9[24m111 Europe       69.2     [4m9[24m715.</code></pre>
+   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Bangladesh  1967  62821884 Asia         43.5      721.
+ 2 Bangladesh  1972  70759295 Asia         45.3      630.
+ 3 Bangladesh  1977  80428306 Asia         46.9      660.
+ 4 Bangladesh  1982  93074406 Asia         50.0      677.
+ 5 Bangladesh  1987 103764241 Asia         52.8      752.
+ 6 Bangladesh  1992 113704579 Asia         56.0      838.
+ 7 Bangladesh  1997 123315288 Asia         59.4      973.
+ 8 Bangladesh  2002 135656790 Asia         62.0     1136.
+ 9 Bangladesh  2007 150448339 Asia         64.1     1391.
+10 Belgium     1952   8730405 Europe       68       8343.
+11 Belgium     1957   8989111 Europe       69.2     9715.</code></pre>
 <div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="exploring-data-frames.html#cb268-1"></a>gapminder[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>), ]</span></code></pre></div>
-<pre><code>[90m# A tibble: 5 x 6[39m
+<pre><code># A tibble: 5 x 6
   country      year      pop continent lifeExp gdpPercap
-  [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m2[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m3[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m4[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978.
-[90m5[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649.</code></pre>
+  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan  1952  8425333 Asia         28.8      779.
+2 Afghanistan  1962 10267083 Asia         32.0      853.
+3 Afghanistan  1972 13079460 Asia         36.1      740.
+4 Afghanistan  1982 12881816 Asia         39.9      978.
+5 Afghanistan  1992 16317921 Asia         41.7      649.</code></pre>
 <p>It’s unlikely that you’ll often do this directly though, you’ll usually want
 to use some criteria. Say we just wanted the rows from Asia:</p>
 <div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="exploring-data-frames.html#cb270-1"></a>romania &lt;-<span class="st"> </span>gapminder[gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>, ]</span>
 <span id="cb270-2"><a href="exploring-data-frames.html#cb270-2"></a>romania</span></code></pre></div>
-<pre><code>[90m# A tibble: 396 x 6[39m
+<pre><code># A tibble: 396 x 6
    country      year      pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m 6[39m Afghanistan  [4m1[24m977 14[4m8[24m[4m8[24m[4m0[24m372 Asia         38.4      786.
-[90m 7[39m Afghanistan  [4m1[24m982 12[4m8[24m[4m8[24m[4m1[24m816 Asia         39.9      978.
-[90m 8[39m Afghanistan  [4m1[24m987 13[4m8[24m[4m6[24m[4m7[24m957 Asia         40.8      852.
-[90m 9[39m Afghanistan  [4m1[24m992 16[4m3[24m[4m1[24m[4m7[24m921 Asia         41.7      649.
-[90m10[39m Afghanistan  [4m1[24m997 22[4m2[24m[4m2[24m[4m7[24m415 Asia         41.8      635.
-[90m# … with 386 more rows[39m</code></pre>
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Afghanistan  1977 14880372 Asia         38.4      786.
+ 7 Afghanistan  1982 12881816 Asia         39.9      978.
+ 8 Afghanistan  1987 13867957 Asia         40.8      852.
+ 9 Afghanistan  1992 16317921 Asia         41.7      649.
+10 Afghanistan  1997 22227415 Asia         41.8      635.
+# … with 386 more rows</code></pre>
 <p>This works because subsetting can take either numerical positions like we showed
 above, OR a vector of <code>TRUE</code> and <code>FALSE</code>, returning the rows that are <code>TRUE</code>.
 <code>gapminder$contintent == "Asia"</code> generates a vector of <code>TRUE</code> and <code>FALSE</code>
@@ -565,40 +565,40 @@ tell you if a value is <em>one of</em> a set of values:</p>
 <p>Now we can insert this into the first position of the square brackets:</p>
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="exploring-data-frames.html#cb276-1"></a>can_mex &lt;-<span class="st"> </span>gapminder<span class="op">$</span>country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Canada&quot;</span>, <span class="st">&quot;Mexico&quot;</span>)</span>
 <span id="cb276-2"><a href="exploring-data-frames.html#cb276-2"></a>gapminder[can_mex, ]</span></code></pre></div>
-<pre><code>[90m# A tibble: 24 x 6[39m
+<pre><code># A tibble: 24 x 6
    country  year      pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Canada   [4m1[24m952 14[4m7[24m[4m8[24m[4m5[24m584 Americas     68.8    [4m1[24m[4m1[24m367.
-[90m 2[39m Canada   [4m1[24m957 17[4m0[24m[4m1[24m[4m0[24m154 Americas     70.0    [4m1[24m[4m2[24m490.
-[90m 3[39m Canada   [4m1[24m962 18[4m9[24m[4m8[24m[4m5[24m849 Americas     71.3    [4m1[24m[4m3[24m462.
-[90m 4[39m Canada   [4m1[24m967 20[4m8[24m[4m1[24m[4m9[24m767 Americas     72.1    [4m1[24m[4m6[24m077.
-[90m 5[39m Canada   [4m1[24m972 22[4m2[24m[4m8[24m[4m4[24m500 Americas     72.9    [4m1[24m[4m8[24m971.
-[90m 6[39m Canada   [4m1[24m977 23[4m7[24m[4m9[24m[4m6[24m400 Americas     74.2    [4m2[24m[4m2[24m091.
-[90m 7[39m Canada   [4m1[24m982 25[4m2[24m[4m0[24m[4m1[24m900 Americas     75.8    [4m2[24m[4m2[24m899.
-[90m 8[39m Canada   [4m1[24m987 26[4m5[24m[4m4[24m[4m9[24m700 Americas     76.9    [4m2[24m[4m6[24m627.
-[90m 9[39m Canada   [4m1[24m992 28[4m5[24m[4m2[24m[4m3[24m502 Americas     78.0    [4m2[24m[4m6[24m343.
-[90m10[39m Canada   [4m1[24m997 30[4m3[24m[4m0[24m[4m5[24m843 Americas     78.6    [4m2[24m[4m8[24m955.
-[90m# … with 14 more rows[39m</code></pre>
+   &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Canada   1952 14785584 Americas     68.8    11367.
+ 2 Canada   1957 17010154 Americas     70.0    12490.
+ 3 Canada   1962 18985849 Americas     71.3    13462.
+ 4 Canada   1967 20819767 Americas     72.1    16077.
+ 5 Canada   1972 22284500 Americas     72.9    18971.
+ 6 Canada   1977 23796400 Americas     74.2    22091.
+ 7 Canada   1982 25201900 Americas     75.8    22899.
+ 8 Canada   1987 26549700 Americas     76.9    26627.
+ 9 Canada   1992 28523502 Americas     78.0    26343.
+10 Canada   1997 30305843 Americas     78.6    28955.
+# … with 14 more rows</code></pre>
 <blockquote>
 <h2 id="challenge-4-2">Challenge 4</h2>
 <p>Select all the rows in <code>gapminder</code> with data from 1975 and earlier</p>
 <blockquote>
 <p>Solution to Challenge 4</p>
 <div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="exploring-data-frames.html#cb278-1"></a>gapminder[gapminder<span class="op">$</span>year <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1975</span>, ]</span></code></pre></div>
-<pre><code>[90m# A tibble: 710 x 6[39m
+<pre><code># A tibble: 710 x 6
    country      year      pop continent lifeExp gdpPercap
-   [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952  8[4m4[24m[4m2[24m[4m5[24m333 Asia         28.8      779.
-[90m 2[39m Afghanistan  [4m1[24m957  9[4m2[24m[4m4[24m[4m0[24m934 Asia         30.3      821.
-[90m 3[39m Afghanistan  [4m1[24m962 10[4m2[24m[4m6[24m[4m7[24m083 Asia         32.0      853.
-[90m 4[39m Afghanistan  [4m1[24m967 11[4m5[24m[4m3[24m[4m7[24m966 Asia         34.0      836.
-[90m 5[39m Afghanistan  [4m1[24m972 13[4m0[24m[4m7[24m[4m9[24m460 Asia         36.1      740.
-[90m 6[39m Albania      [4m1[24m952  1[4m2[24m[4m8[24m[4m2[24m697 Europe       55.2     [4m1[24m601.
-[90m 7[39m Albania      [4m1[24m957  1[4m4[24m[4m7[24m[4m6[24m505 Europe       59.3     [4m1[24m942.
-[90m 8[39m Albania      [4m1[24m962  1[4m7[24m[4m2[24m[4m8[24m137 Europe       64.8     [4m2[24m313.
-[90m 9[39m Albania      [4m1[24m967  1[4m9[24m[4m8[24m[4m4[24m060 Europe       66.2     [4m2[24m760.
-[90m10[39m Albania      [4m1[24m972  2[4m2[24m[4m6[24m[4m3[24m554 Europe       67.7     [4m3[24m313.
-[90m# … with 700 more rows[39m</code></pre>
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Albania      1952  1282697 Europe       55.2     1601.
+ 7 Albania      1957  1476505 Europe       59.3     1942.
+ 8 Albania      1962  1728137 Europe       64.8     2313.
+ 9 Albania      1967  1984060 Europe       66.2     2760.
+10 Albania      1972  2263554 Europe       67.7     3313.
+# … with 700 more rows</code></pre>
 </blockquote>
 </blockquote>
 <p>We saw previously how we can select a single column using the dollar sign <code>$</code>:</p>
@@ -627,20 +627,20 @@ tell you if a value is <em>one of</em> a set of values:</p>
 <p>If we wanted to select a subset of columns, we can specify that in the second
 position using a character vector of column names:</p>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="exploring-data-frames.html#cb282-1"></a>gapminder[ , <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;lifeExp&quot;</span>)]</span></code></pre></div>
-<pre><code>[90m# A tibble: 1,704 x 3[39m
+<pre><code># A tibble: 1,704 x 3
    country      year lifeExp
-   [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m Afghanistan  [4m1[24m952    28.8
-[90m 2[39m Afghanistan  [4m1[24m957    30.3
-[90m 3[39m Afghanistan  [4m1[24m962    32.0
-[90m 4[39m Afghanistan  [4m1[24m967    34.0
-[90m 5[39m Afghanistan  [4m1[24m972    36.1
-[90m 6[39m Afghanistan  [4m1[24m977    38.4
-[90m 7[39m Afghanistan  [4m1[24m982    39.9
-[90m 8[39m Afghanistan  [4m1[24m987    40.8
-[90m 9[39m Afghanistan  [4m1[24m992    41.7
-[90m10[39m Afghanistan  [4m1[24m997    41.8
-[90m# … with 1,694 more rows[39m</code></pre>
+   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Afghanistan  1952    28.8
+ 2 Afghanistan  1957    30.3
+ 3 Afghanistan  1962    32.0
+ 4 Afghanistan  1967    34.0
+ 5 Afghanistan  1972    36.1
+ 6 Afghanistan  1977    38.4
+ 7 Afghanistan  1982    39.9
+ 8 Afghanistan  1987    40.8
+ 9 Afghanistan  1992    41.7
+10 Afghanistan  1997    41.8
+# … with 1,694 more rows</code></pre>
 <blockquote>
 <h2 id="challenge-5-2">Challenge 5</h2>
 <p>Select all the rows in <code>gapminder</code> with data from Canada, and just the columns
@@ -648,21 +648,21 @@ year, pop, and gdpPercap</p>
 <blockquote>
 <p>Solution to Challenge 5</p>
 <div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="exploring-data-frames.html#cb284-1"></a>gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Canada&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>)]</span></code></pre></div>
-<pre><code>[90m# A tibble: 12 x 3[39m
+<pre><code># A tibble: 12 x 3
     year      pop gdpPercap
-   [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m
-[90m 1[39m  [4m1[24m952 14[4m7[24m[4m8[24m[4m5[24m584    [4m1[24m[4m1[24m367.
-[90m 2[39m  [4m1[24m957 17[4m0[24m[4m1[24m[4m0[24m154    [4m1[24m[4m2[24m490.
-[90m 3[39m  [4m1[24m962 18[4m9[24m[4m8[24m[4m5[24m849    [4m1[24m[4m3[24m462.
-[90m 4[39m  [4m1[24m967 20[4m8[24m[4m1[24m[4m9[24m767    [4m1[24m[4m6[24m077.
-[90m 5[39m  [4m1[24m972 22[4m2[24m[4m8[24m[4m4[24m500    [4m1[24m[4m8[24m971.
-[90m 6[39m  [4m1[24m977 23[4m7[24m[4m9[24m[4m6[24m400    [4m2[24m[4m2[24m091.
-[90m 7[39m  [4m1[24m982 25[4m2[24m[4m0[24m[4m1[24m900    [4m2[24m[4m2[24m899.
-[90m 8[39m  [4m1[24m987 26[4m5[24m[4m4[24m[4m9[24m700    [4m2[24m[4m6[24m627.
-[90m 9[39m  [4m1[24m992 28[4m5[24m[4m2[24m[4m3[24m502    [4m2[24m[4m6[24m343.
-[90m10[39m  [4m1[24m997 30[4m3[24m[4m0[24m[4m5[24m843    [4m2[24m[4m8[24m955.
-[90m11[39m  [4m2[24m002 31[4m9[24m[4m0[24m[4m2[24m268    [4m3[24m[4m3[24m329.
-[90m12[39m  [4m2[24m007 33[4m3[24m[4m9[24m[4m0[24m141    [4m3[24m[4m6[24m319.</code></pre>
+   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+ 1  1952 14785584    11367.
+ 2  1957 17010154    12490.
+ 3  1962 18985849    13462.
+ 4  1967 20819767    16077.
+ 5  1972 22284500    18971.
+ 6  1977 23796400    22091.
+ 7  1982 25201900    22899.
+ 8  1987 26549700    26627.
+ 9  1992 28523502    26343.
+10  1997 30305843    28955.
+11  2002 31902268    33329.
+12  2007 33390141    36319.</code></pre>
 </blockquote>
 </blockquote>
 
