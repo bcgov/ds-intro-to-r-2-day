@@ -24,7 +24,9 @@ jobs:
           R -e 'install.packages(c("tidyverse", "reprex", "bookdown"))'
 
       - name: Build site
-        run: R -e 'bookdown::render_book("index.Rmd")'
+        run: |
+          R -e 'options(crayon.enabled = FALSE)'
+          R -e 'bookdown::render_book("index.Rmd")'
 
       - name: commit bookdown
         run: |
