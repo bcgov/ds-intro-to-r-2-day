@@ -1,0 +1,18 @@
+---
+title: "Intro to bcdata"
+teaching: 30
+exercises: 15
+questions:
+
+objectives:
+
+keypoints:
+
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("bin/chunk-options.R")
+knitr_fig_path("8-")
+```
+
