@@ -1,0 +1,1 @@
+options(crayon.enabled = FALSE)
