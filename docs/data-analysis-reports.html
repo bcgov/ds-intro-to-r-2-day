@@ -546,7 +546,7 @@ of the “Help” field in the toolbar at the top of RStudio.</p>
 1 + 1
 &#96;&#96;&#96;
 </pre>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="data-analysis-reports.html#cb375-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> </span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="data-analysis-reports.html#cb376-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> </span></code></pre></div>
 <pre><code>[1] 2</code></pre>
 <p>Lets now evaluate the code but hide it from the document. We will need to use both the <code>eval</code> and <code>echo</code> parameters.</p>
 <pre>
@@ -579,10 +579,10 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +
   geom_point()
 &#96;&#96;&#96;
 </pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="data-analysis-reports.html#cb378-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb378-2"><a href="data-analysis-reports.html#cb378-2"></a></span>
-<span id="cb378-3"><a href="data-analysis-reports.html#cb378-3"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length)) <span class="op">+</span></span>
-<span id="cb378-4"><a href="data-analysis-reports.html#cb378-4"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="data-analysis-reports.html#cb379-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb379-2"><a href="data-analysis-reports.html#cb379-2"></a></span>
+<span id="cb379-3"><a href="data-analysis-reports.html#cb379-3"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Petal.Length)) <span class="op">+</span></span>
+<span id="cb379-4"><a href="data-analysis-reports.html#cb379-4"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="fig/rmd-10-pretty_plot1-1.png" alt="Pretty Plot" width="816" />
 <p class="caption">
@@ -643,18 +643,18 @@ executed and replaced with the a rounded version of <em>some_value</em> as the r
 little triangle next to the “Knit” button to get a drop-down
 menu.</p>
 <p>We can also change the YAML option:</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="data-analysis-reports.html#cb379-1"></a><span class="op">---</span></span>
-<span id="cb379-2"><a href="data-analysis-reports.html#cb379-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring RMarkdown&quot;</span></span>
-<span id="cb379-3"><a href="data-analysis-reports.html#cb379-3"></a>output<span class="op">:</span><span class="st"> </span>html_document</span>
-<span id="cb379-4"><a href="data-analysis-reports.html#cb379-4"></a><span class="op">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="data-analysis-reports.html#cb380-1"></a><span class="op">---</span></span>
 <span id="cb380-2"><a href="data-analysis-reports.html#cb380-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring RMarkdown&quot;</span></span>
-<span id="cb380-3"><a href="data-analysis-reports.html#cb380-3"></a>output<span class="op">:</span><span class="st"> </span>word_document</span>
+<span id="cb380-3"><a href="data-analysis-reports.html#cb380-3"></a>output<span class="op">:</span><span class="st"> </span>html_document</span>
 <span id="cb380-4"><a href="data-analysis-reports.html#cb380-4"></a><span class="op">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="data-analysis-reports.html#cb381-1"></a><span class="op">---</span></span>
 <span id="cb381-2"><a href="data-analysis-reports.html#cb381-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring RMarkdown&quot;</span></span>
-<span id="cb381-3"><a href="data-analysis-reports.html#cb381-3"></a>output<span class="op">:</span><span class="st"> </span>pdf_document</span>
+<span id="cb381-3"><a href="data-analysis-reports.html#cb381-3"></a>output<span class="op">:</span><span class="st"> </span>word_document</span>
 <span id="cb381-4"><a href="data-analysis-reports.html#cb381-4"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="data-analysis-reports.html#cb382-1"></a><span class="op">---</span></span>
+<span id="cb382-2"><a href="data-analysis-reports.html#cb382-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring RMarkdown&quot;</span></span>
+<span id="cb382-3"><a href="data-analysis-reports.html#cb382-3"></a>output<span class="op">:</span><span class="st"> </span>pdf_document</span>
+<span id="cb382-4"><a href="data-analysis-reports.html#cb382-4"></a><span class="op">---</span></span></code></pre></div>
 <p>A note about Rmd outputs.</p>
 <p>It can be easy to get caught up with how your document looks. I highly recommend avoiding compiling to PDF or word until you really need to. This is also recommended by the author of rmarkdown and knitr, <a href="https://yihui.org/en/2018/07/in-html-i-trust/">Yihui Xie</a>. This means that you can spend time working on generating content, and not trying to get figures to line up correctly and wrestling with LaTex libraries.</p>
 <blockquote>
@@ -663,7 +663,7 @@ menu.</p>
 software called LaTex. This software can be tricky to install and it is reccommended to use<br />
 <a href="https://yihui.org/tinytex/">tinytex</a> as an alternative. This R package is a lightweight
 version of LaTex is designed for r users. You can install using the following commands:</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="data-analysis-reports.html#cb382-1"></a>tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="data-analysis-reports.html#cb383-1"></a>tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</span></code></pre></div>
 <p>There is lots of information and help available - see <a href="https://yihui.org/tinytex/faq/">tinytex FQA page</a></p>
 <p>{: .callout}</p>
 </blockquote>
