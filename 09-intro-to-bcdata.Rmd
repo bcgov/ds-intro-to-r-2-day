@@ -139,25 +139,27 @@ sum_books %>%
 > >
 > >```
 
-The `bcdata` package also has a function for querying and downloading geospatial data from the B.C. Data Catalogue:
+The `bcdata` package also has a function for querying and downloading geospatial data from the B.C. Data Catalogue. Let's import the spatial data file from the catalogue record, and combine the spatial data with our tidy library data frame:
 
 ```{r}
 lib_spatial <- bcdc_query_geodata("bc-public-libraries-systems-branches-and-locations") %>%
   collect()
 
-mapview::mapview(lib_spatial)
-
-lib_spatial %>% 
-  ggplot() + 
-  geom_sf()
-
-lib_spatial %>% 
+lib_all <- lib_spatial %>% 
   left_join(lib_tidy,
             by = c("SERVICE_POINT_NAME" = "Location")) %>% 
+  select(SERVICE_POINT_NAME, num_books) 
+```
+
+Now we can use some of R's spatial tools to make static or interactive maps:
+
+```{r}
+lib_all %>% 
   ggplot() +
   geom_sf(aes(size = num_books), colour = "blue") +
   theme_minimal()
 
+mapview::mapview(lib_all)
 ```
 
 
