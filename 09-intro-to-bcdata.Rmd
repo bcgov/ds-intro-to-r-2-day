@@ -1,13 +1,13 @@
 ---
 title: "Intro to bcdata"
 teaching: 30
-exercises: 15
+exercises: 30
 questions:
 - "How can I pull data directly from the B.C. Data Catalogue using R?"
 objectives:
 - "Understand the value of importing data programatically for more auditable and reproducible work flows"
 - "Become familiar with the bcdata R package"
-- "Learn how to use bcdata with dplyr and ggplot2 packages"
+- "Learn how to use bcdata with the dplyr and ggplot2 packages"
 source: Rmd
 ---
 
