@@ -244,10 +244,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#resources"><i class="fa fa-check"></i><b>9.10</b> Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>10</b> Seeking Help from Others with reprex</a>
+<li class="chapter" data-level="10" data-path="applications-of-r-markdown.html"><a href="applications-of-r-markdown.html"><i class="fa fa-check"></i><b>10</b> Applications of R Markdown</a></li>
+<li class="chapter" data-level="11" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>11</b> Seeking Help from Others with reprex</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>10.1</b> Help People Help You - reprex</a></li>
-<li class="chapter" data-level="10.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>10.2</b> Other Helpful Resources</a></li>
+<li class="chapter" data-level="11.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>11.1</b> Help People Help You - reprex</a></li>
+<li class="chapter" data-level="11.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>11.2</b> Other Helpful Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -506,22 +507,24 @@ calculations use such numerical representations for categorical data:</p>
 <pre><code>[1] &quot;integer&quot;</code></pre>
 <blockquote>
 <h2 id="challenge-1-2">Challenge 1</h2>
-<p>The default behaviour of <code>read.csv</code> is to convert all character columns to
-factors, which is one of the biggest reasons we prefer <code>read_csv</code> from the
-<code>readr</code> package.
-Look at the help for <code>?read.csv</code> to figure out how to keep text columns as character
-vectors instead of factors; then write a command or two to show that the factor
-in <code>cats</code> is actually a character vector when loaded in this way.</p>
+<p>Up until R version 4.0, the default behaviour of <code>read.csv</code> is to convert all
+character columns to factors, which has been one of the biggest reasons we
+prefer <code>read_csv</code> from the <code>readr</code> package. As of version 4.0, this behaviour
+has changed and now the default is to leave character columns as character.
+Look at the help for <code>?read.csv</code> to figure out how to control whether character
+columns are read as as character vectors or factors; then write a command or
+two to check that the column in <code>cats</code> is what you expect it to be.</p>
 <blockquote>
 <h2 id="solution-to-challenge-1-1">Solution to Challenge 1</h2>
 <p>One solution is use the argument <code>stringAsFactors</code>:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="data-structures.html#cb163-1"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>)</span>
-<span id="cb163-2"><a href="data-structures.html#cb163-2"></a><span class="kw">str</span>(cats<span class="op">$</span>coat)</span>
-<span id="cb163-3"><a href="data-structures.html#cb163-3"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="data-structures.html#cb163-1"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">TRUE</span>)</span>
+<span id="cb163-2"><a href="data-structures.html#cb163-2"></a><span class="kw">class</span>(cats<span class="op">$</span>coat)</span>
+<span id="cb163-3"><a href="data-structures.html#cb163-3"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span>
+<span id="cb163-4"><a href="data-structures.html#cb163-4"></a><span class="kw">class</span>(cats<span class="op">$</span>coat)</span></code></pre></div>
 <p>Another solution is use the argument <code>colClasses</code>
 that allow finer control.</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="data-structures.html#cb164-1"></a>cats &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="dt">colClasses=</span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>, <span class="st">&quot;character&quot;</span>))</span>
-<span id="cb164-2"><a href="data-structures.html#cb164-2"></a><span class="kw">str</span>(cats<span class="op">$</span>coat)</span></code></pre></div>
+<span id="cb164-2"><a href="data-structures.html#cb164-2"></a><span class="kw">class</span>(cats<span class="op">$</span>coat)</span></code></pre></div>
 <p>Note: new students find the help files difficult to understand; make sure to let them know
 that this is typical, and encourage them to take their best guess based on semantic meaning,
 even if they aren’t sure.</p>
