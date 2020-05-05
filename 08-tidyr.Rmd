@@ -140,7 +140,7 @@ To change this very wide dataframe layout back to our nice, intermediate (or lon
 ```{r}
 gap_long <- gap_wide %>%
   pivot_longer(
-    cols = c(starts_with('pop'), starts_with('lifeExp'), starts_with('gdpPercap')),
+    cols = pop_1952:gdpPercap_2007,
     names_to = "obstype_year", values_to = "obs_values"
   )
 gap_long
@@ -152,8 +152,7 @@ of tidyr and dplyr functions by piping them together.
 
 We first provide to `pivot_longer()` a vector of column names that will be
 pivoted into longer format. We could type out all the observation variables, but
-as in the `select()` function (see `dplyr` lesson), we can use the `starts_with()`
-argument to select all variables that start with the desired character string.
+as in the `select()` function, we can use the `:` operator to select our desired variables.
 `pivot_longer()` also allows the alternative syntax of using the `-` symbol to
 identify which variables are not to be pivoted (i.e. ID variables).
 
@@ -237,7 +236,7 @@ We're almost there, the original was sorted by `country`, then
 
 ```{r}
 gap_normal <- gap_normal %>% arrange(country, year)
-all.equal(gap_normal, gapminder)
+all_equal(gap_normal, gapminder)
 ```
 
 That's great! We've gone from the longest format back to the intermediate and we
@@ -298,7 +297,7 @@ gap_wide_betterID <- gap_long %>%
     separate(ID_var, c("continent","country"), sep = "_")
 gap_wide_betterID
 
-all.equal(gap_wide, gap_wide_betterID)
+all_equal(gap_wide, gap_wide_betterID)
 ```
 
 There and back again!
