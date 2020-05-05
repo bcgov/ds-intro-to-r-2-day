@@ -43,8 +43,8 @@ do these types of operations using the normal base R operations:
 mean(gapminder$gdpPercap)
 ```
 
-The question here is how might you take averages (or any other summary statistic) 
-by some group you might be interested in.
+The question here is how might you summarize 
+split by some group you might be interested in.
 
 ## The `dplyr` package
 
@@ -85,7 +85,7 @@ variables you select.
 year_country_gdp <- select(gapminder, year, country, gdpPercap)
 ```
 
-![](fig/13-dplyr-fig1.png)
+![](fig/07-dplyr-fig1.png)
 
 ## Using filter()
 
@@ -173,7 +173,7 @@ You will notice that the structure of the dataframe where we used `group_by()`
 `data.frame` which contains only the rows that correspond to the a particular
 value `continent` (at least in the example above).
 
-![](fig/13-dplyr-fig2.png)
+![](fig/07-dplyr-fig2.png)
 
 ## Using summarize()
 
@@ -190,7 +190,7 @@ gdp_bycontinents <- gapminder %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
 ```
 
-![](fig/13-dplyr-fig3.png)
+![](fig/07-dplyr-fig3.png)
 
 ```{r,eval=FALSE}
 continent mean_gdpPercap
@@ -254,10 +254,10 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_pop = sd(pop))
 ```
 
-## count() and n()
+## count()
 
 A very common operation is to count the number of observations for each
-group. The `dplyr` package comes with two related functions that help with this.
+group. The `dplyr` package comes with a function that helps with this.
 
 For instance, if we wanted to check the number of countries included in the
 dataset for the year 2002, we can use the `count()` function. It takes the name
@@ -270,26 +270,6 @@ gapminder %>%
     count(continent, sort = TRUE)
 ```
 
-If we need to use the number of observations in calculations, the `n()` function
-is useful. It will return the total number of observations in the current group rather than counting the number of observations in each group within a specific column. For instance, if we wanted to get the standard error of the life expectency per continent:
-
-```{r}
-gapminder %>%
-    group_by(continent) %>%
-    summarize(se_le = sd(lifeExp)/sqrt(n()))
-```
-
-You can also chain together several summary operations; in this case calculating the `minimum`, `maximum`, `mean` and `se` of each continent's per-country life-expectancy:
-
-```{r}
-gapminder %>%
-    group_by(continent) %>%
-    summarize(
-      mean_le = mean(lifeExp),
-      min_le = min(lifeExp),
-      max_le = max(lifeExp),
-      se_le = sd(lifeExp)/sqrt(n()))
-```
 
 ## Using mutate()
 
@@ -349,8 +329,7 @@ library("ggplot2")
 ```
 
 In the plotting lesson we looked at how to make a multi-panel figure by adding
-a layer of facet panels using `ggplot2`. Here is the code we used (with some
-extra comments):
+a layer of facet panels using `ggplot2`. 
 
 ```{r}
 # Filter countries that start with "A"
@@ -359,7 +338,8 @@ a_countries <- gapminder %>%
 
 # Make the plot
 ggplot(data = a_countries, aes(x = year, y = lifeExp, color = continent)) +
-  geom_line() + facet_wrap( ~ country)
+  geom_line() + 
+  facet_wrap(vars(country))
 ```
 
 
@@ -375,7 +355,7 @@ gapminder %>%
   filter(continent == "Europe") %>% 
   ggplot(aes(x = year, y = lifeExp, color = continent)) +
   geom_line() +
-  facet_wrap( ~ country)
+  facet_wrap(vars(country))
 ```
 
 Using `dplyr` functions also helps us do calculations on the fly, for example if we were interested in 
@@ -388,7 +368,7 @@ gapminder %>%
   mutate(num_days = lifeExp*365) %>% 
   ggplot(aes(x = year, y = num_days, color = continent)) +
   geom_line() +
-  facet_wrap( ~ country)
+  facet_wrap(vars(country))
 ```
 
 > ## Advanced Challenge
