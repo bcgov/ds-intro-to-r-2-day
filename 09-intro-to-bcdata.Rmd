@@ -21,8 +21,18 @@ knitr_fig_path("09-")
 
 The bcdata R package contains functions for searching & retrieving data directly from the B.C. Data Catalogue.
 
+First we need to install the `bcdata` package:
+
+```{r, eval=FALSE}
+# install.packages("bcdata")
+```
+
+And next we need to load the `bcdata` package, along with `dplyr` and `ggplot2` which we installed and used in earlier lessons:
+
 ```{r}
 library(bcdata)
+library(dplyr)
+library(ggplot2)
 ```
 
 Let's look in the B.C. Data Catalogue for some data on libraries in British Columbia:
@@ -38,15 +48,19 @@ There are many catalogue records with data relating to libraries. Let's examine 
 bcdc_get_record("bc-public-libraries-systems-branches-and-locations")
 ```
 
-Next, we can use the `bcdc_get_data` function to load this data directly into R:
+Next, we can use the `bcdc_get_data` function to load this data directly into R. 
 
-```{r}
+```{r, eval=FALSE}
 bcdc_get_data(record = "bc-public-libraries-systems-branches-and-locations")
-
-lib_raw <- bcdc_get_data(record = 'bc-public-libraries-systems-branches-and-locations',
-                          resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
 ```
 
+
+If we run the above code interactively, R will prompt you in the console to select a resource, as it does not know which one you want to download. The full code to download the resource is provided to the user for next time:
+
+```{r}
+lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
+                         resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
+```
 
 > ## Challenge 1 (5 minutes)
 >
@@ -80,11 +94,12 @@ sum_books <- lib_tidy %>%
 > Using `dplyr`, determine the total number of books within each Library System in British Columbia.
 >
 >
->```{r}
-> sum_books %>% 
->  group_by(`Library System`) %>% 
->  summarize(totals = sum(total_books))
->```
+> >## Solution Challenge 2 (10 minutes)
+> >```{r}
+> > sum_books %>% 
+> >  group_by(`Library System`) %>% 
+> >  summarize(totals = sum(total_books))
+> >```
 
 
 Now that we have imported, tidied, and analyzed our library data, let's make a static data visualization to share and communicate the results with others.
@@ -107,24 +122,24 @@ sum_books %>%
 > Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable.
 >
 >
->
->```{r}
->library(ggplot2)
->
->sum_books %>% 
->  filter(total_books > 100000) %>% 
->  ggplot(aes(total_books, City)) +
->  geom_col() +
->  facet_wrap(vars(`Library System`)) +
->  theme_minimal() +
->  labs(x = NULL,
->       y = NULL,
->       title = "Total Number of Books by City & Library System in B.C.",
->       caption = "Data sourced from the B.C. Data Catalogue")
->
->```
+> >## Solution Challenge 3 (10 minutes)
+> >```{r}
+> >library(ggplot2)
+> >
+> >sum_books %>% 
+> >  filter(total_books > 100000) %>% 
+> >  ggplot(aes(total_books, City)) +
+> >  geom_col() +
+> >  facet_wrap(vars(`Library System`)) +
+> >  theme_minimal() +
+> >  labs(x = NULL,
+> >       y = NULL,
+> >       title = "Total Number of Books by City & Library System in B.C.",
+> >       caption = "Data sourced from the B.C. Data Catalogue")
+> >
+> >```
 
-
+The `bcdata` package also has a function for querying and downloading geospatial data from the B.C. Data Catalogue:
 
 ```{r}
 lib_spatial <- bcdc_query_geodata("bc-public-libraries-systems-branches-and-locations") %>%
