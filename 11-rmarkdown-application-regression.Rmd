@@ -1,9 +1,9 @@
 ---
-title: "Further Application of Rmarkdown"
+title: "Further Application of R Markdown"
 teaching: 45
 exercises: 15
 questions:
-- "How can I use Rmarkdown to integrate analysis results in my report?"
+- "How can I use R Markdown to integrate analysis results in my report?"
 objectives:
 - "Introduction to regression with lm()"
 - "Demonstrate how to add a regression line and statistics to a ggplot"
@@ -17,13 +17,13 @@ source("bin/chunk-options.R")
 knitr_fig_path("11-")
 ```
 
-# Applications of Rmarkdown
+# Applications of R Markdown
 
-Now that we've learned the basics of R and Rmarkdown, we're going to tie some 
+Now that we've learned the basics of R and R Markdown, we're going to tie some 
 things together by doing a regression on the Gapminder data and displaying our
 results in a nicely formatted document.
 
-Working in a new Rmarkdown document (File -> New File -> Rmarkdown Document), 
+Working in a new R Markdown document (File -> New File -> R Markdown Document), 
 we can load the libraries that we are going to use, and load the data in 
 a code chunk:
 
