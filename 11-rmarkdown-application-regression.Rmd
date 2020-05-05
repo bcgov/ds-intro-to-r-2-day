@@ -80,7 +80,9 @@ summary(canada_lm)
 The `summary()` function gives us the high level information from our regression 
 model: The coefficient estimates, the R-squared, and the p-value.
 
-And the `plot()` function gives us some basic diagnostic plots:
+To this point we have been using *ggplot2* for plotting, but there is also a 
+built-in `plot()` function. If we use that function on a model, it gives us 
+some basic diagnostic plots:
 
 <pre>
 &#96;&#96;&#96;{r diagnostics}
@@ -93,7 +95,8 @@ important parts of our model, but difficult to extract those pieces that we
 want to use later - such as regression coefficients and P values.
 
 There is another package we can use, called *broom*, that is used to tidy
-model results into a format we are familiar with: A `data.frame`:
+model results into a format we are familiar with: a `data.frame`. *broom* works 
+with many different types of models, today we are going to use it on our `lm`.
 
 You will first need to install the package:
 
