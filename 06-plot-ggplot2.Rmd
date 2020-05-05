@@ -50,6 +50,8 @@ The key to understanding ggplot2 is thinking about a plot or figure in layers.
 This idea may be familiar to you if you have used image editing programs like Photoshop, Illustrator, or
 Inkscape.
 
+## Getting started
+
 Let's start off by loading our gapminder data:
 
 ```{r load-data}
