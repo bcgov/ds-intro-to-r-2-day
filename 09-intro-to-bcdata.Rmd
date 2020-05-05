@@ -3,11 +3,13 @@ title: "Intro to bcdata"
 teaching: 30
 exercises: 15
 questions:
-
+- "How can I pull data directly from the B.C. Data Catalogue using R?"
 objectives:
-
+- "Understand the value of importing data programatically for more auditable and reproducible work flows"
+- "Become familiar with the bcdata R package"
+- "Learn how to use bcdata with dplyr and ggplot2 packages"
 keypoints:
-
+- "Accessing data directly from the B.C. Data Catalogue using the bcdata R package." 
 source: Rmd
 ---
 
@@ -19,7 +21,108 @@ knitr_fig_path("09-")
 
 # Introduction to bcdata package
 
+The bcdata R package contains functions for searching & retrieving data directly from the B.C. Data Catalogue.
+
 ```{r}
 library(bcdata)
 ```
+
+Let's look in the B.C. Data Catalogue for some data on libraries in British Columbia:
+
+```{r}
+bcdc_search("libraries")
+```
+
+There are many catalogue records with data relating to libraries. Let's examine the first returned record more closely:
+
+
+```{r}
+bcdc_get_record("bc-public-libraries-systems-branches-and-locations")
+```
+
+Looks useful, we can use the `bcdc_get_data` function to load this data directly into R:
+
+```{r}
+libs_raw <- bcdc_get_data(record = 'bc-public-libraries-systems-branches-and-locations', resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
+```
+
+
+> ## Challenge 1 (5 minutes)
+>
+> Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session > (e.g. a CSV or XLS resource).
+>
+
+
+Let's return to the libraries data. As we learned yesterday morning, a useful first step is to get familiar with the data.
+
+```{r}
+libs_raw <- bcdc_get_data(record = 'bc-public-libraries-systems-branches-and-locations', resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
+
+str(libs_raw)
+names(libs_raw)
+```
+
+Let's tidy up this data frame and find out how many physical materials or volumes are available within each City:
+
+```{r}
+library(dplyr)
+
+libs_tidy <- libs_raw %>%
+  select(`Library System`, Location, City, "460x Total branch physical materials, volumes held")
+
+libs_tidy <- libs_raw %>%
+  rename(no_books = "460x Total branch physical materials, volumes held") %>%
+  select(`Library System`, Location, City, no_books)
+
+sum_books <- libs_tidy %>% 
+  group_by(City, `Library System`) %>% 
+  summarize(total_books = sum(no_books))
+```
+
+> ## Challenge 2 (10 minutes)
+>
+> Using `dplyr`, determine the total number of books within each Library System in British Columbia.
+>
+>
+>```{r}
+> sum_books %>% 
+>  group_by(`Library System`) %>% 
+>  summarize(totals = sum(total_books))
+>```
+
+
+Now that we have imported, tidied, and analyzed our library data, let's make a static data visualization to share the results with others.
+
+```{r}
+library(ggplot2)
+
+sum_books %>% 
+  filter(total_books > 100000) %>% 
+  ggplot(aes(City, total_books)) +
+  geom_col() +
+  coord_flip()
+```
+
+> ## Challenge 3 (10 minutes)
+>
+> Iterate the above plot to also visualize the number of books by Library >Service. Add a title and try other design changes to make the plot more >readable.
+>
+>
+>
+>```{r}
+>library(ggplot2)
+>
+>sum_books %>% 
+>  filter(total_books > 100000) %>% 
+>  ggplot(aes(City, total_books)) +
+>  geom_col() +
+>  coord_flip() +
+>  facet_wrap(vars(`Library System`)) +
+>  theme_minimal() +
+>  labs(x = NULL,
+>       y = NULL,
+>       title = "Total Number of Books by City & Library System")
+>
+>```
+
 
