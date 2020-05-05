@@ -204,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>7.4</b> Using filter() with pipes</a></li>
 <li class="chapter" data-level="7.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>7.5</b> Using group_by() and summarize()</a></li>
 <li class="chapter" data-level="7.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>7.6</b> Using summarize()</a></li>
-<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#count-and-n"><i class="fa fa-check"></i><b>7.7</b> count() and n()</a></li>
+<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#count"><i class="fa fa-check"></i><b>7.7</b> count()</a></li>
 <li class="chapter" data-level="7.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>7.8</b> Using mutate()</a></li>
 <li class="chapter" data-level="7.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-groupings-ifelse"><i class="fa fa-check"></i><b>7.9</b> Connect mutate with logical groupings: ifelse</a></li>
 <li class="chapter" data-level="7.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>7.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
@@ -311,7 +311,7 @@ ggplot(canada, aes(x = lifeExp, y = gdpPercap)) +
 </pre>
 <p>We use the <code>lm()</code> function to perform a General Linear Model (GLM), of which
 a regression is one form. It is specified by a new syntax, a “formula” syntax:</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="applications-of-r-markdown.html#cb421-1"></a><span class="kw">lm</span>(response <span class="op">~</span><span class="st"> </span><span class="kw">predictor</span>(s), <span class="dt">data =</span> data, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="applications-of-r-markdown.html#cb417-1"></a><span class="kw">lm</span>(response <span class="op">~</span><span class="st"> </span><span class="kw">predictor</span>(s), <span class="dt">data =</span> data, ...)</span></code></pre></div>
 <p>So in our case, we can put in a new code chunk to fit the model:</p>
 <pre>
 &#96;&#96;&#96;{r model}
@@ -336,7 +336,7 @@ want to use later - such as regression coefficients and P values.</p>
 model results into a format we are familiar with: a <code>data.frame</code>. <em>broom</em> works
 with many different types of models, today we are going to use it on our <code>lm</code>.</p>
 <p>You will first need to install the package:</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="applications-of-r-markdown.html#cb422-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;broom&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="applications-of-r-markdown.html#cb418-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;broom&quot;</span>)</span></code></pre></div>
 <p>Then add a chunk that loads the package, and calls the most commonly-used
 functions in <em>broom</em>:</p>
 <pre>

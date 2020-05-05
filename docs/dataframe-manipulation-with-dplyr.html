@@ -204,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>7.4</b> Using filter() with pipes</a></li>
 <li class="chapter" data-level="7.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>7.5</b> Using group_by() and summarize()</a></li>
 <li class="chapter" data-level="7.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>7.6</b> Using summarize()</a></li>
-<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#count-and-n"><i class="fa fa-check"></i><b>7.7</b> count() and n()</a></li>
+<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#count"><i class="fa fa-check"></i><b>7.7</b> count()</a></li>
 <li class="chapter" data-level="7.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>7.8</b> Using mutate()</a></li>
 <li class="chapter" data-level="7.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-groupings-ifelse"><i class="fa fa-check"></i><b>7.9</b> Connect mutate with logical groupings: ifelse</a></li>
 <li class="chapter" data-level="7.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>7.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
@@ -308,8 +308,8 @@ data by a certain variable(s), or we even calculate summary statistics. We can
 do these types of operations using the normal base R operations:</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="dataframe-manipulation-with-dplyr.html#cb320-1"></a><span class="kw">mean</span>(gapminder<span class="op">$</span>gdpPercap)</span></code></pre></div>
 <pre><code>[1] 7215.327</code></pre>
-<p>The question here is how might you take averages (or any other summary statistic)
-by some group you might be interested in.</p>
+<p>The question here is how might you summarize
+split by some group you might be interested in.</p>
 <div id="the-dplyr-package" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> The <code>dplyr</code> package</h2>
 <p>Luckily, the <a href="https://cran.r-project.org/package=dplyr"><code>dplyr</code></a>
@@ -337,7 +337,7 @@ pipes (<code>%&gt;%</code>) to combine them.</p>
 our dataframe we could use the <code>select()</code> function. This will keep only the
 variables you select.</p>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="dataframe-manipulation-with-dplyr.html#cb324-1"></a>year_country_gdp &lt;-<span class="st"> </span><span class="kw">select</span>(gapminder, year, country, gdpPercap)</span></code></pre></div>
-<p><img src="fig/13-dplyr-fig1.png" /></p>
+<p><img src="fig/07-dplyr-fig1.png" /></p>
 </div>
 <div id="using-filter" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Using filter()</h2>
@@ -446,7 +446,7 @@ could have used in filter.</p>
 <code>grouped_df</code> can be thought of as a <code>list</code> where each item in the <code>list</code> is a
 <code>data.frame</code> which contains only the rows that correspond to the a particular
 value <code>continent</code> (at least in the example above).</p>
-<p><img src="fig/13-dplyr-fig2.png" /></p>
+<p><img src="fig/07-dplyr-fig2.png" /></p>
 </div>
 <div id="using-summarize" class="section level2" number="7.6">
 <h2><span class="header-section-number">7.6</span> Using summarize()</h2>
@@ -459,7 +459,7 @@ original dataframe into multiple pieces, then we can run functions
 <div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="dataframe-manipulation-with-dplyr.html#cb335-1"></a>gdp_bycontinents &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
 <span id="cb335-2"><a href="dataframe-manipulation-with-dplyr.html#cb335-2"></a><span class="st">    </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></span>
 <span id="cb335-3"><a href="dataframe-manipulation-with-dplyr.html#cb335-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap))</span></code></pre></div>
-<p><img src="fig/13-dplyr-fig3.png" /></p>
+<p><img src="fig/07-dplyr-fig3.png" /></p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="dataframe-manipulation-with-dplyr.html#cb336-1"></a>continent mean_gdpPercap</span>
 <span id="cb336-2"><a href="dataframe-manipulation-with-dplyr.html#cb336-2"></a>     <span class="op">&lt;</span>fctr<span class="op">&gt;</span><span class="st">          </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span></span>
 <span id="cb336-3"><a href="dataframe-manipulation-with-dplyr.html#cb336-3"></a><span class="dv">1</span>    Africa       <span class="fl">2193.755</span></span>
@@ -518,10 +518,10 @@ descending order.</p>
 <span id="cb344-5"><a href="dataframe-manipulation-with-dplyr.html#cb344-5"></a>              <span class="dt">mean_pop =</span> <span class="kw">mean</span>(pop),</span>
 <span id="cb344-6"><a href="dataframe-manipulation-with-dplyr.html#cb344-6"></a>              <span class="dt">sd_pop =</span> <span class="kw">sd</span>(pop))</span></code></pre></div>
 </div>
-<div id="count-and-n" class="section level2" number="7.7">
-<h2><span class="header-section-number">7.7</span> count() and n()</h2>
+<div id="count" class="section level2" number="7.7">
+<h2><span class="header-section-number">7.7</span> count()</h2>
 <p>A very common operation is to count the number of observations for each
-group. The <code>dplyr</code> package comes with two related functions that help with this.</p>
+group. The <code>dplyr</code> package comes with a function that helps with this.</p>
 <p>For instance, if we wanted to check the number of countries included in the
 dataset for the year 2002, we can use the <code>count()</code> function. It takes the name
 of one or more columns that contain the groups we are interested in, and we can
@@ -537,48 +537,19 @@ optionally sort the results in descending order by adding <code>sort=TRUE</code>
 3 Europe       30
 4 Americas     25
 5 Oceania       2</code></pre>
-<p>If we need to use the number of observations in calculations, the <code>n()</code> function
-is useful. It will return the total number of observations in the current group rather than counting the number of observations in each group within a specific column. For instance, if we wanted to get the standard error of the life expectency per continent:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="dataframe-manipulation-with-dplyr.html#cb347-1"></a>gapminder <span class="op">%&gt;%</span></span>
-<span id="cb347-2"><a href="dataframe-manipulation-with-dplyr.html#cb347-2"></a><span class="st">    </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></span>
-<span id="cb347-3"><a href="dataframe-manipulation-with-dplyr.html#cb347-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">se_le =</span> <span class="kw">sd</span>(lifeExp)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()))</span></code></pre></div>
-<pre><code># A tibble: 5 x 2
-  continent se_le
-  &lt;chr&gt;     &lt;dbl&gt;
-1 Africa    0.366
-2 Americas  0.540
-3 Asia      0.596
-4 Europe    0.286
-5 Oceania   0.775</code></pre>
-<p>You can also chain together several summary operations; in this case calculating the <code>minimum</code>, <code>maximum</code>, <code>mean</code> and <code>se</code> of each continent’s per-country life-expectancy:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="dataframe-manipulation-with-dplyr.html#cb349-1"></a>gapminder <span class="op">%&gt;%</span></span>
-<span id="cb349-2"><a href="dataframe-manipulation-with-dplyr.html#cb349-2"></a><span class="st">    </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></span>
-<span id="cb349-3"><a href="dataframe-manipulation-with-dplyr.html#cb349-3"></a><span class="st">    </span><span class="kw">summarize</span>(</span>
-<span id="cb349-4"><a href="dataframe-manipulation-with-dplyr.html#cb349-4"></a>      <span class="dt">mean_le =</span> <span class="kw">mean</span>(lifeExp),</span>
-<span id="cb349-5"><a href="dataframe-manipulation-with-dplyr.html#cb349-5"></a>      <span class="dt">min_le =</span> <span class="kw">min</span>(lifeExp),</span>
-<span id="cb349-6"><a href="dataframe-manipulation-with-dplyr.html#cb349-6"></a>      <span class="dt">max_le =</span> <span class="kw">max</span>(lifeExp),</span>
-<span id="cb349-7"><a href="dataframe-manipulation-with-dplyr.html#cb349-7"></a>      <span class="dt">se_le =</span> <span class="kw">sd</span>(lifeExp)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()))</span></code></pre></div>
-<pre><code># A tibble: 5 x 5
-  continent mean_le min_le max_le se_le
-  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1 Africa       48.9   23.6   76.4 0.366
-2 Americas     64.7   37.6   80.7 0.540
-3 Asia         60.1   28.8   82.6 0.596
-4 Europe       71.9   43.6   81.8 0.286
-5 Oceania      74.3   69.1   81.2 0.775</code></pre>
 </div>
 <div id="using-mutate" class="section level2" number="7.8">
 <h2><span class="header-section-number">7.8</span> Using mutate()</h2>
 <p>We can also create new variables prior to (or even after) summarizing information using <code>mutate()</code>.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="dataframe-manipulation-with-dplyr.html#cb351-1"></a>gdp_pop_bycontinents_byyear &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
-<span id="cb351-2"><a href="dataframe-manipulation-with-dplyr.html#cb351-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gdp_billion =</span> gdpPercap<span class="op">*</span>pop<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span>) <span class="op">%&gt;%</span></span>
-<span id="cb351-3"><a href="dataframe-manipulation-with-dplyr.html#cb351-3"></a><span class="st">    </span><span class="kw">group_by</span>(continent,year) <span class="op">%&gt;%</span></span>
-<span id="cb351-4"><a href="dataframe-manipulation-with-dplyr.html#cb351-4"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</span>
-<span id="cb351-5"><a href="dataframe-manipulation-with-dplyr.html#cb351-5"></a>              <span class="dt">sd_gdpPercap =</span> <span class="kw">sd</span>(gdpPercap),</span>
-<span id="cb351-6"><a href="dataframe-manipulation-with-dplyr.html#cb351-6"></a>              <span class="dt">mean_pop =</span> <span class="kw">mean</span>(pop),</span>
-<span id="cb351-7"><a href="dataframe-manipulation-with-dplyr.html#cb351-7"></a>              <span class="dt">sd_pop =</span> <span class="kw">sd</span>(pop),</span>
-<span id="cb351-8"><a href="dataframe-manipulation-with-dplyr.html#cb351-8"></a>              <span class="dt">mean_gdp_billion =</span> <span class="kw">mean</span>(gdp_billion),</span>
-<span id="cb351-9"><a href="dataframe-manipulation-with-dplyr.html#cb351-9"></a>              <span class="dt">sd_gdp_billion =</span> <span class="kw">sd</span>(gdp_billion))</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="dataframe-manipulation-with-dplyr.html#cb347-1"></a>gdp_pop_bycontinents_byyear &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
+<span id="cb347-2"><a href="dataframe-manipulation-with-dplyr.html#cb347-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gdp_billion =</span> gdpPercap<span class="op">*</span>pop<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span>) <span class="op">%&gt;%</span></span>
+<span id="cb347-3"><a href="dataframe-manipulation-with-dplyr.html#cb347-3"></a><span class="st">    </span><span class="kw">group_by</span>(continent,year) <span class="op">%&gt;%</span></span>
+<span id="cb347-4"><a href="dataframe-manipulation-with-dplyr.html#cb347-4"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</span>
+<span id="cb347-5"><a href="dataframe-manipulation-with-dplyr.html#cb347-5"></a>              <span class="dt">sd_gdpPercap =</span> <span class="kw">sd</span>(gdpPercap),</span>
+<span id="cb347-6"><a href="dataframe-manipulation-with-dplyr.html#cb347-6"></a>              <span class="dt">mean_pop =</span> <span class="kw">mean</span>(pop),</span>
+<span id="cb347-7"><a href="dataframe-manipulation-with-dplyr.html#cb347-7"></a>              <span class="dt">sd_pop =</span> <span class="kw">sd</span>(pop),</span>
+<span id="cb347-8"><a href="dataframe-manipulation-with-dplyr.html#cb347-8"></a>              <span class="dt">mean_gdp_billion =</span> <span class="kw">mean</span>(gdp_billion),</span>
+<span id="cb347-9"><a href="dataframe-manipulation-with-dplyr.html#cb347-9"></a>              <span class="dt">sd_gdp_billion =</span> <span class="kw">sd</span>(gdp_billion))</span></code></pre></div>
 </div>
 <div id="connect-mutate-with-logical-groupings-ifelse" class="section level2" number="7.9">
 <h2><span class="header-section-number">7.9</span> Connect mutate with logical groupings: ifelse</h2>
@@ -586,64 +557,64 @@ is useful. It will return the total number of observations in the current group 
 <code>mutate()</code> and <code>ifelse()</code> facilitates filtering right where it is needed: in the moment of creating something new.
 This easy-to-read statement is a fast and powerful way of discarding certain data (even though the overall dimension
 of the data frame will not change) or for updating values depending on this given condition.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="dataframe-manipulation-with-dplyr.html#cb352-1"></a><span class="co">## keeping all data but &quot;filtering&quot; after a certain condition</span></span>
-<span id="cb352-2"><a href="dataframe-manipulation-with-dplyr.html#cb352-2"></a><span class="co"># calculate GDP only for people with a life expectation above 25</span></span>
-<span id="cb352-3"><a href="dataframe-manipulation-with-dplyr.html#cb352-3"></a>gdp_pop_bycontinents_byyear_above25 &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
-<span id="cb352-4"><a href="dataframe-manipulation-with-dplyr.html#cb352-4"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gdp_billion =</span> <span class="kw">ifelse</span>(lifeExp <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span>, gdpPercap <span class="op">*</span><span class="st"> </span>pop <span class="op">/</span><span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span>, <span class="ot">NA</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb352-5"><a href="dataframe-manipulation-with-dplyr.html#cb352-5"></a><span class="st">    </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span></span>
-<span id="cb352-6"><a href="dataframe-manipulation-with-dplyr.html#cb352-6"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</span>
-<span id="cb352-7"><a href="dataframe-manipulation-with-dplyr.html#cb352-7"></a>              <span class="dt">sd_gdpPercap =</span> <span class="kw">sd</span>(gdpPercap),</span>
-<span id="cb352-8"><a href="dataframe-manipulation-with-dplyr.html#cb352-8"></a>              <span class="dt">mean_pop =</span> <span class="kw">mean</span>(pop),</span>
-<span id="cb352-9"><a href="dataframe-manipulation-with-dplyr.html#cb352-9"></a>              <span class="dt">sd_pop =</span> <span class="kw">sd</span>(pop),</span>
-<span id="cb352-10"><a href="dataframe-manipulation-with-dplyr.html#cb352-10"></a>              <span class="dt">mean_gdp_billion =</span> <span class="kw">mean</span>(gdp_billion),</span>
-<span id="cb352-11"><a href="dataframe-manipulation-with-dplyr.html#cb352-11"></a>              <span class="dt">sd_gdp_billion =</span> <span class="kw">sd</span>(gdp_billion))</span>
-<span id="cb352-12"><a href="dataframe-manipulation-with-dplyr.html#cb352-12"></a></span>
-<span id="cb352-13"><a href="dataframe-manipulation-with-dplyr.html#cb352-13"></a><span class="co">## updating only if certain condition is fullfilled</span></span>
-<span id="cb352-14"><a href="dataframe-manipulation-with-dplyr.html#cb352-14"></a><span class="co"># for life expectations above 40 years, the gpd to be expected in the future is scaled</span></span>
-<span id="cb352-15"><a href="dataframe-manipulation-with-dplyr.html#cb352-15"></a>gdp_future_bycontinents_byyear_high_lifeExp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
-<span id="cb352-16"><a href="dataframe-manipulation-with-dplyr.html#cb352-16"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gdp_futureExpectation =</span> <span class="kw">ifelse</span>(lifeExp <span class="op">&gt;</span><span class="st"> </span><span class="dv">40</span>, gdpPercap <span class="op">*</span><span class="st"> </span><span class="fl">1.5</span>, gdpPercap)) <span class="op">%&gt;%</span></span>
-<span id="cb352-17"><a href="dataframe-manipulation-with-dplyr.html#cb352-17"></a><span class="st">    </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span></span>
-<span id="cb352-18"><a href="dataframe-manipulation-with-dplyr.html#cb352-18"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</span>
-<span id="cb352-19"><a href="dataframe-manipulation-with-dplyr.html#cb352-19"></a>              <span class="dt">mean_gdpPercap_expected =</span> <span class="kw">mean</span>(gdp_futureExpectation))</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="dataframe-manipulation-with-dplyr.html#cb348-1"></a><span class="co">## keeping all data but &quot;filtering&quot; after a certain condition</span></span>
+<span id="cb348-2"><a href="dataframe-manipulation-with-dplyr.html#cb348-2"></a><span class="co"># calculate GDP only for people with a life expectation above 25</span></span>
+<span id="cb348-3"><a href="dataframe-manipulation-with-dplyr.html#cb348-3"></a>gdp_pop_bycontinents_byyear_above25 &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
+<span id="cb348-4"><a href="dataframe-manipulation-with-dplyr.html#cb348-4"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gdp_billion =</span> <span class="kw">ifelse</span>(lifeExp <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span>, gdpPercap <span class="op">*</span><span class="st"> </span>pop <span class="op">/</span><span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="dv">9</span>, <span class="ot">NA</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb348-5"><a href="dataframe-manipulation-with-dplyr.html#cb348-5"></a><span class="st">    </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span></span>
+<span id="cb348-6"><a href="dataframe-manipulation-with-dplyr.html#cb348-6"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</span>
+<span id="cb348-7"><a href="dataframe-manipulation-with-dplyr.html#cb348-7"></a>              <span class="dt">sd_gdpPercap =</span> <span class="kw">sd</span>(gdpPercap),</span>
+<span id="cb348-8"><a href="dataframe-manipulation-with-dplyr.html#cb348-8"></a>              <span class="dt">mean_pop =</span> <span class="kw">mean</span>(pop),</span>
+<span id="cb348-9"><a href="dataframe-manipulation-with-dplyr.html#cb348-9"></a>              <span class="dt">sd_pop =</span> <span class="kw">sd</span>(pop),</span>
+<span id="cb348-10"><a href="dataframe-manipulation-with-dplyr.html#cb348-10"></a>              <span class="dt">mean_gdp_billion =</span> <span class="kw">mean</span>(gdp_billion),</span>
+<span id="cb348-11"><a href="dataframe-manipulation-with-dplyr.html#cb348-11"></a>              <span class="dt">sd_gdp_billion =</span> <span class="kw">sd</span>(gdp_billion))</span>
+<span id="cb348-12"><a href="dataframe-manipulation-with-dplyr.html#cb348-12"></a></span>
+<span id="cb348-13"><a href="dataframe-manipulation-with-dplyr.html#cb348-13"></a><span class="co">## updating only if certain condition is fullfilled</span></span>
+<span id="cb348-14"><a href="dataframe-manipulation-with-dplyr.html#cb348-14"></a><span class="co"># for life expectations above 40 years, the gpd to be expected in the future is scaled</span></span>
+<span id="cb348-15"><a href="dataframe-manipulation-with-dplyr.html#cb348-15"></a>gdp_future_bycontinents_byyear_high_lifeExp &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
+<span id="cb348-16"><a href="dataframe-manipulation-with-dplyr.html#cb348-16"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">gdp_futureExpectation =</span> <span class="kw">ifelse</span>(lifeExp <span class="op">&gt;</span><span class="st"> </span><span class="dv">40</span>, gdpPercap <span class="op">*</span><span class="st"> </span><span class="fl">1.5</span>, gdpPercap)) <span class="op">%&gt;%</span></span>
+<span id="cb348-17"><a href="dataframe-manipulation-with-dplyr.html#cb348-17"></a><span class="st">    </span><span class="kw">group_by</span>(continent, year) <span class="op">%&gt;%</span></span>
+<span id="cb348-18"><a href="dataframe-manipulation-with-dplyr.html#cb348-18"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</span>
+<span id="cb348-19"><a href="dataframe-manipulation-with-dplyr.html#cb348-19"></a>              <span class="dt">mean_gdpPercap_expected =</span> <span class="kw">mean</span>(gdp_futureExpectation))</span></code></pre></div>
 </div>
 <div id="combining-dplyr-and-ggplot2" class="section level2" number="7.10">
 <h2><span class="header-section-number">7.10</span> Combining <code>dplyr</code> and <code>ggplot2</code></h2>
 <p>First install and load ggplot2:</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="dataframe-manipulation-with-dplyr.html#cb353-1"></a><span class="kw">install.packages</span>(<span class="st">&#39;ggplot2&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="dataframe-manipulation-with-dplyr.html#cb354-1"></a><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="dataframe-manipulation-with-dplyr.html#cb349-1"></a><span class="kw">install.packages</span>(<span class="st">&#39;ggplot2&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="dataframe-manipulation-with-dplyr.html#cb350-1"></a><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
 <p>In the plotting lesson we looked at how to make a multi-panel figure by adding
-a layer of facet panels using <code>ggplot2</code>. Here is the code we used (with some
-extra comments):</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="dataframe-manipulation-with-dplyr.html#cb355-1"></a><span class="co"># Filter countries that start with &quot;A&quot;</span></span>
-<span id="cb355-2"><a href="dataframe-manipulation-with-dplyr.html#cb355-2"></a>a_countries &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb355-3"><a href="dataframe-manipulation-with-dplyr.html#cb355-3"></a><span class="st">  </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>))</span>
-<span id="cb355-4"><a href="dataframe-manipulation-with-dplyr.html#cb355-4"></a></span>
-<span id="cb355-5"><a href="dataframe-manipulation-with-dplyr.html#cb355-5"></a><span class="co"># Make the plot</span></span>
-<span id="cb355-6"><a href="dataframe-manipulation-with-dplyr.html#cb355-6"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> a_countries, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">color =</span> continent)) <span class="op">+</span></span>
-<span id="cb355-7"><a href="dataframe-manipulation-with-dplyr.html#cb355-7"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country)</span></code></pre></div>
-<p><img src="fig/rmd-07-unnamed-chunk-143-1.png" width="816" style="display: block; margin: auto;" /></p>
+a layer of facet panels using <code>ggplot2</code>.</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="dataframe-manipulation-with-dplyr.html#cb351-1"></a><span class="co"># Filter countries that start with &quot;A&quot;</span></span>
+<span id="cb351-2"><a href="dataframe-manipulation-with-dplyr.html#cb351-2"></a>a_countries &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb351-3"><a href="dataframe-manipulation-with-dplyr.html#cb351-3"></a><span class="st">  </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>))</span>
+<span id="cb351-4"><a href="dataframe-manipulation-with-dplyr.html#cb351-4"></a></span>
+<span id="cb351-5"><a href="dataframe-manipulation-with-dplyr.html#cb351-5"></a><span class="co"># Make the plot</span></span>
+<span id="cb351-6"><a href="dataframe-manipulation-with-dplyr.html#cb351-6"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> a_countries, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">color =</span> continent)) <span class="op">+</span></span>
+<span id="cb351-7"><a href="dataframe-manipulation-with-dplyr.html#cb351-7"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb351-8"><a href="dataframe-manipulation-with-dplyr.html#cb351-8"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw">vars</span>(country))</span></code></pre></div>
+<p><img src="fig/rmd-07-unnamed-chunk-141-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>This code makes the right plot but it also provides a way to chain operations. Just as we used
 <code>%&gt;%</code> to pipe data along a chain of <code>dplyr</code> functions we can use it to pass data
 to <code>ggplot()</code>. Because <code>%&gt;%</code> replaces the first argument in a function we don’t
 need to specify the <code>data =</code> argument in the <code>ggplot()</code> function. By combining
 <code>dplyr</code> and <code>ggplot2</code> functions we can alter this figure for only those continents in Europe.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="dataframe-manipulation-with-dplyr.html#cb356-1"></a>gapminder <span class="op">%&gt;%</span></span>
-<span id="cb356-2"><a href="dataframe-manipulation-with-dplyr.html#cb356-2"></a><span class="st">  </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb356-3"><a href="dataframe-manipulation-with-dplyr.html#cb356-3"></a><span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb356-4"><a href="dataframe-manipulation-with-dplyr.html#cb356-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">color =</span> continent)) <span class="op">+</span></span>
-<span id="cb356-5"><a href="dataframe-manipulation-with-dplyr.html#cb356-5"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb356-6"><a href="dataframe-manipulation-with-dplyr.html#cb356-6"></a><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country)</span></code></pre></div>
-<p><img src="fig/rmd-07-unnamed-chunk-144-1.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="dataframe-manipulation-with-dplyr.html#cb352-1"></a>gapminder <span class="op">%&gt;%</span></span>
+<span id="cb352-2"><a href="dataframe-manipulation-with-dplyr.html#cb352-2"></a><span class="st">  </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb352-3"><a href="dataframe-manipulation-with-dplyr.html#cb352-3"></a><span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb352-4"><a href="dataframe-manipulation-with-dplyr.html#cb352-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">color =</span> continent)) <span class="op">+</span></span>
+<span id="cb352-5"><a href="dataframe-manipulation-with-dplyr.html#cb352-5"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb352-6"><a href="dataframe-manipulation-with-dplyr.html#cb352-6"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw">vars</span>(country))</span></code></pre></div>
+<p><img src="fig/rmd-07-unnamed-chunk-142-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>Using <code>dplyr</code> functions also helps us do calculations on the fly, for example if we were interested in
 converting <code>lifeExp</code> which is in years to days:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="dataframe-manipulation-with-dplyr.html#cb357-1"></a>gapminder <span class="op">%&gt;%</span></span>
-<span id="cb357-2"><a href="dataframe-manipulation-with-dplyr.html#cb357-2"></a><span class="st">  </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb357-3"><a href="dataframe-manipulation-with-dplyr.html#cb357-3"></a><span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb357-4"><a href="dataframe-manipulation-with-dplyr.html#cb357-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">num_days =</span> lifeExp<span class="op">*</span><span class="dv">365</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb357-5"><a href="dataframe-manipulation-with-dplyr.html#cb357-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> num_days, <span class="dt">color =</span> continent)) <span class="op">+</span></span>
-<span id="cb357-6"><a href="dataframe-manipulation-with-dplyr.html#cb357-6"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb357-7"><a href="dataframe-manipulation-with-dplyr.html#cb357-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>country)</span></code></pre></div>
-<p><img src="fig/rmd-07-unnamed-chunk-145-1.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="dataframe-manipulation-with-dplyr.html#cb353-1"></a>gapminder <span class="op">%&gt;%</span></span>
+<span id="cb353-2"><a href="dataframe-manipulation-with-dplyr.html#cb353-2"></a><span class="st">  </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb353-3"><a href="dataframe-manipulation-with-dplyr.html#cb353-3"></a><span class="st">  </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> &quot;Europe&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb353-4"><a href="dataframe-manipulation-with-dplyr.html#cb353-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">num_days =</span> lifeExp<span class="op">*</span><span class="dv">365</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb353-5"><a href="dataframe-manipulation-with-dplyr.html#cb353-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> num_days, <span class="dt">color =</span> continent)) <span class="op">+</span></span>
+<span id="cb353-6"><a href="dataframe-manipulation-with-dplyr.html#cb353-6"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb353-7"><a href="dataframe-manipulation-with-dplyr.html#cb353-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw">vars</span>(country))</span></code></pre></div>
+<p><img src="fig/rmd-07-unnamed-chunk-143-1.png" width="816" style="display: block; margin: auto;" /></p>
 <blockquote>
 <h2 id="advanced-challenge">Advanced Challenge</h2>
 <p>Calculate the average life expectancy in 2002 of 2 randomly selected countries
@@ -652,12 +623,12 @@ for each continent. Then arrange the continent names in reverse order.
 similar syntax to other dplyr functions.</p>
 <blockquote>
 <h2 id="solution-to-advanced-challenge">Solution to Advanced Challenge</h2>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dataframe-manipulation-with-dplyr.html#cb358-1"></a>lifeExp_2countries_bycontinents &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
-<span id="cb358-2"><a href="dataframe-manipulation-with-dplyr.html#cb358-2"></a><span class="st">   </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">2002</span>) <span class="op">%&gt;%</span></span>
-<span id="cb358-3"><a href="dataframe-manipulation-with-dplyr.html#cb358-3"></a><span class="st">   </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></span>
-<span id="cb358-4"><a href="dataframe-manipulation-with-dplyr.html#cb358-4"></a><span class="st">   </span><span class="kw">sample_n</span>(<span class="dv">2</span>) <span class="op">%&gt;%</span></span>
-<span id="cb358-5"><a href="dataframe-manipulation-with-dplyr.html#cb358-5"></a><span class="st">   </span><span class="kw">summarize</span>(<span class="dt">mean_lifeExp=</span><span class="kw">mean</span>(lifeExp)) <span class="op">%&gt;%</span></span>
-<span id="cb358-6"><a href="dataframe-manipulation-with-dplyr.html#cb358-6"></a><span class="st">   </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean_lifeExp))</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="dataframe-manipulation-with-dplyr.html#cb354-1"></a>lifeExp_2countries_bycontinents &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></span>
+<span id="cb354-2"><a href="dataframe-manipulation-with-dplyr.html#cb354-2"></a><span class="st">   </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">2002</span>) <span class="op">%&gt;%</span></span>
+<span id="cb354-3"><a href="dataframe-manipulation-with-dplyr.html#cb354-3"></a><span class="st">   </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></span>
+<span id="cb354-4"><a href="dataframe-manipulation-with-dplyr.html#cb354-4"></a><span class="st">   </span><span class="kw">sample_n</span>(<span class="dv">2</span>) <span class="op">%&gt;%</span></span>
+<span id="cb354-5"><a href="dataframe-manipulation-with-dplyr.html#cb354-5"></a><span class="st">   </span><span class="kw">summarize</span>(<span class="dt">mean_lifeExp=</span><span class="kw">mean</span>(lifeExp)) <span class="op">%&gt;%</span></span>
+<span id="cb354-6"><a href="dataframe-manipulation-with-dplyr.html#cb354-6"></a><span class="st">   </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean_lifeExp))</span></code></pre></div>
 </blockquote>
 </blockquote>
 </div>
