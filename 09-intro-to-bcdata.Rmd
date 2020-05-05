@@ -141,7 +141,6 @@ lib_spatial %>%
             by = c("SERVICE_POINT_NAME" = "Location")) %>% 
   ggplot() +
   geom_sf(aes(size = num_books), colour = "blue") +
-  geom_sf(data = bcmaps::bc_bound(), fill = NA) +
   theme_minimal()
 
 ```
