@@ -65,6 +65,8 @@ Reproducible Scientific Analysis_.  Version 2016.06, June 2016,
 https://github.com/swcarpentry/r-novice-gapminder,
 10.5281/zenodo.57520.
 
+The R Markdown sections also draw material from Nicholas Tierney's excellent _R Markdown for Scientists_ course which is available here: https://rmd4sci.njtierney.com/
+
 
 ### Course Offerings
 
