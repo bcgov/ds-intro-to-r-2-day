@@ -60,7 +60,7 @@ data frame in the environment pane.
 
 Note that this is a read-only view, it's not editable (which is a good thing!)
 
-## Realistic example
+## Introducing the Gapminder data
 
 So far, you have seen the basics of manipulating data frames with our cat data;
 now let's use those skills to digest a more realistic dataset. Let's read in the
@@ -178,31 +178,7 @@ into a script file so we can come back to it later.
 > ## Challenge 3
 >
 > Go to file -> new file -> R script, and write an R script
-> to load in the gapminder dataset. Put it in the `scripts/`
-> directory.
->
-> Run the script using the `source` function, using the file path
-> as its argument (or by pressing the "source" button in RStudio).
->
-> > ## Solution to Challenge 3
-> > 
-> > The `source` function can be used to use a script within a script.
-> > Assume you would like to load the same type of file over and over 
-> > again and therefore you need to specify the arguments to fit the 
-> > needs of your file. Instead of writing the necessary argument again
-> > and again you could just write it once and save it as a script. Then,
-> > you can use `source("Your_Script_containing_the_load_function")` in a new
-> > script to use the function of that script without writing everything again.
-> > Check out `?source` to find out more.
-> > 
-> > ```{r eval = FALSE}
-> > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
-> > gapminder <- read_csv(file = "data/gapminder_data.csv")
-> > ```
-> > To run the script and load the data into the `gapminder` variable:
-> > ```{r eval = FALSE}
-> > source(file = "scripts/load-gapminder.R")
-> > ```
+> to load in the gapminder dataset.
 
 ## Basic subsetting
 
