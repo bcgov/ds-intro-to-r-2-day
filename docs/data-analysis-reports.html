@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-05-04" />
+<meta name="date" content="2020-05-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -218,7 +218,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>9</b> Data analysis reports</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#literate-programming"><i class="fa fa-check"></i><b>9.1</b> Literate programming</a></li>
-<li class="chapter" data-level="9.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#example-of-using-rmarkdown-in-the-bc-government"><i class="fa fa-check"></i><b>9.2</b> Example of Using rmarkdown in the BC Government</a>
+<li class="chapter" data-level="9.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#example-of-using-r-markdown-in-the-bc-government"><i class="fa fa-check"></i><b>9.2</b> Example of Using R Markdown in the BC Government</a>
 <ul>
 <li class="chapter" data-level="9.2.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#documentation"><i class="fa fa-check"></i><b>9.2.1</b> Documentation</a></li>
 <li class="chapter" data-level="9.2.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#teaching"><i class="fa fa-check"></i><b>9.2.2</b> Teaching</a></li>
@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-bit-more-markdown"><i class="fa fa-check"></i><b>9.5.1</b> A bit more Markdown</a></li>
 <li class="chapter" data-level="9.5.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#r-code-chunks"><i class="fa fa-check"></i><b>9.5.2</b> R code chunks</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#how-rmarkdown-gets-compiled"><i class="fa fa-check"></i><b>9.6</b> How Rmarkdown gets compiled</a></li>
+<li class="chapter" data-level="9.6" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#how-r-markdown-gets-compiled"><i class="fa fa-check"></i><b>9.6</b> How R Markdown gets compiled</a></li>
 <li class="chapter" data-level="9.7" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#chunk-options"><i class="fa fa-check"></i><b>9.7</b> Chunk options</a>
 <ul>
 <li class="chapter" data-level="9.7.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#global-options"><i class="fa fa-check"></i><b>9.7.1</b> Global options</a></li>
@@ -304,8 +304,8 @@ be executed, and graphs or other results inserted into the final document.</p>
 with R. <a href="https://www.markdownguide.org/">Markdown</a> is a light-weight mark-up language for creating web
 pages.</p>
 </div>
-<div id="example-of-using-rmarkdown-in-the-bc-government" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Example of Using rmarkdown in the BC Government</h2>
+<div id="example-of-using-r-markdown-in-the-bc-government" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Example of Using R Markdown in the BC Government</h2>
 <p>R Markdown is quite versatile</p>
 <div id="documentation" class="section level3" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> Documentation</h3>
@@ -494,16 +494,16 @@ geom_point()
 </blockquote>
 </div>
 </div>
-<div id="how-rmarkdown-gets-compiled" class="section level2" number="9.6">
-<h2><span class="header-section-number">9.6</span> How Rmarkdown gets compiled</h2>
+<div id="how-r-markdown-gets-compiled" class="section level2" number="9.6">
+<h2><span class="header-section-number">9.6</span> How R Markdown gets compiled</h2>
 <p>When you press the “Knit” button <a href="http://yihui.name/knitr"><code>knitr</code></a> will process your R Markdown file to create a plain Markdown document (along with a set of figure files if needed).</p>
-<p>If we specified our output to be a html file, the Markdown file (and figure documents) is then converted to a html file using a tool called <a href="http://pandoc.org/"><code>pandoc</code></a>. Different output file types require different tool for conversion. This will be dicussed below.</p>
+<p>If we specified our output document to be a html file, the Markdown file (and figure documents) is then converted or rendered to a html file using the tool <a href="http://pandoc.org/"><code>pandoc</code></a>.</p>
 <p><img src="fig/rmd-10-rmd_to_html_fig-1.png" width="768" style="display: block; margin: auto auto auto 0;" /></p>
-<p>Different output file types require different tool for conversion. This will be dicussed below.</p>
+<p>Different output document types require different tool for conversion. This will be discused below.</p>
 </div>
 <div id="chunk-options" class="section level2" number="9.7">
 <h2><span class="header-section-number">9.7</span> Chunk options</h2>
-<p>As we saw above, code chunks are a very important part of using Rmarkdown. We will now explore some of the options for controlling how these will show up in our document.</p>
+<p>As we saw above, code chunks are a very important part of using R Markdown. We will now explore some of the options for controlling how these will show up in our document.</p>
 <p>Firstly we need name our code chunk name. By default all code chunks are blank. ie:</p>
 <pre>
 &#96;&#96;&#96;{r}
@@ -523,7 +523,7 @@ library("dplyr")
 library("ggplot2")
 &#96;&#96;&#96;
 </pre>
-<p>There are many different options you can adjust. More details can be found on the Rmarkdown cheatsheet or <a href="https://yihui.org/knitr/options/#code-evaluation">here</a>.</p>
+<p>There are many different options you can adjust. More details can be found on the R Markdown cheatsheet or <a href="https://yihui.org/knitr/options/#code-evaluation">here</a>.</p>
 <p>The ones you need to know first are:</p>
 <ul>
 <li><code>cache</code>: TRUE/FALSE. Do you want the output of the chunk saved so you dont have to run it next time?</li>
@@ -575,7 +575,7 @@ knitr::opts_chunk$set(fig.path="Figs/",
 <h3><span class="header-section-number">9.7.2</span> Formatting figures</h3>
 <p>We can use paramaters to control the location and size of plots using <code>fig.height</code>,<code>fig.width</code>
 and <code>fig.align</code>. We can also use <code>fig.cap</code> to add a title.</p>
-<p>We can use the <strong>gapminder</strong> dataset and <code>ggplot2</code>package to create and format a plot within RMarkdown.</p>
+<p>We can use the <strong>gapminder</strong> dataset and <code>ggplot2</code>package to create and format a plot within R Markdown.</p>
 <pre>
 &#96;&#96;&#96;{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap = "A nice descriptive title"}
 
@@ -651,20 +651,20 @@ little triangle next to the “Knit” button to get a drop-down
 menu.</p>
 <p>Alternatively ee can change the YAML:</p>
 <div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="data-analysis-reports.html#cb416-1"></a><span class="op">---</span></span>
-<span id="cb416-2"><a href="data-analysis-reports.html#cb416-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring RMarkdown&quot;</span></span>
+<span id="cb416-2"><a href="data-analysis-reports.html#cb416-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
 <span id="cb416-3"><a href="data-analysis-reports.html#cb416-3"></a>output<span class="op">:</span><span class="st"> </span>html_document</span>
 <span id="cb416-4"><a href="data-analysis-reports.html#cb416-4"></a><span class="op">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="data-analysis-reports.html#cb417-1"></a><span class="op">---</span></span>
-<span id="cb417-2"><a href="data-analysis-reports.html#cb417-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring RMarkdown&quot;</span></span>
+<span id="cb417-2"><a href="data-analysis-reports.html#cb417-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
 <span id="cb417-3"><a href="data-analysis-reports.html#cb417-3"></a>output<span class="op">:</span><span class="st"> </span>word_document</span>
 <span id="cb417-4"><a href="data-analysis-reports.html#cb417-4"></a><span class="op">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="data-analysis-reports.html#cb418-1"></a><span class="op">---</span></span>
-<span id="cb418-2"><a href="data-analysis-reports.html#cb418-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring RMarkdown&quot;</span></span>
+<span id="cb418-2"><a href="data-analysis-reports.html#cb418-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
 <span id="cb418-3"><a href="data-analysis-reports.html#cb418-3"></a>output<span class="op">:</span><span class="st"> </span>pdf_document</span>
 <span id="cb418-4"><a href="data-analysis-reports.html#cb418-4"></a><span class="op">---</span></span></code></pre></div>
 <div id="a-note-about-rmd-outputs" class="section level3" number="9.9.1">
 <h3><span class="header-section-number">9.9.1</span> A note about Rmd outputs</h3>
-<p>It can be easy to get caught up with how your document looks. It is highly recommended to render as html file and avoiding compiling to PDF or word until you really need to. This is also recommended by the author of rmarkdown and knitr, <a href="https://yihui.org/en/2018/07/in-html-i-trust/">Yihui Xie</a>. This means that you can spend time working on generating content, and not trying to get figures to line up correctly and wrestling with LaTex libraries.</p>
+<p>It can be easy to get caught up with how your document looks. It is highly recommended to render as html document and avoiding compiling to PDF or word until you really need to. This is also recommended by the author of <code>rmarkdown</code> and <code>knitr</code>, <a href="https://yihui.org/en/2018/07/in-html-i-trust/">Yihui Xie</a>. This means that you can spend time working on generating content, and not trying to get figures to line up correctly and wrestling with LaTex libraries.</p>
 <blockquote>
 <h2 id="tips-creating-pdf-documents">Tips: Creating PDF documents</h2>
 <p>Markdown documents can be compiled to PDF, however it will likely you will require additional
