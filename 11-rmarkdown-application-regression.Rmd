@@ -186,9 +186,9 @@ life_exp_se <- round(life_exp$std.error, 1)
 Then in our document we can type:
 
 ```
-The predicted effect of life expectancy on per-capita GDP is `r life_exp_estimate` 
-(SE: `r life_exp_se`), meaning that for every year we live longer, our per-capita 
-GDP increases by approximately `r life_exp_esimate`.
+The predicted effect of life expectancy on per-capita GDP is `r knitr::inline_expr("life_exp_estimate")` 
+(SE: `r knitr::inline_expr("life_exp_se")`), meaning that for every year we live longer, our per-capita GDP
+increases by approximately `r knitr::inline_expr("life_exp_esimate")`.
 ```
 
 This helps reduce typos, copy-paste errors, and ensures that if our data change, 
