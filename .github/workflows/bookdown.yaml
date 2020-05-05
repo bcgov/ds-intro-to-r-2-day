@@ -1,6 +1,4 @@
-on:
-  push:
-    branches: master
+on: [push, pull_request]
 
 name: bookdown
 
@@ -19,15 +17,28 @@ jobs:
           brew install pandoc
           brew install pandoc-citeproc
 
+      - name: Make Rprofile
+        run: |
+          cat <<EOT >> .Rprofile
+          options(crayon.enabled = FALSE)
+          ## Choose cran mirror
+          local({
+          	r = getOption("repos")
+          	r["CRAN"] = "https://cran.rstudio.com/"
+          	options(repos = r)
+          })
+          EOT
+
       - name: Install packages
         run: |
-          R -e 'install.packages(c("tidyverse", "reprex", "bookdown", "bcdata"))'
           R -e 'install.packages("sf", type = "binary")'
+          R -e 'install.packages(c("tidyverse", "reprex", "bookdown", "bcdata"))'
 
       - name: Build site
         run: R -e 'bookdown::render_book("index.Rmd")'
 
       - name: commit bookdown
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git add docs
@@ -36,9 +47,11 @@ jobs:
           fi
 
       - name: Make course zip
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: Rscript make_course_zip.R
 
       - name: commit course zip
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git add intro-r-May2020/README.md intro-r-May2020.zip

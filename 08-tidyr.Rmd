@@ -1,5 +1,5 @@
 ---
-title: Dataframe Manipulation with tidyr
+title: Create Tidy Data with tidyr
 teaching: 30
 exercises: 15
 questions:
@@ -13,6 +13,8 @@ keypoints:
 - "Use `pivot_wider()` to go from long to wider layout."
 source: Rmd
 ---
+
+# Create Tidy Data with tidyr
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
