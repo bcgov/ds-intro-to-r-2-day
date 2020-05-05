@@ -8,7 +8,7 @@ rmd_files:
     - "02-seeking-help.Rmd"
     - "03-project-intro.Rmd"
     - "04-data-structures-part1.Rmd"
-    - "05-data-structures-part2.Rmd"
+    - "05-data-frames.Rmd"
     - "06-plot-ggplot2.Rmd"
     - "07-dplyr.Rmd"
     - "08-tidyr.Rmd"
