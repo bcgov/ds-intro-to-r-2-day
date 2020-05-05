@@ -28,7 +28,7 @@ library(bcdata)
 Let's look in the B.C. Data Catalogue for some data on libraries in British Columbia:
 
 ```{r}
-bcdc_search("libraries")
+bcdc_search("public libraries")
 ```
 
 There are many catalogue records with data relating to libraries. Let's examine the first returned record more closely:
@@ -41,7 +41,9 @@ bcdc_get_record("bc-public-libraries-systems-branches-and-locations")
 Next, we can use the `bcdc_get_data` function to load this data directly into R:
 
 ```{r}
-libs_raw <- bcdc_get_data(record = 'bc-public-libraries-systems-branches-and-locations',
+bcdc_get_data(record = "bc-public-libraries-systems-branches-and-locations")
+
+lib_raw <- bcdc_get_data(record = 'bc-public-libraries-systems-branches-and-locations',
                           resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
 ```
 
@@ -52,11 +54,11 @@ libs_raw <- bcdc_get_data(record = 'bc-public-libraries-systems-branches-and-loc
 >
 
 
-Let's return to the libraries data. As we learned earlier in the workshop, a useful first step is to get familiar with the data.
+Let's return to our libraries data. As we learned earlier in the workshop, a useful first step is to get familiar with the data.
 
 ```{r}
-str(libs_raw)
-names(libs_raw)
+str(lib_raw)
+names(lib_raw)
 ```
 
 Let's tidy up this data frame and find out how many books&mdash;physical materials or volumes&mdash;are available within each City:
@@ -64,16 +66,13 @@ Let's tidy up this data frame and find out how many books&mdash;physical materia
 ```{r}
 library(dplyr)
 
-libs_tidy <- libs_raw %>%
-  select(`Library System`, Location, City, "460x Total branch physical materials, volumes held")
+lib_tidy <- lib_raw %>%
+  select(`Library System`, Location, City, num_books = "460x Total branch physical materials, volumes held")
 
-libs_tidy <- libs_raw %>%
-  rename(no_books = "460x Total branch physical materials, volumes held") %>%
-  select(`Library System`, Location, City, no_books)
 
-sum_books <- libs_tidy %>% 
+sum_books <- lib_tidy %>% 
   group_by(City, `Library System`) %>% 
-  summarize(total_books = sum(no_books))
+  summarize(total_books = sum(num_books))
 ```
 
 > ## Challenge 2 (10 minutes)
@@ -94,10 +93,13 @@ Now that we have imported, tidied, and analyzed our library data, let's make a s
 library(ggplot2)
 
 sum_books %>% 
+  ggplot(aes(total_books, City)) +
+  geom_col()
+
+sum_books %>% 
   filter(total_books > 100000) %>% 
-  ggplot(aes(City, total_books)) +
-  geom_col() +
-  coord_flip()
+  ggplot(aes(total_books, City)) +
+  geom_col()
 ```
 
 > ## Challenge 3 (10 minutes)
@@ -111,15 +113,37 @@ sum_books %>%
 >
 >sum_books %>% 
 >  filter(total_books > 100000) %>% 
->  ggplot(aes(City, total_books)) +
+>  ggplot(aes(total_books, City)) +
 >  geom_col() +
->  coord_flip() +
 >  facet_wrap(vars(`Library System`)) +
 >  theme_minimal() +
 >  labs(x = NULL,
 >       y = NULL,
->       title = "Total Number of Books by City & Library System")
+>       title = "Total Number of Books by City & Library System in B.C.",
+>       caption = "Data sourced from the B.C. Data Catalogue")
 >
 >```
+
+
+
+```{r}
+lib_spatial <- bcdc_query_geodata("bc-public-libraries-systems-branches-and-locations") %>%
+  collect()
+
+mapview::mapview(lib_spatial)
+
+lib_spatial %>% 
+  ggplot() + 
+  geom_sf()
+
+lib_spatial %>% 
+  left_join(lib_tidy,
+            by = c("SERVICE_POINT_NAME" = "Location")) %>% 
+  ggplot() +
+  geom_sf(aes(size = num_books), colour = "blue") +
+  geom_sf(data = bcmaps::bc_bound(), fill = NA) +
+  theme_minimal()
+
+```
 
 
