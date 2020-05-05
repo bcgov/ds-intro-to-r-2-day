@@ -21,6 +21,8 @@ knitr_fig_path("09-")
 
 The bcdata R package contains functions for searching & retrieving data directly from the B.C. Data Catalogue.
 
+## Getting started
+
 First we need to install the `bcdata` package:
 
 ```{r, eval=FALSE}
@@ -35,6 +37,8 @@ library(dplyr)
 library(ggplot2)
 ```
 
+## Searching the B.C. Data Catalogue
+
 Let's look in the B.C. Data Catalogue for some data on libraries in British Columbia:
 
 ```{r}
@@ -47,6 +51,8 @@ There are many catalogue records with data relating to libraries. Let's examine 
 ```{r}
 bcdc_get_record("bc-public-libraries-systems-branches-and-locations")
 ```
+
+## Importing data from the B.C. Data Catalogue
 
 Next, we can use the `bcdc_get_data` function to load this data directly into R. 
 
@@ -66,6 +72,8 @@ lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
 >
 > Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session > (e.g. a CSV or XLS resource).
 >
+
+## Practice manipulating data with `dplyr`  
 
 
 Let's return to our libraries data. As we learned earlier in the workshop, a useful first step is to get familiar with the data.
@@ -101,6 +109,8 @@ sum_books <- lib_tidy %>%
 > >  summarize(totals = sum(total_books))
 > >```
 
+
+## Practice plotting data with `ggplot2`  
 
 Now that we have imported, tidied, and analyzed our library data, let's make a static data visualization to share and communicate the results with others.
 
@@ -138,6 +148,8 @@ sum_books %>%
 > >       caption = "Data sourced from the B.C. Data Catalogue")
 > >
 > >```
+
+## Using `bcdata` with spatial data in the B.C. Data Catalogue 
 
 The `bcdata` package also has a function for querying and downloading geospatial data from the B.C. Data Catalogue. Let's import the spatial data file from the catalogue record, and combine the spatial data with our tidy library data frame:
 
