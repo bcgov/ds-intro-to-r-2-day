@@ -8,7 +8,7 @@ objectives:
 - "Introduction to regression with lm()"
 - "Demonstrate how to add a regression line and statistics to a ggplot"
 - "Introduction to the `broom` package for 'tidying' statistical results"
-- "Demonstrate how to include statistcal results in a reproducible document"
+- "Demonstrate how to include statistical results in a reproducible document"
 source: Rmd
 ---
 
