@@ -1,13 +1,13 @@
 ---
 title: "Intro to bcdata"
 teaching: 30
-exercises: 15
+exercises: 30
 questions:
-
+- "How can I pull data directly from the B.C. Data Catalogue using R?"
 objectives:
-
-keypoints:
-
+- "Understand the value of importing data programatically for more auditable and reproducible work flows"
+- "Become familiar with the bcdata R package"
+- "Learn how to use bcdata with the dplyr and ggplot2 packages"
 source: Rmd
 ---
 
@@ -17,9 +17,161 @@ knitr_fig_path("09-")
 ```
 
 
-# Introduction to bcdata package
+# Introduction to the bcdata package
+
+The bcdata R package contains functions for searching & retrieving data directly from the B.C. Data Catalogue.
+
+## Getting started
+
+First we need to install the `bcdata` package:
+
+```{r, eval=FALSE}
+# install.packages("bcdata")
+```
+
+And next we need to load the `bcdata` package, along with `dplyr` and `ggplot2` which we installed and used in earlier lessons:
 
 ```{r}
 library(bcdata)
+library(dplyr)
+library(ggplot2)
 ```
+
+## Searching the B.C. Data Catalogue
+
+Let's look in the B.C. Data Catalogue for some data on libraries in British Columbia:
+
+```{r}
+bcdc_search("public libraries")
+```
+
+There are many catalogue records with data relating to libraries. Let's examine the first returned record more closely:
+
+
+```{r}
+bcdc_get_record("bc-public-libraries-systems-branches-and-locations")
+```
+
+## Importing data from the B.C. Data Catalogue
+
+Next, we can use the `bcdc_get_data` function to load this data directly into R. 
+
+```{r, eval=FALSE}
+bcdc_get_data(record = "bc-public-libraries-systems-branches-and-locations")
+```
+
+
+If we run the above code interactively, R will prompt you in the console to select a resource, as it does not know which one you want to download. The full code to download the resource is provided to the user for next time:
+
+```{r}
+lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
+                         resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
+```
+
+> ## Challenge 1 (5 minutes)
+>
+> Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session > (e.g. a CSV or XLS resource).
+>
+
+## Practice manipulating data with `dplyr`  
+
+
+Let's return to our libraries data. As we learned earlier in the workshop, a useful first step is to get familiar with the data.
+
+```{r}
+str(lib_raw)
+names(lib_raw)
+```
+
+Let's tidy up this data frame and find out how many books&mdash;physical materials or volumes&mdash;are available within each City:
+
+```{r}
+library(dplyr)
+
+lib_tidy <- lib_raw %>%
+  select(`Library System`, Location, City, num_books = "460x Total branch physical materials, volumes held")
+
+
+sum_books <- lib_tidy %>% 
+  group_by(City, `Library System`) %>% 
+  summarize(total_books = sum(num_books))
+```
+
+> ## Challenge 2 (10 minutes)
+>
+> Using `dplyr`, determine the total number of books within each Library System in British Columbia.
+>
+>
+> >## Solution Challenge 2 (10 minutes)
+> >```{r}
+> > sum_books %>% 
+> >  group_by(`Library System`) %>% 
+> >  summarize(totals = sum(total_books))
+> >```
+
+
+## Practice plotting data with `ggplot2`  
+
+Now that we have imported, tidied, and analyzed our library data, let's make a static data visualization to share and communicate the results with others.
+
+```{r}
+library(ggplot2)
+
+sum_books %>% 
+  ggplot(aes(total_books, City)) +
+  geom_col()
+
+sum_books %>% 
+  filter(total_books > 100000) %>% 
+  ggplot(aes(total_books, City)) +
+  geom_col()
+```
+
+> ## Challenge 3 (10 minutes)
+>
+> Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable.
+>
+>
+> >## Solution Challenge 3 (10 minutes)
+> >```{r}
+> >library(ggplot2)
+> >
+> >sum_books %>% 
+> >  filter(total_books > 100000) %>% 
+> >  ggplot(aes(total_books, City)) +
+> >  geom_col() +
+> >  facet_wrap(vars(`Library System`)) +
+> >  theme_minimal() +
+> >  labs(x = NULL,
+> >       y = NULL,
+> >       title = "Total Number of Books by City & Library System in B.C.",
+> >       caption = "Data sourced from the B.C. Data Catalogue")
+> >
+> >```
+
+## Using `bcdata` with spatial data in the B.C. Data Catalogue 
+
+The `bcdata` package also has a function for querying and downloading geospatial data from the B.C. Data Catalogue. Let's import the spatial data file from the catalogue record, and combine the spatial data with our tidy library data frame:
+
+```{r}
+lib_spatial <- bcdc_query_geodata("bc-public-libraries-systems-branches-and-locations") %>%
+  collect()
+
+lib_all <- lib_spatial %>% 
+  left_join(lib_tidy,
+            by = c("SERVICE_POINT_NAME" = "Location")) %>% 
+  select(SERVICE_POINT_NAME, num_books) 
+```
+
+Now we can use some of R's spatial tools to make static or interactive maps:
+
+```{r}
+lib_all %>% 
+  ggplot() +
+  geom_sf(aes(size = num_books), colour = "blue") +
+  theme_minimal()
+
+mapview::mapview(lib_all)
+```
+
 

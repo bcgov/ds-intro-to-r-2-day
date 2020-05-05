@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction-to-bcdata-package.html"/>
+<link rel="prev" href="introduction-to-the-bcdata-package.html"/>
 <link rel="next" href="applications-of-r-markdown.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -51,6 +51,21 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/PopupTable-0.0.1/popup.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -190,11 +205,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Creating Publication-Quality Graphics with ggplot2</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>6.1</b> Layers</a></li>
-<li class="chapter" data-level="6.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>6.2</b> Transformations and statistics</a></li>
-<li class="chapter" data-level="6.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>6.3</b> Multi-panel figures</a></li>
-<li class="chapter" data-level="6.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>6.4</b> Modifying text</a></li>
-<li class="chapter" data-level="6.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>6.5</b> Exporting the plot</a></li>
+<li class="chapter" data-level="6.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#getting-started"><i class="fa fa-check"></i><b>6.1</b> Getting started</a></li>
+<li class="chapter" data-level="6.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>6.2</b> Layers</a></li>
+<li class="chapter" data-level="6.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>6.3</b> Transformations and statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>6.4</b> Multi-panel figures</a></li>
+<li class="chapter" data-level="6.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>6.5</b> Modifying text</a></li>
+<li class="chapter" data-level="6.6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>6.6</b> Exporting the plot</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>7</b> Dataframe Manipulation with dplyr</a>
 <ul>
@@ -212,12 +228,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html"><i class="fa fa-check"></i><b>8</b> Create Tidy Data with tidyr</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#getting-started"><i class="fa fa-check"></i><b>8.1</b> Getting started</a></li>
+<li class="chapter" data-level="8.1" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#getting-started-1"><i class="fa fa-check"></i><b>8.1</b> Getting started</a></li>
 <li class="chapter" data-level="8.2" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-wide-to-long-format-with-pivot_longer"><i class="fa fa-check"></i><b>8.2</b> From wide to long format with pivot_longer()</a></li>
 <li class="chapter" data-level="8.3" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-long-to-intermediate-format-with-pivot_wider"><i class="fa fa-check"></i><b>8.3</b> From long to intermediate format with pivot_wider()</a></li>
 <li class="chapter" data-level="8.4" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#other-great-resources-1"><i class="fa fa-check"></i><b>8.4</b> Other great resources</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="introduction-to-bcdata-package.html"><a href="introduction-to-bcdata-package.html"><i class="fa fa-check"></i><b>9</b> Introduction to bcdata package</a></li>
+<li class="chapter" data-level="9" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html"><i class="fa fa-check"></i><b>9</b> Introduction to the bcdata package</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#getting-started-2"><i class="fa fa-check"></i><b>9.1</b> Getting started</a></li>
+<li class="chapter" data-level="9.2" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#searching-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.2</b> Searching the B.C. Data Catalogue</a></li>
+<li class="chapter" data-level="9.3" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#importing-data-from-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.3</b> Importing data from the B.C. Data Catalogue</a></li>
+<li class="chapter" data-level="9.4" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-manipulating-data-with-dplyr"><i class="fa fa-check"></i><b>9.4</b> Practice manipulating data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="9.5" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-plotting-data-with-ggplot2"><i class="fa fa-check"></i><b>9.5</b> Practice plotting data with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="9.6" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#using-bcdata-with-spatial-data-in-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.6</b> Using <code>bcdata</code> with spatial data in the B.C. Data Catalogue</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>10</b> Data analysis reports</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#literate-programming"><i class="fa fa-check"></i><b>10.1</b> Literate programming</a></li>
@@ -331,7 +355,7 @@ with R. <a href="https://www.markdownguide.org/">Markdown</a> is a light-weight 
 <li>R Markdown: <a href="https://github.com/bcgov/bcgov-rstats-public-presentations/blob/master/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.Rmd" class="uri">https://github.com/bcgov/bcgov-rstats-public-presentations/blob/master/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.Rmd</a></li>
 </ul>
 <blockquote>
-<h2 id="challenge-1-5-minutes">Challenge 1 (5 minutes)</h2>
+<h2 id="challenge-1-5-minutes-1">Challenge 1 (5 minutes)</h2>
 <p>Take a few minutes to discuss in your groups the typical ways in which
 you share results. What you do you do in the scenario where the data changes
 but the analysis needs to be the same?</p>
@@ -534,7 +558,7 @@ of the “Help” field in the toolbar at the top of RStudio.</p>
 &#96;&#96;&#96;
 </pre>
 <p>When we knit the document we can see both the code and the result:</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="data-analysis-reports.html#cb410-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> </span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="data-analysis-reports.html#cb434-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> </span></code></pre></div>
 <pre><code>[1] 2</code></pre>
 <p>If we dont want the code to appear in the output we can use the <code>echo</code> parameters.</p>
 <pre>
@@ -638,18 +662,18 @@ executed and replaced with the evaluated <em>value</em> as the result.</p>
 little triangle next to the “Knit” button to get a drop-down
 menu.</p>
 <p>Alternatively ee can change the YAML:</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="data-analysis-reports.html#cb413-1"></a><span class="op">---</span></span>
-<span id="cb413-2"><a href="data-analysis-reports.html#cb413-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
-<span id="cb413-3"><a href="data-analysis-reports.html#cb413-3"></a>output<span class="op">:</span><span class="st"> </span>html_document</span>
-<span id="cb413-4"><a href="data-analysis-reports.html#cb413-4"></a><span class="op">---</span></span></code></pre></div>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="data-analysis-reports.html#cb414-1"></a><span class="op">---</span></span>
-<span id="cb414-2"><a href="data-analysis-reports.html#cb414-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
-<span id="cb414-3"><a href="data-analysis-reports.html#cb414-3"></a>output<span class="op">:</span><span class="st"> </span>word_document</span>
-<span id="cb414-4"><a href="data-analysis-reports.html#cb414-4"></a><span class="op">---</span></span></code></pre></div>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="data-analysis-reports.html#cb415-1"></a><span class="op">---</span></span>
-<span id="cb415-2"><a href="data-analysis-reports.html#cb415-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
-<span id="cb415-3"><a href="data-analysis-reports.html#cb415-3"></a>output<span class="op">:</span><span class="st"> </span>pdf_document</span>
-<span id="cb415-4"><a href="data-analysis-reports.html#cb415-4"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="data-analysis-reports.html#cb437-1"></a><span class="op">---</span></span>
+<span id="cb437-2"><a href="data-analysis-reports.html#cb437-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
+<span id="cb437-3"><a href="data-analysis-reports.html#cb437-3"></a>output<span class="op">:</span><span class="st"> </span>html_document</span>
+<span id="cb437-4"><a href="data-analysis-reports.html#cb437-4"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="data-analysis-reports.html#cb438-1"></a><span class="op">---</span></span>
+<span id="cb438-2"><a href="data-analysis-reports.html#cb438-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
+<span id="cb438-3"><a href="data-analysis-reports.html#cb438-3"></a>output<span class="op">:</span><span class="st"> </span>word_document</span>
+<span id="cb438-4"><a href="data-analysis-reports.html#cb438-4"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="data-analysis-reports.html#cb439-1"></a><span class="op">---</span></span>
+<span id="cb439-2"><a href="data-analysis-reports.html#cb439-2"></a>title<span class="op">:</span><span class="st"> &quot;Exploring R Markdown&quot;</span></span>
+<span id="cb439-3"><a href="data-analysis-reports.html#cb439-3"></a>output<span class="op">:</span><span class="st"> </span>pdf_document</span>
+<span id="cb439-4"><a href="data-analysis-reports.html#cb439-4"></a><span class="op">---</span></span></code></pre></div>
 <div id="a-note-about-rmd-outputs" class="section level3" number="10.9.1">
 <h3><span class="header-section-number">10.9.1</span> A note about Rmd outputs</h3>
 <p>It can be easy to get caught up with how your document looks. It is highly recommended to render as html document and avoiding compiling to PDF or word until you really need to. This is also recommended by the author of <code>rmarkdown</code> and <code>knitr</code>, <a href="https://yihui.org/en/2018/07/in-html-i-trust/">Yihui Xie</a>. This means that you can spend time working on generating content, and not trying to get figures to line up correctly and wrestling with LaTex libraries.</p>
@@ -659,7 +683,7 @@ menu.</p>
 software called LaTex. This software can be tricky to install and it is reccommended to use<br />
 <a href="https://yihui.org/tinytex/">tinytex</a> as an alternative. This R package is a lightweight
 version of LaTex is designed for r users. You can install using the following commands:</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="data-analysis-reports.html#cb416-1"></a>tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="data-analysis-reports.html#cb440-1"></a>tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()</span></code></pre></div>
 <p>There is lots of information and help available - see <a href="https://yihui.org/tinytex/faq/">tinytex FQA page</a></p>
 </blockquote>
 </div>
@@ -685,7 +709,7 @@ version of LaTex is designed for r users. You can install using the following co
           </div>
         </div>
       </div>
-<a href="introduction-to-bcdata-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-the-bcdata-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="applications-of-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
