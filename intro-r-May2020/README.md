@@ -23,4 +23,3 @@ R scripts:
 
 Rmarkdown documents:
 
--   ``

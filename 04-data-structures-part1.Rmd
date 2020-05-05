@@ -317,21 +317,23 @@ typeof(CATegories)
 
 > ## Challenge 1
 >
-> The default behaviour of `read.csv` is to convert all character columns to 
-> factors, which is one of the biggest reasons we prefer `read_csv` from the 
-> `readr` package. 
-> Look at the help for `?read.csv` to figure out how to keep text columns as character
-> vectors instead of factors; then write a command or two to show that the factor
-> in `cats` is actually a character vector when loaded in this way.
+> Up until R version 4.0, the default behaviour of `read.csv` is to convert all
+> character columns to factors, which has been one of the biggest reasons we
+> prefer `read_csv` from the `readr` package. As of version 4.0, this behaviour
+> has changed and now the default is to leave character columns as character.
+> Look at the help for `?read.csv` to figure out how to control whether character 
+> columns are read as as character vectors or factors; then write a command or 
+> two to check that the column in `cats` is what you expect it to be.
 >
 > > ## Solution to Challenge 1
 > >
 > > One solution is use the argument `stringAsFactors`:
 > >
 > > ```{r, eval = FALSE}
-> > cats <- read.csv(file="data/feline-data.csv")
-> > str(cats$coat)
+> > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=TRUE)
+> > class(cats$coat)
 > > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
+> > class(cats$coat)
 > > ```
 > >
 > > Another solution is use the argument `colClasses`
@@ -339,7 +341,7 @@ typeof(CATegories)
 > >
 > > ```{r, eval = FALSE}
 > > cats <- read.csv(file="data/feline-data.csv", colClasses=c(NA, NA, "character"))
-> > str(cats$coat)
+> > class(cats$coat)
 > > ```
 > >
 > > Note: new students find the help files difficult to understand; make sure to let them know
