@@ -22,7 +22,18 @@ The goal of this 2-day workshop is to teach _new-to-programming_ data profession
 | Break      | 14:30      | 14:50    |
 | Session #4 | 14:50      | 16:30    |
 
-Please see: https://bcgov.github.io/ds-intro-to-r-2-day/
+**Course Notes**: https://bcgov.github.io/ds-intro-to-r-2-day/  
+
+**Download Course Materials**:  
+```
+install.packages("usethis")
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-May2020.zip")
+```  
+
+**Confirm or Find Location of Your R Library**:  
+```
+.libPaths()
+```  
 
 ### Day 1
 
