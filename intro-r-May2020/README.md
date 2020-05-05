@@ -23,5 +23,3 @@ R scripts:
 
 Rmarkdown documents:
 
--   `10_rmarkdown.Rmd`
--   `11_rmarkdown-application.Rmd`
