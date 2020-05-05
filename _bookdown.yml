@@ -14,6 +14,7 @@ rmd_files:
     - "08-tidyr.Rmd"
     - "09-intro-to-bcdata.Rmd"
     - "10-intro-to-rmarkdown.Rmd"
-    - "11-reprex.Rmd"
+    - "11-rmarkdown-application-regression.Rmd"
+    - "12-reprex.Rmd"
 clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true
