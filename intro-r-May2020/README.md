@@ -23,3 +23,4 @@ R scripts:
 
 Rmarkdown documents:
 
+-   `11_rmarkdown-application.Rmd`
