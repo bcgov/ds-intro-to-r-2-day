@@ -1,5 +1,5 @@
 ---
-title: "Seeking Help from Others with reprex"
+title: "Seeking Help"
 teaching: 15
 exercises: 0
 questions:
