@@ -94,6 +94,13 @@ To select on some subset of rows:
 filter(gapminder, continent == "Europe")
 ```
 
+Or select another subset of rows:
+
+```{r}
+filter(gapminder, pop > 1000000)
+```
+
+
 Above we used 'normal' grammar, but the strengths of `dplyr` lie in combining 
 several functions using pipes. This 
 [description](https://twitter.com/WeAreRLadies/status/1172576445794803713) is very useful:
@@ -192,14 +199,8 @@ gdp_bycontinents <- gapminder %>%
 
 ![](fig/07-dplyr-fig3.png)
 
-```{r,eval=FALSE}
-continent mean_gdpPercap
-     <fctr>          <dbl>
-1    Africa       2193.755
-2  Americas       7136.110
-3      Asia       7902.150
-4    Europe      14469.476
-5   Oceania      18621.609
+```{r,echo=FALSE}
+gdp_bycontinents
 ```
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
@@ -254,7 +255,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_pop = sd(pop))
 ```
 
-## count()
+## Using count()
 
 A very common operation is to count the number of observations for each
 group. The `dplyr` package comes with a function that helps with this.
