@@ -61,22 +61,23 @@ functionality. We'll be using this today to create a self-contained, reproducibl
 project.
 
 
-> ## Challenge: Creating a self-contained project
+> ## Creating a self-contained project
 >
-> We're going to create a new project in RStudio:
+> In our initial breakout sessions, we all downloaded and opened a new RStudio 
+> Project called `intro-r-May2020`, by running: 
+>
+> `usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-May2020.zip") `
 > 
-> First, we are going to download the course content. Download the zipfile from: 
-> <https://bit.ly/2oJNI50> and save it somewhere where you can find it 
-> (e.g., your desktop), then unzip it.
-> You should have a folder called `ds-cop-intro-to-r` with a `README.md` file 
-> and a `data` folder.
->
-> 1. Click the "File" menu button, then "New Project".
-> 2. Click "Existing Directory".
-> 3. Browse to the folder we just extracted.
-> 6. Click the "Create Project" button.
+> Inside your project you should have a collection of `.R` and `.Rmd` files, 
+> a `data/` folder, and a `README.md` file.
+> 
+> ## Challenge: 
+> 
+> To get used to navigating Projects in RStudio, close your Project and reopen it.
+> There are at least three ways of opening an RStudio project - try to find two!
 
-Now when we open this project with RStudio, all of our work on this project will 
+
+Now whenever we open this project with RStudio, all of our work on this project will 
 be entirely self-contained in this directory.
 
 ## Best practices for project organization
