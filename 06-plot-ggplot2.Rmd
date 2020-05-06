@@ -341,10 +341,7 @@ by adding a layer of **facet** panels.
 
 
 ```{r facet}
-asia_oceania <- gapminder[gapminder$continent == c("Asia", "Oceania"),]
-
-# library(dplyr)
-# asia_oceania <- filter(gapminder, continent %in% c("Asia", "Oceania"))
+asia_oceania <- read_csv("data/gapminder_asia_oceania.csv")
 
 ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp)) +
   geom_line() + 
