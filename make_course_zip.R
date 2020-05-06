@@ -1,5 +1,9 @@
 local({
   course <- "intro-r-May2020"
+
+  file.copy(list.files("data", full.names = TRUE),
+            file.path(course, "data"), overwrite = TRUE)
+
   orig_wd <- setwd(course)
   on.exit(setwd(orig_wd))
 
