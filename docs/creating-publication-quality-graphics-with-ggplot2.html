@@ -553,14 +553,19 @@ by adding a layer of <strong>facet</strong> panels.</p>
 <p>We start by making a subset of data including only countries located
 in the Americas.</p>
 </blockquote>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-1"></a>asia_oceania &lt;-<span class="st"> </span>gapminder[gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Asia&quot;</span>, <span class="st">&quot;Oceania&quot;</span>),]</span>
-<span id="cb309-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-2"></a></span>
-<span id="cb309-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-3"></a><span class="co"># library(dplyr)</span></span>
-<span id="cb309-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-4"></a><span class="co"># asia_oceania &lt;- filter(gapminder, continent %in% c(&quot;Asia&quot;, &quot;Oceania&quot;))</span></span>
-<span id="cb309-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-5"></a></span>
-<span id="cb309-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-6"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
-<span id="cb309-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-7"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb309-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-8"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="kw">vars</span>(country))</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb309-1"></a>asia_oceania &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_asia_oceania.csv&quot;</span>)</span></code></pre></div>
+<pre><code>Parsed with column specification:
+cols(
+  country = col_character(),
+  year = col_double(),
+  pop = col_double(),
+  continent = col_character(),
+  lifeExp = col_double(),
+  gdpPercap = col_double()
+)</code></pre>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp)) <span class="op">+</span></span>
+<span id="cb311-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb311-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="kw">vars</span>(country))</span></code></pre></div>
 <p><img src="fig/rmd-06-facet-1.png" width="816" style="display: block; margin: auto;" /></p>
 <p>The <code>facet_wrap</code> layer took the function <code>vars()</code> as its <code>facet</code> argument. This tells R to draw a panel for each unique value in the variable country of the gapminder dataset.</p>
 </div>
@@ -575,43 +580,7 @@ title and any legend can be set using the <code>labs</code> function. Legend tit
 are set using the same names we used in the <code>aes</code> specification. Thus below
 the colour legend title is set using <code>colour = "Continent"</code>, while the title
 of a fill legend would be set using <code>fill = "MyTitle"</code>.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
-<span id="cb310-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb310-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="kw">vars</span>(country)) <span class="op">+</span></span>
-<span id="cb310-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-4"></a><span class="st">  </span><span class="kw">labs</span>(</span>
-<span id="cb310-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-5"></a>    <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,              <span class="co"># x axis title</span></span>
-<span id="cb310-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-6"></a>    <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>,   <span class="co"># y axis title</span></span>
-<span id="cb310-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-7"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
-<span id="cb310-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-8"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
-<span id="cb310-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-9"></a>  ) <span class="op">+</span></span>
-<span id="cb310-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-10"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">5</span>),</span>
-<span id="cb310-11"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb310-11"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
-<p><img src="fig/rmd-06-theme-1.png" width="816" style="display: block; margin: auto;" /></p>
-<blockquote>
-<h2 id="tip-1">Tip</h2>
-<p>Note that we apply a “theme” definition to customize
-the x-axis label sizes to maintain readability. Nearly everything in
-ggplot2 is customizable.</p>
-</blockquote>
-<p>We can also use one of the many built in <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">themes</a> in <code>ggplot2</code>. Like geom layers, each theme each layer is drawn on top of the previous theme layer.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
-<span id="cb311-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb311-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="kw">vars</span>(country)) <span class="op">+</span></span>
-<span id="cb311-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-4"></a><span class="st">  </span><span class="kw">labs</span>(</span>
-<span id="cb311-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-5"></a>    <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,              <span class="co"># x axis title</span></span>
-<span id="cb311-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-6"></a>    <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>,   <span class="co"># y axis title</span></span>
-<span id="cb311-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-7"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
-<span id="cb311-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-8"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
-<span id="cb311-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-9"></a>  ) <span class="op">+</span></span>
-<span id="cb311-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-10"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
-<span id="cb311-11"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-11"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">5</span>),</span>
-<span id="cb311-12"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb311-12"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
-<p><img src="fig/rmd-06-more-theme-1.png" width="816" style="display: block; margin: auto;" /></p>
-</div>
-<div id="exporting-the-plot" class="section level2" number="6.6">
-<h2><span class="header-section-number">6.6</span> Exporting the plot</h2>
-<p>The <code>ggsave()</code> function allows you to export a plot created with ggplot. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (<code>width</code>, <code>height</code> and <code>dpi</code>) to create high quality graphics for publication. In order to save the plot from above, we first assign it to a variable <code>lifeExp_plot</code>, then tell <code>ggsave</code> to save that plot in <code>png</code> format to a directory called <code>results</code>. (Make sure you have a <code>results/</code> folder in your working directory.)</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-1"></a>lifeExp_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
 <span id="cb312-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
 <span id="cb312-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="kw">vars</span>(country)) <span class="op">+</span></span>
 <span id="cb312-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-4"></a><span class="st">  </span><span class="kw">labs</span>(</span>
@@ -620,12 +589,48 @@ ggplot2 is customizable.</p>
 <span id="cb312-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-7"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
 <span id="cb312-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-8"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
 <span id="cb312-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-9"></a>  ) <span class="op">+</span></span>
-<span id="cb312-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-10"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>),</span>
-<span id="cb312-11"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-11"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
-<span id="cb312-12"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-12"></a></span>
-<span id="cb312-13"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-13"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;results/lifeExp.png&quot;</span>, <span class="dt">plot =</span> lifeExp_plot, <span class="dt">width =</span> <span class="dv">18</span>, <span class="dt">height =</span> <span class="dv">16</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)</span>
-<span id="cb312-14"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-14"></a></span>
-<span id="cb312-15"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-15"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;results/lifeExp_widetv.png&quot;</span>, <span class="dt">plot =</span> lifeExp_plot, <span class="dt">width =</span> <span class="fl">13.33</span>, <span class="dt">height =</span>  <span class="fl">7.5</span>)</span></code></pre></div>
+<span id="cb312-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-10"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">5</span>),</span>
+<span id="cb312-11"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb312-11"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
+<p><img src="fig/rmd-06-theme-1.png" width="816" style="display: block; margin: auto;" /></p>
+<blockquote>
+<h2 id="tip-1">Tip</h2>
+<p>Note that we apply a “theme” definition to customize
+the x-axis label sizes to maintain readability. Nearly everything in
+ggplot2 is customizable.</p>
+</blockquote>
+<p>We can also use one of the many built in <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">themes</a> in <code>ggplot2</code>. Like geom layers, each theme each layer is drawn on top of the previous theme layer.</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
+<span id="cb313-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb313-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="kw">vars</span>(country)) <span class="op">+</span></span>
+<span id="cb313-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-4"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb313-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-5"></a>    <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,              <span class="co"># x axis title</span></span>
+<span id="cb313-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-6"></a>    <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>,   <span class="co"># y axis title</span></span>
+<span id="cb313-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-7"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
+<span id="cb313-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-8"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
+<span id="cb313-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-9"></a>  ) <span class="op">+</span></span>
+<span id="cb313-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-10"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb313-11"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-11"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">5</span>),</span>
+<span id="cb313-12"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb313-12"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
+<p><img src="fig/rmd-06-more-theme-1.png" width="816" style="display: block; margin: auto;" /></p>
+</div>
+<div id="exporting-the-plot" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Exporting the plot</h2>
+<p>The <code>ggsave()</code> function allows you to export a plot created with ggplot. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (<code>width</code>, <code>height</code> and <code>dpi</code>) to create high quality graphics for publication. In order to save the plot from above, we first assign it to a variable <code>lifeExp_plot</code>, then tell <code>ggsave</code> to save that plot in <code>png</code> format to a directory called <code>results</code>. (Make sure you have a <code>results/</code> folder in your working directory.)</p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-1"></a>lifeExp_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> asia_oceania, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent)) <span class="op">+</span></span>
+<span id="cb314-2"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb314-3"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="dt">facets =</span> <span class="kw">vars</span>(country)) <span class="op">+</span></span>
+<span id="cb314-4"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-4"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb314-5"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-5"></a>    <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,              <span class="co"># x axis title</span></span>
+<span id="cb314-6"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-6"></a>    <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>,   <span class="co"># y axis title</span></span>
+<span id="cb314-7"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-7"></a>    <span class="dt">title =</span> <span class="st">&quot;Figure 1&quot;</span>,      <span class="co"># main title of figure</span></span>
+<span id="cb314-8"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-8"></a>    <span class="dt">colour =</span> <span class="st">&quot;Continent&quot;</span>      <span class="co"># title of legend</span></span>
+<span id="cb314-9"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-9"></a>  ) <span class="op">+</span></span>
+<span id="cb314-10"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-10"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>),</span>
+<span id="cb314-11"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-11"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb314-12"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-12"></a></span>
+<span id="cb314-13"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-13"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;results/lifeExp.png&quot;</span>, <span class="dt">plot =</span> lifeExp_plot, <span class="dt">width =</span> <span class="dv">18</span>, <span class="dt">height =</span> <span class="dv">16</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)</span>
+<span id="cb314-14"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-14"></a></span>
+<span id="cb314-15"><a href="creating-publication-quality-graphics-with-ggplot2.html#cb314-15"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;results/lifeExp_widetv.png&quot;</span>, <span class="dt">plot =</span> lifeExp_plot, <span class="dt">width =</span> <span class="fl">13.33</span>, <span class="dt">height =</span>  <span class="fl">7.5</span>)</span></code></pre></div>
 <p>There are two nice things about <code>ggsave</code>. First, it defaults to the last plot, so if you omit the <code>plot</code> argument it will automatically save the last plot you created with <code>ggplot</code>. Secondly, it tries to determine the format you want to save your plot in from the file extension you provide for the filename (for example <code>.png</code> or <code>.pdf</code>). If you need to, you can specify the format explicitly in the <code>device</code> argument.</p>
 <p>This is a taste of what you can do with ggplot2. RStudio provides a
 really useful <a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf">cheat sheet</a> of the different layers available, and more
