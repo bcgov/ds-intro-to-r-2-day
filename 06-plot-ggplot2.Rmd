@@ -59,7 +59,7 @@ gapminder
 ```
 
 
-And jump right into making an example ggplot2 plot:
+And jump right into making an example ggplot2 plot :
 
 ```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
 # install.packages("ggplot2")
