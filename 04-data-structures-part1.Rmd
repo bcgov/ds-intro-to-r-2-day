@@ -317,36 +317,30 @@ typeof(CATegories)
 
 > ## Challenge 1
 >
-> The default behaviour of `read.csv` is to convert all character columns to 
-> factors, which is one of the biggest reasons we prefer `read_csv` from the 
-> `readr` package. 
-> Look at the help for `?read.csv` to figure out how to keep text columns as character
-> vectors instead of factors; then write a command or two to show that the factor
-> in `cats` is actually a character vector when loaded in this way.
+> Look at the help for `?read_csv` to figure out how to control what data type 
+> each column is read as. Then write a command so that `coat` is read as a
+> factor, and `likes_string` is read as a logical
 >
 > > ## Solution to Challenge 1
 > >
-> > One solution is use the argument `stringAsFactors`:
+> > Use the `col_types` argument:
 > >
 > > ```{r, eval = FALSE}
-> > cats <- read.csv(file="data/feline-data.csv")
-> > str(cats$coat)
-> > cats <- read.csv(file="data/feline-data.csv", stringsAsFactors=FALSE)
+> > cats <- read_csv(file="data/feline-data.csv", col_types = "fnl")
+> > class(cats$coat)
+> > class(cats$likes_string)
+> > cats <- read_csv(file="data/feline-data.csv", 
+> >                  col_types = cols(coat = col_factor(), likes_string = col_logical()))
+> > class(cats$coat)
+> > class(cats$likes_string)
 > > ```
 > >
-> > Another solution is use the argument `colClasses`
-> > that allow finer control.
-> >
-> > ```{r, eval = FALSE}
-> > cats <- read.csv(file="data/feline-data.csv", colClasses=c(NA, NA, "character"))
-> > str(cats$coat)
-> > ```
-> >
-> > Note: new students find the help files difficult to understand; make sure to let them know
-> > that this is typical, and encourage them to take their best guess based on semantic meaning,
-> > even if they aren't sure.
 
-
+<!--
+Note: new students find the help files difficult to understand; make sure to let them know
+that this is typical, and encourage them to take their best guess based on semantic meaning,
+even if they aren't sure.
+-->
 
 In modeling functions, it's important to know what the baseline levels are. This
 is assumed to be the first factor, but by default factors are labeled in
@@ -548,10 +542,7 @@ ncol(matrix_example)
 > > dataStructures <- c('data.frame', 'vector', 'factor', 'list', 'matrix')
 > > answer <- list(dataTypes, dataStructures)
 > > ```
-> > Note: it's nice to make a list in big writing on the board or taped to the wall
-> > listing all of these types and structures - leave it up for the rest of the workshop
-> > to remind people of the importance of these basics.
-> >
+
 
 
 > ## Challenge 7

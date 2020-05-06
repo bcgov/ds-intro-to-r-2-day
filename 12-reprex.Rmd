@@ -1,5 +1,5 @@
 ---
-title: "Seeking Help from Others with reprex"
+title: "Introduction to Data Science using R Workshop"
 teaching: 15
 exercises: 0
 questions:
@@ -15,7 +15,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
-knitr_fig_path("11-")
+knitr_fig_path("12-")
 ```
 
 # Seeking Help from Others with reprex

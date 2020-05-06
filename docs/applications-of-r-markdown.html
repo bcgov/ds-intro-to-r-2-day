@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Applications of R Markdown | Introduction to Data Science using R Workshop</title>
+  <meta name="description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Applications of R Markdown | Introduction to Data Science using R Workshop" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  <meta name="github-repo" content="bcgov/ds-intro-to-r-2-day" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Applications of R Markdown | Introduction to Data Science using R Workshop" />
+  
+  <meta name="twitter:description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  
+
+<meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
+
+
+<meta name="date" content="2020-05-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-analysis-reports.html"/>
+<link rel="next" href="seeking-help-from-others-with-reprex.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/PopupTable-0.0.1/popup.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to Data Science using R Workshop</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#motivation"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#before-starting-the-workshop"><i class="fa fa-check"></i><b>1.2</b> Before Starting The Workshop</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>1.3</b> Introduction to RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#work-flow-within-rstudio"><i class="fa fa-check"></i><b>1.4</b> Work flow within RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>1.5</b> Introduction to R</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-as-a-calculator"><i class="fa fa-check"></i><b>1.6</b> Using R as a calculator</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mathematical-functions"><i class="fa fa-check"></i><b>1.7</b> Mathematical functions</a></li>
+<li class="chapter" data-level="1.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comparing-things"><i class="fa fa-check"></i><b>1.8</b> Comparing things</a></li>
+<li class="chapter" data-level="1.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#variables-and-assignment"><i class="fa fa-check"></i><b>1.9</b> Variables and assignment</a></li>
+<li class="chapter" data-level="1.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectorization"><i class="fa fa-check"></i><b>1.10</b> Vectorization</a></li>
+<li class="chapter" data-level="1.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#managing-your-environment"><i class="fa fa-check"></i><b>1.11</b> Managing your environment</a></li>
+<li class="chapter" data-level="1.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-packages"><i class="fa fa-check"></i><b>1.12</b> R Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html"><i class="fa fa-check"></i><b>2</b> Seeking Help in R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#reading-help-files"><i class="fa fa-check"></i><b>2.1</b> Reading Help files</a></li>
+<li class="chapter" data-level="2.2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#special-operators"><i class="fa fa-check"></i><b>2.2</b> Special Operators</a></li>
+<li class="chapter" data-level="2.3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#getting-help-on-packages"><i class="fa fa-check"></i><b>2.3</b> Getting help on packages</a></li>
+<li class="chapter" data-level="2.4" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-kind-of-remember-the-function"><i class="fa fa-check"></i><b>2.4</b> When you kind of remember the function</a></li>
+<li class="chapter" data-level="2.5" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-have-no-idea-where-to-begin"><i class="fa fa-check"></i><b>2.5</b> When you have no idea where to begin</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html"><i class="fa fa-check"></i><b>3</b> Project Management With RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#a-possible-solution"><i class="fa fa-check"></i><b>3.2</b> A possible solution</a></li>
+<li class="chapter" data-level="3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#best-practices-for-project-organization"><i class="fa fa-check"></i><b>3.3</b> Best practices for project organization</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>3.3.1</b> Treat data as read only</a></li>
+<li class="chapter" data-level="3.3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#data-cleaning"><i class="fa fa-check"></i><b>3.3.2</b> Data Cleaning</a></li>
+<li class="chapter" data-level="3.3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>3.3.3</b> Treat generated output as disposable</a></li>
+<li class="chapter" data-level="3.3.4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>3.3.4</b> Separate function definition and application</a></li>
+<li class="chapter" data-level="3.3.5" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#version-control"><i class="fa fa-check"></i><b>3.3.5</b> Version Control</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-structures.html"><a href="data-structures.html#the-readr-package"><i class="fa fa-check"></i><b>4.1</b> The <em>readr</em> package</a></li>
+<li class="chapter" data-level="4.2" data-path="data-structures.html"><a href="data-structures.html#data-types"><i class="fa fa-check"></i><b>4.2</b> Data Types</a></li>
+<li class="chapter" data-level="4.3" data-path="data-structures.html"><a href="data-structures.html#vectors-and-type-coercion"><i class="fa fa-check"></i><b>4.3</b> Vectors and Type Coercion</a></li>
+<li class="chapter" data-level="4.4" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>4.4</b> Data Frames</a></li>
+<li class="chapter" data-level="4.5" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>4.5</b> Factors</a></li>
+<li class="chapter" data-level="4.6" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>4.6</b> Lists</a></li>
+<li class="chapter" data-level="4.7" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>4.7</b> Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html"><i class="fa fa-check"></i><b>5</b> Exploring Data Frames</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#introducing-the-gapminder-data"><i class="fa fa-check"></i><b>5.1</b> Introducing the Gapminder data</a></li>
+<li class="chapter" data-level="5.2" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#basic-subsetting"><i class="fa fa-check"></i><b>5.2</b> Basic subsetting</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#selecting-rows"><i class="fa fa-check"></i><b>5.2.1</b> Selecting rows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Creating Publication-Quality Graphics with ggplot2</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#getting-started"><i class="fa fa-check"></i><b>6.1</b> Getting started</a></li>
+<li class="chapter" data-level="6.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>6.2</b> Layers</a></li>
+<li class="chapter" data-level="6.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>6.3</b> Transformations and statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>6.4</b> Multi-panel figures</a></li>
+<li class="chapter" data-level="6.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>6.5</b> Modifying text</a></li>
+<li class="chapter" data-level="6.6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>6.6</b> Exporting the plot</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>7</b> Dataframe Manipulation with dplyr</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#the-dplyr-package"><i class="fa fa-check"></i><b>7.1</b> The <code>dplyr</code> package</a></li>
+<li class="chapter" data-level="7.2" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-select"><i class="fa fa-check"></i><b>7.2</b> Using select()</a></li>
+<li class="chapter" data-level="7.3" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter"><i class="fa fa-check"></i><b>7.3</b> Using filter()</a></li>
+<li class="chapter" data-level="7.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>7.4</b> Using filter() with pipes</a></li>
+<li class="chapter" data-level="7.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>7.5</b> Using group_by() and summarize()</a></li>
+<li class="chapter" data-level="7.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>7.6</b> Using summarize()</a></li>
+<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-count"><i class="fa fa-check"></i><b>7.7</b> Using count()</a></li>
+<li class="chapter" data-level="7.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>7.8</b> Using mutate()</a></li>
+<li class="chapter" data-level="7.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-groupings-ifelse"><i class="fa fa-check"></i><b>7.9</b> Connect mutate with logical groupings: ifelse</a></li>
+<li class="chapter" data-level="7.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>7.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
+<li class="chapter" data-level="7.11" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#other-great-resources"><i class="fa fa-check"></i><b>7.11</b> Other great resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html"><i class="fa fa-check"></i><b>8</b> Create Tidy Data with tidyr</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#getting-started-1"><i class="fa fa-check"></i><b>8.1</b> Getting started</a></li>
+<li class="chapter" data-level="8.2" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-wide-to-long-format-with-pivot_longer"><i class="fa fa-check"></i><b>8.2</b> From wide to long format with pivot_longer()</a></li>
+<li class="chapter" data-level="8.3" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-long-to-intermediate-format-with-pivot_wider"><i class="fa fa-check"></i><b>8.3</b> From long to intermediate format with pivot_wider()</a></li>
+<li class="chapter" data-level="8.4" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#other-great-resources-1"><i class="fa fa-check"></i><b>8.4</b> Other great resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html"><i class="fa fa-check"></i><b>9</b> Introduction to the bcdata package</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#getting-started-2"><i class="fa fa-check"></i><b>9.1</b> Getting started</a></li>
+<li class="chapter" data-level="9.2" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#searching-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.2</b> Searching the B.C. Data Catalogue</a></li>
+<li class="chapter" data-level="9.3" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#importing-data-from-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.3</b> Importing data from the B.C. Data Catalogue</a></li>
+<li class="chapter" data-level="9.4" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-manipulating-data-with-dplyr"><i class="fa fa-check"></i><b>9.4</b> Practice manipulating data with <code>dplyr</code></a></li>
+<li class="chapter" data-level="9.5" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-plotting-data-with-ggplot2"><i class="fa fa-check"></i><b>9.5</b> Practice plotting data with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="9.6" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#using-bcdata-with-spatial-data-in-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.6</b> Using <code>bcdata</code> with spatial data in the B.C. Data Catalogue</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>10</b> Data analysis reports</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#literate-programming"><i class="fa fa-check"></i><b>10.1</b> Literate programming</a></li>
+<li class="chapter" data-level="10.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#example-of-using-r-markdown-in-the-bc-government"><i class="fa fa-check"></i><b>10.2</b> Example of Using R Markdown in the BC Government</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#documentation"><i class="fa fa-check"></i><b>10.2.1</b> Documentation</a></li>
+<li class="chapter" data-level="10.2.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#teaching"><i class="fa fa-check"></i><b>10.2.2</b> Teaching</a></li>
+<li class="chapter" data-level="10.2.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#presentation"><i class="fa fa-check"></i><b>10.2.3</b> Presentation</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>10.3</b> Creating an R Markdown file</a></li>
+<li class="chapter" data-level="10.4" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#basic-components-of-r-markdown"><i class="fa fa-check"></i><b>10.4</b> Basic components of R Markdown</a></li>
+<li class="chapter" data-level="10.5" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#markdown"><i class="fa fa-check"></i><b>10.5</b> Markdown</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-bit-more-markdown"><i class="fa fa-check"></i><b>10.5.1</b> A bit more Markdown</a></li>
+<li class="chapter" data-level="10.5.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#r-code-chunks"><i class="fa fa-check"></i><b>10.5.2</b> R code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#how-r-markdown-gets-compiled"><i class="fa fa-check"></i><b>10.6</b> How R Markdown gets compiled</a></li>
+<li class="chapter" data-level="10.7" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#chunk-options"><i class="fa fa-check"></i><b>10.7</b> Chunk options</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#global-options"><i class="fa fa-check"></i><b>10.7.1</b> Global options</a></li>
+<li class="chapter" data-level="10.7.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#formatting-figures"><i class="fa fa-check"></i><b>10.7.2</b> Formatting figures</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#inline-r-code"><i class="fa fa-check"></i><b>10.8</b> Inline R code</a></li>
+<li class="chapter" data-level="10.9" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#other-outputs-word-pdf-and-more"><i class="fa fa-check"></i><b>10.9</b> Other outputs: Word, PDF and more…</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-note-about-rmd-outputs"><i class="fa fa-check"></i><b>10.9.1</b> A note about Rmd outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#resources"><i class="fa fa-check"></i><b>10.10</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="applications-of-r-markdown.html"><a href="applications-of-r-markdown.html"><i class="fa fa-check"></i><b>11</b> Applications of R Markdown</a></li>
+<li class="chapter" data-level="12" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>12</b> Seeking Help from Others with reprex</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>12.1</b> Help People Help You - reprex</a></li>
+<li class="chapter" data-level="12.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>12.2</b> Other Helpful Resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science using R Workshop</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="applications-of-r-markdown" class="section level1" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Applications of R Markdown</h1>
+<p>Now that we’ve learned the basics of R and R Markdown, we’re going to tie some
+things together by doing a regression on the Gapminder data and displaying our
+results in a nicely formatted document.</p>
+<p>Working in a new R Markdown document (File -&gt; New File -&gt; R Markdown Document),
+we can load the libraries that we are going to use, and load the data in
+a code chunk:</p>
+<pre>
+&#96;&#96;&#96;{r load}
+library(readr)
+library(dplyr)
+library(ggplot2)
+gapminder <- read_csv("data/gapminder_data.csv")
+&#96;&#96;&#96;
+</pre>
+<p>For now, we are just going to use the data for Canada, so let’s insert a code
+chunk to filter our data to just Canada:</p>
+<pre>
+&#96;&#96;&#96;{r filter-can}
+canada <- filter(gapminder, country == "Canada")
+&#96;&#96;&#96;
+</pre>
+<p>We want to do a regression investigating the relationship between life
+expectancy and per-capita GDP in Canada.</p>
+<p>We can start by inserting another code chunk to do a quick visualization of the
+data. We can insert the regression line on the points, but this doesn’t give us
+the regression coefficients, significance, etc. that we need to really evaluate
+the relationship.</p>
+<pre>
+&#96;&#96;&#96;{r plot-1}
+ggplot(canada, aes(x = lifeExp, y = gdpPercap)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+&#96;&#96;&#96;
+</pre>
+<p>We use the <code>lm()</code> function to perform a General Linear Model (GLM), of which
+a regression is one form. It is specified by a new syntax, a “formula” syntax:</p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="applications-of-r-markdown.html#cb443-1"></a><span class="kw">lm</span>(response <span class="op">~</span><span class="st"> </span><span class="kw">predictor</span>(s), <span class="dt">data =</span> data, ...)</span></code></pre></div>
+<p>So in our case, we can put in a new code chunk to fit the model:</p>
+<pre>
+&#96;&#96;&#96;{r model}
+canada_lm <- lm(gdpPercap ~ lifeExp, data = canada)
+summary(canada_lm)
+&#96;&#96;&#96;
+</pre>
+<p>The <code>summary()</code> function gives us the high level information from our regression
+model: The coefficient estimates, the R-squared, and the p-value.</p>
+<p>To this point we have been using <em>ggplot2</em> for plotting, but there is also a
+built-in <code>plot()</code> function. If we use that function on a model, it gives us
+some basic diagnostic plots:</p>
+<pre>
+&#96;&#96;&#96;{r diagnostics}
+plot(canada_lm)
+&#96;&#96;&#96;
+</pre>
+<p>But these <code>lm</code> objects are ungainly - they are fine to look at to inspect the
+important parts of our model, but difficult to extract those pieces that we
+want to use later - such as regression coefficients and P values.</p>
+<p>There is another package we can use, called <em>broom</em>, that is used to tidy
+model results into a format we are familiar with: a <code>data.frame</code>. <em>broom</em> works
+with many different types of models, today we are going to use it on our <code>lm</code>.</p>
+<p>You will first need to install the package:</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="applications-of-r-markdown.html#cb444-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;broom&quot;</span>)</span></code></pre></div>
+<p>Then add a chunk that loads the package, and calls the most commonly-used
+functions in <em>broom</em>:</p>
+<pre>
+&#96;&#96;&#96;{r broom}
+library(broom)
+model_summary <- glance(canada_lm)
+model_summary
+model_terms <- tidy(canada_lm)
+model_terms
+model_predict <- augment(canada_lm)
+model_predict
+&#96;&#96;&#96;
+</pre>
+<ul>
+<li><code>glance</code> gives us the model-level summary. The r-squared and adjusted r-squared,
+the F statistic, the P value, etc.</li>
+<li><code>tidy</code> gives us the information for each term in the regression - in our
+case just the intercept and the estimated effect of life expectancy on per-capita GDP.</li>
+<li><code>augment</code> gives us the estimated values of the response variable as predicted
+by our model.</li>
+</ul>
+<p>Now that these are in a data frame, we can use them more easily. Let’s plot our
+regression line onto our plot:</p>
+<pre>
+&#96;&#96;&#96;{r plot-lm}
+ggplot() + 
+  geom_point(data = canada, aes(x = lifeExp, y = gdpPercap)) + 
+  geom_line(data = model_predict, aes(x = lifeExp, y = .fitted))
+&#96;&#96;&#96;
+</pre>
+<p>Again, using the data frame containing our predicted values, we can calculate
+the 95% confidence limits, and plot them as well:</p>
+<pre>
+&#96;&#96;&#96;{r plot-ci, echo=FALSE}
+model_predict <- model_predict %>% 
+  mutate(lower_ci = .fitted - 1.96 * .se.fit, 
+         upper_ci = .fitted + 1.96 * .se.fit)
+
+ggplot() + 
+  geom_ribbon(data = model_predict, aes(x = lifeExp, ymin = lower_ci, ymax = upper_ci), alpha = 0.2) + 
+  geom_point(data = canada, aes(x = lifeExp, y = gdpPercap)) + 
+  geom_line(data = model_predict, aes(x = lifeExp, y = .fitted))
+&#96;&#96;&#96;
+</pre>
+<p>If we compare this plot to the auto-generated line we added at the beginning of
+the lesson (using <code>geom_smooth()</code>), we see they are the same.</p>
+<p>We can also pull out some of those model terms and report on them “reproducibly”:</p>
+<p>In our plot:</p>
+<pre>
+&#96;&#96;&#96;{r model-stats, echo=FALSE}
+r2 <- round(model_summary$adj.r.squared, 2)
+sig_0.05 <- ifelse(model_summary$p.value < 0.05, "p < 0.05", "p > 0.05")
+
+ggplot() + 
+  geom_ribbon(data = model_predict, aes(x = lifeExp, ymin = lower_ci, ymax = upper_ci), alpha = 0.2) + 
+  geom_point(data = canada, aes(x = lifeExp, y = gdpPercap)) + 
+  geom_line(data = model_predict, aes(x = lifeExp, y = .fitted)) + 
+  geom_text(aes(x = 72, y = 30000), label = paste0("R^2 = ", r2, "; ", sig_0.05))
+&#96;&#96;&#96;
+</pre>
+<p>And in text:</p>
+<pre>
+&#96;&#96;&#96;{r lifeExp-stats, echo=FALSE}
+life_exp <- filter(model_terms, term == "lifeExp")
+life_exp_estimate <- round(life_exp$estimate, 1)
+life_exp_se <- round(life_exp$std.error, 1)
+&#96;&#96;&#96;
+</pre>
+<p>Then in our document we can type:</p>
+<pre><code>The predicted effect of life expectancy on per-capita GDP is `r life_exp_estimate` 
+(SE: `r life_exp_se`), meaning that for every year we live longer, our per-capita GDP
+increases by approximately `r life_exp_esimate`.</code></pre>
+<p>This helps reduce typos, copy-paste errors, and ensures that if our data change,
+so do our results.</p>
+<blockquote>
+<h2 id="challenge-1-7">Challenge 1</h2>
+<p>Create a copy of your report for Canada, and do it for the country of your choice.</p>
+<blockquote>
+<h2 id="solution-to-challenge-1-5">Solution to Challenge 1</h2>
+All you really need to do is change
+<pre>"Canada"</pre>
+in your
+<pre>filter</pre>
+<p>statement to another country of your choosing.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h2 id="challenge-2-7">Challenge 2</h2>
+<p>Remove or add chunks, and change the chunk options to only show the figures
+and results so the rendered report looks like a report you would submit.</p>
+<blockquote>
+<h2 id="solution-to-challenge-2-7">Solution to Challenge 2</h2>
+Possible chunk options to change:
+<pre>results='hide'</pre>
+<pre>echo=FALSE</pre>
+<pre>message=FALSE</pre>
+<pre>include=FALSE</pre>
+</blockquote>
+</blockquote>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-analysis-reports.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="seeking-help-from-others-with-reprex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
