@@ -3,7 +3,7 @@ title: "Intro to bcdata"
 teaching: 30
 exercises: 30
 questions:
-- "How can I pull data directly from the B.C. Data Catalogue using R?"
+- "How can I import data directly from the B.C. Data Catalogue using R?"
 objectives:
 - "Understand the value of importing data programatically for more auditable and reproducible work flows"
 - "Become familiar with the bcdata R package"
@@ -26,7 +26,7 @@ The bcdata R package contains functions for searching & retrieving data directly
 First we need to install the `bcdata` package:
 
 ```{r, eval=FALSE}
-# install.packages("bcdata")
+install.packages("bcdata")
 ```
 
 And next we need to load the `bcdata` package, along with `dplyr` and `ggplot2` which we installed and used in earlier lessons:
@@ -39,7 +39,7 @@ library(ggplot2)
 
 ## Searching the B.C. Data Catalogue
 
-Let's look in the B.C. Data Catalogue for some data on libraries in British Columbia:
+Let's use the `bcdata` package to search the B.C. Data Catalogue for some data on _**public libraries**_ in British Columbia:
 
 ```{r}
 bcdc_search("public libraries")
@@ -47,21 +47,20 @@ bcdc_search("public libraries")
 
 There are many catalogue records with data relating to libraries. Let's examine the first returned record more closely:
 
-
 ```{r}
 bcdc_get_record("bc-public-libraries-systems-branches-and-locations")
 ```
 
 ## Importing data from the B.C. Data Catalogue
 
-Next, we can use the `bcdc_get_data` function to load this data directly into R. 
+Next, we can use the `bcdc_get_data` function to import this data directly into R: 
 
 ```{r, eval=FALSE}
 bcdc_get_data(record = "bc-public-libraries-systems-branches-and-locations")
 ```
 
 
-If we run the above code interactively, R will prompt you in the console to select a resource, as it does not know which one you want to download. The full code to download the resource is provided to the user for next time:
+The _bc-public-libraries-systems-branches-and-locations_ catalogue record contains multiple data resources or files. If we run the above code interactively, R will prompt you in the console to select one of the available resources, as it does not know which one you want to download. The full code to import the resource from the record&mdash;using the record's permanent id to guard against future name changesname&mdash;is provided to the user for next time:
 
 ```{r}
 lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
@@ -76,7 +75,7 @@ lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
 ## Practice manipulating data with `dplyr`  
 
 
-Let's return to our libraries data. As we learned earlier in the workshop, a useful first step is to get familiar with the data.
+Let's return to the libraries data frame `lib-raw` we imported. As we learned earlier in the workshop, a useful first step is to get familiar with the data:
 
 ```{r}
 str(lib_raw)
@@ -112,7 +111,7 @@ sum_books <- lib_tidy %>%
 
 ## Practice plotting data with `ggplot2`  
 
-Now that we have imported, tidied, and analyzed our library data, let's make a static data visualization to share and communicate the results with others.
+Now that we have imported, tidied, and summarized our library data, let's make a static data visualization to share and communicate the results with others.
 
 ```{r}
 library(ggplot2)
@@ -151,7 +150,7 @@ sum_books %>%
 
 ## Using `bcdata` with spatial data in the B.C. Data Catalogue 
 
-The `bcdata` package also has a function for querying and downloading geospatial data from the B.C. Data Catalogue. Let's import the spatial data file from the catalogue record, and combine the spatial data with our tidy library data frame:
+The `bcdata` package also has a function for querying and importing geospatial data from the B.C. Data Catalogue. Let's import the spatial data file from the catalogue record, and combine the spatial data with our tidy library data frame:
 
 ```{r}
 lib_spatial <- bcdc_query_geodata("bc-public-libraries-systems-branches-and-locations") %>%
@@ -163,7 +162,7 @@ lib_all <- lib_spatial %>%
   select(SERVICE_POINT_NAME, num_books) 
 ```
 
-Now we can use some of R's spatial tools to make static or interactive maps:
+Now we can use `ggplot2` and the `geom_sf()` function to make a static map, or some of R's other spatial packages to make interactive maps:
 
 ```{r}
 lib_all %>% 
