@@ -17,6 +17,9 @@ geom_point()
 # Hint: the gapminder dataset has a column called "year", which should appear
 # on the x-axis.
 
+
+
+
 ## Challenge 2 --------------------------------------------------------------
 
 # In the previous examples and challenge we've used the `aes` function to tell
@@ -27,19 +30,58 @@ geom_point()
 
 
 
-# Vectors and Type Coercion -----------------------------------------------
+
+## Layers ----------------------------------------------------------------
 
 
 
 
-# Data Frames -------------------------------------------------------------
+## Challenge 3  -----------------------------------------------------------
+
+# Switch the order of the point and line layers from the previous example.
+# What happened?
 
 
 
 
-# Factors -----------------------------------------------------------------
+## Transformations and statistics ------------------------------------------
 
 
 
 
-# Lists -------------------------------------------------------------------
+## Challenge 4a ------------------------------------------------------------
+
+# Modify the colour and size of the points on the point layer in the previous
+# example.
+#
+# Hint: do not use the `aes` function.
+
+
+
+
+## Challenge 4b ------------------------------------------------------------
+
+# Modify your solution to Challenge 4a so that the points are now a different
+# shape and are coloured by continent with new trendlines.
+#
+# Hint: The colour argument can be used inside the aesthetic.
+
+
+
+
+## Multi-panel figures -------------------------------------------------------
+
+
+
+
+## Modifying text  -----------------------------------------------------------
+
+
+
+
+## Exporting the plot  -------------------------------------------------------
+
+
+
+
+
