@@ -40,7 +40,7 @@ package, and the [`ggplot2`][ggplot2] package.
 [ggplot2]: http://www.statmethods.net/advgraphs/ggplot2.html
 
 Today we'll be learning about the `ggplot2` package, because
-it is the most effective for creating publication quality
+it is the most effective for creating publication-quality
 graphics.
 
 `ggplot2` is built on the grammar of graphics, the idea that any plot can be
@@ -69,7 +69,7 @@ gapminder
 ```
 
 
-Now let's jump right into in me making an example `ggplot2` plot:
+Now let's jump right into making an example `ggplot2` plot:
 
 ```{r lifeExp-vs-gdpPercap-scatter, message=FALSE}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
@@ -107,7 +107,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
-_Recap_: Every `ggplot2` plot has three key components: (1) **data**, (2) set of aesthetic **mappings** between variables in the data and visual properties on the plot, and (3) at least one layer, created with a **geom** function.
+_Recap_: Every `ggplot2` plot has three key components: (1) **data**, (2) a set of aesthetic **mappings** between variables in the data and visual properties on the plot, and (3) at least one layer, created with a **geom** function.
 
 
 > ## Challenge 1
@@ -325,7 +325,16 @@ Earlier we visualized the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
 by adding a layer of **facet** panels. 
 
-For this exercise we will read in a subset of the gapminder data:
+For this exercise we will use a subset of the gapminder data. If you are already familiar with subsetting a data frame with square brackets or the `dplyr` package, you can subset the `gapminder` data frame:
+
+```{r, eval=FALSE}
+asia_oceania <- gapminder[gapminder$continent == c("Asia", "Oceania"),]
+
+library(dplyr)
+asia_oceania <- filter(gapminder, continent %in% c("Asia", "Oceania"))
+```
+
+Or you can use the `read_csv` function and read in this subset of the gapminder data already provided in the `/data` folder:
 
 ```{r facet}
 asia_oceania <- read_csv("data/gapminder_asia_oceania.csv")
@@ -421,9 +430,10 @@ really useful [cheat sheet][cheat] of the different layers available, and more
 extensive documentation is available on the [ggplot2 website][ggplot-doc].
 Finally, if you have no idea how to change something, a quick Google search will
 usually send you to a relevant question and answer on Stack Overflow or the [RStudio Community website][rstudio-community] with reusable
-code to modify.
+code to modify. Finally, there are many websites that provide examples of `ggplot2` plots with open code, for example [The R Graph Gallery][rgallery]. 
 
 [cheat]: https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf
 [ggplot-doc]: https://ggplot2.tidyverse.org/reference/index.html
 [rstudio-community]: https://community.rstudio.com/
 [ggplot2-themes]: https://ggplot2.tidyverse.org/reference/ggtheme.html
+[rgallery]: https://www.r-graph-gallery.com/
