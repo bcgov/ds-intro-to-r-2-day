@@ -514,11 +514,11 @@ The rendered fomat will look like
 ``` this course has `r length(c("Sam", "Steph", "Andy", "Gen"))` instructors ```
 
 
-> ## Challenge 4
+> ## Challenge 5
 >
 > Try out a bit of in-line R code using a simple addition eg: 2+2. 
 > 
-> > ## Solution to Challenge 4
+> > ## Solution to Challenge 5
 > > 
 > > Here's some inline code to determine that 2 + 2 = `` `r 2+2` ``.
 > > 
