@@ -1,0 +1,82 @@
+---
+title: "Gen's Demo"
+author: "G Perkins"
+date: "07/05/2020"
+output: html_document
+---
+
+# Demo RMarkdown script part 2: 
+
+ This covers code chunks and in-line R text. 
+ 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r load_library}
+
+library(readr)
+library(ggplot2)
+
+```
+
+
+- eval : do you want to evaluatae your code 
+- echo : print code? 
+
+
+```{r addup, eval= TRUE}
+1 + 1
+
+```
+
+run with echo = false
+
+```{r addup extra, eval = TRUE, echo = FALSE}
+
+2 + 2 
+
+```
+
+
+# setting global options 
+
+```{r global_options, echo = FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+
+```{r load_library2}
+
+library(readr)
+library(ggplot2)
+
+```
+
+
+
+```{r prettyplot, eval = TRUE, echo = FALSE, fig.cap = "a super pretty plot"}
+
+gapminder <- read_csv("data/gapminder_data.csv")
+
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))+
+  geom_point()
+
+
+```
+
+
+
+# Inline R code 
+
+this is a sentence with soe text  `r 1 + 1 ` sentence continues
+
+
+this course has `r length(c("AT", "SA", "SH", "GP"))` instructors - who are awesome!
+
+
