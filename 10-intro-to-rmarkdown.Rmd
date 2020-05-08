@@ -532,7 +532,7 @@ We can convert R Markdown to a PDF or a Word document. Click the
 little triangle next to the "Knit" button to get a drop-down
 menu.
 
-Alternatively ee can change the YAML: 
+Alternatively we can change the YAML: 
 
 ```{r, eval = FALSE}
 ---
