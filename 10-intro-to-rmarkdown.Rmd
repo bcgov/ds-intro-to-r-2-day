@@ -495,7 +495,7 @@ This is useful when incorporating data or calculations directly into a sentence:
 
 This will appear as: 
   
-``` The ratio of a circle'scircumference to its diameter is `r round(3.141593, 2)` ```
+``` The ratio of a circle's circumference to its diameter is `r round(3.141593, 2)` ```
  
  
 We can also do calculations on the fly within our inline code. For example we can calculate the number of instructors and populate a sentence. Firstly lets use `length()` to determine the number of instructors: 
