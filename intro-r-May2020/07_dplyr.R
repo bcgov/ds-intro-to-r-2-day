@@ -32,6 +32,12 @@
 
 
 
+## Challenge 1
+## Write a single command (which can span multiple lines and includes pipes)
+## that will produce a dataframe that has the African values for lifeExp,
+## country and year, but not for other Continents. How many rows does your
+## dataframe have and why?
+
 
 
 
@@ -52,13 +58,11 @@
 
 
 
-# ## Challenge 2
-#
-#
-# Calculate the average life expectancy per country. Which has the longest average life
-# expectancy and which has the shortest average life expectancy?
+## Challenge 2
+## Calculate the average life expectancy per country. Which has the longest average life
+## expectancy and which has the shortest average life expectancy?
 
-## count()
+## Using count()
 
 
 

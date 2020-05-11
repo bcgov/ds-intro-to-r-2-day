@@ -495,7 +495,7 @@ This is useful when incorporating data or calculations directly into a sentence:
 
 This will appear as: 
   
-``` The ratio of a circle'scircumference to its diameter is `r round(3.141593, 2)` ```
+``` The ratio of a circle's circumference to its diameter is `r round(3.141593, 2)` ```
  
  
 We can also do calculations on the fly within our inline code. For example we can calculate the number of instructors and populate a sentence. Firstly lets use `length()` to determine the number of instructors: 
@@ -514,11 +514,11 @@ The rendered fomat will look like
 ``` this course has `r length(c("Sam", "Steph", "Andy", "Gen"))` instructors ```
 
 
-> ## Challenge 4
+> ## Challenge 5
 >
 > Try out a bit of in-line R code using a simple addition eg: 2+2. 
 > 
-> > ## Solution to Challenge 4
+> > ## Solution to Challenge 5
 > > 
 > > Here's some inline code to determine that 2 + 2 = `` `r 2+2` ``.
 > > 
@@ -532,7 +532,7 @@ We can convert R Markdown to a PDF or a Word document. Click the
 little triangle next to the "Knit" button to get a drop-down
 menu.
 
-Alternatively ee can change the YAML: 
+Alternatively we can change the YAML: 
 
 ```{r, eval = FALSE}
 ---

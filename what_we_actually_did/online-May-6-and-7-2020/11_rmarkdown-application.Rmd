@@ -1,0 +1,98 @@
+---
+title: "Gapminder analyis"
+author: "Andy Teucher"
+date: "May 7, 2020"
+output: html_document
+---
+
+## Analyzing GDP and Life Expectancy in Canada
+
+```{r load, include=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+gapminder <- read_csv("data/gapminder_data.csv")
+```
+
+
+
+```{r filter-can}
+canada <- filter(gapminder, country == "Canada")
+```
+
+As we can see there is a relationship between GDP and Life Expectancy in Canada.
+
+```{r plot-1}
+ggplot(canada, aes(y = lifeExp, x = gdpPercap)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+
+
+
+```{r model}
+canada_lm <- lm(lifeExp ~ gdpPercap, data = canada)
+summary(canada_lm)
+```
+
+
+
+```{r diagnostics}
+plot(canada_lm)
+```
+
+
+
+```{r broom}
+model_summary <- glance(canada_lm)
+model_summary
+model_terms <- tidy(canada_lm)
+model_terms
+model_predict <- augment(canada_lm)
+model_predict
+```
+
+
+
+```{r plot-lm}
+ggplot() +
+  geom_point(data = canada, aes(x = gdpPercap, y = lifeExp)) + 
+  geom_line(data = model_predict, aes(x = gdpPercap, y = .fitted))
+```
+
+
+
+```{r plot-ci, echo=FALSE}
+r2 <- round(model_summary$adj.r.squared, 2)
+
+model_predict <- model_predict %>% 
+  mutate(lower_cl = .fitted - 1.96*.se.fit, 
+         upper_cl = .fitted + 1.96*.se.fit)
+
+ggplot() +
+  geom_ribbon(data = model_predict, 
+              aes(x = gdpPercap, ymin = lower_cl, ymax = upper_cl), 
+              alpha = 0.5, fill = "orange") + 
+  geom_point(data = canada, aes(x = gdpPercap, y = lifeExp)) + 
+  geom_line(data = model_predict, aes(x = gdpPercap, y = .fitted)) + 
+  geom_text(aes(x = 15000, y = 80), label = paste("R^2 =", r2))
+```
+
+
+
+```{r model-stats, echo=FALSE}
+life_exp <- filter(model_terms, term == "gdpPercap")
+life_exp_estimate <- round(life_exp$estimate, 5)
+```
+
+The predicted effect of per-capita GDP on life expectancy is `r life_exp_estimate`, 
+meaning that for every dollar increase in GDP per-capita, our life expectancy 
+increases by `r life_exp_estimate` years.
+
+
+```{r lifeExp-stats, echo=FALSE}
+
+```
+

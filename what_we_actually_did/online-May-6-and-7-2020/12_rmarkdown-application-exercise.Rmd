@@ -1,0 +1,86 @@
+---
+title: "Gapminder analyis"
+author: "Andy Teucher"
+date: "May 7, 2020"
+output:
+  word_document: default
+---
+
+```{r load, include=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+gapminder <- read_csv("data/gapminder_data.csv")
+
+cntry <- "Netherlands"
+```
+
+## Analyzing GDP and Life Expectancy in `r cntry`
+
+
+```{r filter-can, include = FALSE}
+country_data <- filter(gapminder, country == cntry)
+```
+
+As we can see there is a relationship between GDP and Life Expectancy in `r cntry`.
+
+```{r plot-1, echo=FALSE, message=FALSE}
+ggplot(country_data, aes(y = lifeExp, x = gdpPercap)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+
+The output of our model, which is specified as **lifeExp = b0 + b1*gdpPercap + e** is:
+
+
+```{r model, echo=FALSE}
+country_data_lm <- lm(lifeExp ~ gdpPercap, data = country_data)
+summary(country_data_lm)
+```
+
+The model diagnostics show that this is an adequate model that meets the 
+assumptions of the regression:
+
+```{r diagnostics, echo=FALSE}
+plot(country_data_lm)
+```
+
+
+
+```{r broom, include=FALSE}
+model_summary <- glance(country_data_lm)
+model_summary
+model_terms <- tidy(country_data_lm)
+model_terms
+model_predict <- augment(country_data_lm)
+model_predict
+```
+
+```{r model-stats, echo=FALSE}
+life_exp <- filter(model_terms, term == "gdpPercap")
+life_exp_estimate <- round(life_exp$estimate, 5)
+```
+
+The predicted effect of per-capita GDP on life expectancy is `r life_exp_estimate`, 
+meaning that for every dollar increase in GDP per-capita, our life expectancy 
+increases by `r life_exp_estimate` years (See Figure 1).
+
+```{r plot-ci, echo=FALSE, fig.cap=paste("Figure 1: Regression of GDP on Life Expectancy for", cntry)}
+r2 <- round(model_summary$adj.r.squared, 2)
+
+model_predict <- model_predict %>% 
+  mutate(lower_cl = .fitted - 1.96*.se.fit, 
+         upper_cl = .fitted + 1.96*.se.fit)
+
+ggplot() +
+  geom_ribbon(data = model_predict, 
+              aes(x = gdpPercap, ymin = lower_cl, ymax = upper_cl), 
+              alpha = 0.5, fill = "orange") + 
+  geom_point(data = country_data, aes(x = gdpPercap, y = lifeExp)) + 
+  geom_line(data = model_predict, aes(x = gdpPercap, y = .fitted)) + 
+  geom_text(aes(x = 15000, y = 80), label = paste("R^2 =", r2))
+```
+
+
