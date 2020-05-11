@@ -1,0 +1,66 @@
+---
+title: "Intro to R day"
+author: "Sam Albers"
+date: "07/05/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Top level heading
+## Second level heading
+### Third level heading
+
+
+## Bulleted Lists
+
+- First element
+- Second element
+- Third element
+
+
+## Numbered Lists
+
+1. Number 1
+2. Number 2
+3. Number 3
+
+## A bit more of Markdown
+
+[Google](www.google.ca)
+
+### Italic
+
+Sam writes in _italics_
+
+### Bold
+
+Sam writes in **bold**
+
+## R Code
+
+```{r}
+library(readr)
+gapminder <- read_csv("data/gapminder_data.csv")
+
+gapminder
+
+library(ggplot2)
+
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+```
+
+```{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap= "Pretty Plot", fig.width = 5, fig.height = 5, fig.align = 'centre'}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+geom_point()
+```
+
+
+```{r}
+## comment
+mean(1:5)
+```
+
