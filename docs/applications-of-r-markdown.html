@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-05-06" />
+<meta name="date" content="2020-05-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,7 +328,7 @@ the regression coefficients, significance, etc. that we need to really evaluate
 the relationship.</p>
 <pre>
 &#96;&#96;&#96;{r plot-1}
-ggplot(canada, aes(x = lifeExp, y = gdpPercap)) + 
+ggplot(canada, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() + 
   geom_smooth(method = "lm")
 &#96;&#96;&#96;
@@ -339,7 +339,7 @@ a regression is one form. It is specified by a new syntax, a “formula” synta
 <p>So in our case, we can put in a new code chunk to fit the model:</p>
 <pre>
 &#96;&#96;&#96;{r model}
-canada_lm <- lm(gdpPercap ~ lifeExp, data = canada)
+canada_lm <- lm(lifeExp ~ gdpPercap, data = canada)
 summary(canada_lm)
 &#96;&#96;&#96;
 </pre>
@@ -378,7 +378,7 @@ model_predict
 <li><code>glance</code> gives us the model-level summary. The r-squared and adjusted r-squared,
 the F statistic, the P value, etc.</li>
 <li><code>tidy</code> gives us the information for each term in the regression - in our
-case just the intercept and the estimated effect of life expectancy on per-capita GDP.</li>
+case just the intercept and the estimated effect of per-capita GDP on life expectancy.</li>
 <li><code>augment</code> gives us the estimated values of the response variable as predicted
 by our model.</li>
 </ul>
@@ -387,8 +387,8 @@ regression line onto our plot:</p>
 <pre>
 &#96;&#96;&#96;{r plot-lm}
 ggplot() + 
-  geom_point(data = canada, aes(x = lifeExp, y = gdpPercap)) + 
-  geom_line(data = model_predict, aes(x = lifeExp, y = .fitted))
+  geom_point(data = canada, aes(x = gdpPercap, y = lifeExp)) + 
+  geom_line(data = model_predict, aes(x = gdpPercap, y = .fitted))
 &#96;&#96;&#96;
 </pre>
 <p>Again, using the data frame containing our predicted values, we can calculate
@@ -400,9 +400,9 @@ model_predict <- model_predict %>%
          upper_ci = .fitted + 1.96 * .se.fit)
 
 ggplot() + 
-  geom_ribbon(data = model_predict, aes(x = lifeExp, ymin = lower_ci, ymax = upper_ci), alpha = 0.2) + 
-  geom_point(data = canada, aes(x = lifeExp, y = gdpPercap)) + 
-  geom_line(data = model_predict, aes(x = lifeExp, y = .fitted))
+  geom_ribbon(data = model_predict, aes(x = gdpPercap, ymin = lower_ci, ymax = upper_ci), alpha = 0.2) + 
+  geom_point(data = canada, aes(x = gdpPercap, y = lifeExp)) + 
+  geom_line(data = model_predict, aes(x = gdpPercap, y = .fitted))
 &#96;&#96;&#96;
 </pre>
 <p>If we compare this plot to the auto-generated line we added at the beginning of
@@ -415,24 +415,24 @@ r2 <- round(model_summary$adj.r.squared, 2)
 sig_0.05 <- ifelse(model_summary$p.value < 0.05, "p < 0.05", "p > 0.05")
 
 ggplot() + 
-  geom_ribbon(data = model_predict, aes(x = lifeExp, ymin = lower_ci, ymax = upper_ci), alpha = 0.2) + 
-  geom_point(data = canada, aes(x = lifeExp, y = gdpPercap)) + 
-  geom_line(data = model_predict, aes(x = lifeExp, y = .fitted)) + 
+  geom_ribbon(data = model_predict, aes(x = gdpPercap, ymin = lower_ci, ymax = upper_ci), alpha = 0.2) + 
+  geom_point(data = canada, aes(x = gdpPercap, y = lifeExp)) + 
+  geom_line(data = model_predict, aes(x = gdpPercap, y = .fitted)) + 
   geom_text(aes(x = 72, y = 30000), label = paste0("R^2 = ", r2, "; ", sig_0.05))
 &#96;&#96;&#96;
 </pre>
 <p>And in text:</p>
 <pre>
 &#96;&#96;&#96;{r lifeExp-stats, echo=FALSE}
-life_exp <- filter(model_terms, term == "lifeExp")
+life_exp <- filter(model_terms, term == "gdpPercap")
 life_exp_estimate <- round(life_exp$estimate, 1)
 life_exp_se <- round(life_exp$std.error, 1)
 &#96;&#96;&#96;
 </pre>
 <p>Then in our document we can type:</p>
-<pre><code>The predicted effect of life expectancy on per-capita GDP is `r life_exp_estimate` 
-(SE: `r life_exp_se`), meaning that for every year we live longer, our per-capita GDP
-increases by approximately `r life_exp_esimate`.</code></pre>
+<pre><code>The predicted effect of per-capita GDP on life expectancy is `r life_exp_estimate` 
+(SE: `r life_exp_se`), meaning that for every dollar increase in per-capita GDP
+we live longer by approximately `r life_exp_esimate` years.</code></pre>
 <p>This helps reduce typos, copy-paste errors, and ensures that if our data change,
 so do our results.</p>
 <blockquote>
