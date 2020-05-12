@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-05-11" />
+<meta name="date" content="2020-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -318,36 +318,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>information about your computing environment, like your operating system, version of R, the packages you have loaded</li>
 </ul>
 <p><a href="https://reprex.tidyverse.org/index.html"><code>reprex</code></a>: An R package to help prepare a reproducible example — or reprex — for posting to GitHub issues, StackOverflow, RocketChat snippets, or email and so on.</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="seeking-help-from-others-with-reprex.html#cb446-1"></a><span class="co"># install.packages(&quot;reprex&quot;)</span></span>
-<span id="cb446-2"><a href="seeking-help-from-others-with-reprex.html#cb446-2"></a></span>
-<span id="cb446-3"><a href="seeking-help-from-others-with-reprex.html#cb446-3"></a><span class="co"># load libraries we need</span></span>
-<span id="cb446-4"><a href="seeking-help-from-others-with-reprex.html#cb446-4"></a><span class="kw">library</span>(reprex)</span>
-<span id="cb446-5"><a href="seeking-help-from-others-with-reprex.html#cb446-5"></a><span class="kw">library</span>(readr)</span>
-<span id="cb446-6"><a href="seeking-help-from-others-with-reprex.html#cb446-6"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb446-7"><a href="seeking-help-from-others-with-reprex.html#cb446-7"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb446-8"><a href="seeking-help-from-others-with-reprex.html#cb446-8"></a></span>
-<span id="cb446-9"><a href="seeking-help-from-others-with-reprex.html#cb446-9"></a><span class="co"># read in data</span></span>
-<span id="cb446-10"><a href="seeking-help-from-others-with-reprex.html#cb446-10"></a>cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/feline-data.csv&quot;</span>)</span>
-<span id="cb446-11"><a href="seeking-help-from-others-with-reprex.html#cb446-11"></a></span>
-<span id="cb446-12"><a href="seeking-help-from-others-with-reprex.html#cb446-12"></a><span class="co"># munge data and make bar plot</span></span>
-<span id="cb446-13"><a href="seeking-help-from-others-with-reprex.html#cb446-13"></a>cats <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb446-14"><a href="seeking-help-from-others-with-reprex.html#cb446-14"></a><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb446-15"><a href="seeking-help-from-others-with-reprex.html#cb446-15"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st">  </span></span>
-<span id="cb446-16"><a href="seeking-help-from-others-with-reprex.html#cb446-16"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="seeking-help-from-others-with-reprex.html#cb447-1"></a><span class="co"># install.packages(&quot;reprex&quot;)</span></span>
+<span id="cb447-2"><a href="seeking-help-from-others-with-reprex.html#cb447-2"></a></span>
+<span id="cb447-3"><a href="seeking-help-from-others-with-reprex.html#cb447-3"></a><span class="co"># load libraries we need</span></span>
+<span id="cb447-4"><a href="seeking-help-from-others-with-reprex.html#cb447-4"></a><span class="kw">library</span>(reprex)</span>
+<span id="cb447-5"><a href="seeking-help-from-others-with-reprex.html#cb447-5"></a><span class="kw">library</span>(readr)</span>
+<span id="cb447-6"><a href="seeking-help-from-others-with-reprex.html#cb447-6"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb447-7"><a href="seeking-help-from-others-with-reprex.html#cb447-7"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb447-8"><a href="seeking-help-from-others-with-reprex.html#cb447-8"></a></span>
+<span id="cb447-9"><a href="seeking-help-from-others-with-reprex.html#cb447-9"></a><span class="co"># read in data</span></span>
+<span id="cb447-10"><a href="seeking-help-from-others-with-reprex.html#cb447-10"></a>cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/feline-data.csv&quot;</span>)</span>
+<span id="cb447-11"><a href="seeking-help-from-others-with-reprex.html#cb447-11"></a></span>
+<span id="cb447-12"><a href="seeking-help-from-others-with-reprex.html#cb447-12"></a><span class="co"># munge data and make bar plot</span></span>
+<span id="cb447-13"><a href="seeking-help-from-others-with-reprex.html#cb447-13"></a>cats <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb447-14"><a href="seeking-help-from-others-with-reprex.html#cb447-14"></a><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb447-15"><a href="seeking-help-from-others-with-reprex.html#cb447-15"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st">  </span></span>
+<span id="cb447-16"><a href="seeking-help-from-others-with-reprex.html#cb447-16"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
 <p><img src="fig/rmd-12-reprex-demo1-1.png" width="816" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="seeking-help-from-others-with-reprex.html#cb447-1"></a><span class="co"># error in syntax - this does not work</span></span>
-<span id="cb447-2"><a href="seeking-help-from-others-with-reprex.html#cb447-2"></a>cats <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb447-3"><a href="seeking-help-from-others-with-reprex.html#cb447-3"></a><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb447-4"><a href="seeking-help-from-others-with-reprex.html#cb447-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">%&gt;%</span><span class="st">   </span></span>
-<span id="cb447-5"><a href="seeking-help-from-others-with-reprex.html#cb447-5"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="seeking-help-from-others-with-reprex.html#cb448-1"></a><span class="co"># error in syntax - this does not work</span></span>
+<span id="cb448-2"><a href="seeking-help-from-others-with-reprex.html#cb448-2"></a>cats <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb448-3"><a href="seeking-help-from-others-with-reprex.html#cb448-3"></a><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb448-4"><a href="seeking-help-from-others-with-reprex.html#cb448-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">%&gt;%</span><span class="st">   </span></span>
+<span id="cb448-5"><a href="seeking-help-from-others-with-reprex.html#cb448-5"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
 <pre><code>Error: `mapping` must be created by `aes()`
 Did you use %&gt;% instead of +?</code></pre>
 <p>You have read the error message but it was not helpful, you used <code>?ggplot2</code>, and looked on-line and still cannot find an answer. Maybe someone in the bcgovR community knows?</p>
 <p>We need to invest a bit of time making the buggy code shareable – the easier it is for someone to run the code, the easier – and likely faster – someone might be able to provide some help.</p>
 <p><img src="fig/help-me-help-you.png" /></p>
 <p>If the data is shareable (e.g. available in the B.C. Data Catalogue with appropriate licence, publicly available) then we can use <code>dput()</code>:</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="seeking-help-from-others-with-reprex.html#cb449-1"></a><span class="co"># use dput to make data set with code</span></span>
-<span id="cb449-2"><a href="seeking-help-from-others-with-reprex.html#cb449-2"></a><span class="kw">dput</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="seeking-help-from-others-with-reprex.html#cb450-1"></a><span class="co"># use dput to make data set with code</span></span>
+<span id="cb450-2"><a href="seeking-help-from-others-with-reprex.html#cb450-2"></a><span class="kw">dput</span>(cats)</span></code></pre></div>
 <pre><code>structure(list(coat = c(&quot;calico&quot;, &quot;black&quot;, &quot;tabby&quot;), weight = c(2.1, 
 5, 3.2), likes_string = c(1, 0, 1)), class = c(&quot;spec_tbl_df&quot;, 
 &quot;tbl_df&quot;, &quot;tbl&quot;, &quot;data.frame&quot;), row.names = c(NA, -3L), spec = structure(list(
@@ -356,40 +356,40 @@ Did you use %&gt;% instead of +?</code></pre>
     &quot;collector&quot;)), likes_string = structure(list(), class = c(&quot;collector_double&quot;, 
     &quot;collector&quot;))), default = structure(list(), class = c(&quot;collector_guess&quot;, 
     &quot;collector&quot;)), skip = 1), class = &quot;col_spec&quot;))</code></pre>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="seeking-help-from-others-with-reprex.html#cb451-1"></a>cats &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(<span class="dt">coat =</span> <span class="kw">c</span>(<span class="st">&quot;calico&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;tabby&quot;</span>), <span class="dt">weight =</span> <span class="kw">c</span>(<span class="fl">2.1</span>, </span>
-<span id="cb451-2"><a href="seeking-help-from-others-with-reprex.html#cb451-2"></a><span class="dv">5</span>, <span class="fl">3.2</span>), <span class="dt">likes_string =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;spec_tbl_df&quot;</span>, </span>
-<span id="cb451-3"><a href="seeking-help-from-others-with-reprex.html#cb451-3"></a><span class="st">&quot;tbl_df&quot;</span>, <span class="st">&quot;tbl&quot;</span>, <span class="st">&quot;data.frame&quot;</span>), <span class="dt">row.names =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="op">-</span>3L), <span class="dt">spec =</span> <span class="kw">structure</span>(<span class="kw">list</span>(</span>
-<span id="cb451-4"><a href="seeking-help-from-others-with-reprex.html#cb451-4"></a>    <span class="dt">cols =</span> <span class="kw">list</span>(<span class="dt">coat =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_character&quot;</span>, </span>
-<span id="cb451-5"><a href="seeking-help-from-others-with-reprex.html#cb451-5"></a>    <span class="st">&quot;collector&quot;</span>)), <span class="dt">weight =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_double&quot;</span>, </span>
-<span id="cb451-6"><a href="seeking-help-from-others-with-reprex.html#cb451-6"></a>    <span class="st">&quot;collector&quot;</span>)), <span class="dt">likes_string =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_double&quot;</span>, </span>
-<span id="cb451-7"><a href="seeking-help-from-others-with-reprex.html#cb451-7"></a>    <span class="st">&quot;collector&quot;</span>))), <span class="dt">default =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_guess&quot;</span>, </span>
-<span id="cb451-8"><a href="seeking-help-from-others-with-reprex.html#cb451-8"></a>    <span class="st">&quot;collector&quot;</span>)), <span class="dt">skip =</span> <span class="dv">1</span>), <span class="dt">class =</span> <span class="st">&quot;col_spec&quot;</span>))</span>
-<span id="cb451-9"><a href="seeking-help-from-others-with-reprex.html#cb451-9"></a></span>
-<span id="cb451-10"><a href="seeking-help-from-others-with-reprex.html#cb451-10"></a><span class="co"># error in syntax - this does not work</span></span>
-<span id="cb451-11"><a href="seeking-help-from-others-with-reprex.html#cb451-11"></a>cats <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb451-12"><a href="seeking-help-from-others-with-reprex.html#cb451-12"></a><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb451-13"><a href="seeking-help-from-others-with-reprex.html#cb451-13"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb451-14"><a href="seeking-help-from-others-with-reprex.html#cb451-14"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="seeking-help-from-others-with-reprex.html#cb452-1"></a>cats &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(<span class="dt">coat =</span> <span class="kw">c</span>(<span class="st">&quot;calico&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;tabby&quot;</span>), <span class="dt">weight =</span> <span class="kw">c</span>(<span class="fl">2.1</span>, </span>
+<span id="cb452-2"><a href="seeking-help-from-others-with-reprex.html#cb452-2"></a><span class="dv">5</span>, <span class="fl">3.2</span>), <span class="dt">likes_string =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;spec_tbl_df&quot;</span>, </span>
+<span id="cb452-3"><a href="seeking-help-from-others-with-reprex.html#cb452-3"></a><span class="st">&quot;tbl_df&quot;</span>, <span class="st">&quot;tbl&quot;</span>, <span class="st">&quot;data.frame&quot;</span>), <span class="dt">row.names =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="op">-</span>3L), <span class="dt">spec =</span> <span class="kw">structure</span>(<span class="kw">list</span>(</span>
+<span id="cb452-4"><a href="seeking-help-from-others-with-reprex.html#cb452-4"></a>    <span class="dt">cols =</span> <span class="kw">list</span>(<span class="dt">coat =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_character&quot;</span>, </span>
+<span id="cb452-5"><a href="seeking-help-from-others-with-reprex.html#cb452-5"></a>    <span class="st">&quot;collector&quot;</span>)), <span class="dt">weight =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_double&quot;</span>, </span>
+<span id="cb452-6"><a href="seeking-help-from-others-with-reprex.html#cb452-6"></a>    <span class="st">&quot;collector&quot;</span>)), <span class="dt">likes_string =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_double&quot;</span>, </span>
+<span id="cb452-7"><a href="seeking-help-from-others-with-reprex.html#cb452-7"></a>    <span class="st">&quot;collector&quot;</span>))), <span class="dt">default =</span> <span class="kw">structure</span>(<span class="kw">list</span>(), <span class="dt">class =</span> <span class="kw">c</span>(<span class="st">&quot;collector_guess&quot;</span>, </span>
+<span id="cb452-8"><a href="seeking-help-from-others-with-reprex.html#cb452-8"></a>    <span class="st">&quot;collector&quot;</span>)), <span class="dt">skip =</span> <span class="dv">1</span>), <span class="dt">class =</span> <span class="st">&quot;col_spec&quot;</span>))</span>
+<span id="cb452-9"><a href="seeking-help-from-others-with-reprex.html#cb452-9"></a></span>
+<span id="cb452-10"><a href="seeking-help-from-others-with-reprex.html#cb452-10"></a><span class="co"># error in syntax - this does not work</span></span>
+<span id="cb452-11"><a href="seeking-help-from-others-with-reprex.html#cb452-11"></a>cats <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb452-12"><a href="seeking-help-from-others-with-reprex.html#cb452-12"></a><span class="st">  </span><span class="kw">select</span>(coat, weight) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb452-13"><a href="seeking-help-from-others-with-reprex.html#cb452-13"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> coat, <span class="dt">y =</span> weight)) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb452-14"><a href="seeking-help-from-others-with-reprex.html#cb452-14"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
 <pre><code>Error: `mapping` must be created by `aes()`
 Did you use %&gt;% instead of +?</code></pre>
 <p><code>dput()</code> will dump the data you’re working with into a format so that it can
 be copy and pasted by anyone else into their R session.</p>
 <p>If the data is <em><em>not</em></em> shareable, you can use some built in data and re-create the issue:</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="seeking-help-from-others-with-reprex.html#cb453-1"></a><span class="co"># ?datasets # built in datasets</span></span>
-<span id="cb453-2"><a href="seeking-help-from-others-with-reprex.html#cb453-2"></a><span class="co"># ?starwars # ships with dplyr</span></span>
-<span id="cb453-3"><a href="seeking-help-from-others-with-reprex.html#cb453-3"></a></span>
-<span id="cb453-4"><a href="seeking-help-from-others-with-reprex.html#cb453-4"></a><span class="co"># View(starwars)</span></span>
-<span id="cb453-5"><a href="seeking-help-from-others-with-reprex.html#cb453-5"></a></span>
-<span id="cb453-6"><a href="seeking-help-from-others-with-reprex.html#cb453-6"></a><span class="co"># error in syntax - this does not work</span></span>
-<span id="cb453-7"><a href="seeking-help-from-others-with-reprex.html#cb453-7"></a>starwars <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb453-8"><a href="seeking-help-from-others-with-reprex.html#cb453-8"></a><span class="st">  </span><span class="kw">select</span>(name, height) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb453-9"><a href="seeking-help-from-others-with-reprex.html#cb453-9"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> name, <span class="dt">y =</span> height)) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb453-10"><a href="seeking-help-from-others-with-reprex.html#cb453-10"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="seeking-help-from-others-with-reprex.html#cb454-1"></a><span class="co"># ?datasets # built in datasets</span></span>
+<span id="cb454-2"><a href="seeking-help-from-others-with-reprex.html#cb454-2"></a><span class="co"># ?starwars # ships with dplyr</span></span>
+<span id="cb454-3"><a href="seeking-help-from-others-with-reprex.html#cb454-3"></a></span>
+<span id="cb454-4"><a href="seeking-help-from-others-with-reprex.html#cb454-4"></a><span class="co"># View(starwars)</span></span>
+<span id="cb454-5"><a href="seeking-help-from-others-with-reprex.html#cb454-5"></a></span>
+<span id="cb454-6"><a href="seeking-help-from-others-with-reprex.html#cb454-6"></a><span class="co"># error in syntax - this does not work</span></span>
+<span id="cb454-7"><a href="seeking-help-from-others-with-reprex.html#cb454-7"></a>starwars <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb454-8"><a href="seeking-help-from-others-with-reprex.html#cb454-8"></a><span class="st">  </span><span class="kw">select</span>(name, height) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb454-9"><a href="seeking-help-from-others-with-reprex.html#cb454-9"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> name, <span class="dt">y =</span> height)) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb454-10"><a href="seeking-help-from-others-with-reprex.html#cb454-10"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
 <pre><code>Error: `mapping` must be created by `aes()`
 Did you use %&gt;% instead of +?</code></pre>
 <p>Once the code is ready for sharing, select the code and use <code>reprex_selection()</code> or the clickable RStudio <code>Addin</code> Reprex selection button to copy the formatted code to the clipboard for sharing on-line (<em>demonstrated</em>).</p>
 <p>Sometimes it is useful to share information about your computing environment as well:</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="seeking-help-from-others-with-reprex.html#cb455-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="seeking-help-from-others-with-reprex.html#cb456-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
 <pre><code>R version 4.0.0 (2020-04-24)
 Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Catalina 10.15.4
@@ -418,7 +418,7 @@ loaded via a namespace (and not attached):
 [19] leaflet.providers_1.9.0 colorspace_1.4-1        htmltools_0.4.0        
 [22] Matrix_1.2-18           pkgconfig_2.0.3         httpcode_0.3.0         
 [25] raster_3.1-5            bookdown_0.18           purrr_0.3.4            
-[28] scales_1.1.0            webshot_0.5.2           brew_1.0-6             
+[28] scales_1.1.1            webshot_0.5.2           brew_1.0-6             
 [31] svglite_1.2.3           satellite_1.0.2         tibble_3.0.1           
 [34] mgcv_1.8-31             farver_2.0.3            ellipsis_0.3.0         
 [37] withr_2.2.0             cli_2.0.2               mapview_2.7.8          
@@ -435,8 +435,8 @@ loaded via a namespace (and not attached):
 [70] codetools_0.2-16        DBI_1.1.0               curl_4.3               
 [73] R6_2.4.1                utf8_1.1.4              KernSmooth_2.23-16     
 [76] stringi_1.4.6           crul_0.9.0              Rcpp_1.0.4.6           
-[79] vctrs_0.2.4             sf_0.9-3                png_0.1-7              
-[82] leaflet_2.0.3           tidyselect_1.0.0        xfun_0.13              </code></pre>
+[79] vctrs_0.3.0             sf_0.9-3                png_0.1-7              
+[82] leaflet_2.0.3           tidyselect_1.1.0        xfun_0.13              </code></pre>
 <p><code>sessionInfo()</code> will print out your current version of R, as well as any packages you
 have loaded. This can be useful to help reproduce and debug
 your issue.</p>
