@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Create Tidy Data with tidyr | Introduction to Data Science using R Workshop</title>
   <meta name="description" content="This book contains materials for a 2 day Introduction to R workshop" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Create Tidy Data with tidyr | Introduction to Data Science using R Workshop" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-05-12" />
+<meta name="date" content="2020-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="dataframe-manipulation-with-dplyr.html"/>
 <link rel="next" href="introduction-to-the-bcdata-package.html"/>
-<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,7 +51,9 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -61,11 +63,16 @@
 <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="lib_all-1-attachment" rel="attachment" href="libs/lib_all-0.0.1/lib_all_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
 <script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/PopupTable-0.0.1/popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -322,15 +329,16 @@ the fields in a database and observed variables are like the database values.</p
 <h2><span class="header-section-number">8.1</span> Getting started</h2>
 <p>First install the packages if you haven’t already done so (you probably
 installed dplyr in the previous lesson):</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="create-tidy-data-with-tidyr.html#cb358-1"></a><span class="co">#install.packages(&quot;tidyr&quot;)</span></span>
-<span id="cb358-2"><a href="create-tidy-data-with-tidyr.html#cb358-2"></a><span class="co">#install.packages(&quot;dplyr&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="create-tidy-data-with-tidyr.html#cb368-1" aria-hidden="true"></a><span class="co">#install.packages(&quot;tidyr&quot;)</span></span>
+<span id="cb368-2"><a href="create-tidy-data-with-tidyr.html#cb368-2" aria-hidden="true"></a><span class="co">#install.packages(&quot;dplyr&quot;)</span></span></code></pre></div>
 <p>Load the packages</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="create-tidy-data-with-tidyr.html#cb359-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
-<span id="cb359-2"><a href="create-tidy-data-with-tidyr.html#cb359-2"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb359-3"><a href="create-tidy-data-with-tidyr.html#cb359-3"></a><span class="kw">library</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="create-tidy-data-with-tidyr.html#cb369-1" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
+<span id="cb369-2"><a href="create-tidy-data-with-tidyr.html#cb369-2" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb369-3"><a href="create-tidy-data-with-tidyr.html#cb369-3" aria-hidden="true"></a><span class="kw">library</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
 <p>First, lets look at the structure of our original gapminder dataframe:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="create-tidy-data-with-tidyr.html#cb360-1"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
-<pre><code>Parsed with column specification:
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="create-tidy-data-with-tidyr.html#cb370-1" aria-hidden="true"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
+<pre><code>
+── Column specification ────────────────────────────────────────────────────────
 cols(
   country = col_character(),
   year = col_double(),
@@ -339,7 +347,7 @@ cols(
   lifeExp = col_double(),
   gdpPercap = col_double()
 )</code></pre>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="create-tidy-data-with-tidyr.html#cb362-1"></a>gapminder</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="create-tidy-data-with-tidyr.html#cb372-1" aria-hidden="true"></a>gapminder</span></code></pre></div>
 <pre><code># A tibble: 1,704 x 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -387,15 +395,16 @@ R actually work better in the wide format data.</p>
 ‘real’ data (i.e. our own research data) will never be so well organized. Here
 let’s start with the wide formatted version of the gapminder dataset.</p>
 <p>We’ll load the data file and look at it.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="create-tidy-data-with-tidyr.html#cb364-1"></a>gap_wide &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_wide.csv&quot;</span>)</span></code></pre></div>
-<pre><code>Parsed with column specification:
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="create-tidy-data-with-tidyr.html#cb374-1" aria-hidden="true"></a>gap_wide &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_wide.csv&quot;</span>)</span></code></pre></div>
+<pre><code>
+── Column specification ────────────────────────────────────────────────────────
 cols(
   .default = col_double(),
   continent = col_character(),
   country = col_character()
-)</code></pre>
-<pre><code>See spec(...) for full column specifications.</code></pre>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="create-tidy-data-with-tidyr.html#cb367-1"></a>gap_wide</span></code></pre></div>
+)
+ℹ Use `spec()` for the full column specifications.</code></pre>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="create-tidy-data-with-tidyr.html#cb376-1" aria-hidden="true"></a>gap_wide</span></code></pre></div>
 <pre><code># A tibble: 142 x 38
    continent country pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
    &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
@@ -423,12 +432,12 @@ cols(
 <p><img src="fig/08-tidyr-fig2.png" /></p>
 <p>To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available <code>pivot</code> functions from the <code>tidyr</code> package. To convert from wide to a longer format, we will use the <code>pivot_longer()</code> function. <code>pivot_longer()</code> makes datasets longer by increasing the number of rows and decreasing the number of columns, or ‘lengthening’ your observation variables into a single variable.</p>
 <p><img src="fig/08-tidyr-fig3.png" /></p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="create-tidy-data-with-tidyr.html#cb369-1"></a>gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span></span>
-<span id="cb369-2"><a href="create-tidy-data-with-tidyr.html#cb369-2"></a><span class="st">  </span><span class="kw">pivot_longer</span>(</span>
-<span id="cb369-3"><a href="create-tidy-data-with-tidyr.html#cb369-3"></a>    <span class="dt">cols =</span> pop_<span class="dv">1952</span><span class="op">:</span>gdpPercap_<span class="dv">2007</span>,</span>
-<span id="cb369-4"><a href="create-tidy-data-with-tidyr.html#cb369-4"></a>    <span class="dt">names_to =</span> <span class="st">&quot;obstype_year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;obs_values&quot;</span></span>
-<span id="cb369-5"><a href="create-tidy-data-with-tidyr.html#cb369-5"></a>  )</span>
-<span id="cb369-6"><a href="create-tidy-data-with-tidyr.html#cb369-6"></a>gap_long</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="create-tidy-data-with-tidyr.html#cb378-1" aria-hidden="true"></a>gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span></span>
+<span id="cb378-2"><a href="create-tidy-data-with-tidyr.html#cb378-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">pivot_longer</span>(</span>
+<span id="cb378-3"><a href="create-tidy-data-with-tidyr.html#cb378-3" aria-hidden="true"></a>    <span class="dt">cols =</span> pop_<span class="dv">1952</span><span class="op">:</span>gdpPercap_<span class="dv">2007</span>,</span>
+<span id="cb378-4"><a href="create-tidy-data-with-tidyr.html#cb378-4" aria-hidden="true"></a>    <span class="dt">names_to =</span> <span class="st">&quot;obstype_year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;obs_values&quot;</span></span>
+<span id="cb378-5"><a href="create-tidy-data-with-tidyr.html#cb378-5" aria-hidden="true"></a>  )</span>
+<span id="cb378-6"><a href="create-tidy-data-with-tidyr.html#cb378-6" aria-hidden="true"></a>gap_long</span></code></pre></div>
 <pre><code># A tibble: 5,112 x 4
    continent country     obstype_year   obs_values
    &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt;
@@ -456,12 +465,12 @@ will contain the new ID variable (<code>obstype_year</code>) and <code>values_to
 new amalgamated observation variable (<code>obs_value</code>). We supply these new column
 names as strings.</p>
 <p><img src="fig/08-tidyr-fig4.png" /></p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="create-tidy-data-with-tidyr.html#cb371-1"></a>gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span></span>
-<span id="cb371-2"><a href="create-tidy-data-with-tidyr.html#cb371-2"></a><span class="st">  </span><span class="kw">pivot_longer</span>(</span>
-<span id="cb371-3"><a href="create-tidy-data-with-tidyr.html#cb371-3"></a>    <span class="dt">cols =</span> <span class="kw">c</span>(<span class="op">-</span>continent, <span class="op">-</span>country),</span>
-<span id="cb371-4"><a href="create-tidy-data-with-tidyr.html#cb371-4"></a>    <span class="dt">names_to =</span> <span class="st">&quot;obstype_year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;obs_values&quot;</span></span>
-<span id="cb371-5"><a href="create-tidy-data-with-tidyr.html#cb371-5"></a>  )</span>
-<span id="cb371-6"><a href="create-tidy-data-with-tidyr.html#cb371-6"></a>gap_long</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="create-tidy-data-with-tidyr.html#cb380-1" aria-hidden="true"></a>gap_long &lt;-<span class="st"> </span>gap_wide <span class="op">%&gt;%</span></span>
+<span id="cb380-2"><a href="create-tidy-data-with-tidyr.html#cb380-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">pivot_longer</span>(</span>
+<span id="cb380-3"><a href="create-tidy-data-with-tidyr.html#cb380-3" aria-hidden="true"></a>    <span class="dt">cols =</span> <span class="kw">c</span>(<span class="op">-</span>continent, <span class="op">-</span>country),</span>
+<span id="cb380-4"><a href="create-tidy-data-with-tidyr.html#cb380-4" aria-hidden="true"></a>    <span class="dt">names_to =</span> <span class="st">&quot;obstype_year&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;obs_values&quot;</span></span>
+<span id="cb380-5"><a href="create-tidy-data-with-tidyr.html#cb380-5" aria-hidden="true"></a>  )</span>
+<span id="cb380-6"><a href="create-tidy-data-with-tidyr.html#cb380-6" aria-hidden="true"></a>gap_long</span></code></pre></div>
 <pre><code># A tibble: 5,112 x 4
    continent country     obstype_year   obs_values
    &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt;
@@ -482,17 +491,18 @@ flexibility is a huge time saver!</p>
 <p>Now <code>obstype_year</code> actually contains 2 pieces of information, the observation
 type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the <code>year</code>. We can use the
 <code>separate()</code> function to split the character strings into multiple variables</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="create-tidy-data-with-tidyr.html#cb373-1"></a>gap_long &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb373-2"><a href="create-tidy-data-with-tidyr.html#cb373-2"></a><span class="st">    </span><span class="kw">separate</span>(obstype_year, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>, <span class="st">&#39;year&#39;</span>), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb373-3"><a href="create-tidy-data-with-tidyr.html#cb373-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">as.numeric</span>(year))</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="create-tidy-data-with-tidyr.html#cb382-1" aria-hidden="true"></a>gap_long &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb382-2"><a href="create-tidy-data-with-tidyr.html#cb382-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">separate</span>(obstype_year, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;obs_type&#39;</span>, <span class="st">&#39;year&#39;</span>), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb382-3"><a href="create-tidy-data-with-tidyr.html#cb382-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">as.numeric</span>(year))</span></code></pre></div>
 <blockquote>
 <h2 id="challenge-2-5">Challenge 2</h2>
 <p>Using <code>gap_long</code>, calculate the mean life expectancy, population, and gdpPercap for each continent.
 <strong>Hint:</strong> use the <code>group_by()</code> and <code>summarize()</code> functions we learned in the <code>dplyr</code> lesson</p>
 <blockquote>
 <h2 id="solution-to-challenge-2-5">Solution to Challenge 2</h2>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="create-tidy-data-with-tidyr.html#cb374-1"></a>gap_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(continent, obs_type) <span class="op">%&gt;%</span></span>
-<span id="cb374-2"><a href="create-tidy-data-with-tidyr.html#cb374-2"></a><span class="st">   </span><span class="kw">summarize</span>(<span class="dt">means=</span><span class="kw">mean</span>(obs_values))</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="create-tidy-data-with-tidyr.html#cb383-1" aria-hidden="true"></a>gap_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(continent, obs_type) <span class="op">%&gt;%</span></span>
+<span id="cb383-2"><a href="create-tidy-data-with-tidyr.html#cb383-2" aria-hidden="true"></a><span class="st">   </span><span class="kw">summarize</span>(<span class="dt">means=</span><span class="kw">mean</span>(obs_values))</span></code></pre></div>
+<pre><code>`summarise()` regrouping output by &#39;continent&#39; (override with `.groups` argument)</code></pre>
 <pre><code># A tibble: 15 x 3
 # Groups:   continent [5]
   continent obs_type       means
@@ -522,24 +532,24 @@ type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the 
 <p>To <code>names_from</code> we supply the column name whose contents will be pivoted into new
 output columns in the widened dataframe. The corresponding values will be added
 from the column named in the <code>values_from</code> argument.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="create-tidy-data-with-tidyr.html#cb376-1"></a>gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
-<span id="cb376-2"><a href="create-tidy-data-with-tidyr.html#cb376-2"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> obs_type, <span class="dt">values_from =</span> obs_values)</span>
-<span id="cb376-3"><a href="create-tidy-data-with-tidyr.html#cb376-3"></a><span class="kw">dim</span>(gap_normal)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="create-tidy-data-with-tidyr.html#cb386-1" aria-hidden="true"></a>gap_normal &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
+<span id="cb386-2"><a href="create-tidy-data-with-tidyr.html#cb386-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> obs_type, <span class="dt">values_from =</span> obs_values)</span>
+<span id="cb386-3"><a href="create-tidy-data-with-tidyr.html#cb386-3" aria-hidden="true"></a><span class="kw">dim</span>(gap_normal)</span></code></pre></div>
 <pre><code>[1] 1704    6</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="create-tidy-data-with-tidyr.html#cb378-1"></a><span class="kw">dim</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="create-tidy-data-with-tidyr.html#cb388-1" aria-hidden="true"></a><span class="kw">dim</span>(gapminder)</span></code></pre></div>
 <pre><code>[1] 1704    6</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="create-tidy-data-with-tidyr.html#cb380-1"></a><span class="kw">names</span>(gap_normal)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="create-tidy-data-with-tidyr.html#cb390-1" aria-hidden="true"></a><span class="kw">names</span>(gap_normal)</span></code></pre></div>
 <pre><code>[1] &quot;continent&quot; &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;lifeExp&quot;   &quot;gdpPercap&quot;</code></pre>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="create-tidy-data-with-tidyr.html#cb382-1"></a><span class="kw">names</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="create-tidy-data-with-tidyr.html#cb392-1" aria-hidden="true"></a><span class="kw">names</span>(gapminder)</span></code></pre></div>
 <pre><code>[1] &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;continent&quot; &quot;lifeExp&quot;   &quot;gdpPercap&quot;</code></pre>
 <p>Now we’ve got an intermediate dataframe <code>gap_normal</code> with the same dimensions as
 the original <code>gapminder</code>, but the order of the variables is different. Let’s fix
 that before checking if they are <code>all.equal()</code>.</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="create-tidy-data-with-tidyr.html#cb384-1"></a>gap_normal &lt;-<span class="st"> </span>gap_normal <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb384-2"><a href="create-tidy-data-with-tidyr.html#cb384-2"></a><span class="st">    </span><span class="kw">select</span>(country, year, pop, continent, lifeExp, gdpPercap) </span>
-<span id="cb384-3"><a href="create-tidy-data-with-tidyr.html#cb384-3"></a><span class="kw">all_equal</span>(gap_normal, gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="create-tidy-data-with-tidyr.html#cb394-1" aria-hidden="true"></a>gap_normal &lt;-<span class="st"> </span>gap_normal <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb394-2"><a href="create-tidy-data-with-tidyr.html#cb394-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">select</span>(country, year, pop, continent, lifeExp, gdpPercap) </span>
+<span id="cb394-3"><a href="create-tidy-data-with-tidyr.html#cb394-3" aria-hidden="true"></a><span class="kw">all_equal</span>(gap_normal, gapminder)</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="create-tidy-data-with-tidyr.html#cb386-1"></a>gap_normal</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="create-tidy-data-with-tidyr.html#cb396-1" aria-hidden="true"></a>gap_normal</span></code></pre></div>
 <pre><code># A tibble: 1,704 x 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -554,7 +564,7 @@ that before checking if they are <code>all.equal()</code>.</p>
  9 Afghanistan  1992 16317921 Asia         41.7      649.
 10 Afghanistan  1997 22227415 Asia         41.8      635.
 # … with 1,694 more rows</code></pre>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="create-tidy-data-with-tidyr.html#cb388-1"></a>gapminder</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="create-tidy-data-with-tidyr.html#cb398-1" aria-hidden="true"></a>gapminder</span></code></pre></div>
 <pre><code># A tibble: 1,704 x 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -571,8 +581,8 @@ that before checking if they are <code>all.equal()</code>.</p>
 # … with 1,694 more rows</code></pre>
 <p>We’re almost there, the original was sorted by <code>country</code>, then
 <code>year</code>.</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="create-tidy-data-with-tidyr.html#cb390-1"></a>gap_normal &lt;-<span class="st"> </span>gap_normal <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(country, year)</span>
-<span id="cb390-2"><a href="create-tidy-data-with-tidyr.html#cb390-2"></a><span class="kw">all_equal</span>(gap_normal, gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="create-tidy-data-with-tidyr.html#cb400-1" aria-hidden="true"></a>gap_normal &lt;-<span class="st"> </span>gap_normal <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(country, year)</span>
+<span id="cb400-2"><a href="create-tidy-data-with-tidyr.html#cb400-2" aria-hidden="true"></a><span class="kw">all_equal</span>(gap_normal, gapminder)</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <p>That’s great! We’ve gone from the longest format back to the intermediate and we
 didn’t introduce any errors in our code.</p>
@@ -582,8 +592,8 @@ across the 3 metrics (<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</cod
 need to create appropriate labels for all our new variables (time*metric
 combinations) and we also need to unify our ID variables to simplify the process
 of defining <code>gap_wide</code>.</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="create-tidy-data-with-tidyr.html#cb392-1"></a>gap_temp &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unite</span>(var_ID, continent, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
-<span id="cb392-2"><a href="create-tidy-data-with-tidyr.html#cb392-2"></a>gap_temp</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="create-tidy-data-with-tidyr.html#cb402-1" aria-hidden="true"></a>gap_temp &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unite</span>(var_ID, continent, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb402-2"><a href="create-tidy-data-with-tidyr.html#cb402-2" aria-hidden="true"></a>gap_temp</span></code></pre></div>
 <pre><code># A tibble: 5,112 x 4
    var_ID           obs_type   year obs_values
    &lt;chr&gt;            &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;
@@ -598,10 +608,10 @@ of defining <code>gap_wide</code>.</p>
  9 Asia_Afghanistan gdpPercap  1962      853. 
 10 Asia_Afghanistan pop        1967 11537966  
 # … with 5,102 more rows</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="create-tidy-data-with-tidyr.html#cb394-1"></a>gap_temp &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
-<span id="cb394-2"><a href="create-tidy-data-with-tidyr.html#cb394-2"></a><span class="st">    </span><span class="kw">unite</span>(ID_var, continent, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb394-3"><a href="create-tidy-data-with-tidyr.html#cb394-3"></a><span class="st">    </span><span class="kw">unite</span>(var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
-<span id="cb394-4"><a href="create-tidy-data-with-tidyr.html#cb394-4"></a>gap_temp</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="create-tidy-data-with-tidyr.html#cb404-1" aria-hidden="true"></a>gap_temp &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
+<span id="cb404-2"><a href="create-tidy-data-with-tidyr.html#cb404-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">unite</span>(ID_var, continent, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb404-3"><a href="create-tidy-data-with-tidyr.html#cb404-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">unite</span>(var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb404-4"><a href="create-tidy-data-with-tidyr.html#cb404-4" aria-hidden="true"></a>gap_temp</span></code></pre></div>
 <pre><code># A tibble: 5,112 x 3
    ID_var           var_names      obs_values
    &lt;chr&gt;            &lt;chr&gt;               &lt;dbl&gt;
@@ -619,11 +629,11 @@ of defining <code>gap_wide</code>.</p>
 <p>Using <code>unite()</code> we now have a single ID variable which is a combination of
 <code>continent</code>,<code>country</code>,and we have defined variable names. We’re now ready to
 pipe in <code>pivot_wider()</code></p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="create-tidy-data-with-tidyr.html#cb396-1"></a>gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
-<span id="cb396-2"><a href="create-tidy-data-with-tidyr.html#cb396-2"></a><span class="st">  </span><span class="kw">unite</span>(ID_var, continent, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb396-3"><a href="create-tidy-data-with-tidyr.html#cb396-3"></a><span class="st">  </span><span class="kw">unite</span>(var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb396-4"><a href="create-tidy-data-with-tidyr.html#cb396-4"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> var_names, <span class="dt">values_from =</span> obs_values)</span>
-<span id="cb396-5"><a href="create-tidy-data-with-tidyr.html#cb396-5"></a>gap_wide_new</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="create-tidy-data-with-tidyr.html#cb406-1" aria-hidden="true"></a>gap_wide_new &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
+<span id="cb406-2"><a href="create-tidy-data-with-tidyr.html#cb406-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">unite</span>(ID_var, continent, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb406-3"><a href="create-tidy-data-with-tidyr.html#cb406-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">unite</span>(var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb406-4"><a href="create-tidy-data-with-tidyr.html#cb406-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> var_names, <span class="dt">values_from =</span> obs_values)</span>
+<span id="cb406-5"><a href="create-tidy-data-with-tidyr.html#cb406-5" aria-hidden="true"></a>gap_wide_new</span></code></pre></div>
 <pre><code># A tibble: 142 x 37
    ID_var pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
    &lt;chr&gt;     &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
@@ -654,20 +664,20 @@ pipe in <code>pivot_wider()</code></p>
 <strong>Hint</strong> this new dataframe should only have 5 rows.</p>
 <blockquote>
 <h2 id="solution-to-challenge-3-4">Solution to Challenge 3</h2>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="create-tidy-data-with-tidyr.html#cb398-1"></a>gap_ludicrously_wide &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
-<span id="cb398-2"><a href="create-tidy-data-with-tidyr.html#cb398-2"></a><span class="st">   </span><span class="kw">unite</span>(var_names, obs_type, year, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb398-3"><a href="create-tidy-data-with-tidyr.html#cb398-3"></a><span class="st">   </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> var_names, <span class="dt">values_from =</span> obs_values)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="create-tidy-data-with-tidyr.html#cb408-1" aria-hidden="true"></a>gap_ludicrously_wide &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
+<span id="cb408-2"><a href="create-tidy-data-with-tidyr.html#cb408-2" aria-hidden="true"></a><span class="st">   </span><span class="kw">unite</span>(var_names, obs_type, year, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb408-3"><a href="create-tidy-data-with-tidyr.html#cb408-3" aria-hidden="true"></a><span class="st">   </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> var_names, <span class="dt">values_from =</span> obs_values)</span></code></pre></div>
 </blockquote>
 </blockquote>
 <p>Now we have a great ‘wide’ format dataframe, but the <code>ID_var</code> could be more
 usable, let’s separate it into 2 variables with <code>separate()</code></p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="create-tidy-data-with-tidyr.html#cb399-1"></a>gap_wide_betterID &lt;-<span class="st"> </span><span class="kw">separate</span>(gap_wide_new, ID_var, <span class="kw">c</span>(<span class="st">&quot;continent&quot;</span>, <span class="st">&quot;country&quot;</span>), <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)</span>
-<span id="cb399-2"><a href="create-tidy-data-with-tidyr.html#cb399-2"></a>gap_wide_betterID &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
-<span id="cb399-3"><a href="create-tidy-data-with-tidyr.html#cb399-3"></a><span class="st">    </span><span class="kw">unite</span>(ID_var, continent, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb399-4"><a href="create-tidy-data-with-tidyr.html#cb399-4"></a><span class="st">    </span><span class="kw">unite</span>(var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb399-5"><a href="create-tidy-data-with-tidyr.html#cb399-5"></a><span class="st">    </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> var_names, <span class="dt">values_from =</span> obs_values) <span class="op">%&gt;%</span></span>
-<span id="cb399-6"><a href="create-tidy-data-with-tidyr.html#cb399-6"></a><span class="st">    </span><span class="kw">separate</span>(ID_var, <span class="kw">c</span>(<span class="st">&quot;continent&quot;</span>,<span class="st">&quot;country&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
-<span id="cb399-7"><a href="create-tidy-data-with-tidyr.html#cb399-7"></a>gap_wide_betterID</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="create-tidy-data-with-tidyr.html#cb409-1" aria-hidden="true"></a>gap_wide_betterID &lt;-<span class="st"> </span><span class="kw">separate</span>(gap_wide_new, ID_var, <span class="kw">c</span>(<span class="st">&quot;continent&quot;</span>, <span class="st">&quot;country&quot;</span>), <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)</span>
+<span id="cb409-2"><a href="create-tidy-data-with-tidyr.html#cb409-2" aria-hidden="true"></a>gap_wide_betterID &lt;-<span class="st"> </span>gap_long <span class="op">%&gt;%</span></span>
+<span id="cb409-3"><a href="create-tidy-data-with-tidyr.html#cb409-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">unite</span>(ID_var, continent, country, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb409-4"><a href="create-tidy-data-with-tidyr.html#cb409-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">unite</span>(var_names, obs_type, year, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb409-5"><a href="create-tidy-data-with-tidyr.html#cb409-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> var_names, <span class="dt">values_from =</span> obs_values) <span class="op">%&gt;%</span></span>
+<span id="cb409-6"><a href="create-tidy-data-with-tidyr.html#cb409-6" aria-hidden="true"></a><span class="st">    </span><span class="kw">separate</span>(ID_var, <span class="kw">c</span>(<span class="st">&quot;continent&quot;</span>,<span class="st">&quot;country&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb409-7"><a href="create-tidy-data-with-tidyr.html#cb409-7" aria-hidden="true"></a>gap_wide_betterID</span></code></pre></div>
 <pre><code># A tibble: 142 x 38
    continent country pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
    &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
@@ -692,7 +702,7 @@ usable, let’s separate it into 2 variables with <code>separate()</code></p>
 #   lifeExp_1997 &lt;dbl&gt;, gdpPercap_1997 &lt;dbl&gt;, pop_2002 &lt;dbl&gt;,
 #   lifeExp_2002 &lt;dbl&gt;, gdpPercap_2002 &lt;dbl&gt;, pop_2007 &lt;dbl&gt;,
 #   lifeExp_2007 &lt;dbl&gt;, gdpPercap_2007 &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="create-tidy-data-with-tidyr.html#cb401-1"></a><span class="kw">all_equal</span>(gap_wide, gap_wide_betterID)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="create-tidy-data-with-tidyr.html#cb411-1" aria-hidden="true"></a><span class="kw">all_equal</span>(gap_wide, gap_wide_betterID)</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <p>There and back again!</p>
 </div>

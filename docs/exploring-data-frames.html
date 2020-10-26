@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Exploring Data Frames | Introduction to Data Science using R Workshop</title>
   <meta name="description" content="This book contains materials for a 2 day Introduction to R workshop" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Exploring Data Frames | Introduction to Data Science using R Workshop" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2020-05-12" />
+<meta name="date" content="2020-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="data-structures.html"/>
 <link rel="next" href="creating-publication-quality-graphics-with-ggplot2.html"/>
-<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,7 +51,9 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -61,11 +63,16 @@
 <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/fgb.js"></script>
+<script src="libs/FlatGeoBuf-3.3.3/flatgeobuf-geojson.min.js"></script>
+<script src="libs/chromajs-2.1.0/chroma.min.js"></script>
+<link id="lib_all-1-attachment" rel="attachment" href="libs/lib_all-0.0.1/lib_all_layer.fgb"/>
 <link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
 <script src="libs/HomeButton-0.0.1/home-button.js"></script>
 <script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
 <script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/PopupTable-0.0.1/popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -303,24 +310,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 data types and data structures in R. Everything you do will be a manipulation of
 those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we’ll learn a few more things
 about working with data frames.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="exploring-data-frames.html#cb221-1"></a><span class="kw">library</span>(readr)</span>
-<span id="cb221-2"><a href="exploring-data-frames.html#cb221-2"></a>cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/feline-data.csv&quot;</span>)</span></code></pre></div>
-<pre><code>Parsed with column specification:
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="exploring-data-frames.html#cb221-1" aria-hidden="true"></a><span class="kw">library</span>(readr)</span>
+<span id="cb221-2"><a href="exploring-data-frames.html#cb221-2" aria-hidden="true"></a>cats &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/feline-data.csv&quot;</span>)</span></code></pre></div>
+<pre><code>
+── Column specification ────────────────────────────────────────────────────────
 cols(
   coat = col_character(),
   weight = col_double(),
   likes_string = col_double()
 )</code></pre>
 <p>We can find the size and various other attributes of our data with a few handy functions:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="exploring-data-frames.html#cb223-1"></a><span class="kw">nrow</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="exploring-data-frames.html#cb223-1" aria-hidden="true"></a><span class="kw">nrow</span>(cats)</span></code></pre></div>
 <pre><code>[1] 3</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="exploring-data-frames.html#cb225-1"></a><span class="kw">ncol</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="exploring-data-frames.html#cb225-1" aria-hidden="true"></a><span class="kw">ncol</span>(cats)</span></code></pre></div>
 <pre><code>[1] 3</code></pre>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="exploring-data-frames.html#cb227-1"></a><span class="kw">dim</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="exploring-data-frames.html#cb227-1" aria-hidden="true"></a><span class="kw">dim</span>(cats)</span></code></pre></div>
 <pre><code>[1] 3 3</code></pre>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="exploring-data-frames.html#cb229-1"></a><span class="kw">names</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="exploring-data-frames.html#cb229-1" aria-hidden="true"></a><span class="kw">names</span>(cats)</span></code></pre></div>
 <pre><code>[1] &quot;coat&quot;         &quot;weight&quot;       &quot;likes_string&quot;</code></pre>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="exploring-data-frames.html#cb231-1"></a><span class="kw">str</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="exploring-data-frames.html#cb231-1" aria-hidden="true"></a><span class="kw">str</span>(cats)</span></code></pre></div>
 <pre><code>tibble [3 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ coat        : chr [1:3] &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;
  $ weight      : num [1:3] 2.1 5 3.2
@@ -332,7 +340,7 @@ cols(
   ..   likes_string = col_double()
   .. )</code></pre>
 <p>A way to get a nice overall view of a data frame is to use the <code>summary</code> function. This function can be used on various objects in R. For data frames, <code>summary</code> yields a numeric, tabular, or descriptive summary of each column. Factor columns are summarized by the number of items in each level, numeric or integer columns by the descriptive statistics (quartiles and mean), and character columns by its length, class, and mode.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="exploring-data-frames.html#cb233-1"></a><span class="kw">summary</span>(cats)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="exploring-data-frames.html#cb233-1" aria-hidden="true"></a><span class="kw">summary</span>(cats)</span></code></pre></div>
 <pre><code>     coat               weight       likes_string   
  Length:3           Min.   :2.100   Min.   :0.0000  
  Class :character   1st Qu.:2.650   1st Qu.:0.5000  
@@ -353,8 +361,9 @@ now let’s use those skills to digest a more realistic dataset. Let’s read in
 <h2 id="challenge-1-3">Challenge 1</h2>
 <p>Read in the gapminder dataset using read_csv and assign it to a data frame
 called <code>gapminder</code>:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="exploring-data-frames.html#cb235-1"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
-<pre><code>Parsed with column specification:
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="exploring-data-frames.html#cb235-1" aria-hidden="true"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
+<pre><code>
+── Column specification ────────────────────────────────────────────────────────
 cols(
   country = col_character(),
   year = col_double(),
@@ -364,14 +373,14 @@ cols(
   gdpPercap = col_double()
 )</code></pre>
 <p>Then tell me how many rows and columns <code>gapminder</code> has:</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="exploring-data-frames.html#cb237-1"></a><span class="kw">dim</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="exploring-data-frames.html#cb237-1" aria-hidden="true"></a><span class="kw">dim</span>(gapminder)</span></code></pre></div>
 <pre><code>[1] 1704    6</code></pre>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="exploring-data-frames.html#cb239-1"></a><span class="kw">nrow</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="exploring-data-frames.html#cb239-1" aria-hidden="true"></a><span class="kw">nrow</span>(gapminder)</span></code></pre></div>
 <pre><code>[1] 1704</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="exploring-data-frames.html#cb241-1"></a><span class="kw">ncol</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="exploring-data-frames.html#cb241-1" aria-hidden="true"></a><span class="kw">ncol</span>(gapminder)</span></code></pre></div>
 <pre><code>[1] 6</code></pre>
 <p>And tell me what kind of data is in the <code>pop</code> and <code>continent</code> columns</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="exploring-data-frames.html#cb243-1"></a><span class="kw">str</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="exploring-data-frames.html#cb243-1" aria-hidden="true"></a><span class="kw">str</span>(gapminder)</span></code></pre></div>
 <pre><code>tibble [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ country  : chr [1:1704] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
  $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
@@ -388,7 +397,7 @@ cols(
   ..   lifeExp = col_double(),
   ..   gdpPercap = col_double()
   .. )</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="exploring-data-frames.html#cb245-1"></a><span class="kw">summary</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="exploring-data-frames.html#cb245-1" aria-hidden="true"></a><span class="kw">summary</span>(gapminder)</span></code></pre></div>
 <pre><code>   country               year           pop             continent        
  Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704       
  Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character  
@@ -406,7 +415,7 @@ cols(
 </blockquote>
 <p>The first thing we should always do is check out what the data looks like with
 <code>str</code> or <code>summary</code>:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="exploring-data-frames.html#cb247-1"></a><span class="kw">str</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="exploring-data-frames.html#cb247-1" aria-hidden="true"></a><span class="kw">str</span>(gapminder)</span></code></pre></div>
 <pre><code>tibble [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ country  : chr [1:1704] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
  $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
@@ -423,7 +432,7 @@ cols(
   ..   lifeExp = col_double(),
   ..   gdpPercap = col_double()
   .. )</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="exploring-data-frames.html#cb249-1"></a><span class="kw">summary</span>(gapminder<span class="op">$</span>country)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="exploring-data-frames.html#cb249-1" aria-hidden="true"></a><span class="kw">summary</span>(gapminder<span class="op">$</span>country)</span></code></pre></div>
 <pre><code>   Length     Class      Mode 
      1704 character character </code></pre>
 <blockquote>
@@ -433,12 +442,12 @@ cols(
 folder of your choice onto your computer using the <code>download.file</code> function.
 The <code>read_csv</code> function can then be executed to read the downloaded file from the download location, for example,</li>
 </ul>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="exploring-data-frames.html#cb251-1"></a><span class="kw">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span>
-<span id="cb251-2"><a href="exploring-data-frames.html#cb251-2"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="exploring-data-frames.html#cb251-1" aria-hidden="true"></a><span class="kw">download.file</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span>
+<span id="cb251-2"><a href="exploring-data-frames.html#cb251-2" aria-hidden="true"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in <code>read_csv</code>. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,</li>
 </ul>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="exploring-data-frames.html#cb252-1"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="exploring-data-frames.html#cb252-1" aria-hidden="true"></a>gapminder &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
 <ul>
 <li>You can read directly from excel spreadsheets without
 converting them to plain text first by using the <a href="https://cran.r-project.org/package=readxl">readxl</a> package.</li>
@@ -446,7 +455,7 @@ converting them to plain text first by using the <a href="https://cran.r-project
 </blockquote>
 <p>We’ll also likely want to know what the titles of all the columns are, so we can
 ask for them:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="exploring-data-frames.html#cb253-1"></a><span class="kw">names</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="exploring-data-frames.html#cb253-1" aria-hidden="true"></a><span class="kw">names</span>(gapminder)</span></code></pre></div>
 <pre><code>[1] &quot;country&quot;   &quot;year&quot;      &quot;pop&quot;       &quot;continent&quot; &quot;lifeExp&quot;   &quot;gdpPercap&quot;</code></pre>
 <p>At this stage, it’s important to ask ourselves if the structure R is reporting
 matches our intuition or expectations; do the basic data types reported for each
@@ -456,7 +465,7 @@ interprets data, and the importance of <em>strict consistency</em> in how we rec
 data.</p>
 <p>Once we’re happy that the data types and structures seem reasonable, it’s time
 to start digging into our data proper. Check out the first few lines:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="exploring-data-frames.html#cb255-1"></a><span class="kw">head</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="exploring-data-frames.html#cb255-1" aria-hidden="true"></a><span class="kw">head</span>(gapminder)</span></code></pre></div>
 <pre><code># A tibble: 6 x 6
   country      year      pop continent lifeExp gdpPercap
   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -486,7 +495,7 @@ gapminder[sample(nrow(gapminder), 5), ]
 </blockquote>
 <p>Another very helpful function for looking at your data is the <code>unique</code>
 function, to see the unique values in a particular column:</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="exploring-data-frames.html#cb258-1"></a><span class="kw">unique</span>(gapminder<span class="op">$</span>continent)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="exploring-data-frames.html#cb258-1" aria-hidden="true"></a><span class="kw">unique</span>(gapminder<span class="op">$</span>continent)</span></code></pre></div>
 <pre><code>[1] &quot;Asia&quot;     &quot;Europe&quot;   &quot;Africa&quot;   &quot;Americas&quot; &quot;Oceania&quot; </code></pre>
 <p>To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.</p>
@@ -500,16 +509,16 @@ to load in the gapminder dataset.</p>
 <h2><span class="header-section-number">5.2</span> Basic subsetting</h2>
 <p>Data frames are two dimensions - rows and columns. We can access these using a
 specific notation with square brackets.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="exploring-data-frames.html#cb260-1"></a>my_data_frame[rows, columns]</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="exploring-data-frames.html#cb260-1" aria-hidden="true"></a>my_data_frame[rows, columns]</span></code></pre></div>
 <div id="selecting-rows" class="section level3" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Selecting rows</h3>
 <p>We can select rows using the square brackets like so:</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="exploring-data-frames.html#cb261-1"></a>gapminder[<span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="exploring-data-frames.html#cb261-1" aria-hidden="true"></a>gapminder[<span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code># A tibble: 1 x 6
   country      year     pop continent lifeExp gdpPercap
   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 1 Afghanistan  1952 8425333 Asia         28.8      779.</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="exploring-data-frames.html#cb263-1"></a>gapminder[<span class="dv">100</span><span class="op">:</span><span class="dv">110</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="exploring-data-frames.html#cb263-1" aria-hidden="true"></a>gapminder[<span class="dv">100</span><span class="op">:</span><span class="dv">110</span>, ]</span></code></pre></div>
 <pre><code># A tibble: 11 x 6
    country     year       pop continent lifeExp gdpPercap
    &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -524,7 +533,7 @@ specific notation with square brackets.</p>
  9 Bangladesh  2007 150448339 Asia         64.1     1391.
 10 Belgium     1952   8730405 Europe       68       8343.
 11 Belgium     1957   8989111 Europe       69.2     9715.</code></pre>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="exploring-data-frames.html#cb265-1"></a>gapminder[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="exploring-data-frames.html#cb265-1" aria-hidden="true"></a>gapminder[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>), ]</span></code></pre></div>
 <pre><code># A tibble: 5 x 6
   country      year      pop continent lifeExp gdpPercap
   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -535,8 +544,8 @@ specific notation with square brackets.</p>
 5 Afghanistan  1992 16317921 Asia         41.7      649.</code></pre>
 <p>It’s unlikely that you’ll often do this directly though, you’ll usually want
 to use some criteria. Say we just wanted the rows from Asia:</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="exploring-data-frames.html#cb267-1"></a>romania &lt;-<span class="st"> </span>gapminder[gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>, ]</span>
-<span id="cb267-2"><a href="exploring-data-frames.html#cb267-2"></a>romania</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="exploring-data-frames.html#cb267-1" aria-hidden="true"></a>romania &lt;-<span class="st"> </span>gapminder[gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>, ]</span>
+<span id="cb267-2"><a href="exploring-data-frames.html#cb267-2" aria-hidden="true"></a>romania</span></code></pre></div>
 <pre><code># A tibble: 396 x 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -555,7 +564,7 @@ to use some criteria. Say we just wanted the rows from Asia:</p>
 above, OR a vector of <code>TRUE</code> and <code>FALSE</code>, returning the rows that are <code>TRUE</code>.
 <code>gapminder$contintent == "Asia"</code> generates a vector of <code>TRUE</code> and <code>FALSE</code>
 values:</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="exploring-data-frames.html#cb269-1"></a>gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Asia&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="exploring-data-frames.html#cb269-1" aria-hidden="true"></a>gapminder<span class="op">$</span>continent <span class="op">==</span><span class="st"> &quot;Asia&quot;</span></span></code></pre></div>
 <pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -571,7 +580,7 @@ gives us just the rows where the <code>contintent</code> column is <code>"Asia"<
 <p>Another very useful operator in this context is the <code>%in%</code> operator - it can
 tell you if a value is <em>one of</em> a set of values:</p>
 <p>Say we wanted to select just Canada and Mexico:</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="exploring-data-frames.html#cb271-1"></a>gapminder<span class="op">$</span>country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Canada&quot;</span>, <span class="st">&quot;Mexico&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="exploring-data-frames.html#cb271-1" aria-hidden="true"></a>gapminder<span class="op">$</span>country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Canada&quot;</span>, <span class="st">&quot;Mexico&quot;</span>)</span></code></pre></div>
 <pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -583,8 +592,8 @@ tell you if a value is <em>one of</em> a set of values:</p>
  [97] FALSE FALSE FALSE FALSE
  [ reached getOption(&quot;max.print&quot;) -- omitted 1604 entries ]</code></pre>
 <p>Now we can insert this into the first position of the square brackets:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="exploring-data-frames.html#cb273-1"></a>can_mex &lt;-<span class="st"> </span>gapminder<span class="op">$</span>country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Canada&quot;</span>, <span class="st">&quot;Mexico&quot;</span>)</span>
-<span id="cb273-2"><a href="exploring-data-frames.html#cb273-2"></a>gapminder[can_mex, ]</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="exploring-data-frames.html#cb273-1" aria-hidden="true"></a>can_mex &lt;-<span class="st"> </span>gapminder<span class="op">$</span>country <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Canada&quot;</span>, <span class="st">&quot;Mexico&quot;</span>)</span>
+<span id="cb273-2"><a href="exploring-data-frames.html#cb273-2" aria-hidden="true"></a>gapminder[can_mex, ]</span></code></pre></div>
 <pre><code># A tibble: 24 x 6
    country  year      pop continent lifeExp gdpPercap
    &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -604,7 +613,7 @@ tell you if a value is <em>one of</em> a set of values:</p>
 <p>Select all the rows in <code>gapminder</code> with data from 1975 and earlier</p>
 <blockquote>
 <p>Solution to Challenge 4</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="exploring-data-frames.html#cb275-1"></a>gapminder[gapminder<span class="op">$</span>year <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1975</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="exploring-data-frames.html#cb275-1" aria-hidden="true"></a>gapminder[gapminder<span class="op">$</span>year <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1975</span>, ]</span></code></pre></div>
 <pre><code># A tibble: 710 x 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -622,7 +631,7 @@ tell you if a value is <em>one of</em> a set of values:</p>
 </blockquote>
 </blockquote>
 <p>We saw previously how we can select a single column using the dollar sign <code>$</code>:</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="exploring-data-frames.html#cb277-1"></a>gapminder<span class="op">$</span>country</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="exploring-data-frames.html#cb277-1" aria-hidden="true"></a>gapminder<span class="op">$</span>country</span></code></pre></div>
 <pre><code>  [1] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot;
   [6] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot;
  [11] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Albania&quot;     &quot;Albania&quot;     &quot;Albania&quot;    
@@ -646,7 +655,7 @@ tell you if a value is <em>one of</em> a set of values:</p>
  [ reached getOption(&quot;max.print&quot;) -- omitted 1604 entries ]</code></pre>
 <p>If we wanted to select a subset of columns, we can specify that in the second
 position using a character vector of column names:</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="exploring-data-frames.html#cb279-1"></a>gapminder[ , <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;lifeExp&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="exploring-data-frames.html#cb279-1" aria-hidden="true"></a>gapminder[ , <span class="kw">c</span>(<span class="st">&quot;country&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;lifeExp&quot;</span>)]</span></code></pre></div>
 <pre><code># A tibble: 1,704 x 3
    country      year lifeExp
    &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
@@ -667,7 +676,7 @@ position using a character vector of column names:</p>
 year, pop, and gdpPercap</p>
 <blockquote>
 <p>Solution to Challenge 5</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="exploring-data-frames.html#cb281-1"></a>gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Canada&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="exploring-data-frames.html#cb281-1" aria-hidden="true"></a>gapminder[gapminder<span class="op">$</span>country <span class="op">==</span><span class="st"> &quot;Canada&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;pop&quot;</span>, <span class="st">&quot;gdpPercap&quot;</span>)]</span></code></pre></div>
 <pre><code># A tibble: 12 x 3
     year      pop gdpPercap
    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
