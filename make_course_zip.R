@@ -1,5 +1,5 @@
 local({
-  course <- "intro-r-May2020"
+  course <- "intro-r-Feb2021"
 
   file.copy(list.files("data", full.names = TRUE),
             file.path(course, "data"), overwrite = TRUE)
