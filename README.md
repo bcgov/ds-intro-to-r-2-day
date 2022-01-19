@@ -14,6 +14,7 @@ The goal of this 4 session workshop is to teach _new-to-programming_ data profes
 - Anyone keen to learn a programming language
 
 
+
 ## Workshop Schedule
 
 ### Daily schedule
