@@ -5,8 +5,13 @@
 
 A repository to house materials for a 4 session course introducing participants to data science using [R](https://www.r-project.org/).
 
+The goal of this 4 session workshop is to teach _new-to-programming_ data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. This is an introductory course to programming, specifically programming with R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
 
-The goal of this 4 session workshop is to teach _new-to-programming_ data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
+## Who should take this course?
+
+- Anyone who works with data or who is interested in learning efficient ways to make meaning from data
+- Anyone comfortable troubleshooting issues on their computer
+- Anyone keen to learn a programming language
 
 
 ## Workshop Schedule
@@ -14,9 +19,9 @@ The goal of this 4 session workshop is to teach _new-to-programming_ data profes
 ### Daily schedule
 | Activity   | Start Time | End time |
 |------------|------------|----------|
-| Session #1 | 9:00       | 10:30    |
+| Module #1  | 9:00       | 10:30    |
 | Break      | 10:30      | 10:45    |
-| Session #2 | 10:45      | 12:00    |
+| Module #2  | 10:45      | 12:00    |
 
 
 **Course Notes**: https://bcgov.github.io/ds-intro-to-r-2-day/  
