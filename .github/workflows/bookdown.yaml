@@ -11,12 +11,10 @@ jobs:
 
       - name: Setup R
         uses: r-lib/actions/setup-r@master
-
-      - name: Install pandoc and pandoc citeproc
-        run: |
-          brew install pandoc
-          brew install pandoc-citeproc
-
+        
+      - name: Setup pandoc
+      - uses: r-lib/actions/setup-pandoc@v2
+      
       - name: Make Rprofile
         run: |
           cat <<EOT >> .Rprofile
