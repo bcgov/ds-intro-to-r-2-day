@@ -3,10 +3,16 @@
 
 # Introduction to Data Science Using R
 
-A repository to house materials for a 2-day course introducing participants to data science using [R](https://www.r-project.org/).
+A repository to house materials for a 4 session course introducing participants to data science using [R](https://www.r-project.org/).
 
+The goal of this 4 session workshop is to teach _new-to-programming_ data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. This is an introductory course to programming, specifically programming with R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
 
-The goal of this 2-day workshop is to teach _new-to-programming_ data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
+## Who should take this course?
+
+- Anyone who works with data or who is interested in learning efficient ways to make meaning from data
+- Anyone comfortable troubleshooting issues on their computer
+- Anyone keen to learn a programming language
+
 
 
 ## Workshop Schedule
@@ -14,13 +20,10 @@ The goal of this 2-day workshop is to teach _new-to-programming_ data profession
 ### Daily schedule
 | Activity   | Start Time | End time |
 |------------|------------|----------|
-| Session #1 | 9:00       | 10:30    |
-| Break      | 10:30      | 10:50    |
-| Session #2 | 10:50      | 12:00    |
-| Lunch      | 12:00      | 13:00    |
-| Session #3 | 13:00      | 14:30    |
-| Break      | 14:30      | 14:50    |
-| Session #4 | 14:50      | 16:30    |
+| Module #1  | 9:00       | 10:30    |
+| Break      | 10:30      | 10:45    |
+| Module #2  | 10:45      | 12:00    |
+
 
 **Course Notes**: https://bcgov.github.io/ds-intro-to-r-2-day/  
 
@@ -37,38 +40,35 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 
 ### Day 1
 
-#### AM
-
-- Introduction to Virtual Meeting Tool (45 minutes) <!-- Dominique -->
-- Virtual Help Desk: Getting setup with R & RStudio (45 minutes) <!-- All -->
+- Introduction to Virtual Meeting Tool (30 minutes) <!-- Dominique -->
+- Virtual Help Desk: Getting setup with R & RStudio (60 minutes) <!-- All -->
 - BREAK ☕
-- Introduction to R & RStudio (50 minutes) <!-- Gen -->
-- Seeking Help in R (20 minutes) <!-- Gen -->
-
-#### PM
-
-- Project Management with RStudio (30 minutes)  <!-- Andy -->
-- Data Structures (40 minutes)  <!-- Andy -->
-- Exploring Data Frames (20 minutes) <!-- Andy -->
-- BREAK ☕
-- Making Publication Quality Plots with `ggplot2` (100 minutes)  <!-- Steph -->
+- Introduction to R & RStudio (50 minutes) 
+- Seeking Help in R (25 minutes) 
 
 ### Day 2
 
-#### AM
-
-- Data Manipulation with `dplyr` (60 minutes)  <!-- Sam -->
-- Data Manipulation with `tidyr` (30 minutes)  <!-- Sam -->
+- Review (10 minutes)
+- Project Management with RStudio (30 minutes)  
+- Data Structures (50 minutes)  
 - BREAK ☕
-- Introduce `bcdata` and practice `ggplot2` and `dplyr` (60 minutes) <!-- Steph -->
+- Exploring Data Frames (30 minutes)
+- Making Publication Quality Plots with `ggplot2` Pt. 1  (40 minutes)  
 
-#### PM
+### Day 3
 
-- Basic of rmarkdown Part 1 (45 minutes) <!-- Sam -->
-- Basic of rmarkdown Part 2 (45 minutes) <!-- Gen -->
+- Review (10 minutes)
+- Making Publication Quality Plots with `ggplot2` Pt. 2  (60 minutes)  
 - BREAK ☕
-- Application of rmarkdown: introducing `broom` & `lm()` (60 minutes)  <!-- Andy -->
-- Seeking Help from Others with `reprex` (15 minutes) <!-- Andy -->
+- Data Manipulation with `dplyr` (60 minutes)  
+
+### Day 4
+
+- Data Manipulation with `tidyr` (45 minutes) 
+- Seeking Help from Others with `reprex` (30 minutes)
+- BREAK ☕
+- Introduce `bcdata` and practice `ggplot2` and `dplyr` (75 minutes) 
+
 
 
 Most of the above lesson material is sourced or an adaptation of the [Software Carpentry Foundation](http://software-carpentry.org/) (now The Carpenties) [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/) lesson material: Thomas Wright and Naupaka Zimmerman (eds): _Software Carpentry: R for
@@ -80,6 +80,13 @@ The R Markdown sections also draw material from Nicholas Tierney's excellent _R 
 
 
 ### Course Offerings
+
+
+#### Introduction to Data Science in R, Feb 1, 2, 7 & 8, 2022 
+- _Instructors_: [Andy Teucher](https://github.com/ateucher), [Sam Albers](https://github.com/boshek) & [Bonnie Robert](https://github.com/BonnieJRobert/)
+- _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
+- _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
+
 
 #### Introduction to Data Science in R, May 6-7, 2020 
 - _Instructors_: [Sam Albers](https://github.com/boshek), [Stephanie Hazlitt](https://github.com/stephhazlitt), [Genevieve Perkins](https://github.com/gcperk) & [Andy Teucher](https://github.com/ateucher)
