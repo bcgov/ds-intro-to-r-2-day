@@ -82,7 +82,7 @@ The R Markdown sections also draw material from Nicholas Tierney's excellent _R 
 ### Course Offerings
 
 
-#### Introduction to Data Science in R, Feb 1, 2, 7 & 8, 2022 
+#### Introduction to Data Science in R, Feb 23 and 24, March 2 & 3, 2022 
 - _Instructors_: [Andy Teucher](https://github.com/ateucher), [Sam Albers](https://github.com/boshek) & [Bonnie Robert](https://github.com/BonnieJRobert/)
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
 - _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
