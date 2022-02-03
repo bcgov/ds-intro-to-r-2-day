@@ -40,32 +40,33 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 
 ### Day 1
 
-- Introduction to Virtual Meeting Tool (30 minutes) <!-- Dominique -->
-- Virtual Help Desk: Getting setup with R & RStudio (60 minutes) <!-- All -->
-- BREAK ☕
+- Introduction to Course (30 min)<!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
+- Demo (10 min)
 - Introduction to R & RStudio (50 minutes) 
-- Seeking Help in R (25 minutes) 
+- BREAK ☕
+- Seeking Help in R (25 minutes)
+- Project Management with RStudio (30 minutes)
 
 ### Day 2
 
-- Review (10 minutes)
-- Project Management with RStudio (30 minutes)  
+- Review + questions (30 minutes)
 - Data Structures (50 minutes)  
 - BREAK ☕
 - Exploring Data Frames (30 minutes)
-- Making Publication Quality Plots with `ggplot2` Pt. 1  (40 minutes)  
+- Making Publication Quality Plots with `ggplot2` Pt. 1 (60 minutes)  
 
 ### Day 3
 
-- Review (10 minutes)
-- Making Publication Quality Plots with `ggplot2` Pt. 2  (60 minutes)  
+- Review + questions (30 minutes)
+- Making Publication Quality Plots with `ggplot2` Pt. 2 (40 minutes)  
 - BREAK ☕
-- Data Manipulation with `dplyr` (60 minutes)  
+- Data Manipulation with `dplyr` (90 minutes)
 
 ### Day 4
 
-- Data Manipulation with `tidyr` (45 minutes) 
-- Seeking Help from Others with `reprex` (30 minutes)
+- Review + questions (30 min)
+- Data Manipulation with `tidyr` (45 minutes)  
+- Seeking Help from Others with `reprex` (30 minutes) <!-- could remove or move to the end?? -->
 - BREAK ☕
 - Introduce `bcdata` and practice `ggplot2` and `dplyr` (75 minutes) 
 
