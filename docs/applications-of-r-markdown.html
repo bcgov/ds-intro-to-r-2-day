@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2022-01-25" />
+<meta name="date" content="2022-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -340,7 +340,7 @@ ggplot(canada, aes(x = gdpPercap, y = lifeExp)) +
 </pre>
 <p>We use the <code>lm()</code> function to perform a General Linear Model (GLM), of which
 a regression is one form. It is specified by a new syntax, a “formula” syntax:</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="applications-of-r-markdown.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(response <span class="sc">~</span> <span class="fu">predictor</span>(s), <span class="at">data =</span> data, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="applications-of-r-markdown.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(response <span class="sc">~</span> <span class="fu">predictor</span>(s), <span class="at">data =</span> data, ...)</span></code></pre></div>
 <p>So in our case, we can put in a new code chunk to fit the model:</p>
 <pre>
 &#96;&#96;&#96;{r model}
@@ -365,7 +365,7 @@ want to use later - such as regression coefficients and P values.</p>
 model results into a format we are familiar with: a <code>data.frame</code>. <em>broom</em> works
 with many different types of models, today we are going to use it on our <code>lm</code>.</p>
 <p>You will first need to install the package:</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="applications-of-r-markdown.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;broom&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="applications-of-r-markdown.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;broom&quot;</span>)</span></code></pre></div>
 <p>Then add a chunk that loads the package, and calls the most commonly-used
 functions in <em>broom</em>:</p>
 <pre>
