@@ -30,7 +30,7 @@ The goal of this 4 session workshop is to teach _new-to-programming_ data profes
 **Download Course Materials**:  
 ```
 install.packages("usethis")
-usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-May2020.zip")
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip")
 ```  
 
 **Confirm or Find Location of Your R Library**:  
