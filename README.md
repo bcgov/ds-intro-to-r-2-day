@@ -26,7 +26,7 @@ The goal of this 4 session workshop is to teach _new-to-programming_ data profes
 
 
 **Course Notes**: https://bcgov.github.io/ds-intro-to-r-2-day/  
-
+<!--
 **Download Course Materials**:  
 ```
 install.packages("usethis")
@@ -36,7 +36,8 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 **Confirm or Find Location of Your R Library**:  
 ```
 .libPaths()
-```  
+``` 
+-->
 
 ### Day 1
 
@@ -44,8 +45,8 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 - Demo (10 min) <!-- Sam -->
 - Introduction to R & RStudio (50 minutes) <!-- Sam -->
 - BREAK ☕
-- Seeking Help in R (25 minutes) <!-- Andy -->
-- Project Management with RStudio (30 minutes) <!-- Andy -->
+- Seeking Help in R (15 minutes) <!-- Andy -->
+- Project Management with RStudio (40 minutes) <!-- Andy -->
 
 ### Day 2
 
