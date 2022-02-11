@@ -64,9 +64,16 @@ project.
 > ## Creating a self-contained project
 >
 > In our initial breakout sessions, we all downloaded and opened a new RStudio 
-> Project called `intro-r-May2020`, by running: 
+> Project called `intro-r-Feb2022`, by running the following code:
 >
-> `usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-May2020.zip") `
+> If you are on Windows:
+> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
+> 
+> If you are on a Mac:
+> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
+>
+> This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
+> and `/Users/[your_user_name]/intro-r-Feb2022/' on a Mac), and open that project in RStudio. 
 > 
 > Inside your project you should have a collection of `.R` and `.Rmd` files, 
 > a `data/` folder, and a `README.md` file.

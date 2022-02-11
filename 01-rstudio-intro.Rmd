@@ -49,8 +49,18 @@ for all of these countries in under a minute!
 
 Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
 
+**If you have administrative rigths on your computer: **
+
 [Download and install the latest version of R here](https://www.r-project.org/)
+
 [Download and install RStudio here](https://www.rstudio.com/)
+
+**If you do not have administrative rights on your computer:**
+
+Download R and RStudio from the BC Government Software Centre:
+
+- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
+- Install R (RforWindowsX64 4.0.5 Gen P0)
 
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
