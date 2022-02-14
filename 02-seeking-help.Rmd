@@ -77,6 +77,8 @@ Without any arguments, `vignette()` will list all vignettes for all installed pa
 If a package doesn't have any vignettes, you can usually find help by typing
 `help("package-name")`.
 
+Many packages also have a web presence. Google is your friend here. For example here is the package website for the ggplot2 package: https://ggplot2.tidyverse.org/
+
 ## When you kind of remember the function
 
 If you're not sure what package a function is in, or how it's specifically spelled you can do a fuzzy search:
