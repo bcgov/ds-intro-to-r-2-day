@@ -35,32 +35,31 @@ knitr_fig_path("01-")
 
 ## Motivation
 
-Science is a multi-step process: once you've designed an experiment and collected
-data, the real fun begins! This lesson will teach you how to start this process using
-R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
-how to plot results graphically. This example starts with a dataset from
-[gapminder.org](https://www.gapminder.org) containing population information for many
-countries through time. Can you read the data into R? Can you plot the population for
-Senegal? Can you calculate the average income for countries on the continent of Asia?
-By the end of these lessons you will be able to do things like plot the populations
-for all of these countries in under a minute!
+Science is a multi-step process: once you've designed an experiment and
+collected data, the real fun begins! This lesson will teach you how to start
+this process using R and RStudio. We will begin with raw data, perform
+exploratory analyses, and learn how to plot results graphically. This course
+starts with a dataset from [gapminder.org](https://www.gapminder.org) containing
+population information for many countries through time. We will also access open
+data from the [B.C. Data Catalogue](https://catalogue.data.gov.bc.ca/). 
+
+ - Can you read the data into R?
+ - Can you plot the population for Senegal? 
+ - Can you calculate the average income for countries on the continent of Asia? 
+ - Can you read data from the B.C. Data Catalogue into R? 
+
+By the end of these lessons you will be able to do things like plot the
+populations for all of these countries in under a minute!
 
 ## Before Starting The Workshop
 
 Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
 
-**If you have administrative rigths on your computer: **
+**If you have administrative rights on your computer: **
 
 [Download and install the latest version of R here](https://www.r-project.org/)
 
 [Download and install RStudio here](https://www.rstudio.com/)
-
-**If you do not have administrative rights on your computer:**
-
-Download R and RStudio from the BC Government Software Centre:
-
-- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
-- Install R (RforWindowsX64 4.0.5 Gen P0)
 
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
@@ -75,6 +74,15 @@ setx HOME "%USERPROFILE%"
 
 Press [Enter], you should see **SUCCESS: Specified value was saved**.
 Quit command prompt by typing `exit` then pressing [Enter]
+
+**If you do not have administrative rights on your computer:**
+
+Download R and RStudio from the BC Government Software Centre:
+
+- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
+- Install R (RforWindowsX64 4.0.5 Gen P0)
+
+
 
 ## Introduction to RStudio
 
@@ -545,6 +553,7 @@ you can pass the results of `ls` to the `rm` function:
 ```{r, eval=FALSE}
 rm(list = ls())
 ```
+
 
 
 > ## Tip: Warnings vs. Errors
