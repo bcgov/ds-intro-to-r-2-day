@@ -1,0 +1,70 @@
+---
+title: "Introduction to R Workshop Challenges"
+author: "DSP Data Science Team"
+date: "14/02/2022"
+output: 
+  ioslides_presentation:
+    css: ../bin/style-challenges.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../bin/chunk-options-challenges.R")
+
+library(readr)
+library(ggplot2)
+
+#data for ggplot challenges
+gapminder <- read_csv("../data/gapminder_data.csv")
+```
+
+## Challenge 1 {#challenge-1}
+
+Modify the example so that the figure shows how life expectancy has changed over time:
+
+```{r, echo = TRUE}
+ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+ geom_point()
+```
+
+Hint: the gapminder dataset has a column called "year", which should appear on the x-axis.
+
+## Solution to challenge 1 {#solution-1}
+
+Here is one possible solution:
+
+```{r ch1-sol}
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
+geom_point()
+```
+
+## Challenge 2 {#challenge-2}
+
+In the previous examples and challenge we've used the `aes` function to tell
+the scatterplot **geom** about the **x** and **y** locations of each point.
+Another *aesthetic* property we can modify is the point *colour*. 
+
+Modify the code from the previous challenge to **colour** the points by the "continent"
+column. 
+ - What trends do you see in the data? 
+ - Are they what you expected?
+
+## Solution to challenge 2 {#solution-2}
+
+```{r ch2-sol}
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, colour = continent)) +
+ geom_point()
+```
+
+## Challenge 3
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
