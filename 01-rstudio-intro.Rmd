@@ -157,6 +157,23 @@ information, followed by a ">" and a blinking cursor. It operates on a "Read,
 evaluate, print loop": you type in commands, R tries to execute them, and then
 returns a result.
 
+> ## Before we dive in...
+> We are first going set up a workspace, called an RStudio Project, where we can work through
+> the course materials and save our work.
+> In the console, type: 
+>
+> If you are on Windows:
+> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
+> 
+> If you are on a Mac:
+> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
+>
+> ... and press Enter.
+>
+> This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
+> and `/Users/[your_user_name]/intro-r-Feb2022/' on a Mac), and open that project in RStudio. 
+
+
 ## Using R as a calculator
 
 The simplest thing you could do with R is do arithmetic:
