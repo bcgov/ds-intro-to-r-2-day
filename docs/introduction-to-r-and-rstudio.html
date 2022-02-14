@@ -24,7 +24,7 @@
 <meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2022-02-11" />
+<meta name="date" content="2022-02-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -410,6 +410,19 @@ The first thing you will see in the R interactive session is a bunch of
 information, followed by a “&gt;” and a blinking cursor. It operates on a “Read,
 evaluate, print loop”: you type in commands, R tries to execute them, and then
 returns a result.</p>
+<blockquote>
+<h2 id="before-we-dive-in">Before we dive in…</h2>
+<p>We are first going set up a workspace, called an RStudio Project, where we can work through
+the course materials and save our work.
+In the console, type:</p>
+<p>If you are on Windows:
+<code>use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))</code></p>
+<p>If you are on a Mac:
+<code>use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))</code></p>
+<p>… and press Enter.</p>
+<p>This will create a new R project folder in your user directory (<code>C:/Users/[your_user_name]/intro-r-Feb2022/</code> on Windows,
+and `/Users/[your_user_name]/intro-r-Feb2022/’ on a Mac), and open that project in RStudio.</p>
+</blockquote>
 </div>
 <div id="using-r-as-a-calculator" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Using R as a calculator</h2>
@@ -659,7 +672,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7fe2bfaffc08&gt;
+&lt;bytecode: 0x7fe1f9e85e08&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introduction-to-r-and-rstudio.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x)</span></code></pre></div>
