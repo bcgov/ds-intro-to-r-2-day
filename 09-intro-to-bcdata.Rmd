@@ -112,14 +112,9 @@ sum_books <- lib_tidy %>%
 >
 > >## Solution Challenge 2 (10 minutes)
 > >```{r}
-> > lib_tidy %>% 
+> > sum_books %>% 
 > >  group_by(`Library System`) %>% 
 > >  summarize(totals = sum(total_books))
-> >
-> > ## or
-> >
-> > lib_tidy %>% 
-> >  count(`Library System`, wt = num_books, sort = TRUE)
 > >```
 
 
