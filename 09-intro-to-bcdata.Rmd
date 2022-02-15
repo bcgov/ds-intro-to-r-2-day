@@ -168,8 +168,7 @@ sum_books %>%
 > >seafood_by_year <- seafood_prod %>% 
 > >  filter(Year == 2020) %>% 
 > >  group_by(`Species/Product`) %>% 
-> >  summarise(value = sum(`Wholesale Value ($ million)`)) %>% 
-> >  mutate(`Species/Product` = fct_reorder(`Species/Product`, value))
+> >  summarise(value = sum(`Wholesale Value ($ million)`)) 
 > >
 > >seafood_by_year %>% 
 > >  ggplot(aes(y = `Species/Product`, x = value, fill = `Species/Product`)) +
