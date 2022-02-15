@@ -112,9 +112,14 @@ sum_books <- lib_tidy %>%
 >
 > >## Solution Challenge 2 (10 minutes)
 > >```{r}
-> > sum_books %>% 
+> > lib_tidy %>% 
 > >  group_by(`Library System`) %>% 
 > >  summarize(totals = sum(total_books))
+> >```
+> >or
+> >```{r}
+> > lib_tidy %>% 
+> >  count(`Library System`, wt = num_books, sort = TRUE)
 > >```
 
 
@@ -157,3 +162,6 @@ sum_books %>%
 > >
 > >```
 
+> ## Challenge 4 (20 minutes)
+>
+> Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. > An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one > of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
