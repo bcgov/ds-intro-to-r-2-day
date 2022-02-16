@@ -322,7 +322,7 @@ sum_books %>%
   geom_col()
 ```
 
-<img src="fig/rmd-09-unnamed-chunk-11-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-09-unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" />
 
 ```r
 sum_books %>% 
@@ -331,7 +331,7 @@ sum_books %>%
   geom_col()
 ```
 
-<img src="fig/rmd-09-unnamed-chunk-11-2.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-09-unnamed-chunk-11-2.png" width="576" style="display: block; margin: auto;" />
 
 > ## Challenge 3 (10 minutes)
 >
@@ -355,7 +355,7 @@ sum_books %>%
 > >       caption = "Data sourced from the B.C. Data Catalogue")
 > >```
 > >
-> ><img src="fig/rmd-09-unnamed-chunk-12-1.png" width="816" style="display: block; margin: auto;" />
+> ><img src="fig/rmd-09-unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
 
 > ## Challenge 4 (20 minutes)
 >
@@ -401,5 +401,5 @@ sum_books %>%
 > >  theme(axis.title.x = element_blank())
 > >```
 > >
-> ><img src="fig/rmd-09-unnamed-chunk-13-1.png" width="816" style="display: block; margin: auto;" />
+> ><img src="fig/rmd-09-unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
 

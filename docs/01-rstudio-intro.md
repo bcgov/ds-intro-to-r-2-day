@@ -111,12 +111,12 @@ When you first open RStudio, you will be greeted by three panels:
   * Environment/History (tabbed in upper right)
   * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
-![RStudio layout](fig/rmd-01-rstudio.png){width=75%}
+![RStudio layout](fig/rmd-01-rstudio.png){width=100%}
 
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
 
-![RStudio layout with .R file open](fig/rmd-01-rstudio-script.png){width=85%}
+![RStudio layout with .R file open](fig/rmd-01-rstudio-script.png){width=100%}
 
 
 ## Work flow within RStudio
@@ -517,108 +517,140 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
-> ## Challenge 1
->
-> Which of the following are valid R variable names?
-> 
-> ```r
-> min_height
-> max.height
-> _age
-> .mass
-> MaxLength
-> min-length
-> 2widths
-> celsius2kelvin
-> ```
->
-> > ## Solution to challenge 1
-> >
-> > The following can be used as R variables:
-> > 
-> > ```r
-> > min_height
-> > max.height
-> > MaxLength
-> > celsius2kelvin
-> > ```
-> >
-> > The following creates a hidden variable:
-> > 
-> > ```r
-> > .mass
-> > ```
-> >
-> > The following will not be able to be used to create a variable
-> > 
-> > ```r
-> > _age
-> > min-length
-> > 2widths
-> > ```
+## Challenge 1
+Which of the following are valid R variable names?
+
+```r
+min_height
+max.height
+_age
+.mass
+MaxLength
+min-length
+2widths
+celsius2kelvin
+```
+
+<br />
+
+<details>
+
+<summary>
+<strong>Solution to challenge 1</strong>
+</summary>
+
+<br />
+
+The following can be used as R variables:
+
+```r
+min_height
+max.height
+MaxLength
+celsius2kelvin
+```
+
+The following creates a hidden variable:
+
+```r
+.mass
+```
+
+The following will not be able to be used to create a variable
+
+```r
+_age
+min-length
+2widths
+```
+
+</details>
 
 
-> ## Challenge 2
->
-> What will be the value of each  variable  after each
-> statement in the following program?
->
-> 
-> ```r
-> mass <- 47.5
-> age <- 122
-> mass <- mass * 2.3
-> age <- age - 20
-> ```
->
-> > ## Solution to challenge 2
-> >
-> > 
-> > ```r
-> > mass <- 47.5
-> > ```
-> > This will give a value of 47.5 for the variable mass
-> >
-> > 
-> > ```r
-> > age <- 122
-> > ```
-> > This will give a value of 122 for the variable age
-> >
-> > 
-> > ```r
-> > mass <- mass * 2.3
-> > ```
-> > This will multiply the existing value of 47.5 by 2.3 to give a new value of
-> > 109.25 to the variable mass.
-> >
-> > 
-> > ```r
-> > age <- age - 20
-> > ```
-> > This will subtract 20 from the existing value of 122 to give a new value
-> > of 102 to the variable age.
+## Challenge 2
+What will be the value of each  variable  after each
+statement in the following program?
+
+```r
+mass <- 47.5
+age <- 122
+mass <- mass * 2.3
+age <- age - 20
+```
+
+
+<br />
+
+<details>
+
+<summary>
+<strong>Solution to challenge 2</strong>
+</summary>
+
+<br />
+
+
+```r
+mass <- 47.5
+```
+This will give a value of 47.5 for the variable mass
+
+```r
+age <- 122
+```
+This will give a value of 122 for the variable age
+
+```r
+mass <- mass * 2.3
+```
+This will multiply the existing value of 47.5 by 2.3 to give a new value of
+109.25 to the variable mass.
+
+```r
+age <- age - 20
+```
+This will subtract 20 from the existing value of 122 to give a new value
+of 102 to the variable age.
+
+</details>
 
 
 
 
-> ## Challenge 3
->
-> Run the code from the previous challenge, and write a command to
-> compare mass to age. Is mass larger than age?
->
-> > ## Solution to challenge 3
-> >
-> > One way of answering this question in R is to use the `>` to set up the following:
-> > 
-> > ```r
-> > mass > age
-> > ```
-> > 
-> > ```
-> > [1] TRUE
-> > ```
-> > This should yield a boolean value of TRUE since 109.25 is greater than 102.
+
+
+## Challenge 3
+
+Run the code from the previous challenge, and write a command to
+compare mass to age. Is mass larger than age?
+
+
+<br />
+
+<details>
+
+<summary>
+<strong>Solution to challenge 2</strong>
+</summary>
+
+<br />
+
+## Solution to challenge 3`
+
+One way of answering this question in R is to use the `>` to set up the following:`
+
+```r
+mass > age
+```
+
+```
+[1] TRUE
+```
+
+This should yield a boolean value of TRUE since 109.25 is greater than 102.
+
+</details>
+`
 
 
 
@@ -737,7 +769,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fe96c3ef3f8>
+<bytecode: 0x7f88f72f9ff8>
 <environment: namespace:base>
 ```
 

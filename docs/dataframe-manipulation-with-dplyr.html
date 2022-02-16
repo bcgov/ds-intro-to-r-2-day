@@ -134,7 +134,7 @@ our dataframe we could use the <code><a href="https://dplyr.tidyverse.org/refere
 variables you select.</p>
 <div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">year_country_gdp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">year</span>, <span class="va">country</span>, <span class="va">gdpPercap</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="fig/07-dplyr-fig1.png"></div>
+<div class="inline-figure"><img src="fig/07-dplyr-fig1.png" style="width:100.0%"></div>
 </div>
 <div id="using-filter" class="section level2" number="7.3">
 <h2>
@@ -211,7 +211,7 @@ will produce a dataframe that has the African values for <code>lifeExp</code>, <
 and <code>year</code>, but not for other Continents. How many rows does your dataframe
 have and why?</p>
 <blockquote>
-<h2 id="solution-to-challenge-1-3">Solution to Challenge 1</h2>
+<h2 id="solution-to-challenge-1-2">Solution to Challenge 1</h2>
 <div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">year_country_lifeExp_Africa</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
                            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Africa"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -272,7 +272,7 @@ could have used in filter.</p>
 <code>grouped_df</code> can be thought of as a <code>list</code> where each item in the <code>list</code> is a
 <code>data.frame</code> which contains only the rows that correspond to the a particular
 value <code>continent</code> (at least in the example above).</p>
-<div class="inline-figure"><img src="fig/07-dplyr-fig2.png"></div>
+<div class="inline-figure"><img src="fig/07-dplyr-fig2.png" style="width:100.0%"></div>
 </div>
 <div id="using-summarize" class="section level2" number="7.6">
 <h2>
@@ -288,7 +288,7 @@ original dataframe into multiple pieces, then we can run functions
 <code class="sourceCode R"><span class="va">gdp_bycontinents</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="fig/07-dplyr-fig3.png"></div>
+<div class="inline-figure"><img src="fig/07-dplyr-fig3.png" style="width:100.0%"></div>
 <pre><code># A tibble: 5 × 2
   continent mean_gdpPercap
   &lt;chr&gt;              &lt;dbl&gt;
@@ -304,7 +304,7 @@ even better.</p>
 <p>Calculate the average life expectancy per country. Which has the longest average life
 expectancy and which has the shortest average life expectancy?</p>
 <blockquote>
-<h2 id="solution-to-challenge-2-4">Solution to Challenge 2</h2>
+<h2 id="solution-to-challenge-2-3">Solution to Challenge 2</h2>
 <div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lifeExp_bycountry</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -451,7 +451,7 @@ a layer of facet panels using <code>ggplot2</code>.</p>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">a_countries</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-25-1.png" width="816" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;"></div>
 <p>This code makes the right plot but it also provides a way to chain operations. Just as we used
 <code>%&gt;%</code> to pipe data along a chain of <code>dplyr</code> functions we can use it to pass data
 to <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. Because <code>%&gt;%</code> replaces the first argument in a function we don’t
@@ -464,7 +464,7 @@ need to specify the <code>data =</code> argument in the <code><a href="https://g
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-26-1.png" width="816" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;"></div>
 <p>Using <code>dplyr</code> functions also helps us do calculations on the fly, for example if we were interested in
 converting <code>lifeExp</code> which is in years to days:</p>
 <div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
@@ -475,7 +475,7 @@ converting <code>lifeExp</code> which is in years to days:</p>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">num_days</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-27-1.png" width="816" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;"></div>
 <blockquote>
 <h2 id="advanced-challenge">Advanced Challenge</h2>
 <p>Calculate the average life expectancy in 2002 of 2 randomly selected countries

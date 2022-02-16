@@ -77,7 +77,7 @@ a mix of both). You may find data input may be simpler or some other
 applications may prefer the ‘wide’ format. However, many of <code>R</code>‘s functions have
 been designed assuming you have ’longer’ formatted data. This tutorial will help you
 efficiently transform your data shape regardless of original format.</p>
-<div class="inline-figure"><img src="fig/08-tidyr-fig1.png"></div>
+<div class="inline-figure"><img src="fig/08-tidyr-fig1.png" style="width:100.0%"></div>
 <p>Long and wide dataframe layouts mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due
 to its shape. However, the long format is more machine readable and is closer
 to the formatting of databases. The ID variables in our dataframes are similar to
@@ -127,7 +127,7 @@ dbl (4): year, pop, lifeExp, gdpPercap
 <h2 id="challenge-1-6">Challenge 1</h2>
 <p>Is gapminder a purely long, purely wide, or some intermediate format?</p>
 <blockquote>
-<h2 id="solution-to-challenge-1-4">Solution to Challenge 1</h2>
+<h2 id="solution-to-challenge-1-3">Solution to Challenge 1</h2>
 <p>The original gapminder data.frame is in an intermediate format. It is not
 purely long since it had multiple observation variables
 (<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</code>).</p>
@@ -190,7 +190,7 @@ dbl (36): pop_1952, lifeExp_1952, gdpPercap_1952, pop_1957, lifeExp_1957, gd...
 #   lifeExp_1977 &lt;dbl&gt;, gdpPercap_1977 &lt;dbl&gt;, pop_1982 &lt;dbl&gt;,
 #   lifeExp_1982 &lt;dbl&gt;, gdpPercap_1982 &lt;dbl&gt;, pop_1987 &lt;dbl&gt;,
 #   lifeExp_1987 &lt;dbl&gt;, gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, …</code></pre>
-<div class="inline-figure"><img src="fig/08-tidyr-fig2.png"></div>
+<div class="inline-figure"><img src="fig/08-tidyr-fig2.png" style="width:100.0%"></div>
 <p>To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available <code>pivot</code> functions from the <code>tidyr</code> package. To convert from wide to a longer format, we will use the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function. <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> makes datasets longer by increasing the number of rows and decreasing the number of columns, or ‘lengthening’ your observation variables into a single variable.</p>
 <div class="inline-figure"><img src="fig/08-tidyr-fig3.png"></div>
 <div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
@@ -226,7 +226,7 @@ identify which variables are not to be pivoted (i.e. ID variables).</p>
 will contain the new ID variable (<code>obstype_year</code>) and <code>values_to</code> for naming the
 new amalgamated observation variable (<code>obs_value</code>). We supply these new column
 names as strings.</p>
-<div class="inline-figure"><img src="fig/08-tidyr-fig4.png"></div>
+<div class="inline-figure"><img src="fig/08-tidyr-fig4.png" style="width:100.0%"></div>
 <div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_wide</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
@@ -263,7 +263,7 @@ type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the 
 <p>Using <code>gap_long</code>, calculate the mean life expectancy, population, and gdpPercap for each continent.
 <strong>Hint:</strong> use the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> functions we learned in the <code>dplyr</code> lesson</p>
 <blockquote>
-<h2 id="solution-to-challenge-2-5">Solution to Challenge 2</h2>
+<h2 id="solution-to-challenge-2-4">Solution to Challenge 2</h2>
 <div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_long</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">obs_type</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>means<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">obs_values</span><span class="op">)</span><span class="op">)</span></code></pre></div>

@@ -9,6 +9,10 @@ using-r-as-a-calculator
 mathematical-functions
 comparing-things
 variables-and-assignment
+challenge-1
+challenge-2
+challenge-3
+solution-to-challenge-3
 vectorization
 managing-your-environment
 r-packages

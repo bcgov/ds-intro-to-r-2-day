@@ -61,7 +61,7 @@ cats %>%
   geom_col()
 ```
 
-<img src="fig/rmd-12-reprex-demo1-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-12-reprex-demo1-1.png" width="576" style="display: block; margin: auto;" />
 
 ```r
 # error in syntax - this does not work
@@ -99,7 +99,7 @@ structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1,
     "collector")), weight = structure(list(), class = c("collector_double", 
     "collector")), likes_string = structure(list(), class = c("collector_double", 
     "collector"))), default = structure(list(), class = c("collector_guess", 
-    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7ffd84d100b0>, class = c("spec_tbl_df", 
+    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7f8d5c7f1350>, class = c("spec_tbl_df", 
 "tbl_df", "tbl", "data.frame"))
 ```
 

@@ -103,7 +103,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
-<img src="fig/rmd-06-lifeExp-vs-gdpPercap-scatter-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lifeExp-vs-gdpPercap-scatter-1.png" width="576" style="display: block; margin: auto;" />
 
 So the first thing we do is call the `ggplot` function. This function lets R
 know that we're creating a new plot, and any of the arguments we give the
@@ -127,7 +127,7 @@ By itself, the call to `ggplot` isn't enough to draw a figure:
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
 ```
 
-<img src="fig/rmd-06-no-geom-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-no-geom-1.png" width="576" style="display: block; margin: auto;" />
 
 We need to tell `ggplot` how we want to visually represent the data, which we
 do by adding a new **geom** layer. In our example, we used `geom_point`, which
@@ -140,7 +140,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
-<img src="fig/rmd-06-lifeExp-vs-gdpPercap-scatter2-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lifeExp-vs-gdpPercap-scatter2-1.png" width="576" style="display: block; margin: auto;" />
 
 _Recap_: Every `ggplot2` plot has three key components: (1) **data**, (2) a set of aesthetic **mappings** between variables in the data and visual properties on the plot, and (3) at least one layer, created with a **geom** function.
 
@@ -169,7 +169,7 @@ _Recap_: Every `ggplot2` plot has three key components: (1) **data**, (2) a set 
 > > geom_point()
 > > ```
 > > 
-> > <img src="fig/rmd-06-ch1-sol-1.png" width="816" style="display: block; margin: auto;" />
+> > <img src="fig/rmd-06-ch1-sol-1.png" width="576" style="display: block; margin: auto;" />
 > >
 
 >
@@ -190,7 +190,7 @@ _Recap_: Every `ggplot2` plot has three key components: (1) **data**, (2) a set 
 > >   geom_point()
 > > ```
 > > 
-> > <img src="fig/rmd-06-ch2-sol-1.png" width="816" style="display: block; margin: auto;" />
+> > <img src="fig/rmd-06-ch2-sol-1.png" width="576" style="display: block; margin: auto;" />
 > >
 
 
@@ -206,7 +206,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, colour = continent
   geom_line()
 ```
 
-<img src="fig/rmd-06-lifeExp-line-no-group-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lifeExp-line-no-group-1.png" width="576" style="display: block; margin: auto;" />
 
 Instead of adding a `geom_point` layer, we've added a `geom_line` layer, however it looks like the lines are connecting the wrong points? We need to add the **group** *aesthetic*, which tells `ggplot` to draw a line for each country.
 
@@ -217,7 +217,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, colour = continent
   geom_line()
 ```
 
-<img src="fig/rmd-06-lifeExp-line-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lifeExp-line-1.png" width="576" style="display: block; margin: auto;" />
 
 
 What if we want to visualize both lines and points on the plot? We can simply add another layer to the plot:
@@ -229,7 +229,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, colour = continent
   geom_point()
 ```
 
-<img src="fig/rmd-06-lifeExp-line-point-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lifeExp-line-point-1.png" width="576" style="display: block; margin: auto;" />
 
 It's important to note that each layer is drawn on top of the previous layer. In
 this example, the points have been drawn *on top of* the lines. Here's a
@@ -242,7 +242,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, group = country)) 
   geom_point()
 ```
 
-<img src="fig/rmd-06-lifeExp-layer-example-1-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lifeExp-layer-example-1-1.png" width="576" style="display: block; margin: auto;" />
 
 In this example, the *aesthetic* mapping of **colour** has been moved from the
 global plot options in `ggplot` to the `geom_line` layer so it no longer applies
@@ -261,7 +261,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, group = country)) 
   geom_point()
 ```
 
-<img src="fig/rmd-06-example-colour-all-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-example-colour-all-1.png" width="576" style="display: block; margin: auto;" />
 
 > ## Challenge 3
 >
@@ -278,7 +278,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, group = country)) 
 > >  geom_line(mapping = aes(colour = continent))
 > > ```
 > > 
-> > <img src="fig/rmd-06-ch3-sol-1.png" width="816" style="display: block; margin: auto;" />
+> > <img src="fig/rmd-06-ch3-sol-1.png" width="576" style="display: block; margin: auto;" />
 > >
 > > The lines now get drawn over the points!
 > >
@@ -295,7 +295,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 
-<img src="fig/rmd-06-lifeExp-vs-gdpPercap-scatter3-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lifeExp-vs-gdpPercap-scatter3-1.png" width="576" style="display: block; margin: auto;" />
 
 Currently it's hard to see the relationship between the points due to some strong
 outliers in GDP per capita. We can change the scale of units on the x axis using
@@ -311,7 +311,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
   scale_x_log10()
 ```
 
-<img src="fig/rmd-06-axis-scale-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-axis-scale-1.png" width="576" style="display: block; margin: auto;" />
 
 The `log10` function applied a transformation to the values of the gdpPercap
 column before rendering them on the plot, so that each multiple of 10 now only
@@ -338,7 +338,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 `geom_smooth()` using formula 'y ~ x'
 ```
 
-<img src="fig/rmd-06-lm-fit-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lm-fit-1.png" width="576" style="display: block; margin: auto;" />
 
 We can make the line thicker by *setting* the **size** aesthetic in the
 `geom_smooth` layer:
@@ -355,7 +355,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 `geom_smooth()` using formula 'y ~ x'
 ```
 
-<img src="fig/rmd-06-lm-fit2-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-lm-fit2-1.png" width="576" style="display: block; margin: auto;" />
 
 There are two ways an *aesthetic* can be specified. Here we *set* the **size**
 aesthetic by passing it as an argument to `geom_smooth`. Previously in the
@@ -383,7 +383,7 @@ variables and their visual representation.
 > > `geom_smooth()` using formula 'y ~ x'
 > > ```
 > > 
-> > <img src="fig/rmd-06-ch4a-sol-1.png" width="816" style="display: block; margin: auto;" />
+> > <img src="fig/rmd-06-ch4a-sol-1.png" width="576" style="display: block; margin: auto;" />
 
 
 
@@ -409,7 +409,7 @@ variables and their visual representation.
 > >`geom_smooth()` using formula 'y ~ x'
 > >```
 > >
-> ><img src="fig/rmd-06-ch4b-sol-1.png" width="816" style="display: block; margin: auto;" />
+> ><img src="fig/rmd-06-ch4b-sol-1.png" width="576" style="display: block; margin: auto;" />
 
 
 
@@ -453,7 +453,7 @@ ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp)) +
   facet_wrap(facets = vars(country))
 ```
 
-<img src="fig/rmd-06-facet-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-facet-1.png" width="576" style="display: block; margin: auto;" />
 
 The `facet_wrap` layer took the function `vars()` as its `facet` argument. This tells R to draw a panel for each unique value in the variable country of the gapminder dataset.
 
@@ -486,7 +486,7 @@ ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp, colour = contin
         plot.title = element_text(face = "bold"))
 ```
 
-<img src="fig/rmd-06-theme-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-theme-1.png" width="576" style="display: block; margin: auto;" />
 
 > ## Tip
 > Note that we apply a "theme" definition to customize 
@@ -511,7 +511,7 @@ ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp, colour = contin
         plot.title = element_text(face = "bold"))
 ```
 
-<img src="fig/rmd-06-more-theme-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-06-more-theme-1.png" width="576" style="display: block; margin: auto;" />
 
 ## Exporting the plot
 

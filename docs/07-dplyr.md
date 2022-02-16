@@ -121,7 +121,7 @@ variables you select.
 year_country_gdp <- select(gapminder, year, country, gdpPercap)
 ```
 
-![](fig/07-dplyr-fig1.png)
+![](fig/07-dplyr-fig1.png){width=100%}
 
 ## Using filter()
 
@@ -294,7 +294,7 @@ You will notice that the structure of the dataframe where we used `group_by()`
 `data.frame` which contains only the rows that correspond to the a particular
 value `continent` (at least in the example above).
 
-![](fig/07-dplyr-fig2.png)
+![](fig/07-dplyr-fig2.png){width=100%}
 
 ## Using summarize()
 
@@ -312,7 +312,7 @@ gdp_bycontinents <- gapminder %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
 ```
 
-![](fig/07-dplyr-fig3.png)
+![](fig/07-dplyr-fig3.png){width=100%}
 
 
 ```
@@ -539,7 +539,7 @@ ggplot(data = a_countries, aes(x = year, y = lifeExp, color = continent)) +
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-07-unnamed-chunk-25-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-07-unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" />
 
 
 This code makes the right plot but it also provides a way to chain operations. Just as we used
@@ -558,7 +558,7 @@ gapminder %>%
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-07-unnamed-chunk-26-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-07-unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" />
 
 Using `dplyr` functions also helps us do calculations on the fly, for example if we were interested in 
 converting `lifeExp` which is in years to days:
@@ -574,7 +574,7 @@ gapminder %>%
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-07-unnamed-chunk-27-1.png" width="816" style="display: block; margin: auto;" />
+<img src="fig/rmd-07-unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
 
 > ## Advanced Challenge
 >
