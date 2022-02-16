@@ -94,11 +94,14 @@ on servers) and provides many advantages such as integration with version
 control and project management.
 
 > ## Tip: Key RStudio Setting
->
-> RStudio will automatically save your session variables in a file called .RData.
-> These are saved when you exit a project and restored when you open it up again.
-> If you don't plan to use this feature you can toggle it in the Project Options
-> -> General tab.
+> 
+> By default RStudio will automatically save your session variables in your
+> porject directory in a file called `.RData`. These are saved when you exit a
+> project and restored when you open it up again. We _highly_ recommend turning
+> this feature off. As you will learn in this course, all outputs will be created
+> from code. Typically you do not need to save intermediate steps. If you don't
+> plan to use this feature you can toggle it in the Project Options -> General
+> tab.
 
 **Basic layout**
 
@@ -108,7 +111,7 @@ When you first open RStudio, you will be greeted by three panels:
   * Environment/History (tabbed in upper right)
   * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
-![RStudio layout](fig/rmd-01-rstudio.png)
+![RStudio layout](fig/rmd-01-rstudio.png){width=50%}
 
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
@@ -734,7 +737,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fbc6a6ec7f8>
+<bytecode: 0x7fe8cf9227f8>
 <environment: namespace:base>
 ```
 

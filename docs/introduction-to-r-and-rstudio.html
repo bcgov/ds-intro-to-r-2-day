@@ -118,10 +118,13 @@ on servers) and provides many advantages such as integration with version
 control and project management.</p>
 <blockquote>
 <h2 id="tip-key-rstudio-setting">Tip: Key RStudio Setting</h2>
-<p>RStudio will automatically save your session variables in a file called .RData.
-These are saved when you exit a project and restored when you open it up again.
-If you don’t plan to use this feature you can toggle it in the Project Options
--&gt; General tab.</p>
+<p>By default RStudio will automatically save your session variables in your
+porject directory in a file called <code>.RData</code>. These are saved when you exit a
+project and restored when you open it up again. We <em>highly</em> recommend turning
+this feature off. As you will learn in this course, all outputs will be created
+from code. Typically you do not need to save intermediate steps. If you don’t
+plan to use this feature you can toggle it in the Project Options -&gt; General
+tab.</p>
 </blockquote>
 <p><strong>Basic layout</strong></p>
 <p>When you first open RStudio, you will be greeted by three panels:</p>
@@ -131,7 +134,7 @@ If you don’t plan to use this feature you can toggle it in the Project Options
 <li>Files/Plots/Packages/Help/Viewer (tabbed in lower right)</li>
 </ul>
 <div class="figure">
-<img src="fig/rmd-01-rstudio.png" alt=""><p class="caption">RStudio layout</p>
+<img src="fig/rmd-01-rstudio.png" style="width:50.0%" alt=""><p class="caption">RStudio layout</p>
 </div>
 <p>Once you open files, such as R scripts, an editor panel will also open
 in the top left.</p>
@@ -544,7 +547,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7fbc6a6ec7f8&gt;
+&lt;bytecode: 0x7fe8cf9227f8&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
