@@ -114,12 +114,12 @@ When you first open RStudio, you will be greeted by three panels:
   * Environment/History (tabbed in upper right)
   * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
-![RStudio layout](fig/rmd-01-rstudio.png){width=75%}
+![RStudio layout](fig/rmd-01-rstudio.png){width=100%}
 
 Once you open files, such as R scripts, an editor panel will also open
 in the top left.
 
-![RStudio layout with .R file open](fig/rmd-01-rstudio-script.png){width=85%}
+![RStudio layout with .R file open](fig/rmd-01-rstudio-script.png){width=100%}
 
 
 ## Work flow within RStudio
@@ -535,10 +535,10 @@ compare mass to age. Is mass larger than age?
 <br />
 
 ## Solution to challenge 3`
-`
+
 One way of answering this question in R is to use the `>` to set up the following:`
 ```{r ch3-sola}
-mass > age`
+mass > age
 ```
 
 This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
