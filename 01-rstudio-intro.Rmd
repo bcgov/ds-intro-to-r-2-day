@@ -96,7 +96,12 @@ environment. It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
 
-
+> ## Tip: Key RStudio Setting
+>
+> RStudio will automatically save your session variables in a file called .RData.
+> These are saved when you exit a project and restored when you open it up again.
+> If you don't plan to use this feature you can toggle it in the Project Options
+> -> General tab.
 
 **Basic layout**
 
