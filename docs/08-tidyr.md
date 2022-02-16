@@ -100,16 +100,22 @@ gapminder
 # … with 1,694 more rows
 ```
 
-> ## Challenge 1
+### Challenge 1
 >
 > Is gapminder a purely long, purely wide, or some intermediate format?
 >
 >
-> > ## Solution to Challenge 1
-> >
-> > The original gapminder data.frame is in an intermediate format. It is not
-> > purely long since it had multiple observation variables
-> > (`pop`,`lifeExp`,`gdpPercap`).
+> <details>
+> 
+> <summary>
+> Solution to challenge 1
+> </summary>
+> 
+> <br />
+> The original gapminder data.frame is in an intermediate format. It is not
+> purely long since it had multiple observation variables
+> (`pop`,`lifeExp`,`gdpPercap`).
+> </details>
 
 
 Sometimes, as with the gapminder dataset, we have multiple types of observed
@@ -278,44 +284,51 @@ gap_long <- gap_long %>%
 ```
 
 
-> ## Challenge 2
+### Challenge 2
 >
 > Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent.
 >**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
 >
-> > ## Solution to Challenge 2
-> >
-> >```r
-> >gap_long %>% group_by(continent, obs_type) %>%
-> >    summarize(means=mean(obs_values))
-> >```
-> >
-> >```
-> >`summarise()` has grouped output by 'continent'. You can override using the
-> >`.groups` argument.
-> >```
-> >
-> >```
-> ># A tibble: 15 × 3
-> ># Groups:   continent [5]
-> >   continent obs_type       means
-> >   <chr>     <chr>          <dbl>
-> > 1 Africa    gdpPercap     2194. 
-> > 2 Africa    lifeExp         48.9
-> > 3 Africa    pop        9916003. 
-> > 4 Americas  gdpPercap     7136. 
-> > 5 Americas  lifeExp         64.7
-> > 6 Americas  pop       24504795. 
-> > 7 Asia      gdpPercap     7902. 
-> > 8 Asia      lifeExp         60.1
-> > 9 Asia      pop       77038722. 
-> >10 Europe    gdpPercap    14469. 
-> >11 Europe    lifeExp         71.9
-> >12 Europe    pop       17169765. 
-> >13 Oceania   gdpPercap    18622. 
-> >14 Oceania   lifeExp         74.3
-> >15 Oceania   pop        8874672. 
-> >```
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+>
+>```r
+>gap_long %>% group_by(continent, obs_type) %>%
+>    summarize(means=mean(obs_values))
+>```
+>
+>```
+>`summarise()` has grouped output by 'continent'. You can override using the
+>`.groups` argument.
+>```
+>
+>```
+># A tibble: 15 × 3
+># Groups:   continent [5]
+>   continent obs_type       means
+>   <chr>     <chr>          <dbl>
+> 1 Africa    gdpPercap     2194. 
+> 2 Africa    lifeExp         48.9
+> 3 Africa    pop        9916003. 
+> 4 Americas  gdpPercap     7136. 
+> 5 Americas  lifeExp         64.7
+> 6 Americas  pop       24504795. 
+> 7 Asia      gdpPercap     7902. 
+> 8 Asia      lifeExp         60.1
+> 9 Asia      pop       77038722. 
+>10 Europe    gdpPercap    14469. 
+>11 Europe    lifeExp         71.9
+>12 Europe    pop       17169765. 
+>13 Oceania   gdpPercap    18622. 
+>14 Oceania   lifeExp         74.3
+>15 Oceania   pop        8874672. 
+>```
+> </details>
 
 ## From long to intermediate format with pivot_wider()
 
@@ -525,18 +538,25 @@ gap_wide_new
 #   lifeExp_1987 <dbl>, gdpPercap_1987 <dbl>, pop_1992 <dbl>, …
 ```
 
-> ## Challenge 3
->
+### Challenge 3
 > Take this 1 step further and create a `gap_ludicrously_wide` format data by pivoting over countries, year and the 3 metrics?
 >**Hint** this new dataframe should only have 5 rows.
 >
-> > ## Solution to Challenge 3
-> >
-> >```r
-> >gap_ludicrously_wide <- gap_long %>%
-> >    unite(var_names, obs_type, year, country, sep = "_") %>%
-> >    pivot_wider(names_from = var_names, values_from = obs_values)
-> >```
+> <details>
+> 
+> <summary>
+> Solution to challenge 6
+> </summary>
+> 
+> <br />
+>
+>```r
+>gap_ludicrously_wide <- gap_long %>%
+>    unite(var_names, obs_type, year, country, sep = "_") %>%
+>    pivot_wider(names_from = var_names, values_from = obs_values)
+>```
+> </details>
+
 
 
 Now we have a great 'wide' format dataframe, but the `ID_var` could be more

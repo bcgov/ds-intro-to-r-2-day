@@ -195,8 +195,10 @@ The first thing you will see in the R interactive session is a bunch of
 information, followed by a “&gt;” and a blinking cursor. It operates on a “Read,
 evaluate, print loop”: you type in commands, R tries to execute them, and then
 returns a result.</p>
-<blockquote>
-<h2 id="before-we-dive-in">Before we dive in…</h2>
+<div id="before-we-dive-in" class="section level3" number="1.5.1">
+<h3>
+<span class="header-section-number">1.5.1</span> Before we dive in…<a class="anchor" aria-label="anchor" href="#before-we-dive-in"><i class="fas fa-link"></i></a>
+</h3>
 <p>We are first going set up a workspace, called an RStudio Project, where we can work through
 the course materials and save our work.
 In the console, type:</p>
@@ -204,10 +206,10 @@ In the console, type:</p>
 <code>use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))</code></p>
 <p>If you are on a Mac:
 <code>use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))</code></p>
-<p>… and press Enter.</p>
+<p>… and press <kbd>Enter</kbd>.</p>
 <p>This will create a new R project folder in your user directory (<code>C:/Users/[your_user_name]/intro-r-Feb2022/</code> on Windows,
-and `/Users/[your_user_name]/intro-r-Feb2022/’ on a Mac), and open that project in RStudio.</p>
-</blockquote>
+and <code>/Users/[your_user_name]/intro-r-Feb2022/</code> on a Mac), and open that project in RStudio.</p>
+</div>
 </div>
 <div id="using-r-as-a-calculator" class="section level2" number="1.6">
 <h2>
@@ -404,6 +406,7 @@ symbol used in the community. So the recommendation is to use <code>&lt;-</code>
 <h3>
 <span class="header-section-number">1.9.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Which of the following are valid R variable names?</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="introduction-to-r-and-rstudio.html#cb45-1" aria-hidden="true" tabindex="-1"></a>min_height</span>
 <span id="cb45-2"><a href="introduction-to-r-and-rstudio.html#cb45-2" aria-hidden="true" tabindex="-1"></a>max.height</span>
@@ -413,10 +416,9 @@ symbol used in the community. So the recommendation is to use <code>&lt;-</code>
 <span id="cb45-6"><a href="introduction-to-r-and-rstudio.html#cb45-6" aria-hidden="true" tabindex="-1"></a>min<span class="sc">-</span>length</span>
 <span id="cb45-7"><a href="introduction-to-r-and-rstudio.html#cb45-7" aria-hidden="true" tabindex="-1"></a>2widths</span>
 <span id="cb45-8"><a href="introduction-to-r-and-rstudio.html#cb45-8" aria-hidden="true" tabindex="-1"></a>celsius2kelvin</span></code></pre></div>
-<p><br></p>
-<details><summary><strong>Solution to challenge 1</strong>
-</summary><p><br></p>
-<p>The following can be used as R variables:</p>
+<details><summary>
+Solution to challenge 1
+</summary><p>The following can be used as R variables:</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">min_height</span>
 <span class="va">max.height</span>
@@ -429,12 +431,14 @@ symbol used in the community. So the recommendation is to use <code>&lt;-</code>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction-to-r-and-rstudio.html#cb48-1" aria-hidden="true" tabindex="-1"></a>_age</span>
 <span id="cb48-2"><a href="introduction-to-r-and-rstudio.html#cb48-2" aria-hidden="true" tabindex="-1"></a>min<span class="sc">-</span>length</span>
 <span id="cb48-3"><a href="introduction-to-r-and-rstudio.html#cb48-3" aria-hidden="true" tabindex="-1"></a>2widths</span></code></pre></div>
-</details>
+<br></details>
+</blockquote>
 </div>
 <div id="challenge-2" class="section level3" number="1.9.2">
 <h3>
 <span class="header-section-number">1.9.2</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>What will be the value of each variable after each
 statement in the following program?</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
@@ -442,8 +446,8 @@ statement in the following program?</p>
 <span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">122</span>
 <span class="va">mass</span> <span class="op">&lt;-</span> <span class="va">mass</span> <span class="op">*</span> <span class="fl">2.3</span>
 <span class="va">age</span> <span class="op">&lt;-</span> <span class="va">age</span> <span class="op">-</span> <span class="fl">20</span></code></pre></div>
-<p><br></p>
-<details><summary><strong>Solution to challenge 2</strong>
+<details><summary>
+Solution to challenge 2
 </summary><p><br></p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mass</span> <span class="op">&lt;-</span> <span class="fl">47.5</span></code></pre></div>
@@ -460,22 +464,25 @@ statement in the following program?</p>
 <p>This will subtract 20 from the existing value of 122 to give a new value
 of 102 to the variable age.</p>
 </details>
+</blockquote>
 </div>
 <div id="challenge-3" class="section level3" number="1.9.3">
 <h3>
 <span class="header-section-number">1.9.3</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Run the code from the previous challenge, and write a command to
 compare mass to age. Is mass larger than age?</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 3</strong>
+<details><summary>
+Solution to challenge 3
 </summary><p><br></p>
 <p>One way of answering this question in R is to use the <code>&gt;</code> to set up the following:`</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mass</span> <span class="op">&gt;</span> <span class="va">age</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <p>This should yield a boolean value of TRUE since 109.25 is greater than 102.</p>
-</details><p>`</p>
+</details>
+</blockquote>
 </div>
 </div>
 <div id="vectorization" class="section level2" number="1.10">
@@ -556,7 +563,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7f8410eebbf8&gt;
+&lt;bytecode: 0x7fd5abbfe5f8&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
@@ -578,15 +585,17 @@ how to fix a problem.</p>
 <h3>
 <span class="header-section-number">1.11.1</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Clean up your working environment by deleting the mass and age
 variables.</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 4</strong>
+<details><summary>
+Solution to challenge 4
 </summary><p><br></p>
 <p>We can use the <code>rm</code> command to accomplish this task</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">mass</span><span class="op">)</span></code></pre></div>
 </details>
+</blockquote>
 </div>
 </div>
 <div id="r-packages" class="section level2" number="1.12">
@@ -619,15 +628,18 @@ where <code>packagename</code> is the package name, in quotes.</li>
 <h3>
 <span class="header-section-number">1.12.1</span> Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Install the following packages: <code>ggplot2</code>, <code>dplyr</code>.</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 4</strong>
+<details><summary>
+Solution to challenge 5
 </summary><p><br></p>
 <p>We can use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> command to install the required packages.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></code></pre></div>
 </details>
+</blockquote>
+
 </div>
 </div>
 </div>
@@ -642,7 +654,9 @@ where <code>packagename</code> is the package name, in quotes.</li>
 <li><a class="nav-link" href="#before-starting-the-workshop"><span class="header-section-number">1.2</span> Before Starting The Workshop</a></li>
 <li><a class="nav-link" href="#introduction-to-rstudio"><span class="header-section-number">1.3</span> Introduction to RStudio</a></li>
 <li><a class="nav-link" href="#work-flow-within-rstudio"><span class="header-section-number">1.4</span> Work flow within RStudio</a></li>
-<li><a class="nav-link" href="#introduction-to-r"><span class="header-section-number">1.5</span> Introduction to R</a></li>
+<li>
+<a class="nav-link" href="#introduction-to-r"><span class="header-section-number">1.5</span> Introduction to R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#before-we-dive-in"><span class="header-section-number">1.5.1</span> Before we dive in…</a></li></ul>
+</li>
 <li><a class="nav-link" href="#using-r-as-a-calculator"><span class="header-section-number">1.6</span> Using R as a calculator</a></li>
 <li><a class="nav-link" href="#mathematical-functions"><span class="header-section-number">1.7</span> Mathematical functions</a></li>
 <li><a class="nav-link" href="#comparing-things"><span class="header-section-number">1.8</span> Comparing things</a></li>

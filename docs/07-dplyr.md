@@ -214,21 +214,27 @@ year_country_gdp_euro <- gapminder %>%
     select(year, country, gdpPercap)
 ```
 
-> ## Challenge 1
->
+### Challenge 1
 > Write a single command (which can span multiple lines and includes pipes) that
 > will produce a dataframe that has the African values for `lifeExp`, `country`
 > and `year`, but not for other Continents.  How many rows does your dataframe
 > have and why?
 >
-> > ## Solution to Challenge 1
-> >
-> >```r
-> >year_country_lifeExp_Africa <- gapminder %>%
-> >                            filter(continent == "Africa") %>%
-> >                            select(year, country, lifeExp)
-> >```
+> <details>
 > 
+> <summary>
+> Solution to challenge 1
+> </summary>
+> 
+> <br />
+> 
+> ```r
+> year_country_lifeExp_Africa <- gapminder %>%
+>                            filter(continent == "Africa") %>%
+>                            select(year, country, lifeExp)
+> ```
+> </details>
+
 
 As with last time, first we pass the gapminder dataframe to the `filter()`
 function, then we pass the filtered version of the gapminder dataframe to the
@@ -329,61 +335,66 @@ gdp_bycontinents <- gapminder %>%
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
-> ## Challenge 2
->
->
+### Challenge 2
 > Calculate the average life expectancy per country. Which has the longest average life
 > expectancy and which has the shortest average life expectancy?
 >
-> > ## Solution to Challenge 2
-> >
-> >```r
-> >lifeExp_bycountry <- gapminder %>%
-> >    group_by(country) %>%
-> >    summarize(mean_lifeExp = mean(lifeExp))
-> >lifeExp_bycountry %>%
-> >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
-> >```
-> >
-> >```
-> ># A tibble: 2 × 2
-> >  country      mean_lifeExp
-> >  <chr>               <dbl>
-> >1 Iceland              76.5
-> >2 Sierra Leone         36.8
-> >```
-> Another way to do this is to use the `dplyr` function `arrange()`, which
-> arranges the rows in a data frame according to the order of one or more
-> variables from the data frame.  It has similar syntax to other functions from
-> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in
-> descending order.
-> >
-> >```r
-> >lifeExp_bycountry %>%
-> >    arrange(mean_lifeExp) %>%
-> >    head(1)
-> >```
-> >
-> >```
-> ># A tibble: 1 × 2
-> >  country      mean_lifeExp
-> >  <chr>               <dbl>
-> >1 Sierra Leone         36.8
-> >```
-> >
-> >```r
-> >lifeExp_bycountry %>%
-> >    arrange(desc(mean_lifeExp)) %>%
-> >    head(1)
-> >```
-> >
-> >```
-> ># A tibble: 1 × 2
-> >  country mean_lifeExp
-> >  <chr>          <dbl>
-> >1 Iceland         76.5
-> >```
+> <details>
 > 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+>
+>```r
+>lifeExp_bycountry <- gapminder %>%
+>    group_by(country) %>%
+>    summarize(mean_lifeExp = mean(lifeExp))
+>lifeExp_bycountry %>%
+>    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
+>```
+>
+>```
+># A tibble: 2 × 2
+>  country      mean_lifeExp
+>  <chr>               <dbl>
+>1 Iceland              76.5
+>2 Sierra Leone         36.8
+>```
+Another way to do this is to use the `dplyr` function `arrange()`, which
+arranges the rows in a data frame according to the order of one or more
+variables from the data frame.  It has similar syntax to other functions from
+the `dplyr` package. You can use `desc()` inside `arrange()` to sort in
+descending order.
+>
+>```r
+>lifeExp_bycountry %>%
+>    arrange(mean_lifeExp) %>%
+>    head(1)
+>```
+>
+>```
+># A tibble: 1 × 2
+>  country      mean_lifeExp
+>  <chr>               <dbl>
+>1 Sierra Leone         36.8
+>```
+>
+>```r
+>lifeExp_bycountry %>%
+>    arrange(desc(mean_lifeExp)) %>%
+>    head(1)
+>```
+>
+>```
+># A tibble: 1 × 2
+>  country mean_lifeExp
+>  <chr>          <dbl>
+>1 Iceland         76.5
+>```
+> </details>
+
 
 The function `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
 
@@ -576,24 +587,31 @@ gapminder %>%
 
 <img src="fig/rmd-07-unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
 
-> ## Advanced Challenge
->
+### Advanced Challenge
+
 > Calculate the average life expectancy in 2002 of 2 randomly selected countries
 > for each continent. Then arrange the continent names in reverse order.
 > **Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have
 > similar syntax to other dplyr functions.
->
-> > ## Solution to Advanced Challenge
-> >
-> >```r
-> >lifeExp_2countries_bycontinents <- gapminder %>%
-> >    filter(year==2002) %>%
-> >    group_by(continent) %>%
-> >    sample_n(2) %>%
-> >    summarize(mean_lifeExp=mean(lifeExp)) %>%
-> >    arrange(desc(mean_lifeExp))
-> >```
 > 
+> <details>
+> 
+> <summary>
+> Solution to challenge
+> </summary>
+> 
+> <br />
+>
+>```r
+>lifeExp_2countries_bycontinents <- gapminder %>%
+>    filter(year==2002) %>%
+>    group_by(continent) %>%
+>    sample_n(2) %>%
+>    summarize(mean_lifeExp=mean(lifeExp)) %>%
+>    arrange(desc(mean_lifeExp))
+>```
+> </details>
+
 
 ## Other great resources
 

@@ -140,10 +140,11 @@ fields. This can be a good starting point.</p>
 <h3>
 <span class="header-section-number">2.5.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-1"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Look at the help for the <code>sum</code> function. What are two ways you can pass numbers
 into the function so the are added together?</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 1</strong>
+<details><summary>
+Solution to challenge 1
 </summary><p><br></p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">?</span><span class="va">sum</span>
@@ -151,15 +152,17 @@ into the function so the are added together?</p>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 </details>
+</blockquote>
 </div>
 <div id="challenge-2-1" class="section level3" number="2.5.2">
 <h3>
 <span class="header-section-number">2.5.2</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2-1"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Look at the help for the <code>paste</code> function. You’ll need to use this later.
 What is the difference between the <code>sep</code> and <code>collapse</code> arguments?</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 2</strong>
+<details><summary>
+Solution to challenge 2
 </summary><p><br></p>
 <p>To look at the help for the <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> function, use:</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
@@ -189,11 +192,13 @@ e.g. </p>
 scroll to the bottom of the <code><a href="https://rdrr.io/r/base/paste.html">?paste</a></code> help page and look at the
 examples, or try <code>example('paste')</code>.)</p>
 </details>
+</blockquote>
 </div>
 <div id="challenge-3-1" class="section level3" number="2.5.3">
 <h3>
 <span class="header-section-number">2.5.3</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3-1"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Use help to find a function (and its associated parameters) that you could
 use to load data from a csv file in which columns are delimited with “
 (tab) and the decimal point is a”.” (period). This check for decimal
@@ -201,8 +206,8 @@ separator is important, especially if you are working with international
 colleagues, because different countries have different conventions for the
 decimal point (i.e. comma vs period).
 hint: use <code>??csv</code> to lookup csv related functions.</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 3</strong>
+<details><summary>
+Solution to challenge 3
 </summary><p><br></p>
 <p>The standard R function for reading tab-delimited files with a period
 decimal separator is read.delim(). You can also do this with
@@ -211,6 +216,8 @@ separator for <code><a href="https://rdrr.io/r/utils/read.table.html">read.table
 the <code>comment.char</code> argument as well if your data file contains
 hash (#) characters</p>
 </details>
+</blockquote>
+
 </div>
 </div>
 </div>

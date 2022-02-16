@@ -162,21 +162,21 @@ information, followed by a ">" and a blinking cursor. It operates on a "Read,
 evaluate, print loop": you type in commands, R tries to execute them, and then
 returns a result.
 
-> ## Before we dive in...
-> We are first going set up a workspace, called an RStudio Project, where we can work through
-> the course materials and save our work.
-> In the console, type: 
->
-> If you are on Windows:
-> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
-> 
-> If you are on a Mac:
-> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
->
-> ... and press Enter.
->
-> This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
-> and `/Users/[your_user_name]/intro-r-Feb2022/' on a Mac), and open that project in RStudio. 
+### Before we dive in...
+We are first going set up a workspace, called an RStudio Project, where we can work through
+the course materials and save our work.
+In the console, type: 
+
+If you are on Windows:
+`use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
+
+If you are on a Mac:
+`use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
+
+... and press <kbd>Enter</kbd>.
+
+This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
+and `/Users/[your_user_name]/intro-r-Feb2022/` on a Mac), and open that project in RStudio. 
 
 
 ## Using R as a calculator
@@ -217,7 +217,6 @@ prompt.
 > you can also use it to tell R to stop running code (for example if it's
 > taking much longer than you expect), or to get rid of the code you're
 > currently writing.
->
 
 When using R as a calculator, the order of operations is the same as you
 would have learned back in school.
@@ -436,7 +435,6 @@ We can also do comparison in R:
 > Instead you should use the `all.equal` function.
 >
 > Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
->
 
 
 ## Variables and assignment
@@ -518,101 +516,95 @@ where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
 ### Challenge 1
-Which of the following are valid R variable names?
-
-```r
-min_height
-max.height
-_age
-.mass
-MaxLength
-min-length
-2widths
-celsius2kelvin
-```
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 1</strong>
-</summary>
-
-<br />
-
-The following can be used as R variables:
-
-```r
-min_height
-max.height
-MaxLength
-celsius2kelvin
-```
-
-The following creates a hidden variable:
-
-```r
-.mass
-```
-
-The following will not be able to be used to create a variable
-
-```r
-_age
-min-length
-2widths
-```
-
-</details>
+> Which of the following are valid R variable names?
+> 
+> ```r
+> min_height
+> max.height
+> _age
+> .mass
+> MaxLength
+> min-length
+> 2widths
+> celsius2kelvin
+> ```
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 1
+> </summary>
+>
+> The following can be used as R variables:
+> 
+> ```r
+> min_height
+> max.height
+> MaxLength
+> celsius2kelvin
+> ```
+> 
+> The following creates a hidden variable:
+> 
+> ```r
+> .mass
+> ```
+> 
+> The following will not be able to be used to create a variable
+> 
+> ```r
+> _age
+> min-length
+> 2widths
+> ```
+> 
+> <br />
+> </details>
 
 
 ### Challenge 2
-What will be the value of each  variable  after each
-statement in the following program?
-
-```r
-mass <- 47.5
-age <- 122
-mass <- mass * 2.3
-age <- age - 20
-```
-
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 2</strong>
-</summary>
-
-<br />
-
-
-```r
-mass <- 47.5
-```
-This will give a value of 47.5 for the variable mass
-
-```r
-age <- 122
-```
-This will give a value of 122 for the variable age
-
-```r
-mass <- mass * 2.3
-```
-This will multiply the existing value of 47.5 by 2.3 to give a new value of
-109.25 to the variable mass.
-
-```r
-age <- age - 20
-```
-This will subtract 20 from the existing value of 122 to give a new value
-of 102 to the variable age.
-
-</details>
+> What will be the value of each  variable  after each
+> statement in the following program?
+> 
+> ```r
+> mass <- 47.5
+> age <- 122
+> mass <- mass * 2.3
+> age <- age - 20
+> ```
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+> 
+> 
+> ```r
+> mass <- 47.5
+> ```
+> This will give a value of 47.5 for the variable mass
+> 
+> ```r
+> age <- 122
+> ```
+> This will give a value of 122 for the variable age
+> 
+> ```r
+> mass <- mass * 2.3
+> ```
+> This will multiply the existing value of 47.5 by 2.3 to give a new value of
+> 109.25 to the variable mass.
+> 
+> ```r
+> age <- age - 20
+> ```
+> This will subtract 20 from the existing value of 122 to give a new value
+> of 102 to the variable age.
+> 
+> </details>
 
 
 
@@ -621,34 +613,31 @@ of 102 to the variable age.
 
 ### Challenge 3
 
-Run the code from the previous challenge, and write a command to
-compare mass to age. Is mass larger than age?
+> Run the code from the previous challenge, and write a command to
+> compare mass to age. Is mass larger than age?
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 3
+> </summary>
+> 
+> <br />
+> 
+> One way of answering this question in R is to use the `>` to set up the following:`
+> 
+> ```r
+> mass > age
+> ```
+> 
+> ```
+> [1] TRUE
+> ```
+> 
+> This should yield a boolean value of TRUE since 109.25 is greater than 102.
+> 
+> </details>
 
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 3</strong>
-</summary>
-
-<br />
-
-One way of answering this question in R is to use the `>` to set up the following:`
-
-```r
-mass > age
-```
-
-```
-[1] TRUE
-```
-
-This should yield a boolean value of TRUE since 109.25 is greater than 102.
-
-</details>
-`
 
 
 
@@ -766,7 +755,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f8410eebbf8>
+<bytecode: 0x7fd5abbfe5f8>
 <environment: namespace:base>
 ```
 
@@ -799,26 +788,24 @@ rm(list = ls())
 
 ### Challenge 4
 
-Clean up your working environment by deleting the mass and age
-variables.
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 4</strong>
-</summary>
-
-<br />
-
-We can use the `rm` command to accomplish this task
-
-```r
-rm(age, mass)
-```
-
-</details>
+> Clean up your working environment by deleting the mass and age
+> variables.
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 4
+> </summary>
+> 
+> <br />
+> 
+> We can use the `rm` command to accomplish this task
+> 
+> ```r
+> rm(age, mass)
+> ```
+> 
+> </details>
 
 
 
@@ -848,25 +835,23 @@ R and RStudio have functionality for managing packages:
 
 ### Challenge 5
 
-Install the following packages: `ggplot2`, `dplyr`.
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 4</strong>
-</summary>
-
-<br />
-
-
-We can use the `install.packages()` command to install the required packages.
-
-```r
-install.packages("ggplot2")
-install.packages("dplyr")
-```
-</details>
+> Install the following packages: `ggplot2`, `dplyr`.
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 5
+> </summary>
+> 
+> <br />
+> 
+> 
+> We can use the `install.packages()` command to install the required packages.
+> 
+> ```r
+> install.packages("ggplot2")
+> install.packages("dplyr")
+> ```
+> </details>
 
 

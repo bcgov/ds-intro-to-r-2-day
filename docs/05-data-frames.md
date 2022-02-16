@@ -127,7 +127,7 @@ So far, you have seen the basics of manipulating data frames with our cat data;
 now let's use those skills to digest a more realistic dataset. Let's read in the
 `gapminder` dataset that we downloaded previously:
 
-> ## Challenge 1
+### Challenge 1
 >
 > Read in the gapminder dataset using read_csv and assign it to a data frame
 > called `gapminder`:
@@ -153,26 +153,8 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 > 
 > ```r
 > dim(gapminder)
-> ```
-> 
-> ```
-> [1] 1704    6
-> ```
-> 
-> ```r
 > nrow(gapminder)
-> ```
-> 
-> ```
-> [1] 1704
-> ```
-> 
-> ```r
 > ncol(gapminder)
-> ```
-> 
-> ```
-> [1] 6
 > ```
 > 
 > And tell me what kind of data is in the `pop` and `continent` columns
@@ -180,47 +162,7 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 > 
 > ```r
 > str(gapminder)
-> ```
-> 
-> ```
-> spec_tbl_df [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
->  $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
->  $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
->  $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
->  $ continent: chr [1:1704] "Asia" "Asia" "Asia" "Asia" ...
->  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
->  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
->  - attr(*, "spec")=
->   .. cols(
->   ..   country = col_character(),
->   ..   year = col_double(),
->   ..   pop = col_double(),
->   ..   continent = col_character(),
->   ..   lifeExp = col_double(),
->   ..   gdpPercap = col_double()
->   .. )
->  - attr(*, "problems")=<externalptr> 
-> ```
-> 
-> ```r
 > summary(gapminder)
-> ```
-> 
-> ```
->    country               year           pop             continent        
->  Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704       
->  Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character  
->  Mode  :character   Median :1980   Median :7.024e+06   Mode  :character  
->                     Mean   :1980   Mean   :2.960e+07                     
->                     3rd Qu.:1993   3rd Qu.:1.959e+07                     
->                     Max.   :2007   Max.   :1.319e+09                     
->     lifeExp        gdpPercap       
->  Min.   :23.60   Min.   :   241.2  
->  1st Qu.:48.20   1st Qu.:  1202.1  
->  Median :60.71   Median :  3531.8  
->  Mean   :59.47   Mean   :  7215.3  
->  3rd Qu.:70.85   3rd Qu.:  9325.5  
->  Max.   :82.60   Max.   :113523.1  
 > ```
 
 The first thing we should always do is check out what the data looks like with
@@ -322,27 +264,71 @@ head(gapminder)
 6 Afghanistan  1977 14880372 Asia         38.4      786.
 ```
 
-> ## Challenge 2
+### Challenge 2
 >
 > It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
 >
 > Searching for ones specifically in the middle isn't too hard but we could simply ask for a few lines at random. How would you code this?
 >
-> > ## Solution to Challenge 2
-> > To check the last few lines it's relatively simple as R already has a function for this:
-> > 
-> > ~~~
-> > tail(gapminder)
-> > tail(gapminder, n = 15)
-> > ~~~
-> > 
-> > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
-> > ## Tip: There are several ways to achieve this.
-> > The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new concept, but you are already using it!
-> > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
-> > ~~~
-> > gapminder[sample(nrow(gapminder), 5), ]
-> > ~~~
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+>To check the last few lines it's relatively simple as R already has a function for this:
+>
+>
+>```r
+>tail(gapminder)
+>```
+>
+>```
+># A tibble: 6 × 6
+>  country   year      pop continent lifeExp gdpPercap
+>  <chr>    <dbl>    <dbl> <chr>       <dbl>     <dbl>
+>1 Zimbabwe  1982  7636524 Africa       60.4      789.
+>2 Zimbabwe  1987  9216418 Africa       62.4      706.
+>3 Zimbabwe  1992 10704340 Africa       60.4      693.
+>4 Zimbabwe  1997 11404948 Africa       46.8      792.
+>5 Zimbabwe  2002 11926563 Africa       40.0      672.
+>6 Zimbabwe  2007 12311143 Africa       43.5      470.
+>```
+>
+>```r
+>tail(gapminder, n = 15)
+>```
+>
+>```
+># A tibble: 15 × 6
+>   country   year      pop continent lifeExp gdpPercap
+>   <chr>    <dbl>    <dbl> <chr>       <dbl>     <dbl>
+> 1 Zambia    1997  9417789 Africa       40.2     1071.
+> 2 Zambia    2002 10595811 Africa       39.2     1072.
+> 3 Zambia    2007 11746035 Africa       42.4     1271.
+> 4 Zimbabwe  1952  3080907 Africa       48.5      407.
+> 5 Zimbabwe  1957  3646340 Africa       50.5      519.
+> 6 Zimbabwe  1962  4277736 Africa       52.4      527.
+> 7 Zimbabwe  1967  4995432 Africa       54.0      570.
+> 8 Zimbabwe  1972  5861135 Africa       55.6      799.
+> 9 Zimbabwe  1977  6642107 Africa       57.7      686.
+>10 Zimbabwe  1982  7636524 Africa       60.4      789.
+>11 Zimbabwe  1987  9216418 Africa       62.4      706.
+>12 Zimbabwe  1992 10704340 Africa       60.4      693.
+>13 Zimbabwe  1997 11404948 Africa       46.8      792.
+>14 Zimbabwe  2002 11926563 Africa       40.0      672.
+>15 Zimbabwe  2007 12311143 Africa       43.5      470.
+>```
+></details>
+
+What about a few arbitrary rows just for sanity (or insanity depending on your view)?
+## Tip: There are several ways to achieve this.
+The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new ept, but you are already using it!
+Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have d for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for . What about getting a (pseudorandom) sample? R also has a function for this.
+~~~
+gapminder[sample(nrow(gapminder), 5), ]
+~~~
 
 Another very helpful function for looking at your data is the `unique` 
 function, to see the unique values in a particular column:
@@ -360,8 +346,8 @@ unique(gapminder$continent)
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> ## Challenge 3
->
+### Challenge 3
+
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset.
 
@@ -527,31 +513,38 @@ gapminder[can_mex, ]
 # … with 14 more rows
 ```
 
-> ## Challenge 4
+### Challenge 4
 > Select all the rows in `gapminder` with data from 1975 and earlier
 >
-> > Solution to Challenge 4
-> > 
-> > ```r
-> > gapminder[gapminder$year <= 1975, ]
-> > ```
-> > 
-> > ```
-> > # A tibble: 710 × 6
-> >    country      year      pop continent lifeExp gdpPercap
-> >    <chr>       <dbl>    <dbl> <chr>       <dbl>     <dbl>
-> >  1 Afghanistan  1952  8425333 Asia         28.8      779.
-> >  2 Afghanistan  1957  9240934 Asia         30.3      821.
-> >  3 Afghanistan  1962 10267083 Asia         32.0      853.
-> >  4 Afghanistan  1967 11537966 Asia         34.0      836.
-> >  5 Afghanistan  1972 13079460 Asia         36.1      740.
-> >  6 Albania      1952  1282697 Europe       55.2     1601.
-> >  7 Albania      1957  1476505 Europe       59.3     1942.
-> >  8 Albania      1962  1728137 Europe       64.8     2313.
-> >  9 Albania      1967  1984060 Europe       66.2     2760.
-> > 10 Albania      1972  2263554 Europe       67.7     3313.
-> > # … with 700 more rows
-> > ```
+> <details>
+> 
+> <summary>
+> Solution to challenge 4
+> </summary>
+> 
+> <br />
+> 
+> ```r
+> gapminder[gapminder$year <= 1975, ]
+> ```
+> 
+> ```
+> # A tibble: 710 × 6
+>    country      year      pop continent lifeExp gdpPercap
+>    <chr>       <dbl>    <dbl> <chr>       <dbl>     <dbl>
+>  1 Afghanistan  1952  8425333 Asia         28.8      779.
+>  2 Afghanistan  1957  9240934 Asia         30.3      821.
+>  3 Afghanistan  1962 10267083 Asia         32.0      853.
+>  4 Afghanistan  1967 11537966 Asia         34.0      836.
+>  5 Afghanistan  1972 13079460 Asia         36.1      740.
+>  6 Albania      1952  1282697 Europe       55.2     1601.
+>  7 Albania      1957  1476505 Europe       59.3     1942.
+>  8 Albania      1962  1728137 Europe       64.8     2313.
+>  9 Albania      1967  1984060 Europe       66.2     2760.
+> 10 Albania      1972  2263554 Europe       67.7     3313.
+> # … with 700 more rows
+> ```
+> </details>
 
 We saw previously how we can select a single column using the dollar sign `$`:
 
@@ -609,31 +602,38 @@ gapminder[ , c("country", "year", "lifeExp")]
 # … with 1,694 more rows
 ```
 
-> ## Challenge 5
+### Challenge 5
 > Select all the rows in `gapminder` with data from Canada, and just the columns
 > year, pop, and gdpPercap
+> <details>
+> 
+> <summary>
+> Solution to challenge 5
+> </summary>
+> 
+> <br />
+> 
+> ```r
+> gapminder[gapminder$country == "Canada", c("year", "pop", "gdpPercap")]
+> ```
+> 
+> ```
+> # A tibble: 12 × 3
+>     year      pop gdpPercap
+>    <dbl>    <dbl>     <dbl>
+>  1  1952 14785584    11367.
+>  2  1957 17010154    12490.
+>  3  1962 18985849    13462.
+>  4  1967 20819767    16077.
+>  5  1972 22284500    18971.
+>  6  1977 23796400    22091.
+>  7  1982 25201900    22899.
+>  8  1987 26549700    26627.
+>  9  1992 28523502    26343.
+> 10  1997 30305843    28955.
+> 11  2002 31902268    33329.
+> 12  2007 33390141    36319.
+> ```
+> </details>
 >
-> > Solution to Challenge 5
-> > 
-> > ```r
-> > gapminder[gapminder$country == "Canada", c("year", "pop", "gdpPercap")]
-> > ```
-> > 
-> > ```
-> > # A tibble: 12 × 3
-> >     year      pop gdpPercap
-> >    <dbl>    <dbl>     <dbl>
-> >  1  1952 14785584    11367.
-> >  2  1957 17010154    12490.
-> >  3  1962 18985849    13462.
-> >  4  1967 20819767    16077.
-> >  5  1972 22284500    18971.
-> >  6  1977 23796400    22091.
-> >  7  1982 25201900    22899.
-> >  8  1987 26549700    26627.
-> >  9  1992 28523502    26343.
-> > 10  1997 30305843    28955.
-> > 11  2002 31902268    33329.
-> > 12  2007 33390141    36319.
-> > ```
 

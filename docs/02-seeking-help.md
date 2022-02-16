@@ -96,129 +96,125 @@ fields. This can be a good starting point.
 
 ### Challenge 1
 
-Look at the help for the `sum` function. What are two ways you can pass numbers 
-into the function so the are added together?
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 1</strong>
-</summary>
-
-<br />
-
-
-```r
-?sum
-sum(1, 2, 3, 4, 5)
-x <- c(1, 2, 3)
-sum(x)
-```
-
-</details>
+> Look at the help for the `sum` function. What are two ways you can pass numbers 
+> into the function so the are added together?
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 1
+> </summary>
+> 
+> <br />
+> 
+> 
+> ```r
+> ?sum
+> sum(1, 2, 3, 4, 5)
+> x <- c(1, 2, 3)
+> sum(x)
+> ```
+> 
+> </details>
 
 
 
 
 ### Challenge 2
 
-Look at the help for the `paste` function. You'll need to use this later.
-What is the difference between the `sep` and `collapse` arguments?
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 2</strong>
-</summary>
-
-<br />
-
-To look at the help for the `paste()` function, use:
-
-```r
-help("paste")
-?paste
-```
-The difference between `sep` and `collapse` is a little
-tricky. The `paste` function accepts any number of arguments, each of which
-can be a vector of any length. The `sep` argument specifies the string
-used between concatenated terms — by default, a space. The result is a
-vector as long as the longest argument supplied to `paste`. In contrast,
-`collapse` specifies that after concatenation the elements are *collapsed*
-together using the given separator, the result being a single string.
-e.g. 
-
-```r
-paste(c("a","b"), "c")
-```
-
-```
-[1] "a c" "b c"
-```
-
-```r
-paste(c("a","b"), "c", sep = ",")
-```
-
-```
-[1] "a,c" "b,c"
-```
-
-```r
-paste(c("a","b"), "c", collapse = "|")
-```
-
-```
-[1] "a c|b c"
-```
-
-```r
-paste(c("a","b"), "c", sep = ",", collapse = "|")
-```
-
-```
-[1] "a,c|b,c"
-```
-(For more information,
-scroll to the bottom of the `?paste` help page and look at the
-examples, or try `example('paste')`.)
-
-</details>
+> Look at the help for the `paste` function. You'll need to use this later.
+> What is the difference between the `sep` and `collapse` arguments?
+> 
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+> 
+> To look at the help for the `paste()` function, use:
+> 
+> ```r
+> help("paste")
+> ?paste
+> ```
+> The difference between `sep` and `collapse` is a little
+> tricky. The `paste` function accepts any number of arguments, each of which
+> can be a vector of any length. The `sep` argument specifies the string
+> used between concatenated terms — by default, a space. The result is a
+> vector as long as the longest argument supplied to `paste`. In contrast,
+> `collapse` specifies that after concatenation the elements are *collapsed*
+> together using the given separator, the result being a single string.
+> e.g. 
+> 
+> ```r
+> paste(c("a","b"), "c")
+> ```
+> 
+> ```
+> [1] "a c" "b c"
+> ```
+> 
+> ```r
+> paste(c("a","b"), "c", sep = ",")
+> ```
+> 
+> ```
+> [1] "a,c" "b,c"
+> ```
+> 
+> ```r
+> paste(c("a","b"), "c", collapse = "|")
+> ```
+> 
+> ```
+> [1] "a c|b c"
+> ```
+> 
+> ```r
+> paste(c("a","b"), "c", sep = ",", collapse = "|")
+> ```
+> 
+> ```
+> [1] "a,c|b,c"
+> ```
+> (For more information,
+> scroll to the bottom of the `?paste` help page and look at the
+> examples, or try `example('paste')`.)
+> 
+> </details>
 
 
 
 
 ### Challenge 3
-Use help to find a function (and its associated parameters) that you could
-use to load data from a csv file in which columns are delimited with "\t"
-(tab) and the decimal point is a "." (period). This check for decimal
-separator is important, especially if you are working with international
-colleagues, because different countries have different conventions for the
-decimal point (i.e. comma vs period).
-hint: use `??csv` to lookup csv related functions.
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 3</strong>
-</summary>
-
-<br />
-
-The standard R function for reading tab-delimited files with a period
-decimal separator is read.delim(). You can also do this with
-`read.table(file, sep="\t")` (the period is the *default* decimal
-separator for `read.table()`, although you may have to change
-the `comment.char` argument as well if your data file contains
-hash (#) characters
-
-</details>
+> Use help to find a function (and its associated parameters) that you could
+> use to load data from a csv file in which columns are delimited with "\t"
+> (tab) and the decimal point is a "." (period). This check for decimal
+> separator is important, especially if you are working with international
+> colleagues, because different countries have different conventions for the
+> decimal point (i.e. comma vs period).
+> hint: use `??csv` to lookup csv related functions.
+> 
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 3
+> </summary>
+> 
+> <br />
+> 
+> The standard R function for reading tab-delimited files with a period
+> decimal separator is read.delim(). You can also do this with
+> `read.table(file, sep="\t")` (the period is the *default* decimal
+> separator for `read.table()`, although you may have to change
+> the `comment.char` argument as well if your data file contains
+> hash (#) characters
+> 
+> </details>
 
 
 

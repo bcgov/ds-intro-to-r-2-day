@@ -242,10 +242,11 @@ a column to be the same basic data type.</p>
 <h3>
 <span class="header-section-number">4.3.1</span> Discussion 1<a class="anchor" aria-label="anchor" href="#discussion-1"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Why is R so opinionated about what we put in our columns of data?
 How does this help us?</p>
-<p><br></p>
-<details><summary><strong>Solution to discussion 2</strong>
+<details><summary>
+Solution to discussion 1
 </summary><p><br></p>
 <p>By keeping everything in a column the same, we allow ourselves to make simple
 assumptions about our data; if you can interpret one entry in the column as a
@@ -253,7 +254,9 @@ number, then you can interpret <em>all</em> of them as numbers, so we don’t ha
 check every time. This consistency is what people mean when they talk about
 <em>clean data</em>; in the long run, strict consistency goes a long way to making
 our lives easier in R.</p>
-</details><p>Given what we’ve learned so far, what do you think the following will produce?</p>
+</details>
+</blockquote>
+<p>Given what we’ve learned so far, what do you think the following will produce?</p>
 <div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">quiz_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">6</span>,<span class="st">'3'</span><span class="op">)</span></code></pre></div>
 <p>This is something called <em>type coercion</em>, and it is the source of many surprises
@@ -354,10 +357,11 @@ calculations use such numerical representations for categorical data:</p>
 <div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">CATegories</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "integer"</code></pre>
-<div id="challenge-1-2" class="section level3" number="4.5.1">
+<div id="challenge-1-3" class="section level3" number="4.5.1">
 <h3>
-<span class="header-section-number">4.5.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.5.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-3"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Look at the help for <code><a href="https://readr.tidyverse.org/reference/read_delim.html">?read_csv</a></code> to figure out how to control what data type
 each column is read as. Then write a command so that <code>coat</code> is read as a
 factor, and <code>likes_string</code> is read as a logical</p>
@@ -373,11 +377,14 @@ factor, and <code>likes_string</code> is read as a logical</p>
                  col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>coat <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_factor.html">col_factor</a></span><span class="op">(</span><span class="op">)</span>, likes_string <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_logical</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">coat</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span></code></pre></div>
-</details><!--
+</details>
+</blockquote>
+<!--
 Note: new students find the help files difficult to understand; make sure to let them know
 that this is typical, and encourage them to take their best guess based on semantic meaning,
 even if they aren't sure.
---><p>In modeling functions, it’s important to know what the baseline levels are. This
+-->
+<p>In modeling functions, it’s important to know what the baseline levels are. This
 is assumed to be the first factor, but by default factors are labeled in
 alphabetical order. You can change this by specifying the levels:</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
@@ -469,11 +476,11 @@ thus can be composed of elements of different types.</p>
  $ coat        : chr "calico"
  $ weight      : num 2.1
  $ likes_string: logi TRUE</code></pre>
-</div>
-<div id="challenge-3-2" class="section level2" number="4.7">
-<h2>
-<span class="header-section-number">4.7</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3-2"><i class="fas fa-link"></i></a>
-</h2>
+<div id="challenge-2-2" class="section level3" number="4.6.1">
+<h3>
+<span class="header-section-number">4.6.1</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2-2"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
 <p>There are several subtly different ways to call variables, observations and
 elements from data.frames:</p>
 <ul>
@@ -487,8 +494,8 @@ elements from data.frames:</p>
 </ul>
 <p>Try out these examples and explain what is returned by each one.</p>
 <p><em>Hint:</em> Use the function <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> to examine what is returned in each case.</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 3</strong>
+<details><summary>
+Solution to challenge 2
 </summary><p><br></p>
 <div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></code></pre></div>
@@ -552,10 +559,12 @@ lue as all the elements in this <em>column</em> <em>vector</em>.</p>
 coordinate is not specified. The return value is a <em>list</em> containing all the
 values in the first row.</p>
 </details>
+</blockquote>
 </div>
-<div id="matrices" class="section level2" number="4.8">
+</div>
+<div id="matrices" class="section level2" number="4.7">
 <h2>
-<span class="header-section-number">4.8</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
 </h2>
 <p>Last but not least is the matrix. We can declare a matrix full of zeros:</p>
 <div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
@@ -584,16 +593,17 @@ values in the first row.</p>
 <div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 6</code></pre>
-<div id="challenge-4-1" class="section level3" number="4.8.1">
+<div id="challenge-3-2" class="section level3" number="4.7.1">
 <h3>
-<span class="header-section-number">4.8.1</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.1</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3-2"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>What do you think will be the result of
 <code>length(matrix_example)</code>?
 Try it.
 Were you right? Why / why not?</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 4</strong>
+<details><summary>
+Solution to challenge 3
 </summary><p><br></p>
 <p>What do you think will be the result of
 <code>length(matrix_example)</code>?</p>
@@ -601,21 +611,24 @@ Were you right? Why / why not?</p>
 <code class="sourceCode R"><span class="va">matrix_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, ncol<span class="op">=</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 18</code></pre>
-</details><p>Because a matrix is a vector with added dimension attributes, <code>length</code>
+</details>
+</blockquote>
+<p>Because a matrix is a vector with added dimension attributes, <code>length</code>
 gives you the total number of elements in the matrix.</p>
 </div>
-<div id="challenge-5-1" class="section level3" number="4.8.2">
+<div id="challenge-4-1" class="section level3" number="4.7.2">
 <h3>
-<span class="header-section-number">4.8.2</span> Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.2</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4-1"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Make another matrix, this time containing the numbers 1:50,
 with 5 columns and 10 rows.
 Did the <code>matrix</code> function fill your matrix by column, or by
 row, as its default behaviour?
 See if you can figure out how to change this.
 (hint: read the documentation for <code>matrix</code>!)</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 5</strong>
+<details><summary>
+Solution to challenge 4
 </summary><p><br></p>
 <p>Make another matrix, this time containing the numbers 1:50,
 with 5 columns and 10 rows.
@@ -627,11 +640,13 @@ See if you can figure out how to change this.
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, ncol<span class="op">=</span><span class="fl">5</span>, nrow<span class="op">=</span><span class="fl">10</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, ncol<span class="op">=</span><span class="fl">5</span>, nrow<span class="op">=</span><span class="fl">10</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># to fill by row</span></code></pre></div>
 </details>
+</blockquote>
 </div>
-<div id="challenge-6" class="section level3" number="4.8.3">
+<div id="challenge-5-1" class="section level3" number="4.7.3">
 <h3>
-<span class="header-section-number">4.8.3</span> Challenge 6<a class="anchor" aria-label="anchor" href="#challenge-6"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.3</span> Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5-1"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Create a list of length two containing a character vector for each of the sections in this part of the workshop:</p>
 <ul>
 <li>Data types</li>
@@ -639,19 +654,21 @@ See if you can figure out how to change this.
 </ul>
 <p>Populate each character vector with the names of the data types and data
 structures we’ve seen so far.</p>
-<p><br></p>
-<details><summary><strong>Solution to challenge 6</strong>
+<details><summary>
+Solution to challenge 5
 </summary><p><br></p>
 <div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dataTypes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'double'</span>, <span class="st">'complex'</span>, <span class="st">'integer'</span>, <span class="st">'character'</span>, <span class="st">'logical'</span><span class="op">)</span>
 <span class="va">dataStructures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'data.frame'</span>, <span class="st">'vector'</span>, <span class="st">'factor'</span>, <span class="st">'list'</span>, <span class="st">'matrix'</span><span class="op">)</span>
 <span class="va">answer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">dataTypes</span>, <span class="va">dataStructures</span><span class="op">)</span></code></pre></div>
 </details>
+</blockquote>
 </div>
-<div id="challenge-7" class="section level3" number="4.8.4">
+<div id="challenge-6" class="section level3" number="4.7.4">
 <h3>
-<span class="header-section-number">4.8.4</span> Challenge 7<a class="anchor" aria-label="anchor" href="#challenge-7"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.4</span> Challenge 6<a class="anchor" aria-label="anchor" href="#challenge-6"><i class="fas fa-link"></i></a>
 </h3>
+<blockquote>
 <p>Consider the R output of the matrix below:</p>
 <pre><code>     [,1] [,2]
 [1,]    4    1
@@ -666,8 +683,8 @@ Think about what matrices the other commands will produce.</p>
 <li><code>matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)</code></li>
 <li><code>matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)</code></li>
 </ol>
-<p><br></p>
-<details><summary><strong>Solution to challenge 7</strong>
+<details><summary>
+Solution to challenge 6
 </summary><p><br></p>
 <p>Consider the R output of the matrix below:</p>
 <pre><code>     [,1] [,2]
@@ -680,6 +697,8 @@ Think about what matrices the other commands will produce.</p>
 <div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">9</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">7</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </details>
+</blockquote>
+
 </div>
 </div>
 </div>
@@ -697,16 +716,17 @@ Think about what matrices the other commands will produce.</p>
 </li>
 <li><a class="nav-link" href="#data-frames"><span class="header-section-number">4.4</span> Data Frames</a></li>
 <li>
-<a class="nav-link" href="#factors"><span class="header-section-number">4.5</span> Factors</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-2"><span class="header-section-number">4.5.1</span> Challenge 1</a></li></ul>
+<a class="nav-link" href="#factors"><span class="header-section-number">4.5</span> Factors</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-3"><span class="header-section-number">4.5.1</span> Challenge 1</a></li></ul>
 </li>
-<li><a class="nav-link" href="#lists"><span class="header-section-number">4.6</span> Lists</a></li>
-<li><a class="nav-link" href="#challenge-3-2"><span class="header-section-number">4.7</span> Challenge 3</a></li>
 <li>
-<a class="nav-link" href="#matrices"><span class="header-section-number">4.8</span> Matrices</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#challenge-4-1"><span class="header-section-number">4.8.1</span> Challenge 4</a></li>
-<li><a class="nav-link" href="#challenge-5-1"><span class="header-section-number">4.8.2</span> Challenge 5</a></li>
-<li><a class="nav-link" href="#challenge-6"><span class="header-section-number">4.8.3</span> Challenge 6</a></li>
-<li><a class="nav-link" href="#challenge-7"><span class="header-section-number">4.8.4</span> Challenge 7</a></li>
+<a class="nav-link" href="#lists"><span class="header-section-number">4.6</span> Lists</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-2"><span class="header-section-number">4.6.1</span> Challenge 2</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#matrices"><span class="header-section-number">4.7</span> Matrices</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#challenge-3-2"><span class="header-section-number">4.7.1</span> Challenge 3</a></li>
+<li><a class="nav-link" href="#challenge-4-1"><span class="header-section-number">4.7.2</span> Challenge 4</a></li>
+<li><a class="nav-link" href="#challenge-5-1"><span class="header-section-number">4.7.3</span> Challenge 5</a></li>
+<li><a class="nav-link" href="#challenge-6"><span class="header-section-number">4.7.4</span> Challenge 6</a></li>
 </ul>
 </li>
 </ul>

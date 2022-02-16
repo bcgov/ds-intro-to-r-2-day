@@ -347,27 +347,26 @@ a column to be the same basic data type.
 
 ### Discussion 1
 
-Why is R so opinionated about what we put in our columns of data?
-How does this help us?
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to discussion 2</strong>
-</summary>
-
-<br />
-
-By keeping everything in a column the same, we allow ourselves to make simple
-assumptions about our data; if you can interpret one entry in the column as a
-number, then you can interpret *all* of them as numbers, so we don't have to
-check every time. This consistency is what people mean when they talk about 
-*clean data*; in the long run, strict consistency goes a long way to making 
-our lives easier in R.
-
-</details>
+> Why is R so opinionated about what we put in our columns of data?
+> How does this help us?
+> 
+> 
+> <details>
+> 
+> <summary>
+> Solution to discussion 1
+> </summary>
+> 
+> <br />
+> 
+> By keeping everything in a column the same, we allow ourselves to make simple
+> assumptions about our data; if you can interpret one entry in the column as a
+> number, then you can interpret *all* of them as numbers, so we don't have to
+> check every time. This consistency is what people mean when they talk about 
+> *clean data*; in the long run, strict consistency goes a long way to making 
+> our lives easier in R.
+> 
+> </details>
 
 
 Given what we've learned so far, what do you think the following will produce?
@@ -562,34 +561,34 @@ typeof(CATegories)
 
 ### Challenge 1
 
-Look at the help for `?read_csv` to figure out how to control what data type 
-each column is read as. Then write a command so that `coat` is read as a
-factor, and `likes_string` is read as a logical
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 1</strong>
-</summary>
-
-<br />
-
-Use the `col_types` argument:
-
-
-```r
-cats <- read_csv(file="data/feline-data.csv", col_types = "fnl")
-class(cats$coat)
-class(cats$likes_string)
-cats <- read_csv(file="data/feline-data.csv", 
-                 col_types = cols(coat = col_factor(), likes_string = col_logical()))
-class(cats$coat)
-class(cats$likes_string)
-```
-
-</details>
+> Look at the help for `?read_csv` to figure out how to control what data type 
+> each column is read as. Then write a command so that `coat` is read as a
+> factor, and `likes_string` is read as a logical
+> 
+> <br />
+> 
+> <details>
+> 
+> <summary>
+> <strong>Solution to challenge 1</strong>
+> </summary>
+> 
+> <br />
+> 
+> Use the `col_types` argument:
+> 
+> 
+> ```r
+> cats <- read_csv(file="data/feline-data.csv", col_types = "fnl")
+> class(cats$coat)
+> class(cats$likes_string)
+> cats <- read_csv(file="data/feline-data.csv", 
+>                  col_types = cols(coat = col_factor(), likes_string = col_logical()))
+> class(cats$coat)
+> class(cats$likes_string)
+> ```
+> 
+> </details>
 
 
 
@@ -754,131 +753,130 @@ tibble [1 × 3] (S3: tbl_df/tbl/data.frame)
  $ likes_string: logi TRUE
 ```
 
-## Challenge 3
+### Challenge 2
 
-There are several subtly different ways to call variables, observations and
-elements from data.frames:
-
-- `cats[1]`
-- `cats[[1]]`
-- `cats$coat`
-- `cats["coat"]`
-- `cats[1, 1]`
-- `cats[, 1]`
-- `cats[1, ]`
-
-Try out these examples and explain what is returned by each one.
-
-*Hint:* Use the function `typeof()` to examine what is returned in each case.
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 3</strong>
-</summary>
-
-<br />
-
-
-```r
-cats[1]
-```
-
-```
-# A tibble: 3 × 1
-  coat  
-  <chr> 
-1 calico
-2 black 
-3 tabby 
-```
-We can think of a data frame as a list of vectors. The single brace `[1]`
-turns the first slice of the list, as another list. In this case it is the
-rst column of the data frame.
-
-```r
-cats[[1]]
-```
-
-```
-[1] "calico" "black"  "tabby" 
-```
-The double brace `[[1]]` returns the contents of the list item. In this case
- is the contents of the first column, a _vector_ of type _factor_.
-
-```r
-cats$coat
-```
-
-```
-[1] "calico" "black"  "tabby" 
-```
-This example uses the `$` character to address items by name. _coat_ is the
-rst column of the data frame, again a _vector_ of type _factor_.
-
-```r
-cats["coat"]
-```
-
-```
-# A tibble: 3 × 1
-  coat  
-  <chr> 
-1 calico
-2 black 
-3 tabby 
-```
-Here we are using a single brace `["coat"]` replacing the index number with
-e column name. Like example 1, the returned object is a _list_.
-
-```r
-cats[1, 1]
-```
-
-```
-# A tibble: 1 × 1
-  coat  
-  <chr> 
-1 calico
-```
-This example uses a single brace, but this time we provide row and column
-ordinates. The returned object is the value in row 1, column 1. The object
- an _integer_ but because it is part of a _vector_ of type _factor_, R
-splays the label "calico" associated with the integer value.
-
-```r
-cats[, 1]
-```
-
-```
-# A tibble: 3 × 1
-  coat  
-  <chr> 
-1 calico
-2 black 
-3 tabby 
-```
-Like the previous example we use single braces and provide row and column
-ordinates. The row coordinate is not specified, R interprets this missing
-lue as all the elements in this _column_ _vector_.
-
-```r
-cats[1, ]
-```
-
-```
-# A tibble: 1 × 3
-  coat   weight likes_string
-  <chr>   <dbl> <lgl>       
-1 calico    2.1 TRUE        
-```
-Again we use the single brace with row and column coordinates. The column
-coordinate is not specified. The return value is a _list_ containing all the
-values in the first row.
-
-</details>
+> There are several subtly different ways to call variables, observations and
+> elements from data.frames:
+> 
+> - `cats[1]`
+> - `cats[[1]]`
+> - `cats$coat`
+> - `cats["coat"]`
+> - `cats[1, 1]`
+> - `cats[, 1]`
+> - `cats[1, ]`
+> 
+> Try out these examples and explain what is returned by each one.
+> 
+> *Hint:* Use the function `typeof()` to examine what is returned in each case.
+> 
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+> 
+> 
+> ```r
+> cats[1]
+> ```
+> 
+> ```
+> # A tibble: 3 × 1
+>   coat  
+>   <chr> 
+> 1 calico
+> 2 black 
+> 3 tabby 
+> ```
+> We can think of a data frame as a list of vectors. The single brace `[1]`
+> turns the first slice of the list, as another list. In this case it is the
+> rst column of the data frame.
+> 
+> ```r
+> cats[[1]]
+> ```
+> 
+> ```
+> [1] "calico" "black"  "tabby" 
+> ```
+> The double brace `[[1]]` returns the contents of the list item. In this case
+>  is the contents of the first column, a _vector_ of type _factor_.
+> 
+> ```r
+> cats$coat
+> ```
+> 
+> ```
+> [1] "calico" "black"  "tabby" 
+> ```
+> This example uses the `$` character to address items by name. _coat_ is the
+> rst column of the data frame, again a _vector_ of type _factor_.
+> 
+> ```r
+> cats["coat"]
+> ```
+> 
+> ```
+> # A tibble: 3 × 1
+>   coat  
+>   <chr> 
+> 1 calico
+> 2 black 
+> 3 tabby 
+> ```
+> Here we are using a single brace `["coat"]` replacing the index number with
+> e column name. Like example 1, the returned object is a _list_.
+> 
+> ```r
+> cats[1, 1]
+> ```
+> 
+> ```
+> # A tibble: 1 × 1
+>   coat  
+>   <chr> 
+> 1 calico
+> ```
+> This example uses a single brace, but this time we provide row and column
+> ordinates. The returned object is the value in row 1, column 1. The object
+>  an _integer_ but because it is part of a _vector_ of type _factor_, R
+> splays the label "calico" associated with the integer value.
+> 
+> ```r
+> cats[, 1]
+> ```
+> 
+> ```
+> # A tibble: 3 × 1
+>   coat  
+>   <chr> 
+> 1 calico
+> 2 black 
+> 3 tabby 
+> ```
+> Like the previous example we use single braces and provide row and column
+> ordinates. The row coordinate is not specified, R interprets this missing
+> lue as all the elements in this _column_ _vector_.
+> 
+> ```r
+> cats[1, ]
+> ```
+> 
+> ```
+> # A tibble: 1 × 3
+>   coat   weight likes_string
+>   <chr>   <dbl> <lgl>       
+> 1 calico    2.1 TRUE        
+> ```
+> Again we use the single brace with row and column coordinates. The column
+> coordinate is not specified. The return value is a _list_ containing all the
+> values in the first row.
+> 
+> </details>
 
 ## Matrices
 
@@ -948,152 +946,147 @@ ncol(matrix_example)
 [1] 6
 ```
 
-### Challenge 4
+### Challenge 3
 
-What do you think will be the result of
-`length(matrix_example)`?
-Try it.
-Were you right? Why / why not?
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 4</strong>
-</summary>
-
-<br />
-
-What do you think will be the result of
-`length(matrix_example)`?
-
-
-```r
-matrix_example <- matrix(0, ncol=6, nrow=3)
-length(matrix_example)
-```
-
-```
-[1] 18
-```
-
-</details>
+> What do you think will be the result of
+> `length(matrix_example)`?
+> Try it.
+> Were you right? Why / why not?
+> 
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 3
+> </summary>
+> 
+> <br />
+> 
+> What do you think will be the result of
+> `length(matrix_example)`?
+> 
+> 
+> ```r
+> matrix_example <- matrix(0, ncol=6, nrow=3)
+> length(matrix_example)
+> ```
+> 
+> ```
+> [1] 18
+> ```
+> 
+> </details>
 
 
 Because a matrix is a vector with added dimension attributes, `length`
 gives you the total number of elements in the matrix.
 
 
+### Challenge 4
+
+> Make another matrix, this time containing the numbers 1:50,
+> with 5 columns and 10 rows.
+> Did the `matrix` function fill your matrix by column, or by
+> row, as its default behaviour?
+> See if you can figure out how to change this.
+> (hint: read the documentation for `matrix`!)
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 4
+> </summary>
+> 
+> <br />
+> 
+> Make another matrix, this time containing the numbers 1:50,
+> with 5 columns and 10 rows.
+> Did the `matrix` function fill your matrix by column, or by
+> row, as its default behaviour?
+> See if you can figure out how to change this.
+> (hint: read the documentation for `matrix`!)
+> 
+> 
+> ```r
+> x <- matrix(1:50, ncol=5, nrow=10)
+> x <- matrix(1:50, ncol=5, nrow=10, byrow = TRUE) # to fill by row
+> ```
+> 
+> </details>
+
+
 ### Challenge 5
+> Create a list of length two containing a character vector for each of the sections in this part of the workshop:
+> 
+>  - Data types
+>  - Data structures
+> 
+>  Populate each character vector with the names of the data types and data
+>  structures we've seen so far.
+>  
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 5
+> </summary>
+> 
+> <br />
+> 
+> 
+> ```r
+> dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
+> dataStructures <- c('data.frame', 'vector', 'factor', 'list', 'matrix')
+> answer <- list(dataTypes, dataStructures)
+> ```
+> 
+> </details>
 
-Make another matrix, this time containing the numbers 1:50,
-with 5 columns and 10 rows.
-Did the `matrix` function fill your matrix by column, or by
-row, as its default behaviour?
-See if you can figure out how to change this.
-(hint: read the documentation for `matrix`!)
 
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 5</strong>
-</summary>
-
-<br />
-
-Make another matrix, this time containing the numbers 1:50,
-with 5 columns and 10 rows.
-Did the `matrix` function fill your matrix by column, or by
-row, as its default behaviour?
-See if you can figure out how to change this.
-(hint: read the documentation for `matrix`!)
-
-
-```r
-x <- matrix(1:50, ncol=5, nrow=10)
-x <- matrix(1:50, ncol=5, nrow=10, byrow = TRUE) # to fill by row
-```
-
-</details>
 
 
 ### Challenge 6
- Create a list of length two containing a character vector for each of the sections in this part of the workshop:
 
- - Data types
- - Data structures
-
- Populate each character vector with the names of the data types and data
- structures we've seen so far.
- 
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 6</strong>
-</summary>
-
-<br />
-
-
-```r
-dataTypes <- c('double', 'complex', 'integer', 'character', 'logical')
-dataStructures <- c('data.frame', 'vector', 'factor', 'list', 'matrix')
-answer <- list(dataTypes, dataStructures)
-```
-
-</details>
-
-
-
-
-### Challenge 7
-
-Consider the R output of the matrix below:
-
-```
-     [,1] [,2]
-[1,]    4    1
-[2,]    9    5
-[3,]   10    7
-```
-What was the correct command used to write this matrix? Examine
-each command and try to figure out the correct one before typing them.
-Think about what matrices the other commands will produce.
-
-1. `matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)`
-2. `matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)`
-3. `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
-4. `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
-
-<br />
-
-<details>
-
-<summary>
-<strong>Solution to challenge 7</strong>
-</summary>
-
-<br />
-
-Consider the R output of the matrix below:
-
-```
-     [,1] [,2]
-[1,]    4    1
-[2,]    9    5
-[3,]   10    7
-```
-What was the correct command used to write this matrix? Examine
-each command and try to figure out the correct one before typing them.
-Think about what matrices the other commands will produce.
-
-```r
-matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
-```
-
-</details>
+> Consider the R output of the matrix below:
+> 
+> ```
+>      [,1] [,2]
+> [1,]    4    1
+> [2,]    9    5
+> [3,]   10    7
+> ```
+> What was the correct command used to write this matrix? Examine
+> each command and try to figure out the correct one before typing them.
+> Think about what matrices the other commands will produce.
+> 
+> 1. `matrix(c(4, 1, 9, 5, 10, 7), nrow = 3)`
+> 2. `matrix(c(4, 9, 10, 1, 5, 7), ncol = 2, byrow = TRUE)`
+> 3. `matrix(c(4, 9, 10, 1, 5, 7), nrow = 2)`
+> 4. `matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)`
+> 
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 6
+> </summary>
+> 
+> <br />
+> 
+> Consider the R output of the matrix below:
+> 
+> ```
+>      [,1] [,2]
+> [1,]    4    1
+> [2,]    9    5
+> [3,]   10    7
+> ```
+> What was the correct command used to write this matrix? Examine
+> each command and try to figure out the correct one before typing them.
+> Think about what matrices the other commands will produce.
+> 
+> ```r
+> matrix(c(4, 1, 9, 5, 10, 7), ncol = 2, byrow = TRUE)
+> ```
+> 
+> </details>
