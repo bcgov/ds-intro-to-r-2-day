@@ -61,7 +61,7 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
 
-Open command prompt (Open Start Menu then type `cmd` and press <kbd>Enter<\kbd>). Make sure your command prompt opens at the C directory e.g. ```C:\>```. If it opens in another directory you can change this by typing ```C:```.  
+Open command prompt (Open Start Menu then type `cmd` and press <kbd>Enter</kbd>). Make sure your command prompt opens at the C directory e.g. ```C:\>```. If it opens in another directory you can change this by typing ```C:```.  
 
 Type the following line into the command prompt window exactly as shown:
 
@@ -69,8 +69,8 @@ Type the following line into the command prompt window exactly as shown:
 setx HOME "%USERPROFILE%"
 ```
 
-Press <kbd>Enter<\kbd>, you should see **SUCCESS: Specified value was saved**.
-Quit command prompt by typing `exit` then pressing <kbd>Enter<\kbd>
+Press <kbd>Enter</kbd>, you should see **SUCCESS: Specified value was saved**.
+Quit command prompt by typing `exit` then pressing <kbd>Enter</kbd>
 
 **If you do not have administrative rights on your computer:**
 
@@ -755,7 +755,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fc7c440ebf8>
+<bytecode: 0x7fbf1fbfbbf8>
 <environment: namespace:base>
 ```
 

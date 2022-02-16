@@ -332,6 +332,7 @@ sum_books %>%
 
 <img src="fig/rmd-09-unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" />
 
+
 ```r
 sum_books %>% 
   filter(total_books > 100000) %>% 
@@ -339,7 +340,7 @@ sum_books %>%
   geom_col()
 ```
 
-<img src="fig/rmd-09-unnamed-chunk-11-2.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/rmd-09-unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
 
 ### Challenge 3 (10 minutes)
 
@@ -361,7 +362,7 @@ sum_books %>%
 >  filter(total_books > 100000) %>% 
 >  ggplot(aes(total_books, City)) +
 >  geom_col() +
->  facet_wrap(vars(`Library System`)) +
+>  facet_wrap(vars(`Library System`), ncol = 3) +
 >  theme_minimal() +
 >  labs(x = NULL,
 >       y = NULL,
@@ -369,7 +370,7 @@ sum_books %>%
 >       caption = "Data sourced from the B.C. Data Catalogue")
 >```
 >
-><img src="fig/rmd-09-unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
+><img src="fig/rmd-09-unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
 
@@ -423,7 +424,7 @@ sum_books %>%
 >  theme(axis.title.x = element_blank())
 >```
 >
-><img src="fig/rmd-09-unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
+><img src="fig/rmd-09-unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
 
