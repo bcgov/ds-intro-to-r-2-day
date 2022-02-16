@@ -1,291 +1,68 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop</title>
-  <meta name="description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day" />
-  
-  <meta property="og:description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  <meta name="github-repo" content="bcgov/ds-intro-to-r-2-day" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop" />
-  
-  <meta name="twitter:description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  
-
-
-
-<meta name="date" content="2022-02-16" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="create-tidy-data-with-tidyr.html"/>
-<link rel="next" href="data-analysis-reports.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop</title>
+<meta name="description" content="The British Columbia government hosts over 2000 tabular and geospatial data sets in the B.C. Data Catalogue. Most data is available through the B.C. Data Catalogue under an open licence. The...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/introduction-to-the-bcdata-package.html">
+<meta property="og:description" content="The British Columbia government hosts over 2000 tabular and geospatial data sets in the B.C. Data Catalogue. Most data is available through the B.C. Data Catalogue under an open licence. The...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop">
+<meta name="twitter:description" content="The British Columbia government hosts over 2000 tabular and geospatial data sets in the B.C. Data Catalogue. Most data is available through the B.C. Data Catalogue under an open licence. The...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Introduction to Data Science using R Workshop</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#motivation"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#before-starting-the-workshop"><i class="fa fa-check"></i><b>1.2</b> Before Starting The Workshop</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>1.3</b> Introduction to RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#work-flow-within-rstudio"><i class="fa fa-check"></i><b>1.4</b> Work flow within RStudio</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>1.5</b> Introduction to R</a></li>
-<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-as-a-calculator"><i class="fa fa-check"></i><b>1.6</b> Using R as a calculator</a></li>
-<li class="chapter" data-level="1.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mathematical-functions"><i class="fa fa-check"></i><b>1.7</b> Mathematical functions</a></li>
-<li class="chapter" data-level="1.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comparing-things"><i class="fa fa-check"></i><b>1.8</b> Comparing things</a></li>
-<li class="chapter" data-level="1.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#variables-and-assignment"><i class="fa fa-check"></i><b>1.9</b> Variables and assignment</a></li>
-<li class="chapter" data-level="1.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectorization"><i class="fa fa-check"></i><b>1.10</b> Vectorization</a></li>
-<li class="chapter" data-level="1.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#managing-your-environment"><i class="fa fa-check"></i><b>1.11</b> Managing your environment</a></li>
-<li class="chapter" data-level="1.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-packages"><i class="fa fa-check"></i><b>1.12</b> R Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html"><i class="fa fa-check"></i><b>2</b> Seeking Help in R</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#reading-help-files"><i class="fa fa-check"></i><b>2.1</b> Reading Help files</a></li>
-<li class="chapter" data-level="2.2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#special-operators"><i class="fa fa-check"></i><b>2.2</b> Special Operators</a></li>
-<li class="chapter" data-level="2.3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#getting-help-on-packages"><i class="fa fa-check"></i><b>2.3</b> Getting help on packages</a></li>
-<li class="chapter" data-level="2.4" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-kind-of-remember-the-function"><i class="fa fa-check"></i><b>2.4</b> When you kind of remember the function</a></li>
-<li class="chapter" data-level="2.5" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-have-no-idea-where-to-begin"><i class="fa fa-check"></i><b>2.5</b> When you have no idea where to begin</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html"><i class="fa fa-check"></i><b>3</b> Project Management With RStudio</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#a-possible-solution"><i class="fa fa-check"></i><b>3.2</b> A possible solution</a></li>
-<li class="chapter" data-level="3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#best-practices-for-project-organization"><i class="fa fa-check"></i><b>3.3</b> Best practices for project organization</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>3.3.1</b> Treat data as read only</a></li>
-<li class="chapter" data-level="3.3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#data-cleaning"><i class="fa fa-check"></i><b>3.3.2</b> Data Cleaning</a></li>
-<li class="chapter" data-level="3.3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>3.3.3</b> Treat generated output as disposable</a></li>
-<li class="chapter" data-level="3.3.4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>3.3.4</b> Separate function definition and application</a></li>
-<li class="chapter" data-level="3.3.5" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#version-control"><i class="fa fa-check"></i><b>3.3.5</b> Version Control</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="data-structures.html"><a href="data-structures.html#the-readr-package"><i class="fa fa-check"></i><b>4.1</b> The <em>readr</em> package</a></li>
-<li class="chapter" data-level="4.2" data-path="data-structures.html"><a href="data-structures.html#data-types"><i class="fa fa-check"></i><b>4.2</b> Data Types</a></li>
-<li class="chapter" data-level="4.3" data-path="data-structures.html"><a href="data-structures.html#vectors-and-type-coercion"><i class="fa fa-check"></i><b>4.3</b> Vectors and Type Coercion</a></li>
-<li class="chapter" data-level="4.4" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>4.4</b> Data Frames</a></li>
-<li class="chapter" data-level="4.5" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>4.5</b> Factors</a></li>
-<li class="chapter" data-level="4.6" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>4.6</b> Lists</a></li>
-<li class="chapter" data-level="4.7" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>4.7</b> Matrices</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html"><i class="fa fa-check"></i><b>5</b> Exploring Data Frames</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#introducing-the-gapminder-data"><i class="fa fa-check"></i><b>5.1</b> Introducing the Gapminder data</a></li>
-<li class="chapter" data-level="5.2" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#basic-subsetting"><i class="fa fa-check"></i><b>5.2</b> Basic subsetting</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#selecting-rows"><i class="fa fa-check"></i><b>5.2.1</b> Selecting rows</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Creating Publication-Quality Graphics with ggplot2</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#getting-started"><i class="fa fa-check"></i><b>6.1</b> Getting started</a></li>
-<li class="chapter" data-level="6.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>6.2</b> Layers</a></li>
-<li class="chapter" data-level="6.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>6.3</b> Transformations and statistics</a></li>
-<li class="chapter" data-level="6.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>6.4</b> Multi-panel figures</a></li>
-<li class="chapter" data-level="6.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>6.5</b> Modifying text</a></li>
-<li class="chapter" data-level="6.6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>6.6</b> Exporting the plot</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>7</b> Dataframe Manipulation with dplyr</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#the-dplyr-package"><i class="fa fa-check"></i><b>7.1</b> The <code>dplyr</code> package</a></li>
-<li class="chapter" data-level="7.2" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-select"><i class="fa fa-check"></i><b>7.2</b> Using select()</a></li>
-<li class="chapter" data-level="7.3" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter"><i class="fa fa-check"></i><b>7.3</b> Using filter()</a></li>
-<li class="chapter" data-level="7.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>7.4</b> Using filter() with pipes</a></li>
-<li class="chapter" data-level="7.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>7.5</b> Using group_by() and summarize()</a></li>
-<li class="chapter" data-level="7.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>7.6</b> Using summarize()</a></li>
-<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-count"><i class="fa fa-check"></i><b>7.7</b> Using count()</a></li>
-<li class="chapter" data-level="7.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>7.8</b> Using mutate()</a></li>
-<li class="chapter" data-level="7.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-groupings-ifelse"><i class="fa fa-check"></i><b>7.9</b> Connect mutate with logical groupings: ifelse</a></li>
-<li class="chapter" data-level="7.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>7.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
-<li class="chapter" data-level="7.11" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#other-great-resources"><i class="fa fa-check"></i><b>7.11</b> Other great resources</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html"><i class="fa fa-check"></i><b>8</b> Create Tidy Data with tidyr</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#getting-started-1"><i class="fa fa-check"></i><b>8.1</b> Getting started</a></li>
-<li class="chapter" data-level="8.2" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-wide-to-long-format-with-pivot_longer"><i class="fa fa-check"></i><b>8.2</b> From wide to long format with pivot_longer()</a></li>
-<li class="chapter" data-level="8.3" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-long-to-intermediate-format-with-pivot_wider"><i class="fa fa-check"></i><b>8.3</b> From long to intermediate format with pivot_wider()</a></li>
-<li class="chapter" data-level="8.4" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#other-great-resources-1"><i class="fa fa-check"></i><b>8.4</b> Other great resources</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html"><i class="fa fa-check"></i><b>9</b> Introduction to the bcdata package</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#getting-started-2"><i class="fa fa-check"></i><b>9.1</b> Getting started</a></li>
-<li class="chapter" data-level="9.2" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#searching-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.2</b> Searching the B.C. Data Catalogue</a></li>
-<li class="chapter" data-level="9.3" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#importing-data-from-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.3</b> Importing data from the B.C. Data Catalogue</a></li>
-<li class="chapter" data-level="9.4" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-manipulating-data-with-dplyr"><i class="fa fa-check"></i><b>9.4</b> Practice manipulating data with <code>dplyr</code></a></li>
-<li class="chapter" data-level="9.5" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-plotting-data-with-ggplot2"><i class="fa fa-check"></i><b>9.5</b> Practice plotting data with <code>ggplot2</code></a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>10</b> Data analysis reports</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#literate-programming"><i class="fa fa-check"></i><b>10.1</b> Literate programming</a></li>
-<li class="chapter" data-level="10.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#example-of-using-r-markdown-in-the-bc-government"><i class="fa fa-check"></i><b>10.2</b> Example of Using R Markdown in the BC Government</a>
-<ul>
-<li class="chapter" data-level="10.2.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#documentation"><i class="fa fa-check"></i><b>10.2.1</b> Documentation</a></li>
-<li class="chapter" data-level="10.2.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#teaching"><i class="fa fa-check"></i><b>10.2.2</b> Teaching</a></li>
-<li class="chapter" data-level="10.2.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#presentation"><i class="fa fa-check"></i><b>10.2.3</b> Presentation</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>10.3</b> Creating an R Markdown file</a></li>
-<li class="chapter" data-level="10.4" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#basic-components-of-r-markdown"><i class="fa fa-check"></i><b>10.4</b> Basic components of R Markdown</a></li>
-<li class="chapter" data-level="10.5" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#markdown"><i class="fa fa-check"></i><b>10.5</b> Markdown</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-bit-more-markdown"><i class="fa fa-check"></i><b>10.5.1</b> A bit more Markdown</a></li>
-<li class="chapter" data-level="10.5.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#r-code-chunks"><i class="fa fa-check"></i><b>10.5.2</b> R code chunks</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#how-r-markdown-gets-compiled"><i class="fa fa-check"></i><b>10.6</b> How R Markdown gets compiled</a></li>
-<li class="chapter" data-level="10.7" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#chunk-options"><i class="fa fa-check"></i><b>10.7</b> Chunk options</a>
-<ul>
-<li class="chapter" data-level="10.7.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#global-options"><i class="fa fa-check"></i><b>10.7.1</b> Global options</a></li>
-<li class="chapter" data-level="10.7.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#formatting-figures"><i class="fa fa-check"></i><b>10.7.2</b> Formatting figures</a></li>
-</ul></li>
-<li class="chapter" data-level="10.8" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#inline-r-code"><i class="fa fa-check"></i><b>10.8</b> Inline R code</a></li>
-<li class="chapter" data-level="10.9" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#other-outputs-word-pdf-and-more"><i class="fa fa-check"></i><b>10.9</b> Other outputs: Word, PDF and more…</a>
-<ul>
-<li class="chapter" data-level="10.9.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-note-about-rmd-outputs"><i class="fa fa-check"></i><b>10.9.1</b> A note about Rmd outputs</a></li>
-</ul></li>
-<li class="chapter" data-level="10.10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#resources"><i class="fa fa-check"></i><b>10.10</b> Resources</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="applications-of-r-markdown.html"><a href="applications-of-r-markdown.html"><i class="fa fa-check"></i><b>11</b> Applications of R Markdown</a></li>
-<li class="chapter" data-level="12" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>12</b> Seeking Help from Others with reprex</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>12.1</b> Help People Help You - reprex</a></li>
-<li class="chapter" data-level="12.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>12.2</b> Other Helpful Resources</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Data Science using R Workshop</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science using R Workshop</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="seeking-help-in-r.html"><span class="header-section-number">2</span> Seeking Help in R</a></li>
+<li><a class="" href="project-management-with-rstudio.html"><span class="header-section-number">3</span> Project Management With RStudio</a></li>
+<li><a class="" href="data-structures.html"><span class="header-section-number">4</span> Data Structures</a></li>
+<li><a class="" href="exploring-data-frames.html"><span class="header-section-number">5</span> Exploring Data Frames</a></li>
+<li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">6</span> Creating Publication-Quality Graphics with ggplot2</a></li>
+<li><a class="" href="dataframe-manipulation-with-dplyr.html"><span class="header-section-number">7</span> Dataframe Manipulation with dplyr</a></li>
+<li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></li>
+<li><a class="active" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
+<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></li>
+<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></li>
+<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/bcgov/ds-intro-to-r-2-day">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="introduction-to-the-bcdata-package" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Introduction to the bcdata package</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-the-bcdata-package" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Introduction to the bcdata package<a class="anchor" aria-label="anchor" href="#introduction-to-the-bcdata-package"><i class="fas fa-link"></i></a>
+</h1>
 <p>The British Columbia government hosts over 2000 tabular and geospatial data sets
 in the B.C. Data Catalogue. Most data is available through the B.C. Data
 Catalogue under an open licence. The <code>bcdata</code> package provides programming
@@ -295,18 +72,25 @@ Through this functionality the <code>bcdata</code> package connects British Colu
 government public data holdings in the B.C. Data Catalogue with the vast
 capabilities of R.</p>
 <div id="getting-started-2" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Getting started</h2>
+<h2>
+<span class="header-section-number">9.1</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started-2"><i class="fas fa-link"></i></a>
+</h2>
 <p>First we need to install the <code>bcdata</code> package:</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="introduction-to-the-bcdata-package.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;bcdata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"bcdata"</span><span class="op">)</span></code></pre></div>
 <p>And next we need to load the <code>bcdata</code> package, along with <code>dplyr</code> and <code>ggplot2</code> which we installed and used in earlier lessons:</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="introduction-to-the-bcdata-package.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bcdata)</span>
-<span id="cb410-2"><a href="introduction-to-the-bcdata-package.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb410-3"><a href="introduction-to-the-bcdata-package.html#cb410-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bcgov.github.io/bcdata/">bcdata</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="searching-the-b.c.-data-catalogue" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Searching the B.C. Data Catalogue</h2>
+<h2>
+<span class="header-section-number">9.2</span> Searching the B.C. Data Catalogue<a class="anchor" aria-label="anchor" href="#searching-the-b.c.-data-catalogue"><i class="fas fa-link"></i></a>
+</h2>
 <p>Let’s use the <code>bcdata</code> package to search the B.C. Data Catalogue for some data on <em><strong>public libraries</strong></em> in British Columbia:</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="introduction-to-the-bcdata-package.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcdc_search</span>(<span class="st">&quot;public libraries&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_search.html">bcdc_search</a></span><span class="op">(</span><span class="st">"public libraries"</span><span class="op">)</span></code></pre></div>
 <pre><code>List of B.C. Data Catalogue Records
 Number of records: 16
  (Showing the top 10)
@@ -349,8 +133,9 @@ Titles:
 Access a single record by calling `bcdc_get_record(ID)` with the ID
  from the desired record.</code></pre>
 <p>There are many catalogue records with data relating to libraries. Let’s examine the first returned record more closely:</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="introduction-to-the-bcdata-package.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcdc_get_record</span>(<span class="st">&quot;bc-public-libraries-systems-branches-and-locations&quot;</span>)</span></code></pre></div>
-<pre><code>Warning: It is advised to use the permanent id (&#39;3d2318d4-8f5d-4208-88f5-995420d7c58f&#39;) rather than the name of the record (&#39;bc-public-libraries-systems-branches-and-locations&#39;) to guard against future name changes.</code></pre>
+<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_record.html">bcdc_get_record</a></span><span class="op">(</span><span class="st">"bc-public-libraries-systems-branches-and-locations"</span><span class="op">)</span></code></pre></div>
+<pre><code>Warning: It is advised to use the permanent id ('3d2318d4-8f5d-4208-88f5-995420d7c58f') rather than the name of the record ('bc-public-libraries-systems-branches-and-locations') to guard against future name changes.</code></pre>
 <pre><code>B.C. Data Catalogue Record: BC Public Libraries Systems - Branches and
  Locations
 Name: bc-public-libraries-systems-branches-and-locations (ID:
@@ -371,126 +156,136 @@ Available Resources (5):
  3. 2018 BC Public Library Systems - Locations and Branch Data (CSV) - v19 (csv)
  4. 2015 BC Public Library Systems - Locations and Branch Data 1.2 (KML) (kml)
  5. WMS getCapabilities request (wms)
-Access the full &#39;Resources&#39; data frame using:
- bcdc_tidy_resources(&#39;3d2318d4-8f5d-4208-88f5-995420d7c58f&#39;)
+Access the full 'Resources' data frame using:
+ bcdc_tidy_resources('3d2318d4-8f5d-4208-88f5-995420d7c58f')
 Query and filter this data using:
- bcdc_query_geodata(&#39;3d2318d4-8f5d-4208-88f5-995420d7c58f&#39;)</code></pre>
+ bcdc_query_geodata('3d2318d4-8f5d-4208-88f5-995420d7c58f')</code></pre>
 </div>
 <div id="importing-data-from-the-b.c.-data-catalogue" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Importing data from the B.C. Data Catalogue</h2>
+<h2>
+<span class="header-section-number">9.3</span> Importing data from the B.C. Data Catalogue<a class="anchor" aria-label="anchor" href="#importing-data-from-the-b.c.-data-catalogue"><i class="fas fa-link"></i></a>
+</h2>
 <p>Next, we can use the <code>bcdc_get_data</code> function to import this data directly into R:</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="introduction-to-the-bcdata-package.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcdc_get_data</span>(<span class="at">record =</span> <span class="st">&quot;bc-public-libraries-systems-branches-and-locations&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span>record <span class="op">=</span> <span class="st">"bc-public-libraries-systems-branches-and-locations"</span><span class="op">)</span></code></pre></div>
 <p>The <em>bc-public-libraries-systems-branches-and-locations</em> catalogue record contains multiple data resources or files. If we run the above code interactively, R will prompt you in the console to select one of the available resources, as it does not know which one you want to download. The full code to import the resource from the record—using the record’s permanent id to guard against future name changesname—is provided to the user for next time:</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="introduction-to-the-bcdata-package.html#cb417-1" aria-hidden="true" tabindex="-1"></a>lib_raw <span class="ot">&lt;-</span> <span class="fu">bcdc_get_data</span>(<span class="st">&#39;3d2318d4-8f5d-4208-88f5-995420d7c58f&#39;</span>,</span>
-<span id="cb417-2"><a href="introduction-to-the-bcdata-package.html#cb417-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">resource =</span> <span class="st">&#39;ed17f111-fb39-46b3-89aa-5375592fbb01&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lib_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span><span class="st">'3d2318d4-8f5d-4208-88f5-995420d7c58f'</span>,
+                         resource <span class="op">=</span> <span class="st">'ed17f111-fb39-46b3-89aa-5375592fbb01'</span><span class="op">)</span></code></pre></div>
 <pre><code>Reading the data using the read_xlsx function from the readxl package.</code></pre>
 <blockquote>
 <h2 id="challenge-1-5-minutes">Challenge 1 (5 minutes)</h2>
-<p>Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session &gt; (e.g. a CSV or XLS resource). Entering <code>bcdc_browse()</code> into the R console will open the catalogue page in your default web browser.</p>
+<p>Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session &gt; (e.g. a CSV or XLS resource). Entering <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_browse.html">bcdc_browse()</a></code> into the R console will open the catalogue page in your default web browser.</p>
 </blockquote>
 </div>
 <div id="practice-manipulating-data-with-dplyr" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Practice manipulating data with <code>dplyr</code></h2>
+<h2>
+<span class="header-section-number">9.4</span> Practice manipulating data with <code>dplyr</code><a class="anchor" aria-label="anchor" href="#practice-manipulating-data-with-dplyr"><i class="fas fa-link"></i></a>
+</h2>
 <p>Let’s return to the libraries data frame <code>lib_raw</code> we imported. As we learned earlier in the workshop, a useful first step is to get familiar with the data:</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="introduction-to-the-bcdata-package.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lib_raw)</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">lib_raw</span><span class="op">)</span></code></pre></div>
 <pre><code>tibble [253 × 38] (S3: tbl_df/tbl/data.frame)
- $ Library System                                               : chr [1:253] &quot;Alert Bay Public Library &amp; Museum&quot; &quot;Beaver Valley Public Library&quot; &quot;Bowen Island Public Library&quot; &quot;Burnaby Public Library&quot; ...
- $ Location                                                     : chr [1:253] &quot;Alert Bay Public Library &amp; Museum&quot; &quot;Beaver Valley Public Library&quot; &quot;Bowen Island Public Library&quot; &quot;Bob Prittie Metrotown Branch&quot; ...
- $ 1x Branch Unique ID                                          : chr [1:253] &quot;BABM001&quot; &quot;BFBV001&quot; &quot;BBI001&quot; &quot;BB001&quot; ...
- $ School District Served                                       : chr [1:253] &quot;85&quot; &quot;20&quot; &quot;45&quot; &quot;41&quot; ...
- $ Phone                                                        : chr [1:253] &quot;(250) 974-5721&quot; &quot;(250) 367-7114&quot; &quot;(604) 947-9788&quot; &quot;(604) 436-5427&quot; ...
- $ Physical Address                                             : chr [1:253] &quot;116 Fir Street&quot; &quot;1847 - 1st Street&quot; &quot;430 Bowen Island Trunk&quot; &quot;6100 Willingdon Avenue&quot; ...
- $ City                                                         : chr [1:253] &quot;Alert Bay&quot; &quot;Fruitvale&quot; &quot;Bowen Island&quot; &quot;Burnaby&quot; ...
- $ Province                                                     : chr [1:253] &quot;BC&quot; &quot;BC&quot; &quot;BC&quot; &quot;BC&quot; ...
- $ Postal Code                                                  : chr [1:253] &quot;V0N 1A0&quot; &quot;V0G 1L0&quot; &quot;V0N 1G0&quot; &quot;V5H 4N5&quot; ...
+ $ Library System                                               : chr [1:253] "Alert Bay Public Library &amp; Museum" "Beaver Valley Public Library" "Bowen Island Public Library" "Burnaby Public Library" ...
+ $ Location                                                     : chr [1:253] "Alert Bay Public Library &amp; Museum" "Beaver Valley Public Library" "Bowen Island Public Library" "Bob Prittie Metrotown Branch" ...
+ $ 1x Branch Unique ID                                          : chr [1:253] "BABM001" "BFBV001" "BBI001" "BB001" ...
+ $ School District Served                                       : chr [1:253] "85" "20" "45" "41" ...
+ $ Phone                                                        : chr [1:253] "(250) 974-5721" "(250) 367-7114" "(604) 947-9788" "(604) 436-5427" ...
+ $ Physical Address                                             : chr [1:253] "116 Fir Street" "1847 - 1st Street" "430 Bowen Island Trunk" "6100 Willingdon Avenue" ...
+ $ City                                                         : chr [1:253] "Alert Bay" "Fruitvale" "Bowen Island" "Burnaby" ...
+ $ Province                                                     : chr [1:253] "BC" "BC" "BC" "BC" ...
+ $ Postal Code                                                  : chr [1:253] "V0N 1A0" "V0G 1L0" "V0N 1G0" "V5H 4N5" ...
  $ Latitude                                                     : num [1:253] 50.6 49.1 49.4 49.2 49.3 ...
  $ Longitude                                                    : num [1:253] -127 -118 -123 -123 -123 ...
  $ 460x Total branch physical materials, volumes held           : num [1:253] 9361 25477 15100 373232 59958 ...
  $ 556x Branch circulation of print and other physical materials: num [1:253] 2460 19792 36155 1139184 454254 ...
- $ 565x Branch circulation of children&#39;s materials              : chr [1:253] &quot;193&quot; &quot;4737&quot; &quot;15964&quot; &quot;476345&quot; ...
- $ 610x Branch reference transactions                           : chr [1:253] &quot;1700&quot; &quot;10000&quot; &quot;8217&quot; &quot;107784&quot; ...
- $ 775x In person visits to this branch or service point        : chr [1:253] &quot;3522&quot; &quot;14750&quot; &quot;52690&quot; &quot;749695&quot; ...
- $ 680x Branch in-library adult programs                        : chr [1:253] &quot;0&quot; &quot;8&quot; &quot;499&quot; &quot;58&quot; ...
- $ 682x Branch outreach adult programs                          : chr [1:253] &quot;1&quot; &quot;2&quot; &quot;0&quot; &quot;101&quot; ...
- $ 690x Attendance at adult programs                            : chr [1:253] &quot;22&quot; &quot;202&quot; &quot;1381&quot; &quot;3865&quot; ...
- $ 700x Branch in-library children&#39;s programs                   : chr [1:253] &quot;0&quot; &quot;100&quot; &quot;94&quot; &quot;402&quot; ...
- $ 702x Branch outreach children&#39;s programs                     : chr [1:253] &quot;3&quot; &quot;10&quot; &quot;5&quot; &quot;39&quot; ...
- $ 710x Attendance at children&#39;s programs                       : chr [1:253] &quot;235&quot; &quot;1208&quot; &quot;1224&quot; &quot;19522&quot; ...
- $ 715x Branch in-library young adult programs                  : chr [1:253] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;12&quot; ...
- $ 717x Branch outreach young adult programs                    : chr [1:253] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;84&quot; ...
- $ 716x Attendance at young adult programs                      : chr [1:253] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;2923&quot; ...
- $ 671x Branch in-library newcomer/ELL programs, all ages       : chr [1:253] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;26&quot; ...
- $ 673x Branch outreach newcomer/ELL programs, all ages         : chr [1:253] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; ...
- $ 672x Attendance at branch newcomer/ELL programs              : chr [1:253] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;528&quot; ...
- $ 740x Professional Librarians, hours worked at this branch    : chr [1:253] &quot;0&quot; &quot;0&quot; &quot;1820&quot; &quot;42224&quot; ...
- $ 742x Library Technicians, hours worked at this branch        : chr [1:253] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;1733&quot; ...
- $ 752x Community Librarians, hours worked at this branch       : chr [1:253] &quot;622&quot; &quot;4940&quot; &quot;0&quot; NA ...
- $ 770x Other Staff, hours worked at this branch                : chr [1:253] &quot;281&quot; &quot;1350&quot; &quot;4107&quot; &quot;104199&quot; ...
+ $ 565x Branch circulation of children's materials              : chr [1:253] "193" "4737" "15964" "476345" ...
+ $ 610x Branch reference transactions                           : chr [1:253] "1700" "10000" "8217" "107784" ...
+ $ 775x In person visits to this branch or service point        : chr [1:253] "3522" "14750" "52690" "749695" ...
+ $ 680x Branch in-library adult programs                        : chr [1:253] "0" "8" "499" "58" ...
+ $ 682x Branch outreach adult programs                          : chr [1:253] "1" "2" "0" "101" ...
+ $ 690x Attendance at adult programs                            : chr [1:253] "22" "202" "1381" "3865" ...
+ $ 700x Branch in-library children's programs                   : chr [1:253] "0" "100" "94" "402" ...
+ $ 702x Branch outreach children's programs                     : chr [1:253] "3" "10" "5" "39" ...
+ $ 710x Attendance at children's programs                       : chr [1:253] "235" "1208" "1224" "19522" ...
+ $ 715x Branch in-library young adult programs                  : chr [1:253] "0" "0" "0" "12" ...
+ $ 717x Branch outreach young adult programs                    : chr [1:253] "0" "0" "0" "84" ...
+ $ 716x Attendance at young adult programs                      : chr [1:253] "0" "0" "0" "2923" ...
+ $ 671x Branch in-library newcomer/ELL programs, all ages       : chr [1:253] "0" "0" "0" "26" ...
+ $ 673x Branch outreach newcomer/ELL programs, all ages         : chr [1:253] "0" "0" "0" "0" ...
+ $ 672x Attendance at branch newcomer/ELL programs              : chr [1:253] "0" "0" "0" "528" ...
+ $ 740x Professional Librarians, hours worked at this branch    : chr [1:253] "0" "0" "1820" "42224" ...
+ $ 742x Library Technicians, hours worked at this branch        : chr [1:253] "0" "0" "0" "1733" ...
+ $ 752x Community Librarians, hours worked at this branch       : chr [1:253] "622" "4940" "0" NA ...
+ $ 770x Other Staff, hours worked at this branch                : chr [1:253] "281" "1350" "4107" "104199" ...
  $ 975x Number of photocopiers in library branch                : num [1:253] 1 1 1 4 1 1 1 2 1 1 ...
- $ 852x Is this location LEED certified?                        : chr [1:253] NA &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
- $ 854x Is this location a Shared Space facility?               : chr [1:253] NA &quot;No&quot; &quot;Yes&quot; &quot;No&quot; ...
+ $ 852x Is this location LEED certified?                        : chr [1:253] NA "No" "No" "No" ...
+ $ 854x Is this location a Shared Space facility?               : chr [1:253] NA "No" "Yes" "No" ...
  $ 860x Branch space/size, total square metres                  : num [1:253] 213 270 407 5673 465 ...
- $ 890x Hours open per year at this location                    : chr [1:253] &quot;618&quot; &quot;2320&quot; &quot;1953&quot; &quot;3612&quot; ...
- $ 920x Days open per year at this location                     : chr [1:253] &quot;191&quot; &quot;321&quot; &quot;303&quot; &quot;339&quot; ...</code></pre>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="introduction-to-the-bcdata-package.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lib_raw)</span></code></pre></div>
-<pre><code> [1] &quot;Library System&quot;                                               
- [2] &quot;Location&quot;                                                     
- [3] &quot;1x Branch Unique ID&quot;                                          
- [4] &quot;School District Served&quot;                                       
- [5] &quot;Phone&quot;                                                        
- [6] &quot;Physical Address&quot;                                             
- [7] &quot;City&quot;                                                         
- [8] &quot;Province&quot;                                                     
- [9] &quot;Postal Code&quot;                                                  
-[10] &quot;Latitude&quot;                                                     
-[11] &quot;Longitude&quot;                                                    
-[12] &quot;460x Total branch physical materials, volumes held&quot;           
-[13] &quot;556x Branch circulation of print and other physical materials&quot;
-[14] &quot;565x Branch circulation of children&#39;s materials&quot;              
-[15] &quot;610x Branch reference transactions&quot;                           
-[16] &quot;775x In person visits to this branch or service point&quot;        
-[17] &quot;680x Branch in-library adult programs&quot;                        
-[18] &quot;682x Branch outreach adult programs&quot;                          
-[19] &quot;690x Attendance at adult programs&quot;                            
-[20] &quot;700x Branch in-library children&#39;s programs&quot;                   
-[21] &quot;702x Branch outreach children&#39;s programs&quot;                     
-[22] &quot;710x Attendance at children&#39;s programs&quot;                       
-[23] &quot;715x Branch in-library young adult programs&quot;                  
-[24] &quot;717x Branch outreach young adult programs&quot;                    
-[25] &quot;716x Attendance at young adult programs&quot;                      
-[26] &quot;671x Branch in-library newcomer/ELL programs, all ages&quot;       
-[27] &quot;673x Branch outreach newcomer/ELL programs, all ages&quot;         
-[28] &quot;672x Attendance at branch newcomer/ELL programs&quot;              
-[29] &quot;740x Professional Librarians, hours worked at this branch&quot;    
-[30] &quot;742x Library Technicians, hours worked at this branch&quot;        
-[31] &quot;752x Community Librarians, hours worked at this branch&quot;       
-[32] &quot;770x Other Staff, hours worked at this branch&quot;                
-[33] &quot;975x Number of photocopiers in library branch&quot;                
-[34] &quot;852x Is this location LEED certified?&quot;                        
-[35] &quot;854x Is this location a Shared Space facility?&quot;               
-[36] &quot;860x Branch space/size, total square metres&quot;                  
-[37] &quot;890x Hours open per year at this location&quot;                    
-[38] &quot;920x Days open per year at this location&quot;                     </code></pre>
+ $ 890x Hours open per year at this location                    : chr [1:253] "618" "2320" "1953" "3612" ...
+ $ 920x Days open per year at this location                     : chr [1:253] "191" "321" "303" "339" ...</code></pre>
+<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lib_raw</span><span class="op">)</span></code></pre></div>
+<pre><code> [1] "Library System"                                               
+ [2] "Location"                                                     
+ [3] "1x Branch Unique ID"                                          
+ [4] "School District Served"                                       
+ [5] "Phone"                                                        
+ [6] "Physical Address"                                             
+ [7] "City"                                                         
+ [8] "Province"                                                     
+ [9] "Postal Code"                                                  
+[10] "Latitude"                                                     
+[11] "Longitude"                                                    
+[12] "460x Total branch physical materials, volumes held"           
+[13] "556x Branch circulation of print and other physical materials"
+[14] "565x Branch circulation of children's materials"              
+[15] "610x Branch reference transactions"                           
+[16] "775x In person visits to this branch or service point"        
+[17] "680x Branch in-library adult programs"                        
+[18] "682x Branch outreach adult programs"                          
+[19] "690x Attendance at adult programs"                            
+[20] "700x Branch in-library children's programs"                   
+[21] "702x Branch outreach children's programs"                     
+[22] "710x Attendance at children's programs"                       
+[23] "715x Branch in-library young adult programs"                  
+[24] "717x Branch outreach young adult programs"                    
+[25] "716x Attendance at young adult programs"                      
+[26] "671x Branch in-library newcomer/ELL programs, all ages"       
+[27] "673x Branch outreach newcomer/ELL programs, all ages"         
+[28] "672x Attendance at branch newcomer/ELL programs"              
+[29] "740x Professional Librarians, hours worked at this branch"    
+[30] "742x Library Technicians, hours worked at this branch"        
+[31] "752x Community Librarians, hours worked at this branch"       
+[32] "770x Other Staff, hours worked at this branch"                
+[33] "975x Number of photocopiers in library branch"                
+[34] "852x Is this location LEED certified?"                        
+[35] "854x Is this location a Shared Space facility?"               
+[36] "860x Branch space/size, total square metres"                  
+[37] "890x Hours open per year at this location"                    
+[38] "920x Days open per year at this location"                     </code></pre>
 <p>Let’s tidy up this data frame and find out how many books—physical materials or volumes—are available within each City:</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="introduction-to-the-bcdata-package.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb423-2"><a href="introduction-to-the-bcdata-package.html#cb423-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb423-3"><a href="introduction-to-the-bcdata-package.html#cb423-3" aria-hidden="true" tabindex="-1"></a>lib_tidy <span class="ot">&lt;-</span> lib_raw <span class="sc">%&gt;%</span></span>
-<span id="cb423-4"><a href="introduction-to-the-bcdata-package.html#cb423-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Library System</span><span class="st">`</span>, Location, City, <span class="at">num_books =</span> <span class="st">&quot;460x Total branch physical materials, volumes held&quot;</span>)</span>
-<span id="cb423-5"><a href="introduction-to-the-bcdata-package.html#cb423-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb423-6"><a href="introduction-to-the-bcdata-package.html#cb423-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb423-7"><a href="introduction-to-the-bcdata-package.html#cb423-7" aria-hidden="true" tabindex="-1"></a>sum_books <span class="ot">&lt;-</span> lib_tidy <span class="sc">%&gt;%</span> </span>
-<span id="cb423-8"><a href="introduction-to-the-bcdata-package.html#cb423-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(City, <span class="st">`</span><span class="at">Library System</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb423-9"><a href="introduction-to-the-bcdata-package.html#cb423-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_books =</span> <span class="fu">sum</span>(num_books))</span></code></pre></div>
-<pre><code>`summarise()` has grouped output by &#39;City&#39;. You can override using the
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+
+<span class="va">lib_tidy</span> <span class="op">&lt;-</span> <span class="va">lib_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">`Library System`</span>, <span class="va">Location</span>, <span class="va">City</span>, num_books <span class="op">=</span> <span class="st">"460x Total branch physical materials, volumes held"</span><span class="op">)</span>
+
+
+<span class="va">sum_books</span> <span class="op">&lt;-</span> <span class="va">lib_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">City</span>, <span class="va">`Library System`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>total_books <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">num_books</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>`summarise()` has grouped output by 'City'. You can override using the
 `.groups` argument.</code></pre>
 <blockquote>
 <h2 id="challenge-2-10-minutes">Challenge 2 (10 minutes)</h2>
 <p>Using <code>dplyr</code>, determine the total number of books within each Library System in British Columbia.</p>
 <blockquote>
 <h2 id="solution-challenge-2-10-minutes">Solution Challenge 2 (10 minutes)</h2>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="introduction-to-the-bcdata-package.html#cb425-1" aria-hidden="true" tabindex="-1"></a>sum_books <span class="sc">%&gt;%</span> </span>
-<span id="cb425-2"><a href="introduction-to-the-bcdata-package.html#cb425-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Library System</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb425-3"><a href="introduction-to-the-bcdata-package.html#cb425-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarize</span>(<span class="at">totals =</span> <span class="fu">sum</span>(total_books))</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+ <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Library System`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+ <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>totals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">total_books</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 71 × 2
   `Library System`                         totals
   &lt;chr&gt;                                     &lt;dbl&gt;
@@ -509,37 +304,42 @@ Query and filter this data using:
 </blockquote>
 </div>
 <div id="practice-plotting-data-with-ggplot2" class="section level2" number="9.5">
-<h2><span class="header-section-number">9.5</span> Practice plotting data with <code>ggplot2</code></h2>
+<h2>
+<span class="header-section-number">9.5</span> Practice plotting data with <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#practice-plotting-data-with-ggplot2"><i class="fas fa-link"></i></a>
+</h2>
 <p>Now that we have imported, tidied, and summarized our library data, let’s make a static data visualization to share and communicate the results with others.</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="introduction-to-the-bcdata-package.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb427-2"><a href="introduction-to-the-bcdata-package.html#cb427-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb427-3"><a href="introduction-to-the-bcdata-package.html#cb427-3" aria-hidden="true" tabindex="-1"></a>sum_books <span class="sc">%&gt;%</span> </span>
-<span id="cb427-4"><a href="introduction-to-the-bcdata-package.html#cb427-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_books, City)) <span class="sc">+</span></span>
-<span id="cb427-5"><a href="introduction-to-the-bcdata-package.html#cb427-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="fig/rmd-09-unnamed-chunk-171-1.png" width="816" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="introduction-to-the-bcdata-package.html#cb428-1" aria-hidden="true" tabindex="-1"></a>sum_books <span class="sc">%&gt;%</span> </span>
-<span id="cb428-2"><a href="introduction-to-the-bcdata-package.html#cb428-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_books <span class="sc">&gt;</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb428-3"><a href="introduction-to-the-bcdata-package.html#cb428-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_books, City)) <span class="sc">+</span></span>
-<span id="cb428-4"><a href="introduction-to-the-bcdata-package.html#cb428-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="fig/rmd-09-unnamed-chunk-171-2.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+
+<span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">total_books</span>, <span class="va">City</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/rmd-09-unnamed-chunk-11-1.png" width="816" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total_books</span> <span class="op">&gt;</span> <span class="fl">100000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">total_books</span>, <span class="va">City</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/rmd-09-unnamed-chunk-11-2.png" width="816" style="display: block; margin: auto;"></div>
 <blockquote>
 <h2 id="challenge-3-10-minutes">Challenge 3 (10 minutes)</h2>
 <p>Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable.</p>
 <blockquote>
 <h2 id="solution-challenge-3-10-minutes">Solution Challenge 3 (10 minutes)</h2>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="introduction-to-the-bcdata-package.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb429-2"><a href="introduction-to-the-bcdata-package.html#cb429-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-3"><a href="introduction-to-the-bcdata-package.html#cb429-3" aria-hidden="true" tabindex="-1"></a>sum_books <span class="sc">%&gt;%</span> </span>
-<span id="cb429-4"><a href="introduction-to-the-bcdata-package.html#cb429-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>(total_books <span class="sc">&gt;</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb429-5"><a href="introduction-to-the-bcdata-package.html#cb429-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_books, City)) <span class="sc">+</span></span>
-<span id="cb429-6"><a href="introduction-to-the-bcdata-package.html#cb429-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb429-7"><a href="introduction-to-the-bcdata-package.html#cb429-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(<span class="st">`</span><span class="at">Library System</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb429-8"><a href="introduction-to-the-bcdata-package.html#cb429-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb429-9"><a href="introduction-to-the-bcdata-package.html#cb429-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb429-10"><a href="introduction-to-the-bcdata-package.html#cb429-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb429-11"><a href="introduction-to-the-bcdata-package.html#cb429-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Total Number of Books by City &amp; Library System in B.C.&quot;</span>,</span>
-<span id="cb429-12"><a href="introduction-to-the-bcdata-package.html#cb429-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">&quot;Data sourced from the B.C. Data Catalogue&quot;</span>)</span></code></pre></div>
-<p><img src="fig/rmd-09-unnamed-chunk-172-1.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+
+<span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+ <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total_books</span> <span class="op">&gt;</span> <span class="fl">100000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">total_books</span>, <span class="va">City</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">`Library System`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>,
+      y <span class="op">=</span> <span class="cn">NULL</span>,
+      title <span class="op">=</span> <span class="st">"Total Number of Books by City &amp; Library System in B.C."</span>,
+      caption <span class="op">=</span> <span class="st">"Data sourced from the B.C. Data Catalogue"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/rmd-09-unnamed-chunk-12-1.png" width="816" style="display: block; margin: auto;"></div>
 </blockquote>
 </blockquote>
 <blockquote>
@@ -547,98 +347,77 @@ Query and filter this data using:
 <p>Navigate to the <a href="https://catalogue.data.gov.bc.ca/datasets">BC Data Catalogue</a> and choose a dataset that has a <code>Resource Storage Format</code> that is <code>csv</code> or <code>xlsx</code>. &gt; An example of this is the <a href="https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020">BC Seafood Production data</a>. You can use this dataset or one &gt; of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you’ve learned in this workshop to make a pretty plot.</p>
 <blockquote>
 <h2 id="solution-to-challenge-4-2">Solution to Challenge 4</h2>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="introduction-to-the-bcdata-package.html#cb430-1" aria-hidden="true" tabindex="-1"></a>seafood_prod <span class="ot">&lt;-</span> <span class="fu">bcdc_get_data</span>(<span class="st">&quot;e591a756-6b99-4986-b8ce-f341bd47228f&quot;</span>, <span class="at">resource =</span> <span class="st">&#39;9cc32dc4-bd9a-4baf-8210-770ac62d7985&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">seafood_prod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span><span class="st">"e591a756-6b99-4986-b8ce-f341bd47228f"</span>, resource <span class="op">=</span> <span class="st">'9cc32dc4-bd9a-4baf-8210-770ac62d7985'</span><span class="op">)</span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>
 <pre><code>Rows: 111 Columns: 7
 ── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
+Delimiter: ","
 chr (3): Species Group, Source, Species/Product
-dbl (4): Year, Harvest (&#39;000 t), Landed Value ($ million), Wholesale Value (...
+dbl (4): Year, Harvest ('000 t), Landed Value ($ million), Wholesale Value (...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="introduction-to-the-bcdata-package.html#cb433-1" aria-hidden="true" tabindex="-1"></a>seafood_by_year <span class="ot">&lt;-</span> seafood_prod <span class="sc">%&gt;%</span> </span>
-<span id="cb433-2"><a href="introduction-to-the-bcdata-package.html#cb433-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb433-3"><a href="introduction-to-the-bcdata-package.html#cb433-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Species/Product</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb433-4"><a href="introduction-to-the-bcdata-package.html#cb433-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarise</span>(<span class="at">value =</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Wholesale Value ($ million)</span><span class="st">`</span>)) </span>
-<span id="cb433-5"><a href="introduction-to-the-bcdata-package.html#cb433-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb433-6"><a href="introduction-to-the-bcdata-package.html#cb433-6" aria-hidden="true" tabindex="-1"></a>seafood_by_year <span class="sc">%&gt;%</span> </span>
-<span id="cb433-7"><a href="introduction-to-the-bcdata-package.html#cb433-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Species/Product</span><span class="st">`</span>, <span class="at">x =</span> value, <span class="at">fill =</span> <span class="st">`</span><span class="at">Species/Product</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb433-8"><a href="introduction-to-the-bcdata-package.html#cb433-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb433-9"><a href="introduction-to-the-bcdata-package.html#cb433-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb433-10"><a href="introduction-to-the-bcdata-package.html#cb433-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
-<span id="cb433-11"><a href="introduction-to-the-bcdata-package.html#cb433-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb433-12"><a href="introduction-to-the-bcdata-package.html#cb433-12" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb433-13"><a href="introduction-to-the-bcdata-package.html#cb433-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;B.C. Seafood Production - 2020&quot;</span>, </span>
-<span id="cb433-14"><a href="introduction-to-the-bcdata-package.html#cb433-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&quot;Wholesale Value ($ million)&quot;</span>,</span>
-<span id="cb433-15"><a href="introduction-to-the-bcdata-package.html#cb433-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">&quot;BC Seafood Production, 2018 - 2020: https://catalogue.data.gov.bc.ca/dataset/e591a756-6b99-4986-b8ce-f341bd47228f&quot;</span>) <span class="sc">+</span></span>
-<span id="cb433-16"><a href="introduction-to-the-bcdata-package.html#cb433-16" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="fig/rmd-09-unnamed-chunk-173-1.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">seafood_by_year</span> <span class="op">&lt;-</span> <span class="va">seafood_prod</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+ <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op">==</span> <span class="fl">2020</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+ <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Species/Product`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+ <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">`Wholesale Value ($ million)`</span><span class="op">)</span><span class="op">)</span> 
+
+<span class="va">seafood_by_year</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Species/Product`</span>, x <span class="op">=</span> <span class="va">value</span>, fill <span class="op">=</span> <span class="va">`Species/Product`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/label_dollar.html">dollar</a></span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"B.C. Seafood Production - 2020"</span>, 
+      xlab <span class="op">=</span> <span class="st">"Wholesale Value ($ million)"</span>,
+      caption <span class="op">=</span> <span class="st">"BC Seafood Production, 2018 - 2020: https://catalogue.data.gov.bc.ca/dataset/e591a756-6b99-4986-b8ce-f341bd47228f"</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/rmd-09-unnamed-chunk-13-1.png" width="816" style="display: block; margin: auto;"></div>
 </blockquote>
 </blockquote>
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="create-tidy-data-with-tidyr.html"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></div>
+<div class="next"><a href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-to-the-bcdata-package"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
+<li><a class="nav-link" href="#getting-started-2"><span class="header-section-number">9.1</span> Getting started</a></li>
+<li><a class="nav-link" href="#searching-the-b.c.-data-catalogue"><span class="header-section-number">9.2</span> Searching the B.C. Data Catalogue</a></li>
+<li><a class="nav-link" href="#importing-data-from-the-b.c.-data-catalogue"><span class="header-section-number">9.3</span> Importing data from the B.C. Data Catalogue</a></li>
+<li><a class="nav-link" href="#practice-manipulating-data-with-dplyr"><span class="header-section-number">9.4</span> Practice manipulating data with dplyr</a></li>
+<li><a class="nav-link" href="#practice-plotting-data-with-ggplot2"><span class="header-section-number">9.5</span> Practice plotting data with ggplot2</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="create-tidy-data-with-tidyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-analysis-reports.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/09-intro-to-bcdata.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/bcgov/ds-intro-to-r-2-day/edit/master/09-intro-to-bcdata.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-16.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>

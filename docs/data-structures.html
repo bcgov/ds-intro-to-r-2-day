@@ -1,291 +1,68 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Data Structures | Introduction to Data Science using R Workshop</title>
-  <meta name="description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 4 Data Structures | Introduction to Data Science using R Workshop" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day" />
-  
-  <meta property="og:description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  <meta name="github-repo" content="bcgov/ds-intro-to-r-2-day" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Data Structures | Introduction to Data Science using R Workshop" />
-  
-  <meta name="twitter:description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  
-
-
-
-<meta name="date" content="2022-02-16" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="project-management-with-rstudio.html"/>
-<link rel="next" href="exploring-data-frames.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Data Structures | Introduction to Data Science using R Workshop</title>
+<meta name="description" content="One of R’s most powerful features is its ability to deal with tabular data - such as you may already have in a spreadsheet or a CSV file. Let’s start by looking at a toy dataset in your data/...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Data Structures | Introduction to Data Science using R Workshop">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/data-structures.html">
+<meta property="og:description" content="One of R’s most powerful features is its ability to deal with tabular data - such as you may already have in a spreadsheet or a CSV file. Let’s start by looking at a toy dataset in your data/...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Data Structures | Introduction to Data Science using R Workshop">
+<meta name="twitter:description" content="One of R’s most powerful features is its ability to deal with tabular data - such as you may already have in a spreadsheet or a CSV file. Let’s start by looking at a toy dataset in your data/...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Introduction to Data Science using R Workshop</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#motivation"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#before-starting-the-workshop"><i class="fa fa-check"></i><b>1.2</b> Before Starting The Workshop</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>1.3</b> Introduction to RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#work-flow-within-rstudio"><i class="fa fa-check"></i><b>1.4</b> Work flow within RStudio</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>1.5</b> Introduction to R</a></li>
-<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-as-a-calculator"><i class="fa fa-check"></i><b>1.6</b> Using R as a calculator</a></li>
-<li class="chapter" data-level="1.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mathematical-functions"><i class="fa fa-check"></i><b>1.7</b> Mathematical functions</a></li>
-<li class="chapter" data-level="1.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comparing-things"><i class="fa fa-check"></i><b>1.8</b> Comparing things</a></li>
-<li class="chapter" data-level="1.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#variables-and-assignment"><i class="fa fa-check"></i><b>1.9</b> Variables and assignment</a></li>
-<li class="chapter" data-level="1.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectorization"><i class="fa fa-check"></i><b>1.10</b> Vectorization</a></li>
-<li class="chapter" data-level="1.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#managing-your-environment"><i class="fa fa-check"></i><b>1.11</b> Managing your environment</a></li>
-<li class="chapter" data-level="1.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-packages"><i class="fa fa-check"></i><b>1.12</b> R Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html"><i class="fa fa-check"></i><b>2</b> Seeking Help in R</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#reading-help-files"><i class="fa fa-check"></i><b>2.1</b> Reading Help files</a></li>
-<li class="chapter" data-level="2.2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#special-operators"><i class="fa fa-check"></i><b>2.2</b> Special Operators</a></li>
-<li class="chapter" data-level="2.3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#getting-help-on-packages"><i class="fa fa-check"></i><b>2.3</b> Getting help on packages</a></li>
-<li class="chapter" data-level="2.4" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-kind-of-remember-the-function"><i class="fa fa-check"></i><b>2.4</b> When you kind of remember the function</a></li>
-<li class="chapter" data-level="2.5" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-have-no-idea-where-to-begin"><i class="fa fa-check"></i><b>2.5</b> When you have no idea where to begin</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html"><i class="fa fa-check"></i><b>3</b> Project Management With RStudio</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#a-possible-solution"><i class="fa fa-check"></i><b>3.2</b> A possible solution</a></li>
-<li class="chapter" data-level="3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#best-practices-for-project-organization"><i class="fa fa-check"></i><b>3.3</b> Best practices for project organization</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>3.3.1</b> Treat data as read only</a></li>
-<li class="chapter" data-level="3.3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#data-cleaning"><i class="fa fa-check"></i><b>3.3.2</b> Data Cleaning</a></li>
-<li class="chapter" data-level="3.3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>3.3.3</b> Treat generated output as disposable</a></li>
-<li class="chapter" data-level="3.3.4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>3.3.4</b> Separate function definition and application</a></li>
-<li class="chapter" data-level="3.3.5" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#version-control"><i class="fa fa-check"></i><b>3.3.5</b> Version Control</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="data-structures.html"><a href="data-structures.html#the-readr-package"><i class="fa fa-check"></i><b>4.1</b> The <em>readr</em> package</a></li>
-<li class="chapter" data-level="4.2" data-path="data-structures.html"><a href="data-structures.html#data-types"><i class="fa fa-check"></i><b>4.2</b> Data Types</a></li>
-<li class="chapter" data-level="4.3" data-path="data-structures.html"><a href="data-structures.html#vectors-and-type-coercion"><i class="fa fa-check"></i><b>4.3</b> Vectors and Type Coercion</a></li>
-<li class="chapter" data-level="4.4" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>4.4</b> Data Frames</a></li>
-<li class="chapter" data-level="4.5" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>4.5</b> Factors</a></li>
-<li class="chapter" data-level="4.6" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>4.6</b> Lists</a></li>
-<li class="chapter" data-level="4.7" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>4.7</b> Matrices</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html"><i class="fa fa-check"></i><b>5</b> Exploring Data Frames</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#introducing-the-gapminder-data"><i class="fa fa-check"></i><b>5.1</b> Introducing the Gapminder data</a></li>
-<li class="chapter" data-level="5.2" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#basic-subsetting"><i class="fa fa-check"></i><b>5.2</b> Basic subsetting</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#selecting-rows"><i class="fa fa-check"></i><b>5.2.1</b> Selecting rows</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Creating Publication-Quality Graphics with ggplot2</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#getting-started"><i class="fa fa-check"></i><b>6.1</b> Getting started</a></li>
-<li class="chapter" data-level="6.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>6.2</b> Layers</a></li>
-<li class="chapter" data-level="6.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>6.3</b> Transformations and statistics</a></li>
-<li class="chapter" data-level="6.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>6.4</b> Multi-panel figures</a></li>
-<li class="chapter" data-level="6.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>6.5</b> Modifying text</a></li>
-<li class="chapter" data-level="6.6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>6.6</b> Exporting the plot</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>7</b> Dataframe Manipulation with dplyr</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#the-dplyr-package"><i class="fa fa-check"></i><b>7.1</b> The <code>dplyr</code> package</a></li>
-<li class="chapter" data-level="7.2" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-select"><i class="fa fa-check"></i><b>7.2</b> Using select()</a></li>
-<li class="chapter" data-level="7.3" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter"><i class="fa fa-check"></i><b>7.3</b> Using filter()</a></li>
-<li class="chapter" data-level="7.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>7.4</b> Using filter() with pipes</a></li>
-<li class="chapter" data-level="7.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>7.5</b> Using group_by() and summarize()</a></li>
-<li class="chapter" data-level="7.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>7.6</b> Using summarize()</a></li>
-<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-count"><i class="fa fa-check"></i><b>7.7</b> Using count()</a></li>
-<li class="chapter" data-level="7.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>7.8</b> Using mutate()</a></li>
-<li class="chapter" data-level="7.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-groupings-ifelse"><i class="fa fa-check"></i><b>7.9</b> Connect mutate with logical groupings: ifelse</a></li>
-<li class="chapter" data-level="7.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>7.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
-<li class="chapter" data-level="7.11" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#other-great-resources"><i class="fa fa-check"></i><b>7.11</b> Other great resources</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html"><i class="fa fa-check"></i><b>8</b> Create Tidy Data with tidyr</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#getting-started-1"><i class="fa fa-check"></i><b>8.1</b> Getting started</a></li>
-<li class="chapter" data-level="8.2" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-wide-to-long-format-with-pivot_longer"><i class="fa fa-check"></i><b>8.2</b> From wide to long format with pivot_longer()</a></li>
-<li class="chapter" data-level="8.3" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-long-to-intermediate-format-with-pivot_wider"><i class="fa fa-check"></i><b>8.3</b> From long to intermediate format with pivot_wider()</a></li>
-<li class="chapter" data-level="8.4" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#other-great-resources-1"><i class="fa fa-check"></i><b>8.4</b> Other great resources</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html"><i class="fa fa-check"></i><b>9</b> Introduction to the bcdata package</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#getting-started-2"><i class="fa fa-check"></i><b>9.1</b> Getting started</a></li>
-<li class="chapter" data-level="9.2" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#searching-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.2</b> Searching the B.C. Data Catalogue</a></li>
-<li class="chapter" data-level="9.3" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#importing-data-from-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.3</b> Importing data from the B.C. Data Catalogue</a></li>
-<li class="chapter" data-level="9.4" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-manipulating-data-with-dplyr"><i class="fa fa-check"></i><b>9.4</b> Practice manipulating data with <code>dplyr</code></a></li>
-<li class="chapter" data-level="9.5" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-plotting-data-with-ggplot2"><i class="fa fa-check"></i><b>9.5</b> Practice plotting data with <code>ggplot2</code></a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>10</b> Data analysis reports</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#literate-programming"><i class="fa fa-check"></i><b>10.1</b> Literate programming</a></li>
-<li class="chapter" data-level="10.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#example-of-using-r-markdown-in-the-bc-government"><i class="fa fa-check"></i><b>10.2</b> Example of Using R Markdown in the BC Government</a>
-<ul>
-<li class="chapter" data-level="10.2.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#documentation"><i class="fa fa-check"></i><b>10.2.1</b> Documentation</a></li>
-<li class="chapter" data-level="10.2.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#teaching"><i class="fa fa-check"></i><b>10.2.2</b> Teaching</a></li>
-<li class="chapter" data-level="10.2.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#presentation"><i class="fa fa-check"></i><b>10.2.3</b> Presentation</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>10.3</b> Creating an R Markdown file</a></li>
-<li class="chapter" data-level="10.4" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#basic-components-of-r-markdown"><i class="fa fa-check"></i><b>10.4</b> Basic components of R Markdown</a></li>
-<li class="chapter" data-level="10.5" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#markdown"><i class="fa fa-check"></i><b>10.5</b> Markdown</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-bit-more-markdown"><i class="fa fa-check"></i><b>10.5.1</b> A bit more Markdown</a></li>
-<li class="chapter" data-level="10.5.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#r-code-chunks"><i class="fa fa-check"></i><b>10.5.2</b> R code chunks</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#how-r-markdown-gets-compiled"><i class="fa fa-check"></i><b>10.6</b> How R Markdown gets compiled</a></li>
-<li class="chapter" data-level="10.7" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#chunk-options"><i class="fa fa-check"></i><b>10.7</b> Chunk options</a>
-<ul>
-<li class="chapter" data-level="10.7.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#global-options"><i class="fa fa-check"></i><b>10.7.1</b> Global options</a></li>
-<li class="chapter" data-level="10.7.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#formatting-figures"><i class="fa fa-check"></i><b>10.7.2</b> Formatting figures</a></li>
-</ul></li>
-<li class="chapter" data-level="10.8" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#inline-r-code"><i class="fa fa-check"></i><b>10.8</b> Inline R code</a></li>
-<li class="chapter" data-level="10.9" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#other-outputs-word-pdf-and-more"><i class="fa fa-check"></i><b>10.9</b> Other outputs: Word, PDF and more…</a>
-<ul>
-<li class="chapter" data-level="10.9.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-note-about-rmd-outputs"><i class="fa fa-check"></i><b>10.9.1</b> A note about Rmd outputs</a></li>
-</ul></li>
-<li class="chapter" data-level="10.10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#resources"><i class="fa fa-check"></i><b>10.10</b> Resources</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="applications-of-r-markdown.html"><a href="applications-of-r-markdown.html"><i class="fa fa-check"></i><b>11</b> Applications of R Markdown</a></li>
-<li class="chapter" data-level="12" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>12</b> Seeking Help from Others with reprex</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>12.1</b> Help People Help You - reprex</a></li>
-<li class="chapter" data-level="12.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>12.2</b> Other Helpful Resources</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Data Science using R Workshop</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science using R Workshop</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="seeking-help-in-r.html"><span class="header-section-number">2</span> Seeking Help in R</a></li>
+<li><a class="" href="project-management-with-rstudio.html"><span class="header-section-number">3</span> Project Management With RStudio</a></li>
+<li><a class="active" href="data-structures.html"><span class="header-section-number">4</span> Data Structures</a></li>
+<li><a class="" href="exploring-data-frames.html"><span class="header-section-number">5</span> Exploring Data Frames</a></li>
+<li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">6</span> Creating Publication-Quality Graphics with ggplot2</a></li>
+<li><a class="" href="dataframe-manipulation-with-dplyr.html"><span class="header-section-number">7</span> Dataframe Manipulation with dplyr</a></li>
+<li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></li>
+<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
+<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></li>
+<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></li>
+<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/bcgov/ds-intro-to-r-2-day">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="data-structures" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Data Structures</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-structures" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Data Structures<a class="anchor" aria-label="anchor" href="#data-structures"><i class="fas fa-link"></i></a>
+</h1>
 <p>One of R’s most powerful features is its ability to deal with tabular data -
 such as you may already have in a spreadsheet or a CSV file. Let’s start by
 looking at a toy dataset in your <code>data/</code> directory, called <code>feline-data.csv</code>:</p>
@@ -295,29 +72,35 @@ looking at a toy dataset in your <code>data/</code> directory, called <code>feli
 <span id="cb85-3"><a href="data-structures.html#cb85-3" aria-hidden="true" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
 <span id="cb85-4"><a href="data-structures.html#cb85-4" aria-hidden="true" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre></div>
 <div id="the-readr-package" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> The <em>readr</em> package</h2>
+<h2>
+<span class="header-section-number">4.1</span> The <em>readr</em> package<a class="anchor" aria-label="anchor" href="#the-readr-package"><i class="fas fa-link"></i></a>
+</h2>
 <p>To read the data into R, we are going to use our first package, called <em>readr</em>.
 <em>readr</em> is part of a suite of packages called the “tidyverse” which were designed
 to work nicely together and to ease many common data operations.</p>
 <p>The first time you use a package, you will need to install it (like installing
 an app on your phone from the app store). Additionally, it is a good idea to
 periodically check for updates to that package:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="data-structures.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readr"</span><span class="op">)</span></code></pre></div>
 <p>Everytime we want to use that package, you must load it into your R session, by
 using the <code>library</code> function:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-structures.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></code></pre></div>
 <p>Now we can load this data into R via the following using the <code>read_csv</code> function,
 and assign it to an object called <code>cats</code>:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-structures.html#cb88-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;data/feline-data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"data/feline-data.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>Rows: 3 Columns: 3
 ── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
+Delimiter: ","
 chr (1): coat
 dbl (2): weight, likes_string
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-structures.html#cb90-1" aria-hidden="true" tabindex="-1"></a>cats</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span></code></pre></div>
 <pre><code># A tibble: 3 × 3
   coat   weight likes_string
   &lt;chr&gt;   &lt;dbl&gt;        &lt;dbl&gt;
@@ -333,7 +116,8 @@ punctuation characters used to separate or delimit data points in text files.</p
 <p>The object that is created by <code>read_csv</code> is called a “data.frame” - a rectangular
 table-like object with rows and columns.</p>
 <p>We can begin exploring our dataset right away, first by looking at the whole thing:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-structures.html#cb92-1" aria-hidden="true" tabindex="-1"></a>cats</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span></code></pre></div>
 <pre><code># A tibble: 3 × 3
   coat   weight likes_string
   &lt;chr&gt;   &lt;dbl&gt;        &lt;dbl&gt;
@@ -341,47 +125,64 @@ table-like object with rows and columns.</p>
 2 black     5              0
 3 tabby     3.2            1</code></pre>
 <p>And pulling out individual columns by specifying them using the <code>$</code> operator:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-structures.html#cb94-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>weight</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">weight</span></code></pre></div>
 <pre><code>[1] 2.1 5.0 3.2</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="data-structures.html#cb96-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>coat</span></code></pre></div>
-<pre><code>[1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot; </code></pre>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">coat</span></code></pre></div>
+<pre><code>[1] "calico" "black"  "tabby" </code></pre>
 <p>We can do other operations on the columns:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-structures.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Say we discovered that the scale weighs two Kg light:</span></span>
-<span id="cb98-2"><a href="data-structures.html#cb98-2" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>weight <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Say we discovered that the scale weighs two Kg light:</span>
+<span class="va">cats</span><span class="op">$</span><span class="va">weight</span> <span class="op">+</span> <span class="fl">2</span></code></pre></div>
 <pre><code>[1] 4.1 7.0 5.2</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-structures.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;My&quot;</span>, cats<span class="sc">$</span>coat, <span class="st">&quot;cat weighs&quot;</span>, cats<span class="sc">$</span>weight <span class="sc">+</span> <span class="dv">2</span>, <span class="st">&quot;kilograms&quot;</span>)</span></code></pre></div>
-<pre><code>[1] &quot;My calico cat weighs 4.1 kilograms&quot; &quot;My black cat weighs 7 kilograms&quot;   
-[3] &quot;My tabby cat weighs 5.2 kilograms&quot; </code></pre>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"My"</span>, <span class="va">cats</span><span class="op">$</span><span class="va">coat</span>, <span class="st">"cat weighs"</span>, <span class="va">cats</span><span class="op">$</span><span class="va">weight</span> <span class="op">+</span> <span class="fl">2</span>, <span class="st">"kilograms"</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "My calico cat weighs 4.1 kilograms" "My black cat weighs 7 kilograms"   
+[3] "My tabby cat weighs 5.2 kilograms" </code></pre>
 <p>But what about</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-structures.html#cb102-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>weight <span class="sc">+</span> cats<span class="sc">$</span>coat</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">weight</span> <span class="op">+</span> <span class="va">cats</span><span class="op">$</span><span class="va">coat</span></code></pre></div>
 <pre><code>Error in cats$weight + cats$coat: non-numeric argument to binary operator</code></pre>
 <p>Understanding what happened here is key to successfully analyzing data in R.</p>
 </div>
 <div id="data-types" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Data Types</h2>
+<h2>
+<span class="header-section-number">4.2</span> Data Types<a class="anchor" aria-label="anchor" href="#data-types"><i class="fas fa-link"></i></a>
+</h2>
 <p>If you guessed that the last command will return an error because <code>2.1</code> plus
 <code>"black"</code> is nonsense, you’re right - and you already have some intuition for an
 important concept in programming called <em>data types</em>. We can ask what type of
 data something is:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="data-structures.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(cats<span class="sc">$</span>weight)</span></code></pre></div>
-<pre><code>[1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "double"</code></pre>
 <p>There are 4 main types:</p>
 <ul>
-<li><code>double</code>/<code>numeric</code> (decimal numbers),</li>
-<li><code>integer</code> (counting numbers),</li>
-<li><code>logical</code> (True/False),</li>
-<li><code>character</code> (free text)</li>
+<li>
+<code>double</code>/<code>numeric</code> (decimal numbers),</li>
+<li>
+<code>integer</code> (counting numbers),</li>
+<li>
+<code>logical</code> (True/False),</li>
+<li>
+<code>character</code> (free text)</li>
 </ul>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="data-structures.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fl">3.14</span>)</span></code></pre></div>
-<pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="data-structures.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(1L) <span class="co"># The L suffix forces the number to be an integer, since by default R uses double (decimal) numbers</span></span></code></pre></div>
-<pre><code>[1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="data-structures.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>[1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="data-structures.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="st">&#39;banana&#39;</span>)</span></code></pre></div>
-<pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="data-structures.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">1</span> <span class="sc">+</span> 1i)</span></code></pre></div>
-<pre><code>[1] &quot;complex&quot;</code></pre>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">3.14</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "double"</code></pre>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span> <span class="co"># The L suffix forces the number to be an integer, since by default R uses double (decimal) numbers</span></code></pre></div>
+<pre><code>[1] "integer"</code></pre>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "logical"</code></pre>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="st">'banana'</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "character"</code></pre>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">1i</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "complex"</code></pre>
 <p>No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.</p>
@@ -390,40 +191,50 @@ basic data types. This strictness has some really important consequences.</p>
 structure</em> - that is, a structure which R knows how to build out of the basic
 data types.</p>
 <p>We can see that it is a <em>data.frame</em> by calling the <code>class</code> function on it:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="data-structures.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cats)</span></code></pre></div>
-<pre><code>[1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot; </code></pre>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" </code></pre>
 </div>
 <div id="vectors-and-type-coercion" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Vectors and Type Coercion</h2>
+<h2>
+<span class="header-section-number">4.3</span> Vectors and Type Coercion<a class="anchor" aria-label="anchor" href="#vectors-and-type-coercion"><i class="fas fa-link"></i></a>
+</h2>
 <p>To better understand this behavior, let’s meet another of the data structures:
 the <em>vector</em>.</p>
 <p>If we are creating vectors on our own, we will normally use the <code>c</code> (combine)
 function:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="data-structures.html#cb118-1" aria-hidden="true" tabindex="-1"></a>my_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span> ,<span class="dv">7</span> ,<span class="dv">9</span>)</span>
-<span id="cb118-2"><a href="data-structures.html#cb118-2" aria-hidden="true" tabindex="-1"></a>my_vector</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span> ,<span class="fl">7</span> ,<span class="fl">9</span><span class="op">)</span>
+<span class="va">my_vector</span></code></pre></div>
 <pre><code>[1] 1 3 5 7 9</code></pre>
 <p>A vector in R is essentially an ordered list of things, with the special
 condition that <em>everything in the vector must be the same basic data type</em>.
 Note that this is different to most spreadsheet programs where you can store
 different data types in a table column.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-structures.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_vector)</span></code></pre></div>
-<pre><code>[1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "numeric"</code></pre>
 <p>This command indicates the basic data type found in this vector - in this case <code>numeric</code>.</p>
 <p>We can use the logical operators that we learned earlier with vectors:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="data-structures.html#cb122-1" aria-hidden="true" tabindex="-1"></a>my_vector <span class="sc">&gt;</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_vector</span> <span class="op">&gt;</span> <span class="fl">4</span></code></pre></div>
 <pre><code>[1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
 <p>Vectors can be any data type that we’ve already learned about. Let’s make a
 character vector:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-structures.html#cb124-1" aria-hidden="true" tabindex="-1"></a>hogwarts_students <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Harry&quot;</span>, <span class="st">&quot;Ron&quot;</span>, <span class="st">&quot;Hermione&quot;</span>, <span class="st">&quot;Ginny&quot;</span>)</span>
-<span id="cb124-2"><a href="data-structures.html#cb124-2" aria-hidden="true" tabindex="-1"></a>hogwarts_students</span></code></pre></div>
-<pre><code>[1] &quot;Harry&quot;    &quot;Ron&quot;      &quot;Hermione&quot; &quot;Ginny&quot;   </code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="data-structures.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(hogwarts_students)</span></code></pre></div>
-<pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-structures.html#cb128-1" aria-hidden="true" tabindex="-1"></a>hogwarts_students <span class="sc">==</span> <span class="st">&quot;Harry&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hogwarts_students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Harry"</span>, <span class="st">"Ron"</span>, <span class="st">"Hermione"</span>, <span class="st">"Ginny"</span><span class="op">)</span>
+<span class="va">hogwarts_students</span></code></pre></div>
+<pre><code>[1] "Harry"    "Ron"      "Hermione" "Ginny"   </code></pre>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">hogwarts_students</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "character"</code></pre>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hogwarts_students</span> <span class="op">==</span> <span class="st">"Harry"</span></code></pre></div>
 <pre><code>[1]  TRUE FALSE FALSE FALSE</code></pre>
 <p>If we similarly do</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-structures.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cats<span class="sc">$</span>weight)</span></code></pre></div>
-<pre><code>[1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "numeric"</code></pre>
 <p>we see that <code>cats$weight</code> is a vector, too - <em>the columns of data we load into R
 data.frames are all vectors</em>, and that’s the root of why R forces everything in
 a column to be the same basic data type.</p>
@@ -442,29 +253,35 @@ our lives easier in R.</p>
 </blockquote>
 </blockquote>
 <p>Given what we’ve learned so far, what do you think the following will produce?</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-structures.html#cb132-1" aria-hidden="true" tabindex="-1"></a>quiz_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="st">&#39;3&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">quiz_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">6</span>,<span class="st">'3'</span><span class="op">)</span></code></pre></div>
 <p>This is something called <em>type coercion</em>, and it is the source of many surprises
 and the reason why we need to be aware of the basic data types and how R will
 interpret them. When R encounters a mix of types (here numeric and character) to
 be combined into a single vector, it will force them all to be the same
 type. Consider:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="data-structures.html#cb133-1" aria-hidden="true" tabindex="-1"></a>coercion_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb133-2"><a href="data-structures.html#cb133-2" aria-hidden="true" tabindex="-1"></a>coercion_vector</span></code></pre></div>
-<pre><code>[1] &quot;a&quot;    &quot;TRUE&quot;</code></pre>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="data-structures.html#cb135-1" aria-hidden="true" tabindex="-1"></a>another_coercion_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb135-2"><a href="data-structures.html#cb135-2" aria-hidden="true" tabindex="-1"></a>another_coercion_vector</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">coercion_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>, <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">coercion_vector</span></code></pre></div>
+<pre><code>[1] "a"    "TRUE"</code></pre>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">another_coercion_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">another_coercion_vector</span></code></pre></div>
 <pre><code>[1] 0 1</code></pre>
 <p>The coercion rules go: <code>logical</code> -&gt; <code>integer</code> -&gt; <code>double</code>/<code>numeric</code> -&gt; <code>complex</code> -&gt;
 <code>character</code>, where -&gt; can be read as <em>are transformed into</em>. You can try to
 force coercion against this flow using the <code>as.</code> functions:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="data-structures.html#cb137-1" aria-hidden="true" tabindex="-1"></a>character_vector_example <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>)</span>
-<span id="cb137-2"><a href="data-structures.html#cb137-2" aria-hidden="true" tabindex="-1"></a>character_vector_example</span></code></pre></div>
-<pre><code>[1] &quot;0&quot; &quot;2&quot; &quot;4&quot;</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="data-structures.html#cb139-1" aria-hidden="true" tabindex="-1"></a>character_coerced_to_numeric <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(character_vector_example)</span>
-<span id="cb139-2"><a href="data-structures.html#cb139-2" aria-hidden="true" tabindex="-1"></a>character_coerced_to_numeric</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">character_vector_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'0'</span>,<span class="st">'2'</span>,<span class="st">'4'</span><span class="op">)</span>
+<span class="va">character_vector_example</span></code></pre></div>
+<pre><code>[1] "0" "2" "4"</code></pre>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">character_coerced_to_numeric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">character_vector_example</span><span class="op">)</span>
+<span class="va">character_coerced_to_numeric</span></code></pre></div>
 <pre><code>[1] 0 2 4</code></pre>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="data-structures.html#cb141-1" aria-hidden="true" tabindex="-1"></a>numeric_coerced_to_logical <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(character_coerced_to_numeric)</span>
-<span id="cb141-2"><a href="data-structures.html#cb141-2" aria-hidden="true" tabindex="-1"></a>numeric_coerced_to_logical</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">numeric_coerced_to_logical</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">character_coerced_to_numeric</span><span class="op">)</span>
+<span class="va">numeric_coerced_to_logical</span></code></pre></div>
 <pre><code>[1] FALSE  TRUE  TRUE</code></pre>
 <p>As you can see, some surprising things can happen when R forces one basic data
 type into another! Nitty-gritty of type coercion aside, the point is: if your
@@ -477,39 +294,51 @@ your columns of data.frames, or you will get nasty surprises!</p>
 <code>logical</code> data type here, which has two states: <code>TRUE</code> or <code>FALSE</code>, which is
 exactly what our data represents. We can ‘coerce’ this column to be <code>logical</code> by
 using the <code>as.logical</code> function:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="data-structures.html#cb143-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>likes_string</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span></code></pre></div>
 <pre><code>[1] 1 0 1</code></pre>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="data-structures.html#cb145-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>likes_string <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(cats<span class="sc">$</span>likes_string)</span>
-<span id="cb145-2"><a href="data-structures.html#cb145-2" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>likes_string</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span>
+<span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span></code></pre></div>
 <pre><code>[1]  TRUE FALSE  TRUE</code></pre>
 </div>
 <div id="data-frames" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Data Frames</h2>
+<h2>
+<span class="header-section-number">4.4</span> Data Frames<a class="anchor" aria-label="anchor" href="#data-frames"><i class="fas fa-link"></i></a>
+</h2>
 <p>We said that columns in data.frames were vectors:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="data-structures.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cats<span class="sc">$</span>weight)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></code></pre></div>
 <pre><code> num [1:3] 2.1 5 3.2</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="data-structures.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cats<span class="sc">$</span>likes_string)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span></code></pre></div>
 <pre><code> logi [1:3] TRUE FALSE TRUE</code></pre>
 <p>These make sense. But what about</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="data-structures.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cats<span class="sc">$</span>coat)</span></code></pre></div>
-<pre><code> chr [1:3] &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;</code></pre>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">coat</span><span class="op">)</span></code></pre></div>
+<pre><code> chr [1:3] "calico" "black" "tabby"</code></pre>
 </div>
 <div id="factors" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Factors</h2>
+<h2>
+<span class="header-section-number">4.5</span> Factors<a class="anchor" aria-label="anchor" href="#factors"><i class="fas fa-link"></i></a>
+</h2>
 <p>Another important data structure is called a <em>factor</em>. Factors usually look like
 character data, but are typically used to represent categorical information that
 have a defined set of values. For
 example, let’s make a vector of strings labelling cat colorations for all the
 cats in our study:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="data-structures.html#cb153-1" aria-hidden="true" tabindex="-1"></a>coats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;tabby&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;tortoiseshell&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;tabby&#39;</span>)</span>
-<span id="cb153-2"><a href="data-structures.html#cb153-2" aria-hidden="true" tabindex="-1"></a>coats</span></code></pre></div>
-<pre><code>[1] &quot;tabby&quot;         &quot;tortoiseshell&quot; &quot;tortoiseshell&quot; &quot;black&quot;        
-[5] &quot;tabby&quot;        </code></pre>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">coats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'tabby'</span>, <span class="st">'tortoiseshell'</span>, <span class="st">'tortoiseshell'</span>, <span class="st">'black'</span>, <span class="st">'tabby'</span><span class="op">)</span>
+<span class="va">coats</span></code></pre></div>
+<pre><code>[1] "tabby"         "tortoiseshell" "tortoiseshell" "black"        
+[5] "tabby"        </code></pre>
 <p>We can turn a vector into a factor like so:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="data-structures.html#cb155-1" aria-hidden="true" tabindex="-1"></a>CATegories <span class="ot">&lt;-</span> <span class="fu">factor</span>(coats)</span>
-<span id="cb155-2"><a href="data-structures.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(CATegories)</span></code></pre></div>
-<pre><code>[1] &quot;factor&quot;</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="data-structures.html#cb157-1" aria-hidden="true" tabindex="-1"></a>CATegories</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">CATegories</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">coats</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">CATegories</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "factor"</code></pre>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">CATegories</span></code></pre></div>
 <pre><code>[1] tabby         tortoiseshell tortoiseshell black         tabby        
 Levels: black tabby tortoiseshell</code></pre>
 <p>Now R has noticed that there are three possible categories in our data - but it
@@ -517,25 +346,28 @@ also did something surprising; instead of printing out the strings we gave it,
 we got a bunch of numbers instead. R has replaced our human-readable categories
 with numbered indices under the hood, this is necessary as many statistical
 calculations use such numerical representations for categorical data:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="data-structures.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(coats)</span></code></pre></div>
-<pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="data-structures.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(CATegories)</span></code></pre></div>
-<pre><code>[1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">coats</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "character"</code></pre>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">CATegories</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "integer"</code></pre>
 <blockquote>
 <h2 id="challenge-1-2">Challenge 1</h2>
-<p>Look at the help for <code>?read_csv</code> to figure out how to control what data type
+<p>Look at the help for <code><a href="https://readr.tidyverse.org/reference/read_delim.html">?read_csv</a></code> to figure out how to control what data type
 each column is read as. Then write a command so that <code>coat</code> is read as a
 factor, and <code>likes_string</code> is read as a logical</p>
 <blockquote>
 <h2 id="solution-to-challenge-1-1">Solution to Challenge 1</h2>
 <p>Use the <code>col_types</code> argument:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="data-structures.html#cb163-1" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, <span class="at">col_types =</span> <span class="st">&quot;fnl&quot;</span>)</span>
-<span id="cb163-2"><a href="data-structures.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cats<span class="sc">$</span>coat)</span>
-<span id="cb163-3"><a href="data-structures.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cats<span class="sc">$</span>likes_string)</span>
-<span id="cb163-4"><a href="data-structures.html#cb163-4" aria-hidden="true" tabindex="-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file=</span><span class="st">&quot;data/feline-data.csv&quot;</span>, </span>
-<span id="cb163-5"><a href="data-structures.html#cb163-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">coat =</span> <span class="fu">col_factor</span>(), <span class="at">likes_string =</span> <span class="fu">col_logical</span>()))</span>
-<span id="cb163-6"><a href="data-structures.html#cb163-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cats<span class="sc">$</span>coat)</span>
-<span id="cb163-7"><a href="data-structures.html#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cats<span class="sc">$</span>likes_string)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file<span class="op">=</span><span class="st">"data/feline-data.csv"</span>, col_types <span class="op">=</span> <span class="st">"fnl"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">coat</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span>
+<span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file<span class="op">=</span><span class="st">"data/feline-data.csv"</span>, 
+                 col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>coat <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_factor.html">col_factor</a></span><span class="op">(</span><span class="op">)</span>, likes_string <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_logical</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">coat</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span></code></pre></div>
 </blockquote>
 </blockquote>
 <!--
@@ -546,36 +378,41 @@ even if they aren't sure.
 <p>In modeling functions, it’s important to know what the baseline levels are. This
 is assumed to be the first factor, but by default factors are labeled in
 alphabetical order. You can change this by specifying the levels:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="data-structures.html#cb164-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>)</span>
-<span id="cb164-2"><a href="data-structures.html#cb164-2" aria-hidden="true" tabindex="-1"></a>factor_ordering_example <span class="ot">&lt;-</span> <span class="fu">factor</span>(mydata, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>))</span>
-<span id="cb164-3"><a href="data-structures.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(factor_ordering_example)</span></code></pre></div>
-<pre><code> Factor w/ 2 levels &quot;control&quot;,&quot;case&quot;: 2 1 1 2</code></pre>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"case"</span>, <span class="st">"control"</span>, <span class="st">"control"</span>, <span class="st">"case"</span><span class="op">)</span>
+<span class="va">factor_ordering_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">mydata</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"case"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">factor_ordering_example</span><span class="op">)</span></code></pre></div>
+<pre><code> Factor w/ 2 levels "control","case": 2 1 1 2</code></pre>
 <p>In this case, we’ve explicitly told R that “control” should be represented by 1, and
 “case” by 2. This designation can be very important for interpreting the
 results of statistical models!</p>
 </div>
 <div id="lists" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Lists</h2>
+<h2>
+<span class="header-section-number">4.6</span> Lists<a class="anchor" aria-label="anchor" href="#lists"><i class="fas fa-link"></i></a>
+</h2>
 <p>Another data structure you’ll want in your bag of tricks is the <code>list</code>. A list
 is simpler in some ways than the other types, because you can put anything you
 want in it:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="data-structures.html#cb166-1" aria-hidden="true" tabindex="-1"></a>list_example <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="cn">TRUE</span>, <span class="dv">1</span><span class="sc">+</span>4i)</span>
-<span id="cb166-2"><a href="data-structures.html#cb166-2" aria-hidden="true" tabindex="-1"></a>list_example</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">list_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"a"</span>, <span class="cn">TRUE</span>, <span class="fl">1</span><span class="op">+</span><span class="fl">4i</span><span class="op">)</span>
+<span class="va">list_example</span></code></pre></div>
 <pre><code>[[1]]
 [1] 1
 
 [[2]]
-[1] &quot;a&quot;
+[1] "a"
 
 [[3]]
 [1] TRUE
 
 [[4]]
 [1] 1+4i</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="data-structures.html#cb168-1" aria-hidden="true" tabindex="-1"></a>another_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">&quot;Numbers&quot;</span>, <span class="at">numbers =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">data =</span> <span class="cn">TRUE</span> )</span>
-<span id="cb168-2"><a href="data-structures.html#cb168-2" aria-hidden="true" tabindex="-1"></a>another_list</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">another_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Numbers"</span>, numbers <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, data <span class="op">=</span> <span class="cn">TRUE</span> <span class="op">)</span>
+<span class="va">another_list</span></code></pre></div>
 <pre><code>$title
-[1] &quot;Numbers&quot;
+[1] "Numbers"
 
 $numbers
  [1]  1  2  3  4  5  6  7  8  9 10
@@ -583,8 +420,9 @@ $numbers
 $data
 [1] TRUE</code></pre>
 <p>We can now understand something a bit surprising in our data.frame; what happens if we run:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="data-structures.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(cats)</span></code></pre></div>
-<pre><code>[1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cats</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "list"</code></pre>
 <p>We see that data.frames look like lists ‘under the hood’ - this is because a
 data.frame is really a list of vectors, as they have to be - in
 order to hold those columns that are a mix of vectors, the
@@ -593,32 +431,39 @@ columns together into a familiar table. In other words, a <code>data.frame</code
 special list in which all the vectors must have the same length.</p>
 <p>In our <code>cats</code> example, we have a character, a double and a logical variable. As
 we have seen already, each column of data.frame is a vector.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="data-structures.html#cb172-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>coat</span></code></pre></div>
-<pre><code>[1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot; </code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="data-structures.html#cb174-1" aria-hidden="true" tabindex="-1"></a>cats[,<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">coat</span></code></pre></div>
+<pre><code>[1] "calico" "black"  "tabby" </code></pre>
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 3 × 1
   coat  
   &lt;chr&gt; 
 1 calico
 2 black 
 3 tabby </code></pre>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="data-structures.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(cats[,<span class="dv">1</span>])</span></code></pre></div>
-<pre><code>[1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="data-structures.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cats[,<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cats</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "list"</code></pre>
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>tibble [3 × 1] (S3: tbl_df/tbl/data.frame)
- $ coat: chr [1:3] &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;</code></pre>
+ $ coat: chr [1:3] "calico" "black" "tabby"</code></pre>
 <p>Each row is an <em>observation</em> of different variables, itself a data.frame, and
 thus can be composed of elements of different types.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="data-structures.html#cb180-1" aria-hidden="true" tabindex="-1"></a>cats[<span class="dv">1</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 1 × 3
   coat   weight likes_string
   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;       
 1 calico    2.1 TRUE        </code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="data-structures.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(cats[<span class="dv">1</span>,])</span></code></pre></div>
-<pre><code>[1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="data-structures.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cats[<span class="dv">1</span>,])</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "list"</code></pre>
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>tibble [1 × 3] (S3: tbl_df/tbl/data.frame)
- $ coat        : chr &quot;calico&quot;
+ $ coat        : chr "calico"
  $ weight      : num 2.1
  $ likes_string: logi TRUE</code></pre>
 <blockquote>
@@ -635,10 +480,11 @@ elements from data.frames:</p>
 <li><code>cats[1, ]</code></li>
 </ul>
 <p>Try out these examples and explain what is returned by each one.</p>
-<p><em>Hint:</em> Use the function <code>typeof()</code> to examine what is returned in each case.</p>
+<p><em>Hint:</em> Use the function <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> to examine what is returned in each case.</p>
 <blockquote>
 <h2 id="solution-to-challenge-3-2">Solution to Challenge 3</h2>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="data-structures.html#cb186-1" aria-hidden="true" tabindex="-1"></a>cats[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 3 × 1
   coat  
   &lt;chr&gt; 
@@ -648,15 +494,18 @@ elements from data.frames:</p>
 <p>We can think of a data frame as a list of vectors. The single brace <code>[1]</code>
 returns the first slice of the list, as another list. In this case it is the
 first column of the data frame.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="data-structures.html#cb188-1" aria-hidden="true" tabindex="-1"></a>cats[[<span class="dv">1</span>]]</span></code></pre></div>
-<pre><code>[1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot; </code></pre>
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
+<pre><code>[1] "calico" "black"  "tabby" </code></pre>
 <p>The double brace <code>[[1]]</code> returns the contents of the list item. In this case
 it is the contents of the first column, a <em>vector</em> of type <em>factor</em>.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="data-structures.html#cb190-1" aria-hidden="true" tabindex="-1"></a>cats<span class="sc">$</span>coat</span></code></pre></div>
-<pre><code>[1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot; </code></pre>
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">coat</span></code></pre></div>
+<pre><code>[1] "calico" "black"  "tabby" </code></pre>
 <p>This example uses the <code>$</code> character to address items by name. <em>coat</em> is the
 first column of the data frame, again a <em>vector</em> of type <em>factor</em>.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="data-structures.html#cb192-1" aria-hidden="true" tabindex="-1"></a>cats[<span class="st">&quot;coat&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="st">"coat"</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 3 × 1
   coat  
   &lt;chr&gt; 
@@ -665,7 +514,8 @@ first column of the data frame, again a <em>vector</em> of type <em>factor</em>.
 3 tabby </code></pre>
 <p>Here we are using a single brace <code>["coat"]</code> replacing the index number with
 the column name. Like example 1, the returned object is a <em>list</em>.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="data-structures.html#cb194-1" aria-hidden="true" tabindex="-1"></a>cats[<span class="dv">1</span>, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 1 × 1
   coat  
   &lt;chr&gt; 
@@ -674,7 +524,8 @@ the column name. Like example 1, the returned object is a <em>list</em>.</p>
 coordinates. The returned object is the value in row 1, column 1. The object
 is an <em>integer</em> but because it is part of a <em>vector</em> of type <em>factor</em>, R
 displays the label “calico” associated with the integer value.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="data-structures.html#cb196-1" aria-hidden="true" tabindex="-1"></a>cats[, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 3 × 1
   coat  
   &lt;chr&gt; 
@@ -684,7 +535,8 @@ displays the label “calico” associated with the integer value.</p>
 <p>Like the previous example we use single braces and provide row and column
 coordinates. The row coordinate is not specified, R interprets this missing
 value as all the elements in this <em>column</em> <em>vector</em>.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="data-structures.html#cb198-1" aria-hidden="true" tabindex="-1"></a>cats[<span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 1 × 3
   coat   weight likes_string
   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;       
@@ -696,26 +548,35 @@ values in the first row.</p>
 </blockquote>
 </div>
 <div id="matrices" class="section level2" number="4.7">
-<h2><span class="header-section-number">4.7</span> Matrices</h2>
+<h2>
+<span class="header-section-number">4.7</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
+</h2>
 <p>Last but not least is the matrix. We can declare a matrix full of zeros:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="data-structures.html#cb200-1" aria-hidden="true" tabindex="-1"></a>matrix_example <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">ncol=</span><span class="dv">6</span>, <span class="at">nrow=</span><span class="dv">3</span>)</span>
-<span id="cb200-2"><a href="data-structures.html#cb200-2" aria-hidden="true" tabindex="-1"></a>matrix_example</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">matrix_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, ncol<span class="op">=</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">matrix_example</span></code></pre></div>
 <pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]    0    0    0    0    0    0
 [2,]    0    0    0    0    0    0
 [3,]    0    0    0    0    0    0</code></pre>
 <p>And similar to other data structures, we can ask things about our matrix:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="data-structures.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(matrix_example)</span></code></pre></div>
-<pre><code>[1] &quot;matrix&quot; &quot;array&quot; </code></pre>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="data-structures.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(matrix_example)</span></code></pre></div>
-<pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="data-structures.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "matrix" "array" </code></pre>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "double"</code></pre>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code> num [1:3, 1:6] 0 0 0 0 0 0 0 0 0 0 ...</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="data-structures.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 3 6</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="data-structures.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 3</code></pre>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="data-structures.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 6</code></pre>
 <blockquote>
 <h2 id="challenge-4-1">Challenge 4</h2>
@@ -727,8 +588,9 @@ Were you right? Why / why not?</p>
 <h2 id="solution-to-challenge-4-1">Solution to Challenge 4</h2>
 <p>What do you think will be the result of
 <code>length(matrix_example)</code>?</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="data-structures.html#cb214-1" aria-hidden="true" tabindex="-1"></a>matrix_example <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">ncol=</span><span class="dv">6</span>, <span class="at">nrow=</span><span class="dv">3</span>)</span>
-<span id="cb214-2"><a href="data-structures.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(matrix_example)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">matrix_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, ncol<span class="op">=</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 18</code></pre>
 <p>Because a matrix is a vector with added dimension attributes, <code>length</code>
 gives you the total number of elements in the matrix.</p>
@@ -750,8 +612,9 @@ Did the <code>matrix</code> function fill your matrix by column, or by
 row, as its default behaviour?
 See if you can figure out how to change this.
 (hint: read the documentation for <code>matrix</code>!)</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="data-structures.html#cb216-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="at">ncol=</span><span class="dv">5</span>, <span class="at">nrow=</span><span class="dv">10</span>)</span>
-<span id="cb216-2"><a href="data-structures.html#cb216-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="at">ncol=</span><span class="dv">5</span>, <span class="at">nrow=</span><span class="dv">10</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) <span class="co"># to fill by row</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, ncol<span class="op">=</span><span class="fl">5</span>, nrow<span class="op">=</span><span class="fl">10</span><span class="op">)</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, ncol<span class="op">=</span><span class="fl">5</span>, nrow<span class="op">=</span><span class="fl">10</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># to fill by row</span></code></pre></div>
 </blockquote>
 </blockquote>
 <blockquote>
@@ -765,9 +628,10 @@ See if you can figure out how to change this.
 structures we’ve seen so far.</p>
 <blockquote>
 <h2 id="solution-to-challenge-6">Solution to Challenge 6</h2>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="data-structures.html#cb217-1" aria-hidden="true" tabindex="-1"></a>dataTypes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;double&#39;</span>, <span class="st">&#39;complex&#39;</span>, <span class="st">&#39;integer&#39;</span>, <span class="st">&#39;character&#39;</span>, <span class="st">&#39;logical&#39;</span>)</span>
-<span id="cb217-2"><a href="data-structures.html#cb217-2" aria-hidden="true" tabindex="-1"></a>dataStructures <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;data.frame&#39;</span>, <span class="st">&#39;vector&#39;</span>, <span class="st">&#39;factor&#39;</span>, <span class="st">&#39;list&#39;</span>, <span class="st">&#39;matrix&#39;</span>)</span>
-<span id="cb217-3"><a href="data-structures.html#cb217-3" aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="fu">list</span>(dataTypes, dataStructures)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dataTypes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'double'</span>, <span class="st">'complex'</span>, <span class="st">'integer'</span>, <span class="st">'character'</span>, <span class="st">'logical'</span><span class="op">)</span>
+<span class="va">dataStructures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'data.frame'</span>, <span class="st">'vector'</span>, <span class="st">'factor'</span>, <span class="st">'list'</span>, <span class="st">'matrix'</span><span class="op">)</span>
+<span class="va">answer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">dataTypes</span>, <span class="va">dataStructures</span><span class="op">)</span></code></pre></div>
 </blockquote>
 </blockquote>
 <blockquote>
@@ -796,72 +660,52 @@ Think about what matrices the other commands will produce.</p>
 <p>What was the correct command used to write this matrix? Examine
 each command and try to figure out the correct one before typing them.
 Think about what matrices the other commands will produce.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="data-structures.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">7</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">9</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">7</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </blockquote>
 </blockquote>
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="project-management-with-rstudio.html"><span class="header-section-number">3</span> Project Management With RStudio</a></div>
+<div class="next"><a href="exploring-data-frames.html"><span class="header-section-number">5</span> Exploring Data Frames</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-structures"><span class="header-section-number">4</span> Data Structures</a></li>
+<li><a class="nav-link" href="#the-readr-package"><span class="header-section-number">4.1</span> The readr package</a></li>
+<li><a class="nav-link" href="#data-types"><span class="header-section-number">4.2</span> Data Types</a></li>
+<li><a class="nav-link" href="#vectors-and-type-coercion"><span class="header-section-number">4.3</span> Vectors and Type Coercion</a></li>
+<li><a class="nav-link" href="#data-frames"><span class="header-section-number">4.4</span> Data Frames</a></li>
+<li><a class="nav-link" href="#factors"><span class="header-section-number">4.5</span> Factors</a></li>
+<li><a class="nav-link" href="#lists"><span class="header-section-number">4.6</span> Lists</a></li>
+<li><a class="nav-link" href="#matrices"><span class="header-section-number">4.7</span> Matrices</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="project-management-with-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="exploring-data-frames.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/04-data-structures-part1.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/bcgov/ds-intro-to-r-2-day/edit/master/04-data-structures-part1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-16.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>
