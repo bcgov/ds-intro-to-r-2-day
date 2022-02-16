@@ -155,7 +155,7 @@ changed over time:</p>
 <p>Hint: the gapminder dataset has a column called “year”, which should appear
 on the x-axis.</p>
 <blockquote>
-<h2 id="solution-to-challenge-1-1">Solution to challenge 1</h2>
+<h2 id="solution-to-challenge-1">Solution to challenge 1</h2>
 <p>Here is one possible solution:</p>
 <div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -171,7 +171,7 @@ Another <em>aesthetic</em> property we can modify is the point <em>colour</em>. 
 code from the previous challenge to <strong>colour</strong> the points by the “continent”
 column. What trends do you see in the data? Are they what you expected?</p>
 <blockquote>
-<h2 id="solution-to-challenge-2-2">Solution to challenge 2</h2>
+<h2 id="solution-to-challenge-2-1">Solution to challenge 2</h2>
 <div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -226,7 +226,7 @@ lines.</p>
 <p>Switch the order of the point and line layers from the previous example. What
 happened?</p>
 <blockquote>
-<h2 id="solution-to-challenge-3-3">Solution to challenge 3</h2>
+<h2 id="solution-to-challenge-3">Solution to challenge 3</h2>
 <div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>

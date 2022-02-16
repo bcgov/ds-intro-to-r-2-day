@@ -400,11 +400,10 @@ different conventions for long variable names, these include</p>
 <strong>be consistent</strong> with the operator you use. There are occasionally places
 where it is less confusing to use <code>&lt;-</code> than <code>=</code>, and it is the most common
 symbol used in the community. So the recommendation is to use <code>&lt;-</code>.</p>
-</div>
-<div id="challenge-1" class="section level2" number="1.10">
-<h2>
-<span class="header-section-number">1.10</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"><i class="fas fa-link"></i></a>
-</h2>
+<div id="challenge-1" class="section level3" number="1.9.1">
+<h3>
+<span class="header-section-number">1.9.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"><i class="fas fa-link"></i></a>
+</h3>
 <p>Which of the following are valid R variable names?</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="introduction-to-r-and-rstudio.html#cb45-1" aria-hidden="true" tabindex="-1"></a>min_height</span>
 <span id="cb45-2"><a href="introduction-to-r-and-rstudio.html#cb45-2" aria-hidden="true" tabindex="-1"></a>max.height</span>
@@ -432,10 +431,10 @@ symbol used in the community. So the recommendation is to use <code>&lt;-</code>
 <span id="cb48-3"><a href="introduction-to-r-and-rstudio.html#cb48-3" aria-hidden="true" tabindex="-1"></a>2widths</span></code></pre></div>
 </details>
 </div>
-<div id="challenge-2" class="section level2" number="1.11">
-<h2>
-<span class="header-section-number">1.11</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"><i class="fas fa-link"></i></a>
-</h2>
+<div id="challenge-2" class="section level3" number="1.9.2">
+<h3>
+<span class="header-section-number">1.9.2</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"><i class="fas fa-link"></i></a>
+</h3>
 <p>What will be the value of each variable after each
 statement in the following program?</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
@@ -462,32 +461,26 @@ statement in the following program?</p>
 of 102 to the variable age.</p>
 </details>
 </div>
-<div id="challenge-3" class="section level2" number="1.12">
-<h2>
-<span class="header-section-number">1.12</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"><i class="fas fa-link"></i></a>
-</h2>
+<div id="challenge-3" class="section level3" number="1.9.3">
+<h3>
+<span class="header-section-number">1.9.3</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Run the code from the previous challenge, and write a command to
 compare mass to age. Is mass larger than age?</p>
 <p><br></p>
-<details><summary><strong>Solution to challenge 2</strong>
+<details><summary><strong>Solution to challenge 3</strong>
 </summary><p><br></p>
-</details>
-</div>
-<div id="solution-to-challenge-3" class="section level2" number="1.13">
-<h2>
-<span class="header-section-number">1.13</span> Solution to challenge 3`<a class="anchor" aria-label="anchor" href="#solution-to-challenge-3"><i class="fas fa-link"></i></a>
-</h2>
 <p>One way of answering this question in R is to use the <code>&gt;</code> to set up the following:`</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mass</span> <span class="op">&gt;</span> <span class="va">age</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <p>This should yield a boolean value of TRUE since 109.25 is greater than 102.</p>
-
-<p>`</p>
+</details><p>`</p>
 </div>
-<div id="vectorization" class="section level2" number="1.14">
+</div>
+<div id="vectorization" class="section level2" number="1.10">
 <h2>
-<span class="header-section-number">1.14</span> Vectorization<a class="anchor" aria-label="anchor" href="#vectorization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.10</span> Vectorization<a class="anchor" aria-label="anchor" href="#vectorization"><i class="fas fa-link"></i></a>
 </h2>
 <p>One final thing to be aware of is that R is <em>vectorized</em>, meaning that
 variables and functions can have vectors as values. In contrast to physics and
@@ -510,9 +503,9 @@ same data type. For example</p>
 <p>This is incredibly powerful; we will discuss this further in an
 upcoming lesson.</p>
 </div>
-<div id="managing-your-environment" class="section level2" number="1.15">
+<div id="managing-your-environment" class="section level2" number="1.11">
 <h2>
-<span class="header-section-number">1.15</span> Managing your environment<a class="anchor" aria-label="anchor" href="#managing-your-environment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.11</span> Managing your environment<a class="anchor" aria-label="anchor" href="#managing-your-environment"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are a few useful commands you can use to interact with the R session.</p>
 <p><code>ls</code> will list all of the variables and functions stored in the global environment
@@ -563,7 +556,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7f88f72f9ff8&gt;
+&lt;bytecode: 0x7f8410eebbf8&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
@@ -581,21 +574,24 @@ hasn’t worked as expected.</p>
 <p>In both cases, the message that R prints out usually give you clues
 how to fix a problem.</p>
 </blockquote>
-<blockquote>
-<h2 id="challenge-4">Challenge 4</h2>
+<div id="challenge-4" class="section level3" number="1.11.1">
+<h3>
+<span class="header-section-number">1.11.1</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"><i class="fas fa-link"></i></a>
+</h3>
 <p>Clean up your working environment by deleting the mass and age
 variables.</p>
-<blockquote>
-<h2 id="solution-to-challenge-4">Solution to challenge 4</h2>
+<p><br></p>
+<details><summary><strong>Solution to challenge 4</strong>
+</summary><p><br></p>
 <p>We can use the <code>rm</code> command to accomplish this task</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">mass</span><span class="op">)</span></code></pre></div>
-</blockquote>
-</blockquote>
+</details>
 </div>
-<div id="r-packages" class="section level2" number="1.16">
+</div>
+<div id="r-packages" class="section level2" number="1.12">
 <h2>
-<span class="header-section-number">1.16</span> R Packages<a class="anchor" aria-label="anchor" href="#r-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.12</span> R Packages<a class="anchor" aria-label="anchor" href="#r-packages"><i class="fas fa-link"></i></a>
 </h2>
 <p>Think of packages like apps on your smart phone. Your phone can do a lot of
 things right out of the box, but you can get apps to make some existing
@@ -619,18 +615,20 @@ where <code>packagename</code> is the package name, in quotes.</li>
 <li>You can make a package available for use with <code><a href="https://rdrr.io/r/base/library.html">library(packagename)</a></code>
 </li>
 </ul>
-<blockquote>
-<h2 id="challenge-5">Challenge 5</h2>
-<p>Install the following packages: <code>ggplot2</code>, <code>dplyr</code></p>
-<blockquote>
-<h2 id="solution-to-challenge-5">Solution to challenge 5</h2>
+<div id="challenge-5" class="section level3" number="1.12.1">
+<h3>
+<span class="header-section-number">1.12.1</span> Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5"><i class="fas fa-link"></i></a>
+</h3>
+<p>Install the following packages: <code>ggplot2</code>, <code>dplyr</code>.</p>
+<p><br></p>
+<details><summary><strong>Solution to challenge 4</strong>
+</summary><p><br></p>
 <p>We can use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> command to install the required packages.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></code></pre></div>
-</blockquote>
-</blockquote>
-
+</details>
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -648,14 +646,20 @@ where <code>packagename</code> is the package name, in quotes.</li>
 <li><a class="nav-link" href="#using-r-as-a-calculator"><span class="header-section-number">1.6</span> Using R as a calculator</a></li>
 <li><a class="nav-link" href="#mathematical-functions"><span class="header-section-number">1.7</span> Mathematical functions</a></li>
 <li><a class="nav-link" href="#comparing-things"><span class="header-section-number">1.8</span> Comparing things</a></li>
-<li><a class="nav-link" href="#variables-and-assignment"><span class="header-section-number">1.9</span> Variables and assignment</a></li>
-<li><a class="nav-link" href="#challenge-1"><span class="header-section-number">1.10</span> Challenge 1</a></li>
-<li><a class="nav-link" href="#challenge-2"><span class="header-section-number">1.11</span> Challenge 2</a></li>
-<li><a class="nav-link" href="#challenge-3"><span class="header-section-number">1.12</span> Challenge 3</a></li>
-<li><a class="nav-link" href="#solution-to-challenge-3"><span class="header-section-number">1.13</span> Solution to challenge 3`</a></li>
-<li><a class="nav-link" href="#vectorization"><span class="header-section-number">1.14</span> Vectorization</a></li>
-<li><a class="nav-link" href="#managing-your-environment"><span class="header-section-number">1.15</span> Managing your environment</a></li>
-<li><a class="nav-link" href="#r-packages"><span class="header-section-number">1.16</span> R Packages</a></li>
+<li>
+<a class="nav-link" href="#variables-and-assignment"><span class="header-section-number">1.9</span> Variables and assignment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#challenge-1"><span class="header-section-number">1.9.1</span> Challenge 1</a></li>
+<li><a class="nav-link" href="#challenge-2"><span class="header-section-number">1.9.2</span> Challenge 2</a></li>
+<li><a class="nav-link" href="#challenge-3"><span class="header-section-number">1.9.3</span> Challenge 3</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#vectorization"><span class="header-section-number">1.10</span> Vectorization</a></li>
+<li>
+<a class="nav-link" href="#managing-your-environment"><span class="header-section-number">1.11</span> Managing your environment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-4"><span class="header-section-number">1.11.1</span> Challenge 4</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#r-packages"><span class="header-section-number">1.12</span> R Packages</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-5"><span class="header-section-number">1.12.1</span> Challenge 5</a></li></ul>
+</li>
 </ul>
 
       <div class="book-extra">

@@ -74,15 +74,16 @@ project.
 > 
 > Inside your project you should have a collection of `.R` and `.Rmd` files, 
 > a `data/` folder, and a `README.md` file.
-> 
-> ## Challenge: 
-> 
-> To get used to navigating Projects in RStudio, close your Project and reopen it.
-> There are at least three ways of opening an RStudio project - try to find two!
-
 
 Now whenever we open this project with RStudio, all of our work on this project will 
 be entirely self-contained in this directory.
+
+### Challenge: 
+
+To get used to navigating Projects in RStudio, close your Project and reopen it.
+There are at least three ways of opening an RStudio project - try to find two!
+
+
 
 ## Best practices for project organization
 
