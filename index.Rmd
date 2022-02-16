@@ -2,7 +2,8 @@
 title: "Introduction to Data Science using R Workshop"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: bookdown::bs4_book
+url: https://bcgov.github.io/ds-intro-to-r-2-day
 documentclass: book
 github-repo: bcgov/ds-intro-to-r-2-day
 description: "This book contains materials for a 4 session Introduction to R workshop"
