@@ -96,15 +96,19 @@ environment. It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
 
-> ## Tip: Key RStudio Setting
-> 
-> By default RStudio will automatically save your session variables in your
-> porject directory in a file called `.RData`. These are saved when you exit a
-> project and restored when you open it up again. We _highly_ recommend turning
-> this feature off. As you will learn in this course, all outputs will be created
-> from code. Typically you do not need to save intermediate steps. If you don't
-> plan to use this feature you can toggle it in the Project Options -> General
-> tab.
+::: {.rmdtip}
+
+**Tip: Key RStudio Setting**
+
+By default RStudio will automatically save your session variables in your
+porject directory in a file called `.RData`. These are saved when you exit a
+project and restored when you open it up again. We _highly_ recommend turning
+this feature off. As you will learn in this course, all outputs will be created
+from code. Typically you do not need to save intermediate steps. If you don't
+plan to use this feature you can toggle it in the Project Options -> General
+tab.
+
+:::
 
 **Basic layout**
 
@@ -136,22 +140,23 @@ interactive R console.
    * You will be able to run the file you create from within RStudio
    or using R's `source()`  function.
 
-> ## Tip: Running segments of your code
->
-> RStudio offers you great flexibility in running code from within the editor
-> window. There are buttons, menu choices, and keyboard shortcuts. To run the
-> current line, you can 
-> 1. click on the `Run` button above the editor panel, or 
-> 2. select "Run Lines" from the "Code" menu, or 
-> 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux 
-> or <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X.
-> (This shortcut can also be seen by hovering
-> the mouse over the button). To run a block of code, select it and then `Run`.
-> If you have modified a line of code within a block of code you have just run,
-> there is no need to reselect the section and `Run`, you can use the next button
-> along, `Re-run the previous region`. This will run the previous code block
-> including the modifications you have made.
+::: {.rmdtip}
+**Tip: Running segments of your code**
 
+RStudio offers you great flexibility in running code from within the editor
+window. There are buttons, menu choices, and keyboard shortcuts. To run the
+current line, you can 
+1. click on the `Run` button above the editor panel, or 
+2. select "Run Lines" from the "Code" menu, or 
+3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux 
+or <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X.
+(This shortcut can also be seen by hovering
+the mouse over the button). To run a block of code, select it and then `Run`.
+If you have modified a line of code within a block of code you have just run,
+there is no need to reselect the section and `Run`, you can use the next button
+along, `Re-run the previous region`. This will run the previous code block
+including the modifications you have made.
+:::
 
 ## Introduction to R
 
@@ -209,12 +214,14 @@ means it's waiting for you to complete the command. If you want to cancel
 a command you can simply hit "Esc" and RStudio will give you back the ">"
 prompt.
 
-> ## Tip: Cancelling commands
->
-> Cancelling a command isn't only useful for killing incomplete commands:
-> you can also use it to tell R to stop running code (for example if it's
-> taking much longer than you expect), or to get rid of the code you're
-> currently writing.
+::: {.rmdtip}
+**Tip: Cancelling commands**
+
+Cancelling a command isn't only useful for killing incomplete commands:
+you can also use it to tell R to stop running code (for example if it's
+taking much longer than you expect), or to get rid of the code you're
+currently writing.
+:::
 
 When using R as a calculator, the order of operations is the same as you
 would have learned back in school.
@@ -340,23 +347,25 @@ We can also do comparison in R:
 1 >= -9 # greater than or equal to
 ```
 
-> ## Tip: Comparing Numbers
->
-> A word of warning about comparing numbers: you should
-> never use `==` to compare two numbers unless they are
-> integers (a data type which can specifically represent
-> only whole numbers).
->
-> Computers may only represent decimal numbers with a
-> certain degree of precision, so two numbers which look
-> the same when printed out by R, may actually have
-> different underlying representations and therefore be
-> different by a small margin of error (called Machine
-> numeric tolerance).
->
-> Instead you should use the `all.equal` function.
->
-> Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
+::: {.rmdtip}
+**Tip: Comparing Numbers**
+
+A word of warning about comparing numbers: you should
+never use `==` to compare two numbers unless they are
+integers (a data type which can specifically represent
+only whole numbers).
+:::
+
+Computers may only represent decimal numbers with a
+certain degree of precision, so two numbers which look
+the same when printed out by R, may actually have
+different underlying representations and therefore be
+different by a small margin of error (called Machine
+numeric tolerance).
+
+Instead you should use the `all.equal` function.
+
+Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
 
 
 ## Variables and assignment
