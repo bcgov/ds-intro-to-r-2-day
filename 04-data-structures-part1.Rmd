@@ -331,12 +331,11 @@ typeof(CATegories)
 > each column is read as. Then write a command so that `coat` is read as a
 > factor, and `likes_string` is read as a logical
 > 
-> <br />
 > 
 > <details>
 > 
 > <summary>
-> <strong>Solution to challenge 1</strong>
+> Solution to challenge 1
 > </summary>
 > 
 > <br />

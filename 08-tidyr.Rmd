@@ -1,12 +1,11 @@
 ---
-title: Create Tidy Data with tidyr
+title: "Create Tidy Data with tidyr"
 teaching: 30
 exercises: 15
 questions:
 - "How can I change the layout of a dataframe?"
 objectives:
-- "To understand the concepts of 'longer' and 'wider' dataframe formats and be able
-to convert between them with `tidyr`."
+- "To understand the concepts of 'longer' and 'wider' dataframe formats and be able to convert between them with `tidyr`."
 keypoints:
 - "Use the `tidyr` package to change the layout of dataframes."
 - "Use `pivot_longer()` to go from wide to longer layout."

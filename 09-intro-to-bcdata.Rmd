@@ -130,13 +130,15 @@ sum_books <- lib_tidy %>%
 
 Now that we have imported, tidied, and summarized our library data, let's make a static data visualization to share and communicate the results with others.
 
-```{r fig.height=10}
+```{r fig.height=13}
 library(ggplot2)
 
 sum_books %>% 
   ggplot(aes(total_books, City)) +
   geom_col()
+```
 
+```{r}
 sum_books %>% 
   filter(total_books > 100000) %>% 
   ggplot(aes(total_books, City)) +
@@ -155,14 +157,14 @@ sum_books %>%
 > </summary>
 > 
 > <br />
->```{r}
+>```{r fig.height = 10}
 >library(ggplot2)
 >
 >sum_books %>% 
 >  filter(total_books > 100000) %>% 
 >  ggplot(aes(total_books, City)) +
 >  geom_col() +
->  facet_wrap(vars(`Library System`)) +
+>  facet_wrap(vars(`Library System`), ncol = 3) +
 >  theme_minimal() +
 >  labs(x = NULL,
 >       y = NULL,
