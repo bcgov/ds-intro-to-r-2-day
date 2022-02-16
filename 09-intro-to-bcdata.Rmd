@@ -76,10 +76,10 @@ lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
                          resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
 ```
 
-> ## Challenge 1 (5 minutes)
+### Challenge 1 (5 minutes)
 >
 > Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session > (e.g. a CSV or XLS resource). Entering `bcdc_browse()` into the R console will open the catalogue page in your default web browser. 
->
+
 
 ## Practice manipulating data with `dplyr`  
 
@@ -105,24 +105,32 @@ sum_books <- lib_tidy %>%
   summarize(total_books = sum(num_books))
 ```
 
-> ## Challenge 2 (10 minutes)
+### Challenge 2 (10 minutes)
 >
 > Using `dplyr`, determine the total number of books within each Library System in British Columbia.
 >
 >
-> >## Solution Challenge 2 (10 minutes)
-> >```{r}
-> > sum_books %>% 
-> >  group_by(`Library System`) %>% 
-> >  summarize(totals = sum(total_books))
-> >```
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+>```{r}
+> sum_books %>% 
+>  group_by(`Library System`) %>% 
+>  summarize(totals = sum(total_books))
+>```
+> </details>
+
 
 
 ## Practice plotting data with `ggplot2`  
 
 Now that we have imported, tidied, and summarized our library data, let's make a static data visualization to share and communicate the results with others.
 
-```{r}
+```{r fig.height=10}
 library(ggplot2)
 
 sum_books %>% 
@@ -135,51 +143,67 @@ sum_books %>%
   geom_col()
 ```
 
-> ## Challenge 3 (10 minutes)
->
+### Challenge 3 (10 minutes)
+
 > Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable.
 >
 >
-> >## Solution Challenge 3 (10 minutes)
-> >```{r}
-> >library(ggplot2)
-> >
-> >sum_books %>% 
-> >  filter(total_books > 100000) %>% 
-> >  ggplot(aes(total_books, City)) +
-> >  geom_col() +
-> >  facet_wrap(vars(`Library System`)) +
-> >  theme_minimal() +
-> >  labs(x = NULL,
-> >       y = NULL,
-> >       title = "Total Number of Books by City & Library System in B.C.",
-> >       caption = "Data sourced from the B.C. Data Catalogue")
-> >
-> >```
+> <details>
+> 
+> <summary>
+> Solution to challenge 3
+> </summary>
+> 
+> <br />
+>```{r}
+>library(ggplot2)
+>
+>sum_books %>% 
+>  filter(total_books > 100000) %>% 
+>  ggplot(aes(total_books, City)) +
+>  geom_col() +
+>  facet_wrap(vars(`Library System`)) +
+>  theme_minimal() +
+>  labs(x = NULL,
+>       y = NULL,
+>       title = "Total Number of Books by City & Library System in B.C.",
+>       caption = "Data sourced from the B.C. Data Catalogue")
+>
+>```
+> </details>
 
-> ## Challenge 4 (20 minutes)
+
+### Challenge 4 (20 minutes)
 >
 > Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. > An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one > of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
 > 
-> >## Solution to Challenge 4 
-> >```{r}
-> >seafood_prod <- bcdc_get_data("e591a756-6b99-4986-b8ce-f341bd47228f", resource = '9cc32dc4-bd9a-4baf-8210-770ac62d7985')
-> >
-> >seafood_by_year <- seafood_prod %>% 
-> >  filter(Year == 2020) %>% 
-> >  group_by(`Species/Product`) %>% 
-> >  summarise(value = sum(`Wholesale Value ($ million)`)) 
-> >
-> >seafood_by_year %>% 
-> >  ggplot(aes(y = `Species/Product`, x = value, fill = `Species/Product`)) +
-> >  geom_col() +
-> >  scale_fill_viridis_d() +
-> >  scale_x_continuous(labels = scales::dollar) +
-> >  guides(fill = "none") +
-> >  theme_minimal() +
-> >  labs(title = "B.C. Seafood Production - 2020", 
-> >       xlab = "Wholesale Value ($ million)",
-> >       caption = "BC Seafood Production, 2018 - 2020: https://catalogue.data.gov.bc.ca/dataset/e591a756-6b99-4986-b8ce-f341bd47228f") +
-> >  theme(axis.title.x = element_blank())
-> >```
+> <details>
+> 
+> <summary>
+> Solution to challenge 4
+> </summary>
+> 
+> <br />
+>```{r}
+>seafood_prod <- bcdc_get_data("e591a756-6b99-4986-b8ce-f341bd47228f", resource = '9cc32dc4-bd9a-4baf-8210-770ac62d7985')
+>
+>seafood_by_year <- seafood_prod %>% 
+>  filter(Year == 2020) %>% 
+>  group_by(`Species/Product`) %>% 
+>  summarise(value = sum(`Wholesale Value ($ million)`)) 
+>
+>seafood_by_year %>% 
+>  ggplot(aes(y = `Species/Product`, x = value, fill = `Species/Product`)) +
+>  geom_col() +
+>  scale_fill_viridis_d() +
+>  scale_x_continuous(labels = scales::dollar) +
+>  guides(fill = "none") +
+>  theme_minimal() +
+>  labs(title = "B.C. Seafood Production - 2020", 
+>       xlab = "Wholesale Value ($ million)",
+>       caption = "https://catalogue.data.gov.bc.ca/dataset/e591a756-6b99-4986-b8ce-f341bd47228f") +
+>  theme(axis.title.x = element_blank())
+>```
+> </details>
+
 

@@ -81,12 +81,10 @@ project.
 Now whenever we open this project with RStudio, all of our work on this project will 
 be entirely self-contained in this directory.
 
-### Challenge: 
+### Challenge 1
 
-To get used to navigating Projects in RStudio, close your Project and reopen it.
-There are at least three ways of opening an RStudio project - try to find two!
-
-
+> To get used to navigating Projects in RStudio, close your Project and reopen it.
+> There are at least three ways of opening an RStudio project - try to find two!
 
 ## Best practices for project organization
 
@@ -128,7 +126,6 @@ project, and some of the analyses get shared between projects.
 > 3. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results` directory.
 > 4. Put source for the project's scripts and programs in the `src` directory, and programs brought in from elsewhere or compiled locally in the `bin` directory.
 > 5. Name all files to reflect their content or function.
->
 
 ### Separate function definition and application
 

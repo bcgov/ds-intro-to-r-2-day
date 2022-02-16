@@ -85,16 +85,22 @@ gapminder <- read_csv("data/gapminder_data.csv")
 gapminder
 ```
 
-> ## Challenge 1
+### Challenge 1
 >
 > Is gapminder a purely long, purely wide, or some intermediate format?
 >
 >
-> > ## Solution to Challenge 1
-> >
-> > The original gapminder data.frame is in an intermediate format. It is not
-> > purely long since it had multiple observation variables
-> > (`pop`,`lifeExp`,`gdpPercap`).
+> <details>
+> 
+> <summary>
+> Solution to challenge 1
+> </summary>
+> 
+> <br />
+> The original gapminder data.frame is in an intermediate format. It is not
+> purely long since it had multiple observation variables
+> (`pop`,`lifeExp`,`gdpPercap`).
+> </details>
 
 
 Sometimes, as with the gapminder dataset, we have multiple types of observed
@@ -188,16 +194,23 @@ gap_long <- gap_long %>%
 ```
 
 
-> ## Challenge 2
+### Challenge 2
 >
 > Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent.
 >**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
 >
-> > ## Solution to Challenge 2
-> >```{r}
-> >gap_long %>% group_by(continent, obs_type) %>%
-> >    summarize(means=mean(obs_values))
-> >```
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+>```{r}
+>gap_long %>% group_by(continent, obs_type) %>%
+>    summarize(means=mean(obs_values))
+>```
+> </details>
 
 ## From long to intermediate format with pivot_wider()
 
@@ -271,17 +284,24 @@ gap_wide_new <- gap_long %>%
 gap_wide_new
 ```
 
-> ## Challenge 3
->
+### Challenge 3
 > Take this 1 step further and create a `gap_ludicrously_wide` format data by pivoting over countries, year and the 3 metrics?
 >**Hint** this new dataframe should only have 5 rows.
 >
-> > ## Solution to Challenge 3
-> >```{r}
-> >gap_ludicrously_wide <- gap_long %>%
-> >    unite(var_names, obs_type, year, country, sep = "_") %>%
-> >    pivot_wider(names_from = var_names, values_from = obs_values)
-> >```
+> <details>
+> 
+> <summary>
+> Solution to challenge 6
+> </summary>
+> 
+> <br />
+>```{r}
+>gap_ludicrously_wide <- gap_long %>%
+>    unite(var_names, obs_type, year, country, sep = "_") %>%
+>    pivot_wider(names_from = var_names, values_from = obs_values)
+>```
+> </details>
+
 
 
 Now we have a great 'wide' format dataframe, but the `ID_var` could be more
