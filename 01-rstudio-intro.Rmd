@@ -165,21 +165,21 @@ information, followed by a ">" and a blinking cursor. It operates on a "Read,
 evaluate, print loop": you type in commands, R tries to execute them, and then
 returns a result.
 
-> ## Before we dive in...
-> We are first going set up a workspace, called an RStudio Project, where we can work through
-> the course materials and save our work.
-> In the console, type: 
->
-> If you are on Windows:
-> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
-> 
-> If you are on a Mac:
-> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
->
-> ... and press Enter.
->
-> This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
-> and `/Users/[your_user_name]/intro-r-Feb2022/' on a Mac), and open that project in RStudio. 
+### Before we dive in...
+We are first going set up a workspace, called an RStudio Project, where we can work through
+the course materials and save our work.
+In the console, type: 
+
+If you are on Windows:
+`use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
+
+If you are on a Mac:
+`use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
+
+... and press Enter.
+
+This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
+and `/Users/[your_user_name]/intro-r-Feb2022/` on a Mac), and open that project in RStudio. 
 
 
 ## Using R as a calculator
@@ -438,8 +438,6 @@ min-length
 celsius2kelvin
 ```
 
-<br />
-
 <details>
 
 <summary>
@@ -481,9 +479,6 @@ mass <- mass * 2.3
 age <- age - 20
 ```
 
-
-<br />
-
 <details>
 
 <summary>
@@ -523,9 +518,6 @@ of `r age` to the variable age.
 Run the code from the previous challenge, and write a command to
 compare mass to age. Is mass larger than age?
 
-
-<br />
-
 <details>
 
 <summary>
@@ -542,7 +534,7 @@ mass > age
 This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
 
 </details>
-`
+
 
 
 
@@ -625,8 +617,6 @@ rm(list = ls())
 Clean up your working environment by deleting the mass and age
 variables.
 
-<br />
-
 <details>
 
 <summary>
@@ -671,8 +661,6 @@ R and RStudio have functionality for managing packages:
 ### Challenge 5
 
 Install the following packages: `ggplot2`, `dplyr`.
-
-<br />
 
 <details>
 
