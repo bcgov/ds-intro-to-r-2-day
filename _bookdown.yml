@@ -1,4 +1,5 @@
 book_filename: "ds-cop-intro-to-r-2-day"
+new_session: true
 chapter_name: "Chapter "
 repo: https://github.com/bcgov/ds-intro-to-r-2-day
 output_dir: docs
