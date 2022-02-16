@@ -85,7 +85,7 @@ variables you select.
 year_country_gdp <- select(gapminder, year, country, gdpPercap)
 ```
 
-![](fig/07-dplyr-fig1.png)
+![](fig/07-dplyr-fig1.png){width=100%}
 
 ## Using filter()
 
@@ -180,7 +180,7 @@ You will notice that the structure of the dataframe where we used `group_by()`
 `data.frame` which contains only the rows that correspond to the a particular
 value `continent` (at least in the example above).
 
-![](fig/07-dplyr-fig2.png)
+![](fig/07-dplyr-fig2.png){width=100%}
 
 ## Using summarize()
 
@@ -197,7 +197,7 @@ gdp_bycontinents <- gapminder %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
 ```
 
-![](fig/07-dplyr-fig3.png)
+![](fig/07-dplyr-fig3.png){width=100%}
 
 ```{r,echo=FALSE}
 gdp_bycontinents

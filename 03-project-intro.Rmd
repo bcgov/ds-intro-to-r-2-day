@@ -32,7 +32,7 @@ eventually everything is a bit mixed together.
 
 Most people tend to organize their projects like this:
 
-![](fig/bad_layout.png)
+![](fig/bad_layout.png){width=100%}
 
 There are many reasons why we should *ALWAYS* avoid this:
 
