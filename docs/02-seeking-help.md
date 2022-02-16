@@ -42,20 +42,21 @@ Each help page is broken down into sections:
 
 Different functions might have different sections, but these are the main ones you should be aware of.
 
-> ## Tip: Running Examples
->
-> From within the function help page, you can highlight code in the 
-> Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in 
-> RStudio console. This is gives you a quick way to get a feel for
-> how a function works.
+::: {.rmdtip}
+**Tip: Running Examples**
 
-> ## Tip: Reading help files
->
-> One of the most daunting aspects of R is the large number of functions
-> available. It would be prohibitive, if not impossible to remember the
-> correct usage for every function you use. Luckily, the help files
-> mean you don't have to!
+From within the function help page, you can highlight code in the 
+Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in 
+RStudio console. This is gives you a quick way to get a feel for
+how a function works.
 
+**Tip: Reading help files**
+
+One of the most daunting aspects of R is the large number of functions
+available. It would be prohibitive, if not impossible to remember the
+correct usage for every function you use. Luckily, the help files
+mean you don't have to!
+:::
 
 ## Special Operators
 

@@ -116,8 +116,8 @@ scientific projects that will make your life easier.</p>
 environment. It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.</p>
-<blockquote>
-<h2 id="tip-key-rstudio-setting">Tip: Key RStudio Setting</h2>
+<div class="rmdtip">
+<p><strong>Tip: Key RStudio Setting</strong></p>
 <p>By default RStudio will automatically save your session variables in your
 porject directory in a file called <code>.RData</code>. These are saved when you exit a
 project and restored when you open it up again. We <em>highly</em> recommend turning
@@ -125,7 +125,7 @@ this feature off. As you will learn in this course, all outputs will be created
 from code. Typically you do not need to save intermediate steps. If you don’t
 plan to use this feature you can toggle it in the Project Options -&gt; General
 tab.</p>
-</blockquote>
+</div>
 <p><strong>Basic layout</strong></p>
 <p>When you first open RStudio, you will be greeted by three panels:</p>
 <ul>
@@ -165,8 +165,8 @@ or using R’s <code><a href="https://rdrr.io/r/base/source.html">source()</a></
 </ul>
 </li>
 </ol>
-<blockquote>
-<h2 id="tip-running-segments-of-your-code">Tip: Running segments of your code</h2>
+<div class="rmdtip">
+<p><strong>Tip: Running segments of your code</strong></p>
 <p>RStudio offers you great flexibility in running code from within the editor
 window. There are buttons, menu choices, and keyboard shortcuts. To run the
 current line, you can
@@ -180,7 +180,7 @@ If you have modified a line of code within a block of code you have just run,
 there is no need to reselect the section and <code>Run</code>, you can use the next button
 along, <code>Re-run the previous region</code>. This will run the previous code block
 including the modifications you have made.</p>
-</blockquote>
+</div>
 </div>
 <div id="introduction-to-r" class="section level2" number="1.5">
 <h2>
@@ -229,13 +229,13 @@ complete it:</p>
 means it’s waiting for you to complete the command. If you want to cancel
 a command you can simply hit “Esc” and RStudio will give you back the “&gt;”
 prompt.</p>
-<blockquote>
-<h2 id="tip-cancelling-commands">Tip: Cancelling commands</h2>
+<div class="rmdtip">
+<p><strong>Tip: Cancelling commands</strong></p>
 <p>Cancelling a command isn’t only useful for killing incomplete commands:
 you can also use it to tell R to stop running code (for example if it’s
 taking much longer than you expect), or to get rid of the code you’re
 currently writing.</p>
-</blockquote>
+</div>
 <p>When using R as a calculator, the order of operations is the same as you
 would have learned back in school.</p>
 <p>From highest to lowest precedence:</p>
@@ -341,12 +341,13 @@ illustrate command usage. We’ll go through an example later.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">&gt;=</span> <span class="op">-</span><span class="fl">9</span> <span class="co"># greater than or equal to</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
-<blockquote>
-<h2 id="tip-comparing-numbers">Tip: Comparing Numbers</h2>
+<div class="rmdtip">
+<p><strong>Tip: Comparing Numbers</strong></p>
 <p>A word of warning about comparing numbers: you should
 never use <code>==</code> to compare two numbers unless they are
 integers (a data type which can specifically represent
 only whole numbers).</p>
+</div>
 <p>Computers may only represent decimal numbers with a
 certain degree of precision, so two numbers which look
 the same when printed out by R, may actually have
@@ -355,7 +356,6 @@ different by a small margin of error (called Machine
 numeric tolerance).</p>
 <p>Instead you should use the <code>all.equal</code> function.</p>
 <p>Further reading: <a href="http://floating-point-gui.de/">http://floating-point-gui.de/</a></p>
-</blockquote>
 </div>
 <div id="variables-and-assignment" class="section level2" number="1.9">
 <h2>
@@ -563,7 +563,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7fbf1fbfbbf8&gt;
+&lt;bytecode: 0x7fa77d4695f8&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
