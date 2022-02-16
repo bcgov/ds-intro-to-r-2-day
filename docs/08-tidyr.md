@@ -193,7 +193,7 @@ gap_wide
 To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available `pivot`  functions from the `tidyr` package. To convert from wide to a longer format, we will use the `pivot_longer()` function. `pivot_longer()` makes datasets longer by increasing the number of rows and decreasing the number of columns, or 'lengthening' your observation variables into a single variable.
 
 
-![](fig/08-tidyr-fig3.png)
+![](fig/08-tidyr-fig3.png){width=100%}
 
 
 
@@ -545,7 +545,7 @@ gap_wide_new
 > <details>
 > 
 > <summary>
-> Solution to challenge 6
+> Solution to challenge 3
 > </summary>
 > 
 > <br />

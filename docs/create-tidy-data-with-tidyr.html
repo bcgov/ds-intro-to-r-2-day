@@ -197,7 +197,7 @@ dbl (36): pop_1952, lifeExp_1952, gdpPercap_1952, pop_1957, lifeExp_1957, gd...
 #   lifeExp_1987 &lt;dbl&gt;, gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, …</code></pre>
 <div class="inline-figure"><img src="fig/08-tidyr-fig2.png" style="width:100.0%"></div>
 <p>To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available <code>pivot</code> functions from the <code>tidyr</code> package. To convert from wide to a longer format, we will use the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function. <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> makes datasets longer by increasing the number of rows and decreasing the number of columns, or ‘lengthening’ your observation variables into a single variable.</p>
-<div class="inline-figure"><img src="fig/08-tidyr-fig3.png"></div>
+<div class="inline-figure"><img src="fig/08-tidyr-fig3.png" style="width:100.0%"></div>
 <div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_wide</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
@@ -451,7 +451,7 @@ pipe in <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">p
 <p>Take this 1 step further and create a <code>gap_ludicrously_wide</code> format data by pivoting over countries, year and the 3 metrics?
 <strong>Hint</strong> this new dataframe should only have 5 rows.</p>
 <details><summary>
-Solution to challenge 6
+Solution to challenge 3
 </summary><p><br></p>
 <div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_ludicrously_wide</span> <span class="op">&lt;-</span> <span class="va">gap_long</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
