@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop</title>
-  <meta name="description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  <meta name="description" content="This book contains materials for a 4 session Introduction to R workshop" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day" />
   
-  
-  <meta property="og:description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  <meta property="og:description" content="This book contains materials for a 4 session Introduction to R workshop" />
   <meta name="github-repo" content="bcgov/ds-intro-to-r-2-day" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop" />
   
-  <meta name="twitter:description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  <meta name="twitter:description" content="This book contains materials for a 4 session Introduction to R workshop" />
   
 
-<meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2022-02-14" />
+<meta name="date" content="2022-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,22 +52,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
-<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -245,7 +228,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#importing-data-from-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.3</b> Importing data from the B.C. Data Catalogue</a></li>
 <li class="chapter" data-level="9.4" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-manipulating-data-with-dplyr"><i class="fa fa-check"></i><b>9.4</b> Practice manipulating data with <code>dplyr</code></a></li>
 <li class="chapter" data-level="9.5" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-plotting-data-with-ggplot2"><i class="fa fa-check"></i><b>9.5</b> Practice plotting data with <code>ggplot2</code></a></li>
-<li class="chapter" data-level="9.6" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#using-bcdata-with-spatial-data-in-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.6</b> Using <code>bcdata</code> with spatial data in the B.C. Data Catalogue</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>10</b> Data analysis reports</a>
 <ul>
@@ -563,7 +545,7 @@ of the “Help” field in the toolbar at the top of RStudio.</p>
 &#96;&#96;&#96;
 </pre>
 <p>When we knit the document we can see both the code and the result:</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="data-analysis-reports.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> </span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="data-analysis-reports.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> </span></code></pre></div>
 <pre><code>[1] 2</code></pre>
 <p>If we dont want the code to appear in the output we can use the <code>echo</code> parameters.</p>
 <pre>
@@ -616,7 +598,7 @@ Figure 10.1: A nice descriptive title
 <h2 id="challenge-4-3">Challenge 4</h2>
 <p>Generate a plot using the <strong>gapminder</strong> dataset and <code>ggplot2</code> package. Use the chunk options to control the size and alignment of the figure.</p>
 <blockquote>
-<h2 id="solution-to-challenge-4-2">Solution to Challenge 4</h2>
+<h2 id="solution-to-challenge-4-3">Solution to Challenge 4</h2>
 <pre>
 &#96;&#96;&#96;{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap= "Pretty Plot", fig.width = 5, fig.height = 5, fig.align = 'centre'}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
@@ -667,18 +649,18 @@ executed and replaced with the evaluated <em>value</em> as the result.</p>
 little triangle next to the “Knit” button to get a drop-down
 menu.</p>
 <p>Alternatively we can change the YAML:</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="data-analysis-reports.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb444-2"><a href="data-analysis-reports.html#cb444-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Exploring R Markdown&quot;</span></span>
+<span id="cb444-3"><a href="data-analysis-reports.html#cb444-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb444-4"><a href="data-analysis-reports.html#cb444-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="data-analysis-reports.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb445-2"><a href="data-analysis-reports.html#cb445-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Exploring R Markdown&quot;</span></span>
+<span id="cb445-3"><a href="data-analysis-reports.html#cb445-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> word_document</span>
+<span id="cb445-4"><a href="data-analysis-reports.html#cb445-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="data-analysis-reports.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
 <span id="cb446-2"><a href="data-analysis-reports.html#cb446-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Exploring R Markdown&quot;</span></span>
-<span id="cb446-3"><a href="data-analysis-reports.html#cb446-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb446-3"><a href="data-analysis-reports.html#cb446-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> pdf_document</span>
 <span id="cb446-4"><a href="data-analysis-reports.html#cb446-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="data-analysis-reports.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb447-2"><a href="data-analysis-reports.html#cb447-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Exploring R Markdown&quot;</span></span>
-<span id="cb447-3"><a href="data-analysis-reports.html#cb447-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> word_document</span>
-<span id="cb447-4"><a href="data-analysis-reports.html#cb447-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="data-analysis-reports.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb448-2"><a href="data-analysis-reports.html#cb448-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Exploring R Markdown&quot;</span></span>
-<span id="cb448-3"><a href="data-analysis-reports.html#cb448-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> pdf_document</span>
-<span id="cb448-4"><a href="data-analysis-reports.html#cb448-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <div id="a-note-about-rmd-outputs" class="section level3" number="10.9.1">
 <h3><span class="header-section-number">10.9.1</span> A note about Rmd outputs</h3>
 <p>It can be easy to get caught up with how your document looks. It is highly recommended to render as html document and avoiding compiling to PDF or word until you really need to. This is also recommended by the author of <code>rmarkdown</code> and <code>knitr</code>, <a href="https://yihui.org/en/2018/07/in-html-i-trust/">Yihui Xie</a>. This means that you can spend time working on generating content, and not trying to get figures to line up correctly and wrestling with LaTex libraries.</p>
@@ -688,7 +670,7 @@ menu.</p>
 software called LaTex. This software can be tricky to install and it is reccommended to use<br />
 <a href="https://yihui.org/tinytex/">tinytex</a> as an alternative. This R package is a lightweight
 version of LaTex is designed for r users. You can install using the following commands:</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="data-analysis-reports.html#cb449-1" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="data-analysis-reports.html#cb447-1" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
 <p>There is lots of information and help available - see <a href="https://yihui.org/tinytex/faq/">tinytex FQA page</a></p>
 </blockquote>
 </div>
