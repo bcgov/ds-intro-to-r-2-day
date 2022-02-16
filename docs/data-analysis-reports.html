@@ -1,291 +1,68 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop</title>
-  <meta name="description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day" />
-  
-  <meta property="og:description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  <meta name="github-repo" content="bcgov/ds-intro-to-r-2-day" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop" />
-  
-  <meta name="twitter:description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  
-
-
-
-<meta name="date" content="2022-02-16" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="introduction-to-the-bcdata-package.html"/>
-<link rel="next" href="applications-of-r-markdown.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop</title>
+<meta name="description" content="Data analysts tend to write a lot of reports, describing their analyses and results, for their collaborators or to document their work for future reference. Many new users begin by first writing a...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/data-analysis-reports.html">
+<meta property="og:description" content="Data analysts tend to write a lot of reports, describing their analyses and results, for their collaborators or to document their work for future reference. Many new users begin by first writing a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Data analysis reports | Introduction to Data Science using R Workshop">
+<meta name="twitter:description" content="Data analysts tend to write a lot of reports, describing their analyses and results, for their collaborators or to document their work for future reference. Many new users begin by first writing a...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Introduction to Data Science using R Workshop</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#motivation"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#before-starting-the-workshop"><i class="fa fa-check"></i><b>1.2</b> Before Starting The Workshop</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>1.3</b> Introduction to RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#work-flow-within-rstudio"><i class="fa fa-check"></i><b>1.4</b> Work flow within RStudio</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>1.5</b> Introduction to R</a></li>
-<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-as-a-calculator"><i class="fa fa-check"></i><b>1.6</b> Using R as a calculator</a></li>
-<li class="chapter" data-level="1.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mathematical-functions"><i class="fa fa-check"></i><b>1.7</b> Mathematical functions</a></li>
-<li class="chapter" data-level="1.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comparing-things"><i class="fa fa-check"></i><b>1.8</b> Comparing things</a></li>
-<li class="chapter" data-level="1.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#variables-and-assignment"><i class="fa fa-check"></i><b>1.9</b> Variables and assignment</a></li>
-<li class="chapter" data-level="1.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectorization"><i class="fa fa-check"></i><b>1.10</b> Vectorization</a></li>
-<li class="chapter" data-level="1.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#managing-your-environment"><i class="fa fa-check"></i><b>1.11</b> Managing your environment</a></li>
-<li class="chapter" data-level="1.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-packages"><i class="fa fa-check"></i><b>1.12</b> R Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html"><i class="fa fa-check"></i><b>2</b> Seeking Help in R</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#reading-help-files"><i class="fa fa-check"></i><b>2.1</b> Reading Help files</a></li>
-<li class="chapter" data-level="2.2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#special-operators"><i class="fa fa-check"></i><b>2.2</b> Special Operators</a></li>
-<li class="chapter" data-level="2.3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#getting-help-on-packages"><i class="fa fa-check"></i><b>2.3</b> Getting help on packages</a></li>
-<li class="chapter" data-level="2.4" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-kind-of-remember-the-function"><i class="fa fa-check"></i><b>2.4</b> When you kind of remember the function</a></li>
-<li class="chapter" data-level="2.5" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-have-no-idea-where-to-begin"><i class="fa fa-check"></i><b>2.5</b> When you have no idea where to begin</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html"><i class="fa fa-check"></i><b>3</b> Project Management With RStudio</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#a-possible-solution"><i class="fa fa-check"></i><b>3.2</b> A possible solution</a></li>
-<li class="chapter" data-level="3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#best-practices-for-project-organization"><i class="fa fa-check"></i><b>3.3</b> Best practices for project organization</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>3.3.1</b> Treat data as read only</a></li>
-<li class="chapter" data-level="3.3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#data-cleaning"><i class="fa fa-check"></i><b>3.3.2</b> Data Cleaning</a></li>
-<li class="chapter" data-level="3.3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>3.3.3</b> Treat generated output as disposable</a></li>
-<li class="chapter" data-level="3.3.4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>3.3.4</b> Separate function definition and application</a></li>
-<li class="chapter" data-level="3.3.5" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#version-control"><i class="fa fa-check"></i><b>3.3.5</b> Version Control</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="data-structures.html"><a href="data-structures.html#the-readr-package"><i class="fa fa-check"></i><b>4.1</b> The <em>readr</em> package</a></li>
-<li class="chapter" data-level="4.2" data-path="data-structures.html"><a href="data-structures.html#data-types"><i class="fa fa-check"></i><b>4.2</b> Data Types</a></li>
-<li class="chapter" data-level="4.3" data-path="data-structures.html"><a href="data-structures.html#vectors-and-type-coercion"><i class="fa fa-check"></i><b>4.3</b> Vectors and Type Coercion</a></li>
-<li class="chapter" data-level="4.4" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>4.4</b> Data Frames</a></li>
-<li class="chapter" data-level="4.5" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>4.5</b> Factors</a></li>
-<li class="chapter" data-level="4.6" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>4.6</b> Lists</a></li>
-<li class="chapter" data-level="4.7" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>4.7</b> Matrices</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html"><i class="fa fa-check"></i><b>5</b> Exploring Data Frames</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#introducing-the-gapminder-data"><i class="fa fa-check"></i><b>5.1</b> Introducing the Gapminder data</a></li>
-<li class="chapter" data-level="5.2" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#basic-subsetting"><i class="fa fa-check"></i><b>5.2</b> Basic subsetting</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#selecting-rows"><i class="fa fa-check"></i><b>5.2.1</b> Selecting rows</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Creating Publication-Quality Graphics with ggplot2</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#getting-started"><i class="fa fa-check"></i><b>6.1</b> Getting started</a></li>
-<li class="chapter" data-level="6.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>6.2</b> Layers</a></li>
-<li class="chapter" data-level="6.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>6.3</b> Transformations and statistics</a></li>
-<li class="chapter" data-level="6.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>6.4</b> Multi-panel figures</a></li>
-<li class="chapter" data-level="6.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>6.5</b> Modifying text</a></li>
-<li class="chapter" data-level="6.6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>6.6</b> Exporting the plot</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>7</b> Dataframe Manipulation with dplyr</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#the-dplyr-package"><i class="fa fa-check"></i><b>7.1</b> The <code>dplyr</code> package</a></li>
-<li class="chapter" data-level="7.2" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-select"><i class="fa fa-check"></i><b>7.2</b> Using select()</a></li>
-<li class="chapter" data-level="7.3" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter"><i class="fa fa-check"></i><b>7.3</b> Using filter()</a></li>
-<li class="chapter" data-level="7.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>7.4</b> Using filter() with pipes</a></li>
-<li class="chapter" data-level="7.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>7.5</b> Using group_by() and summarize()</a></li>
-<li class="chapter" data-level="7.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>7.6</b> Using summarize()</a></li>
-<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-count"><i class="fa fa-check"></i><b>7.7</b> Using count()</a></li>
-<li class="chapter" data-level="7.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>7.8</b> Using mutate()</a></li>
-<li class="chapter" data-level="7.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-groupings-ifelse"><i class="fa fa-check"></i><b>7.9</b> Connect mutate with logical groupings: ifelse</a></li>
-<li class="chapter" data-level="7.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>7.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
-<li class="chapter" data-level="7.11" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#other-great-resources"><i class="fa fa-check"></i><b>7.11</b> Other great resources</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html"><i class="fa fa-check"></i><b>8</b> Create Tidy Data with tidyr</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#getting-started-1"><i class="fa fa-check"></i><b>8.1</b> Getting started</a></li>
-<li class="chapter" data-level="8.2" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-wide-to-long-format-with-pivot_longer"><i class="fa fa-check"></i><b>8.2</b> From wide to long format with pivot_longer()</a></li>
-<li class="chapter" data-level="8.3" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-long-to-intermediate-format-with-pivot_wider"><i class="fa fa-check"></i><b>8.3</b> From long to intermediate format with pivot_wider()</a></li>
-<li class="chapter" data-level="8.4" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#other-great-resources-1"><i class="fa fa-check"></i><b>8.4</b> Other great resources</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html"><i class="fa fa-check"></i><b>9</b> Introduction to the bcdata package</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#getting-started-2"><i class="fa fa-check"></i><b>9.1</b> Getting started</a></li>
-<li class="chapter" data-level="9.2" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#searching-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.2</b> Searching the B.C. Data Catalogue</a></li>
-<li class="chapter" data-level="9.3" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#importing-data-from-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.3</b> Importing data from the B.C. Data Catalogue</a></li>
-<li class="chapter" data-level="9.4" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-manipulating-data-with-dplyr"><i class="fa fa-check"></i><b>9.4</b> Practice manipulating data with <code>dplyr</code></a></li>
-<li class="chapter" data-level="9.5" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-plotting-data-with-ggplot2"><i class="fa fa-check"></i><b>9.5</b> Practice plotting data with <code>ggplot2</code></a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>10</b> Data analysis reports</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#literate-programming"><i class="fa fa-check"></i><b>10.1</b> Literate programming</a></li>
-<li class="chapter" data-level="10.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#example-of-using-r-markdown-in-the-bc-government"><i class="fa fa-check"></i><b>10.2</b> Example of Using R Markdown in the BC Government</a>
-<ul>
-<li class="chapter" data-level="10.2.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#documentation"><i class="fa fa-check"></i><b>10.2.1</b> Documentation</a></li>
-<li class="chapter" data-level="10.2.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#teaching"><i class="fa fa-check"></i><b>10.2.2</b> Teaching</a></li>
-<li class="chapter" data-level="10.2.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#presentation"><i class="fa fa-check"></i><b>10.2.3</b> Presentation</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>10.3</b> Creating an R Markdown file</a></li>
-<li class="chapter" data-level="10.4" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#basic-components-of-r-markdown"><i class="fa fa-check"></i><b>10.4</b> Basic components of R Markdown</a></li>
-<li class="chapter" data-level="10.5" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#markdown"><i class="fa fa-check"></i><b>10.5</b> Markdown</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-bit-more-markdown"><i class="fa fa-check"></i><b>10.5.1</b> A bit more Markdown</a></li>
-<li class="chapter" data-level="10.5.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#r-code-chunks"><i class="fa fa-check"></i><b>10.5.2</b> R code chunks</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#how-r-markdown-gets-compiled"><i class="fa fa-check"></i><b>10.6</b> How R Markdown gets compiled</a></li>
-<li class="chapter" data-level="10.7" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#chunk-options"><i class="fa fa-check"></i><b>10.7</b> Chunk options</a>
-<ul>
-<li class="chapter" data-level="10.7.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#global-options"><i class="fa fa-check"></i><b>10.7.1</b> Global options</a></li>
-<li class="chapter" data-level="10.7.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#formatting-figures"><i class="fa fa-check"></i><b>10.7.2</b> Formatting figures</a></li>
-</ul></li>
-<li class="chapter" data-level="10.8" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#inline-r-code"><i class="fa fa-check"></i><b>10.8</b> Inline R code</a></li>
-<li class="chapter" data-level="10.9" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#other-outputs-word-pdf-and-more"><i class="fa fa-check"></i><b>10.9</b> Other outputs: Word, PDF and more…</a>
-<ul>
-<li class="chapter" data-level="10.9.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-note-about-rmd-outputs"><i class="fa fa-check"></i><b>10.9.1</b> A note about Rmd outputs</a></li>
-</ul></li>
-<li class="chapter" data-level="10.10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#resources"><i class="fa fa-check"></i><b>10.10</b> Resources</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="applications-of-r-markdown.html"><a href="applications-of-r-markdown.html"><i class="fa fa-check"></i><b>11</b> Applications of R Markdown</a></li>
-<li class="chapter" data-level="12" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>12</b> Seeking Help from Others with reprex</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>12.1</b> Help People Help You - reprex</a></li>
-<li class="chapter" data-level="12.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>12.2</b> Other Helpful Resources</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Data Science using R Workshop</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science using R Workshop</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="seeking-help-in-r.html"><span class="header-section-number">2</span> Seeking Help in R</a></li>
+<li><a class="" href="project-management-with-rstudio.html"><span class="header-section-number">3</span> Project Management With RStudio</a></li>
+<li><a class="" href="data-structures.html"><span class="header-section-number">4</span> Data Structures</a></li>
+<li><a class="" href="exploring-data-frames.html"><span class="header-section-number">5</span> Exploring Data Frames</a></li>
+<li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">6</span> Creating Publication-Quality Graphics with ggplot2</a></li>
+<li><a class="" href="dataframe-manipulation-with-dplyr.html"><span class="header-section-number">7</span> Dataframe Manipulation with dplyr</a></li>
+<li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></li>
+<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
+<li><a class="active" href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></li>
+<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></li>
+<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/bcgov/ds-intro-to-r-2-day">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="data-analysis-reports" class="section level1" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Data analysis reports</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-analysis-reports" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Data analysis reports<a class="anchor" aria-label="anchor" href="#data-analysis-reports"><i class="fas fa-link"></i></a>
+</h1>
 <p>Data analysts tend to write a lot of reports, describing their
 analyses and results, for their collaborators or to document their
 work for future reference.</p>
@@ -304,7 +81,9 @@ one page can be kept full size and easier to read, since the reader can simply
 keep scrolling. Formatting is simple and easy to modify, allowing you to spend
 more time on your analyses instead of writing reports.</p>
 <div id="literate-programming" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> Literate programming</h2>
+<h2>
+<span class="header-section-number">10.1</span> Literate programming<a class="anchor" aria-label="anchor" href="#literate-programming"><i class="fas fa-link"></i></a>
+</h2>
 <p>Ideally, such analysis reports are <em>reproducible</em> documents: If an
 error is discovered, or if some additional subjects are added to the
 data, you can just re-compile the report and get the new or corrected
@@ -319,27 +98,41 @@ be executed, and graphs or other results inserted into the final document.</p>
 with R. <a href="https://www.markdownguide.org/">Markdown</a> is a light-weight mark-up language for documents and web pages.</p>
 </div>
 <div id="example-of-using-r-markdown-in-the-bc-government" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> Example of Using R Markdown in the BC Government</h2>
+<h2>
+<span class="header-section-number">10.2</span> Example of Using R Markdown in the BC Government<a class="anchor" aria-label="anchor" href="#example-of-using-r-markdown-in-the-bc-government"><i class="fas fa-link"></i></a>
+</h2>
 <p>R Markdown is quite versatile. Below are some examples of ways you can adapt it for a variety of purposes.</p>
 <div id="documentation" class="section level3" number="10.2.1">
-<h3><span class="header-section-number">10.2.1</span> Documentation</h3>
+<h3>
+<span class="header-section-number">10.2.1</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li>Rendered: <a href="https://bcgov.github.io/bcdata/articles/bcdata.html" class="uri">https://bcgov.github.io/bcdata/articles/bcdata.html</a></li>
-<li>R Markdown: <a href="https://github.com/bcgov/bcdata/blob/master/vignettes/bcdata.Rmd" class="uri">https://github.com/bcgov/bcdata/blob/master/vignettes/bcdata.Rmd</a></li>
+<li>Rendered: <a href="https://bcgov.github.io/bcdata/articles/bcdata.html" class="uri">https://bcgov.github.io/bcdata/articles/bcdata.html</a>
+</li>
+<li>R Markdown: <a href="https://github.com/bcgov/bcdata/blob/master/vignettes/bcdata.Rmd" class="uri">https://github.com/bcgov/bcdata/blob/master/vignettes/bcdata.Rmd</a>
+</li>
 </ul>
 </div>
 <div id="teaching" class="section level3" number="10.2.2">
-<h3><span class="header-section-number">10.2.2</span> Teaching</h3>
+<h3>
+<span class="header-section-number">10.2.2</span> Teaching<a class="anchor" aria-label="anchor" href="#teaching"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li>Rendered: <a href="https://bcgov.github.io/ds-intro-to-r-2-day/" class="uri">https://bcgov.github.io/ds-intro-to-r-2-day/</a></li>
-<li>R Markdown: <a href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/01-rstudio-intro.Rmd" class="uri">https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/01-rstudio-intro.Rmd</a></li>
+<li>Rendered: <a href="https://bcgov.github.io/ds-intro-to-r-2-day/" class="uri">https://bcgov.github.io/ds-intro-to-r-2-day/</a>
+</li>
+<li>R Markdown: <a href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/01-rstudio-intro.Rmd" class="uri">https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/01-rstudio-intro.Rmd</a>
+</li>
 </ul>
 </div>
 <div id="presentation" class="section level3" number="10.2.3">
-<h3><span class="header-section-number">10.2.3</span> Presentation</h3>
+<h3>
+<span class="header-section-number">10.2.3</span> Presentation<a class="anchor" aria-label="anchor" href="#presentation"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li>Rendered: <a href="https://bcgov.github.io/bcgov-rstats-public-presentations/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.html#1" class="uri">https://bcgov.github.io/bcgov-rstats-public-presentations/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.html#1</a></li>
-<li>R Markdown: <a href="https://github.com/bcgov/bcgov-rstats-public-presentations/blob/master/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.Rmd" class="uri">https://github.com/bcgov/bcgov-rstats-public-presentations/blob/master/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.Rmd</a></li>
+<li>Rendered: <a href="https://bcgov.github.io/bcgov-rstats-public-presentations/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.html#1" class="uri">https://bcgov.github.io/bcgov-rstats-public-presentations/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.html#1</a>
+</li>
+<li>R Markdown: <a href="https://github.com/bcgov/bcgov-rstats-public-presentations/blob/master/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.Rmd" class="uri">https://github.com/bcgov/bcgov-rstats-public-presentations/blob/master/2020-03-26_bcdata_lunch_and_learn/bcdata-2020-lunch-and-learn.Rmd</a>
+</li>
 </ul>
 <blockquote>
 <h2 id="challenge-1-5-minutes-1">Challenge 1 (5 minutes)</h2>
@@ -350,20 +143,24 @@ but the analysis needs to be the same?</p>
 </div>
 </div>
 <div id="creating-an-r-markdown-file" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> Creating an R Markdown file</h2>
+<h2>
+<span class="header-section-number">10.3</span> Creating an R Markdown file<a class="anchor" aria-label="anchor" href="#creating-an-r-markdown-file"><i class="fas fa-link"></i></a>
+</h2>
 <p>Within RStudio, click File → New File → R Markdown and
 you’ll get a dialog box like this:</p>
-<p><img src="fig/New_R_Markdown.png" /></p>
+<div class="inline-figure"><img src="fig/New_R_Markdown.png"></div>
 <p>You can stick with the default (HTML output), but give it a title and an author=.</p>
 </div>
 <div id="basic-components-of-r-markdown" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> Basic components of R Markdown</h2>
+<h2>
+<span class="header-section-number">10.4</span> Basic components of R Markdown<a class="anchor" aria-label="anchor" href="#basic-components-of-r-markdown"><i class="fas fa-link"></i></a>
+</h2>
 <p>The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it that you’re going to want
 to produce html output (in other words, a web page).</p>
 <pre><code>---
-title: &quot;Initial R Markdown document&quot;
-author: &quot;Luke Skywalker&quot;
-date: &quot;May 7th, 2020&quot;
+title: "Initial R Markdown document"
+author: "Luke Skywalker"
+date: "May 7th, 2020"
 output: html_document
 ---</code></pre>
 <p>You can delete any of those fields if you don’t want them
@@ -372,9 +169,9 @@ They’re mostly needed if you want to include a colon in the title.</p>
 <p>RStudio creates the document with some example text to get you
 started. Note below that there are chunks like</p>
 <pre>
-&#96;&#96;&#96;{r}
+```{r}
 summary(cars)
-&#96;&#96;&#96;
+```
 </pre>
 <p>These are chunks of R code that will be executed by <code>knitr</code> and replaced
 by their results. More on this later.</p>
@@ -383,7 +180,9 @@ well as the double-asterisks in <code>**Knit**</code>. This is
 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>.</p>
 </div>
 <div id="markdown" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> Markdown</h2>
+<h2>
+<span class="header-section-number">10.5</span> Markdown<a class="anchor" aria-label="anchor" href="#markdown"><i class="fas fa-link"></i></a>
+</h2>
 <p>Markdown is a system for writing web pages by marking up the text much
 as you would in an email rather than writing html code. The marked-up
 text gets <em>converted</em> to html, replacing the marks with the proper
@@ -429,7 +228,7 @@ with some number of <code>#</code> symbols:</p>
 #### Sub-sub section</code></pre>
 <p>You <em>compile</em> the R Markdown document to an html webpage by clicking
 the “Knit” button in the upper-left.</p>
-<p><img src="fig/10-rmd-fig1.png" /></p>
+<div class="inline-figure"><img src="fig/10-rmd-fig1.png"></div>
 <blockquote>
 <h2 id="challenge-2-6">Challenge 2</h2>
 <p>Create a new R Markdown document. Delete all of the R code chunks
@@ -459,7 +258,9 @@ This report uses the *gapminder* dataset, which has columns that include:
 </blockquote>
 </blockquote>
 <div id="a-bit-more-markdown" class="section level3" number="10.5.1">
-<h3><span class="header-section-number">10.5.1</span> A bit more Markdown</h3>
+<h3>
+<span class="header-section-number">10.5.1</span> A bit more Markdown<a class="anchor" aria-label="anchor" href="#a-bit-more-markdown"><i class="fas fa-link"></i></a>
+</h3>
 <p>You can make a hyperlink like this:
 <code>[text to show](http://the-web-page.com)</code>.</p>
 <p>You can include an image file like this: <code>![caption](http://url/for/file)</code></p>
@@ -474,63 +275,74 @@ F<sup>2</sup>) with <code>F^2^</code>.</p>
 toolbar at the top of RStudio.</p>
 </div>
 <div id="r-code-chunks" class="section level3" number="10.5.2">
-<h3><span class="header-section-number">10.5.2</span> R code chunks</h3>
+<h3>
+<span class="header-section-number">10.5.2</span> R code chunks<a class="anchor" aria-label="anchor" href="#r-code-chunks"><i class="fas fa-link"></i></a>
+</h3>
 <p>The real power of Markdown comes from
 mixing markdown with chunks of code. This is R Markdown. When
 processed, the R code will be executed; if they produce figures, the
 figures will be inserted in the final document.</p>
 <p>The main code chunks look like this:</p>
 <pre>
-&#96;&#96;&#96;{r load_data}
+```{r load_data}
 library("readr")
-gapminder <- read_csv("data/gapminder_data.csv")
-&#96;&#96;&#96;
-</pre>
+gapminder 
 <p>That is, you place a chunk of R code between <code>```{r chunk_name}</code>
 and <code>```</code>. You should give each chunk
 a unique name, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
 produced them.</p>
+</pre>
 </div>
 </div>
 <div id="how-r-markdown-gets-compiled" class="section level2" number="10.6">
-<h2><span class="header-section-number">10.6</span> How R Markdown gets compiled</h2>
+<h2>
+<span class="header-section-number">10.6</span> How R Markdown gets compiled<a class="anchor" aria-label="anchor" href="#how-r-markdown-gets-compiled"><i class="fas fa-link"></i></a>
+</h2>
 <p>When you press the “Knit” button <a href="http://yihui.name/knitr"><code>knitr</code></a> will process your R Markdown file to create a plain Markdown document (along with a set of figure files if needed).</p>
 <p>If we specified our output document to be a html file, the Markdown file (and figure documents) is then converted or rendered to a html file using the tool <a href="http://pandoc.org/"><code>pandoc</code></a>.</p>
-<p><img src="fig/rmd-10-rmd_to_html_fig-1.png" width="768" style="display: block; margin: auto auto auto 0;" /></p>
+<div class="inline-figure"><img src="fig/rmd-10-rmd_to_html_fig-1.png" width="768" style="display: block; margin: auto auto auto 0;"></div>
 <p>Different output document types require different tool for conversion. This will be discused below.</p>
 </div>
 <div id="chunk-options" class="section level2" number="10.7">
-<h2><span class="header-section-number">10.7</span> Chunk options</h2>
+<h2>
+<span class="header-section-number">10.7</span> Chunk options<a class="anchor" aria-label="anchor" href="#chunk-options"><i class="fas fa-link"></i></a>
+</h2>
 <p>As we saw above, code chunks are a very important part of using R Markdown. We will now explore some of the options for controlling how these will show up in our document.</p>
 <p>Firstly we need name our code chunk name. By default all code chunks are blank. ie:</p>
 <pre>
-&#96;&#96;&#96;{r}
-&#96;&#96;&#96;
+```{r}
+```
 </pre>
 <p>It is recomended to use a descriptive name such as’load_data’ or ‘read_libraries’. This will help you break up your code chunks and ensure each chunk has a unique name.</p>
 <pre>
-&#96;&#96;&#96;{r load_libraries}
+```{r load_libraries}
 library("dplyr")
 library("ggplot2")
-&#96;&#96;&#96;
+```
 </pre>
 <p>We can control how the code and the resulting outputs are shown in the final output by changing the code chunk options which follow the title. For example:</p>
 <pre>
-&#96;&#96;&#96;{r load_libraries, eval = FALSE, echo = TRUE}
+```{r load_libraries, eval = FALSE, echo = TRUE}
 library("dplyr")
 library("ggplot2")
-&#96;&#96;&#96;
+```
 </pre>
 <p>There are many different options you can adjust. More details can be found on the R Markdown cheatsheet or <a href="https://yihui.org/knitr/options/#code-evaluation">here</a>.</p>
 <p>The ones you need to know first are:</p>
 <ul>
-<li><code>cache</code>: TRUE/FALSE. Do you want the output of the chunk saved so you dont have to run it next time?</li>
-<li><code>eval</code>: Do you want to code to be evaluated?</li>
-<li><code>echo</code>: Do you want to print the code?</li>
-<li><code>include</code>: Do you want to include the code in the output document?</li>
-<li><code>warning=FALSE</code> and <code>message=FALSE</code> : Do you want to hide any warnings or messages?</li>
-<li><code>fig.height</code> and <code>fig.width</code> : Do you want to set figures sizes (inches)?</li>
+<li>
+<code>cache</code>: TRUE/FALSE. Do you want the output of the chunk saved so you dont have to run it next time?</li>
+<li>
+<code>eval</code>: Do you want to code to be evaluated?</li>
+<li>
+<code>echo</code>: Do you want to print the code?</li>
+<li>
+<code>include</code>: Do you want to include the code in the output document?</li>
+<li>
+<code>warning=FALSE</code> and <code>message=FALSE</code> : Do you want to hide any warnings or messages?</li>
+<li>
+<code>fig.height</code> and <code>fig.width</code> : Do you want to set figures sizes (inches)?</li>
 </ul>
 <blockquote>
 <p>Tips: Finding help with chunk options
@@ -540,57 +352,56 @@ of the “Help” field in the toolbar at the top of RStudio.</p>
 </blockquote>
 <p>Lets create a code chunk. Firstly add a name <code>addup</code> and set the <code>eval</code> parameter to <code>TRUE</code>.</p>
 <pre>
-&#96;&#96;&#96;{r addup, eval = TRUE}
+```{r addup, eval = TRUE}
 1 + 1
-&#96;&#96;&#96;
+```
 </pre>
 <p>When we knit the document we can see both the code and the result:</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="data-analysis-reports.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> </span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> </code></pre></div>
 <pre><code>[1] 2</code></pre>
 <p>If we dont want the code to appear in the output we can use the <code>echo</code> parameters.</p>
 <pre>
-&#96;&#96;&#96;{r addup, eval = TRUE, echo = FALSE}
+```{r addup, eval = TRUE, echo = FALSE}
 1 + 1
-&#96;&#96;&#96;
+```
 </pre>
 <p>When knit the document will now only show the result and will hide the code.</p>
 <pre><code>[1] 2</code></pre>
 <div id="global-options" class="section level3" number="10.7.1">
-<h3><span class="header-section-number">10.7.1</span> Global options</h3>
+<h3>
+<span class="header-section-number">10.7.1</span> Global options<a class="anchor" aria-label="anchor" href="#global-options"><i class="fas fa-link"></i></a>
+</h3>
 <p>Often there will be particular options that you’ll want to use
 repeatedly; for this, you can set <em>global</em> chunk options, like so:</p>
 <pre>
-&#96;&#96;&#96;{r global_options, echo=FALSE}
+```{r global_options, echo=FALSE}
 knitr::opts_chunk$set(fig.path="Figs/", 
                       message=FALSE, 
                       warning=FALSE,
                       echo=FALSE, 
                       results="hide", 
                       fig.width=11)
-&#96;&#96;&#96;
+```
 </pre>
 </div>
 <div id="formatting-figures" class="section level3" number="10.7.2">
-<h3><span class="header-section-number">10.7.2</span> Formatting figures</h3>
+<h3>
+<span class="header-section-number">10.7.2</span> Formatting figures<a class="anchor" aria-label="anchor" href="#formatting-figures"><i class="fas fa-link"></i></a>
+</h3>
 <p>We can use paramaters to control the location and size of plots using <code>fig.height</code>,<code>fig.width</code>
 and <code>fig.align</code>. We can also use <code>fig.cap</code> to add a title.</p>
 <p>We can use the <strong>gapminder</strong> dataset and <code>ggplot2</code>package to create and format a plot within R Markdown.</p>
 <pre>
-&#96;&#96;&#96;{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap = "A nice descriptive title"}
+```{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap = "A nice descriptive title"}
 
 library("readr")
 library("ggplot2")
 
-gapminder <- read_csv("data/gapminder_data.csv")
-
-ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-  geom_point()
-  
-&#96;&#96;&#96;
-</pre>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot1"></span>
-<img src="fig/rmd-10-plot1-1.png" alt="A nice descriptive title" width="480" />
-<p class="caption">
+gapminder 
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:plot1"></span>
+<img src="fig/rmd-10-plot1-1.png" alt="A nice descriptive title" width="480"><p class="caption">
 Figure 10.1: A nice descriptive title
 </p>
 </div>
@@ -600,23 +411,25 @@ Figure 10.1: A nice descriptive title
 <blockquote>
 <h2 id="solution-to-challenge-4-3">Solution to Challenge 4</h2>
 <pre>
-&#96;&#96;&#96;{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap= "Pretty Plot", fig.width = 5, fig.height = 5, fig.align = 'centre'}
+```{r pretty_plot, eval = TRUE, echo = FALSE, fig.cap= "Pretty Plot", fig.width = 5, fig.height = 5, fig.align = 'centre'}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 geom_point()
-&#96;&#96;&#96;
+```
 </pre>
 <div class="figure" style="text-align: centre">
-<img src="fig/rmd-10-pretty_plot-1.png" alt="Pretty Plot" width="480" />
-<p class="caption">
+<img src="fig/rmd-10-pretty_plot-1.png" alt="Pretty Plot" width="480"><p class="caption">
 (#fig:pretty_plot)Pretty Plot
 </p>
 </div>
 </blockquote>
 </blockquote>
+</pre>
 </div>
 </div>
 <div id="inline-r-code" class="section level2" number="10.8">
-<h2><span class="header-section-number">10.8</span> Inline R code</h2>
+<h2>
+<span class="header-section-number">10.8</span> Inline R code<a class="anchor" aria-label="anchor" href="#inline-r-code"><i class="fas fa-link"></i></a>
+</h2>
 <p>To make your document reproducible, you can also use r to populate values within a sentence. This will ensure values are automatically updated. We can use <code>`r</code> and <code>`</code> to designate in-line code.
 For example: <code>`r round( value, 2)`</code>. The code will be
 executed and replaced with the evaluated <em>value</em> as the result.</p>
@@ -627,7 +440,7 @@ executed and replaced with the evaluated <em>value</em> as the result.</p>
 <p><code> The ratio of a circle’s circumference to its diameter is `r round(3.141593, 2) `</code>.</p>
 <p>This will appear as:</p>
 <p><code>The ratio of a circle's circumference to its diameter is 3.14</code></p>
-<p>We can also do calculations on the fly within our inline code. For example we can calculate the number of instructors and populate a sentence. Firstly lets use <code>length()</code> to determine the number of instructors:</p>
+<p>We can also do calculations on the fly within our inline code. For example we can calculate the number of instructors and populate a sentence. Firstly lets use <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> to determine the number of instructors:</p>
 <p><code>` r length(c(“Andy”, “Gen”, “Sam”, “Steph”))` </code></p>
 <p>when we run this in the R console we should get <code>4</code>.</p>
 <p>Now we can add this as in-line code by using <code>`r</code> and <code>`</code> :</p>
@@ -644,113 +457,120 @@ executed and replaced with the evaluated <em>value</em> as the result.</p>
 </blockquote>
 </div>
 <div id="other-outputs-word-pdf-and-more" class="section level2" number="10.9">
-<h2><span class="header-section-number">10.9</span> Other outputs: Word, PDF and more…</h2>
+<h2>
+<span class="header-section-number">10.9</span> Other outputs: Word, PDF and more…<a class="anchor" aria-label="anchor" href="#other-outputs-word-pdf-and-more"><i class="fas fa-link"></i></a>
+</h2>
 <p>We can convert R Markdown to a PDF or a Word document. Click the
 little triangle next to the “Knit” button to get a drop-down
 menu.</p>
 <p>Alternatively we can change the YAML:</p>
 <div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="data-analysis-reports.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb444-2"><a href="data-analysis-reports.html#cb444-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Exploring R Markdown&quot;</span></span>
+<span id="cb444-2"><a href="data-analysis-reports.html#cb444-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Exploring R Markdown"</span></span>
 <span id="cb444-3"><a href="data-analysis-reports.html#cb444-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
 <span id="cb444-4"><a href="data-analysis-reports.html#cb444-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="data-analysis-reports.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb445-2"><a href="data-analysis-reports.html#cb445-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Exploring R Markdown&quot;</span></span>
+<span id="cb445-2"><a href="data-analysis-reports.html#cb445-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Exploring R Markdown"</span></span>
 <span id="cb445-3"><a href="data-analysis-reports.html#cb445-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> word_document</span>
 <span id="cb445-4"><a href="data-analysis-reports.html#cb445-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="data-analysis-reports.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb446-2"><a href="data-analysis-reports.html#cb446-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Exploring R Markdown&quot;</span></span>
+<span id="cb446-2"><a href="data-analysis-reports.html#cb446-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Exploring R Markdown"</span></span>
 <span id="cb446-3"><a href="data-analysis-reports.html#cb446-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> pdf_document</span>
 <span id="cb446-4"><a href="data-analysis-reports.html#cb446-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <div id="a-note-about-rmd-outputs" class="section level3" number="10.9.1">
-<h3><span class="header-section-number">10.9.1</span> A note about Rmd outputs</h3>
+<h3>
+<span class="header-section-number">10.9.1</span> A note about Rmd outputs<a class="anchor" aria-label="anchor" href="#a-note-about-rmd-outputs"><i class="fas fa-link"></i></a>
+</h3>
 <p>It can be easy to get caught up with how your document looks. It is highly recommended to render as html document and avoiding compiling to PDF or word until you really need to. This is also recommended by the author of <code>rmarkdown</code> and <code>knitr</code>, <a href="https://yihui.org/en/2018/07/in-html-i-trust/">Yihui Xie</a>. This means that you can spend time working on generating content, and not trying to get figures to line up correctly and wrestling with LaTex libraries.</p>
 <blockquote>
 <h2 id="tips-creating-pdf-documents">Tips: Creating PDF documents</h2>
 <p>Markdown documents can be compiled to PDF, however it will likely you will require additional
-software called LaTex. This software can be tricky to install and it is reccommended to use<br />
-<a href="https://yihui.org/tinytex/">tinytex</a> as an alternative. This R package is a lightweight
+software called LaTex. This software can be tricky to install and it is reccommended to use<br><a href="https://yihui.org/tinytex/">tinytex</a> as an alternative. This R package is a lightweight
 version of LaTex is designed for r users. You can install using the following commands:</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="data-analysis-reports.html#cb447-1" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>There is lots of information and help available - see <a href="https://yihui.org/tinytex/faq/">tinytex FQA page</a></p>
 </blockquote>
 </div>
 </div>
 <div id="resources" class="section level2" number="10.10">
-<h2><span class="header-section-number">10.10</span> Resources</h2>
+<h2>
+<span class="header-section-number">10.10</span> Resources<a class="anchor" aria-label="anchor" href="#resources"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li><a href="http://kbroman.org/knitr_knutshell">Knitr in a knutshell tutorial</a></li>
-<li><a href="http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20">Dynamic Documents with R and knitr</a> (book)</li>
+<li>
+<a href="http://www.amazon.com/exec/obidos/ASIN/1482203537/7210-20">Dynamic Documents with R and knitr</a> (book)</li>
 <li><a href="http://rmarkdown.rstudio.com">R Markdown documentation</a></li>
 <li><a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">R Markdown cheat sheet</a></li>
 <li><a href="https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/">Getting started with R Markdown</a></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a> (book by Rstudio team)</li>
+<li>
+<a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a> (book by Rstudio team)</li>
 <li><a href="https://www.rstudio.com/resources/webinars/reproducible-reporting/">Reproducible Reporting</a></li>
 <li><a href="https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/">The Ecosystem of R Markdown</a></li>
 <li><a href="https://www.rstudio.com/resources/webinars/introducing-bookdown/">Introducing Bookdown</a></li>
 </ul>
-
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></div>
+<div class="next"><a href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-analysis-reports"><span class="header-section-number">10</span> Data analysis reports</a></li>
+<li><a class="nav-link" href="#literate-programming"><span class="header-section-number">10.1</span> Literate programming</a></li>
+<li>
+<a class="nav-link" href="#example-of-using-r-markdown-in-the-bc-government"><span class="header-section-number">10.2</span> Example of Using R Markdown in the BC Government</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#documentation"><span class="header-section-number">10.2.1</span> Documentation</a></li>
+<li><a class="nav-link" href="#teaching"><span class="header-section-number">10.2.2</span> Teaching</a></li>
+<li><a class="nav-link" href="#presentation"><span class="header-section-number">10.2.3</span> Presentation</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#creating-an-r-markdown-file"><span class="header-section-number">10.3</span> Creating an R Markdown file</a></li>
+<li><a class="nav-link" href="#basic-components-of-r-markdown"><span class="header-section-number">10.4</span> Basic components of R Markdown</a></li>
+<li>
+<a class="nav-link" href="#markdown"><span class="header-section-number">10.5</span> Markdown</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#a-bit-more-markdown"><span class="header-section-number">10.5.1</span> A bit more Markdown</a></li>
+<li><a class="nav-link" href="#r-code-chunks"><span class="header-section-number">10.5.2</span> R code chunks</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#how-r-markdown-gets-compiled"><span class="header-section-number">10.6</span> How R Markdown gets compiled</a></li>
+<li>
+<a class="nav-link" href="#chunk-options"><span class="header-section-number">10.7</span> Chunk options</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#global-options"><span class="header-section-number">10.7.1</span> Global options</a></li>
+<li><a class="nav-link" href="#formatting-figures"><span class="header-section-number">10.7.2</span> Formatting figures</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#inline-r-code"><span class="header-section-number">10.8</span> Inline R code</a></li>
+<li>
+<a class="nav-link" href="#other-outputs-word-pdf-and-more"><span class="header-section-number">10.9</span> Other outputs: Word, PDF and more…</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#a-note-about-rmd-outputs"><span class="header-section-number">10.9.1</span> A note about Rmd outputs</a></li></ul>
+</li>
+<li><a class="nav-link" href="#resources"><span class="header-section-number">10.10</span> Resources</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="introduction-to-the-bcdata-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="applications-of-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/10-intro-to-rmarkdown.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/bcgov/ds-intro-to-r-2-day/edit/master/10-intro-to-rmarkdown.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-16.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>

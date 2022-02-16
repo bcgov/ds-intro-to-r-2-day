@@ -1,303 +1,82 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Dataframe Manipulation with dplyr | Introduction to Data Science using R Workshop</title>
-  <meta name="description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 7 Dataframe Manipulation with dplyr | Introduction to Data Science using R Workshop" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day" />
-  
-  <meta property="og:description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  <meta name="github-repo" content="bcgov/ds-intro-to-r-2-day" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Dataframe Manipulation with dplyr | Introduction to Data Science using R Workshop" />
-  
-  <meta name="twitter:description" content="This book contains materials for a 4 session Introduction to R workshop" />
-  
-
-
-
-<meta name="date" content="2022-02-16" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="creating-publication-quality-graphics-with-ggplot2.html"/>
-<link rel="next" href="create-tidy-data-with-tidyr.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Dataframe Manipulation with dplyr | Introduction to Data Science using R Workshop</title>
+<meta name="description" content='Remembering that we can use the readr package to read external data into R, for this lesson we are going to use the gapminder data: library("readr") gapminder &lt;-...'>
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Dataframe Manipulation with dplyr | Introduction to Data Science using R Workshop">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/dataframe-manipulation-with-dplyr.html">
+<meta property="og:description" content='Remembering that we can use the readr package to read external data into R, for this lesson we are going to use the gapminder data: library("readr") gapminder &lt;-...'>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Dataframe Manipulation with dplyr | Introduction to Data Science using R Workshop">
+<meta name="twitter:description" content='Remembering that we can use the readr package to read external data into R, for this lesson we are going to use the gapminder data: library("readr") gapminder &lt;-...'>
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Introduction to Data Science using R Workshop</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#motivation"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#before-starting-the-workshop"><i class="fa fa-check"></i><b>1.2</b> Before Starting The Workshop</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>1.3</b> Introduction to RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#work-flow-within-rstudio"><i class="fa fa-check"></i><b>1.4</b> Work flow within RStudio</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>1.5</b> Introduction to R</a></li>
-<li class="chapter" data-level="1.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#using-r-as-a-calculator"><i class="fa fa-check"></i><b>1.6</b> Using R as a calculator</a></li>
-<li class="chapter" data-level="1.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#mathematical-functions"><i class="fa fa-check"></i><b>1.7</b> Mathematical functions</a></li>
-<li class="chapter" data-level="1.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#comparing-things"><i class="fa fa-check"></i><b>1.8</b> Comparing things</a></li>
-<li class="chapter" data-level="1.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#variables-and-assignment"><i class="fa fa-check"></i><b>1.9</b> Variables and assignment</a></li>
-<li class="chapter" data-level="1.10" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#vectorization"><i class="fa fa-check"></i><b>1.10</b> Vectorization</a></li>
-<li class="chapter" data-level="1.11" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#managing-your-environment"><i class="fa fa-check"></i><b>1.11</b> Managing your environment</a></li>
-<li class="chapter" data-level="1.12" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#r-packages"><i class="fa fa-check"></i><b>1.12</b> R Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html"><i class="fa fa-check"></i><b>2</b> Seeking Help in R</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#reading-help-files"><i class="fa fa-check"></i><b>2.1</b> Reading Help files</a></li>
-<li class="chapter" data-level="2.2" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#special-operators"><i class="fa fa-check"></i><b>2.2</b> Special Operators</a></li>
-<li class="chapter" data-level="2.3" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#getting-help-on-packages"><i class="fa fa-check"></i><b>2.3</b> Getting help on packages</a></li>
-<li class="chapter" data-level="2.4" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-kind-of-remember-the-function"><i class="fa fa-check"></i><b>2.4</b> When you kind of remember the function</a></li>
-<li class="chapter" data-level="2.5" data-path="seeking-help-in-r.html"><a href="seeking-help-in-r.html#when-you-have-no-idea-where-to-begin"><i class="fa fa-check"></i><b>2.5</b> When you have no idea where to begin</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html"><i class="fa fa-check"></i><b>3</b> Project Management With RStudio</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#a-possible-solution"><i class="fa fa-check"></i><b>3.2</b> A possible solution</a></li>
-<li class="chapter" data-level="3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#best-practices-for-project-organization"><i class="fa fa-check"></i><b>3.3</b> Best practices for project organization</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>3.3.1</b> Treat data as read only</a></li>
-<li class="chapter" data-level="3.3.2" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#data-cleaning"><i class="fa fa-check"></i><b>3.3.2</b> Data Cleaning</a></li>
-<li class="chapter" data-level="3.3.3" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>3.3.3</b> Treat generated output as disposable</a></li>
-<li class="chapter" data-level="3.3.4" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>3.3.4</b> Separate function definition and application</a></li>
-<li class="chapter" data-level="3.3.5" data-path="project-management-with-rstudio.html"><a href="project-management-with-rstudio.html#version-control"><i class="fa fa-check"></i><b>3.3.5</b> Version Control</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>4</b> Data Structures</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="data-structures.html"><a href="data-structures.html#the-readr-package"><i class="fa fa-check"></i><b>4.1</b> The <em>readr</em> package</a></li>
-<li class="chapter" data-level="4.2" data-path="data-structures.html"><a href="data-structures.html#data-types"><i class="fa fa-check"></i><b>4.2</b> Data Types</a></li>
-<li class="chapter" data-level="4.3" data-path="data-structures.html"><a href="data-structures.html#vectors-and-type-coercion"><i class="fa fa-check"></i><b>4.3</b> Vectors and Type Coercion</a></li>
-<li class="chapter" data-level="4.4" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>4.4</b> Data Frames</a></li>
-<li class="chapter" data-level="4.5" data-path="data-structures.html"><a href="data-structures.html#factors"><i class="fa fa-check"></i><b>4.5</b> Factors</a></li>
-<li class="chapter" data-level="4.6" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>4.6</b> Lists</a></li>
-<li class="chapter" data-level="4.7" data-path="data-structures.html"><a href="data-structures.html#matrices"><i class="fa fa-check"></i><b>4.7</b> Matrices</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html"><i class="fa fa-check"></i><b>5</b> Exploring Data Frames</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#introducing-the-gapminder-data"><i class="fa fa-check"></i><b>5.1</b> Introducing the Gapminder data</a></li>
-<li class="chapter" data-level="5.2" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#basic-subsetting"><i class="fa fa-check"></i><b>5.2</b> Basic subsetting</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="exploring-data-frames.html"><a href="exploring-data-frames.html#selecting-rows"><i class="fa fa-check"></i><b>5.2.1</b> Selecting rows</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Creating Publication-Quality Graphics with ggplot2</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#getting-started"><i class="fa fa-check"></i><b>6.1</b> Getting started</a></li>
-<li class="chapter" data-level="6.2" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#layers"><i class="fa fa-check"></i><b>6.2</b> Layers</a></li>
-<li class="chapter" data-level="6.3" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#transformations-and-statistics"><i class="fa fa-check"></i><b>6.3</b> Transformations and statistics</a></li>
-<li class="chapter" data-level="6.4" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#multi-panel-figures"><i class="fa fa-check"></i><b>6.4</b> Multi-panel figures</a></li>
-<li class="chapter" data-level="6.5" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#modifying-text"><i class="fa fa-check"></i><b>6.5</b> Modifying text</a></li>
-<li class="chapter" data-level="6.6" data-path="creating-publication-quality-graphics-with-ggplot2.html"><a href="creating-publication-quality-graphics-with-ggplot2.html#exporting-the-plot"><i class="fa fa-check"></i><b>6.6</b> Exporting the plot</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>7</b> Dataframe Manipulation with dplyr</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#the-dplyr-package"><i class="fa fa-check"></i><b>7.1</b> The <code>dplyr</code> package</a></li>
-<li class="chapter" data-level="7.2" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-select"><i class="fa fa-check"></i><b>7.2</b> Using select()</a></li>
-<li class="chapter" data-level="7.3" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter"><i class="fa fa-check"></i><b>7.3</b> Using filter()</a></li>
-<li class="chapter" data-level="7.4" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-filter-with-pipes"><i class="fa fa-check"></i><b>7.4</b> Using filter() with pipes</a></li>
-<li class="chapter" data-level="7.5" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-group_by-and-summarize"><i class="fa fa-check"></i><b>7.5</b> Using group_by() and summarize()</a></li>
-<li class="chapter" data-level="7.6" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-summarize"><i class="fa fa-check"></i><b>7.6</b> Using summarize()</a></li>
-<li class="chapter" data-level="7.7" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-count"><i class="fa fa-check"></i><b>7.7</b> Using count()</a></li>
-<li class="chapter" data-level="7.8" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#using-mutate"><i class="fa fa-check"></i><b>7.8</b> Using mutate()</a></li>
-<li class="chapter" data-level="7.9" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#connect-mutate-with-logical-groupings-ifelse"><i class="fa fa-check"></i><b>7.9</b> Connect mutate with logical groupings: ifelse</a></li>
-<li class="chapter" data-level="7.10" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#combining-dplyr-and-ggplot2"><i class="fa fa-check"></i><b>7.10</b> Combining <code>dplyr</code> and <code>ggplot2</code></a></li>
-<li class="chapter" data-level="7.11" data-path="dataframe-manipulation-with-dplyr.html"><a href="dataframe-manipulation-with-dplyr.html#other-great-resources"><i class="fa fa-check"></i><b>7.11</b> Other great resources</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html"><i class="fa fa-check"></i><b>8</b> Create Tidy Data with tidyr</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#getting-started-1"><i class="fa fa-check"></i><b>8.1</b> Getting started</a></li>
-<li class="chapter" data-level="8.2" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-wide-to-long-format-with-pivot_longer"><i class="fa fa-check"></i><b>8.2</b> From wide to long format with pivot_longer()</a></li>
-<li class="chapter" data-level="8.3" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#from-long-to-intermediate-format-with-pivot_wider"><i class="fa fa-check"></i><b>8.3</b> From long to intermediate format with pivot_wider()</a></li>
-<li class="chapter" data-level="8.4" data-path="create-tidy-data-with-tidyr.html"><a href="create-tidy-data-with-tidyr.html#other-great-resources-1"><i class="fa fa-check"></i><b>8.4</b> Other great resources</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html"><i class="fa fa-check"></i><b>9</b> Introduction to the bcdata package</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#getting-started-2"><i class="fa fa-check"></i><b>9.1</b> Getting started</a></li>
-<li class="chapter" data-level="9.2" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#searching-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.2</b> Searching the B.C. Data Catalogue</a></li>
-<li class="chapter" data-level="9.3" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#importing-data-from-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.3</b> Importing data from the B.C. Data Catalogue</a></li>
-<li class="chapter" data-level="9.4" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-manipulating-data-with-dplyr"><i class="fa fa-check"></i><b>9.4</b> Practice manipulating data with <code>dplyr</code></a></li>
-<li class="chapter" data-level="9.5" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-plotting-data-with-ggplot2"><i class="fa fa-check"></i><b>9.5</b> Practice plotting data with <code>ggplot2</code></a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>10</b> Data analysis reports</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#literate-programming"><i class="fa fa-check"></i><b>10.1</b> Literate programming</a></li>
-<li class="chapter" data-level="10.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#example-of-using-r-markdown-in-the-bc-government"><i class="fa fa-check"></i><b>10.2</b> Example of Using R Markdown in the BC Government</a>
-<ul>
-<li class="chapter" data-level="10.2.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#documentation"><i class="fa fa-check"></i><b>10.2.1</b> Documentation</a></li>
-<li class="chapter" data-level="10.2.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#teaching"><i class="fa fa-check"></i><b>10.2.2</b> Teaching</a></li>
-<li class="chapter" data-level="10.2.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#presentation"><i class="fa fa-check"></i><b>10.2.3</b> Presentation</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>10.3</b> Creating an R Markdown file</a></li>
-<li class="chapter" data-level="10.4" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#basic-components-of-r-markdown"><i class="fa fa-check"></i><b>10.4</b> Basic components of R Markdown</a></li>
-<li class="chapter" data-level="10.5" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#markdown"><i class="fa fa-check"></i><b>10.5</b> Markdown</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-bit-more-markdown"><i class="fa fa-check"></i><b>10.5.1</b> A bit more Markdown</a></li>
-<li class="chapter" data-level="10.5.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#r-code-chunks"><i class="fa fa-check"></i><b>10.5.2</b> R code chunks</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#how-r-markdown-gets-compiled"><i class="fa fa-check"></i><b>10.6</b> How R Markdown gets compiled</a></li>
-<li class="chapter" data-level="10.7" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#chunk-options"><i class="fa fa-check"></i><b>10.7</b> Chunk options</a>
-<ul>
-<li class="chapter" data-level="10.7.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#global-options"><i class="fa fa-check"></i><b>10.7.1</b> Global options</a></li>
-<li class="chapter" data-level="10.7.2" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#formatting-figures"><i class="fa fa-check"></i><b>10.7.2</b> Formatting figures</a></li>
-</ul></li>
-<li class="chapter" data-level="10.8" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#inline-r-code"><i class="fa fa-check"></i><b>10.8</b> Inline R code</a></li>
-<li class="chapter" data-level="10.9" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#other-outputs-word-pdf-and-more"><i class="fa fa-check"></i><b>10.9</b> Other outputs: Word, PDF and more…</a>
-<ul>
-<li class="chapter" data-level="10.9.1" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#a-note-about-rmd-outputs"><i class="fa fa-check"></i><b>10.9.1</b> A note about Rmd outputs</a></li>
-</ul></li>
-<li class="chapter" data-level="10.10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html#resources"><i class="fa fa-check"></i><b>10.10</b> Resources</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="applications-of-r-markdown.html"><a href="applications-of-r-markdown.html"><i class="fa fa-check"></i><b>11</b> Applications of R Markdown</a></li>
-<li class="chapter" data-level="12" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html"><i class="fa fa-check"></i><b>12</b> Seeking Help from Others with reprex</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#help-people-help-you---reprex"><i class="fa fa-check"></i><b>12.1</b> Help People Help You - reprex</a></li>
-<li class="chapter" data-level="12.2" data-path="seeking-help-from-others-with-reprex.html"><a href="seeking-help-from-others-with-reprex.html#other-helpful-resources"><i class="fa fa-check"></i><b>12.2</b> Other Helpful Resources</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction to Data Science using R Workshop</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science using R Workshop</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="seeking-help-in-r.html"><span class="header-section-number">2</span> Seeking Help in R</a></li>
+<li><a class="" href="project-management-with-rstudio.html"><span class="header-section-number">3</span> Project Management With RStudio</a></li>
+<li><a class="" href="data-structures.html"><span class="header-section-number">4</span> Data Structures</a></li>
+<li><a class="" href="exploring-data-frames.html"><span class="header-section-number">5</span> Exploring Data Frames</a></li>
+<li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">6</span> Creating Publication-Quality Graphics with ggplot2</a></li>
+<li><a class="active" href="dataframe-manipulation-with-dplyr.html"><span class="header-section-number">7</span> Dataframe Manipulation with dplyr</a></li>
+<li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></li>
+<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
+<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></li>
+<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></li>
+<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/bcgov/ds-intro-to-r-2-day">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="dataframe-manipulation-with-dplyr" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Dataframe Manipulation with dplyr</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dataframe-manipulation-with-dplyr" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Dataframe Manipulation with dplyr<a class="anchor" aria-label="anchor" href="#dataframe-manipulation-with-dplyr"><i class="fas fa-link"></i></a>
+</h1>
 <p>Remembering that we can use the <code>readr</code> package to read external data into R, for this lesson we are going to use the <code>gapminder</code> data:</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="dataframe-manipulation-with-dplyr.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;readr&quot;</span>)</span>
-<span id="cb317-2"><a href="dataframe-manipulation-with-dplyr.html#cb317-2" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/gapminder_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://readr.tidyverse.org">"readr"</a></span><span class="op">)</span>
+<span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>Rows: 1704 Columns: 6
 ── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
+Delimiter: ","
 chr (2): country, continent
 dbl (4): year, pop, lifeExp, gdpPercap
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="dataframe-manipulation-with-dplyr.html#cb319-1" aria-hidden="true" tabindex="-1"></a>gapminder</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -316,12 +95,15 @@ dbl (4): year, pop, lifeExp, gdpPercap
 select certain observations (rows) or variables (columns), we often group the
 data by a certain variable(s), or we even calculate summary statistics. We can
 do these types of operations using the normal base R operations:</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="dataframe-manipulation-with-dplyr.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gapminder<span class="sc">$</span>gdpPercap)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">$</span><span class="va">gdpPercap</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 7215.327</code></pre>
 <p>The question here is how might you summarize
 split by some group you might be interested in.</p>
 <div id="the-dplyr-package" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> The <code>dplyr</code> package</h2>
+<h2>
+<span class="header-section-number">7.1</span> The <code>dplyr</code> package<a class="anchor" aria-label="anchor" href="#the-dplyr-package"><i class="fas fa-link"></i></a>
+</h2>
 <p>Luckily, the <a href="https://cran.r-project.org/package=dplyr"><code>dplyr</code></a>
 package provides a number of very useful functions for manipulating dataframes
 in a way that will reduce the above repetition, reduce the probability of making
@@ -330,29 +112,37 @@ even find the <code>dplyr</code> grammar easier to read.</p>
 <p>Here we’re going to cover 5 of the most commonly used functions as well as using
 pipes (<code>%&gt;%</code>) to combine them.</p>
 <ol style="list-style-type: decimal">
-<li><code>select()</code></li>
-<li><code>filter()</code></li>
-<li><code>group_by()</code></li>
-<li><code>summarize()</code></li>
-<li><code>mutate()</code></li>
+<li><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></li>
+<li><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code></li>
+<li><code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code></li>
+<li><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code></li>
+<li><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code></li>
 </ol>
 <p>If you have have not installed this package earlier, please do so:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="dataframe-manipulation-with-dplyr.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;dplyr&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'dplyr'</span><span class="op">)</span></code></pre></div>
 <p>Now let’s load the package:</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="dataframe-manipulation-with-dplyr.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="using-select" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Using select()</h2>
+<h2>
+<span class="header-section-number">7.2</span> Using select()<a class="anchor" aria-label="anchor" href="#using-select"><i class="fas fa-link"></i></a>
+</h2>
 <p>If, for example, we wanted to move forward with only a few of the variables in
-our dataframe we could use the <code>select()</code> function. This will keep only the
+our dataframe we could use the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function. This will keep only the
 variables you select.</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="dataframe-manipulation-with-dplyr.html#cb325-1" aria-hidden="true" tabindex="-1"></a>year_country_gdp <span class="ot">&lt;-</span> <span class="fu">select</span>(gapminder, year, country, gdpPercap)</span></code></pre></div>
-<p><img src="fig/07-dplyr-fig1.png" /></p>
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">year_country_gdp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">year</span>, <span class="va">country</span>, <span class="va">gdpPercap</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/07-dplyr-fig1.png"></div>
 </div>
 <div id="using-filter" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Using filter()</h2>
+<h2>
+<span class="header-section-number">7.3</span> Using filter()<a class="anchor" aria-label="anchor" href="#using-filter"><i class="fas fa-link"></i></a>
+</h2>
 <p>To select on some subset of rows:</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="dataframe-manipulation-with-dplyr.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 360 × 6
    country  year     pop continent lifeExp gdpPercap
    &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -368,7 +158,8 @@ variables you select.</p>
 10 Albania  1997 3428038 Europe       73.0     3193.
 # … with 350 more rows</code></pre>
 <p>Or select another subset of rows:</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="dataframe-manipulation-with-dplyr.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(gapminder, pop <span class="sc">&gt;</span> <span class="dv">1000000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">pop</span> <span class="op">&gt;</span> <span class="fl">1000000</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 1,524 × 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -393,22 +184,26 @@ several functions using pipes. This
 <span id="cb330-5"><a href="dataframe-manipulation-with-dplyr.html#cb330-5" aria-hidden="true" tabindex="-1"></a>  came to an R workshop</span></code></pre></div>
 <p>Since the pipes grammar is unlike anything we’ve seen in R before,
 let’s repeat what we’ve done above using pipes.</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="dataframe-manipulation-with-dplyr.html#cb331-1" aria-hidden="true" tabindex="-1"></a>year_country_gdp <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">select</span>(year, country, gdpPercap)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">year_country_gdp</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">gdpPercap</span><span class="op">)</span></code></pre></div>
 <p>To help you understand why we wrote that in that way, let’s walk through it step
 by step. First we summon the gapminder dataframe and pass it on, using the pipe
-symbol <code>%&gt;%</code>, to the next step, which is the <code>select()</code> function. In this case
-we don’t specify which data object we use in the <code>select()</code> function since in
+symbol <code>%&gt;%</code>, to the next step, which is the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function. In this case
+we don’t specify which data object we use in the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function since in
 gets that from the previous pipe. <strong>Fun Fact</strong>: There is a good chance you have
 encountered pipes before in the shell. In R, a pipe symbol is <code>%&gt;%</code> while in the
 shell it is <code>|</code> but the concept is the same!</p>
 </div>
 <div id="using-filter-with-pipes" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> Using filter() with pipes</h2>
+<h2>
+<span class="header-section-number">7.4</span> Using filter() with pipes<a class="anchor" aria-label="anchor" href="#using-filter-with-pipes"><i class="fas fa-link"></i></a>
+</h2>
 <p>If we now wanted to move forward with the above, but only with European
 countries, we can combine <code>select</code> and <code>filter</code></p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="dataframe-manipulation-with-dplyr.html#cb332-1" aria-hidden="true" tabindex="-1"></a>year_country_gdp_euro <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb332-2"><a href="dataframe-manipulation-with-dplyr.html#cb332-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb332-3"><a href="dataframe-manipulation-with-dplyr.html#cb332-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, country, gdpPercap)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">year_country_gdp_euro</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">gdpPercap</span><span class="op">)</span></code></pre></div>
 <blockquote>
 <h2 id="challenge-1-5">Challenge 1</h2>
 <p>Write a single command (which can span multiple lines and includes pipes) that
@@ -417,26 +212,30 @@ and <code>year</code>, but not for other Continents. How many rows does your dat
 have and why?</p>
 <blockquote>
 <h2 id="solution-to-challenge-1-3">Solution to Challenge 1</h2>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="dataframe-manipulation-with-dplyr.html#cb333-1" aria-hidden="true" tabindex="-1"></a>year_country_lifeExp_Africa <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb333-2"><a href="dataframe-manipulation-with-dplyr.html#cb333-2" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Africa&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb333-3"><a href="dataframe-manipulation-with-dplyr.html#cb333-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">select</span>(year, country, lifeExp)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">year_country_lifeExp_Africa</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+                           <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Africa"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+                           <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span></code></pre></div>
 </blockquote>
 </blockquote>
-<p>As with last time, first we pass the gapminder dataframe to the <code>filter()</code>
+<p>As with last time, first we pass the gapminder dataframe to the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>
 function, then we pass the filtered version of the gapminder dataframe to the
-<code>select()</code> function. <strong>Note:</strong> The order of operations is very important in this
+<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function. <strong>Note:</strong> The order of operations is very important in this
 case. If we used ‘select’ first, filter would not be able to find the variable
 continent since we would have removed it in the previous step.</p>
 </div>
 <div id="using-group_by-and-summarize" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> Using group_by() and summarize()</h2>
+<h2>
+<span class="header-section-number">7.5</span> Using group_by() and summarize()<a class="anchor" aria-label="anchor" href="#using-group_by-and-summarize"><i class="fas fa-link"></i></a>
+</h2>
 <p>Now, we were supposed to be reducing the error prone repetitiveness of what can
 be done with base R, but up to now we haven’t done that since we would have to
-repeat the above for each continent. Instead of <code>filter()</code>, which will only pass
+repeat the above for each continent. Instead of <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, which will only pass
 observations that meet your criteria (in the above: <code>continent=="Europe"</code>), we
-can use <code>group_by()</code>, which will essentially use every unique criteria that you
+can use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, which will essentially use every unique criteria that you
 could have used in filter.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="dataframe-manipulation-with-dplyr.html#cb334-1" aria-hidden="true" tabindex="-1"></a>gapminder</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -451,7 +250,8 @@ could have used in filter.</p>
  9 Afghanistan  1992 16317921 Asia         41.7      649.
 10 Afghanistan  1997 22227415 Asia         41.8      635.
 # … with 1,694 more rows</code></pre>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="dataframe-manipulation-with-dplyr.html#cb336-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(continent)</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
 # Groups:   continent [5]
    country      year      pop continent lifeExp gdpPercap
@@ -467,25 +267,28 @@ could have used in filter.</p>
  9 Afghanistan  1992 16317921 Asia         41.7      649.
 10 Afghanistan  1997 22227415 Asia         41.8      635.
 # … with 1,694 more rows</code></pre>
-<p>You will notice that the structure of the dataframe where we used <code>group_by()</code>
+<p>You will notice that the structure of the dataframe where we used <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>
 (<code>grouped_df</code>) is not the same as the original <code>gapminder</code> (<code>data.frame</code>). A
 <code>grouped_df</code> can be thought of as a <code>list</code> where each item in the <code>list</code> is a
 <code>data.frame</code> which contains only the rows that correspond to the a particular
 value <code>continent</code> (at least in the example above).</p>
-<p><img src="fig/07-dplyr-fig2.png" /></p>
+<div class="inline-figure"><img src="fig/07-dplyr-fig2.png"></div>
 </div>
 <div id="using-summarize" class="section level2" number="7.6">
-<h2><span class="header-section-number">7.6</span> Using summarize()</h2>
-<p>The above was a bit on the uneventful side but <code>group_by()</code> is much more
-exciting in conjunction with <code>summarize()</code>. This will allow us to create new
+<h2>
+<span class="header-section-number">7.6</span> Using summarize()<a class="anchor" aria-label="anchor" href="#using-summarize"><i class="fas fa-link"></i></a>
+</h2>
+<p>The above was a bit on the uneventful side but <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> is much more
+exciting in conjunction with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>. This will allow us to create new
 variable(s) by using functions that repeat for each of the continent-specific
-data frames. That is to say, using the <code>group_by()</code> function, we split our
+data frames. That is to say, using the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function, we split our
 original dataframe into multiple pieces, then we can run functions
-(e.g. <code>mean()</code> or <code>sd()</code>) within <code>summarize()</code>.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="dataframe-manipulation-with-dplyr.html#cb338-1" aria-hidden="true" tabindex="-1"></a>gdp_bycontinents <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb338-2"><a href="dataframe-manipulation-with-dplyr.html#cb338-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb338-3"><a href="dataframe-manipulation-with-dplyr.html#cb338-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_gdpPercap =</span> <span class="fu">mean</span>(gdpPercap))</span></code></pre></div>
-<p><img src="fig/07-dplyr-fig3.png" /></p>
+(e.g. <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> or <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>) within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>.</p>
+<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gdp_bycontinents</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/07-dplyr-fig3.png"></div>
 <pre><code># A tibble: 5 × 2
   continent mean_gdpPercap
   &lt;chr&gt;              &lt;dbl&gt;
@@ -502,64 +305,72 @@ even better.</p>
 expectancy and which has the shortest average life expectancy?</p>
 <blockquote>
 <h2 id="solution-to-challenge-2-4">Solution to Challenge 2</h2>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="dataframe-manipulation-with-dplyr.html#cb340-1" aria-hidden="true" tabindex="-1"></a>lifeExp_bycountry <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb340-2"><a href="dataframe-manipulation-with-dplyr.html#cb340-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
-<span id="cb340-3"><a href="dataframe-manipulation-with-dplyr.html#cb340-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">mean_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span>
-<span id="cb340-4"><a href="dataframe-manipulation-with-dplyr.html#cb340-4" aria-hidden="true" tabindex="-1"></a>lifeExp_bycountry <span class="sc">%&gt;%</span></span>
-<span id="cb340-5"><a href="dataframe-manipulation-with-dplyr.html#cb340-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(mean_lifeExp <span class="sc">==</span> <span class="fu">min</span>(mean_lifeExp) <span class="sc">|</span> mean_lifeExp <span class="sc">==</span> <span class="fu">max</span>(mean_lifeExp))</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lifeExp_bycountry</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span>
+<span class="va">lifeExp_bycountry</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mean_lifeExp</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">mean_lifeExp</span><span class="op">)</span> <span class="op">|</span> <span class="va">mean_lifeExp</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">mean_lifeExp</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 2 × 2
  country      mean_lifeExp
  &lt;chr&gt;               &lt;dbl&gt;
 1 Iceland              76.5
 2 Sierra Leone         36.8</code></pre>
-<p>Another way to do this is to use the <code>dplyr</code> function <code>arrange()</code>, which
+<p>Another way to do this is to use the <code>dplyr</code> function <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>, which
 arranges the rows in a data frame according to the order of one or more
 variables from the data frame. It has similar syntax to other functions from
-the <code>dplyr</code> package. You can use <code>desc()</code> inside <code>arrange()</code> to sort in
+the <code>dplyr</code> package. You can use <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> inside <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> to sort in
 descending order.</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="dataframe-manipulation-with-dplyr.html#cb342-1" aria-hidden="true" tabindex="-1"></a>lifeExp_bycountry <span class="sc">%&gt;%</span></span>
-<span id="cb342-2"><a href="dataframe-manipulation-with-dplyr.html#cb342-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">arrange</span>(mean_lifeExp) <span class="sc">%&gt;%</span></span>
-<span id="cb342-3"><a href="dataframe-manipulation-with-dplyr.html#cb342-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lifeExp_bycountry</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">mean_lifeExp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 1 × 2
  country      mean_lifeExp
  &lt;chr&gt;               &lt;dbl&gt;
 1 Sierra Leone         36.8</code></pre>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="dataframe-manipulation-with-dplyr.html#cb344-1" aria-hidden="true" tabindex="-1"></a>lifeExp_bycountry <span class="sc">%&gt;%</span></span>
-<span id="cb344-2"><a href="dataframe-manipulation-with-dplyr.html#cb344-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_lifeExp)) <span class="sc">%&gt;%</span></span>
-<span id="cb344-3"><a href="dataframe-manipulation-with-dplyr.html#cb344-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">head</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lifeExp_bycountry</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">mean_lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 1 × 2
  country mean_lifeExp
  &lt;chr&gt;          &lt;dbl&gt;
 1 Iceland         76.5</code></pre>
 </blockquote>
 </blockquote>
-<p>The function <code>group_by()</code> allows us to group by multiple variables. Let’s group by <code>year</code> and <code>continent</code>.</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="dataframe-manipulation-with-dplyr.html#cb346-1" aria-hidden="true" tabindex="-1"></a>gdp_bycontinents_byyear <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb346-2"><a href="dataframe-manipulation-with-dplyr.html#cb346-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
-<span id="cb346-3"><a href="dataframe-manipulation-with-dplyr.html#cb346-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_gdpPercap =</span> <span class="fu">mean</span>(gdpPercap))</span></code></pre></div>
-<pre><code>`summarise()` has grouped output by &#39;continent&#39;. You can override using the
+<p>The function <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> allows us to group by multiple variables. Let’s group by <code>year</code> and <code>continent</code>.</p>
+<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gdp_bycontinents_byyear</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
-<p>That is already quite powerful, but it gets even better! You’re not limited to defining 1 new variable in <code>summarize()</code>.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="dataframe-manipulation-with-dplyr.html#cb348-1" aria-hidden="true" tabindex="-1"></a>gdp_pop_bycontinents_byyear <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb348-2"><a href="dataframe-manipulation-with-dplyr.html#cb348-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
-<span id="cb348-3"><a href="dataframe-manipulation-with-dplyr.html#cb348-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_gdpPercap =</span> <span class="fu">mean</span>(gdpPercap),</span>
-<span id="cb348-4"><a href="dataframe-manipulation-with-dplyr.html#cb348-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd_gdpPercap =</span> <span class="fu">sd</span>(gdpPercap),</span>
-<span id="cb348-5"><a href="dataframe-manipulation-with-dplyr.html#cb348-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_pop =</span> <span class="fu">mean</span>(pop),</span>
-<span id="cb348-6"><a href="dataframe-manipulation-with-dplyr.html#cb348-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd_pop =</span> <span class="fu">sd</span>(pop))</span></code></pre></div>
-<pre><code>`summarise()` has grouped output by &#39;continent&#39;. You can override using the
+<p>That is already quite powerful, but it gets even better! You’re not limited to defining 1 new variable in <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>.</p>
+<div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gdp_pop_bycontinents_byyear</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span>,
+              sd_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span>,
+              mean_pop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span>,
+              sd_pop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
 </div>
 <div id="using-count" class="section level2" number="7.7">
-<h2><span class="header-section-number">7.7</span> Using count()</h2>
+<h2>
+<span class="header-section-number">7.7</span> Using count()<a class="anchor" aria-label="anchor" href="#using-count"><i class="fas fa-link"></i></a>
+</h2>
 <p>A very common operation is to count the number of observations for each
 group. The <code>dplyr</code> package comes with a function that helps with this.</p>
 <p>For instance, if we wanted to check the number of countries included in the
-dataset for the year 2002, we can use the <code>count()</code> function. It takes the name
+dataset for the year 2002, we can use the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> function. It takes the name
 of one or more columns that contain the groups we are interested in, and we can
 optionally sort the results in descending order by adding <code>sort=TRUE</code>:</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="dataframe-manipulation-with-dplyr.html#cb350-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb350-2"><a href="dataframe-manipulation-with-dplyr.html#cb350-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2002</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb350-3"><a href="dataframe-manipulation-with-dplyr.html#cb350-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(continent, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2002</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">continent</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 5 × 2
   continent     n
   &lt;chr&gt;     &lt;int&gt;
@@ -570,115 +381,130 @@ optionally sort the results in descending order by adding <code>sort=TRUE</code>
 5 Oceania       2</code></pre>
 </div>
 <div id="using-mutate" class="section level2" number="7.8">
-<h2><span class="header-section-number">7.8</span> Using mutate()</h2>
-<p>We can also create new variables prior to (or even after) summarizing information using <code>mutate()</code>.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="dataframe-manipulation-with-dplyr.html#cb352-1" aria-hidden="true" tabindex="-1"></a>gdp_pop_bycontinents_byyear <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb352-2"><a href="dataframe-manipulation-with-dplyr.html#cb352-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gdp_billion =</span> gdpPercap<span class="sc">*</span>pop<span class="sc">/</span><span class="dv">10</span><span class="sc">^</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb352-3"><a href="dataframe-manipulation-with-dplyr.html#cb352-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(continent,year) <span class="sc">%&gt;%</span></span>
-<span id="cb352-4"><a href="dataframe-manipulation-with-dplyr.html#cb352-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_gdpPercap =</span> <span class="fu">mean</span>(gdpPercap),</span>
-<span id="cb352-5"><a href="dataframe-manipulation-with-dplyr.html#cb352-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd_gdpPercap =</span> <span class="fu">sd</span>(gdpPercap),</span>
-<span id="cb352-6"><a href="dataframe-manipulation-with-dplyr.html#cb352-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_pop =</span> <span class="fu">mean</span>(pop),</span>
-<span id="cb352-7"><a href="dataframe-manipulation-with-dplyr.html#cb352-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd_pop =</span> <span class="fu">sd</span>(pop),</span>
-<span id="cb352-8"><a href="dataframe-manipulation-with-dplyr.html#cb352-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_gdp_billion =</span> <span class="fu">mean</span>(gdp_billion),</span>
-<span id="cb352-9"><a href="dataframe-manipulation-with-dplyr.html#cb352-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd_gdp_billion =</span> <span class="fu">sd</span>(gdp_billion))</span></code></pre></div>
-<pre><code>`summarise()` has grouped output by &#39;continent&#39;. You can override using the
+<h2>
+<span class="header-section-number">7.8</span> Using mutate()<a class="anchor" aria-label="anchor" href="#using-mutate"><i class="fas fa-link"></i></a>
+</h2>
+<p>We can also create new variables prior to (or even after) summarizing information using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>.</p>
+<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gdp_pop_bycontinents_byyear</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gdp_billion <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">*</span><span class="va">pop</span><span class="op">/</span><span class="fl">10</span><span class="op">^</span><span class="fl">9</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>,<span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span>,
+              sd_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span>,
+              mean_pop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span>,
+              sd_pop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span>,
+              mean_gdp_billion <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdp_billion</span><span class="op">)</span>,
+              sd_gdp_billion <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gdp_billion</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
 </div>
 <div id="connect-mutate-with-logical-groupings-ifelse" class="section level2" number="7.9">
-<h2><span class="header-section-number">7.9</span> Connect mutate with logical groupings: ifelse</h2>
+<h2>
+<span class="header-section-number">7.9</span> Connect mutate with logical groupings: ifelse<a class="anchor" aria-label="anchor" href="#connect-mutate-with-logical-groupings-ifelse"><i class="fas fa-link"></i></a>
+</h2>
 <p>When creating new variables, we can hook this with a logical condition. A simple combination of
-<code>mutate()</code> and <code>ifelse()</code> facilitates filtering right where it is needed: in the moment of creating something new.
+<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> facilitates filtering right where it is needed: in the moment of creating something new.
 This easy-to-read statement is a fast and powerful way of discarding certain data (even though the overall dimension
 of the data frame will not change) or for updating values depending on this given condition.</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="dataframe-manipulation-with-dplyr.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="do">## keeping all data but &quot;filtering&quot; after a certain condition</span></span>
-<span id="cb354-2"><a href="dataframe-manipulation-with-dplyr.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate GDP only for people with a life expectation above 25</span></span>
-<span id="cb354-3"><a href="dataframe-manipulation-with-dplyr.html#cb354-3" aria-hidden="true" tabindex="-1"></a>gdp_pop_bycontinents_byyear_above25 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb354-4"><a href="dataframe-manipulation-with-dplyr.html#cb354-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gdp_billion =</span> <span class="fu">ifelse</span>(lifeExp <span class="sc">&gt;</span> <span class="dv">25</span>, gdpPercap <span class="sc">*</span> pop <span class="sc">/</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">9</span>, <span class="cn">NA</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb354-5"><a href="dataframe-manipulation-with-dplyr.html#cb354-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
-<span id="cb354-6"><a href="dataframe-manipulation-with-dplyr.html#cb354-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_gdpPercap =</span> <span class="fu">mean</span>(gdpPercap),</span>
-<span id="cb354-7"><a href="dataframe-manipulation-with-dplyr.html#cb354-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd_gdpPercap =</span> <span class="fu">sd</span>(gdpPercap),</span>
-<span id="cb354-8"><a href="dataframe-manipulation-with-dplyr.html#cb354-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_pop =</span> <span class="fu">mean</span>(pop),</span>
-<span id="cb354-9"><a href="dataframe-manipulation-with-dplyr.html#cb354-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd_pop =</span> <span class="fu">sd</span>(pop),</span>
-<span id="cb354-10"><a href="dataframe-manipulation-with-dplyr.html#cb354-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_gdp_billion =</span> <span class="fu">mean</span>(gdp_billion),</span>
-<span id="cb354-11"><a href="dataframe-manipulation-with-dplyr.html#cb354-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd_gdp_billion =</span> <span class="fu">sd</span>(gdp_billion))</span></code></pre></div>
-<pre><code>`summarise()` has grouped output by &#39;continent&#39;. You can override using the
+<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## keeping all data but "filtering" after a certain condition</span>
+<span class="co"># calculate GDP only for people with a life expectation above 25</span>
+<span class="va">gdp_pop_bycontinents_byyear_above25</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gdp_billion <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">&gt;</span> <span class="fl">25</span>, <span class="va">gdpPercap</span> <span class="op">*</span> <span class="va">pop</span> <span class="op">/</span> <span class="fl">10</span><span class="op">^</span><span class="fl">9</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span>,
+              sd_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span>,
+              mean_pop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span>,
+              sd_pop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span>,
+              mean_gdp_billion <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdp_billion</span><span class="op">)</span>,
+              sd_gdp_billion <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gdp_billion</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="dataframe-manipulation-with-dplyr.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="do">## updating only if certain condition is fullfilled</span></span>
-<span id="cb356-2"><a href="dataframe-manipulation-with-dplyr.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for life expectations above 40 years, the gpd to be expected in the future is scaled</span></span>
-<span id="cb356-3"><a href="dataframe-manipulation-with-dplyr.html#cb356-3" aria-hidden="true" tabindex="-1"></a>gdp_future_bycontinents_byyear_high_lifeExp <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb356-4"><a href="dataframe-manipulation-with-dplyr.html#cb356-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gdp_futureExpectation =</span> <span class="fu">ifelse</span>(lifeExp <span class="sc">&gt;</span> <span class="dv">40</span>, gdpPercap <span class="sc">*</span> <span class="fl">1.5</span>, gdpPercap)) <span class="sc">%&gt;%</span></span>
-<span id="cb356-5"><a href="dataframe-manipulation-with-dplyr.html#cb356-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
-<span id="cb356-6"><a href="dataframe-manipulation-with-dplyr.html#cb356-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_gdpPercap =</span> <span class="fu">mean</span>(gdpPercap),</span>
-<span id="cb356-7"><a href="dataframe-manipulation-with-dplyr.html#cb356-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_gdpPercap_expected =</span> <span class="fu">mean</span>(gdp_futureExpectation))</span></code></pre></div>
-<pre><code>`summarise()` has grouped output by &#39;continent&#39;. You can override using the
+<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## updating only if certain condition is fullfilled</span>
+<span class="co"># for life expectations above 40 years, the gpd to be expected in the future is scaled</span>
+<span class="va">gdp_future_bycontinents_byyear_high_lifeExp</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gdp_futureExpectation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">&gt;</span> <span class="fl">40</span>, <span class="va">gdpPercap</span> <span class="op">*</span> <span class="fl">1.5</span>, <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_gdpPercap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span>,
+              mean_gdpPercap_expected <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdp_futureExpectation</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
 </div>
 <div id="combining-dplyr-and-ggplot2" class="section level2" number="7.10">
-<h2><span class="header-section-number">7.10</span> Combining <code>dplyr</code> and <code>ggplot2</code></h2>
+<h2>
+<span class="header-section-number">7.10</span> Combining <code>dplyr</code> and <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#combining-dplyr-and-ggplot2"><i class="fas fa-link"></i></a>
+</h2>
 <p>First install and load ggplot2:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="dataframe-manipulation-with-dplyr.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;ggplot2&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="dataframe-manipulation-with-dplyr.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'ggplot2'</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://ggplot2.tidyverse.org">"ggplot2"</a></span><span class="op">)</span></code></pre></div>
 <p>In the plotting lesson we looked at how to make a multi-panel figure by adding
 a layer of facet panels using <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="dataframe-manipulation-with-dplyr.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter countries that start with &quot;A&quot;</span></span>
-<span id="cb360-2"><a href="dataframe-manipulation-with-dplyr.html#cb360-2" aria-hidden="true" tabindex="-1"></a>a_countries <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb360-3"><a href="dataframe-manipulation-with-dplyr.html#cb360-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>))</span>
-<span id="cb360-4"><a href="dataframe-manipulation-with-dplyr.html#cb360-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb360-5"><a href="dataframe-manipulation-with-dplyr.html#cb360-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the plot</span></span>
-<span id="cb360-6"><a href="dataframe-manipulation-with-dplyr.html#cb360-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> a_countries, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
-<span id="cb360-7"><a href="dataframe-manipulation-with-dplyr.html#cb360-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb360-8"><a href="dataframe-manipulation-with-dplyr.html#cb360-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(country))</span></code></pre></div>
-<p><img src="fig/rmd-07-unnamed-chunk-141-1.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Filter countries that start with "A"</span>
+<span class="va">a_countries</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Albania"</span>, <span class="st">"Algeria"</span>, <span class="st">"Angola"</span>, <span class="st">"Argentina"</span>, <span class="st">"Australia"</span>, <span class="st">"Austria"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Make the plot</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">a_countries</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-25-1.png" width="816" style="display: block; margin: auto;"></div>
 <p>This code makes the right plot but it also provides a way to chain operations. Just as we used
 <code>%&gt;%</code> to pipe data along a chain of <code>dplyr</code> functions we can use it to pass data
-to <code>ggplot()</code>. Because <code>%&gt;%</code> replaces the first argument in a function we don’t
-need to specify the <code>data =</code> argument in the <code>ggplot()</code> function. By combining
+to <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. Because <code>%&gt;%</code> replaces the first argument in a function we don’t
+need to specify the <code>data =</code> argument in the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function. By combining
 <code>dplyr</code> and <code>ggplot2</code> functions we can alter this figure for only those continents in Europe.</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="dataframe-manipulation-with-dplyr.html#cb361-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb361-2"><a href="dataframe-manipulation-with-dplyr.html#cb361-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb361-3"><a href="dataframe-manipulation-with-dplyr.html#cb361-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb361-4"><a href="dataframe-manipulation-with-dplyr.html#cb361-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
-<span id="cb361-5"><a href="dataframe-manipulation-with-dplyr.html#cb361-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb361-6"><a href="dataframe-manipulation-with-dplyr.html#cb361-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(country))</span></code></pre></div>
-<p><img src="fig/rmd-07-unnamed-chunk-142-1.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Albania"</span>, <span class="st">"Algeria"</span>, <span class="st">"Angola"</span>, <span class="st">"Argentina"</span>, <span class="st">"Australia"</span>, <span class="st">"Austria"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-26-1.png" width="816" style="display: block; margin: auto;"></div>
 <p>Using <code>dplyr</code> functions also helps us do calculations on the fly, for example if we were interested in
 converting <code>lifeExp</code> which is in years to days:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="dataframe-manipulation-with-dplyr.html#cb362-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb362-2"><a href="dataframe-manipulation-with-dplyr.html#cb362-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Afghanistan&quot;</span>, <span class="st">&quot;Albania&quot;</span>, <span class="st">&quot;Algeria&quot;</span>, <span class="st">&quot;Angola&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Austria&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb362-3"><a href="dataframe-manipulation-with-dplyr.html#cb362-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb362-4"><a href="dataframe-manipulation-with-dplyr.html#cb362-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">num_days =</span> lifeExp<span class="sc">*</span><span class="dv">365</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb362-5"><a href="dataframe-manipulation-with-dplyr.html#cb362-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> num_days, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
-<span id="cb362-6"><a href="dataframe-manipulation-with-dplyr.html#cb362-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb362-7"><a href="dataframe-manipulation-with-dplyr.html#cb362-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(country))</span></code></pre></div>
-<p><img src="fig/rmd-07-unnamed-chunk-143-1.png" width="816" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Albania"</span>, <span class="st">"Algeria"</span>, <span class="st">"Angola"</span>, <span class="st">"Argentina"</span>, <span class="st">"Australia"</span>, <span class="st">"Austria"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>num_days <span class="op">=</span> <span class="va">lifeExp</span><span class="op">*</span><span class="fl">365</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">num_days</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="fig/rmd-07-unnamed-chunk-27-1.png" width="816" style="display: block; margin: auto;"></div>
 <blockquote>
 <h2 id="advanced-challenge">Advanced Challenge</h2>
 <p>Calculate the average life expectancy in 2002 of 2 randomly selected countries
 for each continent. Then arrange the continent names in reverse order.
-<strong>Hint:</strong> Use the <code>dplyr</code> functions <code>arrange()</code> and <code>sample_n()</code>, they have
+<strong>Hint:</strong> Use the <code>dplyr</code> functions <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n()</a></code>, they have
 similar syntax to other dplyr functions.</p>
 <blockquote>
 <h2 id="solution-to-advanced-challenge">Solution to Advanced Challenge</h2>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="dataframe-manipulation-with-dplyr.html#cb363-1" aria-hidden="true" tabindex="-1"></a>lifeExp_2countries_bycontinents <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb363-2"><a href="dataframe-manipulation-with-dplyr.html#cb363-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2002</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb363-3"><a href="dataframe-manipulation-with-dplyr.html#cb363-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb363-4"><a href="dataframe-manipulation-with-dplyr.html#cb363-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sample_n</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb363-5"><a href="dataframe-manipulation-with-dplyr.html#cb363-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">mean_lifeExp=</span><span class="fu">mean</span>(lifeExp)) <span class="sc">%&gt;%</span></span>
-<span id="cb363-6"><a href="dataframe-manipulation-with-dplyr.html#cb363-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_lifeExp))</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lifeExp_2countries_bycontinents</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fl">2002</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_lifeExp<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">mean_lifeExp</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </blockquote>
 </blockquote>
 </div>
 <div id="other-great-resources" class="section level2" number="7.11">
-<h2><span class="header-section-number">7.11</span> Other great resources</h2>
+<h2>
+<span class="header-section-number">7.11</span> Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li><a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
 <li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Data Wrangling Cheat sheet</a></li>
 <li><a href="https://dplyr.tidyverse.org/">Introduction to dplyr</a></li>
 <li><a href="https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/">Data wrangling with R and RStudio</a></li>
 </ul>
-
-<table>
-<tbody>
+<div class="inline-table"><table class="table table-sm"><tbody>
 <tr class="odd">
 <td>title: Create Tidy Data with tidyr</td>
 </tr>
@@ -718,70 +544,52 @@ similar syntax to other dplyr functions.</p>
 <tr class="odd">
 <td>source: Rmd</td>
 </tr>
-</tbody>
-</table>
+</tbody></table></div>
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">6</span> Creating Publication-Quality Graphics with ggplot2</a></div>
+<div class="next"><a href="create-tidy-data-with-tidyr.html"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#dataframe-manipulation-with-dplyr"><span class="header-section-number">7</span> Dataframe Manipulation with dplyr</a></li>
+<li><a class="nav-link" href="#the-dplyr-package"><span class="header-section-number">7.1</span> The dplyr package</a></li>
+<li><a class="nav-link" href="#using-select"><span class="header-section-number">7.2</span> Using select()</a></li>
+<li><a class="nav-link" href="#using-filter"><span class="header-section-number">7.3</span> Using filter()</a></li>
+<li><a class="nav-link" href="#using-filter-with-pipes"><span class="header-section-number">7.4</span> Using filter() with pipes</a></li>
+<li><a class="nav-link" href="#using-group_by-and-summarize"><span class="header-section-number">7.5</span> Using group_by() and summarize()</a></li>
+<li><a class="nav-link" href="#using-summarize"><span class="header-section-number">7.6</span> Using summarize()</a></li>
+<li><a class="nav-link" href="#using-count"><span class="header-section-number">7.7</span> Using count()</a></li>
+<li><a class="nav-link" href="#using-mutate"><span class="header-section-number">7.8</span> Using mutate()</a></li>
+<li><a class="nav-link" href="#connect-mutate-with-logical-groupings-ifelse"><span class="header-section-number">7.9</span> Connect mutate with logical groupings: ifelse</a></li>
+<li><a class="nav-link" href="#combining-dplyr-and-ggplot2"><span class="header-section-number">7.10</span> Combining dplyr and ggplot2</a></li>
+<li><a class="nav-link" href="#other-great-resources"><span class="header-section-number">7.11</span> Other great resources</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="creating-publication-quality-graphics-with-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create-tidy-data-with-tidyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/07-dplyr.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/bcgov/ds-intro-to-r-2-day/edit/master/07-dplyr.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-16.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>
