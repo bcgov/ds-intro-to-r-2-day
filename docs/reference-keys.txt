@@ -69,7 +69,6 @@ searching-the-b.c.-data-catalogue
 importing-data-from-the-b.c.-data-catalogue
 practice-manipulating-data-with-dplyr
 practice-plotting-data-with-ggplot2
-using-bcdata-with-spatial-data-in-the-b.c.-data-catalogue
 data-analysis-reports
 literate-programming
 example-of-using-r-markdown-in-the-bc-government

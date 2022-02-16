@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction to R and RStudio | Introduction to Data Science using R Workshop</title>
-  <meta name="description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  <meta name="description" content="This book contains materials for a 4 session Introduction to R workshop" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction to R and RStudio | Introduction to Data Science using R Workshop" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day" />
   
-  
-  <meta property="og:description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  <meta property="og:description" content="This book contains materials for a 4 session Introduction to R workshop" />
   <meta name="github-repo" content="bcgov/ds-intro-to-r-2-day" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Introduction to R and RStudio | Introduction to Data Science using R Workshop" />
   
-  <meta name="twitter:description" content="This book contains materials for a 2 day Introduction to R workshop" />
+  <meta name="twitter:description" content="This book contains materials for a 4 session Introduction to R workshop" />
   
 
-<meta name="author" content="Sam Albers, Stephanie Hazlitt, Genevieve Perkins &amp; Andy Teucher" />
 
 
-<meta name="date" content="2022-02-14" />
+<meta name="date" content="2022-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,22 +52,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
-<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
-<script src="libs/HomeButton-0.0.1/home-button.js"></script>
-<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
-<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
-<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
-<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -245,7 +228,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#importing-data-from-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.3</b> Importing data from the B.C. Data Catalogue</a></li>
 <li class="chapter" data-level="9.4" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-manipulating-data-with-dplyr"><i class="fa fa-check"></i><b>9.4</b> Practice manipulating data with <code>dplyr</code></a></li>
 <li class="chapter" data-level="9.5" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#practice-plotting-data-with-ggplot2"><i class="fa fa-check"></i><b>9.5</b> Practice plotting data with <code>ggplot2</code></a></li>
-<li class="chapter" data-level="9.6" data-path="introduction-to-the-bcdata-package.html"><a href="introduction-to-the-bcdata-package.html#using-bcdata-with-spatial-data-in-the-b.c.-data-catalogue"><i class="fa fa-check"></i><b>9.6</b> Using <code>bcdata</code> with spatial data in the B.C. Data Catalogue</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="data-analysis-reports.html"><a href="data-analysis-reports.html"><i class="fa fa-check"></i><b>10</b> Data analysis reports</a>
 <ul>
@@ -306,28 +288,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 1</span> Introduction to R and RStudio</h1>
 <div id="motivation" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Motivation</h2>
-<p>Science is a multi-step process: once you’ve designed an experiment and collected
-data, the real fun begins! This lesson will teach you how to start this process using
-R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
-how to plot results graphically. This example starts with a dataset from
-<a href="https://www.gapminder.org">gapminder.org</a> containing population information for many
-countries through time. Can you read the data into R? Can you plot the population for
-Senegal? Can you calculate the average income for countries on the continent of Asia?
-By the end of these lessons you will be able to do things like plot the populations
-for all of these countries in under a minute!</p>
+<p>Science is a multi-step process: once you’ve designed an experiment and
+collected data, the real fun begins! This lesson will teach you how to start
+this process using R and RStudio. We will begin with raw data, perform
+exploratory analyses, and learn how to plot results graphically. This course
+starts with a dataset from <a href="https://www.gapminder.org">gapminder.org</a> containing
+population information for many countries through time. We will also access open
+data from the <a href="https://catalogue.data.gov.bc.ca/">B.C. Data Catalogue</a>.</p>
+<ul>
+<li>Can you read the data into R?</li>
+<li>Can you plot the population for Senegal?</li>
+<li>Can you calculate the average income for countries on the continent of Asia?</li>
+<li>Can you read data from the B.C. Data Catalogue into R?</li>
+</ul>
+<p>By the end of these lessons you will be able to do things like plot the
+populations for all of these countries in under a minute!</p>
 </div>
 <div id="before-starting-the-workshop" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Before Starting The Workshop</h2>
 <p>Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.</p>
-<p><strong>If you have administrative rigths on your computer: </strong></p>
+<p><strong>If you have administrative rights on your computer: </strong></p>
 <p><a href="https://www.r-project.org/">Download and install the latest version of R here</a></p>
 <p><a href="https://www.rstudio.com/">Download and install RStudio here</a></p>
-<p><strong>If you do not have administrative rights on your computer:</strong></p>
-<p>Download R and RStudio from the BC Government Software Centre:</p>
-<ul>
-<li>Install RTools (Rtools 4.0 Gen PO) - this will install RStudio</li>
-<li>Install R (RforWindowsX64 4.0.5 Gen P0)</li>
-</ul>
 <p>There is one bit of customization we need to do to make R play nicely on
 a bcgov computer:</p>
 <p>Open command prompt (Open Start Menu then type <code>cmd</code> and press [Enter]). Make sure your command prompt opens at the C directory e.g. <code>C:\&gt;</code>. If it opens in another directory you can change this by typing <code>C:</code>.</p>
@@ -335,6 +317,12 @@ a bcgov computer:</p>
 <pre><code>setx HOME &quot;%USERPROFILE%&quot;</code></pre>
 <p>Press [Enter], you should see <strong>SUCCESS: Specified value was saved</strong>.
 Quit command prompt by typing <code>exit</code> then pressing [Enter]</p>
+<p><strong>If you do not have administrative rights on your computer:</strong></p>
+<p>Download R and RStudio from the BC Government Software Centre:</p>
+<ul>
+<li>Install RTools (Rtools 4.0 Gen PO) - this will install RStudio</li>
+<li>Install R (RforWindowsX64 4.0.5 Gen P0)</li>
+</ul>
 </div>
 <div id="introduction-to-rstudio" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Introduction to RStudio</h2>
@@ -345,6 +333,13 @@ scientific projects that will make your life easier.</p>
 environment. It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.</p>
+<blockquote>
+<h2 id="tip-key-rstudio-setting">Tip: Key RStudio Setting</h2>
+<p>RStudio will automatically save your session variables in a file called .RData.
+These are saved when you exit a project and restored when you open it up again.
+If you don’t plan to use this feature you can toggle it in the Project Options
+-&gt; General tab.</p>
+</blockquote>
 <p><strong>Basic layout</strong></p>
 <p>When you first open RStudio, you will be greeted by three panels:</p>
 <ul>
@@ -604,6 +599,40 @@ symbol used in the community. So the recommendation is to use <code>&lt;-</code>
 <span id="cb48-3"><a href="introduction-to-r-and-rstudio.html#cb48-3" aria-hidden="true" tabindex="-1"></a>2widths</span></code></pre></div>
 </blockquote>
 </blockquote>
+<blockquote>
+<h2 id="challenge-2">Challenge 2</h2>
+<p>What will be the value of each variable after each
+statement in the following program?</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-r-and-rstudio.html#cb49-1" aria-hidden="true" tabindex="-1"></a>mass <span class="ot">&lt;-</span> <span class="fl">47.5</span></span>
+<span id="cb49-2"><a href="introduction-to-r-and-rstudio.html#cb49-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">122</span></span>
+<span id="cb49-3"><a href="introduction-to-r-and-rstudio.html#cb49-3" aria-hidden="true" tabindex="-1"></a>mass <span class="ot">&lt;-</span> mass <span class="sc">*</span> <span class="fl">2.3</span></span>
+<span id="cb49-4"><a href="introduction-to-r-and-rstudio.html#cb49-4" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> age <span class="sc">-</span> <span class="dv">20</span></span></code></pre></div>
+<blockquote>
+<h2 id="solution-to-challenge-2">Solution to challenge 2</h2>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="introduction-to-r-and-rstudio.html#cb50-1" aria-hidden="true" tabindex="-1"></a>mass <span class="ot">&lt;-</span> <span class="fl">47.5</span></span></code></pre></div>
+<p>This will give a value of 47.5 for the variable mass</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introduction-to-r-and-rstudio.html#cb51-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">122</span></span></code></pre></div>
+<p>This will give a value of 122 for the variable age</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="introduction-to-r-and-rstudio.html#cb52-1" aria-hidden="true" tabindex="-1"></a>mass <span class="ot">&lt;-</span> mass <span class="sc">*</span> <span class="fl">2.3</span></span></code></pre></div>
+<p>This will multiply the existing value of 47.5 by 2.3 to give a new value of
+109.25 to the variable mass.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introduction-to-r-and-rstudio.html#cb53-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> age <span class="sc">-</span> <span class="dv">20</span></span></code></pre></div>
+<p>This will subtract 20 from the existing value of 122 to give a new value
+of 102 to the variable age.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h2 id="challenge-3">Challenge 3</h2>
+<p>Run the code from the previous challenge, and write a command to
+compare mass to age. Is mass larger than age?</p>
+<blockquote>
+<h2 id="solution-to-challenge-3">Solution to challenge 3</h2>
+<p>One way of answering this question in R is to use the <code>&gt;</code> to set up the following:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="introduction-to-r-and-rstudio.html#cb54-1" aria-hidden="true" tabindex="-1"></a>mass <span class="sc">&gt;</span> age</span></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<p>This should yield a boolean value of TRUE since 109.25 is greater than 102.</p>
+</blockquote>
+</blockquote>
 </div>
 <div id="vectorization" class="section level2" number="1.10">
 <h2><span class="header-section-number">1.10</span> Vectorization</h2>
@@ -611,15 +640,15 @@ symbol used in the community. So the recommendation is to use <code>&lt;-</code>
 variables and functions can have vectors as values. In contrast to physics and
 mathematics, a vector in R describes a set of values in a certain order of the
 same data type. For example</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introduction-to-r-and-rstudio.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="introduction-to-r-and-rstudio.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span></code></pre></div>
 <pre><code>[1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introduction-to-r-and-rstudio.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="introduction-to-r-and-rstudio.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>[1]  2  4  6  8 10</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introduction-to-r-and-rstudio.html#cb53-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb53-2"><a href="introduction-to-r-and-rstudio.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> x</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="introduction-to-r-and-rstudio.html#cb60-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb60-2"><a href="introduction-to-r-and-rstudio.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> x</span></code></pre></div>
 <pre><code>[1]  2  4  6  8 10</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="introduction-to-r-and-rstudio.html#cb55-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
-<span id="cb55-2"><a href="introduction-to-r-and-rstudio.html#cb55-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="introduction-to-r-and-rstudio.html#cb62-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
+<span id="cb62-2"><a href="introduction-to-r-and-rstudio.html#cb62-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>[1] 1 3 5 7 9</code></pre>
 <p>This is incredibly powerful; we will discuss this further in an
 upcoming lesson.</p>
@@ -629,8 +658,9 @@ upcoming lesson.</p>
 <p>There are a few useful commands you can use to interact with the R session.</p>
 <p><code>ls</code> will list all of the variables and functions stored in the global environment
 (your working R session):</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introduction-to-r-and-rstudio.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<pre><code>[1] &quot;fix_fig_path&quot;   &quot;knitr_fig_path&quot; &quot;x&quot;              &quot;y&quot;             </code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="introduction-to-r-and-rstudio.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<pre><code>[1] &quot;age&quot;            &quot;fix_fig_path&quot;   &quot;knitr_fig_path&quot; &quot;mass&quot;          
+[5] &quot;x&quot;              &quot;y&quot;             </code></pre>
 <blockquote>
 <h2 id="tip-hidden-objects">Tip: hidden objects</h2>
 <p>Like in the shell, <code>ls</code> will hide any variables or functions starting
@@ -640,7 +670,7 @@ instead</p>
 <p>Note here that we didn’t give any arguments to <code>ls</code>, but we still
 needed to give the parentheses to tell R to call the function.</p>
 <p>If we type <code>ls</code> by itself, R will print out the source code for that function!</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introduction-to-r-and-rstudio.html#cb59-1" aria-hidden="true" tabindex="-1"></a>ls</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="introduction-to-r-and-rstudio.html#cb66-1" aria-hidden="true" tabindex="-1"></a>ls</span></code></pre></div>
 <pre><code>function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
     pattern, sorted = TRUE) 
 {
@@ -672,13 +702,13 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7fe1f9e85e08&gt;
+&lt;bytecode: 0x7f8bb9c33e08&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introduction-to-r-and-rstudio.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="introduction-to-r-and-rstudio.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x)</span></code></pre></div>
 <p>If you have lots of things in your environment and want to delete all of them,
 you can pass the results of <code>ls</code> to the <code>rm</code> function:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="introduction-to-r-and-rstudio.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="introduction-to-r-and-rstudio.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
 <blockquote>
 <h2 id="tip-warnings-vs.-errors">Tip: Warnings vs. Errors</h2>
 <p>Pay attention when R does something unexpected! Errors, like above,
@@ -687,6 +717,16 @@ other hand usually mean that the function has run, but it probably
 hasn’t worked as expected.</p>
 <p>In both cases, the message that R prints out usually give you clues
 how to fix a problem.</p>
+</blockquote>
+<blockquote>
+<h2 id="challenge-4">Challenge 4</h2>
+<p>Clean up your working environment by deleting the mass and age
+variables.</p>
+<blockquote>
+<h2 id="solution-to-challenge-4">Solution to challenge 4</h2>
+<p>We can use the <code>rm</code> command to accomplish this task</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="introduction-to-r-and-rstudio.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(age, mass)</span></code></pre></div>
+</blockquote>
 </blockquote>
 </div>
 <div id="r-packages" class="section level2" number="1.12">
@@ -709,50 +749,6 @@ where <code>packagename</code> is the package name, in quotes.</li>
 <li>You can remove a package with <code>remove.packages("packagename")</code></li>
 <li>You can make a package available for use with <code>library(packagename)</code></li>
 </ul>
-<blockquote>
-<h2 id="challenge-2">Challenge 2</h2>
-<p>What will be the value of each variable after each
-statement in the following program?</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="introduction-to-r-and-rstudio.html#cb63-1" aria-hidden="true" tabindex="-1"></a>mass <span class="ot">&lt;-</span> <span class="fl">47.5</span></span>
-<span id="cb63-2"><a href="introduction-to-r-and-rstudio.html#cb63-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">122</span></span>
-<span id="cb63-3"><a href="introduction-to-r-and-rstudio.html#cb63-3" aria-hidden="true" tabindex="-1"></a>mass <span class="ot">&lt;-</span> mass <span class="sc">*</span> <span class="fl">2.3</span></span>
-<span id="cb63-4"><a href="introduction-to-r-and-rstudio.html#cb63-4" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> age <span class="sc">-</span> <span class="dv">20</span></span></code></pre></div>
-<blockquote>
-<h2 id="solution-to-challenge-2">Solution to challenge 2</h2>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="introduction-to-r-and-rstudio.html#cb64-1" aria-hidden="true" tabindex="-1"></a>mass <span class="ot">&lt;-</span> <span class="fl">47.5</span></span></code></pre></div>
-<p>This will give a value of 47.5 for the variable mass</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="introduction-to-r-and-rstudio.html#cb65-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">122</span></span></code></pre></div>
-<p>This will give a value of 122 for the variable age</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="introduction-to-r-and-rstudio.html#cb66-1" aria-hidden="true" tabindex="-1"></a>mass <span class="ot">&lt;-</span> mass <span class="sc">*</span> <span class="fl">2.3</span></span></code></pre></div>
-<p>This will multiply the existing value of 47.5 by 2.3 to give a new value of
-109.25 to the variable mass.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="introduction-to-r-and-rstudio.html#cb67-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> age <span class="sc">-</span> <span class="dv">20</span></span></code></pre></div>
-<p>This will subtract 20 from the existing value of 122 to give a new value
-of 102 to the variable age.</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<h2 id="challenge-3">Challenge 3</h2>
-<p>Run the code from the previous challenge, and write a command to
-compare mass to age. Is mass larger than age?</p>
-<blockquote>
-<h2 id="solution-to-challenge-3">Solution to challenge 3</h2>
-<p>One way of answering this question in R is to use the <code>&gt;</code> to set up the following:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="introduction-to-r-and-rstudio.html#cb68-1" aria-hidden="true" tabindex="-1"></a>mass <span class="sc">&gt;</span> age</span></code></pre></div>
-<pre><code>[1] TRUE</code></pre>
-<p>This should yield a boolean value of TRUE since 109.25 is greater than 102.</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<h2 id="challenge-4">Challenge 4</h2>
-<p>Clean up your working environment by deleting the mass and age
-variables.</p>
-<blockquote>
-<h2 id="solution-to-challenge-4">Solution to challenge 4</h2>
-<p>We can use the <code>rm</code> command to accomplish this task</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="introduction-to-r-and-rstudio.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(age, mass)</span></code></pre></div>
-</blockquote>
-</blockquote>
 <blockquote>
 <h2 id="challenge-5">Challenge 5</h2>
 <p>Install the following packages: <code>ggplot2</code>, <code>dplyr</code></p>
