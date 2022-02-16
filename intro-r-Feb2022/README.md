@@ -4,12 +4,12 @@ workshop:
 
 Data:
 
--   `feline-data_v2.csv`
 -   `feline-data.csv`
+-   `feline-data_v2.csv`
+-   `gapminder-FiveYearData.csv`
 -   `gapminder_asia_oceania.csv`
 -   `gapminder_data.csv`
 -   `gapminder_wide.csv`
--   `gapminder-FiveYearData.csv`
 -   `inflammation.csv`
 -   `Owls.txt`
 
@@ -21,7 +21,3 @@ R scripts:
 -   `07_dplyr.R`
 -   `08_tidyr.R`
 -   `09_intro-to-bcdata.R`
-
-Rmarkdown documents:
-
--   `11_rmarkdown-application.Rmd`

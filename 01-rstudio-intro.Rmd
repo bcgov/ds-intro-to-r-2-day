@@ -35,32 +35,31 @@ knitr_fig_path("01-")
 
 ## Motivation
 
-Science is a multi-step process: once you've designed an experiment and collected
-data, the real fun begins! This lesson will teach you how to start this process using
-R and RStudio. We will begin with raw data, perform exploratory analyses, and learn
-how to plot results graphically. This example starts with a dataset from
-[gapminder.org](https://www.gapminder.org) containing population information for many
-countries through time. Can you read the data into R? Can you plot the population for
-Senegal? Can you calculate the average income for countries on the continent of Asia?
-By the end of these lessons you will be able to do things like plot the populations
-for all of these countries in under a minute!
+Science is a multi-step process: once you've designed an experiment and
+collected data, the real fun begins! This lesson will teach you how to start
+this process using R and RStudio. We will begin with raw data, perform
+exploratory analyses, and learn how to plot results graphically. This course
+starts with a dataset from [gapminder.org](https://www.gapminder.org) containing
+population information for many countries through time. We will also access open
+data from the [B.C. Data Catalogue](https://catalogue.data.gov.bc.ca/). 
+
+ - Can you read the data into R?
+ - Can you plot the population for Senegal? 
+ - Can you calculate the average income for countries on the continent of Asia? 
+ - Can you read data from the B.C. Data Catalogue into R? 
+
+By the end of these lessons you will be able to do things like plot the
+populations for all of these countries in under a minute!
 
 ## Before Starting The Workshop
 
 Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
 
-**If you have administrative rigths on your computer: **
+**If you have administrative rights on your computer: **
 
 [Download and install the latest version of R here](https://www.r-project.org/)
 
 [Download and install RStudio here](https://www.rstudio.com/)
-
-**If you do not have administrative rights on your computer:**
-
-Download R and RStudio from the BC Government Software Centre:
-
-- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
-- Install R (RforWindowsX64 4.0.5 Gen P0)
 
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
@@ -76,6 +75,15 @@ setx HOME "%USERPROFILE%"
 Press [Enter], you should see **SUCCESS: Specified value was saved**.
 Quit command prompt by typing `exit` then pressing [Enter]
 
+**If you do not have administrative rights on your computer:**
+
+Download R and RStudio from the BC Government Software Centre:
+
+- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
+- Install R (RforWindowsX64 4.0.5 Gen P0)
+
+
+
 ## Introduction to RStudio
 
 
@@ -88,7 +96,12 @@ environment. It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
 
-
+> ## Tip: Key RStudio Setting
+>
+> RStudio will automatically save your session variables in a file called .RData.
+> These are saved when you exit a project and restored when you open it up again.
+> If you don't plan to use this feature you can toggle it in the Project Options
+> -> General tab.
 
 **Basic layout**
 
@@ -446,6 +459,61 @@ symbol used in the community. So the recommendation is to use `<-`.
 > > ```
 
 
+> ## Challenge 2
+>
+> What will be the value of each  variable  after each
+> statement in the following program?
+>
+> ```{r, eval=FALSE}
+> mass <- 47.5
+> age <- 122
+> mass <- mass * 2.3
+> age <- age - 20
+> ```
+>
+> > ## Solution to challenge 2
+> >
+> > ```{r ch2pt1-sol}
+> > mass <- 47.5
+> > ```
+> > This will give a value of `r mass` for the variable mass
+> >
+> > ```{r ch2pt2-sol}
+> > age <- 122
+> > ```
+> > This will give a value of `r age` for the variable age
+> >
+> > ```{r ch2pt3-sol}
+> > mass <- mass * 2.3
+> > ```
+> > This will multiply the existing value of `r mass/2.3` by 2.3 to give a new value of
+> > `r mass` to the variable mass.
+> >
+> > ```{r ch2pt4-sol}
+> > age <- age - 20
+> > ```
+> > This will subtract 20 from the existing value of `r age + 20 ` to give a new value
+> > of `r age` to the variable age.
+
+
+
+
+> ## Challenge 3
+>
+> Run the code from the previous challenge, and write a command to
+> compare mass to age. Is mass larger than age?
+>
+> > ## Solution to challenge 3
+> >
+> > One way of answering this question in R is to use the `>` to set up the following:
+> > ```{r ch3-sola}
+> > mass > age
+> >```
+> > This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
+
+
+
+
 
 ## Vectorization
 
@@ -509,6 +577,7 @@ rm(list = ls())
 ```
 
 
+
 > ## Tip: Warnings vs. Errors
 >
 > Pay attention when R does something unexpected! Errors, like above,
@@ -519,6 +588,18 @@ rm(list = ls())
 > In both cases, the message that R prints out usually give you clues
 > how to fix a problem.
 >
+
+> ## Challenge 4
+>
+> Clean up your working environment by deleting the mass and age
+> variables.
+>
+> > ## Solution to challenge 4
+> >
+> > We can use the `rm` command to accomplish this task
+> > ```{r ch4-sol}
+> > rm(age, mass)
+> > ```
 
 
 ## R Packages
@@ -542,73 +623,6 @@ R and RStudio have functionality for managing packages:
 * You can update installed packages by typing `update.packages()`
 * You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
-
-> ## Challenge 2
->
-> What will be the value of each  variable  after each
-> statement in the following program?
->
-> ```{r, eval=FALSE}
-> mass <- 47.5
-> age <- 122
-> mass <- mass * 2.3
-> age <- age - 20
-> ```
->
-> > ## Solution to challenge 2
-> >
-> > ```{r ch2pt1-sol}
-> > mass <- 47.5
-> > ```
-> > This will give a value of `r mass` for the variable mass
-> >
-> > ```{r ch2pt2-sol}
-> > age <- 122
-> > ```
-> > This will give a value of `r age` for the variable age
-> >
-> > ```{r ch2pt3-sol}
-> > mass <- mass * 2.3
-> > ```
-> > This will multiply the existing value of `r mass/2.3` by 2.3 to give a new value of
-> > `r mass` to the variable mass.
-> >
-> > ```{r ch2pt4-sol}
-> > age <- age - 20
-> > ```
-> > This will subtract 20 from the existing value of `r age + 20 ` to give a new value
-> > of `r age` to the variable age.
-
-
-
-
-> ## Challenge 3
->
-> Run the code from the previous challenge, and write a command to
-> compare mass to age. Is mass larger than age?
->
-> > ## Solution to challenge 3
-> >
-> > One way of answering this question in R is to use the `>` to set up the following:
-> > ```{r ch3-sola}
-> > mass > age
-> >```
-> > This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
-
-
-
-
-> ## Challenge 4
->
-> Clean up your working environment by deleting the mass and age
-> variables.
->
-> > ## Solution to challenge 4
-> >
-> > We can use the `rm` command to accomplish this task
-> > ```{r ch4-sol}
-> > rm(age, mass)
-> > ```
 
 
 

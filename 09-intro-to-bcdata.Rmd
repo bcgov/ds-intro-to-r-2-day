@@ -19,7 +19,16 @@ knitr_fig_path("09-")
 
 # Introduction to the bcdata package
 
-The bcdata R package contains functions for searching & retrieving data directly from the B.C. Data Catalogue.
+
+The British Columbia government hosts over 2000 tabular and geospatial data sets
+in the B.C. Data Catalogue. Most data is available through the B.C. Data
+Catalogue under an open licence. The `bcdata` package provides programming
+interfaces the B.C. Data Catalogue.  This allows R users to search, download and
+import metadata and data from the B.C. Data Catalogue into their R session.
+Through this functionality the `bcdata` package connects British Columbia
+government public data holdings in the B.C. Data Catalogue with the vast
+capabilities of R.
+
 
 ## Getting started
 
@@ -31,7 +40,7 @@ install.packages("bcdata")
 
 And next we need to load the `bcdata` package, along with `dplyr` and `ggplot2` which we installed and used in earlier lessons:
 
-```{r}
+```{r, message=FALSE}
 library(bcdata)
 library(dplyr)
 library(ggplot2)
@@ -69,13 +78,13 @@ lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
 
 > ## Challenge 1 (5 minutes)
 >
-> Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session > (e.g. a CSV or XLS resource).
+> Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session > (e.g. a CSV or XLS resource). Entering `bcdc_browse()` into the R console will open the catalogue page in your default web browser. 
 >
 
 ## Practice manipulating data with `dplyr`  
 
 
-Let's return to the libraries data frame `lib-raw` we imported. As we learned earlier in the workshop, a useful first step is to get familiar with the data:
+Let's return to the libraries data frame `lib_raw` we imported. As we learned earlier in the workshop, a useful first step is to get familiar with the data:
 
 ```{r}
 str(lib_raw)
@@ -148,29 +157,29 @@ sum_books %>%
 > >
 > >```
 
-## Using `bcdata` with spatial data in the B.C. Data Catalogue 
-
-The `bcdata` package also has a function for querying and importing geospatial data from the B.C. Data Catalogue. Let's import the spatial data file from the catalogue record, and combine the spatial data with our tidy library data frame:
-
-```{r}
-lib_spatial <- bcdc_query_geodata("bc-public-libraries-systems-branches-and-locations") %>%
-  collect()
-
-lib_all <- lib_spatial %>% 
-  left_join(lib_tidy,
-            by = c("SERVICE_POINT_NAME" = "Location")) %>% 
-  select(SERVICE_POINT_NAME, num_books) 
-```
-
-Now we can use `ggplot2` and the `geom_sf()` function to make a static map, or some of R's other spatial packages to make interactive maps:
-
-```{r}
-lib_all %>% 
-  ggplot() +
-  geom_sf(aes(size = num_books), colour = "blue") +
-  theme_minimal()
-
-mapview::mapview(lib_all)
-```
-
+> ## Challenge 4 (20 minutes)
+>
+> Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. > An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one > of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
+> 
+> >## Solution to Challenge 4 
+> >```{r}
+> >seafood_prod <- bcdc_get_data("e591a756-6b99-4986-b8ce-f341bd47228f", resource = '9cc32dc4-bd9a-4baf-8210-770ac62d7985')
+> >
+> >seafood_by_year <- seafood_prod %>% 
+> >  filter(Year == 2020) %>% 
+> >  group_by(`Species/Product`) %>% 
+> >  summarise(value = sum(`Wholesale Value ($ million)`)) 
+> >
+> >seafood_by_year %>% 
+> >  ggplot(aes(y = `Species/Product`, x = value, fill = `Species/Product`)) +
+> >  geom_col() +
+> >  scale_fill_viridis_d() +
+> >  scale_x_continuous(labels = scales::dollar) +
+> >  guides(fill = "none") +
+> >  theme_minimal() +
+> >  labs(title = "B.C. Seafood Production - 2020", 
+> >       xlab = "Wholesale Value ($ million)",
+> >       caption = "BC Seafood Production, 2018 - 2020: https://catalogue.data.gov.bc.ca/dataset/e591a756-6b99-4986-b8ce-f341bd47228f") +
+> >  theme(axis.title.x = element_blank())
+> >```
 
