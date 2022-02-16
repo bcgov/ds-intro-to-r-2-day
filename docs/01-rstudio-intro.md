@@ -517,7 +517,7 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
-## Challenge 1
+### Challenge 1
 Which of the following are valid R variable names?
 
 ```r
@@ -567,7 +567,7 @@ min-length
 </details>
 
 
-## Challenge 2
+### Challenge 2
 What will be the value of each  variable  after each
 statement in the following program?
 
@@ -619,7 +619,7 @@ of 102 to the variable age.
 
 
 
-## Challenge 3
+### Challenge 3
 
 Run the code from the previous challenge, and write a command to
 compare mass to age. Is mass larger than age?
@@ -630,12 +630,10 @@ compare mass to age. Is mass larger than age?
 <details>
 
 <summary>
-<strong>Solution to challenge 2</strong>
+<strong>Solution to challenge 3</strong>
 </summary>
 
 <br />
-
-## Solution to challenge 3`
 
 One way of answering this question in R is to use the `>` to set up the following:`
 
@@ -724,7 +722,6 @@ ls()
 > Like in the shell, `ls` will hide any variables or functions starting
 > with a "." by default. To list all objects, type `ls(all.names=TRUE)`
 > instead
->
 
 
 Note here that we didn't give any arguments to `ls`, but we still
@@ -769,7 +766,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f88f72f9ff8>
+<bytecode: 0x7f8410eebbf8>
 <environment: namespace:base>
 ```
 
@@ -799,20 +796,30 @@ rm(list = ls())
 >
 > In both cases, the message that R prints out usually give you clues
 > how to fix a problem.
->
 
-> ## Challenge 4
->
-> Clean up your working environment by deleting the mass and age
-> variables.
->
-> > ## Solution to challenge 4
-> >
-> > We can use the `rm` command to accomplish this task
-> > 
-> > ```r
-> > rm(age, mass)
-> > ```
+### Challenge 4
+
+Clean up your working environment by deleting the mass and age
+variables.
+
+<br />
+
+<details>
+
+<summary>
+<strong>Solution to challenge 4</strong>
+</summary>
+
+<br />
+
+We can use the `rm` command to accomplish this task
+
+```r
+rm(age, mass)
+```
+
+</details>
+
 
 
 ## R Packages
@@ -839,16 +846,27 @@ R and RStudio have functionality for managing packages:
 
 
 
-> ## Challenge 5
->
-> Install the following packages: `ggplot2`, `dplyr`
->
-> > ## Solution to challenge 5
-> >
-> > We can use the `install.packages()` command to install the required packages.
-> > 
-> > ```r
-> > install.packages("ggplot2")
-> > install.packages("dplyr")
-> > ```
+### Challenge 5
+
+Install the following packages: `ggplot2`, `dplyr`.
+
+<br />
+
+<details>
+
+<summary>
+<strong>Solution to challenge 4</strong>
+</summary>
+
+<br />
+
+
+We can use the `install.packages()` command to install the required packages.
+
+```r
+install.packages("ggplot2")
+install.packages("dplyr")
+```
+</details>
+
 

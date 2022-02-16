@@ -346,7 +346,7 @@ Query and filter this data using:
 <h2 id="challenge-4-20-minutes">Challenge 4 (20 minutes)</h2>
 <p>Navigate to the <a href="https://catalogue.data.gov.bc.ca/datasets">BC Data Catalogue</a> and choose a dataset that has a <code>Resource Storage Format</code> that is <code>csv</code> or <code>xlsx</code>. &gt; An example of this is the <a href="https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020">BC Seafood Production data</a>. You can use this dataset or one &gt; of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you’ve learned in this workshop to make a pretty plot.</p>
 <blockquote>
-<h2 id="solution-to-challenge-4-2">Solution to Challenge 4</h2>
+<h2 id="solution-to-challenge-4">Solution to Challenge 4</h2>
 <div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seafood_prod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span><span class="st">"e591a756-6b99-4986-b8ce-f341bd47228f"</span>, resource <span class="op">=</span> <span class="st">'9cc32dc4-bd9a-4baf-8210-770ac62d7985'</span><span class="op">)</span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>

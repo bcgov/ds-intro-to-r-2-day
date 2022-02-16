@@ -136,22 +136,31 @@ Without any arguments, <code><a href="https://rdrr.io/r/utils/vignette.html">vig
 <a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a>
 is a specially maintained list of packages grouped into
 fields. This can be a good starting point.</p>
-<blockquote>
-<h2 id="challenge-1-1">Challenge 1</h2>
+<div id="challenge-1-1" class="section level3" number="2.5.1">
+<h3>
+<span class="header-section-number">2.5.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-1"><i class="fas fa-link"></i></a>
+</h3>
 <p>Look at the help for the <code>sum</code> function. What are two ways you can pass numbers
-into the function so the are added together:</p>
+into the function so the are added together?</p>
+<p><br></p>
+<details><summary><strong>Solution to challenge 1</strong>
+</summary><p><br></p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">?</span><span class="va">sum</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
-</blockquote>
-<blockquote>
-<h2 id="challenge-2-1">Challenge 2</h2>
+</details>
+</div>
+<div id="challenge-2-1" class="section level3" number="2.5.2">
+<h3>
+<span class="header-section-number">2.5.2</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2-1"><i class="fas fa-link"></i></a>
+</h3>
 <p>Look at the help for the <code>paste</code> function. You’ll need to use this later.
 What is the difference between the <code>sep</code> and <code>collapse</code> arguments?</p>
-<blockquote>
-<h2 id="solution-to-challenge-2">Solution to Challenge 2</h2>
+<p><br></p>
+<details><summary><strong>Solution to challenge 2</strong>
+</summary><p><br></p>
 <p>To look at the help for the <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> function, use:</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="st">"paste"</span><span class="op">)</span>
@@ -179,10 +188,12 @@ e.g. </p>
 <p>(For more information,
 scroll to the bottom of the <code><a href="https://rdrr.io/r/base/paste.html">?paste</a></code> help page and look at the
 examples, or try <code>example('paste')</code>.)</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<h2 id="challenge-3-1">Challenge 3</h2>
+</details>
+</div>
+<div id="challenge-3-1" class="section level3" number="2.5.3">
+<h3>
+<span class="header-section-number">2.5.3</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3-1"><i class="fas fa-link"></i></a>
+</h3>
 <p>Use help to find a function (and its associated parameters) that you could
 use to load data from a csv file in which columns are delimited with “
 (tab) and the decimal point is a”.” (period). This check for decimal
@@ -190,17 +201,17 @@ separator is important, especially if you are working with international
 colleagues, because different countries have different conventions for the
 decimal point (i.e. comma vs period).
 hint: use <code>??csv</code> to lookup csv related functions.</p>
-<blockquote>
-<h2 id="solution-to-challenge-3-1">Solution to Challenge 3</h2>
+<p><br></p>
+<details><summary><strong>Solution to challenge 3</strong>
+</summary><p><br></p>
 <p>The standard R function for reading tab-delimited files with a period
 decimal separator is read.delim(). You can also do this with
 <code>read.table(file, sep="\t")</code> (the period is the <em>default</em> decimal
 separator for <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>, although you may have to change
 the <code>comment.char</code> argument as well if your data file contains
 hash (#) characters</p>
-</blockquote>
-</blockquote>
-
+</details>
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -214,7 +225,13 @@ hash (#) characters</p>
 <li><a class="nav-link" href="#special-operators"><span class="header-section-number">2.2</span> Special Operators</a></li>
 <li><a class="nav-link" href="#getting-help-on-packages"><span class="header-section-number">2.3</span> Getting help on packages</a></li>
 <li><a class="nav-link" href="#when-you-kind-of-remember-the-function"><span class="header-section-number">2.4</span> When you kind of remember the function</a></li>
-<li><a class="nav-link" href="#when-you-have-no-idea-where-to-begin"><span class="header-section-number">2.5</span> When you have no idea where to begin</a></li>
+<li>
+<a class="nav-link" href="#when-you-have-no-idea-where-to-begin"><span class="header-section-number">2.5</span> When you have no idea where to begin</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#challenge-1-1"><span class="header-section-number">2.5.1</span> Challenge 1</a></li>
+<li><a class="nav-link" href="#challenge-2-1"><span class="header-section-number">2.5.2</span> Challenge 2</a></li>
+<li><a class="nav-link" href="#challenge-3-1"><span class="header-section-number">2.5.3</span> Challenge 3</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">

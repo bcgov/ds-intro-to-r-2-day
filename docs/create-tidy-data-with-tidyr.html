@@ -127,7 +127,7 @@ dbl (4): year, pop, lifeExp, gdpPercap
 <h2 id="challenge-1-6">Challenge 1</h2>
 <p>Is gapminder a purely long, purely wide, or some intermediate format?</p>
 <blockquote>
-<h2 id="solution-to-challenge-1-3">Solution to Challenge 1</h2>
+<h2 id="solution-to-challenge-1-2">Solution to Challenge 1</h2>
 <p>The original gapminder data.frame is in an intermediate format. It is not
 purely long since it had multiple observation variables
 (<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</code>).</p>
@@ -263,7 +263,7 @@ type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the 
 <p>Using <code>gap_long</code>, calculate the mean life expectancy, population, and gdpPercap for each continent.
 <strong>Hint:</strong> use the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> functions we learned in the <code>dplyr</code> lesson</p>
 <blockquote>
-<h2 id="solution-to-challenge-2-4">Solution to Challenge 2</h2>
+<h2 id="solution-to-challenge-2-3">Solution to Challenge 2</h2>
 <div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_long</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">obs_type</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>means<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">obs_values</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -438,7 +438,7 @@ pipe in <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">p
 <p>Take this 1 step further and create a <code>gap_ludicrously_wide</code> format data by pivoting over countries, year and the 3 metrics?
 <strong>Hint</strong> this new dataframe should only have 5 rows.</p>
 <blockquote>
-<h2 id="solution-to-challenge-3-4">Solution to Challenge 3</h2>
+<h2 id="solution-to-challenge-3-1">Solution to Challenge 3</h2>
 <div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_ludicrously_wide</span> <span class="op">&lt;-</span> <span class="va">gap_long</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
