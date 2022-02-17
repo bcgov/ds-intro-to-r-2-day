@@ -67,9 +67,9 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 
 - Review + questions (30 min)
 - Data Manipulation with `tidyr` (45 minutes)  **(Sam)**
-- Seeking Help from Others with `reprex` (30 minutes) **(Sam)** <!-- though could remove or move to the end -->
 - BREAK ☕
 - Introduce `bcdata` and practice `ggplot2` and `dplyr` (75 minutes) **(Sam)**
+- Seeking Help from Others with `reprex` (30 minutes) **(Sam)** <!-- though could remove or move to the end -->
 
 
 
