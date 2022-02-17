@@ -408,7 +408,7 @@ ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp, colour = contin
 
 ::: {.rmptip}
 
-## Tip: Theming
+**Tip: Theming**
 Note that we apply a "theme" definition to customize 
 the x-axis label sizes to maintain readability.  Nearly everything in
 ggplot2 is customizable.

@@ -613,7 +613,7 @@ rm(list = ls())
 ```
 
 
-:: {.rmdtip}
+::: {.rmdtip}
 **Tip: Warnings vs. Errors**
 
 Pay attention when R does something unexpected! Errors, like above,
