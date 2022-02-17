@@ -106,6 +106,7 @@ practice-manipulating-data-with-dplyr
 challenge-2-10-minutes
 practice-plotting-data-with-ggplot2
 challenge-3-10-minutes
+importing-data-from-the-b.c.-data-catalogue---another-example
 challenge-4-20-minutes
 data-analysis-reports
 literate-programming

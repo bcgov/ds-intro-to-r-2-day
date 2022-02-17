@@ -373,6 +373,266 @@ sum_books %>%
 ><img src="fig/rmd-09-unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
+## Importing data from the B.C. Data Catalogue - Another Example
+Let's try another example with `bcdata`. This time we are going to try importing
+some data that is a bit messier. We are going to work with [_New Apprenticeship
+Registrations by Fiscal Year and
+Gender_](https://catalogue.data.gov.bc.ca/dataset/87f26989-ccde-407e-a500-5f0c304c460d)
+data. This example will require you to reference elements you've learned
+throughout the workshop.
+
+You can view the data record we are going to be working with in your browser by
+running the following command:
+
+
+```r
+bcdc_browse("new-apprenticeship-registrations-by-fiscal-year-and-gender")
+```
+
+As we've previously learned we can use `bcdc_get_data()` to load data from the B.C. Data Catalogue directly into R. Let's try that now:
+
+
+```r
+new_reg <- bcdc_get_data("new-apprenticeship-registrations-by-fiscal-year-and-gender")
+```
+
+```
+Reading the data using the read_csv function from the readr package.
+```
+
+```
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+```
+
+```
+Rows: 341 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (12): Notes:, ...2, ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ......
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+```r
+new_reg
+```
+
+```
+# A tibble: 341 × 12
+   `Notes:`    ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10 ...11 ...12
+   <chr>       <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr>
+ 1 The follow… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 2 Gender is … <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 3 The fiscal… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 4 Profession… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 5 ... Repres… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 6 Data as of… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 7 Data Sourc… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 8 <NA>        <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 9 Trade       Gend… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20…
+10 Aircraft M… Women 14    8     7     9     6     ...   ...   ...   12    ...  
+# … with 331 more rows
+```
+
+Well this doesn't look right. We can see near the bottom of our output that
+there are the words of `Gender` and `Trade` but we also have this mess of `NAs`.
+In this scenario it can be helpful to look at the raw data. Navigate back to the
+catalogue page you opened earlier and click the <kbd>View</kbd> button. This
+will take you to the
+[Resource](https://catalogue.data.gov.bc.ca/dataset/87f26989-ccde-407e-a500-5f0c304c460d/resource/8f4f1f19-9027-4d0b-a686-d820bccddd16)
+page. Click the link under **Resource** and the data will open up in Excel. The
+first thing we notice is that the data does not actually start until 10 rows
+down. `bcdc_get_data()` use `read_csv()` to read csv files and that function
+conveniently has an argument called `skip` which allows us to specify the number
+of lines to skip before reading the data. We can use it with `bcdc_get_data()`
+like this:
+
+
+```r
+new_reg <- bcdc_get_data(
+  "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
+  skip = 9
+  )
+```
+
+```
+Reading the data using the read_csv function from the readr package.
+```
+
+```
+Rows: 332 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (12): Trade, Gender, FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+```r
+new_reg
+```
+
+```
+# A tibble: 332 × 12
+   Trade      Gender `FY2011/12` `FY2012/13` `FY2013/14` `FY2014/15` `FY2015/16`
+   <chr>      <chr>  <chr>       <chr>       <chr>       <chr>       <chr>      
+ 1 Aircraft … Women  14          8           7           9           6          
+ 2 Aircraft … Men    127         108         73          61          46         
+ 3 Aircraft … Total… 141         116         80          70          52         
+ 4 Aircraft … Women  7           ...         ...         ...         ...        
+ 5 Aircraft … Men    59          ...         ...         ...         ...        
+ 6 Aircraft … Total… 66          27          40          42          24         
+ 7 Appliance… Women  ...         0           0           0           ...        
+ 8 Appliance… Men    ...         39          ...         36          ...        
+ 9 Appliance… Total… 13          39          ...         36          13         
+10 Arborist … Women  ...         ...         0           ...         ...        
+# … with 322 more rows, and 5 more variables: `FY2016/17` <chr>,
+#   `FY2017/18` <chr>, `FY2018/19` <chr>, `FY2019/20` <chr>, `FY2020/21` <chr>
+```
+
+Ok this is looking _much_ better. We now have data that is rectangular and looks more like something we can work with. We do have one more little thing to take care of though. You will notice the data is filled with `...`. Those are missing values in the data. R has a specific way of handling missing values and we need to tell `bcdc_get_data()` (via `read_csv()`) that those are missing values. We do this by adding another argument:
+
+
+```r
+new_reg <- bcdc_get_data(
+  "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
+  skip = 9, 
+  na = "..."
+  )
+```
+
+```
+Reading the data using the read_csv function from the readr package.
+```
+
+```
+Rows: 332 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): Trade, Gender
+dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+```r
+new_reg
+```
+
+```
+# A tibble: 332 × 12
+   Trade      Gender `FY2011/12` `FY2012/13` `FY2013/14` `FY2014/15` `FY2015/16`
+   <chr>      <chr>        <dbl>       <dbl>       <dbl>       <dbl>       <dbl>
+ 1 Aircraft … Women           14           8           7           9           6
+ 2 Aircraft … Men            127         108          73          61          46
+ 3 Aircraft … Total…         141         116          80          70          52
+ 4 Aircraft … Women            7          NA          NA          NA          NA
+ 5 Aircraft … Men             59          NA          NA          NA          NA
+ 6 Aircraft … Total…          66          27          40          42          24
+ 7 Appliance… Women           NA           0           0           0          NA
+ 8 Appliance… Men             NA          39          NA          36          NA
+ 9 Appliance… Total…          13          39          NA          36          13
+10 Arborist … Women           NA          NA           0          NA          NA
+# … with 322 more rows, and 5 more variables: `FY2016/17` <dbl>,
+#   `FY2017/18` <dbl>, `FY2018/19` <dbl>, `FY2019/20` <dbl>, `FY2020/21` <dbl>
+```
+
+Now we are ready to work with this data. One thing you might notice is that this data is in _wide_ format. The number of individuals of a given `Gender` and `Trade` are repeated over time across _columns_ with each column being a fiscal year. This is great for making a nice table but less great if we want to make a plot. To reshape the data into long format, we can again make use of `pivot_longer` from the `tidyr` package. We only want to pivot the fiscal years so we need to specify those columns. In addition, we want to name our two new columns:
+
+
+```r
+library(tidyr)
+
+new_reg_long <- new_reg %>% 
+  pivot_longer(
+    cols = `FY2011/12`:`FY2020/21`,
+    names_to = "fiscal_year",
+    values_to = "registrations"
+  )
+new_reg_long
+```
+
+```
+# A tibble: 3,320 × 4
+   Trade                           Gender fiscal_year registrations
+   <chr>                           <chr>  <chr>               <dbl>
+ 1 Aircraft Maintenance Technician Women  FY2011/12              14
+ 2 Aircraft Maintenance Technician Women  FY2012/13               8
+ 3 Aircraft Maintenance Technician Women  FY2013/14               7
+ 4 Aircraft Maintenance Technician Women  FY2014/15               9
+ 5 Aircraft Maintenance Technician Women  FY2015/16               6
+ 6 Aircraft Maintenance Technician Women  FY2016/17              NA
+ 7 Aircraft Maintenance Technician Women  FY2017/18              NA
+ 8 Aircraft Maintenance Technician Women  FY2018/19              NA
+ 9 Aircraft Maintenance Technician Women  FY2019/20              12
+10 Aircraft Maintenance Technician Women  FY2020/21              NA
+# … with 3,310 more rows
+```
+
+There is actually quite a bit of data here while likely represents the number possible values for `Trade`. We can check the number of unique values in the `Trade` column using a handy function from `dplyr` called `n_distinct()`:
+
+
+```r
+n_distinct(new_reg_long$Trade)
+```
+
+```
+[1] 111
+```
+
+Sure enough there are 111 of them! Similarly, let's have a look at what values are in the `Gender` column using the `unique()` function you learned earlier:
+
+
+```r
+unique(new_reg_long$Gender)
+```
+
+```
+[1] "Women"                     "Men"                      
+[3] "Total (Women+Men)"         "Non-Disclosed/Unspecified"
+[5] "Grand Total"              
+```
+
+To simplify things let's take a subset of the Trades in the data and only look at Men and Women:
+
+```r
+new_reg_long <- new_reg %>% 
+  pivot_longer(
+    cols = `FY2011/12`:`FY2020/21`,
+    names_to = "fiscal_year",
+    values_to = "registrations", 
+    values_drop_na = TRUE
+  ) %>% 
+  filter(
+    Gender %in% c("Men", "Women"),
+    Trade %in% c("Boilermaker", "Climbing Arborist", "Tilesetter", "Landscape Horticulturist","Baker")
+    )
+```
+
+With this tidied and filtered dataset, we now have something that we can plot using the skills we've learned with ggplot2. One thing to note is that we made use of the `ncol` argument in `facet_wrap()` so that the faceted plots would share the x-axis:
+
+
+```r
+library(ggplot2)
+
+ggplot(new_reg_long, aes(x = fiscal_year, y = registrations, fill = Trade)) +
+  geom_col() +
+  facet_wrap(vars(Gender), ncol = 1)
+```
+
+<img src="fig/rmd-09-unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;" />
+
+Try customizing the output with different `Trade` categories or different ggplot2 customizations. For example what strategies might you take to tidy up the x-axis. 
+
 
 ### Challenge 4 (20 minutes)
 >
@@ -424,7 +684,7 @@ sum_books %>%
 >  theme(axis.title.x = element_blank())
 >```
 >
-><img src="fig/rmd-09-unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" />
+><img src="fig/rmd-09-unnamed-chunk-23-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
 
