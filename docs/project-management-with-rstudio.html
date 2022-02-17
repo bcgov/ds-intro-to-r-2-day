@@ -105,40 +105,44 @@ that has been used to generate it;</li>
 <p>One of the most powerful and useful aspects of RStudio is its project management
 functionality. We’ll be using this today to create a self-contained, reproducible
 project.</p>
-<blockquote>
-<h2 id="creating-a-self-contained-project">Creating a self-contained project</h2>
+</div>
+<div id="creating-a-self-contained-project" class="section level2 rmdimportant" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Creating a self-contained project<a class="anchor" aria-label="anchor" href="#creating-a-self-contained-project"><i class="fas fa-link"></i></a>
+</h2>
 <p>In our initial breakout sessions, we all downloaded and opened a new RStudio
 Project called <code>intro-r-Feb2022</code>, by running the following code:</p>
-<p>If you are on Windows:
-<code>use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))</code></p>
-<p>If you are on a Mac:
-<code>use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))</code></p>
+<p>If you are on Windows:</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">use_course</span><span class="op">(</span><span class="st">"https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip"</span>, destdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"USERPROFILE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>If you are on a Mac:</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">use_course</span><span class="op">(</span><span class="st">"https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip"</span>, destdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"HOME"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This created a new R project folder in your user directory (<code>C:/Users/[your_user_name]/intro-r-Feb2022/</code> on Windows,
-and `/Users/[your_user_name]/intro-r-Feb2022/’ on a Mac).</p>
+and <code>/Users/[your_user_name]/intro-r-Feb2022/</code> on a Mac).</p>
 <p>Inside your project you should have a collection of <code>.R</code> and <code>.Rmd</code> files,
 a <code>data/</code> folder, and a <code>README.md</code> file.</p>
-</blockquote>
+</div>
 <p>Now whenever we open this project with RStudio, all of our work on this project will
 be entirely self-contained in this directory.</p>
-<div id="challenge-1-2" class="section level3" number="3.2.1">
+<div id="challenge-1-2" class="section level3" number="3.3.1">
 <h3>
-<span class="header-section-number">3.2.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-2"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>To get used to navigating Projects in RStudio, close your Project and reopen it.
 There are at least three ways of opening an RStudio project - try to find two!</p>
 </blockquote>
 </div>
-</div>
-<div id="best-practices-for-project-organization" class="section level2" number="3.3">
+<div id="best-practices-for-project-organization" class="section level2" number="3.4">
 <h2>
-<span class="header-section-number">3.3</span> Best practices for project organization<a class="anchor" aria-label="anchor" href="#best-practices-for-project-organization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4</span> Best practices for project organization<a class="anchor" aria-label="anchor" href="#best-practices-for-project-organization"><i class="fas fa-link"></i></a>
 </h2>
 <p>Although there is no “best” way to lay out a project, there are some general
 principles to adhere to that will make project management easier:</p>
-<div id="treat-data-as-read-only" class="section level3" number="3.3.1">
+<div id="treat-data-as-read-only" class="section level3" number="3.4.1">
 <h3>
-<span class="header-section-number">3.3.1</span> Treat data as read only<a class="anchor" aria-label="anchor" href="#treat-data-as-read-only"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.1</span> Treat data as read only<a class="anchor" aria-label="anchor" href="#treat-data-as-read-only"><i class="fas fa-link"></i></a>
 </h3>
 <p>This is probably the most important goal of setting up a project. Data is
 typically time consuming and/or expensive to collect. Working with them
@@ -146,9 +150,9 @@ interactively (e.g., in Excel) where they can be modified means you are never
 sure of where the data came from, or how it has been modified since collection.
 It is therefore a good idea to treat your data as “read-only”.</p>
 </div>
-<div id="data-cleaning" class="section level3" number="3.3.2">
+<div id="data-cleaning" class="section level3" number="3.4.2">
 <h3>
-<span class="header-section-number">3.3.2</span> Data Cleaning<a class="anchor" aria-label="anchor" href="#data-cleaning"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.2</span> Data Cleaning<a class="anchor" aria-label="anchor" href="#data-cleaning"><i class="fas fa-link"></i></a>
 </h3>
 <p>In many cases your data will be “dirty”: it will need significant pre-processing
 to get into a format R (or any other programming language) will find useful.
@@ -156,9 +160,9 @@ This task is sometimes called “data munging”. Storing these scripts in a
 separate folder, and creating a second “read-only” data folder to hold the
 “cleaned” data sets can prevent confusion between the two sets.</p>
 </div>
-<div id="treat-generated-output-as-disposable" class="section level3" number="3.3.3">
+<div id="treat-generated-output-as-disposable" class="section level3" number="3.4.3">
 <h3>
-<span class="header-section-number">3.3.3</span> Treat generated output as disposable<a class="anchor" aria-label="anchor" href="#treat-generated-output-as-disposable"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.3</span> Treat generated output as disposable<a class="anchor" aria-label="anchor" href="#treat-generated-output-as-disposable"><i class="fas fa-link"></i></a>
 </h3>
 <p>Anything generated by your scripts should be treated as disposable: it should
 all be able to be regenerated from your scripts.</p>
@@ -178,9 +182,9 @@ project, and some of the analyses get shared between projects.</p>
 </ol>
 </blockquote>
 </div>
-<div id="separate-function-definition-and-application" class="section level3" number="3.3.4">
+<div id="separate-function-definition-and-application" class="section level3" number="3.4.4">
 <h3>
-<span class="header-section-number">3.3.4</span> Separate function definition and application<a class="anchor" aria-label="anchor" href="#separate-function-definition-and-application"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.4</span> Separate function definition and application<a class="anchor" aria-label="anchor" href="#separate-function-definition-and-application"><i class="fas fa-link"></i></a>
 </h3>
 <p>One of the more effective ways to work with R is to start by writing the code you want to run directly in an .R script, and then running the selected lines (either using the keyboard shortcuts in RStudio or clicking the “Run” button) in the interactive R console.</p>
 <p>When your project is in its early stages, the initial .R script file usually contains many lines
@@ -189,9 +193,9 @@ own functions. It’s a good idea to separate these functions into two separate 
 to store useful functions that you’ll reuse across analyses and projects, and
 one to store the analysis scripts.</p>
 </div>
-<div id="version-control" class="section level3" number="3.3.5">
+<div id="version-control" class="section level3" number="3.4.5">
 <h3>
-<span class="header-section-number">3.3.5</span> Version Control<a class="anchor" aria-label="anchor" href="#version-control"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.5</span> Version Control<a class="anchor" aria-label="anchor" href="#version-control"><i class="fas fa-link"></i></a>
 </h3>
 <p>It is important to use version control with projects. Go <a href="https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/">here for a good lesson which describes using Git with RStudio</a>.</p>
 
@@ -206,16 +210,17 @@ one to store the analysis scripts.</p>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#project-management-with-rstudio"><span class="header-section-number">3</span> Project Management With RStudio</a></li>
 <li><a class="nav-link" href="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+<li><a class="nav-link" href="#a-possible-solution"><span class="header-section-number">3.2</span> A possible solution</a></li>
 <li>
-<a class="nav-link" href="#a-possible-solution"><span class="header-section-number">3.2</span> A possible solution</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-2"><span class="header-section-number">3.2.1</span> Challenge 1</a></li></ul>
+<a class="nav-link" href="#creating-a-self-contained-project"><span class="header-section-number">3.3</span> Creating a self-contained project</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-2"><span class="header-section-number">3.3.1</span> Challenge 1</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#best-practices-for-project-organization"><span class="header-section-number">3.3</span> Best practices for project organization</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#treat-data-as-read-only"><span class="header-section-number">3.3.1</span> Treat data as read only</a></li>
-<li><a class="nav-link" href="#data-cleaning"><span class="header-section-number">3.3.2</span> Data Cleaning</a></li>
-<li><a class="nav-link" href="#treat-generated-output-as-disposable"><span class="header-section-number">3.3.3</span> Treat generated output as disposable</a></li>
-<li><a class="nav-link" href="#separate-function-definition-and-application"><span class="header-section-number">3.3.4</span> Separate function definition and application</a></li>
-<li><a class="nav-link" href="#version-control"><span class="header-section-number">3.3.5</span> Version Control</a></li>
+<a class="nav-link" href="#best-practices-for-project-organization"><span class="header-section-number">3.4</span> Best practices for project organization</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#treat-data-as-read-only"><span class="header-section-number">3.4.1</span> Treat data as read only</a></li>
+<li><a class="nav-link" href="#data-cleaning"><span class="header-section-number">3.4.2</span> Data Cleaning</a></li>
+<li><a class="nav-link" href="#treat-generated-output-as-disposable"><span class="header-section-number">3.4.3</span> Treat generated output as disposable</a></li>
+<li><a class="nav-link" href="#separate-function-definition-and-application"><span class="header-section-number">3.4.4</span> Separate function definition and application</a></li>
+<li><a class="nav-link" href="#version-control"><span class="header-section-number">3.4.5</span> Version Control</a></li>
 </ul>
 </li>
 </ul>
@@ -235,7 +240,7 @@ one to store the analysis scripts.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-16.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

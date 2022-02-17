@@ -105,7 +105,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="fig/rmd-06-lifeExp-vs-gdpPercap-scatter-1.png" width="576" style="display: block; margin: auto;" />
 
-So the first thing we do is call the `ggplot` function. This function lets R
+So the first thing we do is call the `ggplot()    ` function. This function lets R
 know that we're creating a new plot, and any of the arguments we give the
 `ggplot` function are the *global* options for the plot: they apply to all
 layers on the plot.
@@ -130,7 +130,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
 <img src="fig/rmd-06-no-geom-1.png" width="576" style="display: block; margin: auto;" />
 
 We need to tell `ggplot` how we want to visually represent the data, which we
-do by adding a new **geom** layer. In our example, we used `geom_point`, which
+do by adding a new **geom** layer. In our example, we used `geom_point()`, which
 tells `ggplot` we want to visually represent the relationship between **x** and
 **y** as a scatterplot of points:
 
@@ -214,7 +214,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, colour = continent
 
 <img src="fig/rmd-06-lifeExp-line-no-group-1.png" width="576" style="display: block; margin: auto;" />
 
-Instead of adding a `geom_point` layer, we've added a `geom_line` layer, however it looks like the lines are connecting the wrong points? We need to add the **group** *aesthetic*, which tells `ggplot` to draw a line for each country.
+Instead of adding a `geom_point()` layer, we've added a `geom_line()` layer, however it looks like the lines are connecting the wrong points? We need to add the **group** *aesthetic*, which tells `ggplot()` to draw a line for each country.
 
 
 
@@ -379,7 +379,7 @@ variables and their visual representation.
 > Modify the colour and size of the points on the point layer in the previous
 > example.
 >
-> Hint: do not use the `aes` function.
+> Hint: do not use the `aes()` function.
 >
 > <details>
 > 
@@ -479,7 +479,7 @@ ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp)) +
 
 <img src="fig/rmd-06-facet-1.png" width="576" style="display: block; margin: auto;" />
 
-The `facet_wrap` layer took the function `vars()` as its `facet` argument. This tells R to draw a panel for each unique value in the variable country of the gapminder dataset.
+The `facet_wrap()` layer took the function `vars()` as its `facet` argument. This tells R to draw a panel for each unique value in the variable country of the gapminder dataset.
 
 
 ## Modifying text

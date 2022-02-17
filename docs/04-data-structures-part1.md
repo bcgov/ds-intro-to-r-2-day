@@ -59,7 +59,7 @@ using the `library` function:
 library(readr)
 ```
 
-Now we can load this data into R via the following using the `read_csv` function, 
+Now we can load this data into R via the following using the `read_csv()` function, 
 and assign it to an object called `cats`:
 
 
@@ -988,7 +988,7 @@ gives you the total number of elements in the matrix.
 > Did the `matrix` function fill your matrix by column, or by
 > row, as its default behaviour?
 > See if you can figure out how to change this.
-> (hint: read the documentation for `matrix`!)
+> (hint: read the documentation for `matrix()`!)
 > 
 > <details>
 > 

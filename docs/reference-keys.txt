@@ -30,6 +30,7 @@ challenge-3-1
 project-management-with-rstudio
 introduction
 a-possible-solution
+creating-a-self-contained-project
 challenge-1-2
 best-practices-for-project-organization
 treat-data-as-read-only

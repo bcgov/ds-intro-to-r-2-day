@@ -441,7 +441,7 @@ different underlying representations and therefore be
 different by a small margin of error (called Machine
 numeric tolerance).
 
-Instead you should use the `all.equal` function.
+Instead you should use the `all.equal()` function.
 
 Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
 
@@ -764,7 +764,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fa77d4695f8>
+<bytecode: 0x7f9d99c1adf8>
 <environment: namespace:base>
 ```
 

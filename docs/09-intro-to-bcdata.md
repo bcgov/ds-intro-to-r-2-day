@@ -136,7 +136,7 @@ Query and filter this data using:
 
 ## Importing data from the B.C. Data Catalogue
 
-Next, we can use the `bcdc_get_data` function to import this data directly into R: 
+Next, we can use the `bcdc_get_data()` function to import this data directly into R: 
 
 
 ```r

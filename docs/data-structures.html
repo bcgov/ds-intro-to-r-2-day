@@ -67,10 +67,10 @@
 such as you may already have in a spreadsheet or a CSV file. Let’s start by
 looking at a toy dataset in your <code>data/</code> directory, called <code>feline-data.csv</code>:</p>
 <p>The contents of the new file, <code>feline-data.csv</code>:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="data-structures.html#cb85-1" aria-hidden="true" tabindex="-1"></a>coat,weight,likes_string</span>
-<span id="cb85-2"><a href="data-structures.html#cb85-2" aria-hidden="true" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
-<span id="cb85-3"><a href="data-structures.html#cb85-3" aria-hidden="true" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
-<span id="cb85-4"><a href="data-structures.html#cb85-4" aria-hidden="true" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-structures.html#cb87-1" aria-hidden="true" tabindex="-1"></a>coat,weight,likes_string</span>
+<span id="cb87-2"><a href="data-structures.html#cb87-2" aria-hidden="true" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
+<span id="cb87-3"><a href="data-structures.html#cb87-3" aria-hidden="true" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
+<span id="cb87-4"><a href="data-structures.html#cb87-4" aria-hidden="true" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre></div>
 <div id="the-readr-package" class="section level2" number="4.1">
 <h2>
 <span class="header-section-number">4.1</span> The <em>readr</em> package<a class="anchor" aria-label="anchor" href="#the-readr-package"><i class="fas fa-link"></i></a>
@@ -81,15 +81,15 @@ to work nicely together and to ease many common data operations.</p>
 <p>The first time you use a package, you will need to install it (like installing
 an app on your phone from the app store). Additionally, it is a good idea to
 periodically check for updates to that package:</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"readr"</span><span class="op">)</span></code></pre></div>
 <p>Everytime we want to use that package, you must load it into your R session, by
 using the <code>library</code> function:</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></code></pre></div>
-<p>Now we can load this data into R via the following using the <code>read_csv</code> function,
+<p>Now we can load this data into R via the following using the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function,
 and assign it to an object called <code>cats</code>:</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"data/feline-data.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>Rows: 3 Columns: 3
 ── Column specification ────────────────────────────────────────────────────────
@@ -99,7 +99,7 @@ dbl (2): weight, likes_string
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span></code></pre></div>
 <pre><code># A tibble: 3 × 3
   coat   weight likes_string
@@ -116,7 +116,7 @@ punctuation characters used to separate or delimit data points in text files.</p
 <p>The object that is created by <code>read_csv</code> is called a “data.frame” - a rectangular
 table-like object with rows and columns.</p>
 <p>We can begin exploring our dataset right away, first by looking at the whole thing:</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span></code></pre></div>
 <pre><code># A tibble: 3 × 3
   coat   weight likes_string
@@ -125,23 +125,23 @@ table-like object with rows and columns.</p>
 2 black     5              0
 3 tabby     3.2            1</code></pre>
 <p>And pulling out individual columns by specifying them using the <code>$</code> operator:</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">weight</span></code></pre></div>
 <pre><code>[1] 2.1 5.0 3.2</code></pre>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">coat</span></code></pre></div>
 <pre><code>[1] "calico" "black"  "tabby" </code></pre>
 <p>We can do other operations on the columns:</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Say we discovered that the scale weighs two Kg light:</span>
 <span class="va">cats</span><span class="op">$</span><span class="va">weight</span> <span class="op">+</span> <span class="fl">2</span></code></pre></div>
 <pre><code>[1] 4.1 7.0 5.2</code></pre>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"My"</span>, <span class="va">cats</span><span class="op">$</span><span class="va">coat</span>, <span class="st">"cat weighs"</span>, <span class="va">cats</span><span class="op">$</span><span class="va">weight</span> <span class="op">+</span> <span class="fl">2</span>, <span class="st">"kilograms"</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "My calico cat weighs 4.1 kilograms" "My black cat weighs 7 kilograms"   
 [3] "My tabby cat weighs 5.2 kilograms" </code></pre>
 <p>But what about</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">weight</span> <span class="op">+</span> <span class="va">cats</span><span class="op">$</span><span class="va">coat</span></code></pre></div>
 <pre><code>Error in cats$weight + cats$coat: non-numeric argument to binary operator</code></pre>
 <p>Understanding what happened here is key to successfully analyzing data in R.</p>
@@ -154,7 +154,7 @@ table-like object with rows and columns.</p>
 <code>"black"</code> is nonsense, you’re right - and you already have some intuition for an
 important concept in programming called <em>data types</em>. We can ask what type of
 data something is:</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "double"</code></pre>
 <p>There are 4 main types:</p>
@@ -168,19 +168,19 @@ data something is:</p>
 <li>
 <code>character</code> (free text)</li>
 </ul>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">3.14</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "double"</code></pre>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span> <span class="co"># The L suffix forces the number to be an integer, since by default R uses double (decimal) numbers</span></code></pre></div>
 <pre><code>[1] "integer"</code></pre>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "logical"</code></pre>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="st">'banana'</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "character"</code></pre>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">1i</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "complex"</code></pre>
 <p>No matter how
@@ -191,7 +191,7 @@ basic data types. This strictness has some really important consequences.</p>
 structure</em> - that is, a structure which R knows how to build out of the basic
 data types.</p>
 <p>We can see that it is a <em>data.frame</em> by calling the <code>class</code> function on it:</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" </code></pre>
 </div>
@@ -203,7 +203,7 @@ data types.</p>
 the <em>vector</em>.</p>
 <p>If we are creating vectors on our own, we will normally use the <code>c</code> (combine)
 function:</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span> ,<span class="fl">7</span> ,<span class="fl">9</span><span class="op">)</span>
 <span class="va">my_vector</span></code></pre></div>
 <pre><code>[1] 1 3 5 7 9</code></pre>
@@ -211,28 +211,28 @@ function:</p>
 condition that <em>everything in the vector must be the same basic data type</em>.
 Note that this is different to most spreadsheet programs where you can store
 different data types in a table column.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "numeric"</code></pre>
 <p>This command indicates the basic data type found in this vector - in this case <code>numeric</code>.</p>
 <p>We can use the logical operators that we learned earlier with vectors:</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_vector</span> <span class="op">&gt;</span> <span class="fl">4</span></code></pre></div>
 <pre><code>[1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
 <p>Vectors can be any data type that we’ve already learned about. Let’s make a
 character vector:</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hogwarts_students</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Harry"</span>, <span class="st">"Ron"</span>, <span class="st">"Hermione"</span>, <span class="st">"Ginny"</span><span class="op">)</span>
 <span class="va">hogwarts_students</span></code></pre></div>
 <pre><code>[1] "Harry"    "Ron"      "Hermione" "Ginny"   </code></pre>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">hogwarts_students</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "character"</code></pre>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hogwarts_students</span> <span class="op">==</span> <span class="st">"Harry"</span></code></pre></div>
 <pre><code>[1]  TRUE FALSE FALSE FALSE</code></pre>
 <p>If we similarly do</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "numeric"</code></pre>
 <p>we see that <code>cats$weight</code> is a vector, too - <em>the columns of data we load into R
@@ -257,33 +257,33 @@ our lives easier in R.</p>
 </details>
 </blockquote>
 <p>Given what we’ve learned so far, what do you think the following will produce?</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">quiz_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">6</span>,<span class="st">'3'</span><span class="op">)</span></code></pre></div>
 <p>This is something called <em>type coercion</em>, and it is the source of many surprises
 and the reason why we need to be aware of the basic data types and how R will
 interpret them. When R encounters a mix of types (here numeric and character) to
 be combined into a single vector, it will force them all to be the same
 type. Consider:</p>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">coercion_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>, <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">coercion_vector</span></code></pre></div>
 <pre><code>[1] "a"    "TRUE"</code></pre>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">another_coercion_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">another_coercion_vector</span></code></pre></div>
 <pre><code>[1] 0 1</code></pre>
 <p>The coercion rules go: <code>logical</code> -&gt; <code>integer</code> -&gt; <code>double</code>/<code>numeric</code> -&gt; <code>complex</code> -&gt;
 <code>character</code>, where -&gt; can be read as <em>are transformed into</em>. You can try to
 force coercion against this flow using the <code>as.</code> functions:</p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">character_vector_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'0'</span>,<span class="st">'2'</span>,<span class="st">'4'</span><span class="op">)</span>
 <span class="va">character_vector_example</span></code></pre></div>
 <pre><code>[1] "0" "2" "4"</code></pre>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">character_coerced_to_numeric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">character_vector_example</span><span class="op">)</span>
 <span class="va">character_coerced_to_numeric</span></code></pre></div>
 <pre><code>[1] 0 2 4</code></pre>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">numeric_coerced_to_logical</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">character_coerced_to_numeric</span><span class="op">)</span>
 <span class="va">numeric_coerced_to_logical</span></code></pre></div>
 <pre><code>[1] FALSE  TRUE  TRUE</code></pre>
@@ -298,10 +298,10 @@ your columns of data.frames, or you will get nasty surprises!</p>
 <code>logical</code> data type here, which has two states: <code>TRUE</code> or <code>FALSE</code>, which is
 exactly what our data represents. We can ‘coerce’ this column to be <code>logical</code> by
 using the <code>as.logical</code> function:</p>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span></code></pre></div>
 <pre><code>[1] 1 0 1</code></pre>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span>
 <span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span></code></pre></div>
 <pre><code>[1]  TRUE FALSE  TRUE</code></pre>
@@ -312,14 +312,14 @@ using the <code>as.logical</code> function:</p>
 <span class="header-section-number">4.4</span> Data Frames<a class="anchor" aria-label="anchor" href="#data-frames"><i class="fas fa-link"></i></a>
 </h2>
 <p>We said that columns in data.frames were vectors:</p>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></code></pre></div>
 <pre><code> num [1:3] 2.1 5 3.2</code></pre>
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span></code></pre></div>
 <pre><code> logi [1:3] TRUE FALSE TRUE</code></pre>
 <p>These make sense. But what about</p>
-<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">coat</span><span class="op">)</span></code></pre></div>
 <pre><code> chr [1:3] "calico" "black" "tabby"</code></pre>
 </div>
@@ -332,17 +332,17 @@ character data, but are typically used to represent categorical information that
 have a defined set of values. For
 example, let’s make a vector of strings labelling cat colorations for all the
 cats in our study:</p>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">coats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'tabby'</span>, <span class="st">'tortoiseshell'</span>, <span class="st">'tortoiseshell'</span>, <span class="st">'black'</span>, <span class="st">'tabby'</span><span class="op">)</span>
 <span class="va">coats</span></code></pre></div>
 <pre><code>[1] "tabby"         "tortoiseshell" "tortoiseshell" "black"        
 [5] "tabby"        </code></pre>
 <p>We can turn a vector into a factor like so:</p>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">CATegories</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">coats</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">CATegories</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "factor"</code></pre>
-<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">CATegories</span></code></pre></div>
 <pre><code>[1] tabby         tortoiseshell tortoiseshell black         tabby        
 Levels: black tabby tortoiseshell</code></pre>
@@ -351,10 +351,10 @@ also did something surprising; instead of printing out the strings we gave it,
 we got a bunch of numbers instead. R has replaced our human-readable categories
 with numbered indices under the hood, this is necessary as many statistical
 calculations use such numerical representations for categorical data:</p>
-<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">coats</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "character"</code></pre>
-<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">CATegories</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "integer"</code></pre>
 <div id="challenge-1-3" class="section level3" number="4.5.1">
@@ -369,7 +369,7 @@ factor, and <code>likes_string</code> is read as a logical</p>
 Solution to challenge 1
 </summary><p><br></p>
 <p>Use the <code>col_types</code> argument:</p>
-<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file<span class="op">=</span><span class="st">"data/feline-data.csv"</span>, col_types <span class="op">=</span> <span class="st">"fnl"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">coat</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cats</span><span class="op">$</span><span class="va">likes_string</span><span class="op">)</span>
@@ -387,7 +387,7 @@ even if they aren't sure.
 <p>In modeling functions, it’s important to know what the baseline levels are. This
 is assumed to be the first factor, but by default factors are labeled in
 alphabetical order. You can change this by specifying the levels:</p>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"case"</span>, <span class="st">"control"</span>, <span class="st">"control"</span>, <span class="st">"case"</span><span class="op">)</span>
 <span class="va">factor_ordering_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">mydata</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"case"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">factor_ordering_example</span><span class="op">)</span></code></pre></div>
@@ -404,7 +404,7 @@ results of statistical models!</p>
 <p>Another data structure you’ll want in your bag of tricks is the <code>list</code>. A list
 is simpler in some ways than the other types, because you can put anything you
 want in it:</p>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"a"</span>, <span class="cn">TRUE</span>, <span class="fl">1</span><span class="op">+</span><span class="fl">4i</span><span class="op">)</span>
 <span class="va">list_example</span></code></pre></div>
 <pre><code>[[1]]
@@ -418,7 +418,7 @@ want in it:</p>
 
 [[4]]
 [1] 1+4i</code></pre>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">another_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Numbers"</span>, numbers <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, data <span class="op">=</span> <span class="cn">TRUE</span> <span class="op">)</span>
 <span class="va">another_list</span></code></pre></div>
 <pre><code>$title
@@ -430,7 +430,7 @@ $numbers
 $data
 [1] TRUE</code></pre>
 <p>We can now understand something a bit surprising in our data.frame; what happens if we run:</p>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cats</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "list"</code></pre>
 <p>We see that data.frames look like lists ‘under the hood’ - this is because a
@@ -441,10 +441,10 @@ columns together into a familiar table. In other words, a <code>data.frame</code
 special list in which all the vectors must have the same length.</p>
 <p>In our <code>cats</code> example, we have a character, a double and a logical variable. As
 we have seen already, each column of data.frame is a vector.</p>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">coat</span></code></pre></div>
 <pre><code>[1] "calico" "black"  "tabby" </code></pre>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 3 × 1
   coat  
@@ -452,25 +452,25 @@ we have seen already, each column of data.frame is a vector.</p>
 1 calico
 2 black 
 3 tabby </code></pre>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cats</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "list"</code></pre>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>tibble [3 × 1] (S3: tbl_df/tbl/data.frame)
  $ coat: chr [1:3] "calico" "black" "tabby"</code></pre>
 <p>Each row is an <em>observation</em> of different variables, itself a data.frame, and
 thus can be composed of elements of different types.</p>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 1 × 3
   coat   weight likes_string
   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;       
 1 calico    2.1 TRUE        </code></pre>
-<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "list"</code></pre>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>tibble [1 × 3] (S3: tbl_df/tbl/data.frame)
  $ coat        : chr "calico"
@@ -497,7 +497,7 @@ elements from data.frames:</p>
 <details><summary>
 Solution to challenge 2
 </summary><p><br></p>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 3 × 1
   coat  
@@ -508,17 +508,17 @@ Solution to challenge 2
 <p>We can think of a data frame as a list of vectors. The single brace <code>[1]</code>
 turns the first slice of the list, as another list. In this case it is the
 rst column of the data frame.</p>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>[1] "calico" "black"  "tabby" </code></pre>
 <p>The double brace <code>[[1]]</code> returns the contents of the list item. In this case
 is the contents of the first column, a <em>vector</em> of type <em>factor</em>.</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">$</span><span class="va">coat</span></code></pre></div>
 <pre><code>[1] "calico" "black"  "tabby" </code></pre>
 <p>This example uses the <code>$</code> character to address items by name. <em>coat</em> is the
 rst column of the data frame, again a <em>vector</em> of type <em>factor</em>.</p>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="st">"coat"</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 3 × 1
   coat  
@@ -528,7 +528,7 @@ rst column of the data frame, again a <em>vector</em> of type <em>factor</em>.</
 3 tabby </code></pre>
 <p>Here we are using a single brace <code>["coat"]</code> replacing the index number with
 e column name. Like example 1, the returned object is a <em>list</em>.</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 1 × 1
   coat  
@@ -538,7 +538,7 @@ e column name. Like example 1, the returned object is a <em>list</em>.</p>
 ordinates. The returned object is the value in row 1, column 1. The object
 an <em>integer</em> but because it is part of a <em>vector</em> of type <em>factor</em>, R
 splays the label “calico” associated with the integer value.</p>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 3 × 1
   coat  
@@ -549,7 +549,7 @@ splays the label “calico” associated with the integer value.</p>
 <p>Like the previous example we use single braces and provide row and column
 ordinates. The row coordinate is not specified, R interprets this missing
 lue as all the elements in this <em>column</em> <em>vector</em>.</p>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cats</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 1 × 3
   coat   weight likes_string
@@ -567,7 +567,7 @@ values in the first row.</p>
 <span class="header-section-number">4.7</span> Matrices<a class="anchor" aria-label="anchor" href="#matrices"><i class="fas fa-link"></i></a>
 </h2>
 <p>Last but not least is the matrix. We can declare a matrix full of zeros:</p>
-<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">matrix_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, ncol<span class="op">=</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
 <span class="va">matrix_example</span></code></pre></div>
 <pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
@@ -575,22 +575,22 @@ values in the first row.</p>
 [2,]    0    0    0    0    0    0
 [3,]    0    0    0    0    0    0</code></pre>
 <p>And similar to other data structures, we can ask things about our matrix:</p>
-<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "matrix" "array" </code></pre>
-<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "double"</code></pre>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code> num [1:3, 1:6] 0 0 0 0 0 0 0 0 0 0 ...</code></pre>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 3 6</code></pre>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 3</code></pre>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 6</code></pre>
 <div id="challenge-3-2" class="section level3" number="4.7.1">
@@ -607,7 +607,7 @@ Solution to challenge 3
 </summary><p><br></p>
 <p>What do you think will be the result of
 <code>length(matrix_example)</code>?</p>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">matrix_example</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, ncol<span class="op">=</span><span class="fl">6</span>, nrow<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">matrix_example</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 18</code></pre>
@@ -626,7 +626,7 @@ with 5 columns and 10 rows.
 Did the <code>matrix</code> function fill your matrix by column, or by
 row, as its default behaviour?
 See if you can figure out how to change this.
-(hint: read the documentation for <code>matrix</code>!)</p>
+(hint: read the documentation for <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code>!)</p>
 <details><summary>
 Solution to challenge 4
 </summary><p><br></p>
@@ -636,7 +636,7 @@ Did the <code>matrix</code> function fill your matrix by column, or by
 row, as its default behaviour?
 See if you can figure out how to change this.
 (hint: read the documentation for <code>matrix</code>!)</p>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, ncol<span class="op">=</span><span class="fl">5</span>, nrow<span class="op">=</span><span class="fl">10</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, ncol<span class="op">=</span><span class="fl">5</span>, nrow<span class="op">=</span><span class="fl">10</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># to fill by row</span></code></pre></div>
 </details>
@@ -657,7 +657,7 @@ structures we’ve seen so far.</p>
 <details><summary>
 Solution to challenge 5
 </summary><p><br></p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dataTypes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'double'</span>, <span class="st">'complex'</span>, <span class="st">'integer'</span>, <span class="st">'character'</span>, <span class="st">'logical'</span><span class="op">)</span>
 <span class="va">dataStructures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'data.frame'</span>, <span class="st">'vector'</span>, <span class="st">'factor'</span>, <span class="st">'list'</span>, <span class="st">'matrix'</span><span class="op">)</span>
 <span class="va">answer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">dataTypes</span>, <span class="va">dataStructures</span><span class="op">)</span></code></pre></div>
@@ -694,7 +694,7 @@ Solution to challenge 6
 <p>What was the correct command used to write this matrix? Examine
 each command and try to figure out the correct one before typing them.
 Think about what matrices the other commands will produce.</p>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">9</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">7</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </details>
 </blockquote>
@@ -746,7 +746,7 @@ Think about what matrices the other commands will produce.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-16.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

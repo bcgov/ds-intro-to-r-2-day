@@ -129,7 +129,7 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 
 ### Challenge 1
 >
-> Read in the gapminder dataset using read_csv and assign it to a data frame
+> Read in the gapminder dataset using `read_csv()` and assign it to a data frame
 > called `gapminder`:
 >
 > 
@@ -166,7 +166,7 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 > ```
 
 The first thing we should always do is check out what the data looks like with
-`str` or `summary`:
+`str()` or `summary()`:
 
 
 ```r
@@ -205,18 +205,19 @@ summary(gapminder$country)
 ```
 
 ::: {.rmdtip}
+
 **Miscellaneous Tips**
 
  * Files can also be downloaded directly from the Internet into a local
- folder of your choice onto your computer using the `download.file` function.
- The `read_csv` function can then be executed to read the downloaded file from the download location, for example,
+ folder of your choice onto your computer using the `download.file()` function.
+ The `read_csv()` function can then be executed to read the downloaded file from the download location, for example,
  
  ```r
  download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", estfile = "data/gapminder_data.csv")
  gapminder <- read_csv("data/gapminder_data.csv")
  ```
 
- * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in read_csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
+ * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read_csv()`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
  
  ```r
  gapminder <- read_csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_dat.csv")
@@ -224,7 +225,7 @@ summary(gapminder$country)
 
  * You can read directly from excel spreadsheets without
  converting them to plain text first by using the [readxl](https://cran.r-project.org/package=readxl) package.
-::: {.rmdtip}
+::: 
 
 We'll also likely want to know what the titles of all the columns are, so we can
 ask for them:
@@ -324,14 +325,27 @@ head(gapminder)
 ></details>
 
 What about a few arbitrary rows just for sanity (or insanity depending on your view)?
-## Tip: There are several ways to achieve this.
-The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new ept, but you are already using it!
-Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have d for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for . What about getting a (pseudorandom) sample? R also has a function for this.
-~~~
-gapminder[sample(nrow(gapminder), 5), ]
-~~~
 
-Another very helpful function for looking at your data is the `unique` 
+::: {.rmdtip}
+
+**Tip: There are several ways to achieve this.**
+The solution here presents one form of using nested functions, i.e. a function
+passed as an argument to another function. This might sound like a new ept, but
+you are already using it! Remember my_dataframe[rows, cols] will print to screen
+your data frame with the number of rows and columns you asked for (although you
+might have d for a range or named columns for example). How would you get the
+last row if you don't know how many rows your data frame has? R has a function
+for . What about getting a (pseudorandom) sample? R also has a function for
+this.
+
+
+```r
+gapminder[sample(nrow(gapminder), 5), ]
+```
+
+:::
+
+Another very helpful function for looking at your data is the `unique()` 
 function, to see the unique values in a particular column:
 
 
