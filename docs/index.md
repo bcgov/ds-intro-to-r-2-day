@@ -17,7 +17,7 @@ A repository to house materials for a 4 session course introducing participants 
 
 The goal of this 4 session workshop is to teach new-to-programming data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
 
-### Daily schedule
+## Daily schedule
 | Activity   | Start Time | End time |
 |------------|------------|----------|
 | Module #1  | 9:00       | 10:30    |
@@ -28,33 +28,33 @@ The goal of this 4 session workshop is to teach new-to-programming data professi
 
 - Introduction to Course (30 min) <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
 - Demo (10 min) **(Sam)**
-- [Introduction to R & RStudio][Introduction to R and RStudio] (50 minutes) **(Sam)**
+- [Introduction to R and RStudio] (50 minutes) **(Sam)**
 - BREAK ☕
-- Seeking Help in R (15 minutes) **(Andy)**
-- Project Management with RStudio (40 minutes) **(Andy)**
+- [Seeking Help in R] (15 minutes) **(Andy)**
+- [Project Management With RStudio] (40 minutes) **(Andy)**
 
 ### Day 2
 
 - Review + questions (30 minutes)
-- Data Structures (50 minutes)  **(Andy)**
+- [Data Structures] (50 minutes)  **(Andy)**
 - BREAK ☕
-- Exploring Data Frames (30 minutes) **(Bonnie)**
-- Making Publication Quality Plots with `ggplot2` Pt. 1 (60 minutes)  **(Bonnie)**
+- [Exploring Data Frames] (30 minutes) **(Bonnie)**
+- [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 1 (60 minutes)  **(Bonnie)**
 
 ### Day 3
 
 - Review + questions (30 minutes)
-- Making Publication Quality Plots with `ggplot2` Pt. 2 (40 minutes)  **(Bonnie)**
+- [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 2 (40 minutes)  **(Bonnie)**
 - BREAK ☕
-- Data Manipulation with `dplyr` (90 minutes) **(Andy)**
+- [Data Manipulation with `dplyr`][Dataframe Manipulation with dplyr] (90 minutes) **(Andy)**
 
 ### Day 4
 
 - Review + questions (30 min)
-- Data Manipulation with `tidyr` (45 minutes)  **(Sam)**
-- Seeking Help from Others with `reprex` (30 minutes) **(Sam)** <!-- though could remove or move to the end -->
+- [Data Manipulation with `tidyr`][Create Tidy Data with tidyr] (45 minutes)  **(Sam)**
 - BREAK ☕
-- Introduce `bcdata` and practice `ggplot2` and `dplyr` (75 minutes) **(Sam)**
+- [Introduction to `bcdata` and practice `ggplot2` and `dplyr`][Introduction to the bcdata package] (75 minutes) **(Sam)**
+- [Seeking Help from Others with `reprex`][Seeking Help from Others with reprex] (30 minutes) **(Sam)**
 
 
 
