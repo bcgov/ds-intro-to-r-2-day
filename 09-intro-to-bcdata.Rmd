@@ -174,6 +174,113 @@ sum_books %>%
 >```
 > </details>
 
+## Importing data from the B.C. Data Catalogue - Another Example
+Let's try another example with `bcdata`. This time we are going to try importing
+some data that is a bit messier. We are going to work with [_New Apprenticeship
+Registrations by Fiscal Year and
+Gender_](https://catalogue.data.gov.bc.ca/dataset/87f26989-ccde-407e-a500-5f0c304c460d)
+data. This example will require you to reference elements you've learned
+throughout the workshop.
+
+You can view the data record we are going to be working with in your browser by
+running the following command:
+
+```{r eval=FALSE}
+bcdc_browse("new-apprenticeship-registrations-by-fiscal-year-and-gender")
+```
+
+As we've previously learned we can use `bcdc_get_data()` to load data from the B.C. Data Catalogue directly into R. Let's try that now:
+
+```{r}
+new_reg <- bcdc_get_data("new-apprenticeship-registrations-by-fiscal-year-and-gender")
+new_reg
+```
+
+Well this doesn't look right. We can see near the bottom of our output that
+there are the words of `Gender` and `Trade` but we also have this mess of `NAs`.
+In this scenario it can be helpful to look at the raw data. Navigate back to the
+catalogue page you opened earlier and click the <kbd>View</kbd> button. This
+will take you to the
+[Resource](https://catalogue.data.gov.bc.ca/dataset/87f26989-ccde-407e-a500-5f0c304c460d/resource/8f4f1f19-9027-4d0b-a686-d820bccddd16)
+page. Click the link under **Resource** and the data will open up in Excel. The
+first thing we notice is that the data does not actually start until 10 rows
+down. `bcdc_get_data()` use `read_csv()` to read csv files and that function
+conveniently has an argument called `skip` which allows us to specify the number
+of lines to skip before reading the data. We can use it with `bcdc_get_data()`
+like this:
+
+```{r}
+new_reg <- bcdc_get_data(
+  "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
+  skip = 9
+  )
+new_reg
+```
+
+Ok this is looking _much_ better. We now have data that is rectangular and looks more like something we can work with. We do have one more little thing to take care of though. You will notice the data is filled with `...`. Those are missing values in the data. R has a specific way of handling missing values and we need to tell `bcdc_get_data()` (via `read_csv()`) that those are missing values. We do this by adding another argument:
+
+```{r}
+new_reg <- bcdc_get_data(
+  "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
+  skip = 9, 
+  na = "..."
+  )
+new_reg
+```
+
+Now we are ready to work with this data. One thing you might notice is that this data is in _wide_ format. The number of individuals of a given `Gender` and `Trade` are repeated over time across _columns_ with each column being a fiscal year. This is great for making a nice table but less great if we want to make a plot. To reshape the data into long format, we can again make use of `pivot_longer` from the `tidyr` package. We only want to pivot the fiscal years so we need to specify those columns. In addition, we want to name our two new columns:
+
+```{r}
+library(tidyr)
+
+new_reg_long <- new_reg %>% 
+  pivot_longer(
+    cols = `FY2011/12`:`FY2020/21`,
+    names_to = "fiscal_year",
+    values_to = "registrations"
+  )
+new_reg_long
+```
+
+There is actually quite a bit of data here while likely represents the number possible values for `Trade`. We can check the number of unique values in the `Trade` column using a handy function from `dplyr` called `n_distinct()`:
+
+```{r}
+n_distinct(new_reg_long$Trade)
+```
+
+Sure enough there are `r n_distinct(new_reg_long$Trade)` of them! Similarly, let's have a look at what values are in the `Gender` column using the `unique()` function you learned earlier:
+
+```{r}
+unique(new_reg_long$Gender)
+```
+
+To simplify things let's take a subset of the Trades in the data and only look at Men and Women:
+```{r}
+new_reg_long <- new_reg %>% 
+  pivot_longer(
+    cols = `FY2011/12`:`FY2020/21`,
+    names_to = "fiscal_year",
+    values_to = "registrations", 
+    values_drop_na = TRUE
+  ) %>% 
+  filter(
+    Gender %in% c("Men", "Women"),
+    Trade %in% c("Boilermaker", "Climbing Arborist", "Tilesetter", "Landscape Horticulturist","Baker")
+    )
+```
+
+With this tidied and filtered dataset, we now have something that we can plot using the skills we've learned with ggplot2. One thing to note is that we made use of the `ncol` argument in `facet_wrap()` so that the faceted plots would share the x-axis:
+
+```{r}
+library(ggplot2)
+
+ggplot(new_reg_long, aes(x = fiscal_year, y = registrations, fill = Trade)) +
+  geom_col() +
+  facet_wrap(vars(Gender), ncol = 1)
+```
+
+Try customizing the output with different `Trade` categories or different ggplot2 customizations. For example what strategies might you take to tidy up the x-axis. 
+
 
 ### Challenge 4 (20 minutes)
 >
