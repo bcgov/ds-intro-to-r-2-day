@@ -80,10 +80,12 @@ and `/Users/[your_user_name]/intro-r-Feb2022/` on a Mac).
 
 Inside your project you should have a collection of `.R` and `.Rmd` files, 
 a `data/` folder, and a `README.md` file.
-:::
 
 Now whenever we open this project with RStudio, all of our work on this project will 
 be entirely self-contained in this directory.
+:::
+
+
 
 ### Challenge 1
 

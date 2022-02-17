@@ -173,10 +173,16 @@ the course materials and save our work.
 In the console, type: 
 
 If you are on Windows:
-`use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
+
+```r
+use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
+```
 
 If you are on a Mac:
-`use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
+
+```r
+use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
+```
 
 ... and press <kbd>Enter</kbd>.
 
@@ -766,7 +772,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fbbe94963f8>
+<bytecode: 0x7f8bc59597f8>
 <environment: namespace:base>
 ```
 
