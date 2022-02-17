@@ -73,7 +73,6 @@ challenge-4a
 challenge-4b
 multi-panel-figures
 modifying-text
-tip-theming
 exporting-the-plot
 dataframe-manipulation-with-dplyr
 the-dplyr-package

@@ -565,7 +565,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7f8bc59597f8&gt;
+&lt;bytecode: 0x7ff030af61f8&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
@@ -574,15 +574,15 @@ needed to give the parentheses to tell R to call the function.</p>
 you can pass the results of <code>ls</code> to the <code>rm</code> function:</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>:: {.rmdtip}
-<strong>Tip: Warnings vs. Errors</strong></p>
+<div class="rmdtip">
+<p><strong>Tip: Warnings vs. Errors</strong></p>
 <p>Pay attention when R does something unexpected! Errors, like above,
 are thrown when R cannot proceed with a calculation. Warnings on the
 other hand usually mean that the function has run, but it probably
 hasn’t worked as expected.</p>
 <p>In both cases, the message that R prints out usually give you clues
 how to fix a problem.</p>
-<p>:::</p>
+</div>
 <div id="challenge-4" class="section level3" number="1.11.1">
 <h3>
 <span class="header-section-number">1.11.1</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"><i class="fas fa-link"></i></a>

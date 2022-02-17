@@ -772,7 +772,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f8bc59597f8>
+<bytecode: 0x7ff030af61f8>
 <environment: namespace:base>
 ```
 
@@ -792,7 +792,7 @@ rm(list = ls())
 ```
 
 
-:: {.rmdtip}
+::: {.rmdtip}
 **Tip: Warnings vs. Errors**
 
 Pay attention when R does something unexpected! Errors, like above,
