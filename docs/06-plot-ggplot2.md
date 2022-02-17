@@ -521,7 +521,6 @@ ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp, colour = contin
 <img src="fig/rmd-06-theme-1.png" width="576" style="display: block; margin: auto;" />
 
 ::: {.rmptip}
-
 **Tip: Theming**
 Note that we apply a "theme" definition to customize 
 the x-axis label sizes to maintain readability.  Nearly everything in
