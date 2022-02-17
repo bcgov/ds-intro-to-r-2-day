@@ -17,14 +17,15 @@ A repository to house materials for a 4 session course introducing participants 
 
 The goal of this 4 session workshop is to teach new-to-programming data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
 
-## Daily schedule
+## Daily schedule {-}
+
 | Activity   | Start Time | End time |
 |------------|------------|----------|
 | Module #1  | 9:00       | 10:30    |
 | Break      | 10:30      | 10:45    |
 | Module #2  | 10:45      | 12:00    |
 
-### Day 1
+### Day 1 {-}
 
 - Introduction to Course (30 min) <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
 - Demo (10 min) **(Sam)**
@@ -33,7 +34,7 @@ The goal of this 4 session workshop is to teach new-to-programming data professi
 - [Seeking Help in R] (15 minutes) **(Andy)**
 - [Project Management With RStudio] (40 minutes) **(Andy)**
 
-### Day 2
+### Day 2 {-}
 
 - Review + questions (30 minutes)
 - [Data Structures] (50 minutes)  **(Andy)**
@@ -41,14 +42,14 @@ The goal of this 4 session workshop is to teach new-to-programming data professi
 - [Exploring Data Frames] (30 minutes) **(Bonnie)**
 - [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 1 (60 minutes)  **(Bonnie)**
 
-### Day 3
+### Day 3 {-}
 
 - Review + questions (30 minutes)
 - [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 2 (40 minutes)  **(Bonnie)**
 - BREAK ☕
 - [Data Manipulation with `dplyr`][Dataframe Manipulation with dplyr] (90 minutes) **(Andy)**
 
-### Day 4
+### Day 4 {-}
 
 - Review + questions (30 min)
 - [Data Manipulation with `tidyr`][Create Tidy Data with tidyr] (45 minutes)  **(Sam)**
