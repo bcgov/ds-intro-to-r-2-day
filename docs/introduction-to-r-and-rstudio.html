@@ -521,12 +521,12 @@ upcoming lesson.</p>
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "age"            "fix_fig_path"   "knitr_fig_path" "mass"          
 [5] "x"              "y"             </code></pre>
-<blockquote>
-<h2 id="tip-hidden-objects">Tip: hidden objects</h2>
+<div class="rmdtip">
+<p><strong>Tip: hidden objects</strong></p>
 <p>Like in the shell, <code>ls</code> will hide any variables or functions starting
 with a “.” by default. To list all objects, type <code>ls(all.names=TRUE)</code>
 instead</p>
-</blockquote>
+</div>
 <p>Note here that we didn’t give any arguments to <code>ls</code>, but we still
 needed to give the parentheses to tell R to call the function.</p>
 <p>If we type <code>ls</code> by itself, R will print out the source code for that function!</p>
@@ -563,7 +563,7 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7f9d99c1adf8&gt;
+&lt;bytecode: 0x7fbbe94963f8&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
@@ -572,15 +572,15 @@ needed to give the parentheses to tell R to call the function.</p>
 you can pass the results of <code>ls</code> to the <code>rm</code> function:</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<blockquote>
-<h2 id="tip-warnings-vs.-errors">Tip: Warnings vs. Errors</h2>
+<p>:: {.rmdtip}
+<strong>Tip: Warnings vs. Errors</strong></p>
 <p>Pay attention when R does something unexpected! Errors, like above,
 are thrown when R cannot proceed with a calculation. Warnings on the
 other hand usually mean that the function has run, but it probably
 hasn’t worked as expected.</p>
 <p>In both cases, the message that R prints out usually give you clues
 how to fix a problem.</p>
-</blockquote>
+<p>:::</p>
 <div id="challenge-4" class="section level3" number="1.11.1">
 <h3>
 <span class="header-section-number">1.11.1</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"><i class="fas fa-link"></i></a>

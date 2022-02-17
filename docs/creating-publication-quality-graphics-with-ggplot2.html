@@ -220,10 +220,10 @@ demonstration:</p>
 global plot options in <code>ggplot</code> to the <code>geom_line</code> layer so it no longer applies
 to the points. Now we can clearly see that the points are drawn on top of the
 lines.</p>
-<blockquote>
-<h2 id="tip-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip: Setting an aesthetic to a value instead of a mapping</h2>
+<div class="rmdtip">
+<p><strong>Tip: Setting an aesthetic to a value instead of a mapping</strong></p>
 <p>So far, we’ve seen how to use an aesthetic (such as <strong>colour</strong>) as a <em>mapping</em> to a variable in the data. For example, when we use <code>geom_line(mapping = aes(colour = continent))</code>, ggplot will give a different colour to each continent. But what if we want to change the colour of all lines to blue? You may think that <code>geom_line(mapping = aes(colour = "blue"))</code> should work, but it doesn’t. Since we don’t want to create a mapping to a specific variable, we simply move the colour specification outside of the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> function, like this: <code>geom_line(colour = "blue")</code>.</p>
-</blockquote>
+</div>
 <div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, group <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span>
@@ -276,10 +276,10 @@ corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
 of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
 axis and so on. This makes it easier to visualize the spread of data on the
 x-axis.</p>
-<blockquote>
-<h2 id="tip-reminder-setting-an-aesthetic-to-a-value-instead-of-a-mapping">Tip Reminder: Setting an aesthetic to a value instead of a mapping</h2>
+<div class="rmdtip">
+<p><strong>Tip Reminder: Setting an aesthetic to a value instead of a mapping</strong></p>
 <p>Notice that we used <code>geom_point(alpha = 0.5)</code>. As the previous tip mentioned, using a setting outside of the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, <em>alpha</em> can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with <code>geom_point(mapping = aes(alpha = continent))</code>.</p>
-</blockquote>
+</div>
 <p>We can fit a simple relationship to the data by adding another layer, <code>geom_smooth</code>:</p>
 <div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -400,12 +400,15 @@ of a fill legend would be set using <code>fill = "MyTitle"</code>.</p>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
         plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="fig/rmd-06-theme-1.png" width="576" style="display: block; margin: auto;"></div>
-<blockquote>
-<h2 id="tip">Tip</h2>
+</div>
+<div id="tip-theming" class="section level2 rmptip" number="6.6">
+<h2>
+<span class="header-section-number">6.6</span> Tip: Theming<a class="anchor" aria-label="anchor" href="#tip-theming"><i class="fas fa-link"></i></a>
+</h2>
 <p>Note that we apply a “theme” definition to customize
 the x-axis label sizes to maintain readability. Nearly everything in
 ggplot2 is customizable.</p>
-</blockquote>
+</div>
 <p>We can also use one of the many built in <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">themes</a> in <code>ggplot2</code>. Like geom layers, each theme each layer is drawn on top of the previous theme layer.</p>
 <div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">asia_oceania</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -421,10 +424,9 @@ ggplot2 is customizable.</p>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,
         plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="fig/rmd-06-more-theme-1.png" width="576" style="display: block; margin: auto;"></div>
-</div>
-<div id="exporting-the-plot" class="section level2" number="6.6">
+<div id="exporting-the-plot" class="section level2" number="6.7">
 <h2>
-<span class="header-section-number">6.6</span> Exporting the plot<a class="anchor" aria-label="anchor" href="#exporting-the-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7</span> Exporting the plot<a class="anchor" aria-label="anchor" href="#exporting-the-plot"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> function allows you to export a plot created with <code>ggplot2</code>. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (<code>width</code>, <code>height</code> and <code>dpi</code>) to create high quality graphics for publication. In order to save the plot from above, we first assign it to a variable <code>lifeExp_plot</code>, then tell <code>ggsave</code> to save that plot in <code>png</code> format to a directory called <code>results</code>. (Make sure you have a <code>results/</code> folder in your working directory.)</p>
 <div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
@@ -477,7 +479,8 @@ code to modify. Finally, there are many websites that provide examples of <code>
 </li>
 <li><a class="nav-link" href="#multi-panel-figures"><span class="header-section-number">6.4</span> Multi-panel figures</a></li>
 <li><a class="nav-link" href="#modifying-text"><span class="header-section-number">6.5</span> Modifying text</a></li>
-<li><a class="nav-link" href="#exporting-the-plot"><span class="header-section-number">6.6</span> Exporting the plot</a></li>
+<li><a class="nav-link" href="#tip-theming"><span class="header-section-number">6.6</span> Tip: Theming</a></li>
+<li><a class="nav-link" href="#exporting-the-plot"><span class="header-section-number">6.7</span> Exporting the plot</a></li>
 </ul>
 
       <div class="book-extra">

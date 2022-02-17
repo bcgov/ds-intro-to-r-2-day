@@ -715,11 +715,13 @@ ls()
 [5] "x"              "y"             
 ```
 
-> ## Tip: hidden objects
->
-> Like in the shell, `ls` will hide any variables or functions starting
-> with a "." by default. To list all objects, type `ls(all.names=TRUE)`
-> instead
+::: {.rmdtip}
+**Tip: hidden objects**
+
+Like in the shell, `ls` will hide any variables or functions starting
+with a "." by default. To list all objects, type `ls(all.names=TRUE)`
+instead
+:::
 
 
 Note here that we didn't give any arguments to `ls`, but we still
@@ -764,7 +766,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f9d99c1adf8>
+<bytecode: 0x7fbbe94963f8>
 <environment: namespace:base>
 ```
 
@@ -784,16 +786,18 @@ rm(list = ls())
 ```
 
 
+:: {.rmdtip}
+**Tip: Warnings vs. Errors**
 
-> ## Tip: Warnings vs. Errors
->
-> Pay attention when R does something unexpected! Errors, like above,
-> are thrown when R cannot proceed with a calculation. Warnings on the
-> other hand usually mean that the function has run, but it probably
-> hasn't worked as expected.
->
-> In both cases, the message that R prints out usually give you clues
-> how to fix a problem.
+Pay attention when R does something unexpected! Errors, like above,
+are thrown when R cannot proceed with a calculation. Warnings on the
+other hand usually mean that the function has run, but it probably
+hasn't worked as expected.
+
+In both cases, the message that R prints out usually give you clues
+how to fix a problem.
+
+:::
 
 ### Challenge 4
 
