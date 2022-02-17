@@ -363,7 +363,7 @@ different underlying representations and therefore be
 different by a small margin of error (called Machine
 numeric tolerance).
 
-Instead you should use the `all.equal` function.
+Instead you should use the `all.equal()` function.
 
 Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
 
