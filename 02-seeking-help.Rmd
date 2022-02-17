@@ -97,7 +97,7 @@ fields. This can be a good starting point.
 
 ### Challenge 1
 
-> Look at the help for the `sum` function. What are two ways you can pass numbers 
+> Look at the help for the `sum()` function. What are two ways you can pass numbers 
 > into the function so the are added together?
 > 
 > <details>
@@ -122,7 +122,7 @@ fields. This can be a good starting point.
 
 ### Challenge 2
 
-> Look at the help for the `paste` function. You'll need to use this later.
+> Look at the help for the `paste()` function. You'll need to use this later.
 > What is the difference between the `sep` and `collapse` arguments?
 > 
 > 
