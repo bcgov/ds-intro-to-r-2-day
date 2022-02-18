@@ -75,20 +75,26 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 > gapminder <- read_csv("data/gapminder_data.csv")
 > ```
 >
-> Then tell me how many rows and columns `gapminder` has:
+> How many rows and columns does `gapminder` have?
+>
+> What kind of data is in the `pop` and `continent` columns?
+>
+> <details>
 > 
-> ```{r eval=FALSE}
+> <summary>
+> Solution to challenge 1
+> </summary>
+> 
+> <br />
+> 
+> ```{r}
 > dim(gapminder)
 > nrow(gapminder)
 > ncol(gapminder)
-> ```
-> 
-> And tell me what kind of data is in the `pop` and `continent` columns
-> 
-> ```{r eval=FALSE}
 > str(gapminder)
 > summary(gapminder)
 > ```
+> </details>
 
 The first thing we should always do is check out what the data looks like with
 `str` or `summary`:
