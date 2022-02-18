@@ -172,16 +172,21 @@ We are first going set up a workspace, called an RStudio Project, where we can w
 the course materials and save our work.
 In the console, type: 
 
+
+```r
+install.packages("usethis")
+```
+
 If you are on Windows:
 
 ```r
-use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
 ```
 
 If you are on a Mac:
 
 ```r
-use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
 ```
 
 ... and press <kbd>Enter</kbd>.
@@ -772,7 +777,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fc18d6ebbf8>
+<bytecode: 0x7fbd9d5bbff8>
 <environment: namespace:base>
 ```
 

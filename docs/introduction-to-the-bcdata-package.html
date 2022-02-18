@@ -76,10 +76,10 @@ capabilities of R.</p>
 <span class="header-section-number">9.1</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>First we need to install the <code>bcdata</code> package:</p>
-<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"bcdata"</span><span class="op">)</span></code></pre></div>
 <p>And next we need to load the <code>bcdata</code> package, along with <code>dplyr</code> and <code>ggplot2</code> which we installed and used in earlier lessons:</p>
-<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bcgov.github.io/bcdata/">bcdata</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
@@ -89,7 +89,7 @@ capabilities of R.</p>
 <span class="header-section-number">9.2</span> Searching the B.C. Data Catalogue<a class="anchor" aria-label="anchor" href="#searching-the-b.c.-data-catalogue"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s use the <code>bcdata</code> package to search the B.C. Data Catalogue for some data on <em><strong>public libraries</strong></em> in British Columbia:</p>
-<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_search.html">bcdc_search</a></span><span class="op">(</span><span class="st">"public libraries"</span><span class="op">)</span></code></pre></div>
 <pre><code>List of B.C. Data Catalogue Records
 Number of records: 16
@@ -133,7 +133,7 @@ Titles:
 Access a single record by calling `bcdc_get_record(ID)` with the ID
  from the desired record.</code></pre>
 <p>There are many catalogue records with data relating to libraries. Let’s examine the first returned record more closely:</p>
-<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_record.html">bcdc_get_record</a></span><span class="op">(</span><span class="st">"bc-public-libraries-systems-branches-and-locations"</span><span class="op">)</span></code></pre></div>
 <pre><code>Warning: It is advised to use the permanent id ('3d2318d4-8f5d-4208-88f5-995420d7c58f') rather than the name of the record ('bc-public-libraries-systems-branches-and-locations') to guard against future name changes.</code></pre>
 <pre><code>B.C. Data Catalogue Record: BC Public Libraries Systems - Branches and
@@ -166,10 +166,10 @@ Query and filter this data using:
 <span class="header-section-number">9.3</span> Importing data from the B.C. Data Catalogue<a class="anchor" aria-label="anchor" href="#importing-data-from-the-b.c.-data-catalogue"><i class="fas fa-link"></i></a>
 </h2>
 <p>Next, we can use the <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data()</a></code> function to import this data directly into R:</p>
-<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span>record <span class="op">=</span> <span class="st">"bc-public-libraries-systems-branches-and-locations"</span><span class="op">)</span></code></pre></div>
 <p>The <em>bc-public-libraries-systems-branches-and-locations</em> catalogue record contains multiple data resources or files. If we run the above code interactively, R will prompt you in the console to select one of the available resources, as it does not know which one you want to download. The full code to import the resource from the record—using the record’s permanent id to guard against future name changesname—is provided to the user for next time:</p>
-<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lib_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span><span class="st">'3d2318d4-8f5d-4208-88f5-995420d7c58f'</span>,
                          resource <span class="op">=</span> <span class="st">'ed17f111-fb39-46b3-89aa-5375592fbb01'</span><span class="op">)</span></code></pre></div>
 <pre><code>Reading the data using the read_xlsx function from the readxl package.</code></pre>
@@ -187,7 +187,7 @@ Query and filter this data using:
 <span class="header-section-number">9.4</span> Practice manipulating data with <code>dplyr</code><a class="anchor" aria-label="anchor" href="#practice-manipulating-data-with-dplyr"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s return to the libraries data frame <code>lib_raw</code> we imported. As we learned earlier in the workshop, a useful first step is to get familiar with the data:</p>
-<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">lib_raw</span><span class="op">)</span></code></pre></div>
 <pre><code>tibble [253 × 38] (S3: tbl_df/tbl/data.frame)
  $ Library System                                               : chr [1:253] "Alert Bay Public Library &amp; Museum" "Beaver Valley Public Library" "Bowen Island Public Library" "Burnaby Public Library" ...
@@ -228,7 +228,7 @@ Query and filter this data using:
  $ 860x Branch space/size, total square metres                  : num [1:253] 213 270 407 5673 465 ...
  $ 890x Hours open per year at this location                    : chr [1:253] "618" "2320" "1953" "3612" ...
  $ 920x Days open per year at this location                     : chr [1:253] "191" "321" "303" "339" ...</code></pre>
-<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lib_raw</span><span class="op">)</span></code></pre></div>
 <pre><code> [1] "Library System"                                               
  [2] "Location"                                                     
@@ -269,7 +269,7 @@ Query and filter this data using:
 [37] "890x Hours open per year at this location"                    
 [38] "920x Days open per year at this location"                     </code></pre>
 <p>Let’s tidy up this data frame and find out how many books—physical materials or volumes—are available within each City:</p>
-<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
 <span class="va">lib_tidy</span> <span class="op">&lt;-</span> <span class="va">lib_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -290,7 +290,7 @@ Query and filter this data using:
 <details><summary>
 Solution to challenge 2
 </summary><p><br></p>
-<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Library System`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>totals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">total_books</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -317,14 +317,14 @@ Solution to challenge 2
 <span class="header-section-number">9.5</span> Practice plotting data with <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#practice-plotting-data-with-ggplot2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now that we have imported, tidied, and summarized our library data, let’s make a static data visualization to share and communicate the results with others.</p>
-<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
 <span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">total_books</span>, <span class="va">City</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="fig/rmd-09-unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total_books</span> <span class="op">&gt;</span> <span class="fl">100000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">total_books</span>, <span class="va">City</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -339,7 +339,7 @@ Solution to challenge 2
 <details><summary>
 Solution to challenge 3
 </summary><p><br></p>
-<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
 <span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
@@ -368,10 +368,10 @@ data. This example will require you to reference elements you’ve learned
 throughout the workshop.</p>
 <p>You can view the data record we are going to be working with in your browser by
 running the following command:</p>
-<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_browse.html">bcdc_browse</a></span><span class="op">(</span><span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span><span class="op">)</span></code></pre></div>
 <p>As we’ve previously learned we can use <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data()</a></code> to load data from the B.C. Data Catalogue directly into R. Let’s try that now:</p>
-<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span><span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span><span class="op">)</span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>
 <pre><code>New names:
@@ -388,7 +388,7 @@ chr (12): Notes:, ...2, ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ......
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_reg</span></code></pre></div>
 <pre><code># A tibble: 341 × 12
    `Notes:`    ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10 ...11 ...12
@@ -416,7 +416,7 @@ down. <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html
 conveniently has an argument called <code>skip</code> which allows us to specify the number
 of lines to skip before reading the data. We can use it with <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data()</a></code>
 like this:</p>
-<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span>
   <span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span>, 
   skip <span class="op">=</span> <span class="fl">9</span>
@@ -429,7 +429,7 @@ chr (12): Trade, Gender, FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_reg</span></code></pre></div>
 <pre><code># A tibble: 332 × 12
    Trade      Gender `FY2011/12` `FY2012/13` `FY2013/14` `FY2014/15` `FY2015/16`
@@ -447,7 +447,7 @@ chr (12): Trade, Gender, FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/...
 # … with 322 more rows, and 5 more variables: `FY2016/17` &lt;chr&gt;,
 #   `FY2017/18` &lt;chr&gt;, `FY2018/19` &lt;chr&gt;, `FY2019/20` &lt;chr&gt;, `FY2020/21` &lt;chr&gt;</code></pre>
 <p>Ok this is looking <em>much</em> better. We now have data that is rectangular and looks more like something we can work with. We do have one more little thing to take care of though. You will notice the data is filled with <code>...</code>. Those are missing values in the data. R has a specific way of handling missing values and we need to tell <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data()</a></code> (via <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>) that those are missing values. We do this by adding another argument:</p>
-<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span>
   <span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span>, 
   skip <span class="op">=</span> <span class="fl">9</span>, 
@@ -462,7 +462,7 @@ dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_reg</span></code></pre></div>
 <pre><code># A tibble: 332 × 12
    Trade      Gender `FY2011/12` `FY2012/13` `FY2013/14` `FY2014/15` `FY2015/16`
@@ -480,7 +480,7 @@ dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
 # … with 322 more rows, and 5 more variables: `FY2016/17` &lt;dbl&gt;,
 #   `FY2017/18` &lt;dbl&gt;, `FY2018/19` &lt;dbl&gt;, `FY2019/20` &lt;dbl&gt;, `FY2020/21` &lt;dbl&gt;</code></pre>
 <p>Now we are ready to work with this data. One thing you might notice is that this data is in <em>wide</em> format. The number of individuals of a given <code>Gender</code> and <code>Trade</code> are repeated over time across <em>columns</em> with each column being a fiscal year. This is great for making a nice table but less great if we want to make a plot. To reshape the data into long format, we can again make use of <code>pivot_longer</code> from the <code>tidyr</code> package. We only want to pivot the fiscal years so we need to specify those columns. In addition, we want to name our two new columns:</p>
-<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
 
 <span class="va">new_reg_long</span> <span class="op">&lt;-</span> <span class="va">new_reg</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
@@ -505,17 +505,17 @@ dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
 10 Aircraft Maintenance Technician Women  FY2020/21              NA
 # … with 3,310 more rows</code></pre>
 <p>There is actually quite a bit of data here while likely represents the number possible values for <code>Trade</code>. We can check the number of unique values in the <code>Trade</code> column using a handy function from <code>dplyr</code> called <code><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a></code>:</p>
-<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">new_reg_long</span><span class="op">$</span><span class="va">Trade</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 111</code></pre>
 <p>Sure enough there are 111 of them! Similarly, let’s have a look at what values are in the <code>Gender</code> column using the <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code> function you learned earlier:</p>
-<div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">new_reg_long</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "Women"                     "Men"                      
 [3] "Total (Women+Men)"         "Non-Disclosed/Unspecified"
 [5] "Grand Total"              </code></pre>
 <p>To simplify things let’s take a subset of the Trades in the data and only look at Men and Women:</p>
-<div class="sourceCode" id="cb453"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb454"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_reg_long</span> <span class="op">&lt;-</span> <span class="va">new_reg</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
     cols <span class="op">=</span> <span class="va">`FY2011/12`</span><span class="op">:</span><span class="va">`FY2020/21`</span>,
@@ -528,7 +528,7 @@ dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
     <span class="va">Trade</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Boilermaker"</span>, <span class="st">"Climbing Arborist"</span>, <span class="st">"Tilesetter"</span>, <span class="st">"Landscape Horticulturist"</span>,<span class="st">"Baker"</span><span class="op">)</span>
     <span class="op">)</span></code></pre></div>
 <p>With this tidied and filtered dataset, we now have something that we can plot using the skills we’ve learned with ggplot2. One thing to note is that we made use of the <code>ncol</code> argument in <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> so that the faceted plots would share the x-axis:</p>
-<div class="sourceCode" id="cb454"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">new_reg_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">fiscal_year</span>, y <span class="op">=</span> <span class="va">registrations</span>, fill <span class="op">=</span> <span class="va">Trade</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -545,7 +545,7 @@ dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
 <details><summary>
 Solution to challenge 4
 </summary><p><br></p>
-<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb456"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seafood_prod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span><span class="st">"e591a756-6b99-4986-b8ce-f341bd47228f"</span>, resource <span class="op">=</span> <span class="st">'9cc32dc4-bd9a-4baf-8210-770ac62d7985'</span><span class="op">)</span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>
 <pre><code>Rows: 111 Columns: 7
@@ -556,7 +556,7 @@ dbl (4): Year, Harvest ('000 t), Landed Value ($ million), Wholesale Value (...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb458"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">seafood_by_year</span> <span class="op">&lt;-</span> <span class="va">seafood_prod</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op">==</span> <span class="fl">2020</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Species/Product`</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
@@ -617,7 +617,7 @@ dbl (4): Year, Harvest ('000 t), Landed Value ($ million), Wholesale Value (...
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-17.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

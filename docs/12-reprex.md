@@ -99,7 +99,7 @@ structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1,
     "collector")), weight = structure(list(), class = c("collector_double", 
     "collector")), likes_string = structure(list(), class = c("collector_double", 
     "collector"))), default = structure(list(), class = c("collector_guess", 
-    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7fd4c3c61720>, class = c("spec_tbl_df", 
+    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7fcee1e567e0>, class = c("spec_tbl_df", 
 "tbl_df", "tbl", "data.frame"))
 ```
 
@@ -185,7 +185,7 @@ loaded via a namespace (and not attached):
  [9] yaml_2.3.4       utf8_1.2.2       rlang_1.0.1      jquerylib_0.1.4 
 [13] pillar_1.7.0     glue_1.6.1       withr_2.4.3      DBI_1.1.2       
 [17] bit64_4.0.5      lifecycle_1.0.1  stringr_1.4.0    munsell_0.5.0   
-[21] gtable_0.3.0     memoise_2.0.1    evaluate_0.14    labeling_0.4.2  
+[21] gtable_0.3.0     memoise_2.0.1    evaluate_0.15    labeling_0.4.2  
 [25] tzdb_0.2.0       fastmap_1.1.0    parallel_4.1.2   fansi_1.0.2     
 [29] highr_0.9        scales_1.1.1     cachem_1.0.6     vroom_1.5.7     
 [33] jsonlite_1.7.3   farver_2.1.0     fs_1.5.2         bit_4.0.4       
