@@ -175,14 +175,18 @@ We are first going set up a workspace, called an RStudio Project, where we can w
 the course materials and save our work.
 In the console, type: 
 
+```{r eval=FALSE}
+install.packages("usethis")
+```
+
 If you are on Windows:
 ```{r eval=FALSE}
-use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
 ```
 
 If you are on a Mac:
 ```{r eval=FALSE}
-use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
 ```
 
 ... and press <kbd>Enter</kbd>.
