@@ -310,7 +310,7 @@ usable, let's separate it into 2 variables with `separate()`
 
 ```{r}
 gap_wide_betterID <- separate(gap_wide_new, ID_var, c("continent", "country"), sep="_")
-gap_wide_betterID <- gap_long %>%
+gap_wide_betterID <- gap_long_split %>%
     unite(ID_var, continent, country, sep = "_") %>%
     unite(var_names, obs_type, year, sep = "_") %>%
     pivot_wider(names_from = var_names, values_from = obs_values) %>%
