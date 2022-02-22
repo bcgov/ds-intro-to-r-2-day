@@ -2,6 +2,10 @@ fig:plot1
 introduction-to-r-and-rstudio
 motivation
 before-starting-the-workshop
+introduction-to-rstudio
+work-flow-within-rstudio
+introduction-to-r
+before-we-dive-in
 using-r-as-a-calculator
 mathematical-functions
 comparing-things

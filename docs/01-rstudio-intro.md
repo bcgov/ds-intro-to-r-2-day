@@ -71,10 +71,8 @@ Download R and RStudio from the BC Government Software Centre:
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
 
-Open command prompt (Open Start Menu then type `cmd` and press
-<kbd>Enter</kbd>). Make sure your command prompt opens at the C directory e.g.
-```C:\>```. If it opens in another directory you can change this by typing
-```C:```.
+Open command prompt (Open Start Menu then type `cmd` and press <kbd>Enter</kbd>). Make sure your command prompt opens at the C directory e.g. ```C:\>```. If it opens in another directory you can change this by typing ```C:```.
+
 
 Type the following line into the command prompt window exactly as shown:
 
@@ -784,7 +782,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fc3c3eeb1f8>
+<bytecode: 0x7ffde5bbe3f8>
 <environment: namespace:base>
 ```
 
