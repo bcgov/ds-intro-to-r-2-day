@@ -282,7 +282,7 @@ ggplot(new_reg_long, aes(x = fiscal_year, y = registrations, fill = Trade)) +
 Try customizing the output with different `Trade` categories or different ggplot2 customizations. For example what strategies might you take to tidy up the x-axis. 
 
 
-### Challenge 4 (20 minutes)
+### Challenge 4 (15 minutes)
 >
 > Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. > An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one > of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
 > 
