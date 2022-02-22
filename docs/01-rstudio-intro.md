@@ -50,7 +50,17 @@ populations for all of these countries in under a minute!
 
 ## Before Starting The Workshop
 
-Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
+Please ensure you have the latest version of R and RStudio installed on your
+machine. This is important, as some packages used in the workshop may not
+install correctly (or at all) if R is not up to date.
+
+
+**If you do not have administrative rights on your computer:**
+
+Download R and RStudio from the BC Government Software Centre:
+
+- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
+- Install R (RforWindowsX64 4.0.5 Gen P0)
 
 **If you have administrative rights on your computer: **
 
@@ -61,7 +71,10 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
 
-Open command prompt (Open Start Menu then type `cmd` and press <kbd>Enter</kbd>). Make sure your command prompt opens at the C directory e.g. ```C:\>```. If it opens in another directory you can change this by typing ```C:```.  
+Open command prompt (Open Start Menu then type `cmd` and press
+<kbd>Enter</kbd>). Make sure your command prompt opens at the C directory e.g.
+```C:\>```. If it opens in another directory you can change this by typing
+```C:```.
 
 Type the following line into the command prompt window exactly as shown:
 
@@ -71,13 +84,6 @@ setx HOME "%USERPROFILE%"
 
 Press <kbd>Enter</kbd>, you should see **SUCCESS: Specified value was saved**.
 Quit command prompt by typing `exit` then pressing <kbd>Enter</kbd>
-
-**If you do not have administrative rights on your computer:**
-
-Download R and RStudio from the BC Government Software Centre:
-
-- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
-- Install R (RforWindowsX64 4.0.5 Gen P0)
 
 
 
@@ -443,7 +449,7 @@ A word of warning about comparing numbers: you should
 never use `==` to compare two numbers unless they are
 integers (a data type which can specifically represent
 only whole numbers).
-:::
+
 
 Computers may only represent decimal numbers with a
 certain degree of precision, so two numbers which look
@@ -456,6 +462,7 @@ Instead you should use the `all.equal()` function.
 
 Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
 
+:::
 
 ## Variables and assignment
 
@@ -777,7 +784,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f865c98d7f8>
+<bytecode: 0x7fc3c3eeb1f8>
 <environment: namespace:base>
 ```
 

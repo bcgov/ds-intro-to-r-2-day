@@ -357,7 +357,7 @@ of the “Help” field in the toolbar at the top of RStudio.</p>
 ```
 </pre>
 <p>When we knit the document we can see both the code and the result:</p>
-<div class="sourceCode" id="cb467"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb466"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> </code></pre></div>
 <pre><code>[1] 2</code></pre>
 <p>If we dont want the code to appear in the output we can use the <code>echo</code> parameters.</p>
@@ -464,18 +464,18 @@ executed and replaced with the evaluated <em>value</em> as the result.</p>
 little triangle next to the “Knit” button to get a drop-down
 menu.</p>
 <p>Alternatively we can change the YAML:</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="data-analysis-reports.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb469-2"><a href="data-analysis-reports.html#cb469-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Exploring R Markdown"</span></span>
+<span id="cb469-3"><a href="data-analysis-reports.html#cb469-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb469-4"><a href="data-analysis-reports.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="data-analysis-reports.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
 <span id="cb470-2"><a href="data-analysis-reports.html#cb470-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Exploring R Markdown"</span></span>
-<span id="cb470-3"><a href="data-analysis-reports.html#cb470-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb470-3"><a href="data-analysis-reports.html#cb470-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> word_document</span>
 <span id="cb470-4"><a href="data-analysis-reports.html#cb470-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="data-analysis-reports.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
 <span id="cb471-2"><a href="data-analysis-reports.html#cb471-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Exploring R Markdown"</span></span>
-<span id="cb471-3"><a href="data-analysis-reports.html#cb471-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> word_document</span>
+<span id="cb471-3"><a href="data-analysis-reports.html#cb471-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> pdf_document</span>
 <span id="cb471-4"><a href="data-analysis-reports.html#cb471-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="data-analysis-reports.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb472-2"><a href="data-analysis-reports.html#cb472-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Exploring R Markdown"</span></span>
-<span id="cb472-3"><a href="data-analysis-reports.html#cb472-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> pdf_document</span>
-<span id="cb472-4"><a href="data-analysis-reports.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <div id="a-note-about-rmd-outputs" class="section level3" number="10.9.1">
 <h3>
 <span class="header-section-number">10.9.1</span> A note about Rmd outputs<a class="anchor" aria-label="anchor" href="#a-note-about-rmd-outputs"><i class="fas fa-link"></i></a>
@@ -486,7 +486,7 @@ menu.</p>
 <p>Markdown documents can be compiled to PDF, however it will likely you will require additional
 software called LaTex. This software can be tricky to install and it is reccommended to use<br><a href="https://yihui.org/tinytex/">tinytex</a> as an alternative. This R package is a lightweight
 version of LaTex is designed for r users. You can install using the following commands:</p>
-<div class="sourceCode" id="cb473"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>There is lots of information and help available - see <a href="https://yihui.org/tinytex/faq/">tinytex FQA page</a></p>
 </blockquote>

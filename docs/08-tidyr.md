@@ -17,6 +17,9 @@ source: Rmd
 
 
 
+
+
+
 People who work with data often want to reshape their dataframes from 'wide' to 'longer'
 layouts, or vice-versa. The 'long' layout or format is where:
 
