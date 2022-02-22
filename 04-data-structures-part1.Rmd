@@ -313,7 +313,7 @@ cats$tail_length <- c(27.5, NA, 31)
 cats
 ```
 
-### Challenge 1
+### Challenge 1 (5 minutes)
 
 > What is the average tail length of our cats? (Hint, use the `mean` function)
 > 
@@ -365,7 +365,7 @@ typeof(coats)
 typeof(CATegories)
 ```
 
-### Challenge 2
+### Challenge 2 (10 minutes)
 
 > Look at the help for `?read_csv` to figure out how to control what data type 
 > each column is read as. Then write a command so that `coat` is read as a
