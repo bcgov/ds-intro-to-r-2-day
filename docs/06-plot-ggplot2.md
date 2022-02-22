@@ -145,7 +145,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 _Recap_: Every `ggplot2` plot has three key components: (1) **data**, (2) a set of aesthetic **mappings** between variables in the data and visual properties on the plot, and (3) at least one layer, created with a **geom** function.
 
 
-### Challenge 1
+### Challenge 1 (5 minutes)
 >
 > Modify the example so that the figure shows how life expectancy has
 > changed over time:
@@ -177,7 +177,7 @@ _Recap_: Every `ggplot2` plot has three key components: (1) **data**, (2) a set 
 > <img src="fig/rmd-06-ch1-sol-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
-### Challenge 2
+### Challenge 2 (10 minutes)
 > In the previous examples and challenge we've used the `aes` function to tell
 > the scatterplot **geom** about the **x** and **y** locations of each point.
 > Another *aesthetic* property we can modify is the point *colour*. Modify the
@@ -264,7 +264,6 @@ So far, we've seen how to use an aesthetic (such as **colour**) as a *mapping* t
 :::
 
 
-
 ```r
 ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, group = country)) +
   geom_line(colour = "blue") +
@@ -273,7 +272,7 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, group = country)) 
 
 <img src="fig/rmd-06-example-colour-all-1.png" width="576" style="display: block; margin: auto;" />
 
-### Challenge 3
+### Challenge 3 (5 minutes)
 >
 > Switch the order of the point and line layers from the previous example. What
 > happened?
@@ -382,7 +381,7 @@ aesthetic by passing it as an argument to `geom_smooth`. Previously in the
 lesson we've used the `aes` function to define a *mapping* between data
 variables and their visual representation.
 
-### Challenge 4a
+### Challenge 4a (10 minutes)
 >
 > Modify the colour and size of the points on the point layer in the previous
 > example.
@@ -414,7 +413,7 @@ variables and their visual representation.
 
 
 
-### Challenge 4b
+### Challenge 4b (10 minutes)
 >
 > Modify your solution to Challenge 4a so that the
 > points are now a different shape and are coloured by continent with new
@@ -429,19 +428,19 @@ variables and their visual representation.
 > </summary>
 > 
 > <br />
->
->```r
+> 
+> ```r
 > ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, colour = continent)) +
 > geom_point(size = 3, shape = 17) +
 > scale_x_log10() +
 > geom_smooth(method = "lm", size = 1.5)
->```
->
->```
->`geom_smooth()` using formula 'y ~ x'
->```
->
-><img src="fig/rmd-06-ch4b-sol-1.png" width="576" style="display: block; margin: auto;" />
+> ```
+> 
+> ```
+> `geom_smooth()` using formula 'y ~ x'
+> ```
+> 
+> <img src="fig/rmd-06-ch4b-sol-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
 
@@ -520,8 +519,10 @@ ggplot(data = asia_oceania, mapping = aes(x = year, y = lifeExp, colour = contin
 
 <img src="fig/rmd-06-theme-1.png" width="576" style="display: block; margin: auto;" />
 
+
 ::: {.rmptip}
 **Tip: Theming**
+
 Note that we apply a "theme" definition to customize 
 the x-axis label sizes to maintain readability.  Nearly everything in
 ggplot2 is customizable.

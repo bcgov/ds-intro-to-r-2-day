@@ -95,7 +95,7 @@ ggplot(canada, aes(x = gdpPercap, y = lifeExp)) +
 </pre>
 <p>We use the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function to perform a General Linear Model (GLM), of which
 a regression is one form. It is specified by a new syntax, a “formula” syntax:</p>
-<div class="sourceCode" id="cb473"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">response</span> <span class="op">~</span> <span class="fu">predictor</span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <p>So in our case, we can put in a new code chunk to fit the model:</p>
 <pre>
@@ -118,7 +118,7 @@ want to use later - such as regression coefficients and P values.</p>
 model results into a format we are familiar with: a <code>data.frame</code>. <em>broom</em> works
 with many different types of models, today we are going to use it on our <code>lm</code>.</p>
 <p>You will first need to install the package:</p>
-<div class="sourceCode" id="cb474"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb488"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"broom"</span><span class="op">)</span></code></pre></div>
 <p>Then add a chunk that loads the package, and calls the most commonly-used
 functions in <em>broom</em>:</p>
@@ -187,7 +187,7 @@ we live longer by approximately `r life_exp_esimate` years.</code></pre>
 <p>This helps reduce typos, copy-paste errors, and ensures that if our data change,
 so do our results.</p>
 <blockquote>
-<h2 id="challenge-1-7">Challenge 1</h2>
+<h2 id="challenge-1-5">Challenge 1</h2>
 <p>Create a copy of your report for Canada, and do it for the country of your choice.</p>
 <blockquote>
 <h2 id="solution-to-challenge-1">Solution to Challenge 1</h2>
@@ -199,7 +199,7 @@ in your
 </blockquote>
 </blockquote>
 <blockquote>
-<h2 id="challenge-2-6">Challenge 2</h2>
+<h2 id="challenge-2-4">Challenge 2</h2>
 <p>Remove or add chunks, and change the chunk options to only show the figures
 and results so the rendered report looks like a report you would submit.</p>
 <blockquote>
