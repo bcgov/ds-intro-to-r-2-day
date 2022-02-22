@@ -20,7 +20,8 @@
 
 # Take a few minutes to search the B.C. Data Catalogue for data sets for a
 # different topic. Identify and import one tabular data set into your R session
-# (e.g. a CSV or XLS resource).
+# (e.g. a CSV or XLS resource). Entering bcdc_browse() into the R console will
+# open the catalogue page in your default web browser.
 
 
 
@@ -33,8 +34,8 @@
 
 ## Challenge 2 ---------------------------------------------------------------
 
-# Using dplyr, determine the total number of books within each
-# Library System in British Columbia.
+# Using dplyr, determine the total number of books within each Library System
+# between 51 and 53 degrees latitude in British Columbia.
 
 
 
@@ -53,7 +54,12 @@
 
 
 
-## Using `bcdata` with spatial data in the B.C. Data Catalogue ----------------
+# Importing data from the B.C. Data Catalogue - Another Example -----------
+
+
+# Challenge 4 -------------------------------------------------------------
+
+
 
 
 

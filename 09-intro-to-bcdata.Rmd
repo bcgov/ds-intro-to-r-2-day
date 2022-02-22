@@ -98,10 +98,10 @@ names(lib_raw)
 ```
 
 Let's tidy up this data frame and find out how many books&mdash;physical
-materials or volumes&mdash;are available between 51 and 53 degrees `Latitude`. Remember
-that we previously used `select` to return only columns that we wanted. Here we
-are _also_ using `select` to rename `460x Total branch physical materials,
-volumes held` to `num_books`:
+materials or volumes&mdash;are available between _51 and 53 degrees Latitude_. Remember
+that we previously used `select()` to return only columns that we wanted. Here we
+are _also_ using `select()` to rename `460x Total branch physical materials, volumes held`
+to `num_books`:
 
 ```{r}
 library(dplyr)
@@ -162,11 +162,11 @@ sum_books %>%
 > </summary>
 > 
 > <br />
->```{r fig.height = 10}
+>```{r}
 >library(ggplot2)
 >
 >sum_books %>% 
->  ggplot(aes(x = total_books, y = City)) +
+>  ggplot(aes(x = total_books, y = City, fill = `Library System`)) +
 >  geom_col() +
 >  theme_minimal() +
 >  labs(x = NULL,
@@ -195,12 +195,12 @@ bcdc_browse("new-apprenticeship-registrations-by-fiscal-year-and-gender")
 As we've previously learned we can use `bcdc_get_data()` to load data from the B.C. Data Catalogue directly into R. Let's try that now:
 
 ```{r}
-new_reg <- bcdc_get_data("new-apprenticeship-registrations-by-fiscal-year-and-gender")
+new_reg <- bcdc_get_data(record = "new-apprenticeship-registrations-by-fiscal-year-and-gender")
 new_reg
 ```
 
 Well this doesn't look right. We can see near the bottom of our output that
-there are the words of `Gender` and `Trade` but we also have this mess of `NAs`.
+there are the words of `Gender` and `Trade` so we know the data is there but we also have this mess of `<NA>`.
 In this scenario it can be helpful to look at the raw data. Navigate back to the
 catalogue page you opened earlier and click the <kbd>View</kbd> button. This
 will take you to the
@@ -214,18 +214,18 @@ like this:
 
 ```{r}
 new_reg <- bcdc_get_data(
-  "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
+  record = "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
   skip = 9
   )
 new_reg
 ```
 
 Ok this is looking _much_ better. We now have data that is rectangular and looks
-more like something we can work with. We do have one more little thing to take
-care of though. You will notice the data is filled with `...`. Those are missing
+more like something we can work with. We do have one more thing to take
+care of though. You will notice the data is filled with `...` values. Those are missing
 values in the data. R has a specific way of handling missing values and we need
 to tell `bcdc_get_data()` (via `read_csv()`) that those are missing values. We
-do this by adding another argument:
+do this by adding another argument so that R interprets the `...` as missing values:
 
 ```{r}
 new_reg <- bcdc_get_data(
@@ -241,9 +241,9 @@ data is in _wide_ format. The number of individuals of a given `Gender` and
 `Trade` are repeated over time across _columns_ with each column being a fiscal
 year. This is great for making a nice table but less great if we want to make a
 plot. To reshape the data into long format, we can again make use of
-`pivot_longer` from the `tidyr` package. We only want to pivot the fiscal years
-so we need to specify those columns. In addition, we want to name our two new
-columns:
+`pivot_longer` from the `tidyr` package which we covered in the [tidyr section][Create Tidy Data with tidyr]. We only want to pivot the fiscal years
+so we need to specify those columns. In addition, we want to give our two new
+columns so descriptive names:
 
 ```{r}
 library(tidyr)
@@ -282,12 +282,12 @@ new_reg_long <- new_reg %>%
   ) %>% 
   filter(
     Gender %in% c("Men", "Women"),
-    Trade %in% c("Boilermaker", "Climbing Arborist", "Tilesetter", "Landscape Horticulturist","Baker")
+    Trade %in% c("Boilermaker", "Climbing Arborist", "Tilesetter", "Landscape Horticulturist", "Baker")
     )
 ```
 
 With this tidied and filtered dataset, we now have something that we can plot
-using the skills we've learned with ggplot2. One thing to note is that we made
+using the skills we've learned in the [ggplot2 section][Creating Publication-Quality Graphics with ggplot2]. One thing to note is that we made
 use of the `ncol` argument in `facet_wrap()` so that the faceted plots would
 share the x-axis:
 
@@ -299,12 +299,12 @@ ggplot(new_reg_long, aes(x = fiscal_year, y = registrations, fill = Trade)) +
   facet_wrap(vars(Gender), ncol = 1)
 ```
 
-Try customizing the output with different `Trade` categories or different ggplot2 customizations. For example what strategies might you take to tidy up the x-axis. 
+Try customizing the output with different `Trade` categories or different ggplot2 customizations. For example what strategies might you take to tidy up the x-axis?
 
 
 ### Challenge 4 (15 minutes)
 >
-> Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. > An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one > of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
+> Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
 > 
 > <details>
 > 
