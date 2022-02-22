@@ -535,7 +535,7 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
-### Challenge 1
+### Challenge 1 (5 minutes)
 > Which of the following are valid R variable names?
 > 
 > ```r
@@ -582,7 +582,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 > </details>
 
 
-### Challenge 2
+### Challenge 2 (5 minutes)
 > What will be the value of each  variable  after each
 > statement in the following program?
 > 
@@ -631,7 +631,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 
 
 
-### Challenge 3
+### Challenge 3 (5 minutes)
 
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
@@ -777,7 +777,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fbd9d5bbff8>
+<bytecode: 0x7f865c98d7f8>
 <environment: namespace:base>
 ```
 
@@ -810,7 +810,7 @@ how to fix a problem.
 
 :::
 
-### Challenge 4
+### Challenge 4 (2 minutes)
 
 > Clean up your working environment by deleting the mass and age
 > variables.
@@ -857,7 +857,7 @@ R and RStudio have functionality for managing packages:
 
 
 
-### Challenge 5
+### Challenge 5 (2 minutes)
 
 > Install the following packages: `ggplot2`, `dplyr`.
 > 

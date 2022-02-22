@@ -47,8 +47,8 @@ installed dplyr in the previous lesson):
 
 
 ```r
-#install.packages("tidyr")
-#install.packages("dplyr")
+install.packages("tidyr")
+install.packages("dplyr")
 ```
 
 Load the packages
@@ -277,15 +277,15 @@ type (`pop`,`lifeExp`, or `gdpPercap`) and the `year`. We can use the
 
 
 ```r
-gap_long <- gap_long %>% 
+gap_long_split <- gap_long %>% 
     separate(obstype_year, into = c('obs_type', 'year'), sep = "_") %>% 
     mutate(year = as.numeric(year))
 ```
 
 
-### Challenge 2
+### Challenge 2 (5 minutes)
 >
-> Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent.
+> Using `gap_long_split`, calculate the mean life expectancy, population, and gdpPercap for each continent.
 >**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
 >
 > <details>
@@ -297,8 +297,9 @@ gap_long <- gap_long %>%
 > <br />
 >
 >```r
->gap_long %>% group_by(continent, obs_type) %>%
->    summarize(means=mean(obs_values))
+>gap_long_split %>% 
+>   group_by(continent, obs_type) %>%
+>   summarize(means=mean(obs_values))
 >```
 >
 >```
@@ -331,7 +332,7 @@ gap_long <- gap_long %>%
 
 ## From long to intermediate format with pivot_wider()
 
-It is always good to check work. So, let's use the second `pivot` function, `pivot_wider()`, to 'widen' our observation variables back out.  `pivot_wider()` is the opposite of `pivot_longer()`, making a dataset wider by increasing the number of columns and decreasing the number of rows. We can use `pivot_wider()` to pivot or reshape our `gap_long` to the original intermediate format or the widest format. Let's start with the intermediate format.
+It is always good to check work. So, let's use the second `pivot` function, `pivot_wider()`, to 'widen' our observation variables back out.  `pivot_wider()` is the opposite of `pivot_longer()`, making a dataset wider by increasing the number of columns and decreasing the number of rows. We can use `pivot_wider()` to pivot or reshape our `gap_long_split` to the original intermediate format or the widest format. Let's start with the intermediate format.
 
 The `pivot_wider()` function takes `names_from` and `values_from` arguments.
 
@@ -341,7 +342,7 @@ from the column named in the `values_from` argument.
 
 
 ```r
-gap_normal <- gap_long %>%
+gap_normal <- gap_long_split %>%
   pivot_wider(names_from = obs_type, values_from = obs_values)
 dim(gap_normal)
 ```
@@ -456,7 +457,7 @@ of defining `gap_wide`.
 
 
 ```r
-gap_temp <- gap_long %>% unite(var_ID, continent, country, sep = "_")
+gap_temp <- gap_long_split %>% unite(var_ID, continent, country, sep = "_")
 gap_temp
 ```
 
@@ -478,7 +479,7 @@ gap_temp
 ```
 
 ```r
-gap_temp <- gap_long %>%
+gap_temp <- gap_long_split %>%
     unite(ID_var, continent, country, sep = "_") %>%
     unite(var_names, obs_type, year, sep = "_")
 gap_temp
@@ -507,7 +508,7 @@ pipe in `pivot_wider()`
 
 
 ```r
-gap_wide_new <- gap_long %>%
+gap_wide_new <- gap_long_split %>%
   unite(ID_var, continent, country, sep = "_") %>%
   unite(var_names, obs_type, year, sep = "_") %>%
   pivot_wider(names_from = var_names, values_from = obs_values)
@@ -537,7 +538,7 @@ gap_wide_new
 #   lifeExp_1987 <dbl>, gdpPercap_1987 <dbl>, pop_1992 <dbl>, …
 ```
 
-### Challenge 3
+### Challenge 3 (10 minutes)
 > Take this 1 step further and create a `gap_ludicrously_wide` format data by pivoting over countries, year and the 3 metrics?
 >**Hint** this new dataframe should only have 5 rows.
 >
@@ -550,7 +551,7 @@ gap_wide_new
 > <br />
 >
 >```r
->gap_ludicrously_wide <- gap_long %>%
+>gap_ludicrously_wide <- gap_long_split %>%
 >    unite(var_names, obs_type, year, country, sep = "_") %>%
 >    pivot_wider(names_from = var_names, values_from = obs_values)
 >```
@@ -565,7 +566,7 @@ usable, let's separate it into 2 variables with `separate()`
 
 ```r
 gap_wide_betterID <- separate(gap_wide_new, ID_var, c("continent", "country"), sep="_")
-gap_wide_betterID <- gap_long %>%
+gap_wide_betterID <- gap_long_split %>%
     unite(ID_var, continent, country, sep = "_") %>%
     unite(var_names, obs_type, year, sep = "_") %>%
     pivot_wider(names_from = var_names, values_from = obs_values) %>%

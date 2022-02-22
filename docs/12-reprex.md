@@ -99,7 +99,7 @@ structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1,
     "collector")), weight = structure(list(), class = c("collector_double", 
     "collector")), likes_string = structure(list(), class = c("collector_double", 
     "collector"))), default = structure(list(), class = c("collector_guess", 
-    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7fcee1e567e0>, class = c("spec_tbl_df", 
+    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7fbb34c9b600>, class = c("spec_tbl_df", 
 "tbl_df", "tbl", "data.frame"))
 ```
 
@@ -180,15 +180,15 @@ other attached packages:
 [1] ggplot2_3.3.5 dplyr_1.0.8   readr_2.1.2   reprex_2.0.1  knitr_1.37   
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.1 xfun_0.29        bslib_0.3.1      purrr_0.3.4     
- [5] colorspace_2.0-2 vctrs_0.3.8      generics_0.1.2   htmltools_0.5.2 
- [9] yaml_2.3.4       utf8_1.2.2       rlang_1.0.1      jquerylib_0.1.4 
+ [1] tidyselect_1.1.2 xfun_0.29        bslib_0.3.1      purrr_0.3.4     
+ [5] colorspace_2.0-3 vctrs_0.3.8      generics_0.1.2   htmltools_0.5.2 
+ [9] yaml_2.3.5       utf8_1.2.2       rlang_1.0.1      jquerylib_0.1.4 
 [13] pillar_1.7.0     glue_1.6.1       withr_2.4.3      DBI_1.1.2       
 [17] bit64_4.0.5      lifecycle_1.0.1  stringr_1.4.0    munsell_0.5.0   
 [21] gtable_0.3.0     memoise_2.0.1    evaluate_0.15    labeling_0.4.2  
 [25] tzdb_0.2.0       fastmap_1.1.0    parallel_4.1.2   fansi_1.0.2     
 [29] highr_0.9        scales_1.1.1     cachem_1.0.6     vroom_1.5.7     
-[33] jsonlite_1.7.3   farver_2.1.0     fs_1.5.2         bit_4.0.4       
+[33] jsonlite_1.8.0   farver_2.1.0     fs_1.5.2         bit_4.0.4       
 [37] hms_1.1.1        digest_0.6.29    stringi_1.7.6    bookdown_0.24   
 [41] grid_4.1.2       cli_3.2.0        tools_4.1.2      magrittr_2.0.2  
 [45] sass_0.4.0       tibble_3.1.6     crayon_1.5.0     pkgconfig_2.0.3 

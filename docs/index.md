@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Data Science using R Workshop"
-date: "2022-02-18"
+date: "2022-02-22"
 site: bookdown::bookdown_site
 output: bookdown::bs4_book
 url: https://bcgov.github.io/ds-intro-to-r-2-day
@@ -55,7 +55,6 @@ The goal of this 4 session workshop is to teach new-to-programming data professi
 - [Data Manipulation with `tidyr`][Create Tidy Data with tidyr] (45 minutes)  **(Sam)**
 - BREAK ☕
 - [Introduction to `bcdata` and practice `ggplot2` and `dplyr`][Introduction to the bcdata package] (75 minutes) **(Sam)**
-- [Seeking Help from Others with `reprex`][Seeking Help from Others with reprex] (30 minutes) **(Sam)**
 
 
 
