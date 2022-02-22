@@ -147,23 +147,12 @@ to start digging into our data proper. Check out the first few lines:
 head(gapminder)
 ```
 
-
-
 Another very helpful function for looking at your data is the `unique` 
 function, to see the unique values in a particular column:
 
 ```{r}
 unique(gapminder$continent)
 ```
-
-
-To make sure our analysis is reproducible, we should put the code
-into a script file so we can come back to it later.
-
-### Challenge 2 (5 minutes)
-
-> Go to file -> new file -> R script, and write an R script
-> to load in the gapminder dataset.
 
 ## Basic subsetting
 
@@ -184,7 +173,7 @@ gapminder[100:110, ]
 gapminder[c(1, 3, 5, 7, 9), ]
 ```
 
-### Challenge 3 (5 minutes)
+### Challenge 2 (5 minutes)
 >
 > It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
 >
@@ -192,7 +181,7 @@ gapminder[c(1, 3, 5, 7, 9), ]
 > <details>
 > 
 > <summary>
-> Solution to challenge 3
+> Solution to challenge 2
 > </summary>
 > 
 > Use your knowledge of the dataset to choose some rows in the middle and at the end. 
@@ -263,21 +252,6 @@ can_mex <- gapminder$country %in% c("Canada", "Mexico")
 gapminder[can_mex, ]
 ```
 
-### Challenge 4 (5 minutes)
-> Select all the rows in `gapminder` with data from 1975 and earlier
->
-> <details>
-> 
-> <summary>
-> Solution to challenge 4
-> </summary>
-> 
-> <br />
-> ```{r}
-> gapminder[gapminder$year <= 1975, ]
-> ```
-> </details>
-
 We saw previously how we can select a single column using the dollar sign `$`:
 
 ```{r}
@@ -291,13 +265,32 @@ position using a character vector of column names:
 gapminder[ , c("country", "year", "lifeExp")]
 ```
 
-### Challenge 5 (10 minutes)
-> Select all the rows in `gapminder` with data from Canada, and just the columns
-> year, pop, and gdpPercap
+
+### Challenge 3 (5 minutes)
+> Select all the rows in `gapminder` with data from 1975 and earlier
+>
 > <details>
 > 
 > <summary>
-> Solution to challenge 5
+> Solution to challenge 3
+> </summary>
+> 
+> <br />
+> ```{r}
+> gapminder[gapminder$year <= 1975, ]
+> ```
+> </details>
+
+
+### Challenge 4 (5 minutes)
+
+> Select all the rows in `gapminder` with data from Canada, and just the columns
+> year, pop, and gdpPercap
+
+> <details>
+> 
+> <summary>
+> Solution to challenge 4
 > </summary>
 > 
 > <br />
