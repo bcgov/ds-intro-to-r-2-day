@@ -63,16 +63,13 @@ Note that this is a read-only view, it's not editable (which is a good thing!)
 
 So far, you have seen the basics of manipulating data frames with our cat data;
 now let's use those skills to digest a more realistic dataset. Let's read in the
-`gapminder` dataset that we downloaded previously:
+`gapminder` dataset that we downloaded previously and assign it to a data frame called `gapminder`:
+
+ ```{r}
+ gapminder <- read_csv("data/gapminder_data.csv")
+ ```
 
 ### Challenge 1 (5 minutes)
->
-> Read in the gapminder dataset using read_csv and assign it to a data frame
-> called `gapminder`:
->
-> ```{r}
-> gapminder <- read_csv("data/gapminder_data.csv")
-> ```
 >
 > How many rows and columns does `gapminder` have?
 >
@@ -234,8 +231,8 @@ It's unlikely that you'll select rows directly though, you'll usually want
 to use some criteria. Say we just wanted the rows from Asia:
 
 ```{r}
-romania <- gapminder[gapminder$continent == "Asia", ]
-romania
+asia <- gapminder[gapminder$continent == "Asia", ]
+asia
 ```
 
 This works because subsetting can take either numerical positions like we showed
