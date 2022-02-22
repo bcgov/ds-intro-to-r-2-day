@@ -69,35 +69,46 @@ bcdc_get_data(record = "bc-public-libraries-systems-branches-and-locations")
 ```
 
 
-The _bc-public-libraries-systems-branches-and-locations_ catalogue record contains multiple data resources or files. If we run the above code interactively, R will prompt you in the console to select one of the available resources, as it does not know which one you want to download. The full code to import the resource from the record&mdash;using the record's permanent id to guard against future name changesname&mdash;is provided to the user for next time:
+The _bc-public-libraries-systems-branches-and-locations_ catalogue record
+contains multiple data resources or files. If we run the above code
+interactively, R will prompt you in the console to select one of the available
+resources, as it does not know which one you want to download. The full code to
+import the resource from the record&mdash;using the record's permanent id to
+guard against future name changes&mdash;is provided to the user for next time:
 
 ```{r}
-lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
+lib_raw <- bcdc_get_data(record = '3d2318d4-8f5d-4208-88f5-995420d7c58f',
                          resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
 ```
 
 ### Challenge 1 (5 minutes)
 >
-> Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session > (e.g. a CSV or XLS resource). Entering `bcdc_browse()` into the R console will open the catalogue page in your default web browser. 
+> Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session (e.g. a CSV or XLS resource). Entering `bcdc_browse()` into the R console will open the catalogue page in your default web browser. 
 
 
 ## Practice manipulating data with `dplyr`  
 
 
-Let's return to the libraries data frame `lib_raw` we imported. As we learned earlier in the workshop, a useful first step is to get familiar with the data:
+Let's return to the libraries data frame `lib_raw` we imported. As we learned
+earlier in the workshop, a useful first step is to get familiar with the data:
 
 ```{r}
 str(lib_raw)
 names(lib_raw)
 ```
 
-Let's tidy up this data frame and find out how many books&mdash;physical materials or volumes&mdash;are available within each City:
+Let's tidy up this data frame and find out how many books&mdash;physical
+materials or volumes&mdash;are available between 51 and 53 degrees `Latitude`. Remember
+that we previously used `select` to return only columns that we wanted. Here we
+are _also_ using `select` to rename `460x Total branch physical materials,
+volumes held` to `num_books`:
 
 ```{r}
 library(dplyr)
 
 lib_tidy <- lib_raw %>%
-  select(`Library System`, Location, City, num_books = "460x Total branch physical materials, volumes held")
+  filter(Latitude <= 53, Latitude >= 51) %>% 
+  select(`Library System`, Location, City, num_books = `460x Total branch physical materials, volumes held`)
 
 
 sum_books <- lib_tidy %>% 
@@ -107,7 +118,7 @@ sum_books <- lib_tidy %>%
 
 ### Challenge 2 (10 minutes)
 >
-> Using `dplyr`, determine the total number of books within each Library System in British Columbia.
+> Using `dplyr`, determine the total number of books within each Library System between 51 and 53 degrees latitude in British Columbia.
 >
 >
 > <details>
@@ -130,24 +141,18 @@ sum_books <- lib_tidy %>%
 
 Now that we have imported, tidied, and summarized our library data, let's make a static data visualization to share and communicate the results with others.
 
-```{r fig.height=13}
+```{r }
 library(ggplot2)
 
 sum_books %>% 
-  ggplot(aes(total_books, City)) +
+  ggplot(aes(x = total_books, y = City)) +
   geom_col()
 ```
 
-```{r}
-sum_books %>% 
-  filter(total_books > 100000) %>% 
-  ggplot(aes(total_books, City)) +
-  geom_col()
-```
 
 ### Challenge 3 (10 minutes)
 
-> Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable.
+> Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable. 
 >
 >
 > <details>
@@ -161,10 +166,8 @@ sum_books %>%
 >library(ggplot2)
 >
 >sum_books %>% 
->  filter(total_books > 100000) %>% 
->  ggplot(aes(total_books, City)) +
+>  ggplot(aes(x = total_books, y = City)) +
 >  geom_col() +
->  facet_wrap(vars(`Library System`), ncol = 3) +
 >  theme_minimal() +
 >  labs(x = NULL,
 >       y = NULL,
@@ -217,7 +220,12 @@ new_reg <- bcdc_get_data(
 new_reg
 ```
 
-Ok this is looking _much_ better. We now have data that is rectangular and looks more like something we can work with. We do have one more little thing to take care of though. You will notice the data is filled with `...`. Those are missing values in the data. R has a specific way of handling missing values and we need to tell `bcdc_get_data()` (via `read_csv()`) that those are missing values. We do this by adding another argument:
+Ok this is looking _much_ better. We now have data that is rectangular and looks
+more like something we can work with. We do have one more little thing to take
+care of though. You will notice the data is filled with `...`. Those are missing
+values in the data. R has a specific way of handling missing values and we need
+to tell `bcdc_get_data()` (via `read_csv()`) that those are missing values. We
+do this by adding another argument:
 
 ```{r}
 new_reg <- bcdc_get_data(
@@ -228,7 +236,14 @@ new_reg <- bcdc_get_data(
 new_reg
 ```
 
-Now we are ready to work with this data. One thing you might notice is that this data is in _wide_ format. The number of individuals of a given `Gender` and `Trade` are repeated over time across _columns_ with each column being a fiscal year. This is great for making a nice table but less great if we want to make a plot. To reshape the data into long format, we can again make use of `pivot_longer` from the `tidyr` package. We only want to pivot the fiscal years so we need to specify those columns. In addition, we want to name our two new columns:
+Now we are ready to work with this data. One thing you might notice is that this
+data is in _wide_ format. The number of individuals of a given `Gender` and
+`Trade` are repeated over time across _columns_ with each column being a fiscal
+year. This is great for making a nice table but less great if we want to make a
+plot. To reshape the data into long format, we can again make use of
+`pivot_longer` from the `tidyr` package. We only want to pivot the fiscal years
+so we need to specify those columns. In addition, we want to name our two new
+columns:
 
 ```{r}
 library(tidyr)
@@ -242,7 +257,9 @@ new_reg_long <- new_reg %>%
 new_reg_long
 ```
 
-There is actually quite a bit of data here while likely represents the number possible values for `Trade`. We can check the number of unique values in the `Trade` column using a handy function from `dplyr` called `n_distinct()`:
+There is actually quite a bit of data here while likely represents the number
+possible values for `Trade`. We can check the number of unique values in the
+`Trade` column using a handy function from `dplyr` called `n_distinct()`:
 
 ```{r}
 n_distinct(new_reg_long$Trade)
@@ -269,7 +286,10 @@ new_reg_long <- new_reg %>%
     )
 ```
 
-With this tidied and filtered dataset, we now have something that we can plot using the skills we've learned with ggplot2. One thing to note is that we made use of the `ncol` argument in `facet_wrap()` so that the faceted plots would share the x-axis:
+With this tidied and filtered dataset, we now have something that we can plot
+using the skills we've learned with ggplot2. One thing to note is that we made
+use of the `ncol` argument in `facet_wrap()` so that the faceted plots would
+share the x-axis:
 
 ```{r}
 library(ggplot2)
