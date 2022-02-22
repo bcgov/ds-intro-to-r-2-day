@@ -368,7 +368,7 @@ A word of warning about comparing numbers: you should
 never use `==` to compare two numbers unless they are
 integers (a data type which can specifically represent
 only whole numbers).
-:::
+
 
 Computers may only represent decimal numbers with a
 certain degree of precision, so two numbers which look
@@ -381,6 +381,7 @@ Instead you should use the `all.equal()` function.
 
 Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
 
+:::
 
 ## Variables and assignment
 
