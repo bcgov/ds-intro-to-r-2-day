@@ -65,7 +65,7 @@ So far, you have seen the basics of manipulating data frames with our cat data;
 now let's use those skills to digest a more realistic dataset. Let's read in the
 `gapminder` dataset that we downloaded previously:
 
-### Challenge 1
+### Challenge 1 (5 minutes)
 >
 > Read in the gapminder dataset using read_csv and assign it to a data frame
 > called `gapminder`:
@@ -126,6 +126,7 @@ gapminder <- read_csv("https://raw.githubusercontent.com/swcarpentry/r-novice-ga
 
 * You can read directly from excel spreadsheets without
 converting them to plain text first by using the [readxl](https://cran.r-project.org/package=readxl) package.
+
 :::
 
 We'll also likely want to know what the titles of all the columns are, so we can
@@ -162,7 +163,7 @@ unique(gapminder$continent)
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-### Challenge 2
+### Challenge 2 (5 minutes)
 
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset.
@@ -186,7 +187,7 @@ gapminder[100:110, ]
 gapminder[c(1, 3, 5, 7, 9), ]
 ```
 
-### Challenge 3
+### Challenge 3 (5 minutes)
 >
 > It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
 >
@@ -265,7 +266,7 @@ can_mex <- gapminder$country %in% c("Canada", "Mexico")
 gapminder[can_mex, ]
 ```
 
-### Challenge 4
+### Challenge 4 (5 minutes)
 > Select all the rows in `gapminder` with data from 1975 and earlier
 >
 > <details>
@@ -293,7 +294,7 @@ position using a character vector of column names:
 gapminder[ , c("country", "year", "lifeExp")]
 ```
 
-### Challenge 5
+### Challenge 5 (10 minutes)
 > Select all the rows in `gapminder` with data from Canada, and just the columns
 > year, pop, and gdpPercap
 > <details>
