@@ -70,7 +70,7 @@
 <p>R, and every package, provide help files for functions. The general syntax to search for help on any
 function, “function_name”, from a specific function that is in a package loaded into your
 namespace (your interactive R session):</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">?</span><span class="va">function_name</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">function_name</span><span class="op">)</span></code></pre></div>
 <p>This will load up a help page in RStudio (or as plain text in R by itself).</p>
@@ -85,27 +85,25 @@ namespace (your interactive R session):</p>
 <li>Examples: Some examples for how to use the function.</li>
 </ul>
 <p>Different functions might have different sections, but these are the main ones you should be aware of.</p>
-<blockquote>
-<h2 id="tip-running-examples">Tip: Running Examples</h2>
+<div class="rmdtip">
+<p><strong>Tip: Running Examples</strong></p>
 <p>From within the function help page, you can highlight code in the
 Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in
 RStudio console. This is gives you a quick way to get a feel for
 how a function works.</p>
-</blockquote>
-<blockquote>
-<h2 id="tip-reading-help-files">Tip: Reading help files</h2>
+<p><strong>Tip: Reading help files</strong></p>
 <p>One of the most daunting aspects of R is the large number of functions
 available. It would be prohibitive, if not impossible to remember the
 correct usage for every function you use. Luckily, the help files
 mean you don’t have to!</p>
-</blockquote>
+</div>
 </div>
 <div id="special-operators" class="section level2" number="2.2">
 <h2>
 <span class="header-section-number">2.2</span> Special Operators<a class="anchor" aria-label="anchor" href="#special-operators"><i class="fas fa-link"></i></a>
 </h2>
 <p>To seek help on special operators, use quotes:</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">?</span><span class="st">"&lt;-"</span></code></pre></div>
 </div>
 <div id="getting-help-on-packages" class="section level2" number="2.3">
@@ -125,7 +123,7 @@ Without any arguments, <code><a href="https://rdrr.io/r/utils/vignette.html">vig
 <span class="header-section-number">2.4</span> When you kind of remember the function<a class="anchor" aria-label="anchor" href="#when-you-kind-of-remember-the-function"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you’re not sure what package a function is in, or how it’s specifically spelled you can do a fuzzy search:</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">?</span><span class="op">?</span><span class="va">function_name</span></code></pre></div>
 </div>
 <div id="when-you-have-no-idea-where-to-begin" class="section level2" number="2.5">
@@ -136,17 +134,17 @@ Without any arguments, <code><a href="https://rdrr.io/r/utils/vignette.html">vig
 <a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a>
 is a specially maintained list of packages grouped into
 fields. This can be a good starting point.</p>
-<div id="challenge-1-1" class="section level3" number="2.5.1">
+<div id="challenge-1" class="section level3" number="2.5.1">
 <h3>
-<span class="header-section-number">2.5.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
-<p>Look at the help for the <code>sum</code> function. What are two ways you can pass numbers
+<p>Look at the help for the <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> function. What are two ways you can pass numbers
 into the function so the are added together?</p>
 <details><summary>
 Solution to challenge 1
 </summary><p><br></p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">?</span><span class="va">sum</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>
@@ -154,18 +152,18 @@ Solution to challenge 1
 </details>
 </blockquote>
 </div>
-<div id="challenge-2-1" class="section level3" number="2.5.2">
+<div id="challenge-2" class="section level3" number="2.5.2">
 <h3>
-<span class="header-section-number">2.5.2</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.2</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
-<p>Look at the help for the <code>paste</code> function. You’ll need to use this later.
+<p>Look at the help for the <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> function. You’ll need to use this later.
 What is the difference between the <code>sep</code> and <code>collapse</code> arguments?</p>
 <details><summary>
 Solution to challenge 2
 </summary><p><br></p>
 <p>To look at the help for the <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> function, use:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="st">"paste"</span><span class="op">)</span>
 <span class="op">?</span><span class="va">paste</span></code></pre></div>
 <p>The difference between <code>sep</code> and <code>collapse</code> is a little
@@ -176,16 +174,16 @@ vector as long as the longest argument supplied to <code>paste</code>. In contra
 <code>collapse</code> specifies that after concatenation the elements are <em>collapsed</em>
 together using the given separator, the result being a single string.
 e.g. </p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span><span class="op">)</span>, <span class="st">"c"</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "a c" "b c"</code></pre>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span><span class="op">)</span>, <span class="st">"c"</span>, sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "a,c" "b,c"</code></pre>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span><span class="op">)</span>, <span class="st">"c"</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "a c|b c"</code></pre>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span><span class="op">)</span>, <span class="st">"c"</span>, sep <span class="op">=</span> <span class="st">","</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "a,c|b,c"</code></pre>
 <p>(For more information,
@@ -194,9 +192,9 @@ examples, or try <code>example('paste')</code>.)</p>
 </details>
 </blockquote>
 </div>
-<div id="challenge-3-1" class="section level3" number="2.5.3">
+<div id="challenge-3" class="section level3" number="2.5.3">
 <h3>
-<span class="header-section-number">2.5.3</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.3</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Use help to find a function (and its associated parameters) that you could
@@ -234,9 +232,9 @@ hash (#) characters</p>
 <li><a class="nav-link" href="#when-you-kind-of-remember-the-function"><span class="header-section-number">2.4</span> When you kind of remember the function</a></li>
 <li>
 <a class="nav-link" href="#when-you-have-no-idea-where-to-begin"><span class="header-section-number">2.5</span> When you have no idea where to begin</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#challenge-1-1"><span class="header-section-number">2.5.1</span> Challenge 1</a></li>
-<li><a class="nav-link" href="#challenge-2-1"><span class="header-section-number">2.5.2</span> Challenge 2</a></li>
-<li><a class="nav-link" href="#challenge-3-1"><span class="header-section-number">2.5.3</span> Challenge 3</a></li>
+<li><a class="nav-link" href="#challenge-1"><span class="header-section-number">2.5.1</span> Challenge 1</a></li>
+<li><a class="nav-link" href="#challenge-2"><span class="header-section-number">2.5.2</span> Challenge 2</a></li>
+<li><a class="nav-link" href="#challenge-3"><span class="header-section-number">2.5.3</span> Challenge 3</a></li>
 </ul>
 </li>
 </ul>
@@ -256,7 +254,7 @@ hash (#) characters</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-16.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-02-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

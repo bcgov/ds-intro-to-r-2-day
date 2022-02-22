@@ -93,7 +93,7 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 > </details>
 
 The first thing we should always do is check out what the data looks like with
-`str` or `summary`:
+`str()` or `summary()`:
 
 ```{r}
 str(gapminder)
@@ -126,6 +126,7 @@ converting them to plain text first by using the [readxl](https://cran.r-project
 
 :::
 
+
 We'll also likely want to know what the titles of all the columns are, so we can
 ask for them:
 
@@ -147,7 +148,7 @@ to start digging into our data proper. Check out the first few lines:
 head(gapminder)
 ```
 
-Another very helpful function for looking at your data is the `unique` 
+Another very helpful function for looking at your data is the `unique`()
 function, to see the unique values in a particular column:
 
 ```{r}

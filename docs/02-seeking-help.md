@@ -42,20 +42,21 @@ Each help page is broken down into sections:
 
 Different functions might have different sections, but these are the main ones you should be aware of.
 
-> ## Tip: Running Examples
->
-> From within the function help page, you can highlight code in the 
-> Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in 
-> RStudio console. This is gives you a quick way to get a feel for
-> how a function works.
+::: {.rmdtip}
+**Tip: Running Examples**
 
-> ## Tip: Reading help files
->
-> One of the most daunting aspects of R is the large number of functions
-> available. It would be prohibitive, if not impossible to remember the
-> correct usage for every function you use. Luckily, the help files
-> mean you don't have to!
+From within the function help page, you can highlight code in the 
+Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in 
+RStudio console. This is gives you a quick way to get a feel for
+how a function works.
 
+**Tip: Reading help files**
+
+One of the most daunting aspects of R is the large number of functions
+available. It would be prohibitive, if not impossible to remember the
+correct usage for every function you use. Luckily, the help files
+mean you don't have to!
+:::
 
 ## Special Operators
 
@@ -96,7 +97,7 @@ fields. This can be a good starting point.
 
 ### Challenge 1
 
-> Look at the help for the `sum` function. What are two ways you can pass numbers 
+> Look at the help for the `sum()` function. What are two ways you can pass numbers 
 > into the function so the are added together?
 > 
 > <details>
@@ -122,7 +123,7 @@ fields. This can be a good starting point.
 
 ### Challenge 2
 
-> Look at the help for the `paste` function. You'll need to use this later.
+> Look at the help for the `paste()` function. You'll need to use this later.
 > What is the difference between the `sep` and `collapse` arguments?
 > 
 > 

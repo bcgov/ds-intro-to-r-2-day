@@ -60,26 +60,33 @@ One of the most powerful and useful aspects of RStudio is its project management
 functionality. We'll be using this today to create a self-contained, reproducible
 project.
 
+::: {.rmdimportant}
+## Creating a self-contained project
 
-> ## Creating a self-contained project
->
-> In our initial breakout sessions, we all downloaded and opened a new RStudio 
-> Project called `intro-r-Feb2022`, by running the following code:
->
-> If you are on Windows:
-> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
-> 
-> If you are on a Mac:
-> `use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
->
-> This created a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
-> and `/Users/[your_user_name]/intro-r-Feb2022/' on a Mac). 
-> 
-> Inside your project you should have a collection of `.R` and `.Rmd` files, 
-> a `data/` folder, and a `README.md` file.
+In our initial breakout sessions, we all downloaded and opened a new RStudio 
+Project called `intro-r-Feb2022`, by running the following code:
+
+If you are on Windows:
+```{r eval=FALSE}
+use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
+```
+
+If you are on a Mac:
+```{r eval=FALSE}
+use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
+```
+
+This created a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
+and `/Users/[your_user_name]/intro-r-Feb2022/` on a Mac). 
+
+Inside your project you should have a collection of `.R` and `.Rmd` files, 
+a `data/` folder, and a `README.md` file.
 
 Now whenever we open this project with RStudio, all of our work on this project will 
 be entirely self-contained in this directory.
+:::
+
+
 
 ### Challenge 1
 
@@ -117,15 +124,18 @@ with different sub-directories for each separate analysis makes it easier later.
 Since many analyses are exploratory and don't end up being used in the final
 project, and some of the analyses get shared between projects.
 
-> ## Tip: Good Enough Practices for Scientific Computing
->
-> [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf) gives the following recommendations for project organization:
->
-> 1. Put each project in its own directory, which is named after the project.
-> 2. Put text documents associated with the project in the `doc` directory.
-> 3. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results` directory.
-> 4. Put source for the project's scripts and programs in the `src` directory, and programs brought in from elsewhere or compiled locally in the `bin` directory.
-> 5. Name all files to reflect their content or function.
+
+::: {.rmdtip}
+**Tip: Good Enough Practices for Scientific Computing**
+
+[Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf) gives the following recommendations for project organization:
+
+1. Put each project in its own directory, which is named after the project.
+2. Put text documents associated with the project in the `doc` directory.
+3. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results` directory.
+4. Put source for the project's scripts and programs in the `src` directory, and programs brought in from elsewhere or compiled locally in the `bin` directory.
+5. Name all files to reflect their content or function.
+:::     
 
 ### Separate function definition and application
 

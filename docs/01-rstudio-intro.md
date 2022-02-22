@@ -50,7 +50,17 @@ populations for all of these countries in under a minute!
 
 ## Before Starting The Workshop
 
-Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
+Please ensure you have the latest version of R and RStudio installed on your
+machine. This is important, as some packages used in the workshop may not
+install correctly (or at all) if R is not up to date.
+
+
+**If you do not have administrative rights on your computer:**
+
+Download R and RStudio from the BC Government Software Centre:
+
+- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
+- Install R (RforWindowsX64 4.0.5 Gen P0)
 
 **If you have administrative rights on your computer: **
 
@@ -61,7 +71,8 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 There is one bit of customization we need to do to make R play nicely on
 a bcgov computer: 
 
-Open command prompt (Open Start Menu then type `cmd` and press <kbd>Enter</kbd>). Make sure your command prompt opens at the C directory e.g. ```C:\>```. If it opens in another directory you can change this by typing ```C:```.  
+Open command prompt (Open Start Menu then type `cmd` and press <kbd>Enter</kbd>). Make sure your command prompt opens at the C directory e.g. ```C:\>```. If it opens in another directory you can change this by typing ```C:```.
+
 
 Type the following line into the command prompt window exactly as shown:
 
@@ -71,13 +82,6 @@ setx HOME "%USERPROFILE%"
 
 Press <kbd>Enter</kbd>, you should see **SUCCESS: Specified value was saved**.
 Quit command prompt by typing `exit` then pressing <kbd>Enter</kbd>
-
-**If you do not have administrative rights on your computer:**
-
-Download R and RStudio from the BC Government Software Centre:
-
-- Install RTools (Rtools 4.0 Gen PO) - this will install RStudio
-- Install R (RforWindowsX64 4.0.5 Gen P0)
 
 
 
@@ -93,15 +97,19 @@ environment. It provides a built in editor, works on all platforms (including
 on servers) and provides many advantages such as integration with version
 control and project management.
 
-> ## Tip: Key RStudio Setting
-> 
-> By default RStudio will automatically save your session variables in your
-> porject directory in a file called `.RData`. These are saved when you exit a
-> project and restored when you open it up again. We _highly_ recommend turning
-> this feature off. As you will learn in this course, all outputs will be created
-> from code. Typically you do not need to save intermediate steps. If you don't
-> plan to use this feature you can toggle it in the Project Options -> General
-> tab.
+::: {.rmdtip}
+
+**Tip: Key RStudio Setting**
+
+By default RStudio will automatically save your session variables in your
+porject directory in a file called `.RData`. These are saved when you exit a
+project and restored when you open it up again. We _highly_ recommend turning
+this feature off. As you will learn in this course, all outputs will be created
+from code. Typically you do not need to save intermediate steps. If you don't
+plan to use this feature you can toggle it in the Project Options -> General
+tab.
+
+:::
 
 **Basic layout**
 
@@ -133,22 +141,23 @@ interactive R console.
    * You will be able to run the file you create from within RStudio
    or using R's `source()`  function.
 
-> ## Tip: Running segments of your code
->
-> RStudio offers you great flexibility in running code from within the editor
-> window. There are buttons, menu choices, and keyboard shortcuts. To run the
-> current line, you can 
-> 1. click on the `Run` button above the editor panel, or 
-> 2. select "Run Lines" from the "Code" menu, or 
-> 3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux 
-> or <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X.
-> (This shortcut can also be seen by hovering
-> the mouse over the button). To run a block of code, select it and then `Run`.
-> If you have modified a line of code within a block of code you have just run,
-> there is no need to reselect the section and `Run`, you can use the next button
-> along, `Re-run the previous region`. This will run the previous code block
-> including the modifications you have made.
+::: {.rmdtip}
+**Tip: Running segments of your code**
 
+RStudio offers you great flexibility in running code from within the editor
+window. There are buttons, menu choices, and keyboard shortcuts. To run the
+current line, you can 
+1. click on the `Run` button above the editor panel, or 
+2. select "Run Lines" from the "Code" menu, or 
+3. hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> in Windows or Linux 
+or <kbd>&#8984;</kbd>+<kbd>Return</kbd> on OS X.
+(This shortcut can also be seen by hovering
+the mouse over the button). To run a block of code, select it and then `Run`.
+If you have modified a line of code within a block of code you have just run,
+there is no need to reselect the section and `Run`, you can use the next button
+along, `Re-run the previous region`. This will run the previous code block
+including the modifications you have made.
+:::
 
 ## Introduction to R
 
@@ -167,11 +176,22 @@ We are first going set up a workspace, called an RStudio Project, where we can w
 the course materials and save our work.
 In the console, type: 
 
+
+```r
+install.packages("usethis")
+```
+
 If you are on Windows:
-`use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))`
+
+```r
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
+```
 
 If you are on a Mac:
-`use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))`
+
+```r
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
+```
 
 ... and press <kbd>Enter</kbd>.
 
@@ -211,12 +231,14 @@ means it's waiting for you to complete the command. If you want to cancel
 a command you can simply hit "Esc" and RStudio will give you back the ">"
 prompt.
 
-> ## Tip: Cancelling commands
->
-> Cancelling a command isn't only useful for killing incomplete commands:
-> you can also use it to tell R to stop running code (for example if it's
-> taking much longer than you expect), or to get rid of the code you're
-> currently writing.
+::: {.rmdtip}
+**Tip: Cancelling commands**
+
+Cancelling a command isn't only useful for killing incomplete commands:
+you can also use it to tell R to stop running code (for example if it's
+taking much longer than you expect), or to get rid of the code you're
+currently writing.
+:::
 
 When using R as a calculator, the order of operations is the same as you
 would have learned back in school.
@@ -418,24 +440,27 @@ We can also do comparison in R:
 [1] TRUE
 ```
 
-> ## Tip: Comparing Numbers
->
-> A word of warning about comparing numbers: you should
-> never use `==` to compare two numbers unless they are
-> integers (a data type which can specifically represent
-> only whole numbers).
->
-> Computers may only represent decimal numbers with a
-> certain degree of precision, so two numbers which look
-> the same when printed out by R, may actually have
-> different underlying representations and therefore be
-> different by a small margin of error (called Machine
-> numeric tolerance).
->
-> Instead you should use the `all.equal` function.
->
-> Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
+::: {.rmdtip}
+**Tip: Comparing Numbers**
 
+A word of warning about comparing numbers: you should
+never use `==` to compare two numbers unless they are
+integers (a data type which can specifically represent
+only whole numbers).
+
+
+Computers may only represent decimal numbers with a
+certain degree of precision, so two numbers which look
+the same when printed out by R, may actually have
+different underlying representations and therefore be
+different by a small margin of error (called Machine
+numeric tolerance).
+
+Instead you should use the `all.equal()` function.
+
+Further reading: [http://floating-point-gui.de/](http://floating-point-gui.de/)
+
+:::
 
 ## Variables and assignment
 
@@ -515,7 +540,7 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
-### Challenge 1
+### Challenge 1 (5 minutes)
 > Which of the following are valid R variable names?
 > 
 > ```r
@@ -562,7 +587,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 > </details>
 
 
-### Challenge 2
+### Challenge 2 (5 minutes)
 > What will be the value of each  variable  after each
 > statement in the following program?
 > 
@@ -611,7 +636,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 
 
 
-### Challenge 3
+### Challenge 3 (5 minutes)
 
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
@@ -706,11 +731,13 @@ ls()
 [5] "x"              "y"             
 ```
 
-> ## Tip: hidden objects
->
-> Like in the shell, `ls` will hide any variables or functions starting
-> with a "." by default. To list all objects, type `ls(all.names=TRUE)`
-> instead
+::: {.rmdtip}
+**Tip: hidden objects**
+
+Like in the shell, `ls` will hide any variables or functions starting
+with a "." by default. To list all objects, type `ls(all.names=TRUE)`
+instead
+:::
 
 
 Note here that we didn't give any arguments to `ls`, but we still
@@ -755,7 +782,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fbf1fbfbbf8>
+<bytecode: 0x7fbda2c43ff8>
 <environment: namespace:base>
 ```
 
@@ -775,18 +802,20 @@ rm(list = ls())
 ```
 
 
+::: {.rmdtip}
+**Tip: Warnings vs. Errors**
 
-> ## Tip: Warnings vs. Errors
->
-> Pay attention when R does something unexpected! Errors, like above,
-> are thrown when R cannot proceed with a calculation. Warnings on the
-> other hand usually mean that the function has run, but it probably
-> hasn't worked as expected.
->
-> In both cases, the message that R prints out usually give you clues
-> how to fix a problem.
+Pay attention when R does something unexpected! Errors, like above,
+are thrown when R cannot proceed with a calculation. Warnings on the
+other hand usually mean that the function has run, but it probably
+hasn't worked as expected.
 
-### Challenge 4
+In both cases, the message that R prints out usually give you clues
+how to fix a problem.
+
+:::
+
+### Challenge 4 (2 minutes)
 
 > Clean up your working environment by deleting the mass and age
 > variables.
@@ -833,7 +862,7 @@ R and RStudio have functionality for managing packages:
 
 
 
-### Challenge 5
+### Challenge 5 (2 minutes)
 
 > Install the following packages: `ggplot2`, `dplyr`.
 > 

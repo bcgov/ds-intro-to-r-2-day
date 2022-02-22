@@ -62,42 +62,53 @@ bcdc_get_record("bc-public-libraries-systems-branches-and-locations")
 
 ## Importing data from the B.C. Data Catalogue
 
-Next, we can use the `bcdc_get_data` function to import this data directly into R: 
+Next, we can use the `bcdc_get_data()` function to import this data directly into R: 
 
 ```{r, eval=FALSE}
 bcdc_get_data(record = "bc-public-libraries-systems-branches-and-locations")
 ```
 
 
-The _bc-public-libraries-systems-branches-and-locations_ catalogue record contains multiple data resources or files. If we run the above code interactively, R will prompt you in the console to select one of the available resources, as it does not know which one you want to download. The full code to import the resource from the record&mdash;using the record's permanent id to guard against future name changesname&mdash;is provided to the user for next time:
+The _bc-public-libraries-systems-branches-and-locations_ catalogue record
+contains multiple data resources or files. If we run the above code
+interactively, R will prompt you in the console to select one of the available
+resources, as it does not know which one you want to download. The full code to
+import the resource from the record&mdash;using the record's permanent id to
+guard against future name changes&mdash;is provided to the user for next time:
 
 ```{r}
-lib_raw <- bcdc_get_data('3d2318d4-8f5d-4208-88f5-995420d7c58f',
+lib_raw <- bcdc_get_data(record = '3d2318d4-8f5d-4208-88f5-995420d7c58f',
                          resource = 'ed17f111-fb39-46b3-89aa-5375592fbb01')
 ```
 
 ### Challenge 1 (5 minutes)
 >
-> Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session > (e.g. a CSV or XLS resource). Entering `bcdc_browse()` into the R console will open the catalogue page in your default web browser. 
+> Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session (e.g. a CSV or XLS resource). Entering `bcdc_browse()` into the R console will open the catalogue page in your default web browser. 
 
 
 ## Practice manipulating data with `dplyr`  
 
 
-Let's return to the libraries data frame `lib_raw` we imported. As we learned earlier in the workshop, a useful first step is to get familiar with the data:
+Let's return to the libraries data frame `lib_raw` we imported. As we learned
+earlier in the workshop, a useful first step is to get familiar with the data:
 
 ```{r}
 str(lib_raw)
 names(lib_raw)
 ```
 
-Let's tidy up this data frame and find out how many books&mdash;physical materials or volumes&mdash;are available within each City:
+Let's tidy up this data frame and find out how many books&mdash;physical
+materials or volumes&mdash;are available between _51 and 53 degrees Latitude_. Remember
+that we previously used `select()` to return only columns that we wanted. Here we
+are _also_ using `select()` to rename `460x Total branch physical materials, volumes held`
+to `num_books`:
 
 ```{r}
 library(dplyr)
 
 lib_tidy <- lib_raw %>%
-  select(`Library System`, Location, City, num_books = "460x Total branch physical materials, volumes held")
+  filter(Latitude <= 53, Latitude >= 51) %>% 
+  select(`Library System`, Location, City, num_books = `460x Total branch physical materials, volumes held`)
 
 
 sum_books <- lib_tidy %>% 
@@ -107,7 +118,7 @@ sum_books <- lib_tidy %>%
 
 ### Challenge 2 (10 minutes)
 >
-> Using `dplyr`, determine the total number of books within each Library System in British Columbia.
+> Using `dplyr`, determine the total number of books within each Library System between 51 and 53 degrees latitude in British Columbia.
 >
 >
 > <details>
@@ -130,24 +141,18 @@ sum_books <- lib_tidy %>%
 
 Now that we have imported, tidied, and summarized our library data, let's make a static data visualization to share and communicate the results with others.
 
-```{r fig.height=13}
+```{r }
 library(ggplot2)
 
 sum_books %>% 
-  ggplot(aes(total_books, City)) +
+  ggplot(aes(x = total_books, y = City)) +
   geom_col()
 ```
 
-```{r}
-sum_books %>% 
-  filter(total_books > 100000) %>% 
-  ggplot(aes(total_books, City)) +
-  geom_col()
-```
 
 ### Challenge 3 (10 minutes)
 
-> Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable.
+> Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable. 
 >
 >
 > <details>
@@ -157,14 +162,12 @@ sum_books %>%
 > </summary>
 > 
 > <br />
->```{r fig.height = 10}
+>```{r}
 >library(ggplot2)
 >
 >sum_books %>% 
->  filter(total_books > 100000) %>% 
->  ggplot(aes(total_books, City)) +
+>  ggplot(aes(x = total_books, y = City, fill = `Library System`)) +
 >  geom_col() +
->  facet_wrap(vars(`Library System`), ncol = 3) +
 >  theme_minimal() +
 >  labs(x = NULL,
 >       y = NULL,
@@ -174,10 +177,134 @@ sum_books %>%
 >```
 > </details>
 
+## Importing data from the B.C. Data Catalogue - Another Example
+Let's try another example with `bcdata`. This time we are going to try importing
+some data that is a bit messier. We are going to work with [_New Apprenticeship
+Registrations by Fiscal Year and
+Gender_](https://catalogue.data.gov.bc.ca/dataset/87f26989-ccde-407e-a500-5f0c304c460d)
+data. This example will require you to reference elements you've learned
+throughout the workshop.
 
-### Challenge 4 (20 minutes)
+You can view the data record we are going to be working with in your browser by
+running the following command:
+
+```{r eval=FALSE}
+bcdc_browse("new-apprenticeship-registrations-by-fiscal-year-and-gender")
+```
+
+As we've previously learned we can use `bcdc_get_data()` to load data from the B.C. Data Catalogue directly into R. Let's try that now:
+
+```{r}
+new_reg <- bcdc_get_data(record = "new-apprenticeship-registrations-by-fiscal-year-and-gender")
+new_reg
+```
+
+Well this doesn't look right. We can see near the bottom of our output that
+there are the words of `Gender` and `Trade` so we know the data is there but we also have this mess of `<NA>`.
+In this scenario it can be helpful to look at the raw data. Navigate back to the
+catalogue page you opened earlier and click the <kbd>View</kbd> button. This
+will take you to the
+[Resource](https://catalogue.data.gov.bc.ca/dataset/87f26989-ccde-407e-a500-5f0c304c460d/resource/8f4f1f19-9027-4d0b-a686-d820bccddd16)
+page. Click the link under **Resource** and the data will open up in Excel. The
+first thing we notice is that the data does not actually start until 10 rows
+down. `bcdc_get_data()` use `read_csv()` to read csv files and that function
+conveniently has an argument called `skip` which allows us to specify the number
+of lines to skip before reading the data. We can use it with `bcdc_get_data()`
+like this:
+
+```{r}
+new_reg <- bcdc_get_data(
+  record = "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
+  skip = 9
+  )
+new_reg
+```
+
+Ok this is looking _much_ better. We now have data that is rectangular and looks
+more like something we can work with. We do have one more thing to take
+care of though. You will notice the data is filled with `...` values. Those are missing
+values in the data. R has a specific way of handling missing values and we need
+to tell `bcdc_get_data()` (via `read_csv()`) that those are missing values. We
+do this by adding another argument so that R interprets the `...` as missing values:
+
+```{r}
+new_reg <- bcdc_get_data(
+  "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
+  skip = 9, 
+  na = "..."
+  )
+new_reg
+```
+
+Now we are ready to work with this data. One thing you might notice is that this
+data is in _wide_ format. The number of individuals of a given `Gender` and
+`Trade` are repeated over time across _columns_ with each column being a fiscal
+year. This is great for making a nice table but less great if we want to make a
+plot. To reshape the data into long format, we can again make use of
+`pivot_longer` from the `tidyr` package which we covered in the [tidyr section][Create Tidy Data with tidyr]. We only want to pivot the fiscal years
+so we need to specify those columns. In addition, we want to give our two new
+columns so descriptive names:
+
+```{r}
+library(tidyr)
+
+new_reg_long <- new_reg %>% 
+  pivot_longer(
+    cols = `FY2011/12`:`FY2020/21`,
+    names_to = "fiscal_year",
+    values_to = "registrations"
+  )
+new_reg_long
+```
+
+There is actually quite a bit of data here while likely represents the number
+possible values for `Trade`. We can check the number of unique values in the
+`Trade` column using a handy function from `dplyr` called `n_distinct()`:
+
+```{r}
+n_distinct(new_reg_long$Trade)
+```
+
+Sure enough there are `r n_distinct(new_reg_long$Trade)` of them! Similarly, let's have a look at what values are in the `Gender` column using the `unique()` function you learned earlier:
+
+```{r}
+unique(new_reg_long$Gender)
+```
+
+To simplify things let's take a subset of the Trades in the data and only look at Men and Women:
+```{r}
+new_reg_long <- new_reg %>% 
+  pivot_longer(
+    cols = `FY2011/12`:`FY2020/21`,
+    names_to = "fiscal_year",
+    values_to = "registrations", 
+    values_drop_na = TRUE
+  ) %>% 
+  filter(
+    Gender %in% c("Men", "Women"),
+    Trade %in% c("Boilermaker", "Climbing Arborist", "Tilesetter", "Landscape Horticulturist", "Baker")
+    )
+```
+
+With this tidied and filtered dataset, we now have something that we can plot
+using the skills we've learned in the [ggplot2 section][Creating Publication-Quality Graphics with ggplot2]. One thing to note is that we made
+use of the `ncol` argument in `facet_wrap()` so that the faceted plots would
+share the x-axis:
+
+```{r}
+library(ggplot2)
+
+ggplot(new_reg_long, aes(x = fiscal_year, y = registrations, fill = Trade)) +
+  geom_col() +
+  facet_wrap(vars(Gender), ncol = 1)
+```
+
+Try customizing the output with different `Trade` categories or different ggplot2 customizations. For example what strategies might you take to tidy up the x-axis?
+
+
+### Challenge 4 (15 minutes)
 >
-> Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. > An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one > of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
+> Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
 > 
 > <details>
 > 
