@@ -56,6 +56,7 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 - Exploring Data Frames (45 minutes) **(Bonnie)**
 - Making Publication Quality Plots with `ggplot2` Pt. 1 (45 minutes)  **(Bonnie)**
 
+
 ### Day 3
 
 - Review + questions (30 minutes)
