@@ -18,23 +18,25 @@ source: Rmd
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
 knitr_fig_path("08-")
-
-# To create gapminder_wide.csv:
-# library("dplyr")
-# library("tidyr")
-#
-# #transform the data to the wide format
-# gap_wide <- gapminder %>%
-#     pivot_longer(cols = c(-continent,-country,-year),names_to = "obs_type",values_to = "obs_values") %>%
-#     unite(ID_var,continent,country,sep = "_") %>%
-#     unite(var_names,obs_type,year,sep = "_") %>%
-#     pivot_wider(names_from = var_names,values_from = obs_values) %>%
-#     separate(ID_var,into = c('continent','country'),sep = '_')
-#
-# #write our the .csv so students can use it
-# write.csv(gap_wide,"data/gapminder_wide.csv",row.names = FALSE)
-
 ```
+
+```{r include=FALSE, eval=FALSE}
+To create gapminder_wide.csv:
+library("dplyr")
+library("tidyr")
+
+#transform the data to the wide format
+gap_wide <- gapminder %>%
+    pivot_longer(cols = c(-continent,-country,-year),names_to = "obs_type",values_to = "obs_values") %>%
+    unite(ID_var,continent,country,sep = "_") %>%
+    unite(var_names,obs_type,year,sep = "_") %>%
+    pivot_wider(names_from = var_names,values_from = obs_values) %>%
+    separate(ID_var,into = c('continent','country'),sep = '_')
+
+#write our the .csv so students can use it
+write.csv(gap_wide,"data/gapminder_wide.csv",row.names = FALSE)
+```
+
 
 People who work with data often want to reshape their dataframes from 'wide' to 'longer'
 layouts, or vice-versa. The 'long' layout or format is where:
