@@ -124,14 +124,7 @@ data frame in the environment pane.</p>
 </h2>
 <p>So far, you have seen the basics of manipulating data frames with our cat data;
 now let’s use those skills to digest a more realistic dataset. Let’s read in the
-<code>gapminder</code> dataset that we downloaded previously:</p>
-<div id="challenge-1-3" class="section level3" number="5.1.1">
-<h3>
-<span class="header-section-number">5.1.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-3"><i class="fas fa-link"></i></a>
-</h3>
-<blockquote>
-<p>Read in the gapminder dataset using <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> and assign it to a data frame
-called <code>gapminder</code>:</p>
+<code>gapminder</code> dataset that we downloaded previously and assign it to a data frame called <code>gapminder</code>:</p>
 <div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>Rows: 1704 Columns: 6
@@ -142,19 +135,26 @@ dbl (4): year, pop, lifeExp, gdpPercap
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<p>Then tell me how many rows and columns <code>gapminder</code> has:</p>
+<div id="challenge-1-5-minutes-1" class="section level3" number="5.1.1">
+<h3>
+<span class="header-section-number">5.1.1</span> Challenge 1 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-1-5-minutes-1"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>How many rows and columns does <code>gapminder</code> have?</p>
+<p>What kind of data is in the <code>pop</code> and <code>continent</code> columns?</p>
+<details><summary>
+Solution to challenge 1
+</summary><p><br></p>
 <div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
-<p>And tell me what kind of data is in the <code>pop</code> and <code>continent</code> columns</p>
-<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
-</blockquote>
-<p>The first thing we should always do is check out what the data looks like with
-<code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> or <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] 1704    6</code></pre>
 <div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] 1704</code></pre>
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] 6</code></pre>
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
 <pre><code>spec_tbl_df [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
@@ -173,7 +173,46 @@ dbl (4): year, pop, lifeExp, gdpPercap
   ..   gdpPercap = col_double()
   .. )
  - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<pre><code>   country               year           pop             continent        
+ Length:1704        Min.   :1952   Min.   :6.001e+04   Length:1704       
+ Class :character   1st Qu.:1966   1st Qu.:2.794e+06   Class :character  
+ Mode  :character   Median :1980   Median :7.024e+06   Mode  :character  
+                    Mean   :1980   Mean   :2.960e+07                     
+                    3rd Qu.:1993   3rd Qu.:1.959e+07                     
+                    Max.   :2007   Max.   :1.319e+09                     
+    lifeExp        gdpPercap       
+ Min.   :23.60   Min.   :   241.2  
+ 1st Qu.:48.20   1st Qu.:  1202.1  
+ Median :60.71   Median :  3531.8  
+ Mean   :59.47   Mean   :  7215.3  
+ 3rd Qu.:70.85   3rd Qu.:  9325.5  
+ Max.   :82.60   Max.   :113523.1  </code></pre>
+</details>
+</blockquote>
+<p>The first thing we should always do is check out what the data looks like with
+<code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> or <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>:</p>
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<pre><code>spec_tbl_df [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+ $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
+ $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: chr [1:1704] "Asia" "Asia" "Asia" "Asia" ...
+ $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   country = col_character(),
+  ..   year = col_double(),
+  ..   pop = col_double(),
+  ..   continent = col_character(),
+  ..   lifeExp = col_double(),
+  ..   gdpPercap = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span><span class="op">)</span></code></pre></div>
 <pre><code>   Length     Class      Mode 
      1704 character character </code></pre>
@@ -181,17 +220,17 @@ dbl (4): year, pop, lifeExp, gdpPercap
 <p><strong>Miscellaneous Tips</strong></p>
 <ul>
 <li>Files can also be downloaded directly from the Internet into a local
-folder of your choice onto your computer using the <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> function.
-The <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function can then be executed to read the downloaded file from the download location, for example,</li>
+folder of your choice onto your computer using the <code>download.file</code> function.
+The <code>read_csv</code> function can then be executed to read the downloaded file from the download location, for example,</li>
 </ul>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv"</span>, estfile <span class="op">=</span> <span class="st">"data/gapminder_data.csv"</span><span class="op">)</span>
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv"</span>, destfile <span class="op">=</span> <span class="st">"data/gapminder_data.csv"</span><span class="op">)</span>
 <span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></code></pre></div>
 <ul>
-<li>Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,</li>
+<li>Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in <code>read_csv</code>. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,</li>
 </ul>
-<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_dat.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv"</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>You can read directly from excel spreadsheets without
 converting them to plain text first by using the <a href="https://cran.r-project.org/package=readxl">readxl</a> package.</li>
@@ -199,7 +238,7 @@ converting them to plain text first by using the <a href="https://cran.r-project
 </div>
 <p>We’ll also likely want to know what the titles of all the columns are, so we can
 ask for them:</p>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"</code></pre>
 <p>At this stage, it’s important to ask ourselves if the structure R is reporting
@@ -210,7 +249,7 @@ interprets data, and the importance of <em>strict consistency</em> in how we rec
 data.</p>
 <p>Once we’re happy that the data types and structures seem reasonable, it’s time
 to start digging into our data proper. Check out the first few lines:</p>
-<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 6 × 6
   country      year      pop continent lifeExp gdpPercap
@@ -221,19 +260,92 @@ to start digging into our data proper. Check out the first few lines:</p>
 4 Afghanistan  1967 11537966 Asia         34.0      836.
 5 Afghanistan  1972 13079460 Asia         36.1      740.
 6 Afghanistan  1977 14880372 Asia         38.4      786.</code></pre>
+<p>Another very helpful function for looking at your data is the <code>unique</code>()
+function, to see the unique values in a particular column:</p>
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] "Asia"     "Europe"   "Africa"   "Americas" "Oceania" </code></pre>
 </div>
-<div id="challenge-2-2" class="section level3" number="5.1.2">
+</div>
+<div id="basic-subsetting" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Basic subsetting<a class="anchor" aria-label="anchor" href="#basic-subsetting"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data frames are two dimensions - rows and columns. We can access these using a
+specific notation with square brackets.</p>
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_data_frame</span><span class="op">[</span><span class="va">rows</span>, <span class="va">columns</span><span class="op">]</span></code></pre></div>
+<div id="selecting-rows" class="section level3" number="5.2.1">
 <h3>
-<span class="header-section-number">5.1.2</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2.1</span> Selecting rows<a class="anchor" aria-label="anchor" href="#selecting-rows"><i class="fas fa-link"></i></a>
+</h3>
+<p>We can select rows using the square brackets like so:</p>
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></code></pre></div>
+<pre><code># A tibble: 1 × 6
+  country      year     pop continent lifeExp gdpPercap
+  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan  1952 8425333 Asia         28.8      779.</code></pre>
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fl">100</span><span class="op">:</span><span class="fl">110</span>, <span class="op">]</span></code></pre></div>
+<pre><code># A tibble: 11 × 6
+   country     year       pop continent lifeExp gdpPercap
+   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Bangladesh  1967  62821884 Asia         43.5      721.
+ 2 Bangladesh  1972  70759295 Asia         45.3      630.
+ 3 Bangladesh  1977  80428306 Asia         46.9      660.
+ 4 Bangladesh  1982  93074406 Asia         50.0      677.
+ 5 Bangladesh  1987 103764241 Asia         52.8      752.
+ 6 Bangladesh  1992 113704579 Asia         56.0      838.
+ 7 Bangladesh  1997 123315288 Asia         59.4      973.
+ 8 Bangladesh  2002 135656790 Asia         62.0     1136.
+ 9 Bangladesh  2007 150448339 Asia         64.1     1391.
+10 Belgium     1952   8730405 Europe       68       8343.
+11 Belgium     1957   8989111 Europe       69.2     9715.</code></pre>
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span><span class="op">)</span>, <span class="op">]</span></code></pre></div>
+<pre><code># A tibble: 5 × 6
+  country      year      pop continent lifeExp gdpPercap
+  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan  1952  8425333 Asia         28.8      779.
+2 Afghanistan  1962 10267083 Asia         32.0      853.
+3 Afghanistan  1972 13079460 Asia         36.1      740.
+4 Afghanistan  1982 12881816 Asia         39.9      978.
+5 Afghanistan  1992 16317921 Asia         41.7      649.</code></pre>
+</div>
+<div id="challenge-2-5-minutes-1" class="section level3" number="5.2.2">
+<h3>
+<span class="header-section-number">5.2.2</span> Challenge 2 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-5-minutes-1"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>It’s good practice to also check the last few lines of your data and some in the middle. How would you do this?</p>
-<p>Searching for ones specifically in the middle isn’t too hard but we could simply ask for a few lines at random. How would you code this?</p>
 <details><summary>
 Solution to challenge 2
-</summary><p><br>
+</summary><p>Use your knowledge of the dataset to choose some rows in the middle and at the end.</p>
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<pre><code>[1] 1704</code></pre>
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">700</span>, <span class="fl">750</span>, <span class="fl">800</span><span class="op">)</span>,<span class="op">]</span></code></pre></div>
+<pre><code># A tibble: 3 × 6
+ country  year       pop continent lifeExp gdpPercap
+ &lt;chr&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 India    1967 506000000 Asia         47.2      701.
+2 Ireland  1977   3271900 Europe       72.0    11151.
+3 Japan    1987 122091325 Asia         78.7    22376.</code></pre>
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fl">1700</span><span class="op">:</span><span class="fl">1704</span>,<span class="op">]</span></code></pre></div>
+<pre><code># A tibble: 5 × 6
+ country   year      pop continent lifeExp gdpPercap
+ &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Zimbabwe  1987  9216418 Africa       62.4      706.
+2 Zimbabwe  1992 10704340 Africa       60.4      693.
+3 Zimbabwe  1997 11404948 Africa       46.8      792.
+4 Zimbabwe  2002 11926563 Africa       40.0      672.
+5 Zimbabwe  2007 12311143 Africa       43.5      470.</code></pre>
+<p><br>
 To check the last few lines it’s relatively simple as R already has a function for this:</p>
-<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 6 × 6
  country   year      pop continent lifeExp gdpPercap
@@ -244,7 +356,7 @@ To check the last few lines it’s relatively simple as R already has a function
 4 Zimbabwe  1997 11404948 Africa       46.8      792.
 5 Zimbabwe  2002 11926563 Africa       40.0      672.
 6 Zimbabwe  2007 12311143 Africa       43.5      470.</code></pre>
-<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">gapminder</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></code></pre></div>
 <pre><code># A tibble: 15 × 6
   country   year      pop continent lifeExp gdpPercap
@@ -266,88 +378,18 @@ To check the last few lines it’s relatively simple as R already has a function
 15 Zimbabwe  2007 12311143 Africa       43.5      470.</code></pre>
 </details>
 </blockquote>
-<p>What about a few arbitrary rows just for sanity (or insanity depending on your view)?</p>
+<p>Searching for ones specifically in the middle isn’t too hard but we could simply ask for a few lines at random. How would you code this?</p>
 <div class="rmdtip">
 <p><strong>Tip: There are several ways to achieve this.</strong>
-The solution here presents one form of using nested functions, i.e. a function
-passed as an argument to another function. This might sound like a new ept, but
-you are already using it! Remember my_dataframe[rows, cols] will print to screen
-your data frame with the number of rows and columns you asked for (although you
-might have d for a range or named columns for example). How would you get the
-last row if you don’t know how many rows your data frame has? R has a function
-for . What about getting a (pseudorandom) sample? R also has a function for
-this.</p>
-<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="op">]</span></code></pre></div>
+The solution here presents one form of using nested functions, i.e. a function passed as an argument to another function. This might sound like a new ept, but you are already using it!</p>
+<p>Remember <code>my_dataframe[rows, cols]</code> will print to screen your data frame with the number of rows and columns you asked for (although you might have d for a range or named columns for example). How would you get the last row if you don’t know how many rows your data frame has? R has a function for . What about getting a (pseudorandom) sample? R also has a function for this.</p>
+<pre><code>gapminder[sample(nrow(gapminder), 5), ]</code></pre>
 </div>
-<p>Another very helpful function for looking at your data is the <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code>
-function, to see the unique values in a particular column:</p>
-<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span><span class="op">)</span></code></pre></div>
-<pre><code>[1] "Asia"     "Europe"   "Africa"   "Americas" "Oceania" </code></pre>
-<p>To make sure our analysis is reproducible, we should put the code
-into a script file so we can come back to it later.</p>
-</div>
-<div id="challenge-3-2" class="section level3" number="5.1.3">
-<h3>
-<span class="header-section-number">5.1.3</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3-2"><i class="fas fa-link"></i></a>
-</h3>
-<blockquote>
-<p>Go to file -&gt; new file -&gt; R script, and write an R script
-to load in the gapminder dataset.</p>
-</blockquote>
-</div>
-</div>
-<div id="basic-subsetting" class="section level2" number="5.2">
-<h2>
-<span class="header-section-number">5.2</span> Basic subsetting<a class="anchor" aria-label="anchor" href="#basic-subsetting"><i class="fas fa-link"></i></a>
-</h2>
-<p>Data frames are two dimensions - rows and columns. We can access these using a
-specific notation with square brackets.</p>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">my_data_frame</span><span class="op">[</span><span class="va">rows</span>, <span class="va">columns</span><span class="op">]</span></code></pre></div>
-<div id="selecting-rows" class="section level3" number="5.2.1">
-<h3>
-<span class="header-section-number">5.2.1</span> Selecting rows<a class="anchor" aria-label="anchor" href="#selecting-rows"><i class="fas fa-link"></i></a>
-</h3>
-<p>We can select rows using the square brackets like so:</p>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></code></pre></div>
-<pre><code># A tibble: 1 × 6
-  country      year     pop continent lifeExp gdpPercap
-  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-1 Afghanistan  1952 8425333 Asia         28.8      779.</code></pre>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fl">100</span><span class="op">:</span><span class="fl">110</span>, <span class="op">]</span></code></pre></div>
-<pre><code># A tibble: 11 × 6
-   country     year       pop continent lifeExp gdpPercap
-   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
- 1 Bangladesh  1967  62821884 Asia         43.5      721.
- 2 Bangladesh  1972  70759295 Asia         45.3      630.
- 3 Bangladesh  1977  80428306 Asia         46.9      660.
- 4 Bangladesh  1982  93074406 Asia         50.0      677.
- 5 Bangladesh  1987 103764241 Asia         52.8      752.
- 6 Bangladesh  1992 113704579 Asia         56.0      838.
- 7 Bangladesh  1997 123315288 Asia         59.4      973.
- 8 Bangladesh  2002 135656790 Asia         62.0     1136.
- 9 Bangladesh  2007 150448339 Asia         64.1     1391.
-10 Belgium     1952   8730405 Europe       68       8343.
-11 Belgium     1957   8989111 Europe       69.2     9715.</code></pre>
-<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span><span class="op">)</span>, <span class="op">]</span></code></pre></div>
-<pre><code># A tibble: 5 × 6
-  country      year      pop continent lifeExp gdpPercap
-  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-1 Afghanistan  1952  8425333 Asia         28.8      779.
-2 Afghanistan  1962 10267083 Asia         32.0      853.
-3 Afghanistan  1972 13079460 Asia         36.1      740.
-4 Afghanistan  1982 12881816 Asia         39.9      978.
-5 Afghanistan  1992 16317921 Asia         41.7      649.</code></pre>
-<p>It’s unlikely that you’ll often do this directly though, you’ll usually want
+<p>It’s unlikely that you’ll select rows directly though, you’ll usually want
 to use some criteria. Say we just wanted the rows from Asia:</p>
-<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">romania</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span>, <span class="op">]</span>
-<span class="va">romania</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">asia</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span>, <span class="op">]</span>
+<span class="va">asia</span></code></pre></div>
 <pre><code># A tibble: 396 × 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -366,7 +408,7 @@ to use some criteria. Say we just wanted the rows from Asia:</p>
 above, OR a vector of <code>TRUE</code> and <code>FALSE</code>, returning the rows that are <code>TRUE</code>.
 <code>gapminder$contintent == "Asia"</code> generates a vector of <code>TRUE</code> and <code>FALSE</code>
 values:</p>
-<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span></code></pre></div>
 <pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -383,7 +425,7 @@ gives us just the rows where the <code>contintent</code> column is <code>"Asia"<
 <p>Another very useful operator in this context is the <code>%in%</code> operator - it can
 tell you if a value is <em>one of</em> a set of values:</p>
 <p>Say we wanted to select just Canada and Mexico:</p>
-<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"Mexico"</span><span class="op">)</span></code></pre></div>
 <pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -396,7 +438,7 @@ tell you if a value is <em>one of</em> a set of values:</p>
  [97] FALSE FALSE FALSE FALSE
  [ reached getOption("max.print") -- omitted 1604 entries ]</code></pre>
 <p>Now we can insert this into the first position of the square brackets:</p>
-<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">can_mex</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"Mexico"</span><span class="op">)</span>
 <span class="va">gapminder</span><span class="op">[</span><span class="va">can_mex</span>, <span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 24 × 6
@@ -413,36 +455,8 @@ tell you if a value is <em>one of</em> a set of values:</p>
  9 Canada   1992 28523502 Americas     78.0    26343.
 10 Canada   1997 30305843 Americas     78.6    28955.
 # … with 14 more rows</code></pre>
-</div>
-<div id="challenge-4-1" class="section level3" number="5.2.2">
-<h3>
-<span class="header-section-number">5.2.2</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4-1"><i class="fas fa-link"></i></a>
-</h3>
-<blockquote>
-<p>Select all the rows in <code>gapminder</code> with data from 1975 and earlier</p>
-<details><summary>
-Solution to challenge 4
-</summary><p><br></p>
-<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;=</span> <span class="fl">1975</span>, <span class="op">]</span></code></pre></div>
-<pre><code># A tibble: 710 × 6
-   country      year      pop continent lifeExp gdpPercap
-   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
- 1 Afghanistan  1952  8425333 Asia         28.8      779.
- 2 Afghanistan  1957  9240934 Asia         30.3      821.
- 3 Afghanistan  1962 10267083 Asia         32.0      853.
- 4 Afghanistan  1967 11537966 Asia         34.0      836.
- 5 Afghanistan  1972 13079460 Asia         36.1      740.
- 6 Albania      1952  1282697 Europe       55.2     1601.
- 7 Albania      1957  1476505 Europe       59.3     1942.
- 8 Albania      1962  1728137 Europe       64.8     2313.
- 9 Albania      1967  1984060 Europe       66.2     2760.
-10 Albania      1972  2263554 Europe       67.7     3313.
-# … with 700 more rows</code></pre>
-</details>
-</blockquote>
 <p>We saw previously how we can select a single column using the dollar sign <code>$</code>:</p>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span></code></pre></div>
 <pre><code>  [1] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan"
   [6] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan"
@@ -467,7 +481,7 @@ Solution to challenge 4
  [ reached getOption("max.print") -- omitted 1604 entries ]</code></pre>
 <p>If we wanted to select a subset of columns, we can specify that in the second
 position using a character vector of column names:</p>
-<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span> , <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"year"</span>, <span class="st">"lifeExp"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 1,704 × 3
    country      year lifeExp
@@ -484,17 +498,47 @@ position using a character vector of column names:</p>
 10 Afghanistan  1997    41.8
 # … with 1,694 more rows</code></pre>
 </div>
-<div id="challenge-5-1" class="section level3" number="5.2.3">
+<div id="challenge-3-5-minutes-1" class="section level3" number="5.2.3">
 <h3>
-<span class="header-section-number">5.2.3</span> Challenge 5<a class="anchor" aria-label="anchor" href="#challenge-5-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2.3</span> Challenge 3 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-5-minutes-1"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
-Select all the rows in <code>gapminder</code> with data from Canada, and just the columns
-year, pop, and gdpPercap
+<p>Select all the rows in <code>gapminder</code> with data from 1975 and earlier</p>
 <details><summary>
-Solution to challenge 5
+Solution to challenge 3
 </summary><p><br></p>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;=</span> <span class="fl">1975</span>, <span class="op">]</span></code></pre></div>
+<pre><code># A tibble: 710 × 6
+   country      year      pop continent lifeExp gdpPercap
+   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Afghanistan  1952  8425333 Asia         28.8      779.
+ 2 Afghanistan  1957  9240934 Asia         30.3      821.
+ 3 Afghanistan  1962 10267083 Asia         32.0      853.
+ 4 Afghanistan  1967 11537966 Asia         34.0      836.
+ 5 Afghanistan  1972 13079460 Asia         36.1      740.
+ 6 Albania      1952  1282697 Europe       55.2     1601.
+ 7 Albania      1957  1476505 Europe       59.3     1942.
+ 8 Albania      1962  1728137 Europe       64.8     2313.
+ 9 Albania      1967  1984060 Europe       66.2     2760.
+10 Albania      1972  2263554 Europe       67.7     3313.
+# … with 700 more rows</code></pre>
+</details>
+</blockquote>
+</div>
+<div id="challenge-4-5-minutes" class="section level3" number="5.2.4">
+<h3>
+<span class="header-section-number">5.2.4</span> Challenge 4 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-4-5-minutes"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Select all the rows in <code>gapminder</code> with data from Canada, and just the columns
+year, pop, and gdpPercap</p>
+</blockquote>
+<blockquote>
+<details><summary>
+Solution to challenge 4
+</summary><p><br></p>
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Canada"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"pop"</span>, <span class="st">"gdpPercap"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code># A tibble: 12 × 3
     year      pop gdpPercap
@@ -525,17 +569,14 @@ Solution to challenge 5
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#exploring-data-frames"><span class="header-section-number">5</span> Exploring Data Frames</a></li>
 <li>
-<a class="nav-link" href="#introducing-the-gapminder-data"><span class="header-section-number">5.1</span> Introducing the Gapminder data</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#challenge-1-3"><span class="header-section-number">5.1.1</span> Challenge 1</a></li>
-<li><a class="nav-link" href="#challenge-2-2"><span class="header-section-number">5.1.2</span> Challenge 2</a></li>
-<li><a class="nav-link" href="#challenge-3-2"><span class="header-section-number">5.1.3</span> Challenge 3</a></li>
-</ul>
+<a class="nav-link" href="#introducing-the-gapminder-data"><span class="header-section-number">5.1</span> Introducing the Gapminder data</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-5-minutes-1"><span class="header-section-number">5.1.1</span> Challenge 1 (5 minutes)</a></li></ul>
 </li>
 <li>
 <a class="nav-link" href="#basic-subsetting"><span class="header-section-number">5.2</span> Basic subsetting</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#selecting-rows"><span class="header-section-number">5.2.1</span> Selecting rows</a></li>
-<li><a class="nav-link" href="#challenge-4-1"><span class="header-section-number">5.2.2</span> Challenge 4</a></li>
-<li><a class="nav-link" href="#challenge-5-1"><span class="header-section-number">5.2.3</span> Challenge 5</a></li>
+<li><a class="nav-link" href="#challenge-2-5-minutes-1"><span class="header-section-number">5.2.2</span> Challenge 2 (5 minutes)</a></li>
+<li><a class="nav-link" href="#challenge-3-5-minutes-1"><span class="header-section-number">5.2.3</span> Challenge 3 (5 minutes)</a></li>
+<li><a class="nav-link" href="#challenge-4-5-minutes"><span class="header-section-number">5.2.4</span> Challenge 4 (5 minutes)</a></li>
 </ul>
 </li>
 </ul>
