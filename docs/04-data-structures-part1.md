@@ -528,7 +528,7 @@ cats
 > <details>
 > 
 > <summary>
-> Solution to challenge 2
+> Solution to challenge 1
 > </summary>
 > 
 > Use the `na.rm` argument:
