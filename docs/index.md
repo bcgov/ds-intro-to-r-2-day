@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Data Science using R Workshop"
-date: "2022-02-22"
+date: "2022-02-23"
 site: bookdown::bookdown_site
 output: bookdown::bs4_book
 url: https://bcgov.github.io/ds-intro-to-r-2-day
@@ -39,8 +39,8 @@ The goal of this 4 session workshop is to teach new-to-programming data professi
 - Review + questions (30 minutes)
 - [Data Structures] (50 minutes)  **(Andy)**
 - BREAK ☕
-- [Exploring Data Frames] (30 minutes) **(Bonnie)**
-- [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 1 (60 minutes)  **(Bonnie)**
+- [Exploring Data Frames] (45 minutes) **(Bonnie)**
+- [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 1 (45 minutes)  **(Bonnie)**
 
 ### Day 3 {-}
 
