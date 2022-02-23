@@ -88,16 +88,16 @@ the fields in a database and observed variables are like the database values.</p
 </h2>
 <p>First install the packages if you haven’t already done so (you probably
 installed dplyr in the previous lesson):</p>
-<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyr"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></code></pre></div>
 <p>Load the packages</p>
-<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyr.tidyverse.org">"tidyr"</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://readr.tidyverse.org">"readr"</a></span><span class="op">)</span></code></pre></div>
 <p>First, lets look at the structure of our original gapminder dataframe:</p>
-<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>Rows: 1704 Columns: 6
 ── Column specification ────────────────────────────────────────────────────────
@@ -107,7 +107,7 @@ dbl (4): year, pop, lifeExp, gdpPercap
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
    country      year      pop continent lifeExp gdpPercap
@@ -123,9 +123,9 @@ dbl (4): year, pop, lifeExp, gdpPercap
  9 Afghanistan  1992 16317921 Asia         41.7      649.
 10 Afghanistan  1997 22227415 Asia         41.8      635.
 # … with 1,694 more rows</code></pre>
-<div id="challenge-1-4" class="section level3" number="8.1.1">
+<div id="challenge-1-1" class="section level3" number="8.1.1">
 <h3>
-<span class="header-section-number">8.1.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-1"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Is gapminder a purely long, purely wide, or some intermediate format?</p>
@@ -163,7 +163,7 @@ R actually work better in the wide format data.</p>
 ‘real’ data (i.e. our own research data) will never be so well organized. Here
 let’s start with the wide formatted version of the gapminder dataset.</p>
 <p>We’ll load the data file and look at it.</p>
-<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_wide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_wide.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>Rows: 142 Columns: 38
 ── Column specification ────────────────────────────────────────────────────────
@@ -173,7 +173,7 @@ dbl (36): pop_1952, lifeExp_1952, gdpPercap_1952, pop_1957, lifeExp_1957, gd...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_wide</span></code></pre></div>
 <pre><code># A tibble: 142 × 38
    continent country  pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
@@ -198,7 +198,7 @@ dbl (36): pop_1952, lifeExp_1952, gdpPercap_1952, pop_1957, lifeExp_1957, gd...
 <div class="inline-figure"><img src="fig/08-tidyr-fig2.png" style="width:100.0%"></div>
 <p>To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available <code>pivot</code> functions from the <code>tidyr</code> package. To convert from wide to a longer format, we will use the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function. <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> makes datasets longer by increasing the number of rows and decreasing the number of columns, or ‘lengthening’ your observation variables into a single variable.</p>
 <div class="inline-figure"><img src="fig/08-tidyr-fig3.png" style="width:100.0%"></div>
-<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_wide</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
     cols <span class="op">=</span> <span class="va">pop_1952</span><span class="op">:</span><span class="va">gdpPercap_2007</span>,
@@ -232,7 +232,7 @@ will contain the new ID variable (<code>obstype_year</code>) and <code>values_to
 new amalgamated observation variable (<code>obs_value</code>). We supply these new column
 names as strings.</p>
 <div class="inline-figure"><img src="fig/08-tidyr-fig4.png" style="width:100.0%"></div>
-<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_wide</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
     cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">continent</span>, <span class="op">-</span><span class="va">country</span><span class="op">)</span>,
@@ -259,7 +259,7 @@ flexibility is a huge time saver!</p>
 <p>Now <code>obstype_year</code> actually contains 2 pieces of information, the observation
 type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the <code>year</code>. We can use the
 <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code> function to split the character strings into multiple variables</p>
-<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_long_split</span> <span class="op">&lt;-</span> <span class="va">gap_long</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
     <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">obstype_year</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'obs_type'</span>, <span class="st">'year'</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -273,7 +273,7 @@ type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the 
 <details><summary>
 Solution to challenge 2
 </summary><p><br></p>
-<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">obs_type</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>means<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">obs_values</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -311,29 +311,29 @@ Solution to challenge 2
 <p>To <code>names_from</code> we supply the column name whose contents will be pivoted into new
 output columns in the widened dataframe. The corresponding values will be added
 from the column named in the <code>values_from</code> argument.</p>
-<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">obs_type</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">gap_normal</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 1704    6</code></pre>
-<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] 1704    6</code></pre>
-<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">gap_normal</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "continent" "country"   "year"      "pop"       "lifeExp"   "gdpPercap"</code></pre>
-<div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"</code></pre>
 <p>Now we’ve got an intermediate dataframe <code>gap_normal</code> with the same dimensions as
 the original <code>gapminder</code>, but the order of the variables is different. Let’s fix
 that before checking if they are <code><a href="https://rdrr.io/r/base/all.equal.html">all.equal()</a></code>.</p>
-<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_normal</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">pop</span>, <span class="va">continent</span>, <span class="va">lifeExp</span>, <span class="va">gdpPercap</span><span class="op">)</span> 
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_normal</span>, <span class="va">gapminder</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_normal</span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
    country      year      pop continent lifeExp gdpPercap
@@ -349,7 +349,7 @@ that before checking if they are <code><a href="https://rdrr.io/r/base/all.equal
  9 Afghanistan  1992 16317921 Asia         41.7      649.
 10 Afghanistan  1997 22227415 Asia         41.8      635.
 # … with 1,694 more rows</code></pre>
-<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
    country      year      pop continent lifeExp gdpPercap
@@ -367,7 +367,7 @@ that before checking if they are <code><a href="https://rdrr.io/r/base/all.equal
 # … with 1,694 more rows</code></pre>
 <p>We’re almost there, the original was sorted by <code>country</code>, then
 <code>year</code>.</p>
-<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_normal</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span><span class="op">)</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_normal</span>, <span class="va">gapminder</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
@@ -379,7 +379,7 @@ across the 3 metrics (<code>pop</code>,<code>lifeExp</code>,<code>gdpPercap</cod
 need to create appropriate labels for all our new variables (time*metric
 combinations) and we also need to unify our ID variables to simplify the process
 of defining <code>gap_wide</code>.</p>
-<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_temp</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_ID</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span>
 <span class="va">gap_temp</span></code></pre></div>
 <pre><code># A tibble: 5,112 × 4
@@ -396,7 +396,7 @@ of defining <code>gap_wide</code>.</p>
  9 Asia_Afghanistan gdpPercap  1962      853. 
 10 Asia_Afghanistan pop        1967 11537966  
 # … with 5,102 more rows</code></pre>
-<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_temp</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span>
@@ -418,7 +418,7 @@ of defining <code>gap_wide</code>.</p>
 <p>Using <code><a href="https://tidyr.tidyverse.org/reference/unite.html">unite()</a></code> we now have a single ID variable which is a combination of
 <code>continent</code>,<code>country</code>,and we have defined variable names. We’re now ready to
 pipe in <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code></p>
-<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_wide_new</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -444,9 +444,9 @@ pipe in <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">p
 #   lifeExp_1977 &lt;dbl&gt;, gdpPercap_1977 &lt;dbl&gt;, pop_1982 &lt;dbl&gt;,
 #   lifeExp_1982 &lt;dbl&gt;, gdpPercap_1982 &lt;dbl&gt;, pop_1987 &lt;dbl&gt;,
 #   lifeExp_1987 &lt;dbl&gt;, gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, …</code></pre>
-<div id="challenge-3-10-minutes" class="section level3" number="8.3.1">
+<div id="challenge-3-10-minutes-1" class="section level3" number="8.3.1">
 <h3>
-<span class="header-section-number">8.3.1</span> Challenge 3 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-10-minutes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3.1</span> Challenge 3 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-10-minutes-1"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Take this 1 step further and create a <code>gap_ludicrously_wide</code> format data by pivoting over countries, year and the 3 metrics?
@@ -454,7 +454,7 @@ pipe in <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">p
 <details><summary>
 Solution to challenge 3
 </summary><p><br></p>
-<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_ludicrously_wide</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">var_names</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span></code></pre></div>
@@ -462,7 +462,7 @@ Solution to challenge 3
 </blockquote>
 <p>Now we have a great ‘wide’ format dataframe, but the <code>ID_var</code> could be more
 usable, let’s separate it into 2 variables with <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code></p>
-<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_wide_betterID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">gap_wide_new</span>, <span class="va">ID_var</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"continent"</span>, <span class="st">"country"</span><span class="op">)</span>, sep<span class="op">=</span><span class="st">"_"</span><span class="op">)</span>
 <span class="va">gap_wide_betterID</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -490,7 +490,7 @@ usable, let’s separate it into 2 variables with <code><a href="https://tidyr.t
 #   lifeExp_1977 &lt;dbl&gt;, gdpPercap_1977 &lt;dbl&gt;, pop_1982 &lt;dbl&gt;,
 #   lifeExp_1982 &lt;dbl&gt;, gdpPercap_1982 &lt;dbl&gt;, pop_1987 &lt;dbl&gt;,
 #   lifeExp_1987 &lt;dbl&gt;, gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, …</code></pre>
-<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_wide</span>, <span class="va">gap_wide_betterID</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <p>There and back again!</p>
@@ -516,13 +516,13 @@ usable, let’s separate it into 2 variables with <code><a href="https://tidyr.t
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#create-tidy-data-with-tidyr"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></li>
 <li>
-<a class="nav-link" href="#getting-started-1"><span class="header-section-number">8.1</span> Getting started</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-4"><span class="header-section-number">8.1.1</span> Challenge 1</a></li></ul>
+<a class="nav-link" href="#getting-started-1"><span class="header-section-number">8.1</span> Getting started</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-1"><span class="header-section-number">8.1.1</span> Challenge 1</a></li></ul>
 </li>
 <li>
 <a class="nav-link" href="#from-wide-to-long-format-with-pivot_longer"><span class="header-section-number">8.2</span> From wide to long format with pivot_longer()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-5-minutes-2"><span class="header-section-number">8.2.1</span> Challenge 2 (5 minutes)</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#from-long-to-intermediate-format-with-pivot_wider"><span class="header-section-number">8.3</span> From long to intermediate format with pivot_wider()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-3-10-minutes"><span class="header-section-number">8.3.1</span> Challenge 3 (10 minutes)</a></li></ul>
+<a class="nav-link" href="#from-long-to-intermediate-format-with-pivot_wider"><span class="header-section-number">8.3</span> From long to intermediate format with pivot_wider()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-3-10-minutes-1"><span class="header-section-number">8.3.1</span> Challenge 3 (10 minutes)</a></li></ul>
 </li>
 <li><a class="nav-link" href="#other-great-resources-1"><span class="header-section-number">8.4</span> Other great resources</a></li>
 </ul>

@@ -18,7 +18,7 @@ source: Rmd
 
 ## Reading Help files
 
-R, and every package, provide help files for functions. The general syntax to search for help on any
+R, and every package, provides help files for functions. The general syntax to search for help on any
 function, "function_name", from a specific function that is in a package loaded into your
 namespace (your interactive R session):
 
@@ -36,7 +36,7 @@ Each help page is broken down into sections:
  - Usage: The arguments of the function and their default values.
  - Arguments: An explanation of the data each argument is expecting.
  - Details: Any important details to be aware of.
- - Value: The data the function returns.
+ - Value: The type of data the function returns.
  - See Also: Any related functions you might find useful.
  - Examples: Some examples for how to use the function.
 
@@ -79,6 +79,14 @@ If a package doesn't have any vignettes, you can usually find help by typing
 
 Many packages also have a web presence. Google is your friend here. For example here is the package website for the ggplot2 package: https://ggplot2.tidyverse.org/
 
+## Finding help for functions in packages
+
+If you are looking for help on a function that is within a package, there are several ways to find it:
+
+- If you have loaded the package (via `library(pkg_name)`) and know the package name you can simply use `?function_name`
+- If you haven't loaded the package, you can use the following syntax: `?package_name::function_name` or `help("function_name", package = "package_name")`
+- Often the easiest way is to load the function index for a package with `help(package = "package_name")` and click on the link for the function for which you are seeking help
+
 ## When you kind of remember the function
 
 If you're not sure what package a function is in, or how it's specifically spelled you can do a fuzzy search:
@@ -119,7 +127,7 @@ fields. This can be a good starting point.
 > </details>
 
 
-
+## Challenges (10 minutes)
 
 ### Challenge 2
 
@@ -218,4 +226,31 @@ fields. This can be a good starting point.
 > </details>
 
 
+### Challenge 4
+
+> Find the help for the `mutate` function in the `dplyr` package. What is its purpose? What do you notice different about this help page?
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 4
+> </summary>
+> 
+> <br />
+> 
+> 
+> ```r
+> ?dplyr::mutate
+> # OR
+> library(dplyr)
+> ?mutate
+> # OR
+> help("mutate", package = "dplyr")
+> # OR
+> help(package = "dplyr") # and click on the 'mutate' link
+> ```
+> `mutate()` adds new variables and preserves existing ones.
+> The help page for mutate also documents the function `transmute()`
+> 
+> </details>
 

@@ -76,14 +76,14 @@ mean(gapminder$gdpPercap)
 [1] 7215.327
 ```
 
-The question here is how might you summarize 
+The question here is how might you summarize and 
 split by some group you might be interested in.
 
 ## The `dplyr` package
 
 Luckily, the [`dplyr`](https://cran.r-project.org/package=dplyr)
 package provides a number of very useful functions for manipulating dataframes
-in a way that will reduce the above repetition, reduce the probability of making
+in a way that will reduce repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
 even find the `dplyr` grammar easier to read.
 
@@ -191,7 +191,8 @@ let's repeat what we've done above using pipes.
 
 
 ```r
-year_country_gdp <- gapminder %>% select(year, country, gdpPercap)
+year_country_gdp <- gapminder %>% 
+  select(year, country, gdpPercap)
 ```
 
 To help you understand why we wrote that in that way, let's walk through it step
@@ -214,7 +215,7 @@ year_country_gdp_euro <- gapminder %>%
     select(year, country, gdpPercap)
 ```
 
-### Challenge 1
+### Challenge 1 (10 minutes)
 > Write a single command (which can span multiple lines and includes pipes) that
 > will produce a dataframe that has the African values for `lifeExp`, `country`
 > and `year`, but not for other Continents.  How many rows does your dataframe
@@ -335,7 +336,7 @@ gdp_bycontinents <- gapminder %>%
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
-### Challenge 2
+### Challenge 2 (10 minutes)
 > Calculate the average life expectancy per country. Which has the longest average life
 > expectancy and which has the shortest average life expectancy?
 >
@@ -479,6 +480,32 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 `.groups` argument.
 ```
 
+### Challenge 3 (10 minutes)
+> Calculate the total GDP per contintent and year. Which continent, and in what year,
+> had the highest total GDP?
+>
+> <details>
+> 
+> <summary>
+> Solution to challenge 3
+> </summary>
+> 
+> <br />
+>
+>```r
+> gdp_by_continent_by_year <- gapminder %>% 
+>     mutate(gdp = gdpPercap * pop) %>%
+>     group_by(continent, year) %>%
+>     summarise(total_gdp = sum(gdp)) %>% 
+>     arrange(desc(total_gdp))
+>```
+>
+>```
+>`summarise()` has grouped output by 'continent'. You can override using the
+>`.groups` argument.
+>```
+> </details>
+
 ## Connect mutate with logical groupings: ifelse
 
 When creating new variables, we can hook this with a logical condition. A simple combination of
@@ -550,7 +577,7 @@ ggplot(data = a_countries, aes(x = year, y = lifeExp, color = continent)) +
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-07-unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/rmd-07-unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" />
 
 
 This code makes the right plot but it also provides a way to chain operations. Just as we used
@@ -569,7 +596,7 @@ gapminder %>%
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-07-unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/rmd-07-unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
 
 Using `dplyr` functions also helps us do calculations on the fly, for example if we were interested in 
 converting `lifeExp` which is in years to days:
@@ -585,7 +612,7 @@ gapminder %>%
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-07-unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/rmd-07-unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" />
 
 ### Advanced Challenge
 

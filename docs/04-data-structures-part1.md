@@ -51,7 +51,7 @@ periodically check for updates to that package:
 install.packages("readr")
 ```
 
-Everytime we want to use that package, you must load it into your R session, by 
+Every time we want to use that package, you must load it into your R session, by 
 using the `library` function:
 
 
@@ -99,7 +99,7 @@ uses more sensible defaults. Tabs and commas are the most common
 punctuation characters used to separate or delimit data points in text files.
 
 The object that is created by `read_csv` is called a "data.frame" - a rectangular
-table-like object with rows and columns.
+table-like object with rows and columns. `readr` creates a special type of data.frame called a `"tibble"`.
 
 We can begin exploring our dataset right away, first by looking at the whole thing:
 
@@ -140,21 +140,23 @@ We can do other operations on the columns:
 
 
 ```r
-## Say we discovered that the scale weighs two Kg light:
-cats$weight + 2
+## Say we discovered that the scale weighs 500g light:
+cats$weight + 0.5
 ```
 
 ```
-[1] 4.1 7.0 5.2
+[1] 2.6 5.5 3.7
 ```
 
 ```r
-paste("My", cats$coat, "cat weighs", cats$weight + 2, "kilograms")
+# We can save this new value back in the `weight` column:
+cats$weight <- cats$weight + 0.5
+paste("My", cats$coat, "cat weighs", cats$weight, "kilograms")
 ```
 
 ```
-[1] "My calico cat weighs 4.1 kilograms" "My black cat weighs 7 kilograms"   
-[3] "My tabby cat weighs 5.2 kilograms" 
+[1] "My calico cat weighs 2.6 kilograms" "My black cat weighs 5.5 kilograms" 
+[3] "My tabby cat weighs 3.7 kilograms" 
 ```
 
 But what about
@@ -190,7 +192,7 @@ There are 4 main types:
 
 - `double`/`numeric` (decimal numbers), 
 - `integer` (counting numbers),
-- `logical` (True/False),
+- `logical` (TRUE/FALSE),
 - `character` (free text)
 
 
@@ -224,14 +226,6 @@ typeof('banana')
 
 ```
 [1] "character"
-```
-
-```r
-typeof(1 + 1i)
-```
-
-```
-[1] "complex"
 ```
 
 No matter how
@@ -342,7 +336,7 @@ class(cats$weight)
 ```
 
 we see that `cats$weight` is a vector, too - *the columns of data we load into R
-data.frames are all vectors*, and that's the root of why R forces everything in
+data.frames are all vectors* (of the same length), and that's the root of why R forces everything in
 a column to be the same basic data type.
 
 ### Discussion 1
@@ -373,7 +367,7 @@ Given what we've learned so far, what do you think the following will produce?
 
 
 ```r
-quiz_vector <- c(2,6,'3')
+quiz_vector <- c(2, 6, "3")
 ```
 
 This is something called *type coercion*, and it is the source of many surprises
@@ -474,7 +468,7 @@ str(cats$weight)
 ```
 
 ```
- num [1:3] 2.1 5 3.2
+ num [1:3] 2.6 5.5 3.7
 ```
 
 ```r
@@ -495,6 +489,56 @@ str(cats$coat)
 ```
  chr [1:3] "calico" "black" "tabby"
 ```
+
+## Missing values
+
+In real data analysis, it is often the case that we are missing some data in a
+data set. For example, say we want to add tail length to our dataset, but one of
+our cats wouldn't hold still long enough to be measured... we know it has a
+tail (so we can't record it as `0`), but we don't know what it is. We also
+can't record it using a word or code (character; such as `"missing"`) because
+vectors in R all have to be the same type, and weight is numeric. A common
+practice is to use a placeholder value such as `9999`, but that can cause
+problems if we neglect to deal with it properly, so it's not recommended. R has
+a special placeholder for missing values called `NA` - it looks a lot like a
+character value, but it is not - it is a special value that has the same type as
+the vector in which it is found.
+
+
+```r
+cats$tail_length <- c(27.5, NA, 31)
+cats
+```
+
+```
+# A tibble: 3 × 4
+  coat   weight likes_string tail_length
+  <chr>   <dbl> <lgl>              <dbl>
+1 calico    2.6 TRUE                27.5
+2 black     5.5 FALSE               NA  
+3 tabby     3.7 TRUE                31  
+```
+
+### Challenge 1 (5 minutes)
+
+> What is the average tail length of our cats? (Hint, use the `mean` function)
+> 
+> Did you run into any issues? Can the help file for `mean` guide you?
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> Use the `na.rm` argument:
+> 
+> 
+> ```r
+> mean(cats$tail_length)
+> mean(cats$tail_length, na.rm = TRUE)
+> ```
+> </details>
 
 ## Factors
 
@@ -559,7 +603,7 @@ typeof(CATegories)
 [1] "integer"
 ```
 
-### Challenge 1
+### Challenge 2 (10 minutes)
 
 > Look at the help for `?read_csv` to figure out how to control what data type 
 > each column is read as. Then write a command so that `coat` is read as a
@@ -569,7 +613,7 @@ typeof(CATegories)
 > <details>
 > 
 > <summary>
-> Solution to challenge 1
+> Solution to challenge 2
 > </summary>
 > 
 > <br />
@@ -727,10 +771,10 @@ cats[1,]
 ```
 
 ```
-# A tibble: 1 × 3
-  coat   weight likes_string
-  <chr>   <dbl> <lgl>       
-1 calico    2.1 TRUE        
+# A tibble: 1 × 4
+  coat   weight likes_string tail_length
+  <chr>   <dbl> <lgl>              <dbl>
+1 calico    2.6 TRUE                27.5
 ```
 
 ```r
@@ -746,13 +790,14 @@ str(cats[1,])
 ```
 
 ```
-tibble [1 × 3] (S3: tbl_df/tbl/data.frame)
+tibble [1 × 4] (S3: tbl_df/tbl/data.frame)
  $ coat        : chr "calico"
- $ weight      : num 2.1
+ $ weight      : num 2.6
  $ likes_string: logi TRUE
+ $ tail_length : num 27.5
 ```
 
-### Challenge 2
+### Challenge 3
 
 > There are several subtly different ways to call variables, observations and
 > elements from data.frames:
@@ -773,7 +818,7 @@ tibble [1 × 3] (S3: tbl_df/tbl/data.frame)
 > <details>
 > 
 > <summary>
-> Solution to challenge 2
+> Solution to challenge 3
 > </summary>
 > 
 > <br />
@@ -866,10 +911,10 @@ tibble [1 × 3] (S3: tbl_df/tbl/data.frame)
 > ```
 > 
 > ```
-> # A tibble: 1 × 3
->   coat   weight likes_string
->   <chr>   <dbl> <lgl>       
-> 1 calico    2.1 TRUE        
+> # A tibble: 1 × 4
+>   coat   weight likes_string tail_length
+>   <chr>   <dbl> <lgl>              <dbl>
+> 1 calico    2.6 TRUE                27.5
 > ```
 > Again we use the single brace with row and column coordinates. The column
 > coordinate is not specified. The return value is a _list_ containing all the
@@ -945,7 +990,7 @@ ncol(matrix_example)
 [1] 6
 ```
 
-### Challenge 3
+### Challenge 4
 
 > What do you think will be the result of
 > `length(matrix_example)`?
@@ -956,7 +1001,7 @@ ncol(matrix_example)
 > <details>
 > 
 > <summary>
-> Solution to challenge 3
+> Solution to challenge 4
 > </summary>
 > 
 > <br />
@@ -981,7 +1026,7 @@ Because a matrix is a vector with added dimension attributes, `length`
 gives you the total number of elements in the matrix.
 
 
-### Challenge 4
+### Challenge 5
 
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -993,7 +1038,7 @@ gives you the total number of elements in the matrix.
 > <details>
 > 
 > <summary>
-> Solution to challenge 4
+> Solution to challenge 5
 > </summary>
 > 
 > <br />
@@ -1014,7 +1059,7 @@ gives you the total number of elements in the matrix.
 > </details>
 
 
-### Challenge 5
+### Challenge 6
 > Create a list of length two containing a character vector for each of the sections in this part of the workshop:
 > 
 >  - Data types
@@ -1027,7 +1072,7 @@ gives you the total number of elements in the matrix.
 > <details>
 > 
 > <summary>
-> Solution to challenge 5
+> Solution to challenge 6
 > </summary>
 > 
 > <br />
@@ -1044,7 +1089,7 @@ gives you the total number of elements in the matrix.
 
 
 
-### Challenge 6
+### Challenge 7
 
 > Consider the R output of the matrix below:
 > 
@@ -1067,7 +1112,7 @@ gives you the total number of elements in the matrix.
 > <details>
 > 
 > <summary>
-> Solution to challenge 6
+> Solution to challenge 7
 > </summary>
 > 
 > <br />

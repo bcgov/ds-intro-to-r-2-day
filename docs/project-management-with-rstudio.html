@@ -113,10 +113,10 @@ project.</p>
 <p>In our initial breakout sessions, we all downloaded and opened a new RStudio
 Project called <code>intro-r-Feb2022</code>, by running the following code:</p>
 <p>If you are on Windows:</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">use_course</span><span class="op">(</span><span class="st">"https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip"</span>, destdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"USERPROFILE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>If you are on a Mac:</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">use_course</span><span class="op">(</span><span class="st">"https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip"</span>, destdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"HOME"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This created a new R project folder in your user directory (<code>C:/Users/[your_user_name]/intro-r-Feb2022/</code> on Windows,
 and <code>/Users/[your_user_name]/intro-r-Feb2022/</code> on a Mac).</p>
@@ -125,9 +125,9 @@ a <code>data/</code> folder, and a <code>README.md</code> file.</p>
 <p>Now whenever we open this project with RStudio, all of our work on this project will
 be entirely self-contained in this directory.</p>
 </div>
-<div id="challenge-1-1" class="section level3" number="3.3.1">
+<div id="challenge-1-5-minutes-1" class="section level3" number="3.3.1">
 <h3>
-<span class="header-section-number">3.3.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3.1</span> Challenge 1 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-1-5-minutes-1"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>To get used to navigating Projects in RStudio, close your Project and reopen it.
@@ -176,7 +176,7 @@ project, and some of the analyses get shared between projects.</p>
 <ol style="list-style-type: decimal">
 <li>Put each project in its own directory, which is named after the project.</li>
 <li>Put text documents associated with the project in the <code>doc</code> directory.</li>
-<li>Put raw data and metadata in the <code>data</code> directory, and files generated during cleanup and analysis in a <code>results</code> directory.</li>
+<li>Put raw data and metadata in the <code>data</code> directory, and files generated during cleanup and analysis in a <code>results</code>, or <code>outputs</code> directory.</li>
 <li>Put source for the project’s scripts and programs in the <code>src</code> directory, and programs brought in from elsewhere or compiled locally in the <code>bin</code> directory.</li>
 <li>Name all files to reflect their content or function.</li>
 </ol>
@@ -189,7 +189,7 @@ project, and some of the analyses get shared between projects.</p>
 <p>One of the more effective ways to work with R is to start by writing the code you want to run directly in an .R script, and then running the selected lines (either using the keyboard shortcuts in RStudio or clicking the “Run” button) in the interactive R console.</p>
 <p>When your project is in its early stages, the initial .R script file usually contains many lines
 of directly executed code. As it matures, reusable chunks get pulled into their
-own functions. It’s a good idea to separate these functions into two separate folders; one
+own functions. It’s a good idea to separate this code into two separate folders; one
 to store useful functions that you’ll reuse across analyses and projects, and
 one to store the analysis scripts.</p>
 </div>
@@ -212,7 +212,7 @@ one to store the analysis scripts.</p>
 <li><a class="nav-link" href="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
 <li><a class="nav-link" href="#a-possible-solution"><span class="header-section-number">3.2</span> A possible solution</a></li>
 <li>
-<a class="nav-link" href="#creating-a-self-contained-project"><span class="header-section-number">3.3</span> Creating a self-contained project</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-1"><span class="header-section-number">3.3.1</span> Challenge 1</a></li></ul>
+<a class="nav-link" href="#creating-a-self-contained-project"><span class="header-section-number">3.3</span> Creating a self-contained project</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-5-minutes-1"><span class="header-section-number">3.3.1</span> Challenge 1 (5 minutes)</a></li></ul>
 </li>
 <li>
 <a class="nav-link" href="#best-practices-for-project-organization"><span class="header-section-number">3.4</span> Best practices for project organization</a><ul class="nav navbar-nav">
