@@ -52,7 +52,7 @@ periodically check for updates to that package:
 install.packages("readr")
 ```
 
-Everytime we want to use that package, you must load it into your R session, by 
+Every time we want to use that package, you must load it into your R session, by 
 using the `library` function:
 
 ```{r}
@@ -75,7 +75,7 @@ uses more sensible defaults. Tabs and commas are the most common
 punctuation characters used to separate or delimit data points in text files.
 
 The object that is created by `read_csv` is called a "data.frame" - a rectangular
-table-like object with rows and columns.
+table-like object with rows and columns. `readr` creates a special type of data.frame called a `"tibble"`.
 
 We can begin exploring our dataset right away, first by looking at the whole thing:
 
@@ -93,9 +93,11 @@ cats$coat
 We can do other operations on the columns:
 
 ```{r}
-## Say we discovered that the scale weighs two Kg light:
-cats$weight + 2
-paste("My", cats$coat, "cat weighs", cats$weight + 2, "kilograms")
+## Say we discovered that the scale weighs 500g light:
+cats$weight + 0.5
+# We can save this new value back in the `weight` column:
+cats$weight <- cats$weight + 0.5
+paste("My", cats$coat, "cat weighs", cats$weight, "kilograms")
 ```
 
 But what about
@@ -121,7 +123,7 @@ There are 4 main types:
 
 - `double`/`numeric` (decimal numbers), 
 - `integer` (counting numbers),
-- `logical` (True/False),
+- `logical` (TRUE/FALSE),
 - `character` (free text)
 
 ```{r}
@@ -129,7 +131,6 @@ typeof(3.14)
 typeof(1L) # The L suffix forces the number to be an integer, since by default R uses double (decimal) numbers
 typeof(TRUE)
 typeof('banana')
-typeof(1 + 1i)
 ```
 
 No matter how
@@ -200,7 +201,7 @@ class(cats$weight)
 ```
 
 we see that `cats$weight` is a vector, too - *the columns of data we load into R
-data.frames are all vectors*, and that's the root of why R forces everything in
+data.frames are all vectors* (of the same length), and that's the root of why R forces everything in
 a column to be the same basic data type.
 
 ### Discussion 1
@@ -230,7 +231,7 @@ a column to be the same basic data type.
 Given what we've learned so far, what do you think the following will produce?
 
 ```{r}
-quiz_vector <- c(2,6,'3')
+quiz_vector <- c(2, 6, "3")
 ```
 
 This is something called *type coercion*, and it is the source of many surprises
@@ -293,6 +294,45 @@ These make sense. But what about
 str(cats$coat)
 ```
 
+## Missing values
+
+In real data analysis, it is often the case that we are missing some data in a
+data set. For example, say we want to add tail length to our dataset, but one of
+our cats wouldn't hold still long enough to be measured... we know it has a
+tail (so we can't record it as `0`), but we don't know what it is. We also
+can't record it using a word or code (character; such as `"missing"`) because
+vectors in R all have to be the same type, and weight is numeric. A common
+practice is to use a placeholder value such as `9999`, but that can cause
+problems if we neglect to deal with it properly, so it's not recommended. R has
+a special placeholder for missing values called `NA` - it looks a lot like a
+character value, but it is not - it is a special value that has the same type as
+the vector in which it is found.
+
+```{r}
+cats$tail_length <- c(27.5, NA, 31)
+cats
+```
+
+### Challenge 1 (5 minutes)
+
+> What is the average tail length of our cats? (Hint, use the `mean` function)
+> 
+> Did you run into any issues? Can the help file for `mean` guide you?
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> Use the `na.rm` argument:
+> 
+> ```{r, eval=FALSE}
+> mean(cats$tail_length)
+> mean(cats$tail_length, na.rm = TRUE)
+> ```
+> </details>
+
 ## Factors
 
 Another important data structure is called a *factor*. Factors usually look like
@@ -325,7 +365,7 @@ typeof(coats)
 typeof(CATegories)
 ```
 
-### Challenge 1
+### Challenge 2 (10 minutes)
 
 > Look at the help for `?read_csv` to figure out how to control what data type 
 > each column is read as. Then write a command so that `coat` is read as a
@@ -335,7 +375,7 @@ typeof(CATegories)
 > <details>
 > 
 > <summary>
-> Solution to challenge 1
+> Solution to challenge 2
 > </summary>
 > 
 > <br />
@@ -421,7 +461,7 @@ typeof(cats[1,])
 str(cats[1,])
 ```
 
-### Challenge 2
+### Challenge 3
 
 > There are several subtly different ways to call variables, observations and
 > elements from data.frames:
@@ -442,7 +482,7 @@ str(cats[1,])
 > <details>
 > 
 > <summary>
-> Solution to challenge 2
+> Solution to challenge 3
 > </summary>
 > 
 > <br />
@@ -510,7 +550,7 @@ nrow(matrix_example)
 ncol(matrix_example)
 ```
 
-### Challenge 3
+### Challenge 4
 
 > What do you think will be the result of
 > `length(matrix_example)`?
@@ -521,7 +561,7 @@ ncol(matrix_example)
 > <details>
 > 
 > <summary>
-> Solution to challenge 3
+> Solution to challenge 4
 > </summary>
 > 
 > <br />
@@ -541,7 +581,7 @@ Because a matrix is a vector with added dimension attributes, `length`
 gives you the total number of elements in the matrix.
 
 
-### Challenge 4
+### Challenge 5
 
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
@@ -553,7 +593,7 @@ gives you the total number of elements in the matrix.
 > <details>
 > 
 > <summary>
-> Solution to challenge 4
+> Solution to challenge 5
 > </summary>
 > 
 > <br />
@@ -573,7 +613,7 @@ gives you the total number of elements in the matrix.
 > </details>
 
 
-### Challenge 5
+### Challenge 6
 > Create a list of length two containing a character vector for each of the sections in this part of the workshop:
 > 
 >  - Data types
@@ -586,7 +626,7 @@ gives you the total number of elements in the matrix.
 > <details>
 > 
 > <summary>
-> Solution to challenge 5
+> Solution to challenge 6
 > </summary>
 > 
 > <br />
@@ -602,7 +642,7 @@ gives you the total number of elements in the matrix.
 
 
 
-### Challenge 6
+### Challenge 7
 
 > Consider the R output of the matrix below:
 > ```{r, echo=FALSE}
@@ -621,7 +661,7 @@ gives you the total number of elements in the matrix.
 > <details>
 > 
 > <summary>
-> Solution to challenge 6
+> Solution to challenge 7
 > </summary>
 > 
 > <br />

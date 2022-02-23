@@ -88,7 +88,7 @@ be entirely self-contained in this directory.
 
 
 
-### Challenge 1
+### Challenge 1 (5 minutes)
 
 > To get used to navigating Projects in RStudio, close your Project and reopen it.
 > There are at least three ways of opening an RStudio project - try to find two!
@@ -132,7 +132,7 @@ project, and some of the analyses get shared between projects.
 
 1. Put each project in its own directory, which is named after the project.
 2. Put text documents associated with the project in the `doc` directory.
-3. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results` directory.
+3. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results`, or `outputs` directory.
 4. Put source for the project's scripts and programs in the `src` directory, and programs brought in from elsewhere or compiled locally in the `bin` directory.
 5. Name all files to reflect their content or function.
 :::     
@@ -143,7 +143,7 @@ One of the more effective ways to work with R is to start by writing the code yo
 
 When your project is in its early stages, the initial .R script file usually contains many lines
 of directly executed code. As it matures, reusable chunks get pulled into their
-own functions. It's a good idea to separate these functions into two separate folders; one
+own functions. It's a good idea to separate this code into two separate folders; one
 to store useful functions that you'll reuse across analyses and projects, and
 one to store the analysis scripts.
 
