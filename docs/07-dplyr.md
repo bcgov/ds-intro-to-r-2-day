@@ -179,7 +179,7 @@ several functions using pipes. This
 
 
 ```r
-I work up %>% 
+I woke up %>% 
   showered %>% 
   dressed %>% 
   had coffee %>% 
