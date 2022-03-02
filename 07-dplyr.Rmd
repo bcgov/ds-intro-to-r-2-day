@@ -106,7 +106,7 @@ several functions using pipes. This
 [description](https://twitter.com/WeAreRLadies/status/1172576445794803713) is very useful:
 
 ```{r, eval=FALSE}
-I work up %>% 
+I woke up %>% 
   showered %>% 
   dressed %>% 
   had coffee %>% 
