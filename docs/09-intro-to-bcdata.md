@@ -51,13 +51,17 @@ Let's use the `bcdata` package to search the B.C. Data Catalogue for some data o
 
 
 ```r
-bcdc_search("public libraries")
+bcdc_search("public libraries", n = 5)
+```
+
+```
+Found 16 matches. Returning the first 5.
+To see them all, rerun the search and set the 'n' argument to 16.
 ```
 
 ```
 List of B.C. Data Catalogue Records
-Number of records: 16
- (Showing the top 10)
+Number of records: 5
 Titles:
 1: BC Public Libraries Statistics 2002-Present (xls, xlsx, csv)
  ID: d03007d6-d6c7-44d7-b2f8-710ba9433617
@@ -75,24 +79,6 @@ Titles:
 5: Biodiversity/Environmental Information Resources e-Library (html)
  ID: a77d4986-91a1-42fc-8e5c-51a304c7975e
  Name: biodiversity-environmental-information-resources-e-library
-6: BC Geological Survey Publications Catalogue (html, csv)
- ID: 5f6d0659-f042-4552-9f23-8d92a9045328
- Name: bc-geological-survey-publications-catalogue
-7: BC Laws API (html, openapi-json, json)
- ID: 6e815cf7-cb83-4655-9ad4-a926ae4e59f7
- Name: bc-laws-api
-8: Ecological Catalogue (formerly AquaCat) (multiple, wms, kml)
- ID: 7904d8e9-64b4-4acc-89f1-70a42bc1da6e
- Name: ecological-catalogue-formerly-aquacat
-9: Terrestrial Ecosystem Information (TEI) Data Distribution Packages
- (other)
- ID: 8fd15e4e-e7b1-4566-81d1-1ff8947bfd46
- Name: terrestrial-ecosystem-information-tei-data-distribution-packages
-10: Predictive Ecosystem Mapping (PEM) Detailed Polygons with Short
- Attribute Table - 20,000 Spatial View (fgdb)
- ID: b9b3145e-f7f4-4150-a331-1334d3c38576
- Name:
-  predictive-ecosystem-mapping-pem-detailed-polygons-with-short-attribute-table-20-000-spatial-view
 
 Access a single record by calling `bcdc_get_record(ID)` with the ID
  from the desired record.
@@ -690,9 +676,9 @@ Try customizing the output with different `Trade` categories or different ggplot
 >  guides(fill = "none") +
 >  theme_minimal() +
 >  labs(title = "B.C. Seafood Production - 2020", 
->       xlab = "Wholesale Value ($ million)",
+>       x = "Wholesale Value ($ million)",
 >       caption = "https://catalogue.data.gov.bc.ca/dataset/e591a756-6b99-4986-b8ce-f341bd47228f") +
->  theme(axis.title.x = element_blank())
+>  theme(axis.title.y = element_blank())
 >```
 >
 ><img src="fig/rmd-09-unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;" />
