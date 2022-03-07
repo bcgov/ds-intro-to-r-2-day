@@ -51,7 +51,7 @@ library(ggplot2)
 Let's use the `bcdata` package to search the B.C. Data Catalogue for some data on _**public libraries**_ in British Columbia:
 
 ```{r}
-bcdc_search("public libraries")
+bcdc_search("public libraries", n = 5)
 ```
 
 There are many catalogue records with data relating to libraries. Let's examine the first returned record more closely:
@@ -329,9 +329,9 @@ Try customizing the output with different `Trade` categories or different ggplot
 >  guides(fill = "none") +
 >  theme_minimal() +
 >  labs(title = "B.C. Seafood Production - 2020", 
->       xlab = "Wholesale Value ($ million)",
+>       x = "Wholesale Value ($ million)",
 >       caption = "https://catalogue.data.gov.bc.ca/dataset/e591a756-6b99-4986-b8ce-f341bd47228f") +
->  theme(axis.title.x = element_blank())
+>  theme(axis.title.y = element_blank())
 >```
 > </details>
 
