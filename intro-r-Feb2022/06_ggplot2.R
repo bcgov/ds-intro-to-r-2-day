@@ -10,6 +10,9 @@
 # Modify the example so that the figure shows how life expectancy has
 # changed over time:
 
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
+  geom_point()
+
 
 # Hint: the gapminder dataset has a column called "year", which should appear
 # on the x-axis.
