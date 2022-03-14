@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Data Science using R Workshop"
-date: "2022-03-07"
+date: "2022-03-14"
 site: bookdown::bookdown_site
 output: bookdown::bs4_book
 url: https://bcgov.github.io/ds-intro-to-r-2-day

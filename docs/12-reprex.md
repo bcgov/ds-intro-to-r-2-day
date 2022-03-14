@@ -99,7 +99,7 @@ structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1,
     "collector")), weight = structure(list(), class = c("collector_double", 
     "collector")), likes_string = structure(list(), class = c("collector_double", 
     "collector"))), default = structure(list(), class = c("collector_guess", 
-    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7fd6ca520330>, class = c("spec_tbl_df", 
+    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7fd6fc40c490>, class = c("spec_tbl_df", 
 "tbl_df", "tbl", "data.frame"))
 ```
 
@@ -162,9 +162,9 @@ sessionInfo()
 ```
 
 ```
-R version 4.1.2 (2021-11-01)
+R version 4.1.3 (2022-03-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Big Sur 10.16
+Running under: macOS Big Sur/Monterey 10.16
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
@@ -186,14 +186,14 @@ loaded via a namespace (and not attached):
 [13] pillar_1.7.0     glue_1.6.2       withr_2.5.0      DBI_1.1.2       
 [17] bit64_4.0.5      lifecycle_1.0.1  stringr_1.4.0    munsell_0.5.0   
 [21] gtable_0.3.0     memoise_2.0.1    evaluate_0.15    labeling_0.4.2  
-[25] tzdb_0.2.0       fastmap_1.1.0    parallel_4.1.2   fansi_1.0.2     
+[25] tzdb_0.2.0       fastmap_1.1.0    parallel_4.1.3   fansi_1.0.2     
 [29] highr_0.9        scales_1.1.1     cachem_1.0.6     vroom_1.5.7     
 [33] jsonlite_1.8.0   farver_2.1.0     fs_1.5.2         bit_4.0.4       
 [37] hms_1.1.1        digest_0.6.29    stringi_1.7.6    bookdown_0.24   
-[41] grid_4.1.2       cli_3.2.0        tools_4.1.2      magrittr_2.0.2  
+[41] grid_4.1.3       cli_3.2.0        tools_4.1.3      magrittr_2.0.2  
 [45] sass_0.4.0       tibble_3.1.6     crayon_1.5.0     pkgconfig_2.0.3 
 [49] downlit_0.4.0    ellipsis_0.3.2   xml2_1.3.3       assertthat_0.2.1
-[53] rmarkdown_2.12   R6_2.5.1         compiler_4.1.2  
+[53] rmarkdown_2.13   R6_2.5.1         compiler_4.1.3  
 ```
 
 `sessionInfo()` will print out your current version of R, as well as any packages you
