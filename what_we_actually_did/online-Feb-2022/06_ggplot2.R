@@ -54,10 +54,10 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color = continent)
 
 #If we group by country, we can make one line per country
 ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color = continent, group = country)) +
-  geom_line() +
+  geom_line()
 
-  #We can also move the color aesthetic to the line geom, the line geom still finds all the info it needs.
-  ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, group = country)) +
+#We can also move the color aesthetic to the line geom, the line geom still finds all the info it needs.
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, group = country)) +
   geom_line(mapping = aes(color = continent))
 
 #Then we can add a point geom which "sees" no info on how to color the points.
