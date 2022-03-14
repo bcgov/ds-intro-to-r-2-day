@@ -3,6 +3,7 @@
 
 # Introducing the Gapminder data ------------------------------------------
 
+
 #### Challenge 1
 ##
 ## How many rows and columns does `gapminder` have?

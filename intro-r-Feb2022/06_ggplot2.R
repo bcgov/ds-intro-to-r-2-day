@@ -5,14 +5,14 @@
 
 
 
-
 ## Challenge 1 -------------------------------------------------------------
 
 # Modify the example so that the figure shows how life expectancy has
 # changed over time:
 
-ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-geom_point()
+ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
+  geom_point()
+
 
 # Hint: the gapminder dataset has a column called "year", which should appear
 # on the x-axis.
@@ -43,7 +43,6 @@ geom_point()
 
 
 
-
 ## Transformations and statistics ------------------------------------------
 
 
@@ -57,15 +56,12 @@ geom_point()
 # Hint: do not use the `aes` function.
 
 
-
-
 ## Challenge 4b ------------------------------------------------------------
 
 # Modify your solution to Challenge 4a so that the points are now a different
 # shape and are coloured by continent with new trendlines.
 #
 # Hint: The colour argument can be used inside the aesthetic.
-
 
 
 
