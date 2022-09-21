@@ -168,25 +168,25 @@ gap_wide
 
 ```
 # A tibble: 142 × 38
-   continent country  pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
-   <chr>     <chr>       <dbl>        <dbl>          <dbl>    <dbl>        <dbl>
- 1 Asia      Afghani…  8425333         28.8           779.  9240934         30.3
- 2 Europe    Albania   1282697         55.2          1601.  1476505         59.3
- 3 Africa    Algeria   9279525         43.1          2449. 10270856         45.7
- 4 Africa    Angola    4232095         30.0          3521.  4561361         32.0
- 5 Americas  Argenti… 17876956         62.5          5911. 19610538         64.4
- 6 Oceania   Austral…  8691212         69.1         10040.  9712569         70.3
- 7 Europe    Austria   6927772         66.8          6137.  6965860         67.5
- 8 Asia      Bahrain    120447         50.9          9867.   138655         53.8
- 9 Asia      Banglad… 46886859         37.5           684. 51365468         39.3
-10 Europe    Belgium   8730405         68            8343.  8989111         69.2
-# … with 132 more rows, and 31 more variables: gdpPercap_1957 <dbl>,
-#   pop_1962 <dbl>, lifeExp_1962 <dbl>, gdpPercap_1962 <dbl>, pop_1967 <dbl>,
-#   lifeExp_1967 <dbl>, gdpPercap_1967 <dbl>, pop_1972 <dbl>,
-#   lifeExp_1972 <dbl>, gdpPercap_1972 <dbl>, pop_1977 <dbl>,
-#   lifeExp_1977 <dbl>, gdpPercap_1977 <dbl>, pop_1982 <dbl>,
-#   lifeExp_1982 <dbl>, gdpPercap_1982 <dbl>, pop_1987 <dbl>,
-#   lifeExp_1987 <dbl>, gdpPercap_1987 <dbl>, pop_1992 <dbl>, …
+   continent country     pop_1…¹ lifeE…² gdpPe…³ pop_1…⁴ lifeE…⁵ gdpPe…⁶ pop_1…⁷
+   <chr>     <chr>         <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+ 1 Asia      Afghanistan  8.43e6    28.8    779.  9.24e6    30.3    821.  1.03e7
+ 2 Europe    Albania      1.28e6    55.2   1601.  1.48e6    59.3   1942.  1.73e6
+ 3 Africa    Algeria      9.28e6    43.1   2449.  1.03e7    45.7   3014.  1.10e7
+ 4 Africa    Angola       4.23e6    30.0   3521.  4.56e6    32.0   3828.  4.83e6
+ 5 Americas  Argentina    1.79e7    62.5   5911.  1.96e7    64.4   6857.  2.13e7
+ 6 Oceania   Australia    8.69e6    69.1  10040.  9.71e6    70.3  10950.  1.08e7
+ 7 Europe    Austria      6.93e6    66.8   6137.  6.97e6    67.5   8843.  7.13e6
+ 8 Asia      Bahrain      1.20e5    50.9   9867.  1.39e5    53.8  11636.  1.72e5
+ 9 Asia      Bangladesh   4.69e7    37.5    684.  5.14e7    39.3    662.  5.68e7
+10 Europe    Belgium      8.73e6    68     8343.  8.99e6    69.2   9715.  9.22e6
+# … with 132 more rows, 29 more variables: lifeExp_1962 <dbl>,
+#   gdpPercap_1962 <dbl>, pop_1967 <dbl>, lifeExp_1967 <dbl>,
+#   gdpPercap_1967 <dbl>, pop_1972 <dbl>, lifeExp_1972 <dbl>,
+#   gdpPercap_1972 <dbl>, pop_1977 <dbl>, lifeExp_1977 <dbl>,
+#   gdpPercap_1977 <dbl>, pop_1982 <dbl>, lifeExp_1982 <dbl>,
+#   gdpPercap_1982 <dbl>, pop_1987 <dbl>, lifeExp_1987 <dbl>,
+#   gdpPercap_1987 <dbl>, pop_1992 <dbl>, lifeExp_1992 <dbl>, …
 ```
 
 ![](fig/08-tidyr-fig2.png){width=100%}
@@ -520,25 +520,25 @@ gap_wide_new
 
 ```
 # A tibble: 142 × 37
-   ID_var             pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
-   <chr>                 <dbl>        <dbl>          <dbl>    <dbl>        <dbl>
- 1 Asia_Afghanistan    8425333         28.8           779.  9240934         30.3
- 2 Europe_Albania      1282697         55.2          1601.  1476505         59.3
- 3 Africa_Algeria      9279525         43.1          2449. 10270856         45.7
- 4 Africa_Angola       4232095         30.0          3521.  4561361         32.0
- 5 Americas_Argentina 17876956         62.5          5911. 19610538         64.4
- 6 Oceania_Australia   8691212         69.1         10040.  9712569         70.3
- 7 Europe_Austria      6927772         66.8          6137.  6965860         67.5
- 8 Asia_Bahrain         120447         50.9          9867.   138655         53.8
- 9 Asia_Bangladesh    46886859         37.5           684. 51365468         39.3
-10 Europe_Belgium      8730405         68            8343.  8989111         69.2
-# … with 132 more rows, and 31 more variables: gdpPercap_1957 <dbl>,
-#   pop_1962 <dbl>, lifeExp_1962 <dbl>, gdpPercap_1962 <dbl>, pop_1967 <dbl>,
-#   lifeExp_1967 <dbl>, gdpPercap_1967 <dbl>, pop_1972 <dbl>,
+   ID_var        pop_1…¹ lifeE…² gdpPe…³ pop_1…⁴ lifeE…⁵ gdpPe…⁶ pop_1…⁷ lifeE…⁸
+   <chr>           <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+ 1 Asia_Afghani…  8.43e6    28.8    779.  9.24e6    30.3    821.  1.03e7    32.0
+ 2 Europe_Alban…  1.28e6    55.2   1601.  1.48e6    59.3   1942.  1.73e6    64.8
+ 3 Africa_Alger…  9.28e6    43.1   2449.  1.03e7    45.7   3014.  1.10e7    48.3
+ 4 Africa_Angola  4.23e6    30.0   3521.  4.56e6    32.0   3828.  4.83e6    34  
+ 5 Americas_Arg…  1.79e7    62.5   5911.  1.96e7    64.4   6857.  2.13e7    65.1
+ 6 Oceania_Aust…  8.69e6    69.1  10040.  9.71e6    70.3  10950.  1.08e7    70.9
+ 7 Europe_Austr…  6.93e6    66.8   6137.  6.97e6    67.5   8843.  7.13e6    69.5
+ 8 Asia_Bahrain   1.20e5    50.9   9867.  1.39e5    53.8  11636.  1.72e5    56.9
+ 9 Asia_Banglad…  4.69e7    37.5    684.  5.14e7    39.3    662.  5.68e7    41.2
+10 Europe_Belgi…  8.73e6    68     8343.  8.99e6    69.2   9715.  9.22e6    70.2
+# … with 132 more rows, 28 more variables: gdpPercap_1962 <dbl>,
+#   pop_1967 <dbl>, lifeExp_1967 <dbl>, gdpPercap_1967 <dbl>, pop_1972 <dbl>,
 #   lifeExp_1972 <dbl>, gdpPercap_1972 <dbl>, pop_1977 <dbl>,
 #   lifeExp_1977 <dbl>, gdpPercap_1977 <dbl>, pop_1982 <dbl>,
 #   lifeExp_1982 <dbl>, gdpPercap_1982 <dbl>, pop_1987 <dbl>,
-#   lifeExp_1987 <dbl>, gdpPercap_1987 <dbl>, pop_1992 <dbl>, …
+#   lifeExp_1987 <dbl>, gdpPercap_1987 <dbl>, pop_1992 <dbl>,
+#   lifeExp_1992 <dbl>, gdpPercap_1992 <dbl>, pop_1997 <dbl>, …
 ```
 
 ### Challenge 3 (10 minutes)
@@ -579,25 +579,25 @@ gap_wide_betterID
 
 ```
 # A tibble: 142 × 38
-   continent country  pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
-   <chr>     <chr>       <dbl>        <dbl>          <dbl>    <dbl>        <dbl>
- 1 Asia      Afghani…  8425333         28.8           779.  9240934         30.3
- 2 Europe    Albania   1282697         55.2          1601.  1476505         59.3
- 3 Africa    Algeria   9279525         43.1          2449. 10270856         45.7
- 4 Africa    Angola    4232095         30.0          3521.  4561361         32.0
- 5 Americas  Argenti… 17876956         62.5          5911. 19610538         64.4
- 6 Oceania   Austral…  8691212         69.1         10040.  9712569         70.3
- 7 Europe    Austria   6927772         66.8          6137.  6965860         67.5
- 8 Asia      Bahrain    120447         50.9          9867.   138655         53.8
- 9 Asia      Banglad… 46886859         37.5           684. 51365468         39.3
-10 Europe    Belgium   8730405         68            8343.  8989111         69.2
-# … with 132 more rows, and 31 more variables: gdpPercap_1957 <dbl>,
-#   pop_1962 <dbl>, lifeExp_1962 <dbl>, gdpPercap_1962 <dbl>, pop_1967 <dbl>,
-#   lifeExp_1967 <dbl>, gdpPercap_1967 <dbl>, pop_1972 <dbl>,
-#   lifeExp_1972 <dbl>, gdpPercap_1972 <dbl>, pop_1977 <dbl>,
-#   lifeExp_1977 <dbl>, gdpPercap_1977 <dbl>, pop_1982 <dbl>,
-#   lifeExp_1982 <dbl>, gdpPercap_1982 <dbl>, pop_1987 <dbl>,
-#   lifeExp_1987 <dbl>, gdpPercap_1987 <dbl>, pop_1992 <dbl>, …
+   continent country     pop_1…¹ lifeE…² gdpPe…³ pop_1…⁴ lifeE…⁵ gdpPe…⁶ pop_1…⁷
+   <chr>     <chr>         <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+ 1 Asia      Afghanistan  8.43e6    28.8    779.  9.24e6    30.3    821.  1.03e7
+ 2 Europe    Albania      1.28e6    55.2   1601.  1.48e6    59.3   1942.  1.73e6
+ 3 Africa    Algeria      9.28e6    43.1   2449.  1.03e7    45.7   3014.  1.10e7
+ 4 Africa    Angola       4.23e6    30.0   3521.  4.56e6    32.0   3828.  4.83e6
+ 5 Americas  Argentina    1.79e7    62.5   5911.  1.96e7    64.4   6857.  2.13e7
+ 6 Oceania   Australia    8.69e6    69.1  10040.  9.71e6    70.3  10950.  1.08e7
+ 7 Europe    Austria      6.93e6    66.8   6137.  6.97e6    67.5   8843.  7.13e6
+ 8 Asia      Bahrain      1.20e5    50.9   9867.  1.39e5    53.8  11636.  1.72e5
+ 9 Asia      Bangladesh   4.69e7    37.5    684.  5.14e7    39.3    662.  5.68e7
+10 Europe    Belgium      8.73e6    68     8343.  8.99e6    69.2   9715.  9.22e6
+# … with 132 more rows, 29 more variables: lifeExp_1962 <dbl>,
+#   gdpPercap_1962 <dbl>, pop_1967 <dbl>, lifeExp_1967 <dbl>,
+#   gdpPercap_1967 <dbl>, pop_1972 <dbl>, lifeExp_1972 <dbl>,
+#   gdpPercap_1972 <dbl>, pop_1977 <dbl>, lifeExp_1977 <dbl>,
+#   gdpPercap_1977 <dbl>, pop_1982 <dbl>, lifeExp_1982 <dbl>,
+#   gdpPercap_1982 <dbl>, pop_1987 <dbl>, lifeExp_1987 <dbl>,
+#   gdpPercap_1987 <dbl>, pop_1992 <dbl>, lifeExp_1992 <dbl>, …
 ```
 
 ```r

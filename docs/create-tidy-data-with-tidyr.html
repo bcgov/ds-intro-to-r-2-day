@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 8 Create Tidy Data with tidyr | Introduction to Data Science using R Workshop</title>
 <meta name="description" content="People who work with data often want to reshape their dataframes from ‘wide’ to ‘longer’ layouts, or vice-versa. The ‘long’ layout or format is where: each column is a variable each row is an...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.29 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Create Tidy Data with tidyr | Introduction to Data Science using R Workshop">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/create-tidy-data-with-tidyr.html">
@@ -14,10 +14,14 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 8 Create Tidy Data with tidyr | Introduction to Data Science using R Workshop">
 <meta name="twitter:description" content="People who work with data often want to reshape their dataframes from ‘wide’ to ‘longer’ layouts, or vice-versa. The ‘long’ layout or format is where: each column is a variable each row is an...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.13/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -89,16 +93,16 @@ the fields in a database and observed variables are like the database values.</p
 <p>First install the packages if you haven’t already done so (you probably
 installed dplyr in the previous lesson):</p>
 <div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyr"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyr"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span></code></pre></div>
 <p>Load the packages</p>
 <div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyr.tidyverse.org">"tidyr"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://readr.tidyverse.org">"readr"</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyr.tidyverse.org">"tidyr"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://readr.tidyverse.org">"readr"</a></span><span class="op">)</span></span></code></pre></div>
 <p>First, lets look at the structure of our original gapminder dataframe:</p>
 <div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Rows: 1704 Columns: 6
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
@@ -108,7 +112,7 @@ dbl (4): year, pop, lifeExp, gdpPercap
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gapminder</span></span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -164,7 +168,7 @@ R actually work better in the wide format data.</p>
 let’s start with the wide formatted version of the gapminder dataset.</p>
 <p>We’ll load the data file and look at it.</p>
 <div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_wide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_wide.csv"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_wide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_wide.csv"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Rows: 142 Columns: 38
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
@@ -174,37 +178,37 @@ dbl (36): pop_1952, lifeExp_1952, gdpPercap_1952, pop_1957, lifeExp_1957, gd...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_wide</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_wide</span></span></code></pre></div>
 <pre><code># A tibble: 142 × 38
-   continent country  pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
-   &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
- 1 Asia      Afghani…  8425333         28.8           779.  9240934         30.3
- 2 Europe    Albania   1282697         55.2          1601.  1476505         59.3
- 3 Africa    Algeria   9279525         43.1          2449. 10270856         45.7
- 4 Africa    Angola    4232095         30.0          3521.  4561361         32.0
- 5 Americas  Argenti… 17876956         62.5          5911. 19610538         64.4
- 6 Oceania   Austral…  8691212         69.1         10040.  9712569         70.3
- 7 Europe    Austria   6927772         66.8          6137.  6965860         67.5
- 8 Asia      Bahrain    120447         50.9          9867.   138655         53.8
- 9 Asia      Banglad… 46886859         37.5           684. 51365468         39.3
-10 Europe    Belgium   8730405         68            8343.  8989111         69.2
-# … with 132 more rows, and 31 more variables: gdpPercap_1957 &lt;dbl&gt;,
-#   pop_1962 &lt;dbl&gt;, lifeExp_1962 &lt;dbl&gt;, gdpPercap_1962 &lt;dbl&gt;, pop_1967 &lt;dbl&gt;,
-#   lifeExp_1967 &lt;dbl&gt;, gdpPercap_1967 &lt;dbl&gt;, pop_1972 &lt;dbl&gt;,
-#   lifeExp_1972 &lt;dbl&gt;, gdpPercap_1972 &lt;dbl&gt;, pop_1977 &lt;dbl&gt;,
-#   lifeExp_1977 &lt;dbl&gt;, gdpPercap_1977 &lt;dbl&gt;, pop_1982 &lt;dbl&gt;,
-#   lifeExp_1982 &lt;dbl&gt;, gdpPercap_1982 &lt;dbl&gt;, pop_1987 &lt;dbl&gt;,
-#   lifeExp_1987 &lt;dbl&gt;, gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, …</code></pre>
+   continent country     pop_1…¹ lifeE…² gdpPe…³ pop_1…⁴ lifeE…⁵ gdpPe…⁶ pop_1…⁷
+   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Asia      Afghanistan  8.43e6    28.8    779.  9.24e6    30.3    821.  1.03e7
+ 2 Europe    Albania      1.28e6    55.2   1601.  1.48e6    59.3   1942.  1.73e6
+ 3 Africa    Algeria      9.28e6    43.1   2449.  1.03e7    45.7   3014.  1.10e7
+ 4 Africa    Angola       4.23e6    30.0   3521.  4.56e6    32.0   3828.  4.83e6
+ 5 Americas  Argentina    1.79e7    62.5   5911.  1.96e7    64.4   6857.  2.13e7
+ 6 Oceania   Australia    8.69e6    69.1  10040.  9.71e6    70.3  10950.  1.08e7
+ 7 Europe    Austria      6.93e6    66.8   6137.  6.97e6    67.5   8843.  7.13e6
+ 8 Asia      Bahrain      1.20e5    50.9   9867.  1.39e5    53.8  11636.  1.72e5
+ 9 Asia      Bangladesh   4.69e7    37.5    684.  5.14e7    39.3    662.  5.68e7
+10 Europe    Belgium      8.73e6    68     8343.  8.99e6    69.2   9715.  9.22e6
+# … with 132 more rows, 29 more variables: lifeExp_1962 &lt;dbl&gt;,
+#   gdpPercap_1962 &lt;dbl&gt;, pop_1967 &lt;dbl&gt;, lifeExp_1967 &lt;dbl&gt;,
+#   gdpPercap_1967 &lt;dbl&gt;, pop_1972 &lt;dbl&gt;, lifeExp_1972 &lt;dbl&gt;,
+#   gdpPercap_1972 &lt;dbl&gt;, pop_1977 &lt;dbl&gt;, lifeExp_1977 &lt;dbl&gt;,
+#   gdpPercap_1977 &lt;dbl&gt;, pop_1982 &lt;dbl&gt;, lifeExp_1982 &lt;dbl&gt;,
+#   gdpPercap_1982 &lt;dbl&gt;, pop_1987 &lt;dbl&gt;, lifeExp_1987 &lt;dbl&gt;,
+#   gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, lifeExp_1992 &lt;dbl&gt;, …</code></pre>
 <div class="inline-figure"><img src="fig/08-tidyr-fig2.png" style="width:100.0%"></div>
 <p>To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available <code>pivot</code> functions from the <code>tidyr</code> package. To convert from wide to a longer format, we will use the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function. <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> makes datasets longer by increasing the number of rows and decreasing the number of columns, or ‘lengthening’ your observation variables into a single variable.</p>
 <div class="inline-figure"><img src="fig/08-tidyr-fig3.png" style="width:100.0%"></div>
 <div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_wide</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
-    cols <span class="op">=</span> <span class="va">pop_1952</span><span class="op">:</span><span class="va">gdpPercap_2007</span>,
-    names_to <span class="op">=</span> <span class="st">"obstype_year"</span>, values_to <span class="op">=</span> <span class="st">"obs_values"</span>
-  <span class="op">)</span>
-<span class="va">gap_long</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_wide</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="va">pop_1952</span><span class="op">:</span><span class="va">gdpPercap_2007</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="st">"obstype_year"</span>, values_to <span class="op">=</span> <span class="st">"obs_values"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="va">gap_long</span></span></code></pre></div>
 <pre><code># A tibble: 5,112 × 4
    continent country     obstype_year   obs_values
    &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt;
@@ -233,12 +237,12 @@ new amalgamated observation variable (<code>obs_value</code>). We supply these n
 names as strings.</p>
 <div class="inline-figure"><img src="fig/08-tidyr-fig4.png" style="width:100.0%"></div>
 <div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_wide</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
-    cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">continent</span>, <span class="op">-</span><span class="va">country</span><span class="op">)</span>,
-    names_to <span class="op">=</span> <span class="st">"obstype_year"</span>, values_to <span class="op">=</span> <span class="st">"obs_values"</span>
-  <span class="op">)</span>
-<span class="va">gap_long</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_long</span> <span class="op">&lt;-</span> <span class="va">gap_wide</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">continent</span>, <span class="op">-</span><span class="va">country</span><span class="op">)</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="st">"obstype_year"</span>, values_to <span class="op">=</span> <span class="st">"obs_values"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="va">gap_long</span></span></code></pre></div>
 <pre><code># A tibble: 5,112 × 4
    continent country     obstype_year   obs_values
    &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt;
@@ -260,9 +264,9 @@ flexibility is a huge time saver!</p>
 type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the <code>year</code>. We can use the
 <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code> function to split the character strings into multiple variables</p>
 <div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_long_split</span> <span class="op">&lt;-</span> <span class="va">gap_long</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">obstype_year</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'obs_type'</span>, <span class="st">'year'</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_long_split</span> <span class="op">&lt;-</span> <span class="va">gap_long</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">obstype_year</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'obs_type'</span>, <span class="st">'year'</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div id="challenge-2-5-minutes-2" class="section level3" number="8.2.1">
 <h3>
 <span class="header-section-number">8.2.1</span> Challenge 2 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-5-minutes-2"><i class="fas fa-link"></i></a>
@@ -274,9 +278,9 @@ type (<code>pop</code>,<code>lifeExp</code>, or <code>gdpPercap</code>) and the 
 Solution to challenge 2
 </summary><p><br></p>
 <div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">obs_type</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>means<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">obs_values</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">obs_type</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>means<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">obs_values</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
 <pre><code># A tibble: 15 × 3
@@ -312,29 +316,29 @@ Solution to challenge 2
 output columns in the widened dataframe. The corresponding values will be added
 from the column named in the <code>values_from</code> argument.</p>
 <div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">obs_type</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">gap_normal</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">obs_type</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">gap_normal</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] 1704    6</code></pre>
 <div class="sourceCode" id="cb403"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] 1704    6</code></pre>
 <div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">gap_normal</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">gap_normal</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] "continent" "country"   "year"      "pop"       "lifeExp"   "gdpPercap"</code></pre>
 <div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] "country"   "year"      "pop"       "continent" "lifeExp"   "gdpPercap"</code></pre>
 <p>Now we’ve got an intermediate dataframe <code>gap_normal</code> with the same dimensions as
 the original <code>gapminder</code>, but the order of the variables is different. Let’s fix
 that before checking if they are <code><a href="https://rdrr.io/r/base/all.equal.html">all.equal()</a></code>.</p>
 <div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_normal</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">pop</span>, <span class="va">continent</span>, <span class="va">lifeExp</span>, <span class="va">gdpPercap</span><span class="op">)</span> 
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_normal</span>, <span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_normal</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">pop</span>, <span class="va">continent</span>, <span class="va">lifeExp</span>, <span class="va">gdpPercap</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_normal</span>, <span class="va">gapminder</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_normal</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_normal</span></span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -350,7 +354,7 @@ that before checking if they are <code><a href="https://rdrr.io/r/base/all.equal
 10 Afghanistan  1997 22227415 Asia         41.8      635.
 # … with 1,694 more rows</code></pre>
 <div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gapminder</span></span></code></pre></div>
 <pre><code># A tibble: 1,704 × 6
    country      year      pop continent lifeExp gdpPercap
    &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -368,8 +372,8 @@ that before checking if they are <code><a href="https://rdrr.io/r/base/all.equal
 <p>We’re almost there, the original was sorted by <code>country</code>, then
 <code>year</code>.</p>
 <div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_normal</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span><span class="op">)</span>
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_normal</span>, <span class="va">gapminder</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_normal</span> <span class="op">&lt;-</span> <span class="va">gap_normal</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_normal</span>, <span class="va">gapminder</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <p>That’s great! We’ve gone from the longest format back to the intermediate and we
 didn’t introduce any errors in our code.</p>
@@ -380,8 +384,8 @@ need to create appropriate labels for all our new variables (time*metric
 combinations) and we also need to unify our ID variables to simplify the process
 of defining <code>gap_wide</code>.</p>
 <div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_temp</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_ID</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span>
-<span class="va">gap_temp</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_temp</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_ID</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
+<span><span class="va">gap_temp</span></span></code></pre></div>
 <pre><code># A tibble: 5,112 × 4
    var_ID           obs_type   year obs_values
    &lt;chr&gt;            &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;
@@ -397,10 +401,10 @@ of defining <code>gap_wide</code>.</p>
 10 Asia_Afghanistan pop        1967 11537966  
 # … with 5,102 more rows</code></pre>
 <div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_temp</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span>
-<span class="va">gap_temp</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_temp</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
+<span><span class="va">gap_temp</span></span></code></pre></div>
 <pre><code># A tibble: 5,112 × 3
    ID_var           var_names      obs_values
    &lt;chr&gt;            &lt;chr&gt;               &lt;dbl&gt;
@@ -419,31 +423,31 @@ of defining <code>gap_wide</code>.</p>
 <code>continent</code>,<code>country</code>,and we have defined variable names. We’re now ready to
 pipe in <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code></p>
 <div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_wide_new</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">var_names</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span>
-<span class="va">gap_wide_new</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_wide_new</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">var_names</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span></span>
+<span><span class="va">gap_wide_new</span></span></code></pre></div>
 <pre><code># A tibble: 142 × 37
-   ID_var             pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
-   &lt;chr&gt;                 &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
- 1 Asia_Afghanistan    8425333         28.8           779.  9240934         30.3
- 2 Europe_Albania      1282697         55.2          1601.  1476505         59.3
- 3 Africa_Algeria      9279525         43.1          2449. 10270856         45.7
- 4 Africa_Angola       4232095         30.0          3521.  4561361         32.0
- 5 Americas_Argentina 17876956         62.5          5911. 19610538         64.4
- 6 Oceania_Australia   8691212         69.1         10040.  9712569         70.3
- 7 Europe_Austria      6927772         66.8          6137.  6965860         67.5
- 8 Asia_Bahrain         120447         50.9          9867.   138655         53.8
- 9 Asia_Bangladesh    46886859         37.5           684. 51365468         39.3
-10 Europe_Belgium      8730405         68            8343.  8989111         69.2
-# … with 132 more rows, and 31 more variables: gdpPercap_1957 &lt;dbl&gt;,
-#   pop_1962 &lt;dbl&gt;, lifeExp_1962 &lt;dbl&gt;, gdpPercap_1962 &lt;dbl&gt;, pop_1967 &lt;dbl&gt;,
-#   lifeExp_1967 &lt;dbl&gt;, gdpPercap_1967 &lt;dbl&gt;, pop_1972 &lt;dbl&gt;,
+   ID_var        pop_1…¹ lifeE…² gdpPe…³ pop_1…⁴ lifeE…⁵ gdpPe…⁶ pop_1…⁷ lifeE…⁸
+   &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Asia_Afghani…  8.43e6    28.8    779.  9.24e6    30.3    821.  1.03e7    32.0
+ 2 Europe_Alban…  1.28e6    55.2   1601.  1.48e6    59.3   1942.  1.73e6    64.8
+ 3 Africa_Alger…  9.28e6    43.1   2449.  1.03e7    45.7   3014.  1.10e7    48.3
+ 4 Africa_Angola  4.23e6    30.0   3521.  4.56e6    32.0   3828.  4.83e6    34  
+ 5 Americas_Arg…  1.79e7    62.5   5911.  1.96e7    64.4   6857.  2.13e7    65.1
+ 6 Oceania_Aust…  8.69e6    69.1  10040.  9.71e6    70.3  10950.  1.08e7    70.9
+ 7 Europe_Austr…  6.93e6    66.8   6137.  6.97e6    67.5   8843.  7.13e6    69.5
+ 8 Asia_Bahrain   1.20e5    50.9   9867.  1.39e5    53.8  11636.  1.72e5    56.9
+ 9 Asia_Banglad…  4.69e7    37.5    684.  5.14e7    39.3    662.  5.68e7    41.2
+10 Europe_Belgi…  8.73e6    68     8343.  8.99e6    69.2   9715.  9.22e6    70.2
+# … with 132 more rows, 28 more variables: gdpPercap_1962 &lt;dbl&gt;,
+#   pop_1967 &lt;dbl&gt;, lifeExp_1967 &lt;dbl&gt;, gdpPercap_1967 &lt;dbl&gt;, pop_1972 &lt;dbl&gt;,
 #   lifeExp_1972 &lt;dbl&gt;, gdpPercap_1972 &lt;dbl&gt;, pop_1977 &lt;dbl&gt;,
 #   lifeExp_1977 &lt;dbl&gt;, gdpPercap_1977 &lt;dbl&gt;, pop_1982 &lt;dbl&gt;,
 #   lifeExp_1982 &lt;dbl&gt;, gdpPercap_1982 &lt;dbl&gt;, pop_1987 &lt;dbl&gt;,
-#   lifeExp_1987 &lt;dbl&gt;, gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, …</code></pre>
+#   lifeExp_1987 &lt;dbl&gt;, gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;,
+#   lifeExp_1992 &lt;dbl&gt;, gdpPercap_1992 &lt;dbl&gt;, pop_1997 &lt;dbl&gt;, …</code></pre>
 <div id="challenge-3-10-minutes-1" class="section level3" number="8.3.1">
 <h3>
 <span class="header-section-number">8.3.1</span> Challenge 3 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-10-minutes-1"><i class="fas fa-link"></i></a>
@@ -455,43 +459,43 @@ pipe in <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">p
 Solution to challenge 3
 </summary><p><br></p>
 <div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_ludicrously_wide</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">var_names</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_ludicrously_wide</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">var_names</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span></span></code></pre></div>
 </details>
 </blockquote>
 <p>Now we have a great ‘wide’ format dataframe, but the <code>ID_var</code> could be more
 usable, let’s separate it into 2 variables with <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code></p>
 <div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_wide_betterID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">gap_wide_new</span>, <span class="va">ID_var</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"continent"</span>, <span class="st">"country"</span><span class="op">)</span>, sep<span class="op">=</span><span class="st">"_"</span><span class="op">)</span>
-<span class="va">gap_wide_betterID</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">var_names</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span> <span class="op"><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"continent"</span>,<span class="st">"country"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span>
-<span class="va">gap_wide_betterID</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gap_wide_betterID</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">gap_wide_new</span>, <span class="va">ID_var</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"continent"</span>, <span class="st">"country"</span><span class="op">)</span>, sep<span class="op">=</span><span class="st">"_"</span><span class="op">)</span></span>
+<span><span class="va">gap_wide_betterID</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_names</span>, <span class="va">obs_type</span>, <span class="va">year</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">var_names</span>, values_from <span class="op">=</span> <span class="va">obs_values</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"continent"</span>,<span class="st">"country"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
+<span><span class="va">gap_wide_betterID</span></span></code></pre></div>
 <pre><code># A tibble: 142 × 38
-   continent country  pop_1952 lifeExp_1952 gdpPercap_1952 pop_1957 lifeExp_1957
-   &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
- 1 Asia      Afghani…  8425333         28.8           779.  9240934         30.3
- 2 Europe    Albania   1282697         55.2          1601.  1476505         59.3
- 3 Africa    Algeria   9279525         43.1          2449. 10270856         45.7
- 4 Africa    Angola    4232095         30.0          3521.  4561361         32.0
- 5 Americas  Argenti… 17876956         62.5          5911. 19610538         64.4
- 6 Oceania   Austral…  8691212         69.1         10040.  9712569         70.3
- 7 Europe    Austria   6927772         66.8          6137.  6965860         67.5
- 8 Asia      Bahrain    120447         50.9          9867.   138655         53.8
- 9 Asia      Banglad… 46886859         37.5           684. 51365468         39.3
-10 Europe    Belgium   8730405         68            8343.  8989111         69.2
-# … with 132 more rows, and 31 more variables: gdpPercap_1957 &lt;dbl&gt;,
-#   pop_1962 &lt;dbl&gt;, lifeExp_1962 &lt;dbl&gt;, gdpPercap_1962 &lt;dbl&gt;, pop_1967 &lt;dbl&gt;,
-#   lifeExp_1967 &lt;dbl&gt;, gdpPercap_1967 &lt;dbl&gt;, pop_1972 &lt;dbl&gt;,
-#   lifeExp_1972 &lt;dbl&gt;, gdpPercap_1972 &lt;dbl&gt;, pop_1977 &lt;dbl&gt;,
-#   lifeExp_1977 &lt;dbl&gt;, gdpPercap_1977 &lt;dbl&gt;, pop_1982 &lt;dbl&gt;,
-#   lifeExp_1982 &lt;dbl&gt;, gdpPercap_1982 &lt;dbl&gt;, pop_1987 &lt;dbl&gt;,
-#   lifeExp_1987 &lt;dbl&gt;, gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, …</code></pre>
+   continent country     pop_1…¹ lifeE…² gdpPe…³ pop_1…⁴ lifeE…⁵ gdpPe…⁶ pop_1…⁷
+   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Asia      Afghanistan  8.43e6    28.8    779.  9.24e6    30.3    821.  1.03e7
+ 2 Europe    Albania      1.28e6    55.2   1601.  1.48e6    59.3   1942.  1.73e6
+ 3 Africa    Algeria      9.28e6    43.1   2449.  1.03e7    45.7   3014.  1.10e7
+ 4 Africa    Angola       4.23e6    30.0   3521.  4.56e6    32.0   3828.  4.83e6
+ 5 Americas  Argentina    1.79e7    62.5   5911.  1.96e7    64.4   6857.  2.13e7
+ 6 Oceania   Australia    8.69e6    69.1  10040.  9.71e6    70.3  10950.  1.08e7
+ 7 Europe    Austria      6.93e6    66.8   6137.  6.97e6    67.5   8843.  7.13e6
+ 8 Asia      Bahrain      1.20e5    50.9   9867.  1.39e5    53.8  11636.  1.72e5
+ 9 Asia      Bangladesh   4.69e7    37.5    684.  5.14e7    39.3    662.  5.68e7
+10 Europe    Belgium      8.73e6    68     8343.  8.99e6    69.2   9715.  9.22e6
+# … with 132 more rows, 29 more variables: lifeExp_1962 &lt;dbl&gt;,
+#   gdpPercap_1962 &lt;dbl&gt;, pop_1967 &lt;dbl&gt;, lifeExp_1967 &lt;dbl&gt;,
+#   gdpPercap_1967 &lt;dbl&gt;, pop_1972 &lt;dbl&gt;, lifeExp_1972 &lt;dbl&gt;,
+#   gdpPercap_1972 &lt;dbl&gt;, pop_1977 &lt;dbl&gt;, lifeExp_1977 &lt;dbl&gt;,
+#   gdpPercap_1977 &lt;dbl&gt;, pop_1982 &lt;dbl&gt;, lifeExp_1982 &lt;dbl&gt;,
+#   gdpPercap_1982 &lt;dbl&gt;, pop_1987 &lt;dbl&gt;, lifeExp_1987 &lt;dbl&gt;,
+#   gdpPercap_1987 &lt;dbl&gt;, pop_1992 &lt;dbl&gt;, lifeExp_1992 &lt;dbl&gt;, …</code></pre>
 <div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_wide</span>, <span class="va">gap_wide_betterID</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/all_equal.html">all_equal</a></span><span class="op">(</span><span class="va">gap_wide</span>, <span class="va">gap_wide_betterID</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <p>There and back again!</p>
 </div>
@@ -542,7 +546,7 @@ usable, let’s separate it into 2 variables with <code><a href="https://tidyr.t
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-03-14.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-09-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

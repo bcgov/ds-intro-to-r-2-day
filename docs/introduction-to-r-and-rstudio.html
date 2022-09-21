@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 1 Introduction to R and RStudio | Introduction to Data Science using R Workshop</title>
 <meta name="description" content="1.1 Motivation Science is a multi-step process: once you’ve designed an experiment and collected data, the real fun begins! This lesson will teach you how to start this process using R and...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.29 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Introduction to R and RStudio | Introduction to Data Science using R Workshop">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/introduction-to-r-and-rstudio.html">
@@ -14,10 +14,14 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 1 Introduction to R and RStudio | Introduction to Data Science using R Workshop">
 <meta name="twitter:description" content="1.1 Motivation Science is a multi-step process: once you’ve designed an experiment and collected data, the real fun begins! This lesson will teach you how to start this process using R and...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.13/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -205,13 +209,13 @@ returns a result.</p>
 the course materials and save our work.
 In the console, type:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"usethis"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"usethis"</span><span class="op">)</span></span></code></pre></div>
 <p>If you are on Windows:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu">use_course</span><span class="op">(</span><span class="st">"https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip"</span>, destdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"USERPROFILE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">use_course</span><span class="op">(</span><span class="st">"https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip"</span>, destdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"USERPROFILE"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>If you are on a Mac:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu">use_course</span><span class="op">(</span><span class="st">"https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip"</span>, destdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"HOME"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">use_course</span><span class="op">(</span><span class="st">"https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip"</span>, destdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"HOME"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>… and press <kbd>Enter</kbd>.</p>
 <p>This will create a new R project folder in your user directory (<code>C:/Users/[your_user_name]/intro-r-Feb2022/</code> on Windows,
 and <code>/Users/[your_user_name]/intro-r-Feb2022/</code> on a Mac), and open that project in RStudio.</p>
@@ -223,7 +227,7 @@ and <code>/Users/[your_user_name]/intro-r-Feb2022/</code> on a Mac), and open th
 </h2>
 <p>The simplest thing you could do with R is do arithmetic:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="fl">100</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span> <span class="op">+</span> <span class="fl">100</span></span></code></pre></div>
 <pre><code>[1] 101</code></pre>
 <p>And R will print out the answer, with a preceding “[1]”. Don’t worry about this
 for now, we’ll explain that later. For now think of it as indicating output.</p>
@@ -260,32 +264,32 @@ would have learned back in school.</p>
 </li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">3</span> <span class="op">+</span> <span class="fl">5</span> <span class="op">*</span> <span class="fl">2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">3</span> <span class="op">+</span> <span class="fl">5</span> <span class="op">*</span> <span class="fl">2</span></span></code></pre></div>
 <pre><code>[1] 13</code></pre>
 <p>Use parentheses to group operations in order to force the order of
 evaluation if it differs from the default, or to make clear what you
 intend.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">(</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">5</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span></span></code></pre></div>
 <pre><code>[1] 16</code></pre>
 <p>This can get unwieldy when not needed, but clarifies your intentions.
 Remember that others may later read your code.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">(</span><span class="fl">3</span> <span class="op">+</span> <span class="op">(</span><span class="fl">5</span> <span class="op">*</span> <span class="op">(</span><span class="fl">2</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># hard to read</span>
-<span class="fl">3</span> <span class="op">+</span> <span class="fl">5</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">^</span> <span class="fl">2</span>       <span class="co"># clear, if you remember the rules</span>
-<span class="fl">3</span> <span class="op">+</span> <span class="fl">5</span> <span class="op">*</span> <span class="op">(</span><span class="fl">2</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span>     <span class="co"># if you forget some rules, this might help</span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="fl">3</span> <span class="op">+</span> <span class="op">(</span><span class="fl">5</span> <span class="op">*</span> <span class="op">(</span><span class="fl">2</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># hard to read</span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">5</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">^</span> <span class="fl">2</span>       <span class="co"># clear, if you remember the rules</span></span>
+<span><span class="fl">3</span> <span class="op">+</span> <span class="fl">5</span> <span class="op">*</span> <span class="op">(</span><span class="fl">2</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span>     <span class="co"># if you forget some rules, this might help</span></span></code></pre></div>
 <p>The text after each line of code is called a
 “comment”. Anything that follows after the hash (or octothorpe) symbol
 <code>#</code> is ignored by R when it executes code.</p>
 <p>Really small or large numbers get a scientific notation:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">2</span><span class="op">/</span><span class="fl">10000</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">2</span><span class="op">/</span><span class="fl">10000</span></span></code></pre></div>
 <pre><code>[1] 2e-04</code></pre>
 <p>Which is shorthand for “multiplied by <code>10^XX</code>”. So <code>2e-4</code>
 is shorthand for <code>2 * 10^(-4)</code>.</p>
 <p>You can write numbers in scientific notation too:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">5e3</span>  <span class="co"># Note the lack of minus here</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">5e3</span>  <span class="co"># Note the lack of minus here</span></span></code></pre></div>
 <pre><code>[1] 5000</code></pre>
 </div>
 <div id="mathematical-functions" class="section level2" number="1.7">
@@ -297,19 +301,19 @@ we simply type its name, followed by open and closing parentheses.
 Anything we type inside the parentheses is called the function’s
 arguments:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] 15</code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># trigonometry functions</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># trigonometry functions</span></span></code></pre></div>
 <pre><code>[1] 0.841471</code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># natural logarithm</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># natural logarithm</span></span></code></pre></div>
 <pre><code>[1] 0</code></pre>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="co"># base-10 logarithm</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="co"># base-10 logarithm</span></span></code></pre></div>
 <pre><code>[1] 1</code></pre>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span> <span class="co"># e^(1/2)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span> <span class="co"># e^(1/2)</span></span></code></pre></div>
 <pre><code>[1] 1.648721</code></pre>
 <p>Don’t worry about trying to remember every function in R. You
 can simply look them up on Google, or if you can remember the
@@ -330,22 +334,22 @@ illustrate command usage. We’ll go through an example later.</p>
 </h2>
 <p>We can also do comparison in R:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span> <span class="op">==</span> <span class="fl">1</span>  <span class="co"># equality (note two equals signs, read as "is equal to")</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span> <span class="op">==</span> <span class="fl">1</span>  <span class="co"># equality (note two equals signs, read as "is equal to")</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span> <span class="op">!=</span> <span class="fl">2</span>  <span class="co"># inequality (read as "is not equal to")</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span> <span class="op">!=</span> <span class="fl">2</span>  <span class="co"># inequality (read as "is not equal to")</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span> <span class="op">&lt;</span> <span class="fl">2</span>  <span class="co"># less than</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span> <span class="op">&lt;</span> <span class="fl">2</span>  <span class="co"># less than</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span> <span class="op">&lt;=</span> <span class="fl">1</span>  <span class="co"># less than or equal to</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span> <span class="op">&lt;=</span> <span class="fl">1</span>  <span class="co"># less than or equal to</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span> <span class="op">&gt;</span> <span class="fl">0</span>  <span class="co"># greater than</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span> <span class="op">&gt;</span> <span class="fl">0</span>  <span class="co"># greater than</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span> <span class="op">&gt;=</span> <span class="op">-</span><span class="fl">9</span> <span class="co"># greater than or equal to</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span> <span class="op">&gt;=</span> <span class="op">-</span><span class="fl">9</span> <span class="co"># greater than or equal to</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <div class="rmdtip">
 <p><strong>Tip: Comparing Numbers</strong></p>
@@ -369,27 +373,27 @@ numeric tolerance).</p>
 </h2>
 <p>We can store values in variables using the assignment operator <code>&lt;-</code>, like this:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span></code></pre></div>
 <p>Notice that assignment does not print a value. Instead, we stored it for later
 in something called a <strong>variable</strong>. <code>x</code> now contains the <strong>value</strong> <code>5</code>:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span></span></code></pre></div>
 <pre><code>[1] 5</code></pre>
 <p>More precisely, the stored value is a <em>decimal approximation</em> of
 this fraction called a <a href="http://en.wikipedia.org/wiki/Floating_point">floating point number</a>.</p>
 <p>Look for the <code>Environment</code> tab in one of the panes of RStudio, and you will see that <code>x</code> and its value
 have appeared. Our variable <code>x</code> can be used in place of a number in any calculation that expects a number:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] 1.609438</code></pre>
 <p>Notice also that variables can be reassigned:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">100</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">100</span></span></code></pre></div>
 <p><code>x</code> used to contain the value 5 and and now it has the value 100.</p>
 <p>Assignment values can contain the variable being assigned to:</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span> <span class="co">#notice how RStudio updates its description of x on the top right tab</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span> <span class="co">#notice how RStudio updates its description of x on the top right tab</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">*</span> <span class="fl">2</span></span></code></pre></div>
 <p>The right hand side of the assignment can be any valid R expression.
 The right hand side is <em>fully evaluated</em> before the assignment occurs.</p>
 <p>Variable names can contain letters, numbers, underscores and periods. They
@@ -403,7 +407,7 @@ different conventions for long variable names, these include</p>
 <p>What you use is up to you, but <strong>be consistent</strong>.</p>
 <p>It is also possible to use the <code>=</code> operator for assignment:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">40</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">40</span></span></code></pre></div>
 <p>But this is much less common among R users. The most important thing is to
 <strong>be consistent</strong> with the operator you use. There are occasionally places
 where it is less confusing to use <code>&lt;-</code> than <code>=</code>, and it is the most common
@@ -426,13 +430,13 @@ symbol used in the community. So the recommendation is to use <code>&lt;-</code>
 Solution to challenge 1
 </summary><p>The following can be used as R variables:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">min_height</span>
-<span class="va">max.height</span>
-<span class="va">MaxLength</span>
-<span class="va">celsius2kelvin</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">min_height</span></span>
+<span><span class="va">max.height</span></span>
+<span><span class="va">MaxLength</span></span>
+<span><span class="va">celsius2kelvin</span></span></code></pre></div>
 <p>The following creates a hidden variable:</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">.mass</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">.mass</span></span></code></pre></div>
 <p>The following will not be able to be used to create a variable</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introduction-to-r-and-rstudio.html#cb51-1" aria-hidden="true" tabindex="-1"></a>_age</span>
 <span id="cb51-2"><a href="introduction-to-r-and-rstudio.html#cb51-2" aria-hidden="true" tabindex="-1"></a>min<span class="sc">-</span>length</span>
@@ -448,25 +452,25 @@ Solution to challenge 1
 <p>What will be the value of each variable after each
 statement in the following program?</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mass</span> <span class="op">&lt;-</span> <span class="fl">47.5</span>
-<span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">122</span>
-<span class="va">mass</span> <span class="op">&lt;-</span> <span class="va">mass</span> <span class="op">*</span> <span class="fl">2.3</span>
-<span class="va">age</span> <span class="op">&lt;-</span> <span class="va">age</span> <span class="op">-</span> <span class="fl">20</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mass</span> <span class="op">&lt;-</span> <span class="fl">47.5</span></span>
+<span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">122</span></span>
+<span><span class="va">mass</span> <span class="op">&lt;-</span> <span class="va">mass</span> <span class="op">*</span> <span class="fl">2.3</span></span>
+<span><span class="va">age</span> <span class="op">&lt;-</span> <span class="va">age</span> <span class="op">-</span> <span class="fl">20</span></span></code></pre></div>
 <details><summary>
 Solution to challenge 2
 </summary><p><br></p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mass</span> <span class="op">&lt;-</span> <span class="fl">47.5</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mass</span> <span class="op">&lt;-</span> <span class="fl">47.5</span></span></code></pre></div>
 <p>This will give a value of 47.5 for the variable mass</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">122</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">122</span></span></code></pre></div>
 <p>This will give a value of 122 for the variable age</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mass</span> <span class="op">&lt;-</span> <span class="va">mass</span> <span class="op">*</span> <span class="fl">2.3</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mass</span> <span class="op">&lt;-</span> <span class="va">mass</span> <span class="op">*</span> <span class="fl">2.3</span></span></code></pre></div>
 <p>This will multiply the existing value of 47.5 by 2.3 to give a new value of
 109.25 to the variable mass.</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">age</span> <span class="op">&lt;-</span> <span class="va">age</span> <span class="op">-</span> <span class="fl">20</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">age</span> <span class="op">&lt;-</span> <span class="va">age</span> <span class="op">-</span> <span class="fl">20</span></span></code></pre></div>
 <p>This will subtract 20 from the existing value of 122 to give a new value
 of 102 to the variable age.</p>
 </details>
@@ -484,7 +488,7 @@ Solution to challenge 3
 </summary><p><br></p>
 <p>One way of answering this question in R is to use the <code>&gt;</code> to set up the following:`</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mass</span> <span class="op">&gt;</span> <span class="va">age</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mass</span> <span class="op">&gt;</span> <span class="va">age</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <p>This should yield a boolean value of TRUE since 109.25 is greater than 102.</p>
 </details>
@@ -500,18 +504,18 @@ variables and functions can have vectors as values. In contrast to physics and
 mathematics, a vector in R describes a set of values in a certain order of the
 same data type. For example</p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">1</span><span class="op">:</span><span class="fl">5</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span></code></pre></div>
 <pre><code>[1] 1 2 3 4 5</code></pre>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
-<span class="fl">2</span> <span class="op">*</span> <span class="va">x</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
+<span><span class="fl">2</span> <span class="op">*</span> <span class="va">x</span></span></code></pre></div>
 <pre><code>[1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span><span class="op">)</span>
-<span class="va">y</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span><span class="op">)</span></span>
+<span><span class="va">y</span></span></code></pre></div>
 <pre><code>[1] 1 3 5 7 9</code></pre>
 <p>This is incredibly powerful; we will discuss this further in an
 upcoming lesson.</p>
@@ -524,7 +528,7 @@ upcoming lesson.</p>
 <p><code>ls</code> will list all of the variables and functions stored in the global environment
 (your working R session):</p>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] "age"            "fix_fig_path"   "knitr_fig_path" "mass"          
 [5] "x"              "y"             </code></pre>
 <div class="rmdtip">
@@ -537,7 +541,7 @@ instead</p>
 needed to give the parentheses to tell R to call the function.</p>
 <p>If we type <code>ls</code> by itself, R will print out the source code for that function!</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ls</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ls</span></span></code></pre></div>
 <pre><code>function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
     pattern, sorted = TRUE) 
 {
@@ -569,15 +573,15 @@ needed to give the parentheses to tell R to call the function.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x7fb9748f9fd0&gt;
+&lt;bytecode: 0x7fadefb9ccf0&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>You can use <code>rm</code> to delete objects you no longer need:</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <p>If you have lots of things in your environment and want to delete all of them,
 you can pass the results of <code>ls</code> to the <code>rm</code> function:</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="rmdtip">
 <p><strong>Tip: Warnings vs. Errors</strong></p>
 <p>Pay attention when R does something unexpected! Errors, like above,
@@ -599,7 +603,7 @@ Solution to challenge 4
 </summary><p><br></p>
 <p>We can use the <code>rm</code> command to accomplish this task</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">mass</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">mass</span><span class="op">)</span></span></code></pre></div>
 </details>
 </blockquote>
 </div>
@@ -641,8 +645,8 @@ Solution to challenge 5
 </summary><p><br></p>
 <p>We can use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> command to install the required packages.</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span></code></pre></div>
 </details>
 </blockquote>
 
@@ -697,7 +701,7 @@ Solution to challenge 5
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-03-14.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-09-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

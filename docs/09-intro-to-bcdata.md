@@ -106,7 +106,7 @@ Licence: Open Government Licence - British Columbia
 Description: This dataset includes contact and location data for all
  library service points in BC. It also includes some primary data on
  library use and services from the most current year that data is
- available.   The dataset is geolocational, and is available in XLSX,
+ available.  The dataset is geolocational, and is available in XLSX,
  CSV, and KML formats.
 Available Resources (5):
  1. BC Public Library Service Points (csv)
@@ -382,22 +382,23 @@ Reading the data using the read_csv function from the readr package.
 
 ```
 New names:
-* `` -> ...2
-* `` -> ...3
-* `` -> ...4
-* `` -> ...5
-* `` -> ...6
-* ...
-```
-
-```
 Rows: 341 Columns: 12
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (12): Notes:, ...2, ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ......
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+── Column specification
+──────────────────────────────────────────────────────── Delimiter: "," chr
+(12): Notes:, ...2, ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ......
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -> `...2`
+• `` -> `...3`
+• `` -> `...4`
+• `` -> `...5`
+• `` -> `...6`
+• `` -> `...7`
+• `` -> `...8`
+• `` -> `...9`
+• `` -> `...10`
+• `` -> `...11`
+• `` -> `...12`
 ```
 
 ```r
@@ -462,20 +463,21 @@ new_reg
 
 ```
 # A tibble: 332 × 12
-   Trade      Gender `FY2011/12` `FY2012/13` `FY2013/14` `FY2014/15` `FY2015/16`
-   <chr>      <chr>  <chr>       <chr>       <chr>       <chr>       <chr>      
- 1 Aircraft … Women  14          8           7           9           6          
- 2 Aircraft … Men    127         108         73          61          46         
- 3 Aircraft … Total… 141         116         80          70          52         
- 4 Aircraft … Women  7           ...         ...         ...         ...        
- 5 Aircraft … Men    59          ...         ...         ...         ...        
- 6 Aircraft … Total… 66          27          40          42          24         
- 7 Appliance… Women  ...         0           0           0           ...        
- 8 Appliance… Men    ...         39          ...         36          ...        
- 9 Appliance… Total… 13          39          ...         36          13         
-10 Arborist … Women  ...         ...         0           ...         ...        
-# … with 322 more rows, and 5 more variables: `FY2016/17` <chr>,
-#   `FY2017/18` <chr>, `FY2018/19` <chr>, `FY2019/20` <chr>, `FY2020/21` <chr>
+   Trade  Gender FY201…¹ FY201…² FY201…³ FY201…⁴ FY201…⁵ FY201…⁶ FY201…⁷ FY201…⁸
+   <chr>  <chr>  <chr>   <chr>   <chr>   <chr>   <chr>   <chr>   <chr>   <chr>  
+ 1 Aircr… Women  14      8       7       9       6       ...     ...     ...    
+ 2 Aircr… Men    127     108     73      61      46      ...     ...     ...    
+ 3 Aircr… Total… 141     116     80      70      52      69      48      62     
+ 4 Aircr… Women  7       ...     ...     ...     ...     0       ...     ...    
+ 5 Aircr… Men    59      ...     ...     ...     ...     ...     ...     ...    
+ 6 Aircr… Total… 66      27      40      42      24      ...     23      26     
+ 7 Appli… Women  ...     0       0       0       ...     ...     ...     0      
+ 8 Appli… Men    ...     39      ...     36      ...     ...     ...     ...    
+ 9 Appli… Total… 13      39      ...     36      13      32      13      ...    
+10 Arbor… Women  ...     ...     0       ...     ...     ...     ...     ...    
+# … with 322 more rows, 2 more variables: `FY2019/20` <chr>, `FY2020/21` <chr>,
+#   and abbreviated variable names ¹​`FY2011/12`, ²​`FY2012/13`, ³​`FY2013/14`,
+#   ⁴​`FY2014/15`, ⁵​`FY2015/16`, ⁶​`FY2016/17`, ⁷​`FY2017/18`, ⁸​`FY2018/19`
 ```
 
 Ok this is looking _much_ better. We now have data that is rectangular and looks
@@ -515,20 +517,21 @@ new_reg
 
 ```
 # A tibble: 332 × 12
-   Trade      Gender `FY2011/12` `FY2012/13` `FY2013/14` `FY2014/15` `FY2015/16`
-   <chr>      <chr>        <dbl>       <dbl>       <dbl>       <dbl>       <dbl>
- 1 Aircraft … Women           14           8           7           9           6
- 2 Aircraft … Men            127         108          73          61          46
- 3 Aircraft … Total…         141         116          80          70          52
- 4 Aircraft … Women            7          NA          NA          NA          NA
- 5 Aircraft … Men             59          NA          NA          NA          NA
- 6 Aircraft … Total…          66          27          40          42          24
- 7 Appliance… Women           NA           0           0           0          NA
- 8 Appliance… Men             NA          39          NA          36          NA
- 9 Appliance… Total…          13          39          NA          36          13
-10 Arborist … Women           NA          NA           0          NA          NA
-# … with 322 more rows, and 5 more variables: `FY2016/17` <dbl>,
-#   `FY2017/18` <dbl>, `FY2018/19` <dbl>, `FY2019/20` <dbl>, `FY2020/21` <dbl>
+   Trade  Gender FY201…¹ FY201…² FY201…³ FY201…⁴ FY201…⁵ FY201…⁶ FY201…⁷ FY201…⁸
+   <chr>  <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+ 1 Aircr… Women       14       8       7       9       6      NA      NA      NA
+ 2 Aircr… Men        127     108      73      61      46      NA      NA      NA
+ 3 Aircr… Total…     141     116      80      70      52      69      48      62
+ 4 Aircr… Women        7      NA      NA      NA      NA       0      NA      NA
+ 5 Aircr… Men         59      NA      NA      NA      NA      NA      NA      NA
+ 6 Aircr… Total…      66      27      40      42      24      NA      23      26
+ 7 Appli… Women       NA       0       0       0      NA      NA      NA       0
+ 8 Appli… Men         NA      39      NA      36      NA      NA      NA      NA
+ 9 Appli… Total…      13      39      NA      36      13      32      13      NA
+10 Arbor… Women       NA      NA       0      NA      NA      NA      NA      NA
+# … with 322 more rows, 2 more variables: `FY2019/20` <dbl>, `FY2020/21` <dbl>,
+#   and abbreviated variable names ¹​`FY2011/12`, ²​`FY2012/13`, ³​`FY2013/14`,
+#   ⁴​`FY2014/15`, ⁵​`FY2015/16`, ⁶​`FY2016/17`, ⁷​`FY2017/18`, ⁸​`FY2018/19`
 ```
 
 Now we are ready to work with this data. One thing you might notice is that this
