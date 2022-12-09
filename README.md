@@ -45,32 +45,38 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 
 ### Day 1
 
-- Introduction to Course (30 min) <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
-- Demo (10 min) **(Sam)**
-- Introduction to R & RStudio (50 minutes) **(Sam)**
+- Introduction to Course (30 min) **()** <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
+- Demo (10 min) **(Bonnie)**
+- Introduction to R & RStudio (50 minutes) **(Bonnie)**
 - BREAK ☕
-- Seeking Help in R (15 minutes) **(Andy)**
-- Project Management with RStudio (40 minutes) **(Andy)**
+- Seeking Help in R (15 minutes) **(Julie)**
+- Project Management with RStudio (60 minutes) **(Julie)**
 - Lunch
-- Review + questions (30 minutes)
-- Data Structures (50 minutes)  **(Andy)**
+- Data Structures (75 minutes)  **(Bonnie)**
+- Extra Practice + Questions (15 minutes)
 - BREAK ☕
-- Exploring Data Frames (45 minutes) **(Bonnie)**
-- Making Publication Quality Plots with `ggplot2` Pt. 1 (45 minutes)  **(Bonnie)**
+- Data Manipulation with `dplyr` (90 minutes) **(Julie)**
+- Day 1 Wrap-up + Questions (15 minutes)
 
 
 ### Day 2
-
-- Review + questions (30 minutes)
-- Making Publication Quality Plots with `ggplot2` Pt. 2 (40 minutes)  **(Bonnie)**
+- Review + Questions (30 minutes)
+- Making Publication Quality Plots with `ggplot2` Pt. 1 (60 minutes)  **(Bonnie)**
 - BREAK ☕
-- Data Manipulation with `dplyr` (90 minutes) **(Andy)**
+- Making Publication Quality Plots with `ggplot2` Pt. 2 (60 minutes)  **(Bonnie)**
+- Extra Practice + Questions (15 minutes)
 - Lunch
-- Review + questions (30 min)
-- Data Manipulation with `tidyr` (45 minutes)  **(Sam)**
+- Data Manipulation with `tidyr` (60 minutes)  **(Julie)**
+- Extra Practice + Questions (15 minutes)
 - BREAK ☕
+- Joins with `dplyr` (45 minutes) **(Julie)**
+- Mini-Analysis Project:  (45 minutes)
+- Day 2 Wrap-up + Questions (15 minutes)
+
+<!-- 
+- Exploring Data Frames (45 minutes) **(Bonnie)**
 - Introduce `bcdata` and practice `ggplot2` and `dplyr` (75 minutes) **(Sam)**
-- Seeking Help from Others with `reprex` (30 minutes) **(Sam)** <!-- though could remove or move to the end -->
+- Seeking Help from Others with `reprex` (30 minutes) **(Sam)** optional if time at the the end -->
 
 
 
