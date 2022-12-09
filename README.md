@@ -3,9 +3,9 @@
 
 # Introduction to Data Science Using R
 
-A repository to house materials for a 4 session course introducing participants to data science using [R](https://www.r-project.org/).
+A repository to house materials for a 2 day course introducing participants to data science using [R](https://www.r-project.org/).
 
-The goal of this 4 session workshop is to teach _new-to-programming_ data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. This is an introductory course to programming, specifically programming with R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
+The goal of this 2 day workshop is to teach _new-to-programming_ data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. This is an introductory course to programming, specifically programming with R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
 
 ## Who should take this course?
 
@@ -23,6 +23,10 @@ The goal of this 4 session workshop is to teach _new-to-programming_ data profes
 | Module #1  | 9:00       | 10:30    |
 | Break      | 10:30      | 10:45    |
 | Module #2  | 10:45      | 12:00    |
+| Lunch      | 12:00      |  1:00    |
+| Module #3  |  1:00      |  2:30    |
+| Break      |  2:30      |  2:45    |
+| Module #4  |  2:45      |  4:30    |
 
 
 **Course Notes**: https://bcgov.github.io/ds-intro-to-r-2-day/  
@@ -47,9 +51,7 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 - BREAK ☕
 - Seeking Help in R (15 minutes) **(Andy)**
 - Project Management with RStudio (40 minutes) **(Andy)**
-
-### Day 2
-
+- Lunch
 - Review + questions (30 minutes)
 - Data Structures (50 minutes)  **(Andy)**
 - BREAK ☕
@@ -57,15 +59,13 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 - Making Publication Quality Plots with `ggplot2` Pt. 1 (45 minutes)  **(Bonnie)**
 
 
-### Day 3
+### Day 2
 
 - Review + questions (30 minutes)
 - Making Publication Quality Plots with `ggplot2` Pt. 2 (40 minutes)  **(Bonnie)**
 - BREAK ☕
 - Data Manipulation with `dplyr` (90 minutes) **(Andy)**
-
-### Day 4
-
+- Lunch
 - Review + questions (30 min)
 - Data Manipulation with `tidyr` (45 minutes)  **(Sam)**
 - BREAK ☕
@@ -84,17 +84,24 @@ The R Markdown sections also draw material from Nicholas Tierney's excellent _R 
 
 ### Course Offerings
 
+#### Introduction to Data Science in R, January 25 & 26, 2022 
+- _Instructors_: [Bonnie Robert](https://github.com/BonnieJRobert/), [Julie Hawkins](https://github.com/BonnieJRobert/)
+- _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
+- _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
+- _What we actually did on the day_: 
+
 
 #### Introduction to Data Science in R, Feb 23 and 24, March 2 & 3, 2022 
 - _Instructors_: [Andy Teucher](https://github.com/ateucher), [Sam Albers](https://github.com/boshek) & [Bonnie Robert](https://github.com/BonnieJRobert/)
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
-- _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
+- _Course material_: 
+- _What we actually did on the day_: 
 
 
 #### Introduction to Data Science in R, May 6-7, 2020 
 - _Instructors_: [Sam Albers](https://github.com/boshek), [Stephanie Hazlitt](https://github.com/stephhazlitt), [Genevieve Perkins](https://github.com/gcperk) & [Andy Teucher](https://github.com/ateucher)
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
-- _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
+- _Course material_: 
 - _What we actually did on the day_: 
 
 
