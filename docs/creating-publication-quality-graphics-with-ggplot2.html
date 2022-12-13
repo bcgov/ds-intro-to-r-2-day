@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Creating Publication-Quality Graphics with ggplot2 | Introduction to Data Science using R Workshop</title>
 <meta name="description" content="Plotting is one of the best ways to quickly explore your data and the various relationships between variables. There are three main plotting systems in R, the base plotting system, the lattice...">
-<meta name="generator" content="bookdown 0.29 with bs4_book()">
+<meta name="generator" content="bookdown 0.31 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Creating Publication-Quality Graphics with ggplot2 | Introduction to Data Science using R Workshop">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/creating-publication-quality-graphics-with-ggplot2.html">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Plotting is one of the best ways to quickly explore your data and the various relationships between variables. There are three main plotting systems in R, the base plotting system, the lattice...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -290,7 +290,7 @@ x-axis.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 <div class="inline-figure"><img src="fig/rmd-06-lm-fit-1.png" width="576" style="display: block; margin: auto;"></div>
 <p>We can make the line thicker by <em>setting</em> the <strong>size</strong> aesthetic in the
 <code>geom_smooth</code> layer:</p>
@@ -299,7 +299,9 @@ x-axis.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span></code></pre></div>
-<pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 <div class="inline-figure"><img src="fig/rmd-06-lm-fit2-1.png" width="576" style="display: block; margin: auto;"></div>
 <p>There are two ways an <em>aesthetic</em> can be specified. Here we <em>set</em> the <strong>size</strong>
 aesthetic by passing it as an argument to <code>geom_smooth</code>. Previously in the
@@ -316,12 +318,12 @@ example.</p>
 <details><summary>
 Solution to challenge 4a
 </summary><p><br></p>
-<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span>, colour <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span> <span class="op">+</span></span>
 <span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span></code></pre></div>
-<pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 <img src="fig/rmd-06-ch4a-sol-1.png" width="576" style="display: block; margin: auto;"></details>
 </blockquote>
 </div>
@@ -337,12 +339,12 @@ trendlines.</p>
 <details><summary>
 Solution to challenge 4b
 </summary><p><br></p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span>, shape <span class="op">=</span> <span class="fl">17</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span></code></pre></div>
-<pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 <img src="fig/rmd-06-ch4b-sol-1.png" width="576" style="display: block; margin: auto;"></details>
 </blockquote>
 </div>
@@ -355,13 +357,13 @@ Solution to challenge 4b
 countries in one plot. Alternatively, we can split this out over multiple panels
 by adding a layer of <strong>facet</strong> panels.</p>
 <p>For this exercise we will use a subset of the gapminder data. If you are already familiar with subsetting a data frame with square brackets or the <code>dplyr</code> package, you can subset the <code>gapminder</code> data frame:</p>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">asia_oceania</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Asia"</span>, <span class="st">"Oceania"</span><span class="op">)</span>,<span class="op">]</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="va">asia_oceania</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">continent</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Asia"</span>, <span class="st">"Oceania"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Or you can use the <code>read_csv</code> function and read in this subset of the gapminder data already provided in the <code>/data</code> folder:</p>
-<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">asia_oceania</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_asia_oceania.csv"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Rows: 210 Columns: 6
 ── Column specification ────────────────────────────────────────────────────────
@@ -371,7 +373,7 @@ dbl (4): year, pop, lifeExp, gdpPercap
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">asia_oceania</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -391,7 +393,7 @@ title and any legend can be set using the <code>labs</code> function. Legend tit
 are set using the same names we used in the <code>aes</code> specification. Thus below
 the colour legend title is set using <code>colour = "Continent"</code>, while the title
 of a fill legend would be set using <code>fill = "MyTitle"</code>.</p>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">asia_oceania</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -411,7 +413,7 @@ the x-axis label sizes to maintain readability. Nearly everything in
 ggplot2 is customizable.</p>
 </div>
 <p>We can also use one of the many built in <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">themes</a> in <code>ggplot2</code>. Like geom layers, each theme each layer is drawn on top of the previous theme layer.</p>
-<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">asia_oceania</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -431,7 +433,7 @@ ggplot2 is customizable.</p>
 <span class="header-section-number">6.6</span> Exporting the plot<a class="anchor" aria-label="anchor" href="#exporting-the-plot"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> function allows you to export a plot created with <code>ggplot2</code>. You can specify the dimension and resolution of your plot by adjusting the appropriate arguments (<code>width</code>, <code>height</code> and <code>dpi</code>) to create high quality graphics for publication. In order to save the plot from above, we first assign it to a variable <code>lifeExp_plot</code>, then tell <code>ggsave</code> to save that plot in <code>png</code> format to a directory called <code>results</code>. (Make sure you have a <code>results/</code> folder in your working directory.)</p>
-<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lifeExp_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">asia_oceania</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -499,7 +501,7 @@ code to modify. Finally, there are many websites that provide examples of <code>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-09-21.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-12-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

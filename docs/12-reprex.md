@@ -72,9 +72,9 @@ cats %>%
 ```
 
 ```
-Error in `validate_mapping()`:
+Error in `geom_col()`:
 ! `mapping` must be created by `aes()`
-Did you use %>% instead of +?
+ℹ Did you use `%>%` or `|>` instead of `+`?
 ```
 
 You have read the error message but it was not helpful, you used `?ggplot2`, and looked on-line and still cannot find an answer. Maybe someone in the bcgovR community knows? 
@@ -99,7 +99,7 @@ structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1,
     "collector")), weight = structure(list(), class = c("collector_double", 
     "collector")), likes_string = structure(list(), class = c("collector_double", 
     "collector"))), default = structure(list(), class = c("collector_guess", 
-    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x7fbd61cf7120>, class = c("spec_tbl_df", 
+    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x600000dc85d0>, class = c("spec_tbl_df", 
 "tbl_df", "tbl", "data.frame"))
 ```
 
@@ -121,9 +121,9 @@ cats %>%
 ```
 
 ```
-Error in `validate_mapping()`:
+Error in `geom_col()`:
 ! `mapping` must be created by `aes()`
-Did you use %>% instead of +?
+ℹ Did you use `%>%` or `|>` instead of `+`?
 ```
 
 `dput()` will dump the data you're working with into a format so that it can
@@ -146,9 +146,9 @@ starwars %>%
 ```
 
 ```
-Error in `validate_mapping()`:
+Error in `geom_col()`:
 ! `mapping` must be created by `aes()`
-Did you use %>% instead of +?
+ℹ Did you use `%>%` or `|>` instead of `+`?
 ```
 
 Once the code is ready for sharing, select the code and use `reprex_selection()` or the clickable RStudio `Addin` Reprex selection button to copy the formatted code to the clipboard for sharing on-line (_demonstrated_).
@@ -162,7 +162,7 @@ sessionInfo()
 ```
 
 ```
-R version 4.2.1 (2022-06-23)
+R version 4.2.2 (2022-10-31)
 Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Big Sur ... 10.16
 
@@ -177,23 +177,23 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] ggplot2_3.3.6 dplyr_1.0.10  readr_2.1.2   reprex_2.0.2  knitr_1.40   
+[1] ggplot2_3.4.0 dplyr_1.0.10  readr_2.1.3   reprex_2.0.2  knitr_1.41   
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.2 xfun_0.33        bslib_0.4.0      purrr_0.3.4     
- [5] colorspace_2.0-3 vctrs_0.4.1      generics_0.1.3   htmltools_0.5.3 
- [9] yaml_2.3.5       utf8_1.2.2       rlang_1.0.5      jquerylib_0.1.4 
-[13] pillar_1.8.1     glue_1.6.2       withr_2.5.0      DBI_1.1.3       
-[17] bit64_4.0.5      lifecycle_1.0.2  stringr_1.4.1    munsell_0.5.0   
-[21] gtable_0.3.1     memoise_2.0.1    evaluate_0.16    labeling_0.4.2  
-[25] tzdb_0.3.0       fastmap_1.1.0    parallel_4.2.1   fansi_1.0.3     
-[29] highr_0.9        scales_1.2.1     cachem_1.0.6     vroom_1.5.7     
-[33] jsonlite_1.8.0   farver_2.1.1     fs_1.5.2         bit_4.0.4       
-[37] hms_1.1.2        digest_0.6.29    stringi_1.7.8    bookdown_0.29   
-[41] grid_4.2.1       cli_3.4.0        tools_4.2.1      magrittr_2.0.3  
-[45] sass_0.4.2       tibble_3.1.8     crayon_1.5.1     pkgconfig_2.0.3 
-[49] downlit_0.4.2    ellipsis_0.3.2   xml2_1.3.3       assertthat_0.2.1
-[53] rmarkdown_2.16   R6_2.5.1         compiler_4.2.1  
+ [1] highr_0.9        bslib_0.4.1      compiler_4.2.2   pillar_1.8.1    
+ [5] jquerylib_0.1.4  tools_4.2.2      bit_4.0.5        digest_0.6.31   
+ [9] downlit_0.4.2    gtable_0.3.1     jsonlite_1.8.4   evaluate_0.19   
+[13] memoise_2.0.1    lifecycle_1.0.3  tibble_3.1.8     pkgconfig_2.0.3 
+[17] rlang_1.0.6      DBI_1.1.3        cli_3.4.1        parallel_4.2.2  
+[21] yaml_2.3.6       xfun_0.35        fastmap_1.1.0    withr_2.5.0     
+[25] stringr_1.5.0    xml2_1.3.3       generics_0.1.3   fs_1.5.2        
+[29] sass_0.4.4       vctrs_0.5.1      hms_1.1.2        bit64_4.0.5     
+[33] grid_4.2.2       tidyselect_1.2.0 glue_1.6.2       R6_2.5.1        
+[37] fansi_1.0.3      vroom_1.6.0      rmarkdown_2.18   bookdown_0.31   
+[41] farver_2.1.1     tzdb_0.3.0       magrittr_2.0.3   scales_1.2.1    
+[45] htmltools_0.5.4  ellipsis_0.3.2   assertthat_0.2.1 colorspace_2.0-3
+[49] labeling_0.4.2   utf8_1.2.2       stringi_1.7.8    munsell_0.5.0   
+[53] cachem_1.0.6     crayon_1.5.2    
 ```
 
 `sessionInfo()` will print out your current version of R, as well as any packages you

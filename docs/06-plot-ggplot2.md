@@ -354,7 +354,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 ```
 
 ```
-`geom_smooth()` using formula 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
 ```
 
 <img src="fig/rmd-06-lm-fit-1.png" width="576" style="display: block; margin: auto;" />
@@ -371,7 +371,12 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 ```
 
 ```
-`geom_smooth()` using formula 'y ~ x'
+Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+```
+
+```
+`geom_smooth()` using formula = 'y ~ x'
 ```
 
 <img src="fig/rmd-06-lm-fit2-1.png" width="576" style="display: block; margin: auto;" />
@@ -405,7 +410,7 @@ variables and their visual representation.
 > ```
 > 
 > ```
-> `geom_smooth()` using formula 'y ~ x'
+> `geom_smooth()` using formula = 'y ~ x'
 > ```
 > 
 > <img src="fig/rmd-06-ch4a-sol-1.png" width="576" style="display: block; margin: auto;" />
@@ -437,7 +442,7 @@ variables and their visual representation.
 > ```
 > 
 > ```
-> `geom_smooth()` using formula 'y ~ x'
+> `geom_smooth()` using formula = 'y ~ x'
 > ```
 > 
 > <img src="fig/rmd-06-ch4b-sol-1.png" width="576" style="display: block; margin: auto;" />

@@ -84,7 +84,7 @@ str(cats)
 ```
 
 ```
-spec_tbl_df [3 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+spc_tbl_ [3 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ coat        : chr [1:3] "calico" "black" "tabby"
  $ weight      : num [1:3] 2.1 5 3.2
  $ likes_string: num [1:3] 1 0 1
@@ -186,7 +186,7 @@ now let's use those skills to digest a more realistic dataset. Let's read in the
 > ```
 > 
 > ```
-> spec_tbl_df [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+> spc_tbl_ [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 >  $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
 >  $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
 >  $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
@@ -236,7 +236,7 @@ str(gapminder)
 ```
 
 ```
-spec_tbl_df [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+spc_tbl_ [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
  $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...

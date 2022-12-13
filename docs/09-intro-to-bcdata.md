@@ -55,8 +55,8 @@ bcdc_search("public libraries", n = 5)
 ```
 
 ```
-Found 16 matches. Returning the first 5.
-To see them all, rerun the search and set the 'n' argument to 16.
+Found 18 matches. Returning the first 5.
+To see them all, rerun the search and set the 'n' argument to 18.
 ```
 
 ```
@@ -636,7 +636,7 @@ Try customizing the output with different `Trade` categories or different ggplot
 
 ### Challenge 4 (15 minutes)
 >
-> Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2018-2020). You can use this dataset or one of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
+> Navigate to the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/datasets) and choose a dataset that has a `Resource Storage Format` that is `csv` or `xlsx`. An example of this is the [BC Seafood Production data](https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2019-2021). You can use this dataset or one of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you've learned in this workshop to make a pretty plot. 
 > 
 > <details>
 > 
@@ -647,7 +647,7 @@ Try customizing the output with different `Trade` categories or different ggplot
 > <br />
 >
 >```r
->seafood_prod <- bcdc_get_data("e591a756-6b99-4986-b8ce-f341bd47228f", resource = '9cc32dc4-bd9a-4baf-8210-770ac62d7985')
+>seafood_prod <- bcdc_get_data("e591a756-6b99-4986-b8ce-f341bd47228f",           "a057bfbb-8121-410b-92bb-29f445a6d1a9")
 >```
 >
 >```
@@ -655,7 +655,7 @@ Try customizing the output with different `Trade` categories or different ggplot
 >```
 >
 >```
->Rows: 111 Columns: 7
+>Rows: 114 Columns: 7
 >── Column specification ────────────────────────────────────────────────────────
 >Delimiter: ","
 >chr (3): Species Group, Source, Species/Product
