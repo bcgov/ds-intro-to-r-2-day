@@ -90,8 +90,8 @@ The R Markdown sections also draw material from Nicholas Tierney's excellent _R 
 
 ### Course Offerings
 
-#### Introduction to Data Science in R, January 25 & 26, 2022 
-- _Instructors_: [Bonnie Robert](https://github.com/BonnieJRobert/), [Julie Hawkins](https://github.com/BonnieJRobert/)
+#### Introduction to Data Science in R, January 25 & 26, 2023
+- _Instructors_: [Bonnie Robert](https://github.com/BonnieJRobert/), [Julie Hawkins](https://github.com/BonnieJRobert/), Stephanie Yurchuk
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
 - _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
 - _What we actually did on the day_: 
