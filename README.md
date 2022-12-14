@@ -45,7 +45,7 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 
 ### Day 1
 
-- Introduction to Course (30 min) **()** <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
+- Introduction to Course (30 min) **(Bonnie)** <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
 - Demo (10 min) **(Bonnie)**
 - Introduction to R & RStudio (50 minutes) **(Bonnie)**
 - BREAK ☕
@@ -92,24 +92,24 @@ The R Markdown sections also draw material from Nicholas Tierney's excellent _R 
 ### Course Offerings
 
 #### Introduction to Data Science in R, January 25 & 26, 2023
-- _Instructors_: [Bonnie Robert](https://github.com/BonnieJRobert/), [Julie Hawkins](https://github.com/BonnieJRobert/), Stephanie Yurchuk
+- _Instructors_: [Bonnie Robert](https://github.com/BonnieJRobert/), Julie Hawkins, Stephanie Yurchuk
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
 - _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
-- _What we actually did on the day_: 
+- _What we actually did on the day_:
 
 
 #### Introduction to Data Science in R, Feb 23 and 24, March 2 & 3, 2022 
 - _Instructors_: [Andy Teucher](https://github.com/ateucher), [Sam Albers](https://github.com/boshek) & [Bonnie Robert](https://github.com/BonnieJRobert/)
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
-- _Course material_: 
-- _What we actually did on the day_: 
+- _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
+- _What we actually did on the day_: https://github.com/bcgov/ds-intro-to-r-2-day/tree/master/what_we_actually_did/online-Feb-2022
 
 
 #### Introduction to Data Science in R, May 6-7, 2020 
 - _Instructors_: [Sam Albers](https://github.com/boshek), [Stephanie Hazlitt](https://github.com/stephhazlitt), [Genevieve Perkins](https://github.com/gcperk) & [Andy Teucher](https://github.com/ateucher)
 - _Suggested pre-reading_: [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
-- _Course material_: 
-- _What we actually did on the day_: 
+- _Course material_: https://bcgov.github.io/ds-intro-to-r-2-day/
+- _What we actually did on the day_: https://github.com/bcgov/ds-intro-to-r-2-day/tree/master/what_we_actually_did/online-May-6-and-7-2020
 
 
 
