@@ -1,21 +1,21 @@
 ---
 title: "Introduction to Data Science using R Workshop"
-date: "2022-12-13"
+date: "2022-12-14"
 site: bookdown::bookdown_site
 output: bookdown::bs4_book
 url: https://bcgov.github.io/ds-intro-to-r-2-day
 documentclass: book
 github-repo: bcgov/ds-intro-to-r-2-day
-description: "This book contains materials for a 4 session Introduction to R workshop"
+description: "This book contains materials for a 2 day Introduction to R workshop"
 ---
 
 # Preface {-}
 
 
-A repository to house materials for a 4 session course introducing participants to data science using [R](https://www.r-project.org/).
+A repository to house materials for a 2 day course introducing participants to data science using [R](https://www.r-project.org/).
 
 
-The goal of this 4 session workshop is to teach new-to-programming data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
+The goal of this 2 day workshop is to teach new-to-programming data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
 
 ## Daily schedule {-}
 
