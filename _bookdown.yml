@@ -8,7 +8,7 @@ rmd_files:
     - "01-rstudio-intro.Rmd"
     - "02-seeking-help.Rmd"
     - "03-project-intro.Rmd"
-    - "04-data-structures-part1.Rmd"
+    - "04-data-structures.Rmd"
     - "05-data-frames.Rmd"
     - "06-plot-ggplot2.Rmd"
     - "07-dplyr.Rmd"
