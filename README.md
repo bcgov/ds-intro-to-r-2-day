@@ -60,6 +60,7 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 
 
 ### Day 2
+
 - Review + Questions (30 minutes)
 - Making Publication Quality Plots with `ggplot2` Pt. 1 (60 minutes)  **(Bonnie)**
 - BREAK ☕
