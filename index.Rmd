@@ -11,9 +11,7 @@ description: "This book contains materials for a 2 day Introduction to R worksho
 
 # Preface {-}
 
-
 A repository to house materials for a 2 day course introducing participants to data science using [R](https://www.r-project.org/).
-
 
 The goal of this 2 day workshop is to teach new-to-programming data professionals to import data, clean up and summarize a data set, and make some static data visualizations using the program R. R is a popular statistical computing language, commonly used in many scientific disciplines for statistical analysis, generating production-quality graphics, and automating data workflow tasks. The workshop content will follow best practices for using R for data analysis, giving attendees a foundation in the fundamentals of R and scientific computing.
 
@@ -24,44 +22,43 @@ The goal of this 2 day workshop is to teach new-to-programming data professional
 | Module #1  | 9:00       | 10:30    |
 | Break      | 10:30      | 10:45    |
 | Module #2  | 10:45      | 12:00    |
+| Lunch      | 12:00      |  1:00    |
+| Module #3  |  1:00      |  2:30    |
+| Break      |  2:30      |  2:45    |
+| Module #4  |  2:45      |  4:30    |
+
 
 ### Day 1 {-}
 
-- Introduction to Course (30 min) <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
-- Demo (10 min) **(Sam)**
-- [Introduction to R and RStudio] (50 minutes) **(Sam)**
+- Introduction to Course (30 min) **()** <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
+- Demo (10 min) **(Bonnie)**
+- [Introduction to R & RStudio] (50 minutes) **(Bonnie)**
 - BREAK ☕
-- [Seeking Help in R] (15 minutes) **(Andy)**
-- [Project Management With RStudio] (40 minutes) **(Andy)**
+- [Seeking Help in R] (15 minutes) **(Julie)**
+- [Project Management with RStudio] (60 minutes) **(Julie)**
+- Lunch
+- [Data Structures] (75 minutes)  **(Bonnie)**
+- Extra Practice + Questions (15 minutes)
+- BREAK ☕
+- [Data Manipulation with `dplyr`][Dataframe Manipulation with dplyr] (90 minutes) **(Julie)**
+- Day 1 Wrap-up + Questions (15 minutes)
+
 
 ### Day 2 {-}
 
-- Review + questions (30 minutes)
-- [Data Structures] (50 minutes)  **(Andy)**
+- Review + Questions (30 minutes)
+- [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 1 (60 minutes)  **(Bonnie)**
 - BREAK ☕
-- [Exploring Data Frames] (45 minutes) **(Bonnie)**
-- [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 1 (45 minutes)  **(Bonnie)**
-
-### Day 3 {-}
-
-- Review + questions (30 minutes)
-- [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 2 (40 minutes)  **(Bonnie)**
+- [Making Publication Quality Plots with `ggplot2`][Creating Publication-Quality Graphics with ggplot2] Pt. 2 (60 minutes)  **(Bonnie)**
+- Extra Practice + Questions (15 minutes)
+- Lunch
+- [Data Manipulation with `tidyr`][Create Tidy Data with tidyr] (60 minutes)  **(Julie)**
+- Extra Practice + Questions (15 minutes)
 - BREAK ☕
-- [Data Manipulation with `dplyr`][Dataframe Manipulation with dplyr] (90 minutes) **(Andy)**
+- Joins with `dplyr` (45 minutes) **(Julie)**
+- Mini-Analysis Project:  (45 minutes)
+- Day 2 Wrap-up + Questions (15 minutes)
 
-### Day 4 {-}
-
-- Review + questions (30 min)
-- [Data Manipulation with `tidyr`][Create Tidy Data with tidyr] (45 minutes)  **(Sam)**
-- BREAK ☕
-- [Introduction to `bcdata` and practice `ggplot2`, `tidyr` and `dplyr`][Introduction to the bcdata package] (75 minutes) **(Sam)**
-
-
-
-Most of the above lesson material is sourced or an adaptation of the [Software Carpentry Foundation](http://software-carpentry.org/) (now The Carpenties) [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/) lesson material: Thomas Wright and Naupaka Zimmerman (eds): _Software Carpentry: R for
-Reproducible Scientific Analysis_.  Version 2016.06, June 2016,
-https://github.com/swcarpentry/r-novice-gapminder,
-10.5281/zenodo.57520.
 
 Most of the above lesson material is sourced from the Software Carpentry Foundation (now The Carpenties) [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/) lesson material: Thomas Wright and Naupaka Zimmerman (eds): _Software Carpentry: R for
 Reproducible Scientific Analysis_.  Version 2016.06, June 2016,
