@@ -9,13 +9,13 @@ rmd_files:
     - "02-seeking-help.Rmd"
     - "03-project-intro.Rmd"
     - "04-data-structures.Rmd"
-    - "07-dplyr.Rmd"
+    - "05-dplyr.Rmd"
     - "06-plot-ggplot2.Rmd"
     - "07-tidyr.Rmd"
+    - "08-data-frames.Rmd"
     - "09-intro-to-bcdata.Rmd"
     - "10-intro-to-rmarkdown.Rmd"
     - "11-rmarkdown-application-regression.Rmd"
     - "12-reprex.Rmd"
-    - "05-data-frames.Rmd"
 clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true
