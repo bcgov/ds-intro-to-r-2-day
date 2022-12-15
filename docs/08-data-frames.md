@@ -1,5 +1,5 @@
 ---
-title: "Exploring Data Frames"
+title: "Subsetting Data Frames"
 teaching: 20
 exercises: 10
 questions: "How can I manipulate a data frame?"

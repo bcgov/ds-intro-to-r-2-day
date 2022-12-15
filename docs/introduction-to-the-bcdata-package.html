@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop</title>
+<title>Chapter 10 Introduction to the bcdata package | Introduction to Data Science using R Workshop</title>
 <meta name="description" content="The British Columbia government hosts over 2000 tabular and geospatial data sets in the B.C. Data Catalogue. Most data is available through the B.C. Data Catalogue under an open licence. The...">
 <meta name="generator" content="bookdown 0.31 with bs4_book()">
-<meta property="og:title" content="Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop">
+<meta property="og:title" content="Chapter 10 Introduction to the bcdata package | Introduction to Data Science using R Workshop">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/introduction-to-the-bcdata-package.html">
 <meta property="og:description" content="The British Columbia government hosts over 2000 tabular and geospatial data sets in the B.C. Data Catalogue. Most data is available through the B.C. Data Catalogue under an open licence. The...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 9 Introduction to the bcdata package | Introduction to Data Science using R Workshop">
+<meta name="twitter:title" content="Chapter 10 Introduction to the bcdata package | Introduction to Data Science using R Workshop">
 <meta name="twitter:description" content="The British Columbia government hosts over 2000 tabular and geospatial data sets in the B.C. Data Catalogue. Most data is available through the B.C. Data Catalogue under an open licence. The...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -48,14 +48,15 @@
 <li><a class="" href="seeking-help-in-r.html"><span class="header-section-number">2</span> Seeking Help in R</a></li>
 <li><a class="" href="project-management-with-rstudio.html"><span class="header-section-number">3</span> Project Management With RStudio</a></li>
 <li><a class="" href="data-structures.html"><span class="header-section-number">4</span> Data Structures</a></li>
-<li><a class="" href="dataframe-manipulation-with-dplyr.html"><span class="header-section-number">5</span> Dataframe Manipulation with dplyr</a></li>
-<li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">6</span> Creating Publication-Quality Graphics with ggplot2</a></li>
-<li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">7</span> Create Tidy Data with tidyr</a></li>
-<li><a class="" href="exploring-data-frames.html"><span class="header-section-number">8</span> Exploring Data Frames</a></li>
-<li><a class="active" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
-<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></li>
-<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></li>
-<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></li>
+<li><a class="" href="exploring-data-frames.html"><span class="header-section-number">5</span> Exploring Data Frames</a></li>
+<li><a class="" href="dataframe-manipulation-with-dplyr.html"><span class="header-section-number">6</span> Dataframe Manipulation with dplyr</a></li>
+<li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">7</span> Creating Publication-Quality Graphics with ggplot2</a></li>
+<li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></li>
+<li><a class="" href="exploring-data-frames-1.html"><span class="header-section-number">9</span> Exploring Data Frames</a></li>
+<li><a class="active" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">10</span> Introduction to the bcdata package</a></li>
+<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">11</span> Data analysis reports</a></li>
+<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">12</span> Applications of R Markdown</a></li>
+<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">13</span> Seeking Help from Others with reprex</a></li>
 </ul>
 
         <div class="book-extra">
@@ -63,9 +64,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-the-bcdata-package" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-the-bcdata-package" class="section level1" number="10">
 <h1>
-<span class="header-section-number">9</span> Introduction to the bcdata package<a class="anchor" aria-label="anchor" href="#introduction-to-the-bcdata-package"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> Introduction to the bcdata package<a class="anchor" aria-label="anchor" href="#introduction-to-the-bcdata-package"><i class="fas fa-link"></i></a>
 </h1>
 <p>The British Columbia government hosts over 2000 tabular and geospatial data sets
 in the B.C. Data Catalogue. Most data is available through the B.C. Data
@@ -75,25 +76,25 @@ import metadata and data from the B.C. Data Catalogue into their R session.
 Through this functionality the <code>bcdata</code> package connects British Columbia
 government public data holdings in the B.C. Data Catalogue with the vast
 capabilities of R.</p>
-<div id="getting-started-2" class="section level2" number="9.1">
+<div id="getting-started-2" class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">9.1</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>First we need to install the <code>bcdata</code> package:</p>
-<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb501"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"bcdata"</span><span class="op">)</span></span></code></pre></div>
 <p>And next we need to load the <code>bcdata</code> package, along with <code>dplyr</code> and <code>ggplot2</code> which we installed and used in earlier lessons:</p>
-<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb502"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bcgov.github.io/bcdata/">bcdata</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="searching-the-b.c.-data-catalogue" class="section level2" number="9.2">
+<div id="searching-the-b.c.-data-catalogue" class="section level2" number="10.2">
 <h2>
-<span class="header-section-number">9.2</span> Searching the B.C. Data Catalogue<a class="anchor" aria-label="anchor" href="#searching-the-b.c.-data-catalogue"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> Searching the B.C. Data Catalogue<a class="anchor" aria-label="anchor" href="#searching-the-b.c.-data-catalogue"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s use the <code>bcdata</code> package to search the B.C. Data Catalogue for some data on <em><strong>public libraries</strong></em> in British Columbia:</p>
-<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb503"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_search.html">bcdc_search</a></span><span class="op">(</span><span class="st">"public libraries"</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Found 18 matches. Returning the first 5.
 To see them all, rerun the search and set the 'n' argument to 18.</code></pre>
@@ -120,7 +121,7 @@ Titles:
 Access a single record by calling `bcdc_get_record(ID)` with the ID
  from the desired record.</code></pre>
 <p>There are many catalogue records with data relating to libraries. Let’s examine the first returned record more closely:</p>
-<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb506"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_record.html">bcdc_get_record</a></span><span class="op">(</span><span class="st">"bc-public-libraries-systems-branches-and-locations"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Warning: It is advised to use the permanent id ('3d2318d4-8f5d-4208-88f5-995420d7c58f') rather than the name of the record ('bc-public-libraries-systems-branches-and-locations') to guard against future name changes.</code></pre>
 <pre><code>B.C. Data Catalogue Record: BC Public Libraries Systems - Branches and
@@ -147,12 +148,12 @@ Access the full 'Resources' data frame using:
 Query and filter this data using:
  bcdc_query_geodata('3d2318d4-8f5d-4208-88f5-995420d7c58f')</code></pre>
 </div>
-<div id="importing-data-from-the-b.c.-data-catalogue" class="section level2" number="9.3">
+<div id="importing-data-from-the-b.c.-data-catalogue" class="section level2" number="10.3">
 <h2>
-<span class="header-section-number">9.3</span> Importing data from the B.C. Data Catalogue<a class="anchor" aria-label="anchor" href="#importing-data-from-the-b.c.-data-catalogue"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3</span> Importing data from the B.C. Data Catalogue<a class="anchor" aria-label="anchor" href="#importing-data-from-the-b.c.-data-catalogue"><i class="fas fa-link"></i></a>
 </h2>
 <p>Next, we can use the <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data()</a></code> function to import this data directly into R:</p>
-<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb509"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span>record <span class="op">=</span> <span class="st">"bc-public-libraries-systems-branches-and-locations"</span><span class="op">)</span></span></code></pre></div>
 <p>The <em>bc-public-libraries-systems-branches-and-locations</em> catalogue record
 contains multiple data resources or files. If we run the above code
@@ -160,26 +161,26 @@ interactively, R will prompt you in the console to select one of the available
 resources, as it does not know which one you want to download. The full code to
 import the resource from the record—using the record’s permanent id to
 guard against future name changes—is provided to the user for next time:</p>
-<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb510"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lib_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span>record <span class="op">=</span> <span class="st">'3d2318d4-8f5d-4208-88f5-995420d7c58f'</span>,</span>
 <span>                         resource <span class="op">=</span> <span class="st">'ed17f111-fb39-46b3-89aa-5375592fbb01'</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Reading the data using the read_xlsx function from the readxl package.</code></pre>
-<div id="challenge-1-5-minutes-5" class="section level3" number="9.3.1">
+<div id="challenge-1-5-minutes-6" class="section level3" number="10.3.1">
 <h3>
-<span class="header-section-number">9.3.1</span> Challenge 1 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-1-5-minutes-5"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3.1</span> Challenge 1 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-1-5-minutes-6"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Take a few minutes to search the B.C. Data Catalogue for data sets for a different topic. Identify and import one tabular data set into your R session (e.g. a CSV or XLS resource). Entering <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_browse.html">bcdc_browse()</a></code> into the R console will open the catalogue page in your default web browser.</p>
 </blockquote>
 </div>
 </div>
-<div id="practice-manipulating-data-with-dplyr" class="section level2" number="9.4">
+<div id="practice-manipulating-data-with-dplyr" class="section level2" number="10.4">
 <h2>
-<span class="header-section-number">9.4</span> Practice manipulating data with <code>dplyr</code><a class="anchor" aria-label="anchor" href="#practice-manipulating-data-with-dplyr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4</span> Practice manipulating data with <code>dplyr</code><a class="anchor" aria-label="anchor" href="#practice-manipulating-data-with-dplyr"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s return to the libraries data frame <code>lib_raw</code> we imported. As we learned
 earlier in the workshop, a useful first step is to get familiar with the data:</p>
-<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb512"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">lib_raw</span><span class="op">)</span></span></code></pre></div>
 <pre><code>tibble [253 × 38] (S3: tbl_df/tbl/data.frame)
  $ Library System                                               : chr [1:253] "Alert Bay Public Library &amp; Museum" "Beaver Valley Public Library" "Bowen Island Public Library" "Burnaby Public Library" ...
@@ -220,7 +221,7 @@ earlier in the workshop, a useful first step is to get familiar with the data:</
  $ 860x Branch space/size, total square metres                  : num [1:253] 213 270 407 5673 465 ...
  $ 890x Hours open per year at this location                    : chr [1:253] "618" "2320" "1953" "3612" ...
  $ 920x Days open per year at this location                     : chr [1:253] "191" "321" "303" "339" ...</code></pre>
-<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb514"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lib_raw</span><span class="op">)</span></span></code></pre></div>
 <pre><code> [1] "Library System"                                               
  [2] "Location"                                                     
@@ -265,7 +266,7 @@ materials or volumes—are available between <em>51 and 53 degrees Latitude</em>
 that we previously used <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> to return only columns that we wanted. Here we
 are <em>also</em> using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> to rename <code>460x Total branch physical materials, volumes held</code>
 to <code>num_books</code>:</p>
-<div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb516"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lib_tidy</span> <span class="op">&lt;-</span> <span class="va">lib_raw</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -278,16 +279,16 @@ to <code>num_books</code>:</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>total_books <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">num_books</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>`summarise()` has grouped output by 'City'. You can override using the
 `.groups` argument.</code></pre>
-<div id="challenge-2-10-minutes-3" class="section level3" number="9.4.1">
+<div id="challenge-2-10-minutes-3" class="section level3" number="10.4.1">
 <h3>
-<span class="header-section-number">9.4.1</span> Challenge 2 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-10-minutes-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.1</span> Challenge 2 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-10-minutes-3"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Using <code>dplyr</code>, determine the total number of books within each Library System between 51 and 53 degrees latitude in British Columbia.</p>
 <details><summary>
 Solution to challenge 2
 </summary><p><br></p>
-<div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb518"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Library System`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>totals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">total_books</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -303,28 +304,28 @@ Solution to challenge 2
 </blockquote>
 </div>
 </div>
-<div id="practice-plotting-data-with-ggplot2" class="section level2" number="9.5">
+<div id="practice-plotting-data-with-ggplot2" class="section level2" number="10.5">
 <h2>
-<span class="header-section-number">9.5</span> Practice plotting data with <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#practice-plotting-data-with-ggplot2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5</span> Practice plotting data with <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#practice-plotting-data-with-ggplot2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now that we have imported, tidied, and summarized our library data, let’s make a static data visualization to share and communicate the results with others.</p>
-<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb520"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_books</span>, y <span class="op">=</span> <span class="va">City</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="fig/rmd-09-unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;"></div>
-<div id="challenge-3-10-minutes-2" class="section level3" number="9.5.1">
+<div id="challenge-3-10-minutes-2" class="section level3" number="10.5.1">
 <h3>
-<span class="header-section-number">9.5.1</span> Challenge 3 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-10-minutes-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5.1</span> Challenge 3 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-10-minutes-2"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Iterate the above plot to include information on the number of books by Library Service. Add a title to the plot. Try other design changes to make the plot more readable.</p>
 <details><summary>
 Solution to challenge 3
 </summary><p><br></p>
-<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb521"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sum_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -339,9 +340,9 @@ Solution to challenge 3
 </blockquote>
 </div>
 </div>
-<div id="importing-data-from-the-b.c.-data-catalogue---another-example" class="section level2" number="9.6">
+<div id="importing-data-from-the-b.c.-data-catalogue---another-example" class="section level2" number="10.6">
 <h2>
-<span class="header-section-number">9.6</span> Importing data from the B.C. Data Catalogue - Another Example<a class="anchor" aria-label="anchor" href="#importing-data-from-the-b.c.-data-catalogue---another-example"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.6</span> Importing data from the B.C. Data Catalogue - Another Example<a class="anchor" aria-label="anchor" href="#importing-data-from-the-b.c.-data-catalogue---another-example"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s try another example with <code>bcdata</code>. This time we are going to try importing
 some data that is a bit messier. We are going to work with <a href="https://catalogue.data.gov.bc.ca/dataset/87f26989-ccde-407e-a500-5f0c304c460d"><em>New Apprenticeship
@@ -351,10 +352,10 @@ data. This example will require you to reference elements you’ve learned
 throughout the workshop.</p>
 <p>You can view the data record we are going to be working with in your browser by
 running the following command:</p>
-<div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb522"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_browse.html">bcdc_browse</a></span><span class="op">(</span><span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span><span class="op">)</span></span></code></pre></div>
 <p>As we’ve previously learned we can use <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data()</a></code> to load data from the B.C. Data Catalogue directly into R. Let’s try that now:</p>
-<div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb523"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span>record <span class="op">=</span> <span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>
 <pre><code>New names:
@@ -375,7 +376,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 • `` -&gt; `...10`
 • `` -&gt; `...11`
 • `` -&gt; `...12`</code></pre>
-<div class="sourceCode" id="cb454"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb526"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span></span></code></pre></div>
 <pre><code># A tibble: 341 × 12
    `Notes:`    ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10 ...11 ...12
@@ -403,7 +404,7 @@ down. <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html
 conveniently has an argument called <code>skip</code> which allows us to specify the number
 of lines to skip before reading the data. We can use it with <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data()</a></code>
 like this:</p>
-<div class="sourceCode" id="cb456"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb528"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span></span>
 <span>  record <span class="op">=</span> <span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span>, </span>
 <span>  skip <span class="op">=</span> <span class="fl">9</span></span>
@@ -416,7 +417,7 @@ chr (12): Trade, Gender, FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb531"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span></span></code></pre></div>
 <pre><code># A tibble: 332 × 12
    Trade  Gender FY201…¹ FY201…² FY201…³ FY201…⁴ FY201…⁵ FY201…⁶ FY201…⁷ FY201…⁸
@@ -440,7 +441,7 @@ care of though. You will notice the data is filled with <code>...</code> values.
 values in the data. R has a specific way of handling missing values and we need
 to tell <code><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data()</a></code> (via <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>) that those are missing values. We
 do this by adding another argument so that R interprets the <code>...</code> as missing values:</p>
-<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb533"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span></span>
 <span>  <span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span>, </span>
 <span>  skip <span class="op">=</span> <span class="fl">9</span>, </span>
@@ -455,7 +456,7 @@ dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb464"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb536"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span></span></code></pre></div>
 <pre><code># A tibble: 332 × 12
    Trade  Gender FY201…¹ FY201…² FY201…³ FY201…⁴ FY201…⁵ FY201…⁶ FY201…⁷ FY201…⁸
@@ -481,7 +482,7 @@ plot. To reshape the data into long format, we can again make use of
 <code>pivot_longer</code> from the <code>tidyr</code> package which we covered in the <a href="create-tidy-data-with-tidyr.html#create-tidy-data-with-tidyr">tidyr section</a>. We only want to pivot the fiscal years
 so we need to specify those columns. In addition, we want to give our two new
 columns so descriptive names:</p>
-<div class="sourceCode" id="cb466"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">new_reg_long</span> <span class="op">&lt;-</span> <span class="va">new_reg</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -508,17 +509,17 @@ columns so descriptive names:</p>
 <p>There is actually quite a bit of data here while likely represents the number
 possible values for <code>Trade</code>. We can check the number of unique values in the
 <code>Trade</code> column using a handy function from <code>dplyr</code> called <code><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a></code>:</p>
-<div class="sourceCode" id="cb468"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">new_reg_long</span><span class="op">$</span><span class="va">Trade</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] 111</code></pre>
 <p>Sure enough there are 111 of them! Similarly, let’s have a look at what values are in the <code>Gender</code> column using the <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code> function you learned earlier:</p>
-<div class="sourceCode" id="cb470"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">new_reg_long</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] "Women"                     "Men"                      
 [3] "Total (Women+Men)"         "Non-Disclosed/Unspecified"
 [5] "Grand Total"              </code></pre>
 <p>To simplify things let’s take a subset of the Trades in the data and only look at Men and Women:</p>
-<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg_long</span> <span class="op">&lt;-</span> <span class="va">new_reg</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols <span class="op">=</span> <span class="va">`FY2011/12`</span><span class="op">:</span><span class="va">`FY2020/21`</span>,</span>
@@ -534,7 +535,7 @@ possible values for <code>Trade</code>. We can check the number of unique values
 using the skills we’ve learned in the <a href="creating-publication-quality-graphics-with-ggplot2.html#creating-publication-quality-graphics-with-ggplot2">ggplot2 section</a>. One thing to note is that we made
 use of the <code>ncol</code> argument in <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> so that the faceted plots would
 share the x-axis:</p>
-<div class="sourceCode" id="cb473"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb545"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">new_reg_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">fiscal_year</span>, y <span class="op">=</span> <span class="va">registrations</span>, fill <span class="op">=</span> <span class="va">Trade</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -542,16 +543,16 @@ share the x-axis:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="fig/rmd-09-unnamed-chunk-21-1.png" width="576" style="display: block; margin: auto;"></div>
 <p>Try customizing the output with different <code>Trade</code> categories or different ggplot2 customizations. For example what strategies might you take to tidy up the x-axis?</p>
-<div id="challenge-4-15-minutes" class="section level3" number="9.6.1">
+<div id="challenge-4-15-minutes" class="section level3" number="10.6.1">
 <h3>
-<span class="header-section-number">9.6.1</span> Challenge 4 (15 minutes)<a class="anchor" aria-label="anchor" href="#challenge-4-15-minutes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.6.1</span> Challenge 4 (15 minutes)<a class="anchor" aria-label="anchor" href="#challenge-4-15-minutes"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Navigate to the <a href="https://catalogue.data.gov.bc.ca/datasets">BC Data Catalogue</a> and choose a dataset that has a <code>Resource Storage Format</code> that is <code>csv</code> or <code>xlsx</code>. An example of this is the <a href="https://catalogue.data.gov.bc.ca/dataset/bc-seafood-production-2019-2021">BC Seafood Production data</a>. You can use this dataset or one of your choosing. Import your data into R and make a plot, any plot at all. Try to apply the skills you’ve learned in this workshop to make a pretty plot.</p>
 <details><summary>
 Solution to challenge 4
 </summary><p><br></p>
-<div class="sourceCode" id="cb474"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seafood_prod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span><span class="st">"e591a756-6b99-4986-b8ce-f341bd47228f"</span>,           <span class="st">"a057bfbb-8121-410b-92bb-29f445a6d1a9"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>
 <pre><code>Rows: 114 Columns: 7
@@ -562,7 +563,7 @@ dbl (4): Year, Harvest ('000 t), Landed Value ($ million), Wholesale Value (...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb477"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb549"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seafood_by_year</span> <span class="op">&lt;-</span> <span class="va">seafood_prod</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op">==</span> <span class="fl">2020</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Species/Product`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -586,25 +587,25 @@ dbl (4): Year, Harvest ('000 t), Landed Value ($ million), Wholesale Value (...
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="exploring-data-frames.html"><span class="header-section-number">8</span> Exploring Data Frames</a></div>
-<div class="next"><a href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></div>
+<div class="prev"><a href="exploring-data-frames-1.html"><span class="header-section-number">9</span> Exploring Data Frames</a></div>
+<div class="next"><a href="data-analysis-reports.html"><span class="header-section-number">11</span> Data analysis reports</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#introduction-to-the-bcdata-package"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
-<li><a class="nav-link" href="#getting-started-2"><span class="header-section-number">9.1</span> Getting started</a></li>
-<li><a class="nav-link" href="#searching-the-b.c.-data-catalogue"><span class="header-section-number">9.2</span> Searching the B.C. Data Catalogue</a></li>
+<li><a class="nav-link" href="#introduction-to-the-bcdata-package"><span class="header-section-number">10</span> Introduction to the bcdata package</a></li>
+<li><a class="nav-link" href="#getting-started-2"><span class="header-section-number">10.1</span> Getting started</a></li>
+<li><a class="nav-link" href="#searching-the-b.c.-data-catalogue"><span class="header-section-number">10.2</span> Searching the B.C. Data Catalogue</a></li>
 <li>
-<a class="nav-link" href="#importing-data-from-the-b.c.-data-catalogue"><span class="header-section-number">9.3</span> Importing data from the B.C. Data Catalogue</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-5-minutes-5"><span class="header-section-number">9.3.1</span> Challenge 1 (5 minutes)</a></li></ul>
+<a class="nav-link" href="#importing-data-from-the-b.c.-data-catalogue"><span class="header-section-number">10.3</span> Importing data from the B.C. Data Catalogue</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-5-minutes-6"><span class="header-section-number">10.3.1</span> Challenge 1 (5 minutes)</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#practice-manipulating-data-with-dplyr"><span class="header-section-number">9.4</span> Practice manipulating data with dplyr</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-10-minutes-3"><span class="header-section-number">9.4.1</span> Challenge 2 (10 minutes)</a></li></ul>
+<a class="nav-link" href="#practice-manipulating-data-with-dplyr"><span class="header-section-number">10.4</span> Practice manipulating data with dplyr</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-10-minutes-3"><span class="header-section-number">10.4.1</span> Challenge 2 (10 minutes)</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#practice-plotting-data-with-ggplot2"><span class="header-section-number">9.5</span> Practice plotting data with ggplot2</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-3-10-minutes-2"><span class="header-section-number">9.5.1</span> Challenge 3 (10 minutes)</a></li></ul>
+<a class="nav-link" href="#practice-plotting-data-with-ggplot2"><span class="header-section-number">10.5</span> Practice plotting data with ggplot2</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-3-10-minutes-2"><span class="header-section-number">10.5.1</span> Challenge 3 (10 minutes)</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#importing-data-from-the-b.c.-data-catalogue---another-example"><span class="header-section-number">9.6</span> Importing data from the B.C. Data Catalogue - Another Example</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-4-15-minutes"><span class="header-section-number">9.6.1</span> Challenge 4 (15 minutes)</a></li></ul>
+<a class="nav-link" href="#importing-data-from-the-b.c.-data-catalogue---another-example"><span class="header-section-number">10.6</span> Importing data from the B.C. Data Catalogue - Another Example</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-4-15-minutes"><span class="header-section-number">10.6.1</span> Challenge 4 (15 minutes)</a></li></ul>
 </li>
 </ul>
 
