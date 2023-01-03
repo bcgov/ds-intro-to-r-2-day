@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="The British Columbia government hosts over 2000 tabular and geospatial data sets in the B.C. Data Catalogue. Most data is available through the B.C. Data Catalogue under an open licence. The...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.1/transition.js"></script><script src="libs/bs3compat-0.4.1/tabs.js"></script><script src="libs/bs3compat-0.4.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -359,7 +359,7 @@ running the following command:</p>
 <code class="sourceCode R"><span><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span>record <span class="op">=</span> <span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>
 <pre><code>New names:
-Rows: 341 Columns: 12
+Rows: 321 Columns: 12
 ── Column specification
 ──────────────────────────────────────────────────────── Delimiter: "," chr
 (12): Notes:, ...2, ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ......
@@ -378,20 +378,20 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 • `` -&gt; `...12`</code></pre>
 <div class="sourceCode" id="cb526"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span></span></code></pre></div>
-<pre><code># A tibble: 341 × 12
+<pre><code># A tibble: 321 × 12
    `Notes:`    ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10 ...11 ...12
    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
- 1 The follow… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
- 2 Gender is … &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
- 3 The fiscal… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
- 4 Profession… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
- 5 ... Repres… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
- 6 Data as of… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
- 7 Data Sourc… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
- 8 &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
- 9 Trade       Gend… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20…
-10 Aircraft M… Women 14    8     7     9     6     ...   ...   ...   12    ...  
-# … with 331 more rows</code></pre>
+ 1 "The follo… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+ 2 "Gender is… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+ 3 "Fiscal Ye… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+ 4 "Professio… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+ 5 "... Repre… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+ 6  &lt;NA&gt;       &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+ 7 "Data as o… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+ 8 "Data Sour… &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+ 9  &lt;NA&gt;       &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+10 "Trade"     Gend… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20…
+# … with 311 more rows</code></pre>
 <p>Well this doesn’t look right. We can see near the bottom of our output that
 there are the words of <code>Gender</code> and <code>Trade</code> so we know the data is there but we also have this mess of <code>&lt;NA&gt;</code>.
 In this scenario it can be helpful to look at the raw data. Navigate back to the
@@ -407,34 +407,34 @@ like this:</p>
 <div class="sourceCode" id="cb528"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span></span>
 <span>  record <span class="op">=</span> <span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span>, </span>
-<span>  skip <span class="op">=</span> <span class="fl">9</span></span>
+<span>  skip <span class="op">=</span> <span class="fl">10</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>
-<pre><code>Rows: 332 Columns: 12
+<pre><code>Rows: 311 Columns: 12
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (12): Trade, Gender, FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/...
+chr (12): Trade, Gender, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb531"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span></span></code></pre></div>
-<pre><code># A tibble: 332 × 12
+<pre><code># A tibble: 311 × 12
    Trade  Gender FY201…¹ FY201…² FY201…³ FY201…⁴ FY201…⁵ FY201…⁶ FY201…⁷ FY201…⁸
    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
- 1 Aircr… Women  14      8       7       9       6       ...     ...     ...    
- 2 Aircr… Men    127     108     73      61      46      ...     ...     ...    
- 3 Aircr… Total… 141     116     80      70      52      69      48      62     
- 4 Aircr… Women  7       ...     ...     ...     ...     0       ...     ...    
- 5 Aircr… Men    59      ...     ...     ...     ...     ...     ...     ...    
- 6 Aircr… Total… 66      27      40      42      24      ...     23      26     
- 7 Appli… Women  ...     0       0       0       ...     ...     ...     0      
- 8 Appli… Men    ...     39      ...     36      ...     ...     ...     ...    
- 9 Appli… Total… 13      39      ...     36      13      32      13      ...    
-10 Arbor… Women  ...     ...     0       ...     ...     ...     ...     ...    
-# … with 322 more rows, 2 more variables: `FY2019/20` &lt;chr&gt;, `FY2020/21` &lt;chr&gt;,
-#   and abbreviated variable names ¹​`FY2011/12`, ²​`FY2012/13`, ³​`FY2013/14`,
-#   ⁴​`FY2014/15`, ⁵​`FY2015/16`, ⁶​`FY2016/17`, ⁷​`FY2017/18`, ⁸​`FY2018/19`</code></pre>
+ 1 Aircr… Woman  8       7       9       6       ...     ...     ...     12     
+ 2 Aircr… Man    108     73      61      46      ...     ...     ...     63     
+ 3 Aircr… Total… 116     80      70      52      69      48      62      75     
+ 4 Aircr… Woman  ...     ...     ...     ...     0       ...     ...     ...    
+ 5 Aircr… Man    ...     ...     ...     ...     ...     ...     ...     ...    
+ 6 Aircr… Total… 27      40      42      24      ...     23      26      17     
+ 7 Appli… Woman  0       0       0       ...     ...     ...     0       ...    
+ 8 Appli… Man    39      ...     36      ...     ...     ...     11      ...    
+ 9 Appli… Total… 39      ...     36      13      32      13      11      23     
+10 Arbor… Woman  ...     0       ...     ...     ...     ...     ...     ...    
+# … with 301 more rows, 2 more variables: `FY2020/21` &lt;chr&gt;, `FY2021/22` &lt;chr&gt;,
+#   and abbreviated variable names ¹​`FY2012/13`, ²​`FY2013/14`, ³​`FY2014/15`,
+#   ⁴​`FY2015/16`, ⁵​`FY2016/17`, ⁶​`FY2017/18`, ⁷​`FY2018/19`, ⁸​`FY2019/20`</code></pre>
 <p>Ok this is looking <em>much</em> better. We now have data that is rectangular and looks
 more like something we can work with. We do have one more thing to take
 care of though. You will notice the data is filled with <code>...</code> values. Those are missing
@@ -444,36 +444,36 @@ do this by adding another argument so that R interprets the <code>...</code> as 
 <div class="sourceCode" id="cb533"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bcgov.github.io/bcdata/reference/bcdc_get_data.html">bcdc_get_data</a></span><span class="op">(</span></span>
 <span>  <span class="st">"new-apprenticeship-registrations-by-fiscal-year-and-gender"</span>, </span>
-<span>  skip <span class="op">=</span> <span class="fl">9</span>, </span>
+<span>  skip <span class="op">=</span> <span class="fl">10</span>, </span>
 <span>  na <span class="op">=</span> <span class="st">"..."</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <pre><code>Reading the data using the read_csv function from the readr package.</code></pre>
-<pre><code>Rows: 332 Columns: 12
+<pre><code>Rows: 311 Columns: 12
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr  (2): Trade, Gender
-dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
+dbl (10): FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, FY2017/18, ...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb536"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg</span></span></code></pre></div>
-<pre><code># A tibble: 332 × 12
+<pre><code># A tibble: 311 × 12
    Trade  Gender FY201…¹ FY201…² FY201…³ FY201…⁴ FY201…⁵ FY201…⁶ FY201…⁷ FY201…⁸
    &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 Aircr… Women       14       8       7       9       6      NA      NA      NA
- 2 Aircr… Men        127     108      73      61      46      NA      NA      NA
- 3 Aircr… Total…     141     116      80      70      52      69      48      62
- 4 Aircr… Women        7      NA      NA      NA      NA       0      NA      NA
- 5 Aircr… Men         59      NA      NA      NA      NA      NA      NA      NA
- 6 Aircr… Total…      66      27      40      42      24      NA      23      26
- 7 Appli… Women       NA       0       0       0      NA      NA      NA       0
- 8 Appli… Men         NA      39      NA      36      NA      NA      NA      NA
- 9 Appli… Total…      13      39      NA      36      13      32      13      NA
-10 Arbor… Women       NA      NA       0      NA      NA      NA      NA      NA
-# … with 322 more rows, 2 more variables: `FY2019/20` &lt;dbl&gt;, `FY2020/21` &lt;dbl&gt;,
-#   and abbreviated variable names ¹​`FY2011/12`, ²​`FY2012/13`, ³​`FY2013/14`,
-#   ⁴​`FY2014/15`, ⁵​`FY2015/16`, ⁶​`FY2016/17`, ⁷​`FY2017/18`, ⁸​`FY2018/19`</code></pre>
+ 1 Aircr… Woman        8       7       9       6      NA      NA      NA      12
+ 2 Aircr… Man        108      73      61      46      NA      NA      NA      63
+ 3 Aircr… Total…     116      80      70      52      69      48      62      75
+ 4 Aircr… Woman       NA      NA      NA      NA       0      NA      NA      NA
+ 5 Aircr… Man         NA      NA      NA      NA      NA      NA      NA      NA
+ 6 Aircr… Total…      27      40      42      24      NA      23      26      17
+ 7 Appli… Woman        0       0       0      NA      NA      NA       0      NA
+ 8 Appli… Man         39      NA      36      NA      NA      NA      11      NA
+ 9 Appli… Total…      39      NA      36      13      32      13      11      23
+10 Arbor… Woman       NA       0      NA      NA      NA      NA      NA      NA
+# … with 301 more rows, 2 more variables: `FY2020/21` &lt;dbl&gt;, `FY2021/22` &lt;dbl&gt;,
+#   and abbreviated variable names ¹​`FY2012/13`, ²​`FY2013/14`, ³​`FY2014/15`,
+#   ⁴​`FY2015/16`, ⁵​`FY2016/17`, ⁶​`FY2017/18`, ⁷​`FY2018/19`, ⁸​`FY2019/20`</code></pre>
 <p>Now we are ready to work with this data. One thing you might notice is that this
 data is in <em>wide</em> format. The number of individuals of a given <code>Gender</code> and
 <code>Trade</code> are repeated over time across <em>columns</em> with each column being a fiscal
@@ -487,48 +487,48 @@ columns so descriptive names:</p>
 <span></span>
 <span><span class="va">new_reg_long</span> <span class="op">&lt;-</span> <span class="va">new_reg</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="va">`FY2011/12`</span><span class="op">:</span><span class="va">`FY2020/21`</span>,</span>
+<span>    cols <span class="op">=</span> <span class="va">`FY2012/13`</span><span class="op">:</span><span class="va">`FY2021/22`</span>,</span>
 <span>    names_to <span class="op">=</span> <span class="st">"fiscal_year"</span>,</span>
 <span>    values_to <span class="op">=</span> <span class="st">"registrations"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="va">new_reg_long</span></span></code></pre></div>
-<pre><code># A tibble: 3,320 × 4
+<pre><code># A tibble: 3,110 × 4
    Trade                           Gender fiscal_year registrations
    &lt;chr&gt;                           &lt;chr&gt;  &lt;chr&gt;               &lt;dbl&gt;
- 1 Aircraft Maintenance Technician Women  FY2011/12              14
- 2 Aircraft Maintenance Technician Women  FY2012/13               8
- 3 Aircraft Maintenance Technician Women  FY2013/14               7
- 4 Aircraft Maintenance Technician Women  FY2014/15               9
- 5 Aircraft Maintenance Technician Women  FY2015/16               6
- 6 Aircraft Maintenance Technician Women  FY2016/17              NA
- 7 Aircraft Maintenance Technician Women  FY2017/18              NA
- 8 Aircraft Maintenance Technician Women  FY2018/19              NA
- 9 Aircraft Maintenance Technician Women  FY2019/20              12
-10 Aircraft Maintenance Technician Women  FY2020/21              NA
-# … with 3,310 more rows</code></pre>
+ 1 Aircraft Maintenance Technician Woman  FY2012/13               8
+ 2 Aircraft Maintenance Technician Woman  FY2013/14               7
+ 3 Aircraft Maintenance Technician Woman  FY2014/15               9
+ 4 Aircraft Maintenance Technician Woman  FY2015/16               6
+ 5 Aircraft Maintenance Technician Woman  FY2016/17              NA
+ 6 Aircraft Maintenance Technician Woman  FY2017/18              NA
+ 7 Aircraft Maintenance Technician Woman  FY2018/19              NA
+ 8 Aircraft Maintenance Technician Woman  FY2019/20              12
+ 9 Aircraft Maintenance Technician Woman  FY2020/21              NA
+10 Aircraft Maintenance Technician Woman  FY2021/22               6
+# … with 3,100 more rows</code></pre>
 <p>There is actually quite a bit of data here while likely represents the number
 possible values for <code>Trade</code>. We can check the number of unique values in the
 <code>Trade</code> column using a handy function from <code>dplyr</code> called <code><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a></code>:</p>
 <div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">new_reg_long</span><span class="op">$</span><span class="va">Trade</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] 111</code></pre>
-<p>Sure enough there are 111 of them! Similarly, let’s have a look at what values are in the <code>Gender</code> column using the <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code> function you learned earlier:</p>
+<pre><code>[1] 104</code></pre>
+<p>Sure enough there are 104 of them! Similarly, let’s have a look at what values are in the <code>Gender</code> column using the <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code> function you learned earlier:</p>
 <div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">new_reg_long</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] "Women"                     "Men"                      
-[3] "Total (Women+Men)"         "Non-Disclosed/Unspecified"
-[5] "Grand Total"              </code></pre>
+<pre><code>[1] "Woman"                             "Man"                              
+[3] "Total (Woman + Man)"               "Non Binary / Prefer not to answer"
+[5] "Grand Total"                      </code></pre>
 <p>To simplify things let’s take a subset of the Trades in the data and only look at Men and Women:</p>
 <div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_reg_long</span> <span class="op">&lt;-</span> <span class="va">new_reg</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="va">`FY2011/12`</span><span class="op">:</span><span class="va">`FY2020/21`</span>,</span>
+<span>    cols <span class="op">=</span> <span class="va">`FY2012/13`</span><span class="op">:</span><span class="va">`FY2021/22`</span>,</span>
 <span>    names_to <span class="op">=</span> <span class="st">"fiscal_year"</span>,</span>
 <span>    values_to <span class="op">=</span> <span class="st">"registrations"</span>, </span>
 <span>    values_drop_na <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
-<span>    <span class="va">Gender</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Men"</span>, <span class="st">"Women"</span><span class="op">)</span>,</span>
+<span>    <span class="va">Gender</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Man"</span>, <span class="st">"Woman"</span><span class="op">)</span>,</span>
 <span>    <span class="va">Trade</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Boilermaker"</span>, <span class="st">"Climbing Arborist"</span>, <span class="st">"Tilesetter"</span>, <span class="st">"Landscape Horticulturist"</span>, <span class="st">"Baker"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code></pre></div>
 <p>With this tidied and filtered dataset, we now have something that we can plot
@@ -624,7 +624,7 @@ dbl (4): Year, Harvest ('000 t), Landed Value ($ million), Wholesale Value (...
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2022-12-15.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

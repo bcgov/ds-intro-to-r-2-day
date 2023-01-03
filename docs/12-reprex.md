@@ -99,7 +99,7 @@ structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1,
     "collector")), weight = structure(list(), class = c("collector_double", 
     "collector")), likes_string = structure(list(), class = c("collector_double", 
     "collector"))), default = structure(list(), class = c("collector_guess", 
-    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x600002bd4320>, class = c("spec_tbl_df", 
+    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x60000107cdb0>, class = c("spec_tbl_df", 
 "tbl_df", "tbl", "data.frame"))
 ```
 
@@ -180,12 +180,12 @@ other attached packages:
 [1] ggplot2_3.4.0 dplyr_1.0.10  readr_2.1.3   reprex_2.0.2  knitr_1.41   
 
 loaded via a namespace (and not attached):
- [1] highr_0.9        bslib_0.4.1      compiler_4.2.2   pillar_1.8.1    
+ [1] highr_0.10       bslib_0.4.2      compiler_4.2.2   pillar_1.8.1    
  [5] jquerylib_0.1.4  tools_4.2.2      bit_4.0.5        digest_0.6.31   
  [9] downlit_0.4.2    gtable_0.3.1     jsonlite_1.8.4   evaluate_0.19   
 [13] memoise_2.0.1    lifecycle_1.0.3  tibble_3.1.8     pkgconfig_2.0.3 
-[17] rlang_1.0.6      DBI_1.1.3        cli_3.4.1        parallel_4.2.2  
-[21] yaml_2.3.6       xfun_0.35        fastmap_1.1.0    withr_2.5.0     
+[17] rlang_1.0.6      DBI_1.1.3        cli_3.5.0        parallel_4.2.2  
+[21] yaml_2.3.6       xfun_0.36        fastmap_1.1.0    withr_2.5.0     
 [25] stringr_1.5.0    xml2_1.3.3       generics_0.1.3   fs_1.5.2        
 [29] sass_0.4.4       vctrs_0.5.1      hms_1.1.2        bit64_4.0.5     
 [33] grid_4.2.2       tidyselect_1.2.0 glue_1.6.2       R6_2.5.1        

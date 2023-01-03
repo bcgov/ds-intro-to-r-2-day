@@ -382,7 +382,7 @@ Reading the data using the read_csv function from the readr package.
 
 ```
 New names:
-Rows: 341 Columns: 12
+Rows: 321 Columns: 12
 ── Column specification
 ──────────────────────────────────────────────────────── Delimiter: "," chr
 (12): Notes:, ...2, ...3, ...4, ...5, ...6, ...7, ...8, ...9, ...10, ......
@@ -406,20 +406,20 @@ new_reg
 ```
 
 ```
-# A tibble: 341 × 12
+# A tibble: 321 × 12
    `Notes:`    ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10 ...11 ...12
    <chr>       <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr>
- 1 The follow… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
- 2 Gender is … <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
- 3 The fiscal… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
- 4 Profession… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
- 5 ... Repres… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
- 6 Data as of… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
- 7 Data Sourc… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
- 8 <NA>        <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
- 9 Trade       Gend… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20…
-10 Aircraft M… Women 14    8     7     9     6     ...   ...   ...   12    ...  
-# … with 331 more rows
+ 1 "The follo… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 2 "Gender is… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 3 "Fiscal Ye… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 4 "Professio… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 5 "... Repre… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 6  <NA>       <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 7 "Data as o… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 8 "Data Sour… <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+ 9  <NA>       <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> 
+10 "Trade"     Gend… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20… FY20…
+# … with 311 more rows
 ```
 
 Well this doesn't look right. We can see near the bottom of our output that
@@ -439,7 +439,7 @@ like this:
 ```r
 new_reg <- bcdc_get_data(
   record = "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
-  skip = 9
+  skip = 10
   )
 ```
 
@@ -448,10 +448,10 @@ Reading the data using the read_csv function from the readr package.
 ```
 
 ```
-Rows: 332 Columns: 12
+Rows: 311 Columns: 12
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (12): Trade, Gender, FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/...
+chr (12): Trade, Gender, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -462,22 +462,22 @@ new_reg
 ```
 
 ```
-# A tibble: 332 × 12
+# A tibble: 311 × 12
    Trade  Gender FY201…¹ FY201…² FY201…³ FY201…⁴ FY201…⁵ FY201…⁶ FY201…⁷ FY201…⁸
    <chr>  <chr>  <chr>   <chr>   <chr>   <chr>   <chr>   <chr>   <chr>   <chr>  
- 1 Aircr… Women  14      8       7       9       6       ...     ...     ...    
- 2 Aircr… Men    127     108     73      61      46      ...     ...     ...    
- 3 Aircr… Total… 141     116     80      70      52      69      48      62     
- 4 Aircr… Women  7       ...     ...     ...     ...     0       ...     ...    
- 5 Aircr… Men    59      ...     ...     ...     ...     ...     ...     ...    
- 6 Aircr… Total… 66      27      40      42      24      ...     23      26     
- 7 Appli… Women  ...     0       0       0       ...     ...     ...     0      
- 8 Appli… Men    ...     39      ...     36      ...     ...     ...     ...    
- 9 Appli… Total… 13      39      ...     36      13      32      13      ...    
-10 Arbor… Women  ...     ...     0       ...     ...     ...     ...     ...    
-# … with 322 more rows, 2 more variables: `FY2019/20` <chr>, `FY2020/21` <chr>,
-#   and abbreviated variable names ¹​`FY2011/12`, ²​`FY2012/13`, ³​`FY2013/14`,
-#   ⁴​`FY2014/15`, ⁵​`FY2015/16`, ⁶​`FY2016/17`, ⁷​`FY2017/18`, ⁸​`FY2018/19`
+ 1 Aircr… Woman  8       7       9       6       ...     ...     ...     12     
+ 2 Aircr… Man    108     73      61      46      ...     ...     ...     63     
+ 3 Aircr… Total… 116     80      70      52      69      48      62      75     
+ 4 Aircr… Woman  ...     ...     ...     ...     0       ...     ...     ...    
+ 5 Aircr… Man    ...     ...     ...     ...     ...     ...     ...     ...    
+ 6 Aircr… Total… 27      40      42      24      ...     23      26      17     
+ 7 Appli… Woman  0       0       0       ...     ...     ...     0       ...    
+ 8 Appli… Man    39      ...     36      ...     ...     ...     11      ...    
+ 9 Appli… Total… 39      ...     36      13      32      13      11      23     
+10 Arbor… Woman  ...     0       ...     ...     ...     ...     ...     ...    
+# … with 301 more rows, 2 more variables: `FY2020/21` <chr>, `FY2021/22` <chr>,
+#   and abbreviated variable names ¹​`FY2012/13`, ²​`FY2013/14`, ³​`FY2014/15`,
+#   ⁴​`FY2015/16`, ⁵​`FY2016/17`, ⁶​`FY2017/18`, ⁷​`FY2018/19`, ⁸​`FY2019/20`
 ```
 
 Ok this is looking _much_ better. We now have data that is rectangular and looks
@@ -491,7 +491,7 @@ do this by adding another argument so that R interprets the `...` as missing val
 ```r
 new_reg <- bcdc_get_data(
   "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
-  skip = 9, 
+  skip = 10, 
   na = "..."
   )
 ```
@@ -501,11 +501,11 @@ Reading the data using the read_csv function from the readr package.
 ```
 
 ```
-Rows: 332 Columns: 12
+Rows: 311 Columns: 12
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr  (2): Trade, Gender
-dbl (10): FY2011/12, FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, ...
+dbl (10): FY2012/13, FY2013/14, FY2014/15, FY2015/16, FY2016/17, FY2017/18, ...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -516,22 +516,22 @@ new_reg
 ```
 
 ```
-# A tibble: 332 × 12
+# A tibble: 311 × 12
    Trade  Gender FY201…¹ FY201…² FY201…³ FY201…⁴ FY201…⁵ FY201…⁶ FY201…⁷ FY201…⁸
    <chr>  <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
- 1 Aircr… Women       14       8       7       9       6      NA      NA      NA
- 2 Aircr… Men        127     108      73      61      46      NA      NA      NA
- 3 Aircr… Total…     141     116      80      70      52      69      48      62
- 4 Aircr… Women        7      NA      NA      NA      NA       0      NA      NA
- 5 Aircr… Men         59      NA      NA      NA      NA      NA      NA      NA
- 6 Aircr… Total…      66      27      40      42      24      NA      23      26
- 7 Appli… Women       NA       0       0       0      NA      NA      NA       0
- 8 Appli… Men         NA      39      NA      36      NA      NA      NA      NA
- 9 Appli… Total…      13      39      NA      36      13      32      13      NA
-10 Arbor… Women       NA      NA       0      NA      NA      NA      NA      NA
-# … with 322 more rows, 2 more variables: `FY2019/20` <dbl>, `FY2020/21` <dbl>,
-#   and abbreviated variable names ¹​`FY2011/12`, ²​`FY2012/13`, ³​`FY2013/14`,
-#   ⁴​`FY2014/15`, ⁵​`FY2015/16`, ⁶​`FY2016/17`, ⁷​`FY2017/18`, ⁸​`FY2018/19`
+ 1 Aircr… Woman        8       7       9       6      NA      NA      NA      12
+ 2 Aircr… Man        108      73      61      46      NA      NA      NA      63
+ 3 Aircr… Total…     116      80      70      52      69      48      62      75
+ 4 Aircr… Woman       NA      NA      NA      NA       0      NA      NA      NA
+ 5 Aircr… Man         NA      NA      NA      NA      NA      NA      NA      NA
+ 6 Aircr… Total…      27      40      42      24      NA      23      26      17
+ 7 Appli… Woman        0       0       0      NA      NA      NA       0      NA
+ 8 Appli… Man         39      NA      36      NA      NA      NA      11      NA
+ 9 Appli… Total…      39      NA      36      13      32      13      11      23
+10 Arbor… Woman       NA       0      NA      NA      NA      NA      NA      NA
+# … with 301 more rows, 2 more variables: `FY2020/21` <dbl>, `FY2021/22` <dbl>,
+#   and abbreviated variable names ¹​`FY2012/13`, ²​`FY2013/14`, ³​`FY2014/15`,
+#   ⁴​`FY2015/16`, ⁵​`FY2016/17`, ⁶​`FY2017/18`, ⁷​`FY2018/19`, ⁸​`FY2019/20`
 ```
 
 Now we are ready to work with this data. One thing you might notice is that this
@@ -549,7 +549,7 @@ library(tidyr)
 
 new_reg_long <- new_reg %>% 
   pivot_longer(
-    cols = `FY2011/12`:`FY2020/21`,
+    cols = `FY2012/13`:`FY2021/22`,
     names_to = "fiscal_year",
     values_to = "registrations"
   )
@@ -557,20 +557,20 @@ new_reg_long
 ```
 
 ```
-# A tibble: 3,320 × 4
+# A tibble: 3,110 × 4
    Trade                           Gender fiscal_year registrations
    <chr>                           <chr>  <chr>               <dbl>
- 1 Aircraft Maintenance Technician Women  FY2011/12              14
- 2 Aircraft Maintenance Technician Women  FY2012/13               8
- 3 Aircraft Maintenance Technician Women  FY2013/14               7
- 4 Aircraft Maintenance Technician Women  FY2014/15               9
- 5 Aircraft Maintenance Technician Women  FY2015/16               6
- 6 Aircraft Maintenance Technician Women  FY2016/17              NA
- 7 Aircraft Maintenance Technician Women  FY2017/18              NA
- 8 Aircraft Maintenance Technician Women  FY2018/19              NA
- 9 Aircraft Maintenance Technician Women  FY2019/20              12
-10 Aircraft Maintenance Technician Women  FY2020/21              NA
-# … with 3,310 more rows
+ 1 Aircraft Maintenance Technician Woman  FY2012/13               8
+ 2 Aircraft Maintenance Technician Woman  FY2013/14               7
+ 3 Aircraft Maintenance Technician Woman  FY2014/15               9
+ 4 Aircraft Maintenance Technician Woman  FY2015/16               6
+ 5 Aircraft Maintenance Technician Woman  FY2016/17              NA
+ 6 Aircraft Maintenance Technician Woman  FY2017/18              NA
+ 7 Aircraft Maintenance Technician Woman  FY2018/19              NA
+ 8 Aircraft Maintenance Technician Woman  FY2019/20              12
+ 9 Aircraft Maintenance Technician Woman  FY2020/21              NA
+10 Aircraft Maintenance Technician Woman  FY2021/22               6
+# … with 3,100 more rows
 ```
 
 There is actually quite a bit of data here while likely represents the number
@@ -583,10 +583,10 @@ n_distinct(new_reg_long$Trade)
 ```
 
 ```
-[1] 111
+[1] 104
 ```
 
-Sure enough there are 111 of them! Similarly, let's have a look at what values are in the `Gender` column using the `unique()` function you learned earlier:
+Sure enough there are 104 of them! Similarly, let's have a look at what values are in the `Gender` column using the `unique()` function you learned earlier:
 
 
 ```r
@@ -594,9 +594,9 @@ unique(new_reg_long$Gender)
 ```
 
 ```
-[1] "Women"                     "Men"                      
-[3] "Total (Women+Men)"         "Non-Disclosed/Unspecified"
-[5] "Grand Total"              
+[1] "Woman"                             "Man"                              
+[3] "Total (Woman + Man)"               "Non Binary / Prefer not to answer"
+[5] "Grand Total"                      
 ```
 
 To simplify things let's take a subset of the Trades in the data and only look at Men and Women:
@@ -604,13 +604,13 @@ To simplify things let's take a subset of the Trades in the data and only look a
 ```r
 new_reg_long <- new_reg %>% 
   pivot_longer(
-    cols = `FY2011/12`:`FY2020/21`,
+    cols = `FY2012/13`:`FY2021/22`,
     names_to = "fiscal_year",
     values_to = "registrations", 
     values_drop_na = TRUE
   ) %>% 
   filter(
-    Gender %in% c("Men", "Women"),
+    Gender %in% c("Man", "Woman"),
     Trade %in% c("Boilermaker", "Climbing Arborist", "Tilesetter", "Landscape Horticulturist", "Baker")
     )
 ```
