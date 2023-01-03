@@ -1,0 +1,20 @@
+---
+title: "Introduction to Data Science Using R (Feb 2022)"
+output: md_document
+---
+
+This folder contains the data (in the `data/` directory) as well as starter 
+scripts that we will work through over the course of the workshop:
+
+Data: 
+
+```{r echo=FALSE, results='asis'}
+cat(paste("- `", list.files("data"), "`", collapse = "\n"))
+```
+
+R scripts:
+
+```{r echo=FALSE, results='asis'}
+cat(paste0("- `", list.files(pattern = "^[0-9]{2}_.*\\.R$"), "`", collapse = "\n"))
+```
+
