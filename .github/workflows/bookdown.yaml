@@ -52,7 +52,7 @@ jobs:
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
-            git add intro-r-Feb2022/. intro-r-Feb2022.zip
+            git add intro-r-Jan2023/. intro-r-Jan2023.zip
             git commit -m 'make course zipfile'
             git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
           fi

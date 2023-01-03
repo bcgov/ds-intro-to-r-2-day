@@ -215,7 +215,7 @@ like this:
 ```{r}
 new_reg <- bcdc_get_data(
   record = "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
-  skip = 9
+  skip = 10
   )
 new_reg
 ```
@@ -230,7 +230,7 @@ do this by adding another argument so that R interprets the `...` as missing val
 ```{r}
 new_reg <- bcdc_get_data(
   "new-apprenticeship-registrations-by-fiscal-year-and-gender", 
-  skip = 9, 
+  skip = 10, 
   na = "..."
   )
 new_reg
@@ -250,7 +250,7 @@ library(tidyr)
 
 new_reg_long <- new_reg %>% 
   pivot_longer(
-    cols = `FY2011/12`:`FY2020/21`,
+    cols = `FY2012/13`:`FY2021/22`,
     names_to = "fiscal_year",
     values_to = "registrations"
   )
@@ -275,13 +275,13 @@ To simplify things let's take a subset of the Trades in the data and only look a
 ```{r}
 new_reg_long <- new_reg %>% 
   pivot_longer(
-    cols = `FY2011/12`:`FY2020/21`,
+    cols = `FY2012/13`:`FY2021/22`,
     names_to = "fiscal_year",
     values_to = "registrations", 
     values_drop_na = TRUE
   ) %>% 
   filter(
-    Gender %in% c("Men", "Women"),
+    Gender %in% c("Man", "Woman"),
     Trade %in% c("Boilermaker", "Climbing Arborist", "Tilesetter", "Landscape Horticulturist", "Baker")
     )
 ```
