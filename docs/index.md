@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Data Science using R Workshop"
-date: "2023-01-03"
+date: "2023-01-04"
 site: bookdown::bookdown_site
 output: bookdown::bs4_book
 url: https://bcgov.github.io/ds-intro-to-r-2-day
@@ -30,7 +30,7 @@ The goal of this 2 day workshop is to teach new-to-programming data professional
 
 ### Day 1 {-}
 
-- Introduction to Course (30 min) **()** <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
+- Introduction to Course (30 min) **(Bonnie)** <!-- Dominique et al - CoC, breakoutrooms w/ ice breaker, how to ask questions etc. -->
 - Demo (10 min) **(Bonnie)**
 - [Introduction to R & RStudio] (50 minutes) **(Bonnie)**
 - BREAK ☕
