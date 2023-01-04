@@ -65,7 +65,6 @@ Reproducible Scientific Analysis_.  Version 2016.06, June 2016,
 https://github.com/swcarpentry/r-novice-gapminder,
 10.5281/zenodo.57520.
 
-
 Original Work Copyright © [Software Carpentry](http://software-carpentry.org/), content modified by the Province of British Columbia.
 
 This work is licensed under the Creative Commons Attribution 4.0 International License.
