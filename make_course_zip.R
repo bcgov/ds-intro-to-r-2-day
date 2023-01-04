@@ -1,5 +1,5 @@
 local({
-  course <- "intro-r-course-notes"
+  course <- "intro-to-r-course-notes"
 
   file.copy(list.files("data", full.names = TRUE),
             file.path(course, "data"), overwrite = TRUE)
