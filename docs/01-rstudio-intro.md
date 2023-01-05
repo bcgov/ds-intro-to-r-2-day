@@ -28,6 +28,8 @@ source: Rmd
 
 
 
+# (PART) Fundamentals {-} 
+
 # Introduction to R and RStudio
 
 ## Motivation
@@ -782,7 +784,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fdac8cff080>
+<bytecode: 0x7f8a903c8a80>
 <environment: namespace:base>
 ```
 
