@@ -20,7 +20,7 @@ keypoints:
 source: Rmd
 ---
 
-# Exploring and Manipulating Data Frames with dplyr
+# Manipulating Data Frames with dplyr
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
