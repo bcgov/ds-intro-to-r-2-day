@@ -31,6 +31,8 @@ source("bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
+# (PART) Fundamentals {-} 
+
 # Introduction to R and RStudio
 
 ## Motivation

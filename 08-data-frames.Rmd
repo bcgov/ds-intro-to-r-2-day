@@ -19,6 +19,7 @@ source("bin/chunk-options.R")
 knitr_fig_path("08-")
 ```
 
+# (PART) Beyond the Fundamentals {-} 
 
 # Subsetting Data Frames 
 
