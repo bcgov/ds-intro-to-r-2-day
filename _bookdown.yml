@@ -9,7 +9,6 @@ rmd_files:
     - "02-seeking-help.Rmd"
     - "03-project-intro.Rmd"
     - "04-data-structures.Rmd"
-    - "05-data-frames.Rmd"
     - "05-dplyr.Rmd"
     - "06-plot-ggplot2.Rmd"
     - "07-tidyr.Rmd"
