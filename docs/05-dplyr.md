@@ -20,15 +20,11 @@ keypoints:
 source: Rmd
 ---
 
-
-
-# Dataframe Manipulation with dplyr
-
-# Exploring Data Frames
+# Exploring and Manipulating Data Frames with dplyr
 
 
 
-At this point, you've seen it all: in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things about working with data frames including how you might summarize a dataframe by a grouping variable, including only certain observations in your summary.
+At this point, you've seen it all: in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things about working with data frames including how you might summarize a dataframe by a grouping variable, including only certain observations in your summary.  We will do this with the popular package `dplyr`.
 
 
 ```r
@@ -862,7 +858,7 @@ ggplot(data = a_countries, aes(x = year, y = lifeExp, color = continent)) +
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-05-unnamed-chunk-39-1.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/rmd-05-unnamed-chunk-38-1.png" width="576" style="display: block; margin: auto;" />
 
 
 This code makes the right plot but it also provides a way to chain operations. Just as we used
@@ -881,7 +877,7 @@ gapminder %>%
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-05-unnamed-chunk-40-1.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/rmd-05-unnamed-chunk-39-1.png" width="576" style="display: block; margin: auto;" />
 
 Using `dplyr` functions also helps us do calculations on the fly, for example if we were interested in 
 converting `lifeExp` which is in years to days:
@@ -897,7 +893,7 @@ gapminder %>%
   facet_wrap(vars(country))
 ```
 
-<img src="fig/rmd-05-unnamed-chunk-41-1.png" width="576" style="display: block; margin: auto;" />
+<img src="fig/rmd-05-unnamed-chunk-40-1.png" width="576" style="display: block; margin: auto;" />
 
 ### Advanced Challenge
 
