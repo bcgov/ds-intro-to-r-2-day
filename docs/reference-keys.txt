@@ -58,7 +58,7 @@ challenge-4-1
 challenge-5
 challenge-6
 challenge-7
-exploring-and-manipulating-data-frames-with-dplyr
+manipulating-data-frames-with-dplyr
 introducing-the-gapminder-data
 challenge-1-5-minutes-3
 the-dplyr-package
@@ -96,7 +96,7 @@ challenge-2-5-minutes-1
 from-long-to-intermediate-format-with-pivot_wider
 challenge-3-10-minutes-1
 other-great-resources-1
-exploring-data-frames-with-subsetting
+subsetting-data-frames
 basic-subsetting
 selecting-rows
 challenge-2-5-minutes-2

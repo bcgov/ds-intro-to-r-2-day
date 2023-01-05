@@ -9,7 +9,6 @@ objectives:
 - "Remove rows with `NA` values"
 - "Subset a data frame by character value"
 keypoints:
-
 - "Understand the basics of subsetting data frames using `[]` and `$`"
 - "Read in a csv file using `readr::read_csv()`."
 source: Rmd
@@ -18,7 +17,7 @@ source: Rmd
 
 
 
-# Exploring Data Frames with Subsetting
+# Subsetting Data Frames 
 
 Earlier in the course, you saw the basics of manipulating data frames with our gapminder data;
 now let's add to those skills and learn to subset data frames using row and column positions. Let's read in the
