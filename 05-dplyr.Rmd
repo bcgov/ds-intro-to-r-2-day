@@ -20,21 +20,14 @@ keypoints:
 source: Rmd
 ---
 
-```{r, include=FALSE}
-source("bin/chunk-options.R")
-knitr_fig_path("07-")
-```
-
-# Dataframe Manipulation with dplyr
-
-# Exploring Data Frames
+# Exploring and Manipulating Data Frames with dplyr
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
 knitr_fig_path("05-")
 ```
 
-At this point, you've seen it all: in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things about working with data frames including how you might summarize a dataframe by a grouping variable, including only certain observations in your summary.
+At this point, you've seen it all: in the last lesson, we toured all the basic data types and data structures in R. Everything you do will be a manipulation of those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things about working with data frames including how you might summarize a dataframe by a grouping variable, including only certain observations in your summary.  We will do this with the popular package `dplyr`.
 
 ```{r}
 library(readr)
