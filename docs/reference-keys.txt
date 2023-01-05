@@ -97,9 +97,7 @@ challenge-2-5-minutes-1
 from-long-to-intermediate-format-with-pivot_wider
 challenge-3-10-minutes-1
 other-great-resources-1
-exploring-data-frames-1
-introducing-the-gapminder-data-1
-challenge-1-5-minutes-5
+exploring-data-frames-with-subsetting
 basic-subsetting
 selecting-rows
 challenge-2-5-minutes-2
@@ -109,7 +107,7 @@ introduction-to-the-bcdata-package
 getting-started-2
 searching-the-b.c.-data-catalogue
 importing-data-from-the-b.c.-data-catalogue
-challenge-1-5-minutes-6
+challenge-1-5-minutes-5
 practice-manipulating-data-with-dplyr
 challenge-2-10-minutes-3
 practice-plotting-data-with-ggplot2
