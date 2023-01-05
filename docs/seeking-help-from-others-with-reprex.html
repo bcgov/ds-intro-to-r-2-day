@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 13 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop</title>
+<title>Chapter 14 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop</title>
 <meta name="description" content="If you’re having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line: RStudio Community...">
 <meta name="generator" content="bookdown 0.31 with bs4_book()">
-<meta property="og:title" content="Chapter 13 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop">
+<meta property="og:title" content="Chapter 14 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/seeking-help-from-others-with-reprex.html">
 <meta property="og:description" content="If you’re having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line: RStudio Community...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 13 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop">
+<meta name="twitter:title" content="Chapter 14 Seeking Help from Others with reprex | Introduction to Data Science using R Workshop">
 <meta name="twitter:description" content="If you’re having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line: RStudio Community...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -50,13 +50,14 @@
 <li><a class="" href="data-structures.html"><span class="header-section-number">4</span> Data Structures</a></li>
 <li><a class="" href="exploring-data-frames.html"><span class="header-section-number">5</span> Exploring Data Frames</a></li>
 <li><a class="" href="dataframe-manipulation-with-dplyr.html"><span class="header-section-number">6</span> Dataframe Manipulation with dplyr</a></li>
-<li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">7</span> Creating Publication-Quality Graphics with ggplot2</a></li>
-<li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">8</span> Create Tidy Data with tidyr</a></li>
-<li><a class="" href="exploring-data-frames-with-subsetting.html"><span class="header-section-number">9</span> Exploring Data Frames with Subsetting</a></li>
-<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">10</span> Introduction to the bcdata package</a></li>
-<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">11</span> Data analysis reports</a></li>
-<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">12</span> Applications of R Markdown</a></li>
-<li><a class="active" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">13</span> Seeking Help from Others with reprex</a></li>
+<li><a class="" href="exploring-data-frames-1.html"><span class="header-section-number">7</span> Exploring Data Frames</a></li>
+<li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">8</span> Creating Publication-Quality Graphics with ggplot2</a></li>
+<li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">9</span> Create Tidy Data with tidyr</a></li>
+<li><a class="" href="exploring-data-frames-with-subsetting.html"><span class="header-section-number">10</span> Exploring Data Frames with Subsetting</a></li>
+<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">11</span> Introduction to the bcdata package</a></li>
+<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">12</span> Data analysis reports</a></li>
+<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">13</span> Applications of R Markdown</a></li>
+<li><a class="active" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">14</span> Seeking Help from Others with reprex</a></li>
 </ul>
 
         <div class="book-extra">
@@ -64,9 +65,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="seeking-help-from-others-with-reprex" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="seeking-help-from-others-with-reprex" class="section level1" number="14">
 <h1>
-<span class="header-section-number">13</span> Seeking Help from Others with reprex<a class="anchor" aria-label="anchor" href="#seeking-help-from-others-with-reprex"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14</span> Seeking Help from Others with reprex<a class="anchor" aria-label="anchor" href="#seeking-help-from-others-with-reprex"><i class="fas fa-link"></i></a>
 </h1>
 <p>If you’re having trouble using a function or package, or getting the syntax correct, 9 times out of 10 the answers you are seeking have already been asked and answered on-line:</p>
 <ul>
@@ -79,9 +80,9 @@
 <ul>
 <li><a href="https://www.yammer.com/gov.bc.ca">bcgov Yammer channels (e.g. R, Data Science CoP)</a></li>
 </ul>
-<div id="help-people-help-you---reprex" class="section level2" number="13.1">
+<div id="help-people-help-you---reprex" class="section level2" number="14.1">
 <h2>
-<span class="header-section-number">13.1</span> Help People Help You - reprex<a class="anchor" aria-label="anchor" href="#help-people-help-you---reprex"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1</span> Help People Help You - reprex<a class="anchor" aria-label="anchor" href="#help-people-help-you---reprex"><i class="fas fa-link"></i></a>
 </h2>
 <p>When starting a conversation about code, there are a few things that when included make that conversation more efficient and pleasant for everyone:</p>
 <ul>
@@ -90,7 +91,7 @@
 <li>information about your computing environment, like your operating system, version of R, the packages you have loaded</li>
 </ul>
 <p><a href="https://reprex.tidyverse.org/index.html"><code>reprex</code></a>: An R package to help prepare a reproducible example — or reprex — for posting to GitHub issues, StackOverflow, RocketChat snippets, or email and so on.</p>
-<div class="sourceCode" id="cb497"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb531"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("reprex")</span></span>
 <span></span>
 <span><span class="co"># load libraries we need</span></span>
@@ -108,7 +109,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">coat</span>, y <span class="op">=</span> <span class="va">weight</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="fig/rmd-12-reprex-demo1-1.png" width="576" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb498"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb532"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># error in syntax - this does not work</span></span>
 <span><span class="va">cats</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">coat</span>, <span class="va">weight</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -121,7 +122,7 @@
 <p>We need to invest a bit of time making the buggy code shareable – the easier it is for someone to run the code, the easier – and likely faster – someone might be able to provide some help.</p>
 <div class="inline-figure"><img src="fig/help-me-help-you.png"></div>
 <p>If the data is shareable (e.g. available in the B.C. Data Catalogue with appropriate licence, publicly available) then we can use <code><a href="https://rdrr.io/r/base/dput.html">dput()</a></code>:</p>
-<div class="sourceCode" id="cb500"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb534"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># use dput to make data set with code</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dput.html">dput</a></span><span class="op">(</span><span class="va">cats</span><span class="op">)</span></span></code></pre></div>
 <pre><code>structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1, 
@@ -130,9 +131,9 @@
     "collector")), weight = structure(list(), class = c("collector_double", 
     "collector")), likes_string = structure(list(), class = c("collector_double", 
     "collector"))), default = structure(list(), class = c("collector_guess", 
-    "collector")), delim = ","), class = "col_spec"), problems = &lt;pointer: 0x6000023e1ed0&gt;, class = c("spec_tbl_df", 
+    "collector")), delim = ","), class = "col_spec"), problems = &lt;pointer: 0x6000012152e0&gt;, class = c("spec_tbl_df", 
 "tbl_df", "tbl", "data.frame"))</code></pre>
-<div class="sourceCode" id="cb502"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb536"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>coat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"calico"</span>, <span class="st">"black"</span>, <span class="st">"tabby"</span><span class="op">)</span>, weight <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.1</span>, </span>
 <span><span class="fl">5</span>, <span class="fl">3.2</span><span class="op">)</span>, likes_string <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>, class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"spec_tbl_df"</span>, </span>
 <span><span class="st">"tbl_df"</span>, <span class="st">"tbl"</span>, <span class="st">"data.frame"</span><span class="op">)</span>, row.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="op">-</span><span class="fl">3L</span><span class="op">)</span>, spec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
@@ -153,7 +154,7 @@
 <p><code><a href="https://rdrr.io/r/base/dput.html">dput()</a></code> will dump the data you’re working with into a format so that it can
 be copy and pasted by anyone else into their R session.</p>
 <p>If the data is <em><em>not</em></em> shareable, you can use some built in data and re-create the issue:</p>
-<div class="sourceCode" id="cb504"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ?datasets # built in datasets</span></span>
 <span><span class="co"># ?starwars # ships with dplyr</span></span>
 <span></span>
@@ -169,7 +170,7 @@ be copy and pasted by anyone else into their R session.</p>
 ℹ Did you use `%&gt;%` or `|&gt;` instead of `+`?</code></pre>
 <p>Once the code is ready for sharing, select the code and use <code><a href="https://reprex.tidyverse.org/reference/reprex_addin.html">reprex_selection()</a></code> or the clickable RStudio <code>Addin</code> Reprex selection button to copy the formatted code to the clipboard for sharing on-line (<em>demonstrated</em>).</p>
 <p>Sometimes it is useful to share information about your computing environment as well:</p>
-<div class="sourceCode" id="cb506"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>R version 4.2.2 (2022-10-31)
 Platform: x86_64-apple-darwin17.0 (64-bit)
@@ -207,9 +208,9 @@ loaded via a namespace (and not attached):
 have loaded. This can be useful to help reproduce and debug
 your issue.</p>
 </div>
-<div id="other-helpful-resources" class="section level2" number="13.2">
+<div id="other-helpful-resources" class="section level2" number="14.2">
 <h2>
-<span class="header-section-number">13.2</span> Other Helpful Resources<a class="anchor" aria-label="anchor" href="#other-helpful-resources"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2</span> Other Helpful Resources<a class="anchor" aria-label="anchor" href="#other-helpful-resources"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><a href="http://www.rstudio.com/resources/cheatsheets/">RStudio cheat sheets</a></li>
@@ -219,14 +220,14 @@ your issue.</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="applications-of-r-markdown.html"><span class="header-section-number">12</span> Applications of R Markdown</a></div>
+<div class="prev"><a href="applications-of-r-markdown.html"><span class="header-section-number">13</span> Applications of R Markdown</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#seeking-help-from-others-with-reprex"><span class="header-section-number">13</span> Seeking Help from Others with reprex</a></li>
-<li><a class="nav-link" href="#help-people-help-you---reprex"><span class="header-section-number">13.1</span> Help People Help You - reprex</a></li>
-<li><a class="nav-link" href="#other-helpful-resources"><span class="header-section-number">13.2</span> Other Helpful Resources</a></li>
+<li><a class="nav-link" href="#seeking-help-from-others-with-reprex"><span class="header-section-number">14</span> Seeking Help from Others with reprex</a></li>
+<li><a class="nav-link" href="#help-people-help-you---reprex"><span class="header-section-number">14.1</span> Help People Help You - reprex</a></li>
+<li><a class="nav-link" href="#other-helpful-resources"><span class="header-section-number">14.2</span> Other Helpful Resources</a></li>
 </ul>
 
       <div class="book-extra">

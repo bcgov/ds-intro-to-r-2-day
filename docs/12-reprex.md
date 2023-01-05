@@ -99,7 +99,7 @@ structure(list(coat = c("calico", "black", "tabby"), weight = c(2.1,
     "collector")), weight = structure(list(), class = c("collector_double", 
     "collector")), likes_string = structure(list(), class = c("collector_double", 
     "collector"))), default = structure(list(), class = c("collector_guess", 
-    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x6000023e1ed0>, class = c("spec_tbl_df", 
+    "collector")), delim = ","), class = "col_spec"), problems = <pointer: 0x6000012152e0>, class = c("spec_tbl_df", 
 "tbl_df", "tbl", "data.frame"))
 ```
 

@@ -62,6 +62,9 @@ exploring-data-frames
 introducing-the-gapminder-data
 challenge-1-5-minutes-3
 dataframe-manipulation-with-dplyr
+exploring-data-frames-1
+introducing-the-gapminder-data-1
+challenge-1-5-minutes-4
 the-dplyr-package
 using-select
 using-filter
@@ -79,7 +82,7 @@ advanced-challenge
 other-great-resources
 creating-publication-quality-graphics-with-ggplot2
 getting-started
-challenge-1-5-minutes-4
+challenge-1-5-minutes-5
 challenge-2-10-minutes-2
 layers
 challenge-3-5-minutes-1
@@ -107,7 +110,7 @@ introduction-to-the-bcdata-package
 getting-started-2
 searching-the-b.c.-data-catalogue
 importing-data-from-the-b.c.-data-catalogue
-challenge-1-5-minutes-5
+challenge-1-5-minutes-6
 practice-manipulating-data-with-dplyr
 challenge-2-10-minutes-3
 practice-plotting-data-with-ggplot2
