@@ -15,15 +15,22 @@ keypoints:
 source: Rmd
 ---
 
+```{r, include=FALSE}
+source("bin/chunk-options.R")
+knitr_fig_path("05-")
+```
+
+
 # Exploring Data Frames with Subsetting
 
-Earlier in the course, you saw the basics of manipulating data frames with our `gapminder` data;
+Earlier in the course, you saw the basics of manipulating data frames with our gapminder data;
 now let's add to those skills and learn to subset data frames using row and column positions. Let's read in the
-`gapminder` dataset that we downloaded previously and assign it to a data frame called `gapminder`:
+gapminder dataset that we downloaded previously and assign it to a data frame called gapminder:
 
- ```{r}
+```{r}
+ library(readr)
  gapminder <- read_csv("data/gapminder_data.csv")
- ```
+```
 
 ## Basic subsetting
 
