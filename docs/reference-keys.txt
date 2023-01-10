@@ -65,13 +65,13 @@ the-dplyr-package
 using-select
 using-filter
 using-filter-with-pipes
-challenge-1-10-minutes
+challenge-2-10-minutes-1
 using-group_by-and-summarize
 using-summarize
-challenge-2-10-minutes-1
+challenge-3-10-minutes
 using-count
 using-mutate
-challenge-3-10-minutes
+challenge-4-10-minutes
 connect-mutate-with-logical-groupings-ifelse
 combining-dplyr-and-ggplot2
 advanced-challenge

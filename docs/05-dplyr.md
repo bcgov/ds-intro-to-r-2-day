@@ -496,7 +496,7 @@ year_country_gdp_euro <- gapminder %>%
     select(year, country, gdpPercap)
 ```
 
-### Challenge 1 (10 minutes)
+### Challenge 2 (10 minutes)
 > Write a single command (which can span multiple lines and includes pipes) that
 > will produce a dataframe that has the African values for `lifeExp`, `country`
 > and `year`, but not for other Continents.  How many rows does your dataframe
@@ -505,7 +505,7 @@ year_country_gdp_euro <- gapminder %>%
 > <details>
 > 
 > <summary>
-> Solution to challenge 1
+> Solution to challenge 2
 > </summary>
 > 
 > <br />
@@ -617,14 +617,14 @@ gdp_bycontinents <- gapminder %>%
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
-### Challenge 2 (10 minutes)
+### Challenge 3 (10 minutes)
 > Calculate the average life expectancy per country. Which has the longest average life
 > expectancy and which has the shortest average life expectancy?
 >
 > <details>
 > 
 > <summary>
-> Solution to challenge 2
+> Solution to challenge 3
 > </summary>
 > 
 > <br />
@@ -761,14 +761,14 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 `.groups` argument.
 ```
 
-### Challenge 3 (10 minutes)
+### Challenge 4 (10 minutes)
 > Calculate the total GDP per contintent and year. Which continent, and in what year,
 > had the highest total GDP?
 >
 > <details>
 > 
 > <summary>
-> Solution to challenge 3
+> Solution to challenge 4
 > </summary>
 > 
 > <br />

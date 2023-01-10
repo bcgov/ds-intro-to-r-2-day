@@ -117,7 +117,7 @@ tells `ggplot` how variables in the **data** map to *aesthetic* properties of
 the figure, in this case the **x** and **y** locations. Here we told `ggplot` we
 want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
 the "lifeExp" column on the y-axis. Notice that we didn't need to explicitly
-pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
+pass `aes` these columns (e.g. `x = gapminder$gdpPercap`), this is because
 `ggplot` is smart enough to know to look in the **data** for that column!
 
 By itself, the call to `ggplot` isn't enough to draw a figure:
@@ -455,12 +455,10 @@ Earlier we visualized the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
 by adding a layer of **facet** panels. 
 
-For this exercise we will use a subset of the gapminder data. If you are already familiar with subsetting a data frame with square brackets or the `dplyr` package, you can subset the `gapminder` data frame:
+For this exercise we will use a subset of the gapminder data. If you are already familiar the `dplyr` package, you can subset the `gapminder` data frame:
 
 
 ```r
-asia_oceania <- gapminder[gapminder$continent == c("Asia", "Oceania"),]
-
 library(dplyr)
 asia_oceania <- filter(gapminder, continent %in% c("Asia", "Oceania"))
 ```

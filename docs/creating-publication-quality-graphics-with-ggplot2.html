@@ -136,7 +136,7 @@ tells <code>ggplot</code> how variables in the <strong>data</strong> map to <em>
 the figure, in this case the <strong>x</strong> and <strong>y</strong> locations. Here we told <code>ggplot</code> we
 want to plot the “gdpPercap” column of the gapminder data frame on the x-axis, and
 the “lifeExp” column on the y-axis. Notice that we didn’t need to explicitly
-pass <code>aes</code> these columns (e.g. <code>x = gapminder[, "gdpPercap"]</code>), this is because
+pass <code>aes</code> these columns (e.g. <code>x = gapminder$gdpPercap</code>), this is because
 <code>ggplot</code> is smart enough to know to look in the <strong>data</strong> for that column!</p>
 <p>By itself, the call to <code>ggplot</code> isn’t enough to draw a figure:</p>
 <div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
@@ -358,11 +358,9 @@ Solution to challenge 4b
 <p>Earlier we visualized the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
 by adding a layer of <strong>facet</strong> panels.</p>
-<p>For this exercise we will use a subset of the gapminder data. If you are already familiar with subsetting a data frame with square brackets or the <code>dplyr</code> package, you can subset the <code>gapminder</code> data frame:</p>
+<p>For this exercise we will use a subset of the gapminder data. If you are already familiar the <code>dplyr</code> package, you can subset the <code>gapminder</code> data frame:</p>
 <div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">asia_oceania</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Asia"</span>, <span class="st">"Oceania"</span><span class="op">)</span>,<span class="op">]</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="va">asia_oceania</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">continent</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Asia"</span>, <span class="st">"Oceania"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Or you can use the <code>read_csv</code> function and read in this subset of the gapminder data already provided in the <code>/data</code> folder:</p>
 <div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
@@ -503,7 +501,7 @@ code to modify. Finally, there are many websites that provide examples of <code>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-05.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -384,9 +384,9 @@ countries, we can combine <code>select</code> and <code>filter</code></p>
 <code class="sourceCode R"><span><span class="va">year_country_gdp_euro</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">gdpPercap</span><span class="op">)</span></span></code></pre></div>
-<div id="challenge-1-10-minutes" class="section level3" number="5.5.1">
+<div id="challenge-2-10-minutes-1" class="section level3" number="5.5.1">
 <h3>
-<span class="header-section-number">5.5.1</span> Challenge 1 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-1-10-minutes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.5.1</span> Challenge 2 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-10-minutes-1"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Write a single command (which can span multiple lines and includes pipes) that
@@ -394,7 +394,7 @@ will produce a dataframe that has the African values for <code>lifeExp</code>, <
 and <code>year</code>, but not for other Continents. How many rows does your dataframe
 have and why?</p>
 <details><summary>
-Solution to challenge 1
+Solution to challenge 2
 </summary><p><br></p>
 <div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">year_country_lifeExp_Africa</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -484,15 +484,15 @@ original dataframe into multiple pieces, then we can run functions
 5 Oceania           18622.</code></pre>
 <p>That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.</p>
-<div id="challenge-2-10-minutes-1" class="section level3" number="5.7.1">
+<div id="challenge-3-10-minutes" class="section level3" number="5.7.1">
 <h3>
-<span class="header-section-number">5.7.1</span> Challenge 2 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-10-minutes-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.7.1</span> Challenge 3 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-10-minutes"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Calculate the average life expectancy per country. Which has the longest average life
 expectancy and which has the shortest average life expectancy?</p>
 <details><summary>
-Solution to challenge 2
+Solution to challenge 3
 </summary><p><br></p>
 <div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lifeExp_bycountry</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -587,15 +587,15 @@ optionally sort the results in descending order by adding <code>sort=TRUE</code>
 <span>              sd_gdp_billion <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">gdp_billion</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
-<div id="challenge-3-10-minutes" class="section level3" number="5.9.1">
+<div id="challenge-4-10-minutes" class="section level3" number="5.9.1">
 <h3>
-<span class="header-section-number">5.9.1</span> Challenge 3 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-10-minutes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.9.1</span> Challenge 4 (10 minutes)<a class="anchor" aria-label="anchor" href="#challenge-4-10-minutes"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Calculate the total GDP per contintent and year. Which continent, and in what year,
 had the highest total GDP?</p>
 <details><summary>
-Solution to challenge 3
+Solution to challenge 4
 </summary><p><br></p>
 <div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gdp_by_continent_by_year</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -736,15 +736,15 @@ Solution to challenge
 <li><a class="nav-link" href="#using-select"><span class="header-section-number">5.3</span> Using select()</a></li>
 <li><a class="nav-link" href="#using-filter"><span class="header-section-number">5.4</span> Using filter()</a></li>
 <li>
-<a class="nav-link" href="#using-filter-with-pipes"><span class="header-section-number">5.5</span> Using filter() with pipes</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-10-minutes"><span class="header-section-number">5.5.1</span> Challenge 1 (10 minutes)</a></li></ul>
+<a class="nav-link" href="#using-filter-with-pipes"><span class="header-section-number">5.5</span> Using filter() with pipes</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-10-minutes-1"><span class="header-section-number">5.5.1</span> Challenge 2 (10 minutes)</a></li></ul>
 </li>
 <li><a class="nav-link" href="#using-group_by-and-summarize"><span class="header-section-number">5.6</span> Using group_by() and summarize()</a></li>
 <li>
-<a class="nav-link" href="#using-summarize"><span class="header-section-number">5.7</span> Using summarize()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-10-minutes-1"><span class="header-section-number">5.7.1</span> Challenge 2 (10 minutes)</a></li></ul>
+<a class="nav-link" href="#using-summarize"><span class="header-section-number">5.7</span> Using summarize()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-3-10-minutes"><span class="header-section-number">5.7.1</span> Challenge 3 (10 minutes)</a></li></ul>
 </li>
 <li><a class="nav-link" href="#using-count"><span class="header-section-number">5.8</span> Using count()</a></li>
 <li>
-<a class="nav-link" href="#using-mutate"><span class="header-section-number">5.9</span> Using mutate()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-3-10-minutes"><span class="header-section-number">5.9.1</span> Challenge 3 (10 minutes)</a></li></ul>
+<a class="nav-link" href="#using-mutate"><span class="header-section-number">5.9</span> Using mutate()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-4-10-minutes"><span class="header-section-number">5.9.1</span> Challenge 4 (10 minutes)</a></li></ul>
 </li>
 <li><a class="nav-link" href="#connect-mutate-with-logical-groupings-ifelse"><span class="header-section-number">5.10</span> Connect mutate with logical groupings: ifelse</a></li>
 <li>
@@ -768,7 +768,7 @@ Solution to challenge
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-05.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
