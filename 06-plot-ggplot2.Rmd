@@ -356,11 +356,9 @@ Earlier we visualized the change in life expectancy over time across all
 countries in one plot. Alternatively, we can split this out over multiple panels
 by adding a layer of **facet** panels. 
 
-For this exercise we will use a subset of the gapminder data. If you are already familiar with subsetting a data frame with square brackets or the `dplyr` package, you can subset the `gapminder` data frame:
+For this exercise we will use a subset of the gapminder data. If you are already familiar the `dplyr` package, you can subset the `gapminder` data frame:
 
 ```{r, eval=FALSE}
-asia_oceania <- gapminder[gapminder$continent == c("Asia", "Oceania"),]
-
 library(dplyr)
 asia_oceania <- filter(gapminder, continent %in% c("Asia", "Oceania"))
 ```
