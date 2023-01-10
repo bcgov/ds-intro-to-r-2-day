@@ -88,7 +88,7 @@ tells `ggplot` how variables in the **data** map to *aesthetic* properties of
 the figure, in this case the **x** and **y** locations. Here we told `ggplot` we
 want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
 the "lifeExp" column on the y-axis. Notice that we didn't need to explicitly
-pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
+pass `aes` these columns (e.g. `x = gapminder$gdpPercap`), this is because
 `ggplot` is smart enough to know to look in the **data** for that column!
 
 By itself, the call to `ggplot` isn't enough to draw a figure:
