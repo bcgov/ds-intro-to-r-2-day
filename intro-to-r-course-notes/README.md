@@ -15,8 +15,4 @@ Data:
 
 R scripts:
 
--   `04_data_structures.R`
--   `05_exploring_data_frames.R`
--   `06_ggplot2.R`
--   `07_dplyr.R`
--   `08_tidyr.R`
+-   \`\`
