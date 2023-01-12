@@ -439,7 +439,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 >     group_by(continent, year) %>%
 >     summarise(total_gdp = sum(gdp)) %>% 
 >     arrange(desc(total_gdp))
-> ```
+>```
 > </details>
 
 ## Connect mutate with logical groupings: ifelse
