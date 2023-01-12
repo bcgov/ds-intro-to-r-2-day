@@ -35,7 +35,7 @@ jobs:
       - name: Build site
         run: R -e 'bookdown::render_book("index.Rmd")'
 
-      - name: commit bookdown
+      - name: Commit bookdown
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
@@ -48,7 +48,7 @@ jobs:
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: Rscript make_course_zip.R
 
-      - name: commit course zip
+      - name: Commit course zip
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
