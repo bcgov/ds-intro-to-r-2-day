@@ -56,3 +56,7 @@ jobs:
             git commit -m 'make course zipfile'
             git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
           fi
+
+      - name: Test actions
+        run: |
+          echo "hello world" >> test.txt
