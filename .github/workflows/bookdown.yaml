@@ -57,6 +57,6 @@ jobs:
             git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
           fi
 
-      - name: Test actions
+      - name: test step
         run: |
-          echo "hello world" >> test.txt
+          cp index.Rmd intro-to-r-course-notes/
