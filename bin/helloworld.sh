@@ -14,7 +14,19 @@ do
   echo "creating ${x_out} from ${x}"
 
   sed -E \
-      -e '1s/^(#)(.*)$/######### \2 #########/' \
-  $x > tmpfile.txt
+    -e '/^(>|#)/ !d' \
+    -e '/<details>/,/<\/details>/d' \
+    -e 's/^(##)(.*)$/\1\2\n## '"$rpl"' \n\n\n\n/' \
+    $x > tmpfile.txt
+
+   sed -E \
+    -e '1s/^(#)(.*)$/######### \2 #########/' \
+    -e '/^#([[:alnum:]])/d' \
+    -e 's/^>/#/' \
+    -e 's/(### Challenge [0-9])(.*)/#\1/' \
+    -e '/^(# `)/d' \
+    -e '/^#([[:space:]])$/d' \
+    -e 's/(#### Challenge [0-9]\n)//' \
+    tmpfile.txt > tmpfile2.txt
 
 done
