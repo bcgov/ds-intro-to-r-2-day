@@ -9,6 +9,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: test step
+      - name: Test step
         run: cp index.Rmd intro-to-r-course-notes/
+
+      - name: Commit test
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add intro-to-r-course-notes/index.Rmd
+            git commit -m 'add tester file'
+            git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
+          fi
 
