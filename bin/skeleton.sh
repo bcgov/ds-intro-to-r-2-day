@@ -11,7 +11,7 @@ do
   fi
 
   x_out=${x/.Rmd/.R}
-  x_out=bin/"$x_out"
+  x_out=intro-to-r-course-notes/"$x_out"
   echo "removing old ${x_out} from course notes folder"
   rm $x_out
 
