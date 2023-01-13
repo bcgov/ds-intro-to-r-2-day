@@ -10,7 +10,7 @@ do
     continue
   fi
 
-  x_out=${x_out/.Rmd/.R}
+  x_out=${x/.Rmd/.R}
   x_out=${x_out}
   echo "creating ${x_out} from ${x}"
 
@@ -28,8 +28,11 @@ do
     -e '/^(# `)/d' \
     -e '/^#([[:space:]])$/d' \
     -e 's/(#### Challenge [0-9]\n)//' \
-    tmpfile.txt > "bin/${x_out}"
+    tmpfile.txt > tmpfile2.txt
 
-rm tmpfile.txt
+mv tmpfile2.txt bin/
+
+rm tmpfile*
+
 
 done
