@@ -27,7 +27,7 @@ do
     -e '/^(# `)/d' \
     -e '/^#([[:space:]])$/d' \
     -e 's/(#### Challenge [0-9]\n)//' \
-    tmpfile.txt > ./bin/tmpfile.txt
+    tmpfile.txt > "bin/$x_out"
 
 rm tmpfile.txt
 
