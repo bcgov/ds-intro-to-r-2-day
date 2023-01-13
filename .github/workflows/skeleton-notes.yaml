@@ -3,7 +3,7 @@ on: [push]
 name: skeleton-notes
 
 jobs:
-  make-notes:
+  make-skeleton-notes:
     runs-on: macOS-latest
     steps:
       - name: Checkout repo
