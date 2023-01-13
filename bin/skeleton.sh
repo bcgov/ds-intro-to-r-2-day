@@ -13,6 +13,7 @@ do
   x_out=${x/.Rmd/.R}
   x_out=bin/"$x_out"
   echo "removing old ${x_out} from course notes folder"
+  rm $x_out
 
 # delete lines which do not start with hash or caret
 # delete lines in the challenges between details tags
@@ -40,8 +41,7 @@ do
     -e '/^(# `)/d' \
     -e '/^#([[:space:]])$/d' \
     -e 's/(#### Challenge [0-9]\n)//' \
-    tmpfile.txt > tmpfile2.txt
-#tmpfile.txt > $x_out
+    tmpfile.txt > $x_out
 
 rm tmpfile.txt
 
