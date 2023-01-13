@@ -11,7 +11,8 @@ jobs:
 
       - name: Test step
         if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
-        run: cp index.Rmd intro-to-r-course-notes/
+        run: bash helloworld.sh
+        shell: bash
 
       - name: Commit test
         if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
