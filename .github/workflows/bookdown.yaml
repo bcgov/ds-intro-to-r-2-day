@@ -28,11 +28,13 @@ jobs:
           EOT
 
       - name: Install packages
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: |
           R -e 'install.packages("sf", type = "binary")'
           R -e 'install.packages(c("tidyverse", "reprex", "bookdown", "bcdata", "mapview", "bslib", "downlit"))'
 
       - name: Build site
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: R -e 'bookdown::render_book("index.Rmd")'
 
       - name: Commit bookdown
