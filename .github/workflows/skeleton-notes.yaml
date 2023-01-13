@@ -1,0 +1,15 @@
+on: [push]
+
+name: skeleton-notes
+
+jobs:
+  job1:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: test step
+        if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
+        run: cp index.Rmd intro-to-r-course-notes/
+
