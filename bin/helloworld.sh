@@ -28,9 +28,9 @@ do
     -e '/^(# `)/d' \
     -e '/^#([[:space:]])$/d' \
     -e 's/(#### Challenge [0-9]\n)//' \
-    tmpfile.txt > tmpfile2.txt
+    tmpfile.txt > $x_out
 
-mv tmpfile2.txt bin/
+mv $x_out bin/
 
 rm tmpfile*
 
