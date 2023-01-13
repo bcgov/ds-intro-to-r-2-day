@@ -11,7 +11,7 @@ jobs:
 
       - name: Test step
         if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
-        run: bash bin/helloworld.sh
+        run: bash bin/skeleton.sh
         shell: bash
 
       - name: Commit test
@@ -19,7 +19,7 @@ jobs:
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git add .
-            git commit -m 'add helloworld file'
+            git commit -m 'make skeleton notes'
             git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
           fi
 
