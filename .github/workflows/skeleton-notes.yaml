@@ -18,7 +18,7 @@ jobs:
         if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
-            git add intro-to-r-course-notes/index.Rmd
+            git add intro-to-r-course-notes/.
             git commit -m 'add test file'
             git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
           fi
