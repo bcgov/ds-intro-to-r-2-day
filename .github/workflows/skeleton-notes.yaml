@@ -10,6 +10,5 @@ jobs:
         uses: actions/checkout@v3
 
       - name: test step
-        if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
         run: cp index.Rmd intro-to-r-course-notes/
 
