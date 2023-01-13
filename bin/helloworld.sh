@@ -11,6 +11,7 @@ do
   fi
 
   x_out=${x_out/.Rmd/.R}
+  x_out=${x_out}
   echo "creating ${x_out} from ${x}"
 
   sed -E \
@@ -27,7 +28,7 @@ do
     -e '/^(# `)/d' \
     -e '/^#([[:space:]])$/d' \
     -e 's/(#### Challenge [0-9]\n)//' \
-    tmpfile.txt > "bin/$x_out"
+    tmpfile.txt > "bin/${x_out}"
 
 rm tmpfile.txt
 
