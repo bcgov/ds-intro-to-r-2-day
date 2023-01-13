@@ -11,8 +11,8 @@ do
   fi
 
   x_out=${x/.Rmd/.R}
-  x_out=${x_out}
-  echo "creating ${x_out} from ${x}"
+  x_out=bin/"$x_out"
+  echo "removing old ${x_out} from course notes folder"
 
 # delete lines which do not start with hash or caret
 # delete lines in the challenges between details tags
@@ -25,7 +25,7 @@ do
 # remove start and end chunk lines
 # remove blank lines starting with a hash
 
-
+  echo "creating new ${x_out} in course notes folder"
   sed -E \
     -e '/^(>|#)/ !d' \
     -e '/<details>/,/<\/details>/d' \
@@ -40,9 +40,8 @@ do
     -e '/^(# `)/d' \
     -e '/^#([[:space:]])$/d' \
     -e 's/(#### Challenge [0-9]\n)//' \
-    tmpfile.txt > $x_out
-
-mv $x_out bin/
+    tmpfile.txt > tmpfile2.txt
+#tmpfile.txt > $x_out
 
 rm tmpfile.txt
 
