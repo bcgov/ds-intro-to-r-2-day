@@ -9,13 +9,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Test step
-        if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
+      - name: Update notes
         run: bash bin/skeleton.sh
         shell: bash
 
-      - name: Commit test
-        if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
+      - name: Commit updated notes
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git add .
