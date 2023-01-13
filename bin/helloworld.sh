@@ -10,8 +10,11 @@ do
     continue
   fi
 
-  x_out=${x/ds-intro-to-r-2-day\//}
   x_out=${x_out/.Rmd/.R}
   echo "creating ${x_out} from ${x}"
+
+  sed -E \
+      -e '1s/^(#)(.*)$/######### \2 #########/' \
+  $x > tmpfile.txt
 
 done
