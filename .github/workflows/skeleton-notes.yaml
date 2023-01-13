@@ -11,7 +11,7 @@ jobs:
 
       - name: Test step
         if: github.ref == 'refs/heads/workflow-run' && github.event_name == 'push'
-        run: bash helloworld.sh
+        run: bash bin/helloworld.sh
         shell: bash
 
       - name: Commit test
