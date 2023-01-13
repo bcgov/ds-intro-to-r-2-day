@@ -1,4 +1,7 @@
 on: [push]
+# this file requires the following work:
+# move "Make course zip" into a shell script so to avoid
+# installing R and packages onto runner.
 
 name: skeleton-notes
 
@@ -9,32 +12,25 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2
+#      - name: Update notes
+#        run: bash bin/skeleton.sh
+#        shell: bash
 
-      - name: Install packages
-        run: |
-          R -e 'install.packages(c("rmarkdown"))'
+#      - name: Commit updated notes
+#        run: |
+#          if [[ -n "$(git status --porcelain)" ]]; then
+#            git add .
+#            git commit -m 'update skeleton notes'
+#            git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
+#          fi
 
-      - name: Update notes
-        run: bash bin/skeleton.sh
-        shell: bash
+#      - name: Make course zip
+#        run: Rscript make_course_zip.R
 
-      - name: Commit updated notes
-        run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git add .
-            git commit -m 'update skeleton notes'
-            git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
-          fi
-
-      - name: Make course zip
-        run: Rscript make_course_zip.R
-
-      - name: Commit course zip
-        run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git add intro-to-r-course-notes/. intro-to-r-course-notes.zip
-            git commit -m 'make course zipfile'
-            git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
-          fi
+#      - name: Commit course zip
+#        run: |
+#          if [[ -n "$(git status --porcelain)" ]]; then
+#            git add intro-to-r-course-notes/. intro-to-r-course-notes.zip
+#            git commit -m 'make course zipfile'
+#            git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
+#          fi
