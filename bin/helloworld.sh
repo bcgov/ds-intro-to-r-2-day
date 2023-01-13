@@ -27,6 +27,8 @@ do
     -e '/^(# `)/d' \
     -e '/^#([[:space:]])$/d' \
     -e 's/(#### Challenge [0-9]\n)//' \
-    tmpfile.txt > tmpfile2.txt
+    tmpfile.txt > ./bin/tmpfile.txt
+
+rm tmpfile.txt
 
 done
