@@ -106,7 +106,7 @@ fields. This can be a good starting point.
 ### Challenge 1
 
 > Look at the help for the `sum()` function. What are two ways you can pass numbers 
-> into the function so the are added together?
+> into the function so they are added together?
 > 
 > <details>
 > 
