@@ -1,7 +1,7 @@
 ---
-title: "Relational Data"
-teaching: 30
-exercises: 15
+title: "Joining Related Data"
+teaching: 35
+exercises: 10
 questions:
 - "How can I change a dataframe based on information in another dataframe?"
 objectives:
@@ -9,7 +9,7 @@ objectives:
 keypoints:
 - "Use the `dplyr` package to join relational data."
 - "Use `left_join()`, `full_join()`, `right_join()` or `inner_join()` to add data from one table to another."
-- "Use `semi_join()` or `anti_join` to filter a table based on data in another table."
+- "Use `semi_join()` or `anti_join()` to filter a table based on data in another table."
 source: Rmd
 ---
 
@@ -20,26 +20,62 @@ source("bin/chunk-options.R")
 knitr_fig_path("xx-")
 ```
 
-## Introduction
-
-In real life, we often have two or more related datasets, that have a key 
+In real life, we often have two or more related datasets that have a key 
 linking the data.
 
-<!-- We've talked about **tidy data** (each variable is a single column,  -->
-<!-- each observation is a single row, each cell is a single value).  -->
+We may want to change a dataset by adding information from a second dataset.
+For example, one dataset may contain employee information such as employee ID, 
+name, job position, hire date, etc., whereas a second dataset may contain the
+current and historical wages for each job position. A relevant join -- adding a 
+column of data for each row -- may be merging the current wage for each employee 
+into the employee dataset.
 
-For more information, see [two-table verbs](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html).
+We may also want to choose only a portion of a dataset. For example, one dataset
+may include all students who ever attended a school along with their student ID, 
+years attended, grades for each class, graduation date (if applicable), and so on,
+whereas a second dataset may be simply a list of current students. A relevant join
+-- retaining all columns of data, but for only specific rows -- may be a reduction 
+of the first dataset for only those students currently in attendance, but with all 
+their information (e.g., grades, etc.).
 
+The first example is that of a **mutating join** - where we change one table 
+by adding in data from a second table, based on matching through a key variable 
+that exists in both tables. The second example is that of a **filtering join** - 
+where we subset one table based on data in a second table, again based on matching 
+through a key variable.
 
+## Types of joins with dplyr
+
+The `dplyr` package has several functions that allow us to make these joins. 
+Assume we have tables _x_ and _y_.
+
+There are four types of **mutating joins**, which add new variables to one 
+table from matching rows in another:
+
+* **inner joins** include all rows in x AND y
+
+* **left joins** include all rows in x
+
+* **full joins** include all rows in x OR y
+
+* **right joins** include all rows in y
+
+Note that left, full and right joins are also called _outer joins_.
+
+There are two types of **filtering joins**, which filter observations from one 
+table based on whether or not they match an observation in the other table:
+
+* **semi joins** return all rows in x that HAVE a match in y
+
+* **anti joins** return all rows in x that do NOT HAVE a match in y
+
+The syntax for dplyr joins is simple: `xxx_join(x, y, by = "key_variable")`.
 
 ## Introducing the nycflights13 data
 
-In prior lessons, you have seen the datasets such as the `gampinder` data and 
-our cat data. Now let's use a different dataset, from the `nycflights13` package, 
+In prior lessons, you have seen datasets such as the gapminder and cat data. 
+Now let's use a different dataset, from the `nycflights13` package^[Wickham H (2022). nycflights13: Flights that Departed NYC in 2013. R package version 1.0.2, https://github.com/hadley/nycflights13.], 
 to explore relational data.
-
-See [https://nycflights13.tidyverse.org/](https://nycflights13.tidyverse.org/)
-Wickham H (2022). nycflights13: Flights that Departed NYC in 2013. R package version 1.0.2, https://github.com/hadley/nycflights13.
 
 This package contains information about all flights that departed from 
 New York City (e.g., EWR, JFK and LGA) to destinations in 2013. To help 
@@ -50,11 +86,17 @@ understand what causes delays, it also includes a number of other useful dataset
 * airports: airport names and locations
 * airlines: translation between two letter carrier codes and names
 
+This diagram shows the relationships among the five datasets: 
 
-<!-- ![](fig/08-tidyr-fig1.png){width=100%} -->
+![Source: https://r4ds.had.co.nz/relational-data.html](fig/xx-joins-fig1.png)
 
+The key **variables** between flights and the *other datasets* are:
 
- 
+* flights dataset <- **origin** and **dest** both = **faa** -> *airports* dataset
+* flights dataset <- **tailnum** -> *planes* dataset
+* flights dataset <- **origin**, **year**, **month**, **day**, and **hour** -> *weather* dataset
+* flights dataset <- **carrier** -> *airlines* dataset
+
 ## Getting started
 
 First, install the packages if you haven't already done so (you probably
@@ -67,21 +109,99 @@ install.packages("nycflights13")
 
 Then, load the packages:
 
-```{r,message=FALSE}
+```{r,message=FALSE,warning=FALSE}
 library(dplyr)
 library(nycflights13)
 ```
 
-Let's look at the main `nycflights13` dataset, "flights":
+Let's take a peek at the main `nycflights13` dataset, "flights":
 
 ```{r}
-flights <- nycflights13::flights
 flights
 ```
 
-### Challenge 1
+And get some more information about the flights dataset:
+
+```{r,eval=FALSE}
+?flights
+```
+
+This tells us that the airline name, as opposed to a two-letter carrier abbreviation,
+can be found in the `airlines` dataset, and that the `airports` dataset gives
+more information on the flight destinations.
+
+First, we will drop some variables from flights to make our work more evident.
+
+```{r}
+flights_mini <- flights %>% select(year:day, dep_delay, carrier:dest)
+flights_mini
+```
+
+### Data analysis questions
+
+How would we answer the following questions:
+
+* what is the total number of flights per airline, but with 
+the airline name showing instead of the carrier abbreviation?
+
+* how many flights occurred when the temperature fell below freezing?
+
+* are older planes more likely to have a delayed arrival?
+
+Answering questions such as these requires us to join datasets.
+
+## Using **left_join()**
+
+The syntax for dplyr joins is: `xxx_join(x, y, by = "key_variable")`.
+
+To answer the first question (i.e., number of flights per airline), we need
+to join the flights and airlines datasets. We want a **left join** because we
+want to add the airline names from airlines (as our second table) to flights 
+(our first table). From above, we know that the flights dataset has a variable 
+called 'carrier', and that that same variable is in the airlines dataset -- this
+is our key (or "by" variable).
+
+```{r}
+left_join(x = flights_mini, y = airlines, by = "carrier")
+```
+
+We can see that the number of rows has stayed the same: 366,776, but that we 
+have one new column (at the end) called "name".
+
+Note that we could have instead used the pipe operator after summoning 'flights_mini'.
+
+```{r}
+flights_mini %>% left_join(y = airlines, by = "carrier")
+```
+
+Now, let's wrangle to get the total counts, by grouping by either carrier or the 
+new "name" variable brought in from the airlines dataset. Note that we can also 
+drop the argument names (e.g., no "y" in "y = airlines"). I tend to keep the 
+"by" argument name in to keep my code a bit more clear.
+
+```{r}
+flights_mini %>%
+  left_join(airlines, by = "carrier") %>%
+  group_by(name) %>%
+  summarize(total_flights = n())
+```
+
+We can also rename variables within our join call. Let's rename "name" to 
+"airline" (and sort descending by number of flights).
+
+```{r}
+flights_mini %>%
+  left_join(airlines %>% select(carrier, Airline = name), by = "carrier") %>%
+  ## make sure you use the new variable name
+  group_by(Airline) %>%
+  summarize(`Total Flights` = n()) %>% 
+  arrange(desc(`Total Flights`))
+```
+
+### Challenge 1 (2 minutes)
 >
-> Is gapminder a purely long, purely wide, or some intermediate format?
+> How would you add each plane's manufacture year (rename it "manufacture_year") 
+to the flights dataset?
 >
 >
 > <details>
@@ -91,107 +211,125 @@ flights
 > </summary>
 > 
 > <br />
-> The original gapminder data.frame is in an intermediate format. It is not
-> purely long since it had multiple observation variables
-> (`pop`,`lifeExp`,`gdpPercap`).
+>```{r}
+> left_join(flights_mini, planes %>% select(tailnum, manufacture_year = year), by = "tailnum")
+>
+> ## same as this:
+> flights_mini %>% 
+>   left_join(planes %>% select(tailnum, manufacture_year = year), by = "tailnum")
+>```
 > </details>
 
+One thing we haven't specifically noted is that mutating joins will bring in all
+variables from the matching dataset. You'll see from the solution above that we
+can change that behaviour by using `select()` and listing only those variables we 
+want to join in (don't forget the key variable!).
 
-Sometimes, as with the gapminder dataset, we have multiple types of observed
-data. It is somewhere in between the purely 'long' and 'wide' data formats. We
-have 3 "ID variables" (`continent`, `country`, `year`) and 3 "Observation
-variables" (`pop`,`lifeExp`,`gdpPercap`). This intermediate format can be
-preferred despite not having ALL observations in 1 column given that all 3
-observation variables have different units. There are few operations that would
-need us to make this dataframe any longer (i.e. 4 ID variables and 1
-Observation variable).
+### Modifying the `by` argument
 
-While using many of the functions in R, which are often vector based, you
-usually do not want to do mathematical operations on values with different
-units. For example, using the purely long format, a single mean for all of the
-values of population, life expectancy, and GDP would not be meaningful since it
-would return the mean of values with 3 incompatible units. The solution is that
-we first manipulate the data either by grouping (see the lesson on `dplyr`), or
-we change the structure of the dataframe.  **Note:** Some plotting functions in
-R actually work better in the wide format data.
+#### > no by specification
 
-## From wide to long format with pivot_longer()
-
-Until now, we've been using the nicely formatted original gapminder dataset, but
-'real' data (i.e. our own research data) will never be so well organized. Here
-let's start with the wide formatted version of the gapminder dataset.
-
-We'll load the data file and look at it. 
+We can modify the "by" argument a few ways. See what happens if we don't 
+specify a `by` variable.
 
 ```{r}
-gap_wide <- read_csv("data/gapminder_wide.csv")
-gap_wide
+## joining without specifying a `by` variable
+left_join(flights_mini, airlines)
 ```
 
-![](fig/08-tidyr-fig2.png){width=100%}
-
-
-To change this very wide dataframe layout back to our nice, intermediate (or longer) layout, we will use one of the two available `pivot`  functions from the `tidyr` package. To convert from wide to a longer format, we will use the `pivot_longer()` function. `pivot_longer()` makes datasets longer by increasing the number of rows and decreasing the number of columns, or 'lengthening' your observation variables into a single variable.
-
-
-![](fig/08-tidyr-fig3.png){width=100%}
-
+R will match by any variable with the same name in both datasets. Be careful - 
+this might not be what you want!
 
 ```{r}
-gap_long <- gap_wide %>%
-  pivot_longer(
-    cols = pop_1952:gdpPercap_2007,
-    names_to = "obstype_year", values_to = "obs_values"
-  )
-gap_long
+left_join(flights_mini, planes)
 ```
 
-Here we have used piping syntax which is similar to what we were doing in the
-previous lesson with dplyr. In fact, these are compatible and you can use a mix
-of tidyr and dplyr functions by piping them together.
+The variable "year" exists in both flights_mini and planes, but means different 
+things. When not specifying the key, R assumed you wanted to join by "year" as
+well, which resulted in a lot of NAs!
 
-We first provide to `pivot_longer()` a vector of column names that will be
-pivoted into longer format. We could type out all the observation variables, but
-as in the `select()` function, we can use the `:` operator to select our desired variables.
-`pivot_longer()` also allows the alternative syntax of using the `-` symbol to
-identify which variables are not to be pivoted (i.e. ID variables).
+#### > multiple keys
 
-The next arguments to `pivot_longer()` are `names_to` for naming the column that
-will contain the new ID variable (`obstype_year`) and `values_to` for naming the
-new amalgamated observation variable (`obs_value`). We supply these new column
-names as strings.
-
-![](fig/08-tidyr-fig4.png){width=100%}
+You may have noticed earlier that we can join by more than one variable. To do
+so, simply use `c("variable1", "variable2", "etc")` for your keys. Notice that 
+year, month, day, and origin are in both the flights_mini and weather datasets.
 
 ```{r}
-gap_long <- gap_wide %>%
-  pivot_longer(
-    cols = c(-continent, -country),
-    names_to = "obstype_year", values_to = "obs_values"
-  )
-gap_long
+left_join(flights_mini, weather, by = c("year", "month", "day", "origin"))
 ```
 
-That may seem trivial with this particular dataframe, but sometimes you have 1
-ID variable and 40 observation variables with irregular variable names. The
-flexibility is a huge time saver!
+You'll see that we now have over 8 million rows. This is because the "hour" 
+variable in weather matched many times for each year X month X day X origin
+combination, resulting in repeat of information from flights_mini.
 
-
-Now `obstype_year` actually contains 2 pieces of information, the observation
-type (`pop`,`lifeExp`, or `gdpPercap`) and the `year`. We can use the
-`separate()` function to split the character strings into multiple variables
+What happens if you didn't know that "year" was in both datasets?
 
 ```{r}
-gap_long_split <- gap_long %>% 
-    separate(obstype_year, into = c('obs_type', 'year'), sep = "_") %>% 
-    mutate(year = as.numeric(year))
+left_join(flights_mini, weather, by = c("month", "day", "origin"))
 ```
 
+The "year" variable from flights_mini has been renamed "year.x", and "year" 
+from "weather" has been renamed "year.y". (Whenever this happens, variables 
+ending in ".x" come from the first table, while those ending in ".y" come from
+the other table.)
+
+#### > key variable with different names
+
+We can also match on a key that has a different name in the related tables 
+(although its values are the same). The variable "faa" in airports is equivalent
+to flights_mini's "dest" variable. Here are three ways of getting the same result.
+
+```{r}
+## matching key name in the `by`
+left_join(flights_mini, airports, by = c("dest" = "faa"))
+
+## renaming key in a select
+left_join(flights_mini, airports %>% rename(dest = faa), by = "dest")
+
+## syntax with pipe operator
+flights_mini %>% left_join(airports %>% rename(dest = faa))
+
+```
+
+## Other mutating joins
+
+We have only been working with left joins so far. The idea is exactly the same 
+for full, right and inner joins.
+
+* `full_join(x, y, by)`  - everything!
+
+* `right_join(x, y, by)` - equivalent to left_join(y, x, by), but the columns and rows will be ordered differently
+
+* `inner_join(x, y, by)` - only rows found in both
+
+The difference is what you end up with.
+
+Let's create two small datasets to compare the results of the above types of joins.
+Both tables have an ID column -- this is our key -- and one other variable. 
+
+```{r}
+tbl1 <- tibble(ID = c("ID_1", "ID_2", "ID_3", "ID_4", "ID_5", "ID_6"),
+              activity1 = c("cycling", "basketball", "kung fu", "reading", "running", "skating"))
+tbl2 <- tibble(ID = c("ID_2", "ID_4", "ID_6", "ID_8"), 
+              place2 = c("outside court", "library", "rec center", "pool"))
+
+tbl1
+tbl2
+```
+
+```{r}
+left_join(tbl1, tbl2, by = "ID")
+right_join(tbl2, tbl1, by = "ID")
+right_join(tbl1, tbl2, by = "ID")
+full_join(tbl1, tbl2, by = "ID")
+inner_join(tbl1, tbl2, by = "ID")
+```
 
 ### Challenge 2 (5 minutes)
+
+> How many flights occurred when the temperature fell below freezing?
 >
-> Using `gap_long_split`, calculate the mean life expectancy, population, and gdpPercap for each continent.
->**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
+>**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson.
 >
 > <details>
 > 
@@ -201,126 +339,40 @@ gap_long_split <- gap_long %>%
 > 
 > <br />
 >```{r}
->gap_long_split %>% 
->   group_by(continent, obs_type) %>%
->   summarize(means=mean(obs_values))
->```
-> </details>
-
-## From long to intermediate format with pivot_wider()
-
-It is always good to check work. So, let's use the second `pivot` function, `pivot_wider()`, to 'widen' our observation variables back out.  `pivot_wider()` is the opposite of `pivot_longer()`, making a dataset wider by increasing the number of columns and decreasing the number of rows. We can use `pivot_wider()` to pivot or reshape our `gap_long_split` to the original intermediate format or the widest format. Let's start with the intermediate format.
-
-The `pivot_wider()` function takes `names_from` and `values_from` arguments.
-
-To `names_from` we supply the column name whose contents will be pivoted into new
-output columns in the widened dataframe. The corresponding values will be added
-from the column named in the `values_from` argument.
-
-```{r}
-gap_normal <- gap_long_split %>%
-  pivot_wider(names_from = obs_type, values_from = obs_values)
-dim(gap_normal)
-dim(gapminder)
-names(gap_normal)
-names(gapminder)
-```
-
-Now we've got an intermediate dataframe `gap_normal` with the same dimensions as
-the original `gapminder`, but the order of the variables is different. Let's fix
-that before checking if they are `all.equal()`.
-
-```{r}
-gap_normal <- gap_normal %>% 
-    select(country, year, pop, continent, lifeExp, gdpPercap) 
-all_equal(gap_normal, gapminder)
-
-gap_normal
-gapminder
-```
-
-We're almost there, the original was sorted by `country`, then
-`year`.
-
-```{r}
-gap_normal <- gap_normal %>% arrange(country, year)
-all_equal(gap_normal, gapminder)
-```
-
-That's great! We've gone from the longest format back to the intermediate and we
-didn't introduce any errors in our code.
-
-Now let's convert the long all the way back to the wide. In the wide format, we
-will keep country and continent as ID variables and pivot the observations
-across the 3 metrics (`pop`,`lifeExp`,`gdpPercap`) and time (`year`). First we
-need to create appropriate labels for all our new variables (time*metric
-combinations) and we also need to unify our ID variables to simplify the process
-of defining `gap_wide`.
-
-```{r}
-gap_temp <- gap_long_split %>% unite(var_ID, continent, country, sep = "_")
-gap_temp
-
-gap_temp <- gap_long_split %>%
-    unite(ID_var, continent, country, sep = "_") %>%
-    unite(var_names, obs_type, year, sep = "_")
-gap_temp
-```
-
-Using `unite()` we now have a single ID variable which is a combination of
-`continent`,`country`,and we have defined variable names. We're now ready to
-pipe in `pivot_wider()`
-
-```{r}
-gap_wide_new <- gap_long_split %>%
-  unite(ID_var, continent, country, sep = "_") %>%
-  unite(var_names, obs_type, year, sep = "_") %>%
-  pivot_wider(names_from = var_names, values_from = obs_values)
-gap_wide_new
-```
-
-### Challenge 3 (10 minutes)
-> Take this 1 step further and create a `gap_ludicrously_wide` format data by pivoting over countries, year and the 3 metrics?
->**Hint** this new dataframe should only have 5 rows.
+> ## first, find the days where the temperature fell below 32 F (freezing)
+> freezing <- weather %>%
+>   group_by(month, day) %>%
+>   summarize(mean_temp = mean(temp, na.rm = TRUE), .groups = "drop") %>%
+>   filter(mean_temp < 32)
+> 
+> ## inner join to get only days with freezing temperature
+> flights_mini %>% inner_join(freezing, by = c("month", "day")) ## number of rows
+> flights_mini %>% inner_join(freezing) %>% tally()             ## or, get the number
 >
-> <details>
-> 
-> <summary>
-> Solution to challenge 3
-> </summary>
-> 
-> <br />
->```{r}
->gap_ludicrously_wide <- gap_long_split %>%
->    unite(var_names, obs_type, year, country, sep = "_") %>%
->    pivot_wider(names_from = var_names, values_from = obs_values)
 >```
 > </details>
 
+## Filtering joins
 
-
-Now we have a great 'wide' format dataframe, but the `ID_var` could be more
-usable, let's separate it into 2 variables with `separate()`
-
+In Challenge 2, we could have done a semi join instead of an inner join. That is,
+we were essentially filtering the 'flights_mini' dataset to get only those flights
+that occurred on days where the average temperature was below 32F. We didn't
+do anything with the actual temperature other than drop observations; therefore,
+we didn't actually need the 'mean_temp' variable.
 
 ```{r}
-gap_wide_betterID <- separate(gap_wide_new, ID_var, c("continent", "country"), sep="_")
-gap_wide_betterID <- gap_long_split %>%
-    unite(ID_var, continent, country, sep = "_") %>%
-    unite(var_names, obs_type, year, sep = "_") %>%
-    pivot_wider(names_from = var_names, values_from = obs_values) %>%
-    separate(ID_var, c("continent","country"), sep = "_")
-gap_wide_betterID
-
-all_equal(gap_wide, gap_wide_betterID)
+flights_mini %>% semi_join(freezing, by = c("month", "day"))
 ```
 
-There and back again!
-
+That is what happens with **filtering joins**: observations from one table are 
+filtered based on whether or not they match an observation in the other table, 
+but no information is brought in from the other table. Specifically, **semi joins**
+return all rows in x with a match in y, while **anti joins** return all rows in x 
+without a match in y. Note, that the syntax for filtering joins is the same: 
+`xxx_join(x, y, by = "key_variable")`.
 
 ## Other great resources
 
-* [R for Data Science](http://r4ds.had.co.nz/index.html)
-* [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-* [Introduction to tidyr](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
-* [Data wrangling with R and RStudio](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/)
+* [Holly Emblem blog on Joins](https://hollyemblem.medium.com/joining-data-with-dplyr-in-r-874698eb8898)
+* [Two-Table Verbs](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html)
+* [nycflights13 Datasets](https://nycflights13.tidyverse.org/)
