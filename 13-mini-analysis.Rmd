@@ -8,6 +8,302 @@ source("bin/chunk-options.R")
 knitr_fig_path("13-")
 ```
 
-# (PART) Micro Project {-} 
+```{r, packages}
 
-# Mini Analysis {-}
+#dplyr, tidyr, ggplot, bcdata
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(bcdata)
+
+```
+
+
+## 1. Get data on international and interprovincial migration from the BC Data Catalogue
+
+```{r, get data}
+
+## Consider searching the BC data catalogue for migration data
+bcdc_search("migration")
+
+## Fine record and resource ids
+bcdc_get_record("56610cfc-02ba-41a7-92ef-d9609ef507f1")
+records <- bcdc_tidy_resources('56610cfc-02ba-41a7-92ef-d9609ef507f1')
+
+## Import interprovincial and international migration
+interprov <- bcdc_get_data(record = "56610cfc-02ba-41a7-92ef-d9609ef507f1",
+                      resource = "95579825-bfa2-4cab-90fa-196e0ecc8626")
+
+internat <- bcdc_get_data(record = "56610cfc-02ba-41a7-92ef-d9609ef507f1",
+                          resource = "c99d63f6-5ec4-4ac0-9c07-c0352f2f1928")
+
+
+```
+
+## 2. Review the data
+
+```{r, review data}
+
+## Check info on international migration data
+## What are the columns, how are the related?
+## What is the frequency of the data (Annual, Quarterly, Monthly, etc.)?
+## Anything else worth noting?
+summary(internat)
+str(internat)
+dim(internat)
+
+## Check info on the interprovincial migration data
+## What are the columns, how are the related?
+## How many rows?
+## How does this data structure differ from the international data?
+summary(interprov) 
+dim(interprov)
+
+```
+
+## 3. Charting B.C. net migration
+
+### 3.a. Net international migration from 2010 to 2021 annually
+
+```{r, international}
+
+## First prep data for plotting
+## Include only correct years in the data
+## Change from quarterly to annual net migration
+plot_data_inter <- internat %>%
+  filter(Year >= 2010, Year < 2022) %>%
+  group_by(Year) %>%
+  summarize(net_interna = sum(Net_migration))
+
+## Plot data
+## Start with a line chart
+## Consider adding points, adding a theme, changing colors, etc.
+## Add labels
+ggplot(plot_data_inter, aes(x = Year, y = net_interna)) +
+  geom_line() +
+  geom_point()
+
+```
+
+### 1.b. Net interprovincial migration from 2010 to 2021 annually
+
+```{r, interprovincial}
+
+## Net migration is not provided in the data - it needs to be calculated
+## Determine the total "in" and "out" provincial migration from BC
+## Calculate the net migration: Net = In - Out
+in_prov <- interprov %>%
+  group_by(Year, Quarter) %>%
+  summarize(in_prov = sum(B.C.))
+
+out_prov <- interprov %>%
+  filter(Origin == "B.C.") %>%
+  group_by(Year, Quarter)  %>%
+  summarize(out_prov = sum(Total))
+
+net_prov <- in_prov %>%
+  left_join(out_prov, by = c("Year", "Quarter")) %>%
+  mutate(net_prov = in_prov - out_prov)
+
+## Prep data for plotting
+## Include only correct years in the data
+## Change from quarterly to annual net migration
+plot_data_prov <- net_prov %>%
+  filter(Year >= 2010, Year < 2022) %>%
+  group_by(Year) %>%
+  summarize(net_prov = sum(net_prov))
+
+## Plot data
+## Start with a line chart
+## Consider adding points, adding a theme, changing colors, etc.
+## Add labels
+ggplot(data = plot_data_prov, aes(x = Year, y = net_prov)) +
+  geom_line() +
+  geom_point()
+
+```
+
+### 3.c. Total net migration from 2010 to 2021 annually
+
+```{r, total}
+
+## First combine international and interprovincial data
+mig <- internat %>%
+  left_join(net_prov, by = c("Year", "Quarter")) 
+
+## Calculate total net migration
+mig <- mig %>%
+  mutate(total_net = Net_migration + net_prov)
+
+## Prep data for plotting
+## Include only correct years in the data
+## Change from quarterly to annual net migration
+plot_data_tot <- mig %>%
+  filter(Year >= 2010, Year < 2022) %>%
+  group_by(Year) %>%
+  summarize(total_net = sum(total_net))
+
+## Plot data
+## Start with a line chart
+## Consider adding points, adding a theme, changing colors, etc.
+## Add labels
+ggplot(data = plot_data_tot, aes(x = Year, y =  total_net)) +
+  geom_line() +
+  geom_point()
+
+```
+
+** stop here **
+
+Below contains some optional content but not 
+
+
+
+On average, does provincial/international migration vary depending on the time of year.
+Is there a quarter that has more international migration, more provincial migration, more out/in, etc. 
+
+Note: international IN = Immigrants + Net non-permanent Residents + Returning emigrants
+      international OUT = Emigrants + Net temporary emigrants
+
+```{r}
+ mig2 <- mig %>% 
+  mutate(in_inter = Immigrants + Net_non_permanent_residents + Returning_emigrants,
+         out_inter = Emigrants + Net_temporary_emigrants)
+
+mig2 %>%
+  group_by(Quarter) %>%
+  summarize(avg_out_prov = mean(out_prov),
+            avg_out_inter = mean(out_inter),
+            avg_in_prov = mean(in_prov),
+            avg_in_inter = mean(in_inter),
+            avg_net_mig = mean(total_net))
+
+## Q2, Q3 (Apr-Sep) more people coming and going
+## Q1, Q4 (Oct-March) lower time for migration in the year
+## Does not differ much whether provincial, international, in or out
+
+```
+
+plot over the years to see if the trends align with the averages; make separate charts for in/out, prov/international
+
+```{r}
+
+## have to prep data for ploting
+
+plot_data_1 <- mig2 %>%
+  select(Year, Quarter, out_prov, out_inter, in_prov, in_inter, total_net) %>%
+  pivot_longer(-c(Year, Quarter), names_to = "mig_type", values_to = "values") %>%
+  mutate(Quarter = factor(Quarter, levels = c(1, 2 ,3, 4)))
+
+ggplot(data = plot_data_1, mapping = aes(x = Year, y = values)) +
+  geom_line(aes(color = Quarter)) + 
+  facet_wrap(facets = vars(mig_type))
+
+
+```
+
+plot data from last 5 years
+
+```{r}
+
+ggplot(data = plot_data_1 %>% filter(Year >= 2018), mapping = aes(x = Year, y = values)) +
+  geom_line(aes(color = Quarter)) + 
+  facet_wrap(facets = vars(mig_type))
+
+## due to timing of pandemic, Q2/Q3 which normally have the most migration, had the least international in migration in 2020
+
+## so far in 2022, there has been a big recovery in international in - surpassing pre-pandemic numbers, similar increases seen in prov mig (in & out)
+
+```
+
+
+what regions most impacted by pandemic with regards to prov migration
+(Atlantic Provinces = N.L., P.E.I., N.S., N.B.;
+ Central Canada = Que., Ont.;
+ Prairie Provinces = Man., Sask., Alta.;
+ West Coast = B.C.;
+ Northern Territories = Y.T., N.W.T., Nvt.)
+
+
+```{r, interprov-all}
+
+## find the net provincial migration for all provinces
+
+net_prov <- interprov %>%
+  rename(Out = Total) %>%
+  pivot_longer(-c(Year, Quarter, Origin, Out), names_to = "Destination", values_to = "n") %>%
+  group_by(Year, Quarter, Destination) %>%
+  mutate("In" = sum(n)) %>%
+  filter(Origin == Destination) %>%
+  mutate(Net = In - Out) %>%
+  ## note province and destination are now equal, only need to retain one, 
+  ## remember to ungroup
+  ungroup() %>%
+  select(Year, Quarter, Province = Origin, Out, In, Net)
+
+net_regions <- net_prov %>%
+  mutate(Region = case_when(Province %in% c("N.L.", "P.E.I.", "N.S.", "N.B.") ~ "Atlantic Provinces",
+                            Province %in% c("Que.", "Ont.") ~ "Central Canada",
+                            Province %in% c("Man.", "Sask.", "Alta.") ~ "Prairie Provinces",
+                            Province == "B.C." ~ "West Coast",
+                            Province %in% c("Y.T.", "N.W.T.", "Nvt.") ~ "Northern Territories")) %>%
+  group_by(Year, Quarter, Region) %>%
+  summarize(In = sum(In),
+            Out = sum(Out),
+            Net = sum(Net))
+
+net_reg_annual <- net_regions %>%
+  group_by(Year, Region) %>%
+  summarize(In = sum(In),
+            Out = sum(Out),
+            Net = sum(Net))
+
+
+```
+
+plot
+
+```{r}
+## filter 2010-2021
+
+ggplot(net_reg_annual %>% filter(Year >= 2010, Year < 2022), aes(x = Year, y = Net)) +
+  geom_line(aes(color = Region)) +
+  geom_point()
+
+## Atlantic provinces/BC saw a increases in net mig 2020=2021
+## Central Canada saw a big decrease in net mig 2020-2021
+
+```
+
+What regions were BC-ians coming, going to, did the main origin, destination change over the pandemic?
+
+```{r}
+
+##
+main_orig <- interprov %>%
+  filter(Year >= 2012) %>%
+  select(Year, Quarter, Origin, B.C.) %>%
+  group_by(Year, Origin) %>%
+  summarize(values = sum(B.C.)) %>%
+  mutate(max = max(values)) %>%
+  filter(values == max)
+
+#Main destination province over last 10 years
+
+main_dest <- interprov %>%
+  filter(Origin == "B.C.", Year >= 2012) %>%
+  group_by(Year, Origin) %>%
+  summarize_all(sum) %>%
+  pivot_longer(-c(Year, Quarter, Origin, Total), names_to = "province", values_to = "values") %>%
+  mutate(max = max(values)) %>%
+  filter(values == max)
+
+
+## least origin, least destination
+
+
+
+
+
+```
+
