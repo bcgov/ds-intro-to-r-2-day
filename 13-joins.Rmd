@@ -17,7 +17,7 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
-knitr_fig_path("xx-")
+knitr_fig_path("13-")
 ```
 ## Introducing Relational Data
 In real life, we often have two or more related datasets that share a set of common columns.   We would like to combine these two datasets based on their common columns, known as **key** or **key variables**.
@@ -84,7 +84,7 @@ understand what causes delays, it also includes a number of other useful dataset
 
 This diagram shows the relationships among the five datasets: 
 
-![Source: https://r4ds.had.co.nz/relational-data.html](fig/xx-joins-fig1.png)
+![Source: https://r4ds.had.co.nz/relational-data.html](fig/13-joins-fig1.png)
 
 The key **variables** between flights and the *other datasets* are:
 
