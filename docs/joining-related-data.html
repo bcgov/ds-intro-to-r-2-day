@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 13 Joining Related Data | Joining Related Data</title>
-<meta name="description" content="13.1 Introducing Relational Data In real life, we often have two or more related datasets that share a set of common columns. We would like to combine these two datasets based on their common...">
+<title>Chapter 8 Joining Related Data | Introduction to Data Science using R Workshop</title>
+<meta name="description" content="8.1 Introducing Relational Data In real life, we often have two or more related datasets that share a set of common columns. We would like to combine these two datasets based on their common...">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="Chapter 13 Joining Related Data | Joining Related Data">
+<meta property="og:title" content="Chapter 8 Joining Related Data | Introduction to Data Science using R Workshop">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/joining-related-data.html">
-<meta property="og:description" content="13.1 Introducing Relational Data In real life, we often have two or more related datasets that share a set of common columns. We would like to combine these two datasets based on their common...">
+<meta property="og:description" content="8.1 Introducing Relational Data In real life, we often have two or more related datasets that share a set of common columns. We would like to combine these two datasets based on their common...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 13 Joining Related Data | Joining Related Data">
-<meta name="twitter:description" content="13.1 Introducing Relational Data In real life, we often have two or more related datasets that share a set of common columns. We would like to combine these two datasets based on their common...">
+<meta name="twitter:title" content="Chapter 8 Joining Related Data | Introduction to Data Science using R Workshop">
+<meta name="twitter:description" content="8.1 Introducing Relational Data In real life, we often have two or more related datasets that share a set of common columns. We would like to combine these two datasets based on their common...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">Joining Related Data</a>
+        <a href="index.html" title="">Introduction to Data Science using R Workshop</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -52,13 +52,13 @@
 <li><a class="" href="manipulating-data-frames-with-dplyr.html"><span class="header-section-number">5</span> Manipulating Data Frames with dplyr</a></li>
 <li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">6</span> Creating Publication-Quality Graphics with ggplot2</a></li>
 <li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">7</span> Create Tidy Data with tidyr</a></li>
+<li><a class="active" href="joining-related-data.html"><span class="header-section-number">8</span> Joining Related Data</a></li>
 <li class="book-part">Beyond the Fundamentals</li>
-<li><a class="" href="subsetting-data-frames.html"><span class="header-section-number">8</span> Subsetting Data Frames</a></li>
-<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
-<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></li>
-<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></li>
-<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></li>
-<li><a class="active" href="joining-related-data.html"><span class="header-section-number">13</span> Joining Related Data</a></li>
+<li><a class="" href="subsetting-data-frames.html"><span class="header-section-number">9</span> Subsetting Data Frames</a></li>
+<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">10</span> Introduction to the bcdata package</a></li>
+<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">11</span> Data analysis reports</a></li>
+<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">12</span> Applications of R Markdown</a></li>
+<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">13</span> Seeking Help from Others with reprex</a></li>
 </ul>
 
         <div class="book-extra">
@@ -66,13 +66,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="joining-related-data" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="joining-related-data" class="section level1" number="8">
 <h1>
-<span class="header-section-number">13</span> Joining Related Data<a class="anchor" aria-label="anchor" href="#joining-related-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8</span> Joining Related Data<a class="anchor" aria-label="anchor" href="#joining-related-data"><i class="fas fa-link"></i></a>
 </h1>
-<div id="introducing-relational-data" class="section level2" number="13.1">
+<div id="introducing-relational-data" class="section level2" number="8.1">
 <h2>
-<span class="header-section-number">13.1</span> Introducing Relational Data<a class="anchor" aria-label="anchor" href="#introducing-relational-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1</span> Introducing Relational Data<a class="anchor" aria-label="anchor" href="#introducing-relational-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>In real life, we often have two or more related datasets that share a set of common columns. We would like to combine these two datasets based on their common columns, known as <strong>key</strong> or <strong>key variables</strong>.</p>
 <p>We may want to change a dataset by adding information from a second dataset.
@@ -91,9 +91,9 @@ that exists in both tables. The second example is that of a <strong>filtering jo
 where we subset one table based on data in a second table, again based on matching
 through a key variable.</p>
 </div>
-<div id="types-of-joins-with-dplyr" class="section level2" number="13.2">
+<div id="types-of-joins-with-dplyr" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">13.2</span> Types of joins with dplyr<a class="anchor" aria-label="anchor" href="#types-of-joins-with-dplyr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> Types of joins with dplyr<a class="anchor" aria-label="anchor" href="#types-of-joins-with-dplyr"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code>dplyr</code> package has several functions that allow us to make these joins.
 Assume we have tables <em>x</em> and <em>y</em>.</p>
@@ -114,9 +114,9 @@ table based on whether or not they match an observation in the other table:</p>
 </ul>
 <p>The syntax for dplyr joins is simple: <code>xxx_join(x, y, by = "key_variable")</code>.</p>
 </div>
-<div id="introducing-the-nycflights13-data" class="section level2" number="13.3">
+<div id="introducing-the-nycflights13-data" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">13.3</span> Introducing the nycflights13 data<a class="anchor" aria-label="anchor" href="#introducing-the-nycflights13-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Introducing the nycflights13 data<a class="anchor" aria-label="anchor" href="#introducing-the-nycflights13-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>In prior lessons, you have seen datasets such as the gapminder and cat data.
 Now let’s use a different dataset, from the <code>nycflights13</code> package<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Wickham H (2022). nycflights13: Flights that Departed NYC in 2013. R package version 1.0.2, &lt;a href="https://github.com/hadley/nycflights13" class="uri"&gt;https://github.com/hadley/nycflights13&lt;/a&gt;.&lt;/p&gt;'><sup>1</sup></a>,
@@ -142,21 +142,21 @@ understand what causes delays, it also includes a number of other useful dataset
 <li>flights dataset &lt;- <strong>carrier</strong> -&gt; <em>airlines</em> dataset</li>
 </ul>
 </div>
-<div id="getting-started-3" class="section level2" number="13.4">
+<div id="getting-started-2" class="section level2" number="8.4">
 <h2>
-<span class="header-section-number">13.4</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>First, install the packages if you haven’t already done so (you probably
 installed dplyr in a previous lesson):</p>
-<div class="sourceCode" id="cb504"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"nycflights13"</span><span class="op">)</span></span></code></pre></div>
 <p>Then, load the packages:</p>
-<div class="sourceCode" id="cb505"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/nycflights13">nycflights13</a></span><span class="op">)</span></span></code></pre></div>
 <p>Let’s take a peek at the main <code>nycflights13</code> dataset, “flights”:</p>
-<div class="sourceCode" id="cb506"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">flights</span></span></code></pre></div>
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_de…¹ dep_d…² arr_t…³ sched…⁴ arr_d…⁵ carrier
@@ -176,13 +176,13 @@ installed dplyr in a previous lesson):</p>
 #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;, and abbreviated variable names
 #   ¹​sched_dep_time, ²​dep_delay, ³​arr_time, ⁴​sched_arr_time, ⁵​arr_delay</code></pre>
 <p>And get some more information about the flights dataset:</p>
-<div class="sourceCode" id="cb508"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">flights</span></span></code></pre></div>
 <p>This tells us that the airline name, as opposed to a two-letter carrier abbreviation,
 can be found in the <code>airlines</code> dataset, and that the <code>airports</code> dataset gives
 more information on the flight destinations.</p>
 <p>First, we will drop some variables from flights to make our work more evident.</p>
-<div class="sourceCode" id="cb509"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">flights_mini</span> <span class="op">&lt;-</span> <span class="va">flights</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span><span class="op">:</span><span class="va">day</span>, <span class="va">dep_delay</span>, <span class="va">carrier</span><span class="op">:</span><span class="va">dest</span><span class="op">)</span></span>
 <span><span class="va">flights_mini</span></span></code></pre></div>
 <pre><code># A tibble: 336,776 × 9
@@ -199,9 +199,9 @@ more information on the flight destinations.</p>
  9  2013     1     1        -3 B6          79 N593JB  JFK    MCO  
 10  2013     1     1        -2 AA         301 N3ALAA  LGA    ORD  
 # … with 336,766 more rows</code></pre>
-<div id="data-analysis-questions" class="section level3" number="13.4.1">
+<div id="data-analysis-questions" class="section level3" number="8.4.1">
 <h3>
-<span class="header-section-number">13.4.1</span> Data analysis questions<a class="anchor" aria-label="anchor" href="#data-analysis-questions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.1</span> Data analysis questions<a class="anchor" aria-label="anchor" href="#data-analysis-questions"><i class="fas fa-link"></i></a>
 </h3>
 <p>How would we answer the following questions:</p>
 <ul>
@@ -213,9 +213,9 @@ the airline name showing instead of the carrier abbreviation?</p></li>
 <p>Answering questions such as these requires us to join datasets.</p>
 </div>
 </div>
-<div id="using-left_join" class="section level2" number="13.5">
+<div id="using-left_join" class="section level2" number="8.5">
 <h2>
-<span class="header-section-number">13.5</span> Using <strong>left_join()</strong><a class="anchor" aria-label="anchor" href="#using-left_join"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5</span> Using <strong>left_join()</strong><a class="anchor" aria-label="anchor" href="#using-left_join"><i class="fas fa-link"></i></a>
 </h2>
 <p>The syntax for dplyr joins is: <code>xxx_join(x, y, by = "key_variable")</code>.</p>
 <p>To answer the first question (i.e., number of flights per airline), we need
@@ -224,7 +224,7 @@ want to add the airline names from airlines (as our second table) to flights
 (our first table). From above, we know that the flights dataset has a variable
 called ‘carrier’, and that that same variable is in the airlines dataset – this
 is our key (or “by” variable).</p>
-<div class="sourceCode" id="cb511"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flights_mini</span>, y <span class="op">=</span> <span class="va">airlines</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 336,776 × 10
     year month   day dep_delay carrier flight tailnum origin dest  name         
@@ -243,7 +243,7 @@ is our key (or “by” variable).</p>
 <p>We can see that the number of rows has stayed the same: 366,776, but that we
 have one new column (at the end) called “name”.</p>
 <p>Note that we could have instead used the pipe operator after summoning ‘flights_mini’.</p>
-<div class="sourceCode" id="cb513"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">flights_mini</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">airlines</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 336,776 × 10
     year month   day dep_delay carrier flight tailnum origin dest  name         
@@ -263,7 +263,7 @@ have one new column (at the end) called “name”.</p>
 new “name” variable brought in from the airlines dataset. Note that we can also
 drop the argument names (e.g., no “y” in “y = airlines”). I tend to keep the
 “by” argument name in to keep my code a bit more clear.</p>
-<div class="sourceCode" id="cb515"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">flights_mini</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">airlines</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -289,7 +289,7 @@ drop the argument names (e.g., no “y” in “y = airlines”). I tend to keep
 16 Virgin America                       5162</code></pre>
 <p>We can also rename variables within our join call. Let’s rename “name” to
 “airline” (and sort descending by number of flights).</p>
-<div class="sourceCode" id="cb517"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">flights_mini</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">airlines</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">carrier</span>, Airline <span class="op">=</span> <span class="va">name</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="co">## make sure you use the new variable name</span></span>
@@ -315,9 +315,9 @@ drop the argument names (e.g., no “y” in “y = airlines”). I tend to keep
 14 Mesa Airlines Inc.                      601
 15 Hawaiian Airlines Inc.                  342
 16 SkyWest Airlines Inc.                    32</code></pre>
-<div id="challenge-1-2-minutes" class="section level3" number="13.5.1">
+<div id="challenge-1-2-minutes" class="section level3" number="8.5.1">
 <h3>
-<span class="header-section-number">13.5.1</span> Challenge 1 (2 minutes)<a class="anchor" aria-label="anchor" href="#challenge-1-2-minutes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.1</span> Challenge 1 (2 minutes)<a class="anchor" aria-label="anchor" href="#challenge-1-2-minutes"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>How would you add each plane’s manufacture year (rename it “manufacture_year”)
@@ -325,7 +325,7 @@ to the flights dataset?</p>
 <details><summary>
 Solution to challenge 1
 </summary><p><br></p>
-<div class="sourceCode" id="cb519"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">flights_mini</span>, <span class="va">planes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">tailnum</span>, manufacture_year <span class="op">=</span> <span class="va">year</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"tailnum"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 336,776 × 10
    year month   day dep_delay carrier flight tailnum origin dest  manufacture…¹
@@ -341,7 +341,7 @@ Solution to challenge 1
 9  2013     1     1        -3 B6          79 N593JB  JFK    MCO            2004
 10  2013     1     1        -2 AA         301 N3ALAA  LGA    ORD              NA
 # … with 336,766 more rows, and abbreviated variable name ¹​manufacture_year</code></pre>
-<div class="sourceCode" id="cb521"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## same as this:</span></span>
 <span><span class="va">flights_mini</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">planes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">tailnum</span>, manufacture_year <span class="op">=</span> <span class="va">year</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"tailnum"</span><span class="op">)</span></span></code></pre></div>
@@ -366,17 +366,17 @@ variables from the matching dataset. You’ll see from the solution above that w
 can change that behaviour by using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and listing only those variables we
 want to join in (don’t forget the key variable!).</p>
 </div>
-<div id="modifying-the-by-argument" class="section level3" number="13.5.2">
+<div id="modifying-the-by-argument" class="section level3" number="8.5.2">
 <h3>
-<span class="header-section-number">13.5.2</span> Modifying the <code>by</code> argument<a class="anchor" aria-label="anchor" href="#modifying-the-by-argument"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.2</span> Modifying the <code>by</code> argument<a class="anchor" aria-label="anchor" href="#modifying-the-by-argument"><i class="fas fa-link"></i></a>
 </h3>
-<div id="no-by-specification" class="section level4" number="13.5.2.1">
+<div id="no-by-specification" class="section level4" number="8.5.2.1">
 <h4>
-<span class="header-section-number">13.5.2.1</span> &gt; no by specification<a class="anchor" aria-label="anchor" href="#no-by-specification"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.2.1</span> &gt; no by specification<a class="anchor" aria-label="anchor" href="#no-by-specification"><i class="fas fa-link"></i></a>
 </h4>
 <p>We can modify the “by” argument a few ways. See what happens if we don’t
 specify a <code>by</code> variable.</p>
-<div class="sourceCode" id="cb523"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## joining without specifying a `by` variable</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">flights_mini</span>, <span class="va">airlines</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Joining, by = "carrier"</code></pre>
@@ -396,7 +396,7 @@ specify a <code>by</code> variable.</p>
 # … with 336,766 more rows</code></pre>
 <p>R will match by any variable with the same name in both datasets. Be careful -
 this might not be what you want!</p>
-<div class="sourceCode" id="cb526"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">flights_mini</span>, <span class="va">planes</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Joining, by = c("year", "tailnum")</code></pre>
 <pre><code># A tibble: 336,776 × 16
@@ -419,14 +419,14 @@ this might not be what you want!</p>
 things. When not specifying the key, R assumed you wanted to join by “year” as
 well, which resulted in a lot of NAs!</p>
 </div>
-<div id="multiple-keys" class="section level4" number="13.5.2.2">
+<div id="multiple-keys" class="section level4" number="8.5.2.2">
 <h4>
-<span class="header-section-number">13.5.2.2</span> &gt; multiple keys<a class="anchor" aria-label="anchor" href="#multiple-keys"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.2.2</span> &gt; multiple keys<a class="anchor" aria-label="anchor" href="#multiple-keys"><i class="fas fa-link"></i></a>
 </h4>
 <p>You may have noticed earlier that we can join by more than one variable. To do
 so, simply use <code>c("variable1", "variable2", "etc")</code> for your keys. Notice that
 year, month, day, and origin are in both the flights_mini and weather datasets.</p>
-<div class="sourceCode" id="cb529"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">flights_mini</span>, <span class="va">weather</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"origin"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 8,036,575 × 20
     year month   day dep_delay carrier flight tailnum origin dest   hour  temp
@@ -448,7 +448,7 @@ year, month, day, and origin are in both the flights_mini and weather datasets.<
 variable in weather matched many times for each year X month X day X origin
 combination, resulting in repeat of information from flights_mini.</p>
 <p>What happens if you didn’t know that “year” was in both datasets?</p>
-<div class="sourceCode" id="cb531"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">flights_mini</span>, <span class="va">weather</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"origin"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 8,036,575 × 21
    year.x month   day dep_delay carrier flight tailnum origin dest  year.y  hour
@@ -471,14 +471,14 @@ from “weather” has been renamed “year.y”. (Whenever this happens, variab
 ending in “.x” come from the first table, while those ending in “.y” come from
 the other table.)</p>
 </div>
-<div id="key-variable-with-different-names" class="section level4" number="13.5.2.3">
+<div id="key-variable-with-different-names" class="section level4" number="8.5.2.3">
 <h4>
-<span class="header-section-number">13.5.2.3</span> &gt; key variable with different names<a class="anchor" aria-label="anchor" href="#key-variable-with-different-names"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.2.3</span> &gt; key variable with different names<a class="anchor" aria-label="anchor" href="#key-variable-with-different-names"><i class="fas fa-link"></i></a>
 </h4>
 <p>We can also match on a key that has a different name in the related tables
 (although its values are the same). The variable “faa” in airports is equivalent
 to flights_mini’s “dest” variable. Here are three ways of getting the same result.</p>
-<div class="sourceCode" id="cb533"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## matching key name in the `by`</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">flights_mini</span>, <span class="va">airports</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dest"</span> <span class="op">=</span> <span class="st">"faa"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 336,776 × 16
@@ -496,7 +496,7 @@ to flights_mini’s “dest” variable. Here are three ways of getting the same
 10  2013     1     1        -2 AA         301 N3ALAA  LGA    ORD   Chicag…  42.0
 # … with 336,766 more rows, and 5 more variables: lon &lt;dbl&gt;, alt &lt;dbl&gt;,
 #   tz &lt;dbl&gt;, dst &lt;chr&gt;, tzone &lt;chr&gt;</code></pre>
-<div class="sourceCode" id="cb535"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## renaming key in a select</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">flights_mini</span>, <span class="va">airports</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>dest <span class="op">=</span> <span class="va">faa</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"dest"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 336,776 × 16
@@ -514,7 +514,7 @@ to flights_mini’s “dest” variable. Here are three ways of getting the same
 10  2013     1     1        -2 AA         301 N3ALAA  LGA    ORD   Chicag…  42.0
 # … with 336,766 more rows, and 5 more variables: lon &lt;dbl&gt;, alt &lt;dbl&gt;,
 #   tz &lt;dbl&gt;, dst &lt;chr&gt;, tzone &lt;chr&gt;</code></pre>
-<div class="sourceCode" id="cb537"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## syntax with pipe operator</span></span>
 <span><span class="va">flights_mini</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">airports</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>dest <span class="op">=</span> <span class="va">faa</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Joining, by = "dest"</code></pre>
@@ -536,9 +536,9 @@ to flights_mini’s “dest” variable. Here are three ways of getting the same
 </div>
 </div>
 </div>
-<div id="other-mutating-joins" class="section level2" number="13.6">
+<div id="other-mutating-joins" class="section level2" number="8.6">
 <h2>
-<span class="header-section-number">13.6</span> Other mutating joins<a class="anchor" aria-label="anchor" href="#other-mutating-joins"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.6</span> Other mutating joins<a class="anchor" aria-label="anchor" href="#other-mutating-joins"><i class="fas fa-link"></i></a>
 </h2>
 <p>We have only been working with left joins so far. The idea is exactly the same
 for full, right and inner joins.</p>
@@ -550,7 +550,7 @@ for full, right and inner joins.</p>
 <p>The difference is what you end up with.</p>
 <p>Let’s create two small datasets to compare the results of the above types of joins.
 Both tables have an ID column – this is our key – and one other variable.</p>
-<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb427"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tbl1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ID_1"</span>, <span class="st">"ID_2"</span>, <span class="st">"ID_3"</span>, <span class="st">"ID_4"</span>, <span class="st">"ID_5"</span>, <span class="st">"ID_6"</span><span class="op">)</span>,</span>
 <span>              activity1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cycling"</span>, <span class="st">"basketball"</span>, <span class="st">"kung fu"</span>, <span class="st">"reading"</span>, <span class="st">"running"</span>, <span class="st">"skating"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">tbl2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ID_2"</span>, <span class="st">"ID_4"</span>, <span class="st">"ID_6"</span>, <span class="st">"ID_8"</span><span class="op">)</span>, </span>
@@ -566,7 +566,7 @@ Both tables have an ID column – this is our key – and one other variable.</p
 4 ID_4  reading   
 5 ID_5  running   
 6 ID_6  skating   </code></pre>
-<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tbl2</span></span></code></pre></div>
 <pre><code># A tibble: 4 × 2
   ID    place2       
@@ -575,7 +575,7 @@ Both tables have an ID column – this is our key – and one other variable.</p
 2 ID_4  library      
 3 ID_6  rec center   
 4 ID_8  pool         </code></pre>
-<div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">tbl1</span>, <span class="va">tbl2</span>, by <span class="op">=</span> <span class="st">"ID"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 6 × 3
   ID    activity1  place2       
@@ -586,7 +586,7 @@ Both tables have an ID column – this is our key – and one other variable.</p
 4 ID_4  reading    library      
 5 ID_5  running    &lt;NA&gt;         
 6 ID_6  skating    rec center   </code></pre>
-<div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">tbl2</span>, <span class="va">tbl1</span>, by <span class="op">=</span> <span class="st">"ID"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 6 × 3
   ID    place2        activity1 
@@ -597,7 +597,7 @@ Both tables have an ID column – this is our key – and one other variable.</p
 4 ID_1  &lt;NA&gt;          cycling   
 5 ID_3  &lt;NA&gt;          kung fu   
 6 ID_5  &lt;NA&gt;          running   </code></pre>
-<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb435"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">tbl1</span>, <span class="va">tbl2</span>, by <span class="op">=</span> <span class="st">"ID"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 4 × 3
   ID    activity1  place2       
@@ -606,7 +606,7 @@ Both tables have an ID column – this is our key – and one other variable.</p
 2 ID_4  reading    library      
 3 ID_6  skating    rec center   
 4 ID_8  &lt;NA&gt;       pool         </code></pre>
-<div class="sourceCode" id="cb550"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb437"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">tbl1</span>, <span class="va">tbl2</span>, by <span class="op">=</span> <span class="st">"ID"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 7 × 3
   ID    activity1  place2       
@@ -618,7 +618,7 @@ Both tables have an ID column – this is our key – and one other variable.</p
 5 ID_5  running    &lt;NA&gt;         
 6 ID_6  skating    rec center   
 7 ID_8  &lt;NA&gt;       pool         </code></pre>
-<div class="sourceCode" id="cb552"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">tbl1</span>, <span class="va">tbl2</span>, by <span class="op">=</span> <span class="st">"ID"</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 3 × 3
   ID    activity1  place2       
@@ -626,9 +626,9 @@ Both tables have an ID column – this is our key – and one other variable.</p
 1 ID_2  basketball outside court
 2 ID_4  reading    library      
 3 ID_6  skating    rec center   </code></pre>
-<div id="challenge-2-5-minutes-3" class="section level3" number="13.6.1">
+<div id="challenge-2-5-minutes-2" class="section level3" number="8.6.1">
 <h3>
-<span class="header-section-number">13.6.1</span> Challenge 2 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-5-minutes-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.6.1</span> Challenge 2 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-5-minutes-2"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>How many flights occurred when the temperature fell below freezing?</p>
@@ -636,7 +636,7 @@ Both tables have an ID column – this is our key – and one other variable.</p
 <details><summary>
 Solution to challenge 2
 </summary><p><br></p>
-<div class="sourceCode" id="cb554"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## first, find the days where the temperature fell below 32 F (freezing)</span></span>
 <span><span class="va">freezing</span> <span class="op">&lt;-</span> <span class="va">weather</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span>, <span class="va">day</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -659,7 +659,7 @@ Solution to challenge 2
 9  2013     1     2        -6 B6          49 N658JB  JFK    PBI        28.7
 10  2013     1     2        -6 B6         371 N805JB  LGA    FLL        28.7
 # … with 29,106 more rows</code></pre>
-<div class="sourceCode" id="cb556"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">flights_mini</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">freezing</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span>             <span class="co">## or, get the number</span></span></code></pre></div>
 <pre><code>Joining, by = c("month", "day")</code></pre>
 <pre><code># A tibble: 1 × 1
@@ -670,16 +670,16 @@ Solution to challenge 2
 </blockquote>
 </div>
 </div>
-<div id="filtering-joins" class="section level2" number="13.7">
+<div id="filtering-joins" class="section level2" number="8.7">
 <h2>
-<span class="header-section-number">13.7</span> Filtering joins<a class="anchor" aria-label="anchor" href="#filtering-joins"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.7</span> Filtering joins<a class="anchor" aria-label="anchor" href="#filtering-joins"><i class="fas fa-link"></i></a>
 </h2>
 <p>In Challenge 2, we could have done a semi join instead of an inner join. That is,
 we were essentially filtering the ‘flights_mini’ dataset to get only those flights
 that occurred on days where the average temperature was below 32F. We didn’t
 do anything with the actual temperature other than drop observations; therefore,
 we didn’t actually need the ‘mean_temp’ variable.</p>
-<div class="sourceCode" id="cb559"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">flights_mini</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">freezing</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"month"</span>, <span class="st">"day"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 29,116 × 9
     year month   day dep_delay carrier flight tailnum origin dest 
@@ -702,9 +702,9 @@ return all rows in x with a match in y, while <strong>anti joins</strong> return
 without a match in y. Note, that the syntax for filtering joins is the same:
 <code>xxx_join(x, y, by = "key_variable")</code>.</p>
 </div>
-<div id="other-great-resources-2" class="section level2" number="13.8">
+<div id="other-great-resources-2" class="section level2" number="8.8">
 <h2>
-<span class="header-section-number">13.8</span> Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.8</span> Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources-2"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><a href="https://hollyemblem.medium.com/joining-data-with-dplyr-in-r-874698eb8898">Holly Emblem blog on Joins</a></li>
@@ -717,39 +717,36 @@ without a match in y. Note, that the syntax for filtering joins is the same:
 
 
 
-
-
-
   <div class="chapter-nav">
-<div class="prev"><a href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></div>
-<div class="empty"></div>
+<div class="prev"><a href="create-tidy-data-with-tidyr.html"><span class="header-section-number">7</span> Create Tidy Data with tidyr</a></div>
+<div class="next"><a href="subsetting-data-frames.html"><span class="header-section-number">9</span> Subsetting Data Frames</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#joining-related-data"><span class="header-section-number">13</span> Joining Related Data</a></li>
-<li><a class="nav-link" href="#introducing-relational-data"><span class="header-section-number">13.1</span> Introducing Relational Data</a></li>
-<li><a class="nav-link" href="#types-of-joins-with-dplyr"><span class="header-section-number">13.2</span> Types of joins with dplyr</a></li>
-<li><a class="nav-link" href="#introducing-the-nycflights13-data"><span class="header-section-number">13.3</span> Introducing the nycflights13 data</a></li>
+<li><a class="nav-link" href="#joining-related-data"><span class="header-section-number">8</span> Joining Related Data</a></li>
+<li><a class="nav-link" href="#introducing-relational-data"><span class="header-section-number">8.1</span> Introducing Relational Data</a></li>
+<li><a class="nav-link" href="#types-of-joins-with-dplyr"><span class="header-section-number">8.2</span> Types of joins with dplyr</a></li>
+<li><a class="nav-link" href="#introducing-the-nycflights13-data"><span class="header-section-number">8.3</span> Introducing the nycflights13 data</a></li>
 <li>
-<a class="nav-link" href="#getting-started-3"><span class="header-section-number">13.4</span> Getting started</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#data-analysis-questions"><span class="header-section-number">13.4.1</span> Data analysis questions</a></li></ul>
+<a class="nav-link" href="#getting-started-2"><span class="header-section-number">8.4</span> Getting started</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#data-analysis-questions"><span class="header-section-number">8.4.1</span> Data analysis questions</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#using-left_join"><span class="header-section-number">13.5</span> Using left_join()</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#challenge-1-2-minutes"><span class="header-section-number">13.5.1</span> Challenge 1 (2 minutes)</a></li>
-<li><a class="nav-link" href="#modifying-the-by-argument"><span class="header-section-number">13.5.2</span> Modifying the by argument</a></li>
+<a class="nav-link" href="#using-left_join"><span class="header-section-number">8.5</span> Using left_join()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#challenge-1-2-minutes"><span class="header-section-number">8.5.1</span> Challenge 1 (2 minutes)</a></li>
+<li><a class="nav-link" href="#modifying-the-by-argument"><span class="header-section-number">8.5.2</span> Modifying the by argument</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#other-mutating-joins"><span class="header-section-number">13.6</span> Other mutating joins</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-5-minutes-3"><span class="header-section-number">13.6.1</span> Challenge 2 (5 minutes)</a></li></ul>
+<a class="nav-link" href="#other-mutating-joins"><span class="header-section-number">8.6</span> Other mutating joins</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-5-minutes-2"><span class="header-section-number">8.6.1</span> Challenge 2 (5 minutes)</a></li></ul>
 </li>
-<li><a class="nav-link" href="#filtering-joins"><span class="header-section-number">13.7</span> Filtering joins</a></li>
-<li><a class="nav-link" href="#other-great-resources-2"><span class="header-section-number">13.8</span> Other great resources</a></li>
+<li><a class="nav-link" href="#filtering-joins"><span class="header-section-number">8.7</span> Filtering joins</a></li>
+<li><a class="nav-link" href="#other-great-resources-2"><span class="header-section-number">8.8</span> Other great resources</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/13-joins.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/bcgov/ds-intro-to-r-2-day/edit/master/13-joins.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/08-joins.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/bcgov/ds-intro-to-r-2-day/edit/master/08-joins.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -761,7 +758,7 @@ without a match in y. Note, that the syntax for filtering joins is the same:
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Joining Related Data</strong>" was written by . It was last built on 2023-01-18.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

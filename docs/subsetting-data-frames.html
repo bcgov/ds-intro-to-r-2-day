@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 8 Subsetting Data Frames | Joining Related Data</title>
+<title>Chapter 9 Subsetting Data Frames | Introduction to Data Science using R Workshop</title>
 <meta name="description" content="Earlier in the course, you saw the basics of manipulating data frames with our gapminder data; now let’s add to those skills and learn to subset data frames using row and column positions. Let’s...">
 <meta name="generator" content="bookdown 0.32 with bs4_book()">
-<meta property="og:title" content="Chapter 8 Subsetting Data Frames | Joining Related Data">
+<meta property="og:title" content="Chapter 9 Subsetting Data Frames | Introduction to Data Science using R Workshop">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/subsetting-data-frames.html">
 <meta property="og:description" content="Earlier in the course, you saw the basics of manipulating data frames with our gapminder data; now let’s add to those skills and learn to subset data frames using row and column positions. Let’s...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 8 Subsetting Data Frames | Joining Related Data">
+<meta name="twitter:title" content="Chapter 9 Subsetting Data Frames | Introduction to Data Science using R Workshop">
 <meta name="twitter:description" content="Earlier in the course, you saw the basics of manipulating data frames with our gapminder data; now let’s add to those skills and learn to subset data frames using row and column positions. Let’s...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">Joining Related Data</a>
+        <a href="index.html" title="">Introduction to Data Science using R Workshop</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -52,13 +52,13 @@
 <li><a class="" href="manipulating-data-frames-with-dplyr.html"><span class="header-section-number">5</span> Manipulating Data Frames with dplyr</a></li>
 <li><a class="" href="creating-publication-quality-graphics-with-ggplot2.html"><span class="header-section-number">6</span> Creating Publication-Quality Graphics with ggplot2</a></li>
 <li><a class="" href="create-tidy-data-with-tidyr.html"><span class="header-section-number">7</span> Create Tidy Data with tidyr</a></li>
+<li><a class="" href="joining-related-data.html"><span class="header-section-number">8</span> Joining Related Data</a></li>
 <li class="book-part">Beyond the Fundamentals</li>
-<li><a class="active" href="subsetting-data-frames.html"><span class="header-section-number">8</span> Subsetting Data Frames</a></li>
-<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></li>
-<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></li>
-<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></li>
-<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></li>
-<li><a class="" href="joining-related-data.html"><span class="header-section-number">13</span> Joining Related Data</a></li>
+<li><a class="active" href="subsetting-data-frames.html"><span class="header-section-number">9</span> Subsetting Data Frames</a></li>
+<li><a class="" href="introduction-to-the-bcdata-package.html"><span class="header-section-number">10</span> Introduction to the bcdata package</a></li>
+<li><a class="" href="data-analysis-reports.html"><span class="header-section-number">11</span> Data analysis reports</a></li>
+<li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">12</span> Applications of R Markdown</a></li>
+<li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">13</span> Seeking Help from Others with reprex</a></li>
 </ul>
 
         <div class="book-extra">
@@ -66,14 +66,14 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="subsetting-data-frames" class="section level1" number="8">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="subsetting-data-frames" class="section level1" number="9">
 <h1>
-<span class="header-section-number">8</span> Subsetting Data Frames<a class="anchor" aria-label="anchor" href="#subsetting-data-frames"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9</span> Subsetting Data Frames<a class="anchor" aria-label="anchor" href="#subsetting-data-frames"><i class="fas fa-link"></i></a>
 </h1>
 <p>Earlier in the course, you saw the basics of manipulating data frames with our gapminder data;
 now let’s add to those skills and learn to subset data frames using row and column positions. Let’s read in the
 gapminder dataset that we downloaded previously and assign it to a data frame called gapminder:</p>
-<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span> <span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/gapminder_data.csv"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Rows: 1704 Columns: 6
@@ -84,26 +84,26 @@ dbl (4): year, pop, lifeExp, gdpPercap
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div id="basic-subsetting" class="section level2" number="8.1">
+<div id="basic-subsetting" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">8.1</span> Basic subsetting<a class="anchor" aria-label="anchor" href="#basic-subsetting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Basic subsetting<a class="anchor" aria-label="anchor" href="#basic-subsetting"><i class="fas fa-link"></i></a>
 </h2>
 <p>Data frames are two dimensions - rows and columns. We can access these using a
 specific notation with square brackets.</p>
-<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_data_frame</span><span class="op">[</span><span class="va">rows</span>, <span class="va">columns</span><span class="op">]</span></span></code></pre></div>
-<div id="selecting-rows" class="section level3" number="8.1.1">
+<div id="selecting-rows" class="section level3" number="9.1.1">
 <h3>
-<span class="header-section-number">8.1.1</span> Selecting rows<a class="anchor" aria-label="anchor" href="#selecting-rows"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1.1</span> Selecting rows<a class="anchor" aria-label="anchor" href="#selecting-rows"><i class="fas fa-link"></i></a>
 </h3>
 <p>We can select rows using the square brackets like so:</p>
-<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 1 × 6
   country      year     pop continent lifeExp gdpPercap
   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 1 Afghanistan  1952 8425333 Asia         28.8      779.</code></pre>
-<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb453"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">[</span><span class="fl">100</span><span class="op">:</span><span class="fl">110</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 11 × 6
    country     year       pop continent lifeExp gdpPercap
@@ -119,7 +119,7 @@ specific notation with square brackets.</p>
  9 Bangladesh  2007 150448339 Asia         64.1     1391.
 10 Belgium     1952   8730405 Europe       68       8343.
 11 Belgium     1957   8989111 Europe       69.2     9715.</code></pre>
-<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span><span class="op">)</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 5 × 6
   country      year      pop continent lifeExp gdpPercap
@@ -130,19 +130,19 @@ specific notation with square brackets.</p>
 4 Afghanistan  1982 12881816 Asia         39.9      978.
 5 Afghanistan  1992 16317921 Asia         41.7      649.</code></pre>
 </div>
-<div id="challenge-2-5-minutes-2" class="section level3" number="8.1.2">
+<div id="challenge-2-5-minutes-3" class="section level3" number="9.1.2">
 <h3>
-<span class="header-section-number">8.1.2</span> Challenge 2 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-5-minutes-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1.2</span> Challenge 2 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-5-minutes-3"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>It’s good practice to also check the last few lines of your data and some in the middle. How would you do this?</p>
 <details><summary>
 Solution to challenge 2
 </summary><p>Use your knowledge of the dataset to choose some rows in the middle and at the end.</p>
-<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></span></code></pre></div>
 <pre><code>[1] 1704</code></pre>
-<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">700</span>, <span class="fl">750</span>, <span class="fl">800</span><span class="op">)</span>,<span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 3 × 6
  country  year       pop continent lifeExp gdpPercap
@@ -150,7 +150,7 @@ Solution to challenge 2
 1 India    1967 506000000 Asia         47.2      701.
 2 Ireland  1977   3271900 Europe       72.0    11151.
 3 Japan    1987 122091325 Asia         78.7    22376.</code></pre>
-<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">[</span><span class="fl">1700</span><span class="op">:</span><span class="fl">1704</span>,<span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 5 × 6
  country   year      pop continent lifeExp gdpPercap
@@ -162,7 +162,7 @@ Solution to challenge 2
 5 Zimbabwe  2007 12311143 Africa       43.5      470.</code></pre>
 <p><br>
 To check the last few lines it’s relatively simple as R already has a function for this:</p>
-<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 6 × 6
  country   year      pop continent lifeExp gdpPercap
@@ -173,7 +173,7 @@ To check the last few lines it’s relatively simple as R already has a function
 4 Zimbabwe  1997 11404948 Africa       46.8      792.
 5 Zimbabwe  2002 11926563 Africa       40.0      672.
 6 Zimbabwe  2007 12311143 Africa       43.5      470.</code></pre>
-<div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">gapminder</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
 <pre><code># A tibble: 15 × 6
   country   year      pop continent lifeExp gdpPercap
@@ -204,7 +204,7 @@ The solution here presents one form of using nested functions, i.e. a function 
 </div>
 <p>It’s unlikely that you’ll select rows directly though, you’ll usually want
 to use some criteria. Say we just wanted the rows from Asia:</p>
-<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb468"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">asia</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span>, <span class="op">]</span></span>
 <span><span class="va">asia</span></span></code></pre></div>
 <pre><code># A tibble: 396 × 6
@@ -225,7 +225,7 @@ to use some criteria. Say we just wanted the rows from Asia:</p>
 above, OR a vector of <code>TRUE</code> and <code>FALSE</code>, returning the rows that are <code>TRUE</code>.
 <code>gapminder$contintent == "Asia"</code> generates a vector of <code>TRUE</code> and <code>FALSE</code>
 values:</p>
-<div class="sourceCode" id="cb413"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb470"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span></span></code></pre></div>
 <pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -242,7 +242,7 @@ gives us just the rows where the <code>contintent</code> column is <code>"Asia"<
 <p>Another very useful operator in this context is the <code>%in%</code> operator - it can
 tell you if a value is <em>one of</em> a set of values:</p>
 <p>Say we wanted to select just Canada and Mexico:</p>
-<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb472"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"Mexico"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -255,7 +255,7 @@ tell you if a value is <em>one of</em> a set of values:</p>
  [97] FALSE FALSE FALSE FALSE
  [ reached getOption("max.print") -- omitted 1604 entries ]</code></pre>
 <p>Now we can insert this into the first position of the square brackets:</p>
-<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb474"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">can_mex</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"Mexico"</span><span class="op">)</span></span>
 <span><span class="va">gapminder</span><span class="op">[</span><span class="va">can_mex</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 24 × 6
@@ -273,7 +273,7 @@ tell you if a value is <em>one of</em> a set of values:</p>
 10 Canada   1997 30305843 Americas     78.6    28955.
 # … with 14 more rows</code></pre>
 <p>We saw previously how we can select a single column using the dollar sign <code>$</code>:</p>
-<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb476"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span></span></code></pre></div>
 <pre><code>  [1] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan"
   [6] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan"
@@ -298,7 +298,7 @@ tell you if a value is <em>one of</em> a set of values:</p>
  [ reached getOption("max.print") -- omitted 1604 entries ]</code></pre>
 <p>If we wanted to select a subset of columns, we can specify that in the second
 position using a character vector of column names:</p>
-<div class="sourceCode" id="cb421"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">[</span> , <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country"</span>, <span class="st">"year"</span>, <span class="st">"lifeExp"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 1,704 × 3
    country      year lifeExp
@@ -315,16 +315,16 @@ position using a character vector of column names:</p>
 10 Afghanistan  1997    41.8
 # … with 1,694 more rows</code></pre>
 </div>
-<div id="challenge-3-5-minutes-2" class="section level3" number="8.1.3">
+<div id="challenge-3-5-minutes-2" class="section level3" number="9.1.3">
 <h3>
-<span class="header-section-number">8.1.3</span> Challenge 3 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-5-minutes-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1.3</span> Challenge 3 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-3-5-minutes-2"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Select all the rows in <code>gapminder</code> with data from 1975 and earlier</p>
 <details><summary>
 Solution to challenge 3
 </summary><p><br></p>
-<div class="sourceCode" id="cb423"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb480"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;=</span> <span class="fl">1975</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 710 × 6
    country      year      pop continent lifeExp gdpPercap
@@ -343,9 +343,9 @@ Solution to challenge 3
 </details>
 </blockquote>
 </div>
-<div id="challenge-4-5-minutes" class="section level3" number="8.1.4">
+<div id="challenge-4-5-minutes" class="section level3" number="9.1.4">
 <h3>
-<span class="header-section-number">8.1.4</span> Challenge 4 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-4-5-minutes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1.4</span> Challenge 4 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-4-5-minutes"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Select all the rows in <code>gapminder</code> with data from Canada, and just the columns
@@ -355,7 +355,7 @@ year, pop, and gdpPercap</p>
 <details><summary>
 Solution to challenge 4
 </summary><p><br></p>
-<div class="sourceCode" id="cb425"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb482"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Canada"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"pop"</span>, <span class="st">"gdpPercap"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre><code># A tibble: 12 × 3
     year      pop gdpPercap
@@ -379,26 +379,26 @@ Solution to challenge 4
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="create-tidy-data-with-tidyr.html"><span class="header-section-number">7</span> Create Tidy Data with tidyr</a></div>
-<div class="next"><a href="introduction-to-the-bcdata-package.html"><span class="header-section-number">9</span> Introduction to the bcdata package</a></div>
+<div class="prev"><a href="joining-related-data.html"><span class="header-section-number">8</span> Joining Related Data</a></div>
+<div class="next"><a href="introduction-to-the-bcdata-package.html"><span class="header-section-number">10</span> Introduction to the bcdata package</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#subsetting-data-frames"><span class="header-section-number">8</span> Subsetting Data Frames</a></li>
+<li><a class="nav-link" href="#subsetting-data-frames"><span class="header-section-number">9</span> Subsetting Data Frames</a></li>
 <li>
-<a class="nav-link" href="#basic-subsetting"><span class="header-section-number">8.1</span> Basic subsetting</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#selecting-rows"><span class="header-section-number">8.1.1</span> Selecting rows</a></li>
-<li><a class="nav-link" href="#challenge-2-5-minutes-2"><span class="header-section-number">8.1.2</span> Challenge 2 (5 minutes)</a></li>
-<li><a class="nav-link" href="#challenge-3-5-minutes-2"><span class="header-section-number">8.1.3</span> Challenge 3 (5 minutes)</a></li>
-<li><a class="nav-link" href="#challenge-4-5-minutes"><span class="header-section-number">8.1.4</span> Challenge 4 (5 minutes)</a></li>
+<a class="nav-link" href="#basic-subsetting"><span class="header-section-number">9.1</span> Basic subsetting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#selecting-rows"><span class="header-section-number">9.1.1</span> Selecting rows</a></li>
+<li><a class="nav-link" href="#challenge-2-5-minutes-3"><span class="header-section-number">9.1.2</span> Challenge 2 (5 minutes)</a></li>
+<li><a class="nav-link" href="#challenge-3-5-minutes-2"><span class="header-section-number">9.1.3</span> Challenge 3 (5 minutes)</a></li>
+<li><a class="nav-link" href="#challenge-4-5-minutes"><span class="header-section-number">9.1.4</span> Challenge 4 (5 minutes)</a></li>
 </ul>
 </li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/08-data-frames.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/bcgov/ds-intro-to-r-2-day/edit/master/08-data-frames.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/bcgov/ds-intro-to-r-2-day/blob/master/09-data-frames.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/bcgov/ds-intro-to-r-2-day/edit/master/09-data-frames.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -410,7 +410,7 @@ Solution to challenge 4
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Joining Related Data</strong>" was written by . It was last built on 2023-01-18.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
