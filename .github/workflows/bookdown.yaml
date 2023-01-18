@@ -44,6 +44,11 @@ jobs:
             git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }}
           fi
 
+      - name: Update notes
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        run: bash bin/skeleton.sh
+        shell: bash
+
       - name: Make course zip
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: Rscript make_course_zip.R

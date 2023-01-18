@@ -3,21 +3,22 @@
 reg="[0-9]{2}"
 rpl="---------------------------------------------------------------------"
 
-for x in ds-intro-to-r-2-day/*.Rmd
+for x in *.Rmd
 do
   if ! [[ $x =~ $reg ]]
   then
     continue
   fi
-  
-  x_out=${x/ds-intro-to-r-2-day\//}
-  x_out=${x_out/.Rmd/.R}
-  echo "creating ${x_out} from ${x}"
 
-# delete lines which do not start with hash or caret 
+  x_out=${x/.Rmd/.R}
+  x_out=intro-to-r-course-notes/"$x_out"
+  echo "removing old ${x_out} from course notes folder"
+  rm $x_out
+
+# delete lines which do not start with hash or caret
 # delete lines in the challenges between details tags
 # add line of dashes below section header lines
-# remove trailing dashes under challenge header lines 
+# remove trailing dashes under challenge header lines
 
 # surround script title with mulitple hashes`
 # lines in challenges still start with right angle bracket.  replace with hash
@@ -25,7 +26,7 @@ do
 # remove start and end chunk lines
 # remove blank lines starting with a hash
 
-
+  echo "creating new ${x_out} in course notes folder"
   sed -E \
     -e '/^(>|#)/ !d' \
     -e '/<details>/,/<\/details>/d' \
@@ -42,8 +43,6 @@ do
     -e 's/(#### Challenge [0-9]\n)//' \
     tmpfile.txt > $x_out
 
+rm tmpfile.txt
+
 done
-
-#rm tmpfile.txt
-
-
