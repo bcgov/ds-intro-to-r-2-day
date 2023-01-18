@@ -29,10 +29,7 @@ current and historical wages for each job position. A relevant join -- adding a
 column of data for each row -- may be merging the current wage for each employee 
 into the employee dataset.
 
-We may also want to choose only a portion of a dataset. For example, one dataset
-may include all students who ever attended a school along with their student ID, 
-years attended, grades for each class, graduation date (if applicable), and so on,
-whereas a second dataset may be simply a list of current students. A relevant join
+We may also want to choose only a portion of a dataset. For example, say we have a dataset including all students who ever attended a school along with their student ID, years attended, grades for each class, graduation date (if applicable), and so on, and a second dataset which is simply a list of current students. A relevant join
 -- retaining all columns of data, but for only specific rows -- may be a reduction 
 of the first dataset for only those students currently in attendance, but with all 
 their information (e.g., grades, etc.).
