@@ -13,7 +13,7 @@ keypoints:
 source: Rmd
 ---
 
-# Relational Data
+# Joining Related Data
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
