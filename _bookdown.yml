@@ -19,5 +19,6 @@ rmd_files:
     - "10-intro-to-rmarkdown.Rmd"
     - "11-rmarkdown-application-regression.Rmd"
     - "12-reprex.Rmd"
+    - "13-joins.Rmd"
 clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true

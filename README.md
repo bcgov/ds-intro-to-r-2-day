@@ -52,7 +52,7 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 - Seeking Help in R (15 minutes) **(Julie)**
 - Project Management with RStudio (60 minutes) **(Julie)**
 - Lunch
-- Data Structures (75 minutes)  **(Bonnie)**
+- Data Structures (75 minutes) **(Bonnie)**
 - Extra Practice + Questions (15 minutes)
 - BREAK ☕
 - Data Manipulation with `dplyr` (90 minutes) **(Julie)**
@@ -62,12 +62,12 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 ### Day 2
 
 - Review + Questions (30 minutes)
-- Making Publication Quality Plots with `ggplot2` Pt. 1 (60 minutes)  **(Bonnie)**
+- Making Publication Quality Plots with `ggplot2` Pt. 1 (60 minutes) **(Bonnie)**
 - BREAK ☕
-- Making Publication Quality Plots with `ggplot2` Pt. 2 (60 minutes)  **(Bonnie)**
+- Making Publication Quality Plots with `ggplot2` Pt. 2 (60 minutes) **(Bonnie)**
 - Extra Practice + Questions (15 minutes)
 - Lunch
-- Data Manipulation with `tidyr` (60 minutes)  **(Julie)**
+- Data Manipulation with `tidyr` (60 minutes) **(Julie)**
 - Extra Practice + Questions (15 minutes)
 - BREAK ☕
 - Joins with `dplyr` (45 minutes) **(Julie)**

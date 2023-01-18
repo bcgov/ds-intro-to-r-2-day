@@ -1,0 +1,374 @@
+---
+title: "Joining Related Data"
+teaching: 35
+exercises: 10
+questions:
+- "How can I change a dataframe based on information in another dataframe?"
+objectives:
+- "To understand the concepts of relational data and be able to change one table based on another with dplyr's `xxx_join()` functions."
+keypoints:
+- "Use the `dplyr` package to join relational data."
+- "Use `left_join()`, `full_join()`, `right_join()` or `inner_join()` to add data from one table to another."
+- "Use `semi_join()` or `anti_join()` to filter a table based on data in another table."
+source: Rmd
+---
+
+# Joining Related Data
+
+```{r, include=FALSE}
+source("bin/chunk-options.R")
+knitr_fig_path("13-")
+```
+## Introducing Relational Data
+In real life, we often have two or more related datasets that share a set of common columns.   We would like to combine these two datasets based on their common columns, known as **key** or **key variables**.
+
+We may want to change a dataset by adding information from a second dataset.
+For example, say we have a dataset containing employee information such as employee ID, 
+name, job position, hire date, etc., and a second dataset containing the
+current and historical wages for each job position. A relevant join -- adding a 
+column of data for each row -- may be merging the current wage for each employee 
+into the employee dataset.
+
+We may also want to choose only a portion of a dataset. For example, say we have a dataset including all students who ever attended a school along with their student ID, years attended, grades for each class, graduation date (if applicable), and so on, and a second dataset which is simply a list of current students. A relevant join
+-- retaining all columns of data, but for only specific rows -- may be a reduction 
+of the first dataset for only those students currently in attendance, but with all 
+their information (e.g., grades, etc.).
+
+The first example is that of a **mutating join** - where we change one table 
+by adding in data from a second table, based on matching through a key variable 
+that exists in both tables. The second example is that of a **filtering join** - 
+where we subset one table based on data in a second table, again based on matching 
+through a key variable.
+
+## Types of joins with dplyr
+
+The `dplyr` package has several functions that allow us to make these joins. 
+Assume we have tables _x_ and _y_.
+
+There are four types of **mutating joins**, which add new variables to one 
+table from matching rows in another:
+
+* **inner joins** include all rows in x AND y
+
+* **left joins** include all rows in x *plus* matching rows from y
+
+* **full joins** include all rows in x OR y
+
+* **right joins** include all rows in y *plus* matching rows from x
+
+Note that left, full and right joins are also called _outer joins_.
+
+There are two types of **filtering joins**, which filter observations from one 
+table based on whether or not they match an observation in the other table:
+
+* **semi joins** return all rows in x that HAVE a match in y
+
+* **anti joins** return all rows in x that do NOT HAVE a match in y
+
+The syntax for dplyr joins is simple: `xxx_join(x, y, by = "key_variable")`.
+
+## Introducing the nycflights13 data
+
+In prior lessons, you have seen datasets such as the gapminder and cat data. 
+Now let's use a different dataset, from the `nycflights13` package^[Wickham H (2022). nycflights13: Flights that Departed NYC in 2013. R package version 1.0.2, https://github.com/hadley/nycflights13.], 
+to explore relational data.
+
+This package contains information about all flights that departed from 
+New York City (e.g., EWR, JFK and LGA) to destinations in 2013. To help 
+understand what causes delays, it also includes a number of other useful datasets:
+
+* weather: hourly meteorological data for each airport
+* planes: construction information about each plane
+* airports: airport names and locations
+* airlines: translation between two letter carrier codes and names
+
+This diagram shows the relationships among the five datasets: 
+
+![Source: https://r4ds.had.co.nz/relational-data.html](fig/13-joins-fig1.png)
+
+The key **variables** between flights and the *other datasets* are:
+
+* flights dataset <- **origin** and **dest** both = **faa** -> *airports* dataset
+* flights dataset <- **tailnum** -> *planes* dataset
+* flights dataset <- **origin**, **year**, **month**, **day**, and **hour** -> *weather* dataset
+* flights dataset <- **carrier** -> *airlines* dataset
+
+## Getting started
+
+First, install the packages if you haven't already done so (you probably
+installed dplyr in a previous lesson):
+
+```{r,eval=FALSE}
+install.packages("dplyr")
+install.packages("nycflights13")
+```
+
+Then, load the packages:
+
+```{r,message=FALSE,warning=FALSE}
+library(dplyr)
+library(nycflights13)
+```
+
+Let's take a peek at the main `nycflights13` dataset, "flights":
+
+```{r}
+flights
+```
+
+And get some more information about the flights dataset:
+
+```{r,eval=FALSE}
+?flights
+```
+
+This tells us that the airline name, as opposed to a two-letter carrier abbreviation,
+can be found in the `airlines` dataset, and that the `airports` dataset gives
+more information on the flight destinations.
+
+First, we will drop some variables from flights to make our work more evident.
+
+```{r}
+flights_mini <- flights %>% select(year:day, dep_delay, carrier:dest)
+flights_mini
+```
+
+### Data analysis questions
+
+How would we answer the following questions:
+
+* what is the total number of flights per airline, but with 
+the airline name showing instead of the carrier abbreviation?
+
+* how many flights occurred when the temperature fell below freezing?
+
+* are older planes more likely to have a delayed arrival?
+
+Answering questions such as these requires us to join datasets.
+
+## Using **left_join()**
+
+The syntax for dplyr joins is: `xxx_join(x, y, by = "key_variable")`.
+
+To answer the first question (i.e., number of flights per airline), we need
+to join the flights and airlines datasets. We want a **left join** because we
+want to add the airline names from airlines (as our second table) to flights 
+(our first table). From above, we know that the flights dataset has a variable 
+called 'carrier', and that that same variable is in the airlines dataset -- this
+is our key (or "by" variable).
+
+```{r}
+left_join(x = flights_mini, y = airlines, by = "carrier")
+```
+
+We can see that the number of rows has stayed the same: 366,776, but that we 
+have one new column (at the end) called "name".
+
+Note that we could have instead used the pipe operator after summoning 'flights_mini'.
+
+```{r}
+flights_mini %>% left_join(y = airlines, by = "carrier")
+```
+
+Now, let's wrangle to get the total counts, by grouping by either carrier or the 
+new "name" variable brought in from the airlines dataset. Note that we can also 
+drop the argument names (e.g., no "y" in "y = airlines"). I tend to keep the 
+"by" argument name in to keep my code a bit more clear.
+
+```{r}
+flights_mini %>%
+  left_join(airlines, by = "carrier") %>%
+  group_by(name) %>%
+  summarize(total_flights = n())
+```
+
+We can also rename variables within our join call. Let's rename "name" to 
+"airline" (and sort descending by number of flights).
+
+```{r}
+flights_mini %>%
+  left_join(airlines %>% select(carrier, Airline = name), by = "carrier") %>%
+  ## make sure you use the new variable name
+  group_by(Airline) %>%
+  summarize(`Total Flights` = n()) %>% 
+  arrange(desc(`Total Flights`))
+```
+
+### Challenge 1 (2 minutes)
+>
+> How would you add each plane's manufacture year (rename it "manufacture_year") 
+to the flights dataset?
+>
+>
+> <details>
+> 
+> <summary>
+> Solution to challenge 1
+> </summary>
+> 
+> <br />
+>```{r}
+> left_join(flights_mini, planes %>% select(tailnum, manufacture_year = year), by = "tailnum")
+>
+> ## same as this:
+> flights_mini %>% 
+>   left_join(planes %>% select(tailnum, manufacture_year = year), by = "tailnum")
+>```
+> </details>
+
+One thing we haven't specifically noted is that mutating joins will bring in all
+variables from the matching dataset. You'll see from the solution above that we
+can change that behaviour by using `select()` and listing only those variables we 
+want to join in (don't forget the key variable!).
+
+### Modifying the `by` argument
+
+#### > no by specification
+
+We can modify the "by" argument a few ways. See what happens if we don't 
+specify a `by` variable.
+
+```{r}
+## joining without specifying a `by` variable
+left_join(flights_mini, airlines)
+```
+
+R will match by any variable with the same name in both datasets. Be careful - 
+this might not be what you want!
+
+```{r}
+left_join(flights_mini, planes)
+```
+
+The variable "year" exists in both flights_mini and planes, but means different 
+things. When not specifying the key, R assumed you wanted to join by "year" as
+well, which resulted in a lot of NAs!
+
+#### > multiple keys
+
+You may have noticed earlier that we can join by more than one variable. To do
+so, simply use `c("variable1", "variable2", "etc")` for your keys. Notice that 
+year, month, day, and origin are in both the flights_mini and weather datasets.
+
+```{r}
+left_join(flights_mini, weather, by = c("year", "month", "day", "origin"))
+```
+
+You'll see that we now have over 8 million rows. This is because the "hour" 
+variable in weather matched many times for each year X month X day X origin
+combination, resulting in repeat of information from flights_mini.
+
+What happens if you didn't know that "year" was in both datasets?
+
+```{r}
+left_join(flights_mini, weather, by = c("month", "day", "origin"))
+```
+
+The "year" variable from flights_mini has been renamed "year.x", and "year" 
+from "weather" has been renamed "year.y". (Whenever this happens, variables 
+ending in ".x" come from the first table, while those ending in ".y" come from
+the other table.)
+
+#### > key variable with different names
+
+We can also match on a key that has a different name in the related tables 
+(although its values are the same). The variable "faa" in airports is equivalent
+to flights_mini's "dest" variable. Here are three ways of getting the same result.
+
+```{r}
+## matching key name in the `by`
+left_join(flights_mini, airports, by = c("dest" = "faa"))
+
+## renaming key in a select
+left_join(flights_mini, airports %>% rename(dest = faa), by = "dest")
+
+## syntax with pipe operator
+flights_mini %>% left_join(airports %>% rename(dest = faa))
+
+```
+
+## Other mutating joins
+
+We have only been working with left joins so far. The idea is exactly the same 
+for full, right and inner joins.
+
+* `full_join(x, y, by)`  - everything!
+
+* `right_join(x, y, by)` - equivalent to left_join(y, x, by), but the columns and rows will be ordered differently
+
+* `inner_join(x, y, by)` - only rows found in both
+
+The difference is what you end up with.
+
+Let's create two small datasets to compare the results of the above types of joins.
+Both tables have an ID column -- this is our key -- and one other variable. 
+
+```{r}
+tbl1 <- tibble(ID = c("ID_1", "ID_2", "ID_3", "ID_4", "ID_5", "ID_6"),
+              activity1 = c("cycling", "basketball", "kung fu", "reading", "running", "skating"))
+tbl2 <- tibble(ID = c("ID_2", "ID_4", "ID_6", "ID_8"), 
+              place2 = c("outside court", "library", "rec center", "pool"))
+
+tbl1
+tbl2
+```
+
+```{r}
+left_join(tbl1, tbl2, by = "ID")
+right_join(tbl2, tbl1, by = "ID")
+right_join(tbl1, tbl2, by = "ID")
+full_join(tbl1, tbl2, by = "ID")
+inner_join(tbl1, tbl2, by = "ID")
+```
+
+### Challenge 2 (5 minutes)
+
+> How many flights occurred when the temperature fell below freezing?
+>
+>**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson.
+>
+> <details>
+> 
+> <summary>
+> Solution to challenge 2
+> </summary>
+> 
+> <br />
+>```{r}
+> ## first, find the days where the temperature fell below 32 F (freezing)
+> freezing <- weather %>%
+>   group_by(month, day) %>%
+>   summarize(mean_temp = mean(temp, na.rm = TRUE), .groups = "drop") %>%
+>   filter(mean_temp < 32)
+> 
+> ## inner join to get only days with freezing temperature
+> flights_mini %>% inner_join(freezing, by = c("month", "day")) ## number of rows
+> flights_mini %>% inner_join(freezing) %>% tally()             ## or, get the number
+>
+>```
+> </details>
+
+## Filtering joins
+
+In Challenge 2, we could have done a semi join instead of an inner join. That is,
+we were essentially filtering the 'flights_mini' dataset to get only those flights
+that occurred on days where the average temperature was below 32F. We didn't
+do anything with the actual temperature other than drop observations; therefore,
+we didn't actually need the 'mean_temp' variable.
+
+```{r}
+flights_mini %>% semi_join(freezing, by = c("month", "day"))
+```
+
+That is what happens with **filtering joins**: observations from one table are 
+filtered based on whether or not they match an observation in the other table, 
+but no information is brought in from the other table. Specifically, **semi joins**
+return all rows in x with a match in y, while **anti joins** return all rows in x 
+without a match in y. Note, that the syntax for filtering joins is the same: 
+`xxx_join(x, y, by = "key_variable")`.
+
+## Other great resources
+
+* [Holly Emblem blog on Joins](https://hollyemblem.medium.com/joining-data-with-dplyr-in-r-874698eb8898)
+* [Two-Table Verbs](https://cran.r-project.org/web/packages/dplyr/vignettes/two-table.html)
+* [nycflights13 Datasets](https://nycflights13.tidyverse.org/)
