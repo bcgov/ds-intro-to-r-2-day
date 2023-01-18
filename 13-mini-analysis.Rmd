@@ -5,9 +5,12 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
-knitr_fig_path("13-")
+ knitr_fig_path("13-")
 ```
 
+# (PART) Micro Project {-} 
+# Micro-Analysis
+ 
 ```{r, packages}
 
 #dplyr, tidyr, ggplot, bcdata
