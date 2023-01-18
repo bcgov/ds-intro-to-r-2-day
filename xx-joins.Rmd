@@ -23,8 +23,8 @@ knitr_fig_path("xx-")
 In real life, we often have two or more related datasets that share a set of common columns.   We would like to combine these two datasets based on their common columns, known as **key** or **key variables**.
 
 We may want to change a dataset by adding information from a second dataset.
-For example, one dataset may contain employee information such as employee ID, 
-name, job position, hire date, etc., whereas a second dataset may contain the
+For example, say we have a dataset containing employee information such as employee ID, 
+name, job position, hire date, etc., and a second dataset containing the
 current and historical wages for each job position. A relevant join -- adding a 
 column of data for each row -- may be merging the current wage for each employee 
 into the employee dataset.
