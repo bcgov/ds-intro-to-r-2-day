@@ -16,7 +16,7 @@ source: Rmd
 
 # Seeking Help in R
 
-## Reading Help files
+## Reading help files
 
 R, and every package, provides help files for functions. The general syntax to search for help on any
 function, "function_name", from a specific function that is in a package loaded into your
@@ -43,22 +43,22 @@ Each help page is broken down into sections:
 Different functions might have different sections, but these are the main ones you should be aware of.
 
 ::: {.rmdtip}
-**Tip: Running Examples**
+**Tip: Running examples**
 
 From within the function help page, you can highlight code in the 
 Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in 
-RStudio console. This is gives you a quick way to get a feel for
+RStudio console. This gives you a quick way to get a feel for
 how a function works.
 
 **Tip: Reading help files**
 
 One of the most daunting aspects of R is the large number of functions
-available. It would be prohibitive, if not impossible to remember the
+available. It would be prohibitive, if not impossible, to remember the
 correct usage for every function you use. Luckily, the help files
 mean you don't have to!
 :::
 
-## Special Operators
+## Special operators
 
 To seek help on special operators, use quotes:
 
@@ -77,19 +77,19 @@ Without any arguments, `vignette()` will list all vignettes for all installed pa
 If a package doesn't have any vignettes, you can usually find help by typing
 `help("package-name")`.
 
-Many packages also have a web presence. Google is your friend here. For example here is the package website for the ggplot2 package: https://ggplot2.tidyverse.org/
+Many packages also have a web presence. Google is your friend here. For example, here is the package website for the ggplot2 package: https://ggplot2.tidyverse.org/.
 
 ## Finding help for functions in packages
 
 If you are looking for help on a function that is within a package, there are several ways to find it:
 
-- If you have loaded the package (via `library(pkg_name)`) and know the package name you can simply use `?function_name`
+- If you have loaded the package (via `library(pkg_name)`) and know the package name, you can simply use `?function_name`
 - If you haven't loaded the package, you can use the following syntax: `?package_name::function_name` or `help("function_name", package = "package_name")`
 - Often the easiest way is to load the function index for a package with `help(package = "package_name")` and click on the link for the function for which you are seeking help
 
 ## When you kind of remember the function
 
-If you're not sure what package a function is in, or how it's specifically spelled you can do a fuzzy search:
+If you're not sure what package a function is in or how it's specifically spelled, you can do a fuzzy search:
 
 
 ```r
@@ -98,15 +98,18 @@ If you're not sure what package a function is in, or how it's specifically spell
 
 ## When you have no idea where to begin
 
-If you don't know what function or package you need to use
+If you don't know what function or package you need to use,
 [CRAN Task Views](http://cran.at.r-project.org/web/views)
 is a specially maintained list of packages grouped into
 fields. This can be a good starting point.
 
+## Challenges (10 minutes)
+
 ### Challenge 1
 
 > Look at the help for the `sum()` function. What are two ways you can pass numbers 
-> into the function so the are added together?
+> into the function so they are added together?
+> 
 > 
 > <details>
 > 
@@ -125,9 +128,6 @@ fields. This can be a good starting point.
 > ```
 > 
 > </details>
-
-
-## Challenges (10 minutes)
 
 ### Challenge 2
 
@@ -195,10 +195,8 @@ fields. This can be a good starting point.
 > 
 > </details>
 
-
-
-
 ### Challenge 3
+
 > Use help to find a function (and its associated parameters) that you could
 > use to load data from a csv file in which columns are delimited with "\t"
 > (tab) and the decimal point is a "." (period). This check for decimal
@@ -221,14 +219,14 @@ fields. This can be a good starting point.
 > `read.table(file, sep="\t")` (the period is the *default* decimal
 > separator for `read.table()`, although you may have to change
 > the `comment.char` argument as well if your data file contains
-> hash (#) characters
+> hash (#) characters.
 > 
 > </details>
-
 
 ### Challenge 4
 
 > Find the help for the `mutate` function in the `dplyr` package. What is its purpose? What do you notice different about this help page?
+> 
 > 
 > <details>
 > 
@@ -250,7 +248,7 @@ fields. This can be a good starting point.
 > help(package = "dplyr") # and click on the 'mutate' link
 > ```
 > `mutate()` adds new variables and preserves existing ones.
-> The help page for mutate also documents the function `transmute()`
+> The help page for mutate also documents the function `transmute()`.
 > 
 > </details>
 

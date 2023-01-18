@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 2 Seeking Help in R | Introduction to Data Science using R Workshop</title>
-<meta name="description" content="2.1 Reading Help files R, and every package, provides help files for functions. The general syntax to search for help on any function, “function_name”, from a specific function that is in a...">
-<meta name="generator" content="bookdown 0.31 with bs4_book()">
-<meta property="og:title" content="Chapter 2 Seeking Help in R | Introduction to Data Science using R Workshop">
+<title>Chapter 2 Seeking Help in R | Joining Related Data</title>
+<meta name="description" content="2.1 Reading help files R, and every package, provides help files for functions. The general syntax to search for help on any function, “function_name”, from a specific function that is in a...">
+<meta name="generator" content="bookdown 0.32 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Seeking Help in R | Joining Related Data">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://bcgov.github.io/ds-intro-to-r-2-day/seeking-help-in-r.html">
-<meta property="og:description" content="2.1 Reading Help files R, and every package, provides help files for functions. The general syntax to search for help on any function, “function_name”, from a specific function that is in a...">
+<meta property="og:description" content="2.1 Reading help files R, and every package, provides help files for functions. The general syntax to search for help on any function, “function_name”, from a specific function that is in a...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 2 Seeking Help in R | Introduction to Data Science using R Workshop">
-<meta name="twitter:description" content="2.1 Reading Help files R, and every package, provides help files for functions. The general syntax to search for help on any function, “function_name”, from a specific function that is in a...">
+<meta name="twitter:title" content="Chapter 2 Seeking Help in R | Joining Related Data">
+<meta name="twitter:description" content="2.1 Reading help files R, and every package, provides help files for functions. The general syntax to search for help on any function, “function_name”, from a specific function that is in a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">Introduction to Data Science using R Workshop</a>
+        <a href="index.html" title="">Joining Related Data</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -58,6 +58,7 @@
 <li><a class="" href="data-analysis-reports.html"><span class="header-section-number">10</span> Data analysis reports</a></li>
 <li><a class="" href="applications-of-r-markdown.html"><span class="header-section-number">11</span> Applications of R Markdown</a></li>
 <li><a class="" href="seeking-help-from-others-with-reprex.html"><span class="header-section-number">12</span> Seeking Help from Others with reprex</a></li>
+<li><a class="" href="joining-related-data.html"><span class="header-section-number">13</span> Joining Related Data</a></li>
 </ul>
 
         <div class="book-extra">
@@ -71,7 +72,7 @@
 </h1>
 <div id="reading-help-files" class="section level2" number="2.1">
 <h2>
-<span class="header-section-number">2.1</span> Reading Help files<a class="anchor" aria-label="anchor" href="#reading-help-files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> Reading help files<a class="anchor" aria-label="anchor" href="#reading-help-files"><i class="fas fa-link"></i></a>
 </h2>
 <p>R, and every package, provides help files for functions. The general syntax to search for help on any
 function, “function_name”, from a specific function that is in a package loaded into your
@@ -92,21 +93,21 @@ namespace (your interactive R session):</p>
 </ul>
 <p>Different functions might have different sections, but these are the main ones you should be aware of.</p>
 <div class="rmdtip">
-<p><strong>Tip: Running Examples</strong></p>
+<p><strong>Tip: Running examples</strong></p>
 <p>From within the function help page, you can highlight code in the
 Examples and hit <kbd>Ctrl</kbd>+<kbd>Return</kbd> to run it in
-RStudio console. This is gives you a quick way to get a feel for
+RStudio console. This gives you a quick way to get a feel for
 how a function works.</p>
 <p><strong>Tip: Reading help files</strong></p>
 <p>One of the most daunting aspects of R is the large number of functions
-available. It would be prohibitive, if not impossible to remember the
+available. It would be prohibitive, if not impossible, to remember the
 correct usage for every function you use. Luckily, the help files
 mean you don’t have to!</p>
 </div>
 </div>
 <div id="special-operators" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">2.2</span> Special Operators<a class="anchor" aria-label="anchor" href="#special-operators"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Special operators<a class="anchor" aria-label="anchor" href="#special-operators"><i class="fas fa-link"></i></a>
 </h2>
 <p>To seek help on special operators, use quotes:</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
@@ -122,7 +123,7 @@ Without any arguments, <code><a href="https://rdrr.io/r/utils/vignette.html">vig
 <code>package-name</code>, and <code>vignette("vignette-name")</code> will open the specified vignette.</p>
 <p>If a package doesn’t have any vignettes, you can usually find help by typing
 <code>help("package-name")</code>.</p>
-<p>Many packages also have a web presence. Google is your friend here. For example here is the package website for the ggplot2 package: <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a></p>
+<p>Many packages also have a web presence. Google is your friend here. For example, here is the package website for the ggplot2 package: <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a>.</p>
 </div>
 <div id="finding-help-for-functions-in-packages" class="section level2" number="2.4">
 <h2>
@@ -130,7 +131,7 @@ Without any arguments, <code><a href="https://rdrr.io/r/utils/vignette.html">vig
 </h2>
 <p>If you are looking for help on a function that is within a package, there are several ways to find it:</p>
 <ul>
-<li>If you have loaded the package (via <code><a href="https://rdrr.io/r/base/library.html">library(pkg_name)</a></code>) and know the package name you can simply use <code>?function_name</code>
+<li>If you have loaded the package (via <code><a href="https://rdrr.io/r/base/library.html">library(pkg_name)</a></code>) and know the package name, you can simply use <code>?function_name</code>
 </li>
 <li>If you haven’t loaded the package, you can use the following syntax: <code>?package_name::function_name</code> or <code>help("function_name", package = "package_name")</code>
 </li>
@@ -141,7 +142,7 @@ Without any arguments, <code><a href="https://rdrr.io/r/utils/vignette.html">vig
 <h2>
 <span class="header-section-number">2.5</span> When you kind of remember the function<a class="anchor" aria-label="anchor" href="#when-you-kind-of-remember-the-function"><i class="fas fa-link"></i></a>
 </h2>
-<p>If you’re not sure what package a function is in, or how it’s specifically spelled you can do a fuzzy search:</p>
+<p>If you’re not sure what package a function is in or how it’s specifically spelled, you can do a fuzzy search:</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="op">?</span><span class="va">function_name</span></span></code></pre></div>
 </div>
@@ -149,17 +150,22 @@ Without any arguments, <code><a href="https://rdrr.io/r/utils/vignette.html">vig
 <h2>
 <span class="header-section-number">2.6</span> When you have no idea where to begin<a class="anchor" aria-label="anchor" href="#when-you-have-no-idea-where-to-begin"><i class="fas fa-link"></i></a>
 </h2>
-<p>If you don’t know what function or package you need to use
+<p>If you don’t know what function or package you need to use,
 <a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a>
 is a specially maintained list of packages grouped into
 fields. This can be a good starting point.</p>
-<div id="challenge-1" class="section level3" number="2.6.1">
+</div>
+<div id="challenges-10-minutes" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> Challenges (10 minutes)<a class="anchor" aria-label="anchor" href="#challenges-10-minutes"><i class="fas fa-link"></i></a>
+</h2>
+<div id="challenge-1" class="section level3" number="2.7.1">
 <h3>
-<span class="header-section-number">2.6.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7.1</span> Challenge 1<a class="anchor" aria-label="anchor" href="#challenge-1"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Look at the help for the <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> function. What are two ways you can pass numbers
-into the function so the are added together?</p>
+into the function so they are added together?</p>
 <details><summary>
 Solution to challenge 1
 </summary><p><br></p>
@@ -171,14 +177,9 @@ Solution to challenge 1
 </details>
 </blockquote>
 </div>
-</div>
-<div id="challenges-10-minutes" class="section level2" number="2.7">
-<h2>
-<span class="header-section-number">2.7</span> Challenges (10 minutes)<a class="anchor" aria-label="anchor" href="#challenges-10-minutes"><i class="fas fa-link"></i></a>
-</h2>
-<div id="challenge-2" class="section level3" number="2.7.1">
+<div id="challenge-2" class="section level3" number="2.7.2">
 <h3>
-<span class="header-section-number">2.7.1</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7.2</span> Challenge 2<a class="anchor" aria-label="anchor" href="#challenge-2"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Look at the help for the <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> function. You’ll need to use this later.
@@ -216,9 +217,9 @@ examples, or try <code>example('paste')</code>.)</p>
 </details>
 </blockquote>
 </div>
-<div id="challenge-3" class="section level3" number="2.7.2">
+<div id="challenge-3" class="section level3" number="2.7.3">
 <h3>
-<span class="header-section-number">2.7.2</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7.3</span> Challenge 3<a class="anchor" aria-label="anchor" href="#challenge-3"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Use help to find a function (and its associated parameters) that you could
@@ -236,13 +237,13 @@ decimal separator is read.delim(). You can also do this with
 <code>read.table(file, sep="\t")</code> (the period is the <em>default</em> decimal
 separator for <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>, although you may have to change
 the <code>comment.char</code> argument as well if your data file contains
-hash (#) characters</p>
+hash (#) characters.</p>
 </details>
 </blockquote>
 </div>
-<div id="challenge-4" class="section level3" number="2.7.3">
+<div id="challenge-4" class="section level3" number="2.7.4">
 <h3>
-<span class="header-section-number">2.7.3</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7.4</span> Challenge 4<a class="anchor" aria-label="anchor" href="#challenge-4"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>Find the help for the <code>mutate</code> function in the <code>dplyr</code> package. What is its purpose? What do you notice different about this help page?</p>
@@ -259,7 +260,7 @@ Solution to challenge 4
 <span><span class="co"># OR</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"dplyr"</span><span class="op">)</span> <span class="co"># and click on the 'mutate' link</span></span></code></pre></div>
 <p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> adds new variables and preserves existing ones.
-The help page for mutate also documents the function <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute()</a></code></p>
+The help page for mutate also documents the function <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute()</a></code>.</p>
 </details>
 </blockquote>
 
@@ -273,19 +274,18 @@ The help page for mutate also documents the function <code><a href="https://dply
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#seeking-help-in-r"><span class="header-section-number">2</span> Seeking Help in R</a></li>
-<li><a class="nav-link" href="#reading-help-files"><span class="header-section-number">2.1</span> Reading Help files</a></li>
-<li><a class="nav-link" href="#special-operators"><span class="header-section-number">2.2</span> Special Operators</a></li>
+<li><a class="nav-link" href="#reading-help-files"><span class="header-section-number">2.1</span> Reading help files</a></li>
+<li><a class="nav-link" href="#special-operators"><span class="header-section-number">2.2</span> Special operators</a></li>
 <li><a class="nav-link" href="#getting-help-on-packages"><span class="header-section-number">2.3</span> Getting help on packages</a></li>
 <li><a class="nav-link" href="#finding-help-for-functions-in-packages"><span class="header-section-number">2.4</span> Finding help for functions in packages</a></li>
 <li><a class="nav-link" href="#when-you-kind-of-remember-the-function"><span class="header-section-number">2.5</span> When you kind of remember the function</a></li>
-<li>
-<a class="nav-link" href="#when-you-have-no-idea-where-to-begin"><span class="header-section-number">2.6</span> When you have no idea where to begin</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1"><span class="header-section-number">2.6.1</span> Challenge 1</a></li></ul>
-</li>
+<li><a class="nav-link" href="#when-you-have-no-idea-where-to-begin"><span class="header-section-number">2.6</span> When you have no idea where to begin</a></li>
 <li>
 <a class="nav-link" href="#challenges-10-minutes"><span class="header-section-number">2.7</span> Challenges (10 minutes)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#challenge-2"><span class="header-section-number">2.7.1</span> Challenge 2</a></li>
-<li><a class="nav-link" href="#challenge-3"><span class="header-section-number">2.7.2</span> Challenge 3</a></li>
-<li><a class="nav-link" href="#challenge-4"><span class="header-section-number">2.7.3</span> Challenge 4</a></li>
+<li><a class="nav-link" href="#challenge-1"><span class="header-section-number">2.7.1</span> Challenge 1</a></li>
+<li><a class="nav-link" href="#challenge-2"><span class="header-section-number">2.7.2</span> Challenge 2</a></li>
+<li><a class="nav-link" href="#challenge-3"><span class="header-section-number">2.7.3</span> Challenge 3</a></li>
+<li><a class="nav-link" href="#challenge-4"><span class="header-section-number">2.7.4</span> Challenge 4</a></li>
 </ul>
 </li>
 </ul>
@@ -305,7 +305,7 @@ The help page for mutate also documents the function <code><a href="https://dply
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-12.</p>
+    <p>"<strong>Joining Related Data</strong>" was written by . It was last built on 2023-01-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
