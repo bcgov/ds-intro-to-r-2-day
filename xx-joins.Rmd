@@ -20,8 +20,7 @@ source("bin/chunk-options.R")
 knitr_fig_path("xx-")
 ```
 ## Introducing Relational Data
-In real life, we often have two or more related datasets that have a key 
-linking the data.
+In real life, we often have two or more related datasets that share a set of common columns.   We would like to combine these two datasets based on their common columns, known as **key** or **key variables**.
 
 We may want to change a dataset by adding information from a second dataset.
 For example, one dataset may contain employee information such as employee ID, 
