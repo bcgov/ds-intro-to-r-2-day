@@ -19,7 +19,7 @@ source: Rmd
 source("bin/chunk-options.R")
 knitr_fig_path("xx-")
 ```
-
+## Introducing Relational Data
 In real life, we often have two or more related datasets that have a key 
 linking the data.
 
