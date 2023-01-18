@@ -50,11 +50,11 @@ table from matching rows in another:
 
 * **inner joins** include all rows in x AND y
 
-* **left joins** include all rows in x
+* **left joins** include all rows in x *plus* matching rows from y
 
 * **full joins** include all rows in x OR y
 
-* **right joins** include all rows in y
+* **right joins** include all rows in y *plus* matching rows from x
 
 Note that left, full and right joins are also called _outer joins_.
 
