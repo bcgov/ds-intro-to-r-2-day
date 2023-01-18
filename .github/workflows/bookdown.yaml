@@ -30,7 +30,7 @@ jobs:
       - name: Install packages
         run: |
           R -e 'install.packages("sf", type = "binary")'
-          R -e 'install.packages(c("tidyverse", "reprex", "bookdown", "bcdata", "mapview", "bslib", "downlit"))'
+          R -e 'install.packages(c("tidyverse", "reprex", "bookdown", "bcdata", "mapview", "bslib", "downlit", "nycflights13"))'
 
       - name: Build site
         run: R -e 'bookdown::render_book("index.Rmd")'
