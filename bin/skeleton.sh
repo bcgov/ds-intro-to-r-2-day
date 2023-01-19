@@ -26,24 +26,24 @@ do
 # remove blank lines starting with a hash
 
 
-  sed -E \
-    -e '/^(>|#)/ !d' \
-    -e '/<details>/,/<\/details>/d' \
-    -e 's/^(##)(.*)$/\1\2\n## '"$rpl"' \n\n\n\n/' \
-    $x > tmpfile.txt
+#  sed -E \
+#    -e '/^(>|#)/ !d' \
+#    -e '/<details>/,/<\/details>/d' \
+#    -e 's/^(##)(.*)$/\1\2\n## '"$rpl"' \n\n\n\n/' \
+#    $x > tmpfile.txt
 
-   sed -E \
-    -e '1s/^(#)(.*)$/######### \2 #########/' \
-    -e '/^#([[:alnum:]])/d' \
-    -e 's/^>/#/' \
-    -e 's/(### Challenge [0-9])(.*)/#\1/' \
-    -e '/^(# `)/d' \
-    -e '/^#([[:space:]])$/d' \
-    -e 's/(#### Challenge [0-9]\n)//' \
-    tmpfile.txt > $x_out
+#   sed -E \
+#    -e '1s/^(#)(.*)$/######### \2 #########/' \
+#    -e '/^#([[:alnum:]])/d' \
+#    -e 's/^>/#/' \
+#    -e 's/(### Challenge [0-9])(.*)/#\1/' \
+#    -e '/^(# `)/d' \
+#    -e '/^#([[:space:]])$/d' \
+#    -e 's/(#### Challenge [0-9]\n)//' \
+#    tmpfile.txt > $x_out
 
-done
+#done
 
-rm tmpfile.txt
+#rm tmpfile.txt
 
 
