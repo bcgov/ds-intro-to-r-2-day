@@ -26,11 +26,11 @@ do
 # remove blank lines starting with a hash
 
 
-#  sed -E \
-#    -e '/^(>|#)/ !d' \
-#    -e '/<details>/,/<\/details>/d' \
-#    -e 's/^(##)(.*)$/\1\2\n## '"$rpl"' \n\n\n\n/' \
-#    $x > tmpfile.txt
+  sed -E \
+    -e '/^(>|#)/ !d' \
+    -e '/<details>/,/<\/details>/d' \
+    -e 's/^(##)(.*)$/\1\2\n## '"$rpl"' \n\n\n\n/' \
+    $x > tmpfile.txt
 
 #   sed -E \
 #    -e '1s/^(#)(.*)$/######### \2 #########/' \
