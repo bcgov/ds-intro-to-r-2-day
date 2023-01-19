@@ -32,7 +32,7 @@ The goal of this 2 day workshop is to teach new-to-programming data professional
 
 - Introduction to Course (30 min) **(Bonnie)** <!-- CoC, breakout rooms w/ ice breaker, how to ask questions, etc. -->
 - Demo (10 min) **(Bonnie)**
-- [Introduction to R & RStudio] (50 minutes) **(Bonnie)**
+- [Introduction to R & RStudio][Introduction to R and RStudio] (50 minutes) **(Bonnie)**
 - BREAK ☕
 - [Seeking Help in R] (15 minutes) **(Julie)**
 - [Project Management with RStudio] (60 minutes) **(Julie)**
