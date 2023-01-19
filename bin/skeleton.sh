@@ -42,7 +42,7 @@ do
 #    -e 's/(#### Challenge [0-9]\n)//' \
 #    tmpfile.txt > $x_out
 
-#done
+done
 
 #rm tmpfile.txt
 
