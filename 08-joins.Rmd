@@ -221,9 +221,9 @@ variables from the matching dataset. You'll see from the solution above that we
 can change that behaviour by using `select()` and listing only those variables we 
 want to join in (don't forget the key variable!).
 
-### Modifying the `by` argument
+## Modifying the `by` argument
 
-#### > no by specification
+###  Excluding the `by` argument
 
 We can modify the "by" argument a few ways. See what happens if we don't 
 specify a `by` variable.
@@ -244,7 +244,7 @@ The variable "year" exists in both flights_mini and planes, but means different
 things. When not specifying the key, R assumed you wanted to join by "year" as
 well, which resulted in a lot of NAs!
 
-#### > multiple keys
+### Joining on multiple keys
 
 You may have noticed earlier that we can join by more than one variable. To do
 so, simply use `c("variable1", "variable2", "etc")` for your keys. Notice that 
@@ -269,7 +269,7 @@ from "weather" has been renamed "year.y". (Whenever this happens, variables
 ending in ".x" come from the first table, while those ending in ".y" come from
 the other table.)
 
-#### > key variable with different names
+### Key variables with different names
 
 We can also match on a key that has a different name in the related tables 
 (although its values are the same). The variable "faa" in airports is equivalent
