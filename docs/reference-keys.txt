@@ -105,9 +105,9 @@ data-analysis-questions
 using-left_join
 challenge-1-2-minutes
 modifying-the-by-argument
-no-by-specification
-multiple-keys
-key-variable-with-different-names
+excluding-the-by-argument
+joining-on-multiple-keys
+key-variables-with-different-names
 other-mutating-joins
 challenge-2-5-minutes-2
 filtering-joins

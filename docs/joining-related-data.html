@@ -366,14 +366,15 @@ variables from the matching dataset. You’ll see from the solution above that w
 can change that behaviour by using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and listing only those variables we
 want to join in (don’t forget the key variable!).</p>
 </div>
-<div id="modifying-the-by-argument" class="section level3" number="8.5.2">
+</div>
+<div id="modifying-the-by-argument" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> Modifying the <code>by</code> argument<a class="anchor" aria-label="anchor" href="#modifying-the-by-argument"><i class="fas fa-link"></i></a>
+</h2>
+<div id="excluding-the-by-argument" class="section level3" number="8.6.1">
 <h3>
-<span class="header-section-number">8.5.2</span> Modifying the <code>by</code> argument<a class="anchor" aria-label="anchor" href="#modifying-the-by-argument"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.6.1</span> Excluding the <code>by</code> argument<a class="anchor" aria-label="anchor" href="#excluding-the-by-argument"><i class="fas fa-link"></i></a>
 </h3>
-<div id="no-by-specification" class="section level4" number="8.5.2.1">
-<h4>
-<span class="header-section-number">8.5.2.1</span> &gt; no by specification<a class="anchor" aria-label="anchor" href="#no-by-specification"><i class="fas fa-link"></i></a>
-</h4>
 <p>We can modify the “by” argument a few ways. See what happens if we don’t
 specify a <code>by</code> variable.</p>
 <div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
@@ -419,10 +420,10 @@ this might not be what you want!</p>
 things. When not specifying the key, R assumed you wanted to join by “year” as
 well, which resulted in a lot of NAs!</p>
 </div>
-<div id="multiple-keys" class="section level4" number="8.5.2.2">
-<h4>
-<span class="header-section-number">8.5.2.2</span> &gt; multiple keys<a class="anchor" aria-label="anchor" href="#multiple-keys"><i class="fas fa-link"></i></a>
-</h4>
+<div id="joining-on-multiple-keys" class="section level3" number="8.6.2">
+<h3>
+<span class="header-section-number">8.6.2</span> Joining on multiple keys<a class="anchor" aria-label="anchor" href="#joining-on-multiple-keys"><i class="fas fa-link"></i></a>
+</h3>
 <p>You may have noticed earlier that we can join by more than one variable. To do
 so, simply use <code>c("variable1", "variable2", "etc")</code> for your keys. Notice that
 year, month, day, and origin are in both the flights_mini and weather datasets.</p>
@@ -471,10 +472,10 @@ from “weather” has been renamed “year.y”. (Whenever this happens, variab
 ending in “.x” come from the first table, while those ending in “.y” come from
 the other table.)</p>
 </div>
-<div id="key-variable-with-different-names" class="section level4" number="8.5.2.3">
-<h4>
-<span class="header-section-number">8.5.2.3</span> &gt; key variable with different names<a class="anchor" aria-label="anchor" href="#key-variable-with-different-names"><i class="fas fa-link"></i></a>
-</h4>
+<div id="key-variables-with-different-names" class="section level3" number="8.6.3">
+<h3>
+<span class="header-section-number">8.6.3</span> Key variables with different names<a class="anchor" aria-label="anchor" href="#key-variables-with-different-names"><i class="fas fa-link"></i></a>
+</h3>
 <p>We can also match on a key that has a different name in the related tables
 (although its values are the same). The variable “faa” in airports is equivalent
 to flights_mini’s “dest” variable. Here are three ways of getting the same result.</p>
@@ -535,10 +536,9 @@ to flights_mini’s “dest” variable. Here are three ways of getting the same
 #   tz &lt;dbl&gt;, dst &lt;chr&gt;, tzone &lt;chr&gt;</code></pre>
 </div>
 </div>
-</div>
-<div id="other-mutating-joins" class="section level2" number="8.6">
+<div id="other-mutating-joins" class="section level2" number="8.7">
 <h2>
-<span class="header-section-number">8.6</span> Other mutating joins<a class="anchor" aria-label="anchor" href="#other-mutating-joins"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.7</span> Other mutating joins<a class="anchor" aria-label="anchor" href="#other-mutating-joins"><i class="fas fa-link"></i></a>
 </h2>
 <p>We have only been working with left joins so far. The idea is exactly the same
 for full, right and inner joins.</p>
@@ -626,9 +626,9 @@ Both tables have an ID column – this is our key – and one other variable.</p
 1 ID_2  basketball outside court
 2 ID_4  reading    library      
 3 ID_6  skating    rec center   </code></pre>
-<div id="challenge-2-5-minutes-2" class="section level3" number="8.6.1">
+<div id="challenge-2-5-minutes-2" class="section level3" number="8.7.1">
 <h3>
-<span class="header-section-number">8.6.1</span> Challenge 2 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-5-minutes-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.7.1</span> Challenge 2 (5 minutes)<a class="anchor" aria-label="anchor" href="#challenge-2-5-minutes-2"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
 <p>How many flights occurred when the temperature fell below freezing?</p>
@@ -670,9 +670,9 @@ Solution to challenge 2
 </blockquote>
 </div>
 </div>
-<div id="filtering-joins" class="section level2" number="8.7">
+<div id="filtering-joins" class="section level2" number="8.8">
 <h2>
-<span class="header-section-number">8.7</span> Filtering joins<a class="anchor" aria-label="anchor" href="#filtering-joins"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.8</span> Filtering joins<a class="anchor" aria-label="anchor" href="#filtering-joins"><i class="fas fa-link"></i></a>
 </h2>
 <p>In Challenge 2, we could have done a semi join instead of an inner join. That is,
 we were essentially filtering the ‘flights_mini’ dataset to get only those flights
@@ -702,9 +702,9 @@ return all rows in x with a match in y, while <strong>anti joins</strong> return
 without a match in y. Note, that the syntax for filtering joins is the same:
 <code>xxx_join(x, y, by = "key_variable")</code>.</p>
 </div>
-<div id="other-great-resources-2" class="section level2" number="8.8">
+<div id="other-great-resources-2" class="section level2" number="8.9">
 <h2>
-<span class="header-section-number">8.8</span> Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.9</span> Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources-2"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><a href="https://hollyemblem.medium.com/joining-data-with-dplyr-in-r-874698eb8898">Holly Emblem blog on Joins</a></li>
@@ -731,16 +731,20 @@ without a match in y. Note, that the syntax for filtering joins is the same:
 <a class="nav-link" href="#getting-started-2"><span class="header-section-number">8.4</span> Getting started</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#data-analysis-questions"><span class="header-section-number">8.4.1</span> Data analysis questions</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#using-left_join"><span class="header-section-number">8.5</span> Using left_join()</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#challenge-1-2-minutes"><span class="header-section-number">8.5.1</span> Challenge 1 (2 minutes)</a></li>
-<li><a class="nav-link" href="#modifying-the-by-argument"><span class="header-section-number">8.5.2</span> Modifying the by argument</a></li>
+<a class="nav-link" href="#using-left_join"><span class="header-section-number">8.5</span> Using left_join()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-1-2-minutes"><span class="header-section-number">8.5.1</span> Challenge 1 (2 minutes)</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#modifying-the-by-argument"><span class="header-section-number">8.6</span> Modifying the by argument</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#excluding-the-by-argument"><span class="header-section-number">8.6.1</span> Excluding the by argument</a></li>
+<li><a class="nav-link" href="#joining-on-multiple-keys"><span class="header-section-number">8.6.2</span> Joining on multiple keys</a></li>
+<li><a class="nav-link" href="#key-variables-with-different-names"><span class="header-section-number">8.6.3</span> Key variables with different names</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#other-mutating-joins"><span class="header-section-number">8.6</span> Other mutating joins</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-5-minutes-2"><span class="header-section-number">8.6.1</span> Challenge 2 (5 minutes)</a></li></ul>
+<a class="nav-link" href="#other-mutating-joins"><span class="header-section-number">8.7</span> Other mutating joins</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-2-5-minutes-2"><span class="header-section-number">8.7.1</span> Challenge 2 (5 minutes)</a></li></ul>
 </li>
-<li><a class="nav-link" href="#filtering-joins"><span class="header-section-number">8.7</span> Filtering joins</a></li>
-<li><a class="nav-link" href="#other-great-resources-2"><span class="header-section-number">8.8</span> Other great resources</a></li>
+<li><a class="nav-link" href="#filtering-joins"><span class="header-section-number">8.8</span> Filtering joins</a></li>
+<li><a class="nav-link" href="#other-great-resources-2"><span class="header-section-number">8.9</span> Other great resources</a></li>
 </ul>
 
       <div class="book-extra">
