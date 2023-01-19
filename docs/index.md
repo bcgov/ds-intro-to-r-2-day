@@ -71,3 +71,5 @@ This work is licensed under the Creative Commons Attribution 4.0 International L
 To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/). 
+
+The authors of this work acknowledge and respect the Lekwungen-speaking Peoples on whose traditional territories we are gathering, and the Songhees, Esquimalt and WSANEC peoples whose historical relationships with the land continue to this day.
