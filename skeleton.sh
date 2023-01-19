@@ -1,4 +1,5 @@
 #!bin/bash
+echo "running the script file skeleton.sh"
 
 reg="[0-9]{2}"
 rpl="---------------------------------------------------------------------"
