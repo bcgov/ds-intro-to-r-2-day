@@ -11,7 +11,7 @@ do
     continue
   fi
 
-  x_out="intro-to-r-course-notes/${x}""
+  x_out="intro-to-r-course-notes/${x}"
   x_out=${x_out/.Rmd/.R}
   echo "creating ${x_out} from ${x}"
 
