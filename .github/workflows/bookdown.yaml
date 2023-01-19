@@ -37,7 +37,7 @@ jobs:
 
       - name: Update notes
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-        run: bash bin/skeleton.sh
+        run: bash skeleton.sh
         shell: bash
 
       - name: Commit bookdown
