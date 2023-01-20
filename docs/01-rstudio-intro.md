@@ -197,8 +197,8 @@ usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/int
 
 ... and press <kbd>Enter</kbd>.
 
-This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
-and `/Users/[your_user_name]/intro-r-Feb2022/` on a Mac), and open that project in RStudio. 
+This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-to-r-course-notes/` on Windows, 
+and `/Users/[your_user_name]/intro-to-r-course-notes/` on a Mac), and open that project in RStudio. 
 
 
 ## Using R as a calculator
@@ -784,7 +784,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7fd62372b680>
+<bytecode: 0x7f8300f43a80>
 <environment: namespace:base>
 ```
 
