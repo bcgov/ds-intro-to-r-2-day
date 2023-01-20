@@ -186,19 +186,19 @@ install.packages("usethis")
 If you are on Windows:
 
 ```r
-usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-course-notes.zip", destdir = Sys.getenv("USERPROFILE"))
 ```
 
 If you are on a Mac:
 
 ```r
-usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-course-notes.zip", destdir = Sys.getenv("HOME"))
 ```
 
 ... and press <kbd>Enter</kbd>.
 
-This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
-and `/Users/[your_user_name]/intro-r-Feb2022/` on a Mac), and open that project in RStudio. 
+This will create a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-course-notes/` on Windows, 
+and `/Users/[your_user_name]/intro-r-course-notes/` on a Mac), and open that project in RStudio. 
 
 
 ## Using R as a calculator
