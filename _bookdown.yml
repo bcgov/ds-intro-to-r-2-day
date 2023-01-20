@@ -13,13 +13,14 @@ rmd_files:
     - "05-dplyr.Rmd"
     - "06-plot-ggplot2.Rmd"
     - "07-tidyr.Rmd"
+    - "08-joins.Rmd"
 
-    - "08-data-frames.Rmd"
-    - "09-intro-to-bcdata.Rmd"
-    - "10-intro-to-rmarkdown.Rmd"
-    - "11-rmarkdown-application-regression.Rmd"
-    - "12-reprex.Rmd"
+    - "09-data-frames.Rmd"
+    - "10-intro-to-bcdata.Rmd"
+    - "11-intro-to-rmarkdown.Rmd"
+    - "12-rmarkdown-application-regression.Rmd"
+    - "13-reprex.Rmd"
 
-    - "13-mini-analysis.Rmd"
+    - "14-mini-analysis.Rmd"
 clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true
