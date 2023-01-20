@@ -64,20 +64,20 @@ project.
 ## Creating a self-contained project
 
 In our initial breakout sessions, we all downloaded and opened a new RStudio 
-Project called `intro-r-Feb2022`, by running the following code:
+Project called `intro-to-r-course-notes`, by running the following code:
 
 If you are on Windows:
 ```{r eval=FALSE}
-use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-to-r-course-notes.zip", destdir = Sys.getenv("USERPROFILE"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-to-r-course-notes.zip", destdir = Sys.getenv("USERPROFILE"))
 ```
 
 If you are on a Mac:
 ```{r eval=FALSE}
-use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-to-r-course-notes.zip", destdir = Sys.getenv("HOME"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-to-r-course-notes.zip", destdir = Sys.getenv("HOME"))
 ```
 
-This created a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 
-and `/Users/[your_user_name]/intro-r-Feb2022/` on a Mac). 
+This created a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-to-r-course-notes/` on Windows, 
+and `/Users/[your_user_name]/intro-to-r-course-notes/` on a Mac). 
 
 Inside your project you should have a collection of `.R` and `.Rmd` files, 
 a `data/` folder, and a `README.md` file.
