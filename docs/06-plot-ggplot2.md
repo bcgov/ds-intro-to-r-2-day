@@ -580,6 +580,100 @@ ggsave(filename = "results/lifeExp_widetv.png", plot = lifeExp_plot, width = 13.
 There are two nice things about `ggsave`. First, it defaults to the last plot, so if you omit the `plot` argument it will automatically save the last plot you created with `ggplot`. Secondly, it tries to determine the format you want to save your plot in from the file extension you provide for the filename (for example `.png` or `.pdf`). If you need to, you can specify the format explicitly in the `device` argument.
 
 
+## Combining `dplyr` and `ggplot2`
+
+First install and load dplyr:
+
+
+```r
+install.packages('dplyr')
+```
+
+
+```r
+library("dplyr")
+```
+
+In this plotting lesson we will look at how to make a multi-panel figure by adding
+a layer of facet panels using `ggplot2`. 
+
+
+```r
+# Filter countries that start with "A"
+a_countries <- gapminder %>% 
+  filter(country %in% c("Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Australia", "Austria"))
+
+# Make the plot
+ggplot(data = a_countries, aes(x = year, y = lifeExp, color = continent)) +
+  geom_line() + 
+  facet_wrap(vars(country))
+```
+
+<img src="fig/rmd-06-unnamed-chunk-6-1.png" width="576" style="display: block; margin: auto;" />
+
+
+This code makes the right plot but it also provides a way to chain operations. Just as we used
+`%>%` to pipe data along a chain of `dplyr` functions we can use it to pass data
+to `ggplot()`. Because `%>%` replaces the first argument in a function we don't
+need to specify the `data =` argument in the `ggplot()` function. By combining
+`dplyr` and `ggplot2` functions we can alter this figure for only those continents in Europe.
+
+
+```r
+gapminder %>%
+  filter(country %in% c("Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Australia", "Austria")) %>% 
+  filter(continent == "Europe") %>% 
+  ggplot(aes(x = year, y = lifeExp, color = continent)) +
+  geom_line() +
+  facet_wrap(vars(country))
+```
+
+<img src="fig/rmd-06-unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" />
+
+Using `dplyr` functions also helps us do calculations on the fly, for example if we were interested in 
+converting `lifeExp` which is in years to days:
+
+
+```r
+gapminder %>%
+  filter(country %in% c("Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Australia", "Austria")) %>% 
+  filter(continent == "Europe") %>% 
+  mutate(num_days = lifeExp*365) %>% 
+  ggplot(aes(x = year, y = num_days, color = continent)) +
+  geom_line() +
+  facet_wrap(vars(country))
+```
+
+<img src="fig/rmd-06-unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" />
+
+### Advanced Challenge
+
+> Calculate the average life expectancy in 2002 of 2 randomly selected countries
+> for each continent. Then arrange the continent names in reverse order.
+> **Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have
+> similar syntax to other dplyr functions.
+> 
+> <details>
+> 
+> <summary>
+> Solution to challenge
+> </summary>
+> 
+> <br />
+>
+>```r
+>lifeExp_2countries_bycontinents <- gapminder %>%
+>    filter(year==2002) %>%
+>    group_by(continent) %>%
+>    sample_n(2) %>%
+>    summarize(mean_lifeExp=mean(lifeExp)) %>%
+>    arrange(desc(mean_lifeExp))
+>```
+> </details>
+
+
+
+
 This is a taste of what you can do with `ggplot2`. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
 extensive documentation is available on the [ggplot2 website][ggplot-doc].

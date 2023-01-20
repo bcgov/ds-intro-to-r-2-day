@@ -643,77 +643,9 @@ of the data frame will not change) or for updating values depending on this give
 <pre><code>`summarise()` has grouped output by 'continent'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div id="combining-dplyr-and-ggplot2" class="section level2" number="5.11">
+<div id="other-great-resources" class="section level2" number="5.11">
 <h2>
-<span class="header-section-number">5.11</span> Combining <code>dplyr</code> and <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#combining-dplyr-and-ggplot2"><i class="fas fa-link"></i></a>
-</h2>
-<p>First install and load ggplot2:</p>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'ggplot2'</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://ggplot2.tidyverse.org">"ggplot2"</a></span><span class="op">)</span></span></code></pre></div>
-<p>In the plotting lesson we looked at how to make a multi-panel figure by adding
-a layer of facet panels using <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Filter countries that start with "A"</span></span>
-<span><span class="va">a_countries</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Albania"</span>, <span class="st">"Algeria"</span>, <span class="st">"Angola"</span>, <span class="st">"Argentina"</span>, <span class="st">"Australia"</span>, <span class="st">"Austria"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Make the plot</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">a_countries</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="fig/rmd-05-unnamed-chunk-38-1.png" width="576" style="display: block; margin: auto;"></div>
-<p>This code makes the right plot but it also provides a way to chain operations. Just as we used
-<code>%&gt;%</code> to pipe data along a chain of <code>dplyr</code> functions we can use it to pass data
-to <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. Because <code>%&gt;%</code> replaces the first argument in a function we don’t
-need to specify the <code>data =</code> argument in the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function. By combining
-<code>dplyr</code> and <code>ggplot2</code> functions we can alter this figure for only those continents in Europe.</p>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Albania"</span>, <span class="st">"Algeria"</span>, <span class="st">"Angola"</span>, <span class="st">"Argentina"</span>, <span class="st">"Australia"</span>, <span class="st">"Austria"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="fig/rmd-05-unnamed-chunk-39-1.png" width="576" style="display: block; margin: auto;"></div>
-<p>Using <code>dplyr</code> functions also helps us do calculations on the fly, for example if we were interested in
-converting <code>lifeExp</code> which is in years to days:</p>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Albania"</span>, <span class="st">"Algeria"</span>, <span class="st">"Angola"</span>, <span class="st">"Argentina"</span>, <span class="st">"Australia"</span>, <span class="st">"Austria"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>num_days <span class="op">=</span> <span class="va">lifeExp</span><span class="op">*</span><span class="fl">365</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">num_days</span>, color <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="fig/rmd-05-unnamed-chunk-40-1.png" width="576" style="display: block; margin: auto;"></div>
-<div id="advanced-challenge" class="section level3" number="5.11.1">
-<h3>
-<span class="header-section-number">5.11.1</span> Advanced Challenge<a class="anchor" aria-label="anchor" href="#advanced-challenge"><i class="fas fa-link"></i></a>
-</h3>
-<blockquote>
-<p>Calculate the average life expectancy in 2002 of 2 randomly selected countries
-for each continent. Then arrange the continent names in reverse order.
-<strong>Hint:</strong> Use the <code>dplyr</code> functions <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n()</a></code>, they have
-similar syntax to other dplyr functions.</p>
-<details><summary>
-Solution to challenge
-</summary><p><br></p>
-<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">lifeExp_2countries_bycontinents</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fl">2002</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_n</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_lifeExp<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">mean_lifeExp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-</details>
-</blockquote>
-</div>
-</div>
-<div id="other-great-resources" class="section level2" number="5.12">
-<h2>
-<span class="header-section-number">5.12</span> Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.11</span> Other great resources<a class="anchor" aria-label="anchor" href="#other-great-resources"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
@@ -748,10 +680,7 @@ Solution to challenge
 <a class="nav-link" href="#using-mutate"><span class="header-section-number">5.9</span> Using mutate()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#challenge-4-10-minutes"><span class="header-section-number">5.9.1</span> Challenge 4 (10 minutes)</a></li></ul>
 </li>
 <li><a class="nav-link" href="#connect-mutate-with-logical-groupings-ifelse"><span class="header-section-number">5.10</span> Connect mutate with logical groupings: ifelse</a></li>
-<li>
-<a class="nav-link" href="#combining-dplyr-and-ggplot2"><span class="header-section-number">5.11</span> Combining dplyr and ggplot2</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#advanced-challenge"><span class="header-section-number">5.11.1</span> Advanced Challenge</a></li></ul>
-</li>
-<li><a class="nav-link" href="#other-great-resources"><span class="header-section-number">5.12</span> Other great resources</a></li>
+<li><a class="nav-link" href="#other-great-resources"><span class="header-section-number">5.11</span> Other great resources</a></li>
 </ul>
 
       <div class="book-extra">

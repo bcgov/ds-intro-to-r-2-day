@@ -73,8 +73,6 @@ using-count
 using-mutate
 challenge-4-10-minutes
 connect-mutate-with-logical-groupings-ifelse
-combining-dplyr-and-ggplot2
-advanced-challenge
 other-great-resources
 creating-publication-quality-graphics-with-ggplot2
 getting-started
@@ -88,6 +86,8 @@ challenge-4b-10-minutes
 multi-panel-figures
 modifying-text
 exporting-the-plot
+combining-dplyr-and-ggplot2
+advanced-challenge
 create-tidy-data-with-tidyr
 getting-started-1
 challenge-1-1
