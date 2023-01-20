@@ -66,13 +66,13 @@ Project called `intro-r-Feb2022`, by running the following code:
 If you are on Windows:
 
 ```r
-use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
+use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-to-r-course-notes.zip", destdir = Sys.getenv("USERPROFILE"))
 ```
 
 If you are on a Mac:
 
 ```r
-use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
+use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-to-r-course-notes.zip", destdir = Sys.getenv("HOME"))
 ```
 
 This created a new R project folder in your user directory (`C:/Users/[your_user_name]/intro-r-Feb2022/` on Windows, 

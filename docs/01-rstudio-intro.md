@@ -186,13 +186,13 @@ install.packages("usethis")
 If you are on Windows:
 
 ```r
-usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("USERPROFILE"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-to-r-course-notes.zip", destdir = Sys.getenv("USERPROFILE"))
 ```
 
 If you are on a Mac:
 
 ```r
-usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-r-Feb2022.zip", destdir = Sys.getenv("HOME"))
+usethis::use_course("https://github.com/bcgov/ds-intro-to-r-2-day/raw/master/intro-to-r-course-notes.zip", destdir = Sys.getenv("HOME"))
 ```
 
 ... and press <kbd>Enter</kbd>.
@@ -784,7 +784,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f7ec5c2ca80>
+<bytecode: 0x7fd62372b680>
 <environment: namespace:base>
 ```
 
