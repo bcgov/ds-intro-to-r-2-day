@@ -36,7 +36,8 @@ jobs:
         run: R -e 'bookdown::render_book("index.Rmd")'
 
       - name: Update notes
-        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+#       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        if: ${{ false }}
         run: bash skeleton.sh
         shell: bash
 
