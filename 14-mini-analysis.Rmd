@@ -1,0 +1,552 @@
+---
+title: "Micro-Analysis"
+source: Rmd
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r, include=FALSE}
+source("bin/chunk-options.R")
+knitr_fig_path("13-")
+```
+
+# (PART) Examples and Extra Practice {-}
+
+# Practice what you have Learned
+
+Now it is your turn to take all of the tools you have learned over the course and put them into practice.
+Below are some prompts and tips to guide you through a short analysis on international and inter-provincial migration in B.C.
+*Try to come up with your own solutions before looking at the hints and possible solutions provided*.
+
+The migration data is publicly available in the BC Data Catalogue but we have also provided it in csv format in the data folder.
+
+## Setting up your R session
+
+As discussed in **Chapter 1: Introduction to R and RStudio,** before starting any analysis in R, make sure you have the necessary packages installed and loaded.
+For this work you will need to make use of the readr, dplyr, tidyr and ggplot2 packages.
+There will also be an opportunity to use the bcdata package to explore the BC Data Catalogue.
+
+> <details>
+> <summary>
+> Installing packages if necessary
+> </summary>
+> ```{r, eval = FALSE}
+> install.packages("readr")
+> install.packages("dplyr")
+> install.packages("tidyr")
+> install.packages("ggplot2")
+> install.packages("bcdata")
+> ```
+> </details>
+
+> <details>
+> <summary>
+> Loading packages
+> </summary>
+> ```{r, message = FALSE}
+> library(readr)
+> library(dplyr)
+> library(tidyr)
+> library(ggplot2)
+> library(bcdata)
+> ```
+> </details>
+
+## Loading data
+
+Next load the data that you will be working with.
+For this analysis you will be working with international and inter-provincial migration data.
+This data has been provided for you in the data folder, but it is also available from the BC Data Catalogue.
+For added practice consider using the bcdata package to import the data.
+
+For a refresher on reading data from a csv file, check out **Chapter 4: Data Structures**
+
+> <details>
+> <summary>
+> Hint 1
+> </summary>
+> Use the read_csv function
+> </details>
+
+> <details>
+> <summary>
+> Hint 2
+> </summary>
+> Review the help pages if needed
+> ```{r, message = FALSE, eval = FALSE}
+> ?read_csv
+> ```
+> </details>
+
+> <details>
+> <summary>
+> Possible Solution
+> </summary>
+> ```{r, message = FALSE}
+> international <- read_csv(file = "data/international_migration.csv")
+> interprovincial <- read_csv(file = "data/interprovincial_migration.csv")
+> ```
+> </details>
+
+For an added challenge, consider importing the data directly from the BC Data Catalogue as discussed in **Chapter 10: Introduction to the bcdata package**
+
+> <details>
+> <summary>
+> Hint 1
+> </summary>
+> Use the bcdc_search function to search the data catalogue for records relating to migration
+> ```{r, message = FALSE, eval = FALSE}
+> bcdc_search("migration")
+> ```
+> </details>
+
+> <details>
+> <summary>
+> Hint 2
+> </summary>
+> The first title from the resulting search Inter-provincial and International migration (csv) sounds correct.
+> Use the record ID to find the IDs for the desired data sets (or resources).
+> ```{r, message = FALSE}
+> migration_resources <- bcdc_tidy_resources('56610cfc-02ba-41a7-92ef-d9609ef507f1')
+> migration_resources %>% select(name, id)
+> ```
+> </details>
+
+> <details>
+> <summary>
+> Possible Solution
+> </summary>
+> Import the first two resources, interprovincial_migration and international_migration.
+> ```{r, message = FALSE}
+> international <- bcdc_get_data(record = "56610cfc-02ba-41a7-92ef-d9609ef507f1",
+>                          resource = "c99d63f6-5ec4-4ac0-9c07-c0352f2f1928")
+>                          
+> interprovincial <- bcdc_get_data(record = "56610cfc-02ba-41a7-92ef-d9609ef507f1",
+>                      resource = "95579825-bfa2-4cab-90fa-196e0ecc8626")
+> ```
+> </details>
+
+## Reviewing the data
+
+When working with new data, it is best practices to take some time to review and understand it.
+Use the functions you learned in **Chapter 5: Manipulating Data Frames with dplyr** to find the size and various other attributes of the data.
+
+> <details>
+> <summary>
+> Hint 1
+> </summary>
+> -   What are the columns in the international migration data, how are they related?
+> -   What are the columns in the inter-provincial migration data, how are they related?
+> -   How does the structure of the inter-provincial data differ from the international data?
+> -   What is the frequency of the data (Annual, Quarterly, Monthly, etc.)?
+> -   Is there anything else worth noting?
+> </details>
+
+> <details>
+> <summary>
+> Hint 2
+> </summary>
+> Consider using some of the following functions: `summary()`, `str()`, `dim()`, `nrow()`, `names()`, `head()`
+> </details>
+
+> <details>
+> <summary>
+> Possible Solution
+> </summary>
+> **International migration data:**
+>
+> -   The international migration data has 204 rows and 8 columns.
+> -   The data is recorded quarterly from 1971 to 2022.
+> -   The column names are Year, Quarter, Immigrants, Emigrants, Net_non_permanent_residents, Net_temporary_emigrants, Returning_emigrants, Net_migration.
+> -   The column Net_migration can be calculated from the other columns as: `Net_migration = Immigrants - Emigrants + Net_non_permanent_residents - Net_temporary_emigrants + Returning_emigrants`
+> -   This dataframe only contains values for B.C.
+>
+>
+> **Inter-provincial migration data:**
+>
+> -   The inter-provincial migration data has 2,572 rows and 17 observations.
+> -   The data is also recorded quarterly from 1971 to 2022.
+> -   The column names are Year, Quarter, Origin, Acronyms of the 10 provinces and 3 territories, Total.
+> -   This data is set up in a crosstab structure where, for example, a value in a row with Origin = "B.C." in the column "N.L." represents the number of people that migrated from B.C. to N.L. in that year and quarter.
+> -   The Total column is equal to the sum of all of the provincial/territorial columns and represents the total number of people that migrated "OUT" of the province/territory listed in the Origin column for that year and quarter.
+> -   This dataframe contains all of the inter-provincial migration across Canada.
+> </details>
+
+## Analyzing your data
+
+Now that you are familiar with your data, it is time to do some analysis.
+There is many different directions you can take but for this example we are going to look at the annual net migration of B.C.
+since 2010 to see if there are any interesting patterns.
+Let's break this down into three parts: net international migration, net inter-provincial migration and total net migration.
+
+### Net international migration from 2010 to 2021 annually
+
+**Plot the net international migration that occurred in B.C. from 2010 to 2021 annually.**
+
+Where do you start?
+Is this data available already, or does the data need to be manipulated?
+Use the tools you learned from **Chapter 5: Manipulating Data Frames with dplyr** and then make an attractive plot using the tools from **Chapter 6: Creating Publication-Quality Graphics with ggplot2**.
+Make sure to add labels and play around with theme elements to get your desired look.
+
+> <details>
+> <summary>
+> Hint (part 1)
+> </summary>
+> You will need to manipulate the data before plotting.
+> Consider the which years are to be plotted and the frequency.
+> Consider what column/columns contain the most relevant data.
+> </details>
+
+> <details>
+> <summary>
+> Possible Solution (part 1)
+> </summary>
+> Filter the data for the correct years to be included (greater than or equal to 2010 but less than 2022).
+> To get the annual amount, group by year and sum Net_migration.
+>
+> ```{r, message = FALSE}
+> plot_data_net_international <- international %>%
+>   filter(Year >= 2010, Year < 2022) %>%
+>   group_by(Year) %>%
+>   summarize(Net_international = sum(Net_migration))
+> ```
+> </details>
+
+> <details>
+> <summary>
+> Hint (part 2)
+> </summary>
+> Start with a basic plot.
+> What is the mapping?
+> What geom would work best?
+> ```{r, message = FALSE, eval = FALSE}
+> ggplot(data = plot_data_net_international, mapping = aes(x = ??, y = ??)) +
+> geom_??
+> ```
+> </details>
+
+> <details>
+> <summary>
+> Possible Solution (part 2)
+> </summary>
+> Here is a possible plot.
+> Try to make your plot even more polished/customized.
+> ```{r, message = FALSE}
+> ggplot(plot_data_net_international, aes(x = Year, y = Net_international)) +
+>   geom_line() +
+>   geom_point(color = "blue") +
+>   labs(title = "Net international migration in B.C.",
+>        subtitle = "Annually from 2010 to 2021",
+>        y = "") +
+>   theme_light() +
+>   theme()
+> ```
+> </details>
+
+### Net inter-provincial migration from 2010 to 2021 annually
+
+Did you discover any interesting trends in international migration?
+Do you think similar trends occurred among inter-provincial migration?
+
+**Plot the net inter-provincial migration that occurred in B.C. from 2010 to 2021 annually.**
+
+How does your approach differ using the inter-provincial data compared to the international data?
+It may be helpful to consider the tools you learned in **Chapter 8: Joining Related Data**.
+
+> <details>
+> <summary>
+> Hint 1
+> </summary>
+> Net inter-provincial migration is not provided in the inter-provincial data so you will need to calculate it.
+> Consider how you would manipulate the data to get the total "IN" migration to B.C., then consider how you would get the total "OUT" migration from B.C.
+> </details>
+
+> <details>
+> <summary>
+> Hint 2
+> </summary>
+> The column B.C. in the data represents all of the migration "IN" to B.C.
+> The Total column represents the total amount of "OUT" for the province/territory listed in the Origin column.
+> </details>
+
+> <details>
+> <summary>
+> Possible Solution
+> </summary>
+> Calculate the annual "IN" migration with the following:
+> ```{r, message = FALSE}
+> in_prov <- interprovincial %>%
+>   filter(Year >= 2010, Year < 2022) %>%
+>   group_by(Year) %>%
+>   summarize(In_provincial = sum(B.C.))
+> ```
+> Calculate the annual "OUT" migration with the following:
+> ```{r, message = FALSE}
+> out_prov <- interprovincial %>%
+>   filter(Year >= 2010, Year < 2022) %>%
+>   filter(Origin == "B.C.") %>%
+>   group_by(Year)  %>%
+>   summarize(Out_provincial = sum(Total))
+> ```
+> Join the two dataframes to calculate the "NET" migration.
+> ```{r, message = FALSE}
+> plot_data_net_interprovincial <- in_prov %>%
+>   left_join(out_prov, by = c("Year")) %>%
+>   mutate(Net_provincial = In_provincial - Out_provincial)
+> ```
+> Create a plot.
+> ```{r, message = FALSE}
+> ggplot(plot_data_net_interprovincial, aes(x = Year, y = Net_provincial)) +
+>   geom_line() +
+>   geom_point(color = "blue") +
+>   labs(title = "Net interprovincial migration in B.C.",
+>        subtitle = "Annually from 2010 to 2021",
+>        y = "") +
+>   theme_light() +
+>   theme()
+> ```
+> </details>
+
+### Total net migration from 2010 to 2021 annually
+
+How did the inter-provincial migration differ from the international migration?
+What about total net migration?
+
+**Plot the total net migration that occurred in B.C. from 2010 to 2021 annually.**
+
+What dataframes can you combine to calculate the total net migration?
+Check out **Chapter 8: Joining Related Data**, for a refresher on joining data.
+
+> <details>
+> <summary>
+> Possible Solution
+> </summary>
+> Combine the two plot_data dataframes that you created in the previous steps.
+> Join by year.
+> Then, calculate the total net migration by summing the international and inter-provincial.
+> ```{r, message = FALSE}
+> plot_data_total_net_migration <- plot_data_net_international %>%
+>   left_join(plot_data_net_interprovincial, by = c("Year")) %>%
+>   mutate(Net_migration = Net_international + Net_provincial)
+> ```
+> Create a plot.
+> ```{r, message = FALSE}
+>  ggplot(plot_data_total_net_migration, aes(x = Year, y = Net_migration)) +
+>    geom_line() +
+>    geom_point(color = "blue") +
+>    labs(title = "Total net migration in B.C.",
+>         subtitle = "Annually from 2010 to 2021",
+>         y = "") +
+>    theme_light() +
+>    theme()
+> ```
+> </details>
+
+<!-- ** stop here ** -->
+
+<!-- Below contains some additional examples but is incomplete and un-formatted. -->
+
+<!-- On average, does provincial/international migration vary depending on the time of year. -->
+
+<!-- Is there a quarter that has more international migration, more provincial migration, more out/in, etc.  -->
+
+<!-- Note: international IN = Immigrants + Net non-permanent Residents + Returning emigrants -->
+
+<!--       international OUT = Emigrants + Net temporary emigrants -->
+
+<!-- ```{r} -->
+
+<!--  mig2 <- mig %>%  -->
+
+<!--   mutate(in_inter = Immigrants + Net_non_permanent_residents + Returning_emigrants, -->
+
+<!--          out_inter = Emigrants + Net_temporary_emigrants) -->
+
+<!-- mig2 %>% -->
+
+<!--   group_by(Quarter) %>% -->
+
+<!--   summarize(avg_out_prov = mean(out_prov), -->
+
+<!--             avg_out_inter = mean(out_inter), -->
+
+<!--             avg_in_prov = mean(in_prov), -->
+
+<!--             avg_in_inter = mean(in_inter), -->
+
+<!--             avg_net_mig = mean(total_net)) -->
+
+<!-- ## Q2, Q3 (Apr-Sep) more people coming and going -->
+
+<!-- ## Q1, Q4 (Oct-March) lower time for migration in the year -->
+
+<!-- ## Does not differ much whether provincial, international, in or out -->
+
+<!-- ``` -->
+
+<!-- plot over the years to see if the trends align with the averages; make separate charts for in/out, prov/international -->
+
+<!-- ```{r} -->
+
+<!-- ## have to prep data for ploting -->
+
+<!-- plot_data_1 <- mig2 %>% -->
+
+<!--   select(Year, Quarter, out_prov, out_inter, in_prov, in_inter, total_net) %>% -->
+
+<!--   pivot_longer(-c(Year, Quarter), names_to = "mig_type", values_to = "values") %>% -->
+
+<!--   mutate(Quarter = factor(Quarter, levels = c(1, 2 ,3, 4))) -->
+
+<!-- ggplot(data = plot_data_1, mapping = aes(x = Year, y = values)) + -->
+
+<!--   geom_line(aes(color = Quarter)) +  -->
+
+<!--   facet_wrap(facets = vars(mig_type)) -->
+
+<!-- ``` -->
+
+<!-- plot data from last 5 years -->
+
+<!-- ```{r} -->
+
+<!-- ggplot(data = plot_data_1 %>% filter(Year >= 2018), mapping = aes(x = Year, y = values)) + -->
+
+<!--   geom_line(aes(color = Quarter)) +  -->
+
+<!--   facet_wrap(facets = vars(mig_type)) -->
+
+<!-- ## due to timing of pandemic, Q2/Q3 which normally have the most migration, had the least international in migration in 2020 -->
+
+<!-- ## so far in 2022, there has been a big recovery in international in - surpassing pre-pandemic numbers, similar increases seen in prov mig (in & out) -->
+
+<!-- ``` -->
+
+<!-- what regions most impacted by pandemic with regards to prov migration -->
+
+<!-- (Atlantic Provinces = N.L., P.E.I., N.S., N.B.; -->
+
+<!--  Central Canada = Que., Ont.; -->
+
+<!--  Prairie Provinces = Man., Sask., Alta.; -->
+
+<!--  West Coast = B.C.; -->
+
+<!--  Northern Territories = Y.T., N.W.T., Nvt.) -->
+
+<!-- ```{r, interprov-all} -->
+
+<!-- ## find the net provincial migration for all provinces -->
+
+<!-- net_prov <- interprov %>% -->
+
+<!--   rename(Out = Total) %>% -->
+
+<!--   pivot_longer(-c(Year, Quarter, Origin, Out), names_to = "Destination", values_to = "n") %>% -->
+
+<!--   group_by(Year, Quarter, Destination) %>% -->
+
+<!--   mutate("In" = sum(n)) %>% -->
+
+<!--   filter(Origin == Destination) %>% -->
+
+<!--   mutate(Net = In - Out) %>% -->
+
+<!--   ## note province and destination are now equal, only need to retain one,  -->
+
+<!--   ## remember to ungroup -->
+
+<!--   ungroup() %>% -->
+
+<!--   select(Year, Quarter, Province = Origin, Out, In, Net) -->
+
+<!-- net_regions <- net_prov %>% -->
+
+<!--   mutate(Region = case_when(Province %in% c("N.L.", "P.E.I.", "N.S.", "N.B.") ~ "Atlantic Provinces", -->
+
+<!--                             Province %in% c("Que.", "Ont.") ~ "Central Canada", -->
+
+<!--                             Province %in% c("Man.", "Sask.", "Alta.") ~ "Prairie Provinces", -->
+
+<!--                             Province == "B.C." ~ "West Coast", -->
+
+<!--                             Province %in% c("Y.T.", "N.W.T.", "Nvt.") ~ "Northern Territories")) %>% -->
+
+<!--   group_by(Year, Quarter, Region) %>% -->
+
+<!--   summarize(In = sum(In), -->
+
+<!--             Out = sum(Out), -->
+
+<!--             Net = sum(Net)) -->
+
+<!-- net_reg_annual <- net_regions %>% -->
+
+<!--   group_by(Year, Region) %>% -->
+
+<!--   summarize(In = sum(In), -->
+
+<!--             Out = sum(Out), -->
+
+<!--             Net = sum(Net)) -->
+
+<!-- ``` -->
+
+<!-- plot -->
+
+<!-- ```{r} -->
+
+<!-- ## filter 2010-2021 -->
+
+<!-- ggplot(net_reg_annual %>% filter(Year >= 2010, Year < 2022), aes(x = Year, y = Net)) + -->
+
+<!--   geom_line(aes(color = Region)) + -->
+
+<!--   geom_point() -->
+
+<!-- ## Atlantic provinces/BC saw a increases in net mig 2020=2021 -->
+
+<!-- ## Central Canada saw a big decrease in net mig 2020-2021 -->
+
+<!-- ``` -->
+
+<!-- What regions were BC-ians coming, going to, did the main origin, destination change over the pandemic? -->
+
+<!-- ```{r} -->
+
+<!-- ## -->
+
+<!-- main_orig <- interprov %>% -->
+
+<!--   filter(Year >= 2012) %>% -->
+
+<!--   select(Year, Quarter, Origin, B.C.) %>% -->
+
+<!--   group_by(Year, Origin) %>% -->
+
+<!--   summarize(values = sum(B.C.)) %>% -->
+
+<!--   mutate(max = max(values)) %>% -->
+
+<!--   filter(values == max) -->
+
+<!-- #Main destination province over last 10 years -->
+
+<!-- main_dest <- interprov %>% -->
+
+<!--   filter(Origin == "B.C.", Year >= 2012) %>% -->
+
+<!--   group_by(Year, Origin) %>% -->
+
+<!--   summarize_all(sum) %>% -->
+
+<!--   pivot_longer(-c(Year, Quarter, Origin, Total), names_to = "province", values_to = "values") %>% -->
+
+<!--   mutate(max = max(values)) %>% -->
+
+<!--   filter(values == max) -->
+
+<!-- ## least origin, least destination -->
+
+<!-- ``` -->
