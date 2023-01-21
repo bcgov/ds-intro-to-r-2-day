@@ -11,6 +11,8 @@ Data:
 -   `gapminder_wide.csv`
 -   `gapminder-FiveYearData.csv`
 -   `inflammation.csv`
+-   `international_migration.csv`
+-   `interprovincial_migration.csv`
 -   `Owls.txt`
 
 R scripts:
