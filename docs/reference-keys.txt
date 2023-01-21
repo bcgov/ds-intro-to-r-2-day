@@ -152,3 +152,11 @@ applications-of-r-markdown
 seeking-help-from-others-with-reprex
 help-people-help-you---reprex
 other-helpful-resources
+practice-what-you-have-learned
+setting-up-your-r-session
+loading-data
+reviewing-the-data
+analyzing-your-data
+net-international-migration-from-2010-to-2021-annually
+net-inter-provincial-migration-from-2010-to-2021-annually
+total-net-migration-from-2010-to-2021-annually
