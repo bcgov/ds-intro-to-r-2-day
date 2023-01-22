@@ -1,10 +1,4 @@
----
-title: "BC Migration Patterns"
-source: Rmd
-#editor_options: 
-#  markdown: 
-#    wrap: sentence
----
+
 
 
 
@@ -262,7 +256,7 @@ Make sure to add labels and play around with theme elements to get your desired 
 >   theme()
 > ```
 > 
-> <img src="fig/rmd-13-unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" />
+> <img src="fig/rmd-14-unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
 ### Net inter-provincial migration from 2010 to 2021 annually
@@ -332,7 +326,7 @@ It may be helpful to consider the tools you learned in **Chapter 8: Joining Rela
 >   theme()
 > ```
 > 
-> <img src="fig/rmd-13-unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" />
+> <img src="fig/rmd-14-unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
 ### Total net migration from 2010 to 2021 annually
@@ -371,7 +365,7 @@ Check out **Chapter 8: Joining Related Data**, for a refresher on joining data.
 >    theme()
 > ```
 > 
-> <img src="fig/rmd-13-unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" />
+> <img src="fig/rmd-14-unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" />
 > </details>
 
 <!-- ** stop here ** -->
