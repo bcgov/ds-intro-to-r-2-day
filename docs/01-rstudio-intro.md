@@ -104,7 +104,7 @@ control and project management.
 **Tip: Key RStudio Setting**
 
 By default RStudio will automatically save your session variables in your
-porject directory in a file called `.RData`. These are saved when you exit a
+project directory in a file called `.RData`. These are saved when you exit a
 project and restored when you open it up again. We _highly_ recommend turning
 this feature off. As you will learn in this course, all outputs will be created
 from code. Typically you do not need to save intermediate steps. If you don't
@@ -784,7 +784,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f9ca731a280>
+<bytecode: 0x7fd83e718080>
 <environment: namespace:base>
 ```
 
