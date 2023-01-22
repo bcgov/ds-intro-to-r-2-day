@@ -1,7 +1,6 @@
 ---
 title: "BC Migration Patterns"
 teaching: 45
-teaching: 10
 exercises: 10
 questions:
 - "How to find your way around RStudio?"
