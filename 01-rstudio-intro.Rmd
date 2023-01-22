@@ -38,7 +38,7 @@ knitr_fig_path("01-")
 ## Motivation
 
 Science is a multi-step process: once you've designed an experiment and
-collected data, the real fun begins! This lesson will teach you how to start
+collected data, the real fun begins!  This lesson will explore how to start
 this process using R and RStudio. We will begin with raw data, perform
 exploratory analyses, and learn how to plot results graphically. This course
 starts with a dataset from [gapminder.org](https://www.gapminder.org) containing

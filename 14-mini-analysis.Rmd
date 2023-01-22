@@ -1,9 +1,9 @@
 ---
 title: "BC Migration Patterns"
 source: Rmd
-editor_options: 
-  markdown: 
-    wrap: sentence
+#editor_options: 
+#  markdown: 
+#    wrap: sentence
 ---
 
 ```{r, include=FALSE}
