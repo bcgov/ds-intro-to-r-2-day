@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Data Science Using R (Feb 2022)"
+title: "Introduction to Data Science Using R"
 output: md_document
 ---
 
