@@ -152,7 +152,6 @@ applications-of-r-markdown
 seeking-help-from-others-with-reprex
 help-people-help-you---reprex
 other-helpful-resources
-practice-what-you-have-learned
 setting-up-your-r-session
 loading-data
 reviewing-the-data
