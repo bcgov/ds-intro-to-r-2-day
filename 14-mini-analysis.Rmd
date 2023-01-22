@@ -1,14 +1,8 @@
----
-title: "BC Migration Patterns"
-source: Rmd
-#editor_options: 
-#  markdown: 
-#    wrap: sentence
----
+
 
 ```{r, include=FALSE}
 source("bin/chunk-options.R")
-knitr_fig_path("13-")
+knitr_fig_path("14-")
 ```
 
 # (PART) Examples and Extra Practice {-}
