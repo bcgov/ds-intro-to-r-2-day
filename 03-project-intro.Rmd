@@ -149,6 +149,6 @@ one to store the analysis scripts.
 
 ### Version Control
 
-It is important to use version control with projects.  Go [here for a good lesson which describes using Git with RStudio](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/).
+It is important to use version control with projects.  [Go here for a good lesson which describes using Git with RStudio](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/).
 
 
