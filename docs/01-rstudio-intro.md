@@ -35,7 +35,7 @@ source: Rmd
 ## Motivation
 
 Science is a multi-step process: once you've designed an experiment and
-collected data, the real fun begins! This lesson will teach you how to start
+collected data, the real fun begins!  This lesson will explore how to start
 this process using R and RStudio. We will begin with raw data, perform
 exploratory analyses, and learn how to plot results graphically. This course
 starts with a dataset from [gapminder.org](https://www.gapminder.org) containing
@@ -784,7 +784,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x7f941ec44880>
+<bytecode: 0x7fec4d608880>
 <environment: namespace:base>
 ```
 
