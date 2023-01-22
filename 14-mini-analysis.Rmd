@@ -1,5 +1,5 @@
 ---
-title: "Micro-Analysis"
+title: "BC Migration Patterns"
 source: Rmd
 editor_options: 
   markdown: 
@@ -13,7 +13,7 @@ knitr_fig_path("13-")
 
 # (PART) Examples and Extra Practice {-}
 
-# Practice what you have Learned
+# BC Migration Patterns {-}
 
 Now it is your turn to take all of the tools you have learned over the course and put them into practice.
 Below are some prompts and tips to guide you through a short analysis on international and inter-provincial migration in B.C.
