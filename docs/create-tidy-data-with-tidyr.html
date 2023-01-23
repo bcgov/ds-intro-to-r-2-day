@@ -389,10 +389,10 @@ need to create appropriate labels for all our new variables (time*metric
 combinations) and we also need to unify our ID variables to simplify the process
 of defining <code>gap_wide</code>.</p>
 <div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gap_temp</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">var_ID</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">gap_temp</span> <span class="op">&lt;-</span> <span class="va">gap_long_split</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="va">ID_var</span>, <span class="va">continent</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
 <span><span class="va">gap_temp</span></span></code></pre></div>
 <pre><code># A tibble: 5,112 × 4
-   var_ID           obs_type   year obs_values
+   ID_var           obs_type   year obs_values
    &lt;chr&gt;            &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;
  1 Asia_Afghanistan pop        1952  8425333  
  2 Asia_Afghanistan lifeExp    1952       28.8
@@ -551,7 +551,7 @@ usable, let’s separate it into 2 variables with <code><a href="https://tidyr.t
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-22.</p>
+    <p>"<strong>Introduction to Data Science using R Workshop</strong>" was written by . It was last built on 2023-01-23.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

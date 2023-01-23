@@ -460,13 +460,13 @@ of defining `gap_wide`.
 
 
 ```r
-gap_temp <- gap_long_split %>% unite(var_ID, continent, country, sep = "_")
+gap_temp <- gap_long_split %>% unite(ID_var, continent, country, sep = "_")
 gap_temp
 ```
 
 ```
 # A tibble: 5,112 × 4
-   var_ID           obs_type   year obs_values
+   ID_var           obs_type   year obs_values
    <chr>            <chr>     <dbl>      <dbl>
  1 Asia_Afghanistan pop        1952  8425333  
  2 Asia_Afghanistan lifeExp    1952       28.8
