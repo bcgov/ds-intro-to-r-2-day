@@ -21,7 +21,7 @@ knitr_fig_path("07-")
 ```
 
 ```{r include=FALSE, eval=FALSE}
-To create gapminder_wide.csv:
+# To create gapminder_wide.csv:
 library("dplyr")
 library("tidyr")
 
@@ -265,7 +265,7 @@ combinations) and we also need to unify our ID variables to simplify the process
 of defining `gap_wide`.
 
 ```{r}
-gap_temp <- gap_long_split %>% unite(var_ID, continent, country, sep = "_")
+gap_temp <- gap_long_split %>% unite(ID_var, continent, country, sep = "_")
 gap_temp
 
 gap_temp <- gap_long_split %>%
