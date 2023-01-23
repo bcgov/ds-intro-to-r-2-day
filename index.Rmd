@@ -53,7 +53,7 @@ The goal of this 2 day workshop is to teach new-to-programming data professional
 - Extra Practice + Questions (15 minutes)
 - Lunch
 - [Data Manipulation with `tidyr`][Create Tidy Data with tidyr] (60 minutes) **(Julie)**
-- Extra Practice + Questions (15 minutes)
+- Extra Practice + Questions (15-30 minutes)
 - BREAK ☕
 - [Joining Related Data] (45 minutes) **(Julie)**
 - Mini-Analysis Project (45 minutes)
